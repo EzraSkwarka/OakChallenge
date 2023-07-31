@@ -1,10 +1,9 @@
 function badgeSection(discriminator, textArray) {
-  document.getElementById("trackerContainer").innerHTML +=
-    '<div id="' + discriminator.toString() + '"><form id="' + discriminator.toString() + '_Form"></form></div>';
+  createBadgeContainer(discriminator);
 
   for (index = 0; index < textArray.length; index++) {
-    var formTarget = document.getElementById(discriminator.toString() + "_Form");
-    var checkboxIdentifier = discriminator.toString() + "_Form" + "." + index.toString();
+    var formTarget = document.getElementById(discriminator + "_Form");
+    var checkboxIdentifier = discriminator + "_Form" + "." + index.toString();
     var checkboxString =
       '<input type="checkbox" id="' +
       checkboxIdentifier +
@@ -16,6 +15,46 @@ function badgeSection(discriminator, textArray) {
 
     formTarget.innerHTML += checkboxString + labelString;
   }
+}
+
+function badgeSectionGrouped(discriminator, textArray) {
+  createBadgeContainer(discriminator);
+
+  for (index = 0; index < textArray.length; index++) {
+    for (subindex = 0; subindex < textArray[index].length; subindex+=2) {
+        console.log(textArray[index][subindex] + ":" )
+        for (entry in  textArray[index][subindex + 1]){
+            console.log(textArray[index][subindex + 1][entry]);
+        }
+
+    }
+    var formTarget = document.getElementById(discriminator + "_Form");
+    var checkboxIdentifier = discriminator + "_Form" + "." + index.toString();
+    var checkboxString =
+      '<input type="checkbox" id="' +
+      checkboxIdentifier +
+      '" onchange="pullCheckboxValue(\'' +
+      checkboxIdentifier +
+      "')\">";
+
+    var labelString = "<label for=" + checkboxIdentifier + ">" + textArray[index] + "</label><br>";
+
+    formTarget.innerHTML += checkboxString + labelString;
+  }
+}
+
+function createBadgeContainer(discriminator) {
+  discriminator = discriminator.toString();
+
+  document.getElementById("trackerContainer").innerHTML +=
+    '<div id="' + discriminator + '"><form id="' + discriminator + '_Form"></form></div>';
+
+  var badgeContianerLabel = document.createElement("div");
+  badgeContianerLabel.id = discriminator + "_Label";
+  badgeContianerLabel.innerHTML = discriminator + "_Label";
+  document
+    .getElementById(discriminator)
+    .insertBefore(badgeContianerLabel, document.getElementById(discriminator + "_Form"));
 }
 
 function pullCheckboxValue(target) {
@@ -38,7 +77,7 @@ function listCookies() {
 function updateCheckedBoxes() {
   var cookieArray = listCookies();
   for (var i = 0; i < cookieArray.length; i++)
-    if (cookieArray[i].includes("true")) {
+    if (cookieArray[i].includes("=true")) {
       console.log(i.toString() + ": " + cookieArray[i]);
       document.getElementById(cookieArray[i].split("=")[0].trim()).checked = true;
     }
