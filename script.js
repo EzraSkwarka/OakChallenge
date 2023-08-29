@@ -12,8 +12,6 @@ function sectionBuilder(sectionObject = []) {
     document.getElementById(sectionDiv.id).appendChild(groupDiv);
 
     for (groupIndex = 0; groupIndex < sectionObject[index].length; groupIndex++) {
-      var familyLineTextObject = "";
-      var checkBoxForm = '';
       /*Since the family line can only be a max of three mons, instead of making another for loop I'm just gonna define the three cases */
       var familyLineArray = sectionObject[index][groupIndex];
       var familyLineDiv = document.createElement("div");
@@ -24,78 +22,85 @@ function sectionBuilder(sectionObject = []) {
           var checkBoxForm = document.createElement("form");
           checkBoxForm.id = familyLineArray[4].toString() + "_form";
           familyLineDiv.appendChild(checkBoxForm);
-          //Create the input
-          var checkBoxInput_5 = document.createElement("input");
-          checkBoxInput_5.id = familyLineArray[4].toString() + "_input";
-          checkBoxInput_5.type = "checkbox";
-          checkBoxForm.appendChild(checkBoxInput_5);
-          //Create the label
-          var checkBoxLabel_5 = document.createElement("label");
-          checkBoxLabel_5.htmlFor = checkBoxInput_5.id.toString();
-          checkBoxLabel_5.innerText =
-            " -> by " +
-            familyLineArray[3][0].toString() +
-            " @ " +
-            familyLineArray[3][1].toString() +
-            " " +
-            familyLineArray[4].toString();
-          checkBoxForm.appendChild(checkBoxLabel_5);
 
-        // familyLineTextObject =
-        // checkBoxLabel_5.innerText;
+          //Create the input
+          var checkBoxInput_5 = generateCheckbox(checkBoxForm, familyLineArray[4].toString() + "_input");
+
+          //Create the label
+          var checkBoxLabel_5 = generateLabel(
+            checkBoxInput_5,
+            [familyLineArray[3], familyLineArray[4]]
+          );
 
         case 3:
           //See if for exists, otherwise make one
-          
-          if (checkBoxForm == '') {
+          if (checkBoxForm == "") {
             var checkBoxForm = document.createElement("form");
             checkBoxForm.id = familyLineArray[2].toString() + "_form";
             familyLineDiv.appendChild(checkBoxForm);
-            
           }
+
           //Create the input
-          var checkBoxInput_3 = document.createElement("input");
-          checkBoxInput_3.id = familyLineArray[2].toString() + "_input";
-          checkBoxInput_3.type = "checkbox";
-          checkBoxForm.insertBefore(checkBoxInput_3, checkBoxForm.firstChild);
+          var checkBoxInput_3 = generateCheckbox(checkBoxForm, familyLineArray[2].toString() + "_input");
 
           //Create the label
-          var checkBoxLabel_3 = document.createElement("label");
-          checkBoxLabel_3.htmlFor = checkBoxInput_3.id.toString();
-          checkBoxLabel_3.innerText =
-            " -> by " +
-            familyLineArray[1][0].toString() +
-            " @ " +
-            familyLineArray[1][1].toString() +
-            " " +
-            familyLineArray[2].toString() +
-            familyLineTextObject;
-
-          checkBoxInput_3.after(checkBoxLabel_3);
+          var checkBoxLabel_3 = generateLabel(checkBoxInput_3, [familyLineArray[1], familyLineArray[2]]);
 
         default:
           //See if for exists, otherwise make one
-          if (checkBoxForm == '') {
+          if (checkBoxForm == "") {
             var checkBoxForm = document.createElement("form");
             checkBoxForm.id = familyLineArray[0].toString() + "_form";
             familyLineDiv.appendChild(checkBoxForm);
           }
 
           //Create the input
-          var checkBoxInput = document.createElement("input");
-          checkBoxInput.id = familyLineArray[0].toString() + "_input";
-          checkBoxInput.type = "checkbox";
-          checkBoxForm.insertBefore(checkBoxInput, checkBoxForm.firstChild);
+          var checkBoxInput = generateCheckbox(checkBoxForm, familyLineArray[0].toString() + "_input");
 
           //Create the label
-          var checkBoxLabel = document.createElement("label");
-          checkBoxLabel.htmlFor = checkBoxInput.id.toString();
-          checkBoxLabel.innerText = familyLineArray[0].toString();
-          checkBoxInput.after(checkBoxLabel)
+          var checkBoxLabel = generateLabel(checkBoxInput, [familyLineArray[0]]);
       }
+      var checkBoxForm = ""; //make sure its clear on subsequent loops
     }
     groupDiv.innerHTML += "<br>";
   }
+}
+
+function generateLabel(ref, subarray = []) {
+  var checkBoxLabel = document.createElement("label");
+  checkBoxLabel.htmlFor = ref.id.toString();
+  checkBoxLabel.id = ref.id.toString()+"_label";
+  if (subarray.length == 2) {
+    checkBoxLabel.innerHTML =
+      " -> by " + subarray[0][0].toString() + " @ " + subarray[0][1].toString() + " " + subarray[1].toString();
+  } else {
+    checkBoxLabel.innerHTML = subarray[0].toString();
+    if (subarray[0].toString() == "Bulbasaur") {
+      checkBoxLabel.innerHTML = "<img style=\"width: 56px; height: auto;\"src=\"..\\assets\\RBY\\BW_Bulbasaur.png\" \/>"
+    }
+  }
+
+
+  ref.after(checkBoxLabel);
+  return checkBoxLabel;
+}
+
+function generateCheckbox(parent, id) {
+  var checkBoxInput = document.createElement("input");
+  checkBoxInput.id = id;
+  checkBoxInput.type = "checkbox";
+  parent.insertBefore(checkBoxInput, parent.firstChild);
+
+  return checkBoxInput;
+}
+
+function fileExists(url) {
+  var http = new XMLHttpRequest();
+
+  http.open("HEAD", url, false);
+  http.send();
+
+  return http.status != 404;
 }
 
 function badgeSection(discriminator, textArray) {
