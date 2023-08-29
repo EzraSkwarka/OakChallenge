@@ -9,11 +9,39 @@
       Ref:
       https://docs.google.com/spreadsheets/d/e/2PACX-1vRn8AyA9JEwEYq2MMbGGS2K9hI6ZlRGLBHCxcSe98AmUiAsIoP0J4lM4OsMAZ9i0HPEqlHGUFQrEs0K/pubhtml
     </p> -->
+    <div id="sectionContainer"></div>
     <div id="trackerContainer"></div>
     <script>
       window.onload = function () {
         debugCookies();
 
+        var sectionObject = [
+          "Section Label",
+          [
+            //Mut Excu Group
+            ["Bulbasaur", ["level", 10], "Ivysaur", ["level", 10], "Venusaur"],
+            ["Charmander", ["level", 10], "Charmeleon", ["level", 10], "Charizard"],
+            ["Squirtle", ["level", 10], "Wartortle", ["level", 10], "Blastoise"],
+          ],
+          [
+            //Mut Excu Group 2
+            ["Bulbasaur", ["level", 10], "Ivysaur", ["level", 10], "Venusaur"],
+            ["Charmander", ["level", 10], "Charmeleon", ["level", 10], "Charizard"],
+            ["Squirtle", ["level", 10], "Wartortle", ["level", 10], "Blastoise"],
+          ],
+          [
+            //Freeform Group
+            ["Caterpie", ["level", 10], "Metapod", ["level", 10], "Butterfree"],
+            ["Weedle", ["level", 10], "Kakuna", ["level", 10], "Beedrill"],
+            ["Pidgy", ["level", 10], "Pidgeotto", ["level", 10], "Pidgeot"],
+            ["Rattata", ["level", 10], "Raticate"],
+            ["Spearow", ["level", 10], "Fearow"],
+            ["Pikachu"],
+            ["Nidoran F", ["level", 10], "Nidorina"],
+            ["Nidoran M", ["level", 10], "Nidorino"],
+          ],
+        ];
+        sectionBuilder(sectionObject);
         badgeSection("Zero_Badges", [
           "Bulbasaur or Charmander or Squirtle",
           "Ivysaur or Charmeleon or Wartortle",
