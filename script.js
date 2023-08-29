@@ -1,3 +1,5 @@
+var debug = false;
+
 function badgeSection(discriminator, textArray) {
   createBadgeContainer(discriminator);
 
@@ -21,12 +23,11 @@ function badgeSectionGrouped(discriminator, textArray) {
   createBadgeContainer(discriminator);
 
   for (index = 0; index < textArray.length; index++) {
-    for (subindex = 0; subindex < textArray[index].length; subindex+=2) {
-        console.log(textArray[index][subindex] + ":" )
-        for (entry in  textArray[index][subindex + 1]){
-            console.log(textArray[index][subindex + 1][entry]);
-        }
-
+    for (subindex = 0; subindex < textArray[index].length; subindex += 2) {
+      console.log(textArray[index][subindex] + ":");
+      for (entry in textArray[index][subindex + 1]) {
+        console.log(textArray[index][subindex + 1][entry]);
+      }
     }
     var formTarget = document.getElementById(discriminator + "_Form");
     var checkboxIdentifier = discriminator + "_Form" + "." + index.toString();
@@ -67,6 +68,9 @@ function setCookie(cname, cvalue, exdays) {
   d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
   let expires = "expires=" + d.toUTCString();
   document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+  if (document.getElementById("cookieGeneral")) {
+    document.getElementById("cookieOutput").innerHTML = cname + "=" + cvalue;
+  }
 }
 
 function listCookies() {
@@ -81,4 +85,38 @@ function updateCheckedBoxes() {
       console.log(i.toString() + ": " + cookieArray[i]);
       document.getElementById(cookieArray[i].split("=")[0].trim()).checked = true;
     }
+}
+
+function debugCookies() {
+  //Check if cookie box exists
+  if (document.getElementById("cookieGeneral") || debug == false) {
+    return;
+  }
+  //Create Cookie Box
+  var cookieGeneral = document.createElement("div");
+  cookieGeneral.id = "cookieGeneral";
+  cookieGeneral.style.cssText =
+    "color: black; outline: 2px solid red; width: 400px; position: absolute; top: 2px; right: 2px; min-height: 25px;";
+  cookieGeneral.innerHTML = "Cookies: ";
+  document.body.appendChild(cookieGeneral);
+
+  var cookieOutput = document.createElement("div");
+  cookieOutput.id = "cookieOutput";
+  cookieOutput.style.cssText = "color: blue";
+  document.getElementById("cookieGeneral").appendChild(cookieOutput);
+
+  var cookieOutputAll = document.createElement("div");
+  cookieOutputAll.id = "cookieOutput";
+  cookieOutputAll.style.cssText = "color: green";
+  document.getElementById("cookieGeneral").appendChild(cookieOutputAll);
+
+  var cookieButton = document.createElement("button");
+  cookieButton.type = "button";
+  cookieButton.onclick = function () {
+    var theCookies = document.cookie.split(";");
+    cookieOutputAll.innerHTML = theCookies;
+  };
+  cookieButton.innerHTML = "List All";
+  cookieButton.style.cssText = "position: fixed; top: 3px; right: 3px;";
+  document.getElementById("cookieGeneral").appendChild(cookieButton);
 }
