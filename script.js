@@ -24,13 +24,10 @@ function sectionBuilder(sectionObject = []) {
           familyLineDiv.appendChild(checkBoxForm);
 
           //Create the input
-          var checkBoxInput_5 = generateCheckbox(checkBoxForm, familyLineArray[4].toString() + "_input");
+          var checkBoxInput_5 = generateCheckbox(checkBoxForm, index + "_" + familyLineArray[4].toString() + "_input");
 
           //Create the label
-          var checkBoxLabel_5 = generateLabel(
-            checkBoxInput_5,
-            [familyLineArray[3], familyLineArray[4]]
-          );
+          var checkBoxLabel_5 = generateLabel(checkBoxInput_5, [familyLineArray[3], familyLineArray[4]]);
 
         case 3:
           //See if for exists, otherwise make one
@@ -41,7 +38,7 @@ function sectionBuilder(sectionObject = []) {
           }
 
           //Create the input
-          var checkBoxInput_3 = generateCheckbox(checkBoxForm, familyLineArray[2].toString() + "_input");
+          var checkBoxInput_3 = generateCheckbox(checkBoxForm, index + "_" + familyLineArray[2].toString() + "_input");
 
           //Create the label
           var checkBoxLabel_3 = generateLabel(checkBoxInput_3, [familyLineArray[1], familyLineArray[2]]);
@@ -55,7 +52,7 @@ function sectionBuilder(sectionObject = []) {
           }
 
           //Create the input
-          var checkBoxInput = generateCheckbox(checkBoxForm, familyLineArray[0].toString() + "_input");
+          var checkBoxInput = generateCheckbox(checkBoxForm, index + "_" + familyLineArray[0].toString() + "_input");
 
           //Create the label
           var checkBoxLabel = generateLabel(checkBoxInput, [familyLineArray[0]]);
@@ -69,20 +66,37 @@ function sectionBuilder(sectionObject = []) {
 function generateLabel(ref, subarray = []) {
   var checkBoxLabel = document.createElement("label");
   checkBoxLabel.htmlFor = ref.id.toString();
-  checkBoxLabel.id = ref.id.toString()+"_label";
+  checkBoxLabel.id = ref.id.toString() + "_label";
   if (subarray.length == 2) {
     checkBoxLabel.innerHTML =
-      " -> by " + subarray[0][0].toString() + " @ " + subarray[0][1].toString() + " " + subarray[1].toString();
+      " -> by " + subarray[0][0].toString() + " @ " + subarray[0][1].toString() + " " + checkboxLabelInnerHTML(ref, subarray[1].toString());
   } else {
-    checkBoxLabel.innerHTML = subarray[0].toString();
-    if (subarray[0].toString() == "Bulbasaur") {
-      checkBoxLabel.innerHTML = "<img style=\"width: 56px; height: auto;\"src=\"..\\assets\\RBY\\BW_Bulbasaur.png\" \/>"
-    }
+    checkBoxLabel.innerHTML = checkboxLabelInnerHTML(ref, subarray[0].toString())
   }
-
 
   ref.after(checkBoxLabel);
   return checkBoxLabel;
+}
+
+function checkboxLabelInnerHTML(checkBoxRef, monName) {
+  if (fileExists("..\\assets\\RBY\\BW_" + monName + ".png")) {
+    checkBoxRef.hidden = "true";
+    return (
+      '<img onclick="toggleImage(this)" style="width: 104px; height: auto;"src="..\\assets\\RBY\\BW_' +
+      monName +
+      '.png" />'
+    );
+  } else {
+    return monName;
+  }
+}
+
+function toggleImage(refObject) {
+  if (refObject.src.includes("C_")) {
+    refObject.src = refObject.src.toString().replace("C_", "BW_");
+  } else if (refObject.src.includes("BW_")) {
+    refObject.src = refObject.src.toString().replace("BW_", "C_");
+  }
 }
 
 function generateCheckbox(parent, id) {
