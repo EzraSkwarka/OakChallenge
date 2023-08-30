@@ -2,7 +2,7 @@ size(56,56);
 
 var scale = 1;
 PImage img;
-img = loadImage("Color.png");
+img = loadImage("RBY_Color.png");
 String prefix = "C_";
 int startX = 66 * scale;
 int startY = 30 * scale;
@@ -29,7 +29,7 @@ for (int n = 0; n < floor(YLimit/YJump); n = n+1) {
     image( img.get(startX + i * XJump,startY+ n * YJump,XWidth,YWidth), i * XJump * shouldMove, n * YJump * shouldMove); 
     //save(str(i)+str(n)+".png");
     if (tracker < 151) {
-    save("C:\\Github\\OakChallange\\assets\\RBY\\spriteExtractor\\Output\\"+ prefix + nameArray[tracker] + ".png");
+    save(dataPath("")+ "\\Output\\" + prefix + nameArray[tracker] + ".png");
     }
     tracker = tracker + 1;
   };
