@@ -15,7 +15,7 @@
       window.onload = function () {
         debugCookies();
 
-        var sectionObject = [
+        sectionBuilder([
           "Section Label",
           [
             //Mut Excu Group
@@ -23,12 +23,10 @@
             ["Charmander", ["level", 10], "Charmeleon", ["level", 10], "Charizard"],
             ["Squirtle", ["level", 10], "Wartortle", ["level", 10], "Blastoise"],
           ],
-          [
-            //Mut Excu Group 2
-            ["Bulbasaur", ["level", 10], "Ivysaur", ["level", 10], "Venusaur"],
-            ["Charmander", ["level", 10], "Charmeleon", ["level", 10], "Charizard"],
-            ["Squirtle", ["level", 10], "Wartortle", ["level", 10], "Blastoise"],
-          ],
+        ]);
+        
+        sectionBuilder([
+          "Section Label",
           [
             //Freeform Group
             ["Caterpie", ["level", 10], "Metapod", ["level", 10], "Butterfree"],
@@ -40,9 +38,7 @@
             ["Nidoran_F", ["level", 10], "Nidorina"],
             ["Nidoran_M", ["level", 10], "Nidorino"],
           ],
-        ];
-        sectionBuilder(sectionObject);
-
+        ]);
         // Convert Below to new system
         /*badgeSection("One_Badges", [
           "Sandshrew",

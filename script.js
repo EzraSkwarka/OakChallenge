@@ -19,42 +19,35 @@ function sectionBuilder(sectionObject) {
   document.getElementById("sectionContainer").appendChild(sectionDiv);
   sectionDiv.id = sectionObject[0].toString();
 
-  for (index = 1; index < sectionObject.length; index++) {
-    var groupDiv = document.createElement("div");
-    groupDiv.id = sectionObject[0].toString() + "_" + index.toString();
-    document.getElementById(sectionDiv.id).appendChild(groupDiv);
+  var groupDiv = document.createElement("div");
+  groupDiv.id = sectionObject[0].toString();
+  groupDiv.classList.add("sectionDiv");
+  document.getElementById(sectionDiv.id).appendChild(groupDiv);
 
-    for (groupIndex = 0; groupIndex < sectionObject[index].length; groupIndex++) {
-      /*Since the family line can only be a max of three mons, instead of making another for loop I'm just gonna define the three cases */
-      var familyLineArray = sectionObject[index][groupIndex];
-      var familyLineDiv = document.createElement("div");
-      groupDiv.appendChild(familyLineDiv);
-      switch (familyLineArray.length) {
-        case 5:
-          //Create the input
-          var checkBoxInput_5 = generateCheckbox(familyLineDiv, index + "_" + familyLineArray[4].toString() + "_input");
+  for (groupIndex = 0; groupIndex < sectionObject[1].length; groupIndex++) {
+    /*Since the family line can only be a max of three mons, instead of making another for loop I'm just gonna define the three cases */
+    var familyLineArray = sectionObject[1][groupIndex];
+    var familyLineDiv = document.createElement("div");
+    familyLineDiv.classList.add("familyLineDiv");
+    groupDiv.appendChild(familyLineDiv);
+    switch (familyLineArray.length) {
+      case 5:
+        //Create the input then add label
+        var checkBoxInput_5 = generateCheckbox(familyLineDiv, familyLineArray[4].toString() + "_input");
+        var checkBoxLabel_5 = generateLabel(checkBoxInput_5, [familyLineArray[3], familyLineArray[4]]);
 
-          //Create the label
-          var checkBoxLabel_5 = generateLabel(checkBoxInput_5, [familyLineArray[3], familyLineArray[4]]);
+      case 3:
+        //Create the input then add label
+        var checkBoxInput_3 = generateCheckbox(familyLineDiv, familyLineArray[2].toString() + "_input");
+        var checkBoxLabel_3 = generateLabel(checkBoxInput_3, [familyLineArray[1], familyLineArray[2]]);
 
-        case 3:
-          //Create the input
-          var checkBoxInput_3 = generateCheckbox(familyLineDiv, index + "_" + familyLineArray[2].toString() + "_input");
-
-          //Create the label
-          var checkBoxLabel_3 = generateLabel(checkBoxInput_3, [familyLineArray[1], familyLineArray[2]]);
-
-        default:
-          //Create the input
-          var checkBoxInput = generateCheckbox(familyLineDiv, index + "_" + familyLineArray[0].toString() + "_input");
-
-          //Create the label
-          var checkBoxLabel = generateLabel(checkBoxInput, [familyLineArray[0]]);
-      }
-      var checkBoxForm = ""; //make sure its clear on subsequent loops
+      default:
+        //Create the input then add label
+        var checkBoxInput = generateCheckbox(familyLineDiv, familyLineArray[0].toString() + "_input");
+        var checkBoxLabel = generateLabel(checkBoxInput, [familyLineArray[0]]);
     }
-    groupDiv.innerHTML += "<br>";
   }
+  groupDiv.innerHTML += "<br>";
 }
 
 /**
