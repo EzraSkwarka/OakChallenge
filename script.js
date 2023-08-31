@@ -31,41 +31,22 @@ function sectionBuilder(sectionObject) {
       groupDiv.appendChild(familyLineDiv);
       switch (familyLineArray.length) {
         case 5:
-          //Create Check box form
-          var checkBoxForm = document.createElement("form");
-          checkBoxForm.id = familyLineArray[4].toString() + "_form";
-          familyLineDiv.appendChild(checkBoxForm);
-
           //Create the input
-          var checkBoxInput_5 = generateCheckbox(checkBoxForm, index + "_" + familyLineArray[4].toString() + "_input");
+          var checkBoxInput_5 = generateCheckbox(familyLineDiv, index + "_" + familyLineArray[4].toString() + "_input");
 
           //Create the label
           var checkBoxLabel_5 = generateLabel(checkBoxInput_5, [familyLineArray[3], familyLineArray[4]]);
 
         case 3:
-          //See if for exists, otherwise make one
-          if (checkBoxForm == "") {
-            var checkBoxForm = document.createElement("form");
-            checkBoxForm.id = familyLineArray[2].toString() + "_form";
-            familyLineDiv.appendChild(checkBoxForm);
-          }
-
           //Create the input
-          var checkBoxInput_3 = generateCheckbox(checkBoxForm, index + "_" + familyLineArray[2].toString() + "_input");
+          var checkBoxInput_3 = generateCheckbox(familyLineDiv, index + "_" + familyLineArray[2].toString() + "_input");
 
           //Create the label
           var checkBoxLabel_3 = generateLabel(checkBoxInput_3, [familyLineArray[1], familyLineArray[2]]);
 
         default:
-          //See if for exists, otherwise make one
-          if (checkBoxForm == "") {
-            var checkBoxForm = document.createElement("form");
-            checkBoxForm.id = familyLineArray[0].toString() + "_form";
-            familyLineDiv.appendChild(checkBoxForm);
-          }
-
           //Create the input
-          var checkBoxInput = generateCheckbox(checkBoxForm, index + "_" + familyLineArray[0].toString() + "_input");
+          var checkBoxInput = generateCheckbox(familyLineDiv, index + "_" + familyLineArray[0].toString() + "_input");
 
           //Create the label
           var checkBoxLabel = generateLabel(checkBoxInput, [familyLineArray[0]]);
@@ -88,17 +69,22 @@ function generateLabel(ref, subarray = []) {
   checkBoxLabel.htmlFor = ref.id.toString();
   checkBoxLabel.id = ref.id.toString() + "_label";
   if (subarray.length == 2) {
-    checkBoxLabel.innerHTML = " -> by " + subarray[0][0].toString() + " @ " + subarray[0][1].toString() + " ";
+    if (subarray[0][0].toString() == "level") {
+      //Evo Arrow
+      checkBoxLabel.innerHTML +=
+        '<img src="..\\assets\\arrow.png"/>' + "<span>@ " + subarray[0][1].toString() + "</span>";
+    }
   }
 
   // I use subarray[subarray.length - 1] because if subarray.length == 2 then the mon name is given second because its evolution info then name
   var monName = subarray[subarray.length - 1].toString();
-  
-  if (fileExists("..\\assets\\RBY\\BW_" + monName + ".png")) {
+
+  if (fileExists("..\\assets\\RBY\\BW_" + monName + ".png") && fileExists("..\\assets\\RBY\\C_" + monName + ".png")) {
     checkBoxLabel.innerHTML +=
-      '<img onclick="toggleLabel(this)" style="width: 56px; height: auto;"src="..\\assets\\RBY\\BW_' +
+      '<img onclick="toggleLabel(this)" class="pokemonSprite" style="width: 56px; height: auto;"src="..\\assets\\RBY\\BW_' +
       monName +
       '.png" />';
+    ref.style.cssText += "display:none;";
   } else {
     checkBoxLabel.innerHTML += monName;
   }
@@ -107,7 +93,7 @@ function generateLabel(ref, subarray = []) {
   return checkBoxLabel;
 }
 
-/** 
+/**
  * Helper function for an event listener, changes images BW <=> Color and updates cookies on change
  * @param {object} refObject - the object the needs to change
  */
@@ -120,7 +106,7 @@ function toggleLabel(refObject) {
   setCookie(checkBoxInput.id, !checkBoxInput.checked, 30); //checkBoxInput.checked is inverted as it changes after this event listener finishes
 }
 
-/** 
+/**
  * Changes images between BW <=> Color
  * @param {object} refObject - Reference of image to change
  */
@@ -132,7 +118,7 @@ function toggleImage(refObject) {
   }
 }
 
-/** 
+/**
  * Generates and inserts a checkbox object
  * @param {object} parent - The form object to create the checkbox under
  * @param {String} id - unique identifier for the checkbox
@@ -147,7 +133,7 @@ function generateCheckbox(parent, id) {
   return checkBoxInput;
 }
 
-/** 
+/**
  * Checks to see if a file exists
  * @param {String} url - file to check for
  * @returns Boolean
@@ -232,7 +218,7 @@ function pullCheckboxValue(target) {
  * Sets a cookie with a unique value to track progress
  * @param {String} cname - pulled from the id of the checkbox
  * @param {Boolean} cvalue - value of the checkbox
- * @param {Integer} exdays - number of days to keep 
+ * @param {Integer} exdays - number of days to keep
  */
 function setCookie(cname, cvalue, exdays) {
   const d = new Date();
@@ -267,7 +253,14 @@ function updateCheckedBoxes() {
       //Toggle Images
       if (document.getElementById(cookieArray[i].split("=")[0].trim() + "_label")) {
         document.getElementById(cookieArray[i].split("=")[0].trim()).checked = true;
-        toggleImage(document.getElementById(cookieArray[i].split("=")[0].trim() + "_label").children[0]);
+        try {
+          var element = document.getElementById(cookieArray[i].split("=")[0].trim() + "_label");
+          toggleImage(element.children[element.children.length - 1]); //TODO, make this less hacky, the imgs have a certain class, look for that
+        } catch (error) {
+          if (debug) {
+            console.log(error);
+          }
+        }
       }
     }
 }
