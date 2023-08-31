@@ -1,9 +1,22 @@
 var debug = true;
-
-function sectionBuilder(sectionObject = []) {
+/**
+ * Takes an array and builds a checklist form in the body of HTML under an element "sectionContainer"
+ * @param {Array} sectionObject - Required info to build the section, of the form:
+ *    > ["Section Label",
+ *    > "type_of_section" i.e Mutually Exclusive/Freeform
+ *    > ["Pokemon_Name", ["Evolution Condition Type (Level/item/trade", "Value (10, Moonstone, Trade)""],,,]]
+ */
+function sectionBuilder(sectionObject) {
+  /* TODO: Restructure
+      Section Groups do not need to have the multi group functionality they currently have
+      Instead it needs to be able to process an object of the form:
+        > ["Section Label",
+        > "type_of_section" i.e Mutually Exclusive/Freeform
+        > ["Pokemon_Name", ["Evolution Condition Type (Level/item/trade", "Value (10, Moonstone, Trade)""],,,]]
+    
+    */
   var sectionDiv = document.createElement("div");
   document.getElementById("sectionContainer").appendChild(sectionDiv);
-  // sectionDiv.innerHTML = sectionObject;
   sectionDiv.id = sectionObject[0].toString();
 
   for (index = 1; index < sectionObject.length; index++) {
@@ -63,49 +76,54 @@ function sectionBuilder(sectionObject = []) {
   }
 }
 
+/**
+ * Generates a label object tied to a checkbox input
+ * @param {object} ref - a reference to the relevant checkbox object
+ * @param {Array} subarray - an argument that contains the mon's name, and if applicable, it's evolution info
+ *    i.e. -> ["Bulbasaur", ["level", 16]]
+ * @returns a reference to the created label object
+ */
 function generateLabel(ref, subarray = []) {
   var checkBoxLabel = document.createElement("label");
   checkBoxLabel.htmlFor = ref.id.toString();
   checkBoxLabel.id = ref.id.toString() + "_label";
   if (subarray.length == 2) {
-    checkBoxLabel.innerHTML =
-      " -> by " +
-      subarray[0][0].toString() +
-      " @ " +
-      subarray[0][1].toString() +
-      " " +
-      checkboxLabelInnerHTML(ref, subarray[1].toString());
-  } else {
-    checkBoxLabel.innerHTML = checkboxLabelInnerHTML(ref, subarray[0].toString());
+    checkBoxLabel.innerHTML = " -> by " + subarray[0][0].toString() + " @ " + subarray[0][1].toString() + " ";
   }
 
-  ref.after(checkBoxLabel);
+  // I use subarray[subarray.length - 1] because if subarray.length == 2 then the mon name is given second because its evolution info then name
+  var monName = subarray[subarray.length - 1].toString();
+  
+  if (fileExists("..\\assets\\RBY\\BW_" + monName + ".png")) {
+    checkBoxLabel.innerHTML +=
+      '<img onclick="toggleLabel(this)" style="width: 56px; height: auto;"src="..\\assets\\RBY\\BW_' +
+      monName +
+      '.png" />';
+  } else {
+    checkBoxLabel.innerHTML += monName;
+  }
+
+  ref.after(checkBoxLabel); //insert into DOM
   return checkBoxLabel;
 }
 
-function checkboxLabelInnerHTML(checkBoxRef, monName) {
-  if (fileExists("..\\assets\\RBY\\BW_" + monName + ".png")) {
-    // checkBoxRef.hidden = "true";
-    return (
-      '<img onclick="toggleLabel(this)" style="width: 104px; height: auto;"src="..\\assets\\RBY\\BW_' +
-      monName +
-      '.png" />'
-    );
-  } else {
-    return monName;
-  }
-}
-
+/** 
+ * Helper function for an event listener, changes images BW <=> Color and updates cookies on change
+ * @param {object} refObject - the object the needs to change
+ */
 function toggleLabel(refObject) {
+  //Change Image
   toggleImage(refObject);
+  var checkBoxInput = document.getElementById(refObject.parentElement.id.slice(0, -6));
 
-  var checkBoxInput = document.getElementById(refObject.parentElement.id.slice(0,-6))
-  // console.log(checkBoxInput.id + ": " + !checkBoxInput.checked)
-  
+  //Change Cookies
   setCookie(checkBoxInput.id, !checkBoxInput.checked, 30); //checkBoxInput.checked is inverted as it changes after this event listener finishes
-
 }
 
+/** 
+ * Changes images between BW <=> Color
+ * @param {object} refObject - Reference of image to change
+ */
 function toggleImage(refObject) {
   if (refObject.src.includes("C_")) {
     refObject.src = refObject.src.toString().replace("C_", "BW_");
@@ -114,30 +132,26 @@ function toggleImage(refObject) {
   }
 }
 
+/** 
+ * Generates and inserts a checkbox object
+ * @param {object} parent - The form object to create the checkbox under
+ * @param {String} id - unique identifier for the checkbox
+ * @returns a reference to the checkbox object
+ */
 function generateCheckbox(parent, id) {
   var checkBoxInput = document.createElement("input");
   checkBoxInput.id = id;
   checkBoxInput.type = "checkbox";
-  // checkBoxInput.onchange = function (value) {
-  //   setCookie(checkBoxInput.id, checkBoxInput.checked, 30);
-  // };
-
-
-  
-
-  // checkBoxInput.addEventListener('change', (event) => {
-  //   if (event.currentTarget.checked) {
-  //     setCookie(checkBoxInput.id, true, 30)
-  //   } else {
-  //     setCookie(checkBoxInput.id, false, 30)
-  //   }
-  // })
   parent.insertBefore(checkBoxInput, parent.firstChild);
-  // checkBoxInput.addEventListener('click', handler, false)
 
   return checkBoxInput;
 }
 
+/** 
+ * Checks to see if a file exists
+ * @param {String} url - file to check for
+ * @returns Boolean
+ */
 function fileExists(url) {
   var http = new XMLHttpRequest();
 
@@ -147,6 +161,7 @@ function fileExists(url) {
   return http.status != 404;
 }
 
+// Depreciated
 function badgeSection(discriminator, textArray) {
   createBadgeContainer(discriminator);
 
@@ -166,6 +181,7 @@ function badgeSection(discriminator, textArray) {
   }
 }
 
+// Depreciated
 function badgeSectionGrouped(discriminator, textArray) {
   createBadgeContainer(discriminator);
 
@@ -191,6 +207,7 @@ function badgeSectionGrouped(discriminator, textArray) {
   }
 }
 
+// Depreciated
 function createBadgeContainer(discriminator) {
   discriminator = discriminator.toString();
 
@@ -205,11 +222,18 @@ function createBadgeContainer(discriminator) {
     .insertBefore(badgeContianerLabel, document.getElementById(discriminator + "_Form"));
 }
 
+// Depreciated
 function pullCheckboxValue(target) {
   console.log(target + ": " + document.getElementById(target).checked);
   setCookie(target, document.getElementById(target).checked, 30);
 }
 
+/**
+ * Sets a cookie with a unique value to track progress
+ * @param {String} cname - pulled from the id of the checkbox
+ * @param {Boolean} cvalue - value of the checkbox
+ * @param {Integer} exdays - number of days to keep 
+ */
 function setCookie(cname, cvalue, exdays) {
   const d = new Date();
   d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
@@ -220,17 +244,31 @@ function setCookie(cname, cvalue, exdays) {
   }
 }
 
+/**
+ * Splits all cookies into an array
+ * @returns Array
+ */
 function listCookies() {
   var theCookies = document.cookie.split(";");
   return theCookies;
 }
 
+/**
+ * Goes through the cookies and sets all checkboxes with a matching id to their corresponding value
+ */
 function updateCheckedBoxes() {
   var cookieArray = listCookies();
   for (var i = 0; i < cookieArray.length; i++)
     if (cookieArray[i].includes("=true")) {
-      console.log(i.toString() + ": " + cookieArray[i]);
-      document.getElementById(cookieArray[i].split("=")[0].trim()).checked = true;
+      if (debug) {
+        console.log(i.toString() + ": " + cookieArray[i]);
+      }
+      // document.getElementById(cookieArray[i].split("=")[0].trim()).checked = true;
+      //Toggle Images
+      if (document.getElementById(cookieArray[i].split("=")[0].trim() + "_label")) {
+        document.getElementById(cookieArray[i].split("=")[0].trim()).checked = true;
+        toggleImage(document.getElementById(cookieArray[i].split("=")[0].trim() + "_label").children[0]);
+      }
     }
 }
 
