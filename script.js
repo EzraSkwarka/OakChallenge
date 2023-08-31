@@ -1,4 +1,4 @@
-var debug = false;
+var debug = true;
 
 function sectionBuilder(sectionObject = []) {
   var sectionDiv = document.createElement("div");
@@ -69,9 +69,14 @@ function generateLabel(ref, subarray = []) {
   checkBoxLabel.id = ref.id.toString() + "_label";
   if (subarray.length == 2) {
     checkBoxLabel.innerHTML =
-      " -> by " + subarray[0][0].toString() + " @ " + subarray[0][1].toString() + " " + checkboxLabelInnerHTML(ref, subarray[1].toString());
+      " -> by " +
+      subarray[0][0].toString() +
+      " @ " +
+      subarray[0][1].toString() +
+      " " +
+      checkboxLabelInnerHTML(ref, subarray[1].toString());
   } else {
-    checkBoxLabel.innerHTML = checkboxLabelInnerHTML(ref, subarray[0].toString())
+    checkBoxLabel.innerHTML = checkboxLabelInnerHTML(ref, subarray[0].toString());
   }
 
   ref.after(checkBoxLabel);
@@ -80,15 +85,25 @@ function generateLabel(ref, subarray = []) {
 
 function checkboxLabelInnerHTML(checkBoxRef, monName) {
   if (fileExists("..\\assets\\RBY\\BW_" + monName + ".png")) {
-    checkBoxRef.hidden = "true";
+    // checkBoxRef.hidden = "true";
     return (
-      '<img onclick="toggleImage(this)" style="width: 104px; height: auto;"src="..\\assets\\RBY\\BW_' +
+      '<img onclick="toggleLabel(this)" style="width: 104px; height: auto;"src="..\\assets\\RBY\\BW_' +
       monName +
       '.png" />'
     );
   } else {
     return monName;
   }
+}
+
+function toggleLabel(refObject) {
+  toggleImage(refObject);
+
+  var checkBoxInput = document.getElementById(refObject.parentElement.id.slice(0,-6))
+  // console.log(checkBoxInput.id + ": " + !checkBoxInput.checked)
+  
+  setCookie(checkBoxInput.id, !checkBoxInput.checked, 30); //checkBoxInput.checked is inverted as it changes after this event listener finishes
+
 }
 
 function toggleImage(refObject) {
@@ -103,7 +118,22 @@ function generateCheckbox(parent, id) {
   var checkBoxInput = document.createElement("input");
   checkBoxInput.id = id;
   checkBoxInput.type = "checkbox";
+  // checkBoxInput.onchange = function (value) {
+  //   setCookie(checkBoxInput.id, checkBoxInput.checked, 30);
+  // };
+
+
+  
+
+  // checkBoxInput.addEventListener('change', (event) => {
+  //   if (event.currentTarget.checked) {
+  //     setCookie(checkBoxInput.id, true, 30)
+  //   } else {
+  //     setCookie(checkBoxInput.id, false, 30)
+  //   }
+  // })
   parent.insertBefore(checkBoxInput, parent.firstChild);
+  // checkBoxInput.addEventListener('click', handler, false)
 
   return checkBoxInput;
 }
