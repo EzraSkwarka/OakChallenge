@@ -64,8 +64,7 @@ function generateLabel(ref, subarray = []) {
   if (subarray.length == 2) {
     if (subarray[0][0].toString() == "level") {
       //Evo Arrow
-      checkBoxLabel.innerHTML +=
-        '<img src="..\\assets\\arrow.png"/>' + "<span>@ " + subarray[0][1].toString() + "</span>";
+      checkBoxLabel.innerHTML += generateLevelSVG(subarray[0][1].toString());
     }
   }
 
@@ -74,7 +73,7 @@ function generateLabel(ref, subarray = []) {
 
   if (fileExists("..\\assets\\RBY\\BW_" + monName + ".png") && fileExists("..\\assets\\RBY\\C_" + monName + ".png")) {
     checkBoxLabel.innerHTML +=
-      '<img onclick="toggleLabel(this)" class="pokemonSprite" style="width: 56px; height: auto;"src="..\\assets\\RBY\\BW_' +
+      '<img onclick="toggleLabel(this)" class="pokemonSprite" style="width: 112px; height: auto;"src="..\\assets\\RBY\\BW_' +
       monName +
       '.png" />';
     ref.style.cssText += "display:none;";
@@ -97,6 +96,10 @@ function toggleLabel(refObject) {
 
   //Change Cookies
   setCookie(checkBoxInput.id, !checkBoxInput.checked, 30); //checkBoxInput.checked is inverted as it changes after this event listener finishes
+}
+
+function generateLevelSVG(level) {
+  return '<svg width="30" height="36" style="transform: scale(2)">  <text x="-1" y="13" style="font: bold 10px sans-serif">Lv.</text>  <polygon points="0,14 0,25 17,25 17,30, 28,20 28,19 17,9 17,14 0,14"   style="fill:rgb(198,206,222);stroke:rgb(173,181,198);stroke-width:1"></polygon>  <text x="14" y="23" style="font: bold 8px sans-serif">'+ level.toString() + '</text></svg>';
 }
 
 /**
