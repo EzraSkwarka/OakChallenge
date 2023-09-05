@@ -22,10 +22,19 @@ function sectionBuilder(sectionObject) {
   var groupDiv = document.createElement("div");
   groupDiv.id = sectionObject[0].toString();
   groupDiv.classList.add("sectionDiv");
-  document.getElementById(sectionDiv.id).appendChild(groupDiv);
+  sectionDiv.appendChild(groupDiv);
+
+  var sectionTable = document.createElement("table");
+  sectionTable.id = sectionObject[0].toString() + "_table";
+  sectionDiv.appendChild(sectionTable);
+
+  var sectionTableHeader = document.createElement("th");
+  sectionTable.appendChild(sectionTableHeader);
 
   for (groupIndex = 0; groupIndex < sectionObject[1].length; groupIndex++) {
     /*Since the family line can only be a max of three mons, instead of making another for loop I'm just gonna define the three cases */
+    var familyLineTR = document.createElement("tr");
+
     var familyLineArray = sectionObject[1][groupIndex];
     var familyLineDiv = document.createElement("div");
     familyLineDiv.classList.add("familyLineDiv");
@@ -33,18 +42,28 @@ function sectionBuilder(sectionObject) {
     switch (familyLineArray.length) {
       case 5:
         //Create the input then add label
-        var checkBoxInput_5 = generateCheckbox(familyLineDiv, familyLineArray[4].toString() + "_input");
+        var checkBoxInput_5 = generateCheckbox(familyLineArray[4].toString() + "_input");
+        familyLineDiv.insertBefore(checkBoxInput_5, familyLineDiv.firstChild);
+
         var checkBoxLabel_5 = generateLabel(checkBoxInput_5, [familyLineArray[3], familyLineArray[4]]);
+        checkBoxInput_5.after(checkBoxLabel_5);
 
       case 3:
         //Create the input then add label
-        var checkBoxInput_3 = generateCheckbox(familyLineDiv, familyLineArray[2].toString() + "_input");
+        var checkBoxInput_3 = generateCheckbox(familyLineArray[2].toString() + "_input");
+        familyLineDiv.insertBefore(checkBoxInput_3, familyLineDiv.firstChild);
+        
         var checkBoxLabel_3 = generateLabel(checkBoxInput_3, [familyLineArray[1], familyLineArray[2]]);
+        checkBoxInput_3.after(checkBoxLabel_3);
 
       default:
         //Create the input then add label
-        var checkBoxInput = generateCheckbox(familyLineDiv, familyLineArray[0].toString() + "_input");
+        var checkBoxInput = generateCheckbox(familyLineArray[0].toString() + "_input");
+        familyLineDiv.insertBefore(checkBoxInput, familyLineDiv.firstChild);
+        
         var checkBoxLabel = generateLabel(checkBoxInput, [familyLineArray[0]]);
+        checkBoxInput.after(checkBoxLabel);
+        break;
     }
   }
   groupDiv.innerHTML += "<br>";
@@ -81,7 +100,7 @@ function generateLabel(ref, subarray = []) {
     checkBoxLabel.innerHTML += monName;
   }
 
-  ref.after(checkBoxLabel); //insert into DOM
+  // ref.after(checkBoxLabel); //insert into DOM
   return checkBoxLabel;
 }
 
@@ -99,7 +118,11 @@ function toggleLabel(refObject) {
 }
 
 function generateLevelSVG(level) {
-  return '<svg width="30" height="36" style="transform: scale(2)">  <text x="-1" y="13" style="font: bold 10px sans-serif">Lv.</text>  <polygon points="0,14 0,25 17,25 17,30, 28,20 28,19 17,9 17,14 0,14"   style="fill:rgb(198,206,222);stroke:rgb(173,181,198);stroke-width:1"></polygon>  <text x="14" y="23" style="font: bold 8px sans-serif">'+ level.toString() + '</text></svg>';
+  return (
+    '<svg width="30" height="36" style="transform: scale(2)">  <text x="-1" y="13" style="font: bold 10px sans-serif">Lv.</text>  <polygon points="0,14 0,25 17,25 17,30, 28,20 28,19 17,9 17,14 0,14"   style="fill:rgb(198,206,222);stroke:rgb(173,181,198);stroke-width:1"></polygon>  <text x="14" y="23" style="font: bold 8px sans-serif">' +
+    level.toString() +
+    "</text></svg>"
+  );
 }
 
 /**
@@ -124,7 +147,7 @@ function generateCheckbox(parent, id) {
   var checkBoxInput = document.createElement("input");
   checkBoxInput.id = id;
   checkBoxInput.type = "checkbox";
-  parent.insertBefore(checkBoxInput, parent.firstChild);
+  // parent.insertBefore(checkBoxInput, parent.firstChild);
 
   return checkBoxInput;
 }
