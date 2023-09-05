@@ -1,0 +1,16 @@
+#sectionContainer {
+    outline: thick double #32a1ce;
+}
+
+.sectionDiv {
+    outline: thick double #17d4bb;
+}
+
+.familyLineDiv {
+    outline: thick double #2804f5;
+}
+
+svg {
+    display: inline-block;
+    width: auto;
+}

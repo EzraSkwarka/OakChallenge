@@ -1,4 +1,4 @@
-var debug = true;
+var debug = false;
 /**
  * Takes an array and builds a checklist form in the body of HTML under an element "sectionContainer"
  * @param {Array} sectionObject - Required info to build the section, of the form:
