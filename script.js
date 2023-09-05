@@ -18,11 +18,26 @@ function sectionBuilder(sectionObject) {
   var sectionDiv = document.createElement("div");
   document.getElementById("sectionContainer").appendChild(sectionDiv);
   sectionDiv.id = sectionObject[0].toString();
-  sectionDiv.classList.add("sectionBlock")
+  sectionDiv.classList.add("sectionBlock");
 
+  //Section Header/Banner
+  //TODO: Sort This Mess Out
+  var sectionHeader = document.createElement("div");
+  var sectionHeaderIMG = document.createElement("img");
+  sectionHeaderIMG.src = "../assets/Misc/Subsitute_Normal.png"
+  sectionHeaderIMG.classList.add("sectionHeaderIMG");
+  sectionHeader.appendChild(sectionHeaderIMG);
+  var sectionHeaderText = document.createElement("span");
+  sectionHeaderText.innerText += sectionObject[0].toString();
+  sectionHeaderText.classList.add("sectionHeaderText");
+  sectionHeader.classList.add("sectionHeader");
+  sectionHeader.appendChild(sectionHeaderText);
+  sectionDiv.appendChild(sectionHeader);
+
+  //Pokemon Table
   var sectionTable = document.createElement("table");
   sectionTable.id = sectionObject[0].toString() + "_table";
-  sectionTable.classList.add("pokemonTable")
+  sectionTable.classList.add("pokemonTable");
   sectionDiv.appendChild(sectionTable);
 
   var sectionTableHeader = document.createElement("th");
@@ -46,7 +61,7 @@ function sectionBuilder(sectionObject) {
         //Bundle into td objects and insert into familyLineTR
         var checkBoxLabel_5_TD = document.createElement("td");
         checkBoxLabel_5_TD.innerHTML += checkBoxLabel_5.innerHTML;
-        checkBoxLabel_5_TD.classList.add("pokemonPicture")
+        checkBoxLabel_5_TD.classList.add("pokemonPicture");
         familyLineTR.appendChild(checkBoxLabel_5_TD);
         checkBoxLabel_5_TD.appendChild(checkBoxInput_5);
 
@@ -66,7 +81,7 @@ function sectionBuilder(sectionObject) {
         //Bundle into td objects and insert into familyLineTR
         var checkBoxLabel_3_TD = document.createElement("td");
         checkBoxLabel_3_TD.innerHTML += checkBoxLabel_3.innerHTML;
-        checkBoxLabel_3_TD.classList.add("pokemonPicture")
+        checkBoxLabel_3_TD.classList.add("pokemonPicture");
         familyLineTR.insertBefore(checkBoxLabel_3_TD, familyLineTR.firstChild);
         checkBoxLabel_3_TD.appendChild(checkBoxInput_3);
 
@@ -86,7 +101,7 @@ function sectionBuilder(sectionObject) {
         //Bundle into td objects and insert into familyLineTR
         var checkBoxLabel_TD = document.createElement("td");
         checkBoxLabel_TD.innerHTML += checkBoxLabel.innerHTML;
-        checkBoxLabel_TD.classList.add("pokemonPicture")
+        checkBoxLabel_TD.classList.add("pokemonPicture");
         familyLineTR.insertBefore(checkBoxLabel_TD, familyLineTR.firstChild);
         checkBoxLabel_TD.appendChild(checkBoxInput);
         break;
@@ -111,9 +126,7 @@ function generateLabel(ref, subarray = []) {
   if (fileExists("..\\assets\\RBY\\BW_" + monName + ".png") && fileExists("..\\assets\\RBY\\C_" + monName + ".png")) {
     //TODO: Build out an html element instead of whatever this is
     checkBoxLabel.innerHTML +=
-      '<img onclick="toggleLabel(this)" class="pokemonSprite" src="..\\assets\\RBY\\BW_' +
-      monName +
-      '.png" />';
+      '<img onclick="toggleLabel(this)" class="pokemonSprite" src="..\\assets\\RBY\\BW_' + monName + '.png" />';
     if (!debug) {
       ref.style.cssText += "display:none;";
     }
@@ -140,7 +153,6 @@ function generateLabel(ref, subarray = []) {
 function toggleLabel(refObject) {
   //Change Image
   toggleImage(refObject);
-  // var checkBoxInput = document.getElementById(refObject.parentElement.id.slice(0, -6));
   var checkBoxInput = refObject.parentElement.lastChild;
   checkBoxInput.checked = !checkBoxInput.checked;
 
@@ -150,7 +162,7 @@ function toggleLabel(refObject) {
 
 function generateLevelSVG(level) {
   return (
-    '<svg width="30" height="36" style="transform: scale(2)">  <text x="-1" y="13" style="font: bold 10px sans-serif">Lv.</text>  <polygon points="0,14 0,25 17,25 17,30, 28,20 28,19 17,9 17,14 0,14"   style="fill:rgb(198,206,222);stroke:rgb(173,181,198);stroke-width:1"></polygon>  <text x="14" y="23" style="font: bold 8px sans-serif">' +
+    '<svg width="30" height="36" style="transform: scale(2)">  <text x="-1" y="11" style="fill: white;font: 8px spritendo">Lv.</text>  <polygon points="0,14 0,25 17,25 17,30, 28,20 28,19 17,9 17,14 0,14"   style="fill:rgb(198,206,222);stroke:rgb(173,181,198);stroke-width:1"></polygon>  <text x="14" y="23" style="font: bold 8px sans-serif">' +
     level.toString() +
     "</text></svg>"
   );
@@ -195,12 +207,6 @@ function fileExists(url) {
   return http.status != 404;
 }
 
-// Depreciated
-function pullCheckboxValue(target) {
-  console.log(target + ": " + document.getElementById(target).checked);
-  setCookie(target, document.getElementById(target).checked, 30);
-}
-
 /**
  * Sets a cookie with a unique value to track progress
  * @param {String} cname - pulled from the id of the checkbox
@@ -211,7 +217,8 @@ function setCookie(cname, cvalue, exdays) {
   const d = new Date();
   d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
   let expires = "expires=" + d.toUTCString();
-  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/;SameSite=Strict";
+
   if (document.getElementById("cookieGeneral")) {
     document.getElementById("cookieOutput").innerHTML = cname + "=" + cvalue;
   }
@@ -245,6 +252,25 @@ function updateCheckedBoxes() {
         targetCheckbox.parentElement.firstChild.click();
       }
     }
+}
+
+//NOT USED
+function pulse(polarity) {
+  var activeImages = document.getElementsByClassName("pokemonSprite");
+  var count = 0;
+  for (var i = 0; i < activeImages.length; i++) {
+    var element = activeImages.item(i); 
+    if (element.src.toString().includes("/C_")) {
+      var rect = element.getBoundingClientRect();
+      console.log(rect.top) 
+      count++;
+    }
+  }
+
+  console.log(count);
+  setTimeout(function () {
+    pulse(!polarity);
+  }, 1000);
 }
 
 function debugCookies() {
