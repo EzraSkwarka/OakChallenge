@@ -1,16 +1,36 @@
+body {
+    background-color: rgb(77, 77, 77);
+}
+
 #sectionContainer {
     outline: thick double #32a1ce;
+    position: relative;
+    background-color: rgb(53, 53, 53);
+    width: 60%;
+    margin: auto;
 }
 
-.sectionDiv {
-    outline: thick double #17d4bb;
+#sectionBlock {
+    width: 75%;
+    display: block;
+    margin: auto;
 }
 
-.familyLineDiv {
-    outline: thick double #2804f5;
+.pokemonTable {
+    /* width: 100%; */
+    align-self: "center";
+    margin: auto;
+}
+
+.pokemonSprite {
+    width: 84px;
+    height: auto;
+}
+.evolutionArrow {
+    min-width: 60px;
 }
 
 svg {
-    display: inline-block;
-    width: auto;
+    display: block;
+    margin: auto;
 }

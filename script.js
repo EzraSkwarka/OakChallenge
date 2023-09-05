@@ -18,9 +18,11 @@ function sectionBuilder(sectionObject) {
   var sectionDiv = document.createElement("div");
   document.getElementById("sectionContainer").appendChild(sectionDiv);
   sectionDiv.id = sectionObject[0].toString();
+  sectionDiv.classList.add("sectionBlock")
 
   var sectionTable = document.createElement("table");
   sectionTable.id = sectionObject[0].toString() + "_table";
+  sectionTable.classList.add("pokemonTable")
   sectionDiv.appendChild(sectionTable);
 
   var sectionTableHeader = document.createElement("th");
@@ -44,11 +46,13 @@ function sectionBuilder(sectionObject) {
         //Bundle into td objects and insert into familyLineTR
         var checkBoxLabel_5_TD = document.createElement("td");
         checkBoxLabel_5_TD.innerHTML += checkBoxLabel_5.innerHTML;
+        checkBoxLabel_5_TD.classList.add("pokemonPicture")
         familyLineTR.appendChild(checkBoxLabel_5_TD);
         checkBoxLabel_5_TD.appendChild(checkBoxInput_5);
 
         var evoArrow_5_TD = document.createElement("td");
         evoArrow_5_TD.innerHTML += evoArrow_5.innerHTML;
+        evoArrow_5_TD.classList.add("evolutionArrow");
         familyLineTR.insertBefore(evoArrow_5_TD, familyLineTR.firstChild);
 
       case 3:
@@ -62,11 +66,13 @@ function sectionBuilder(sectionObject) {
         //Bundle into td objects and insert into familyLineTR
         var checkBoxLabel_3_TD = document.createElement("td");
         checkBoxLabel_3_TD.innerHTML += checkBoxLabel_3.innerHTML;
+        checkBoxLabel_3_TD.classList.add("pokemonPicture")
         familyLineTR.insertBefore(checkBoxLabel_3_TD, familyLineTR.firstChild);
         checkBoxLabel_3_TD.appendChild(checkBoxInput_3);
 
         var evoArrow_3_TD = document.createElement("td");
         evoArrow_3_TD.innerHTML += evoArrow_3.innerHTML;
+        evoArrow_3_TD.classList.add("evolutionArrow");
         familyLineTR.insertBefore(evoArrow_3_TD, familyLineTR.firstChild);
 
       default:
@@ -80,6 +86,7 @@ function sectionBuilder(sectionObject) {
         //Bundle into td objects and insert into familyLineTR
         var checkBoxLabel_TD = document.createElement("td");
         checkBoxLabel_TD.innerHTML += checkBoxLabel.innerHTML;
+        checkBoxLabel_TD.classList.add("pokemonPicture")
         familyLineTR.insertBefore(checkBoxLabel_TD, familyLineTR.firstChild);
         checkBoxLabel_TD.appendChild(checkBoxInput);
         break;
@@ -104,7 +111,7 @@ function generateLabel(ref, subarray = []) {
   if (fileExists("..\\assets\\RBY\\BW_" + monName + ".png") && fileExists("..\\assets\\RBY\\C_" + monName + ".png")) {
     //TODO: Build out an html element instead of whatever this is
     checkBoxLabel.innerHTML +=
-      '<img onclick="toggleLabel(this)" class="pokemonSprite" style="width: 112px; height: auto;"src="..\\assets\\RBY\\BW_' +
+      '<img onclick="toggleLabel(this)" class="pokemonSprite" src="..\\assets\\RBY\\BW_' +
       monName +
       '.png" />';
     if (!debug) {
