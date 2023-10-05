@@ -24,7 +24,7 @@ function sectionBuilder(sectionObject) {
   //TODO: Sort This Mess Out
   var sectionHeader = document.createElement("div");
   var sectionHeaderIMG = document.createElement("img");
-  sectionHeaderIMG.src = "../assets/Misc/Subsitute_Normal.png"
+  sectionHeaderIMG.src = "../assets/Misc/Subsitute_Normal.png";
   sectionHeaderIMG.classList.add("sectionHeaderIMG");
   sectionHeader.appendChild(sectionHeaderIMG);
   var sectionHeaderText = document.createElement("span");
@@ -138,9 +138,11 @@ function generateLabel(ref, subarray = []) {
     if (subarray[0][0].toString() == "level") {
       var evoArrow = document.createElement("svg");
       evoArrow.innerHTML = generateLevelSVG(subarray[0][1].toString());
-
-      return [checkBoxLabel, evoArrow];
+    } else if (subarray[0][0].toString() == "item") {
+      var evoArrow = document.createElement("svg");
+      evoArrow.innerHTML = generateLevelSVG(subarray[0][1].toString());
     }
+    return [checkBoxLabel, evoArrow];
   }
 
   return [checkBoxLabel];
@@ -259,10 +261,10 @@ function pulse(polarity) {
   var activeImages = document.getElementsByClassName("pokemonSprite");
   var count = 0;
   for (var i = 0; i < activeImages.length; i++) {
-    var element = activeImages.item(i); 
+    var element = activeImages.item(i);
     if (element.src.toString().includes("/C_")) {
       var rect = element.getBoundingClientRect();
-      console.log(rect.top) 
+      console.log(rect.top);
       count++;
     }
   }
