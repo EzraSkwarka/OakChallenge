@@ -1,310 +1,540 @@
-var debug = false;
 /**
- * Takes an array and builds a checklist form in the body of HTML under an element "sectionContainer"
- * @param {Array} sectionObject - Required info to build the section, of the form:
- *    > ["Section Label",
- *    > "type_of_section" i.e Mutually Exclusive/Freeform
- *    > ["Pokemon_Name", ["Evolution Condition Type (Level/item/trade", "Value (10, Moonstone, Trade)""],,,]]
+ * Reactive Pokémon Table Engine
+ * - Central state atom (choices, caught)
+ * - Deterministic model builder from gameData
+ * - Diffing renderer (rebuild only when row set changes; otherwise patch)
+ * - Works across pages; robust to missing DOM nodes
  */
-function sectionBuilder(sectionObject) {
-  /* TODO: Restructure
-      Section Groups do not need to have the multi group functionality they currently have
-      Instead it needs to be able to process an object of the form:
-        > ["Section Label",
-        > "type_of_section" i.e Mutually Exclusive/Freeform
-        > ["Pokemon_Name", ["Evolution Condition Type (Level/item/trade", "Value (10, Moonstone, Trade)""],,,]]
-    
-    */
-  var sectionDiv = document.createElement("div");
-  document.getElementById("sectionContainer").appendChild(sectionDiv);
-  sectionDiv.id = sectionObject[0].toString();
-  sectionDiv.classList.add("sectionBlock");
 
-  //Section Header/Banner
-  //TODO: Sort This Mess Out
-  var sectionHeader = document.createElement("div");
-  var sectionHeaderIMG = document.createElement("img");
-  sectionHeaderIMG.src = "../assets/Misc/Subsitute_Normal.png";
-  sectionHeaderIMG.classList.add("sectionHeaderIMG");
-  sectionHeader.appendChild(sectionHeaderIMG);
-  var sectionHeaderText = document.createElement("span");
-  sectionHeaderText.innerText += sectionObject[0].toString();
-  sectionHeaderText.classList.add("sectionHeaderText");
-  sectionHeader.classList.add("sectionHeader");
-  sectionHeader.appendChild(sectionHeaderText);
-  sectionDiv.appendChild(sectionHeader);
+/* -----------------------------
+   Constants / Helpers
+------------------------------ */
 
-  //Pokemon Table
-  var sectionTable = document.createElement("table");
-  sectionTable.id = sectionObject[0].toString() + "_table";
-  sectionTable.classList.add("pokemonTable");
-  sectionDiv.appendChild(sectionTable);
+const PLACEHOLDER_SRC = "../images/placeholder.png";
+const POKEBALL_CAUGHT = "../images/pokeball.png";
+const POKEBALL_UNCAUGHT = "../images/pokeball_dark.png";
 
-  var sectionTableHeader = document.createElement("th");
-  sectionTable.appendChild(sectionTableHeader);
+const cap = (s) => (s ? s[0].toUpperCase() + s.slice(1) : s);
+const norm = (v) => (typeof v === "string" ? v.trim().toLowerCase() : v);
+const slug = (s) =>
+  String(s)
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-");
+const safeImg = (src) => (!src || src === "link" ? PLACEHOLDER_SRC : src);
 
-  for (groupIndex = 0; groupIndex < sectionObject[1].length; groupIndex++) {
-    /*Since the family line can only be a max of three mons, instead of making another for loop I'm just gonna define the three cases */
-    var familyLineTR = document.createElement("tr");
-    sectionTable.appendChild(familyLineTR);
+/* -----------------------------
+   Validate / Load Game Data
+------------------------------ */
 
-    var familyLineArray = sectionObject[1][groupIndex];
-    switch (familyLineArray.length) {
-      case 5:
-        //Create the input
-        var checkBoxInput_5 = generateCheckbox(familyLineArray[4].toString() + "_input");
-        familyLineTR.insertBefore(checkBoxInput_5, familyLineTR.firstChild);
+if (typeof gameData !== "object") {
+  throw new Error("gameData not found. Each page must load X-data.js first.");
+}
 
-        // Generate the label and the evolution arrow
-        var [checkBoxLabel_5, evoArrow_5] = generateLabel(checkBoxInput_5, [familyLineArray[3], familyLineArray[4]]);
+const PAGE_NS = gameData.gameId || "default";
+const GAME_TITLE = gameData.gameTitle || "Pokémon Game";
+const BADGE_GROUPS = gameData.badgeGroups || {};
 
-        //Bundle into td objects and insert into familyLineTR
-        var checkBoxLabel_5_TD = document.createElement("td");
-        checkBoxLabel_5_TD.innerHTML += checkBoxLabel_5.innerHTML;
-        checkBoxLabel_5_TD.classList.add("pokemonPicture");
-        familyLineTR.appendChild(checkBoxLabel_5_TD);
-        checkBoxLabel_5_TD.appendChild(checkBoxInput_5);
+const LS_CHOICES = `poke-choices:${PAGE_NS}`;
+const LS_CAUGHT = `poke-caught:${PAGE_NS}`;
 
-        var evoArrow_5_TD = document.createElement("td");
-        evoArrow_5_TD.innerHTML += evoArrow_5.innerHTML;
-        evoArrow_5_TD.classList.add("evolutionArrow");
-        familyLineTR.insertBefore(evoArrow_5_TD, familyLineTR.firstChild);
+/* -----------------------------
+   State Atom (choices, caught)
+------------------------------ */
 
-      case 3:
-        //Create the input then add label
-        var checkBoxInput_3 = generateCheckbox(familyLineArray[2].toString() + "_input");
-        familyLineTR.insertBefore(checkBoxInput_3, familyLineTR.firstChild);
+const store = (() => {
+  let state = {
+    choices: {},
+    caught: {} // { [pokemonName]: true }
+  };
+  let listeners = [];
 
-        // Generate the label and the evolution arrow
-        var [checkBoxLabel_3, evoArrow_3] = generateLabel(checkBoxInput_3, [familyLineArray[1], familyLineArray[2]]);
+  function getState() {
+    return state;
+  }
 
-        //Bundle into td objects and insert into familyLineTR
-        var checkBoxLabel_3_TD = document.createElement("td");
-        checkBoxLabel_3_TD.innerHTML += checkBoxLabel_3.innerHTML;
-        checkBoxLabel_3_TD.classList.add("pokemonPicture");
-        familyLineTR.insertBefore(checkBoxLabel_3_TD, familyLineTR.firstChild);
-        checkBoxLabel_3_TD.appendChild(checkBoxInput_3);
+  function setState(partial) {
+    state = Object.assign({}, state, partial);
+    listeners.forEach((fn) => fn(state));
+  }
 
-        var evoArrow_3_TD = document.createElement("td");
-        evoArrow_3_TD.innerHTML += evoArrow_3.innerHTML;
-        evoArrow_3_TD.classList.add("evolutionArrow");
-        familyLineTR.insertBefore(evoArrow_3_TD, familyLineTR.firstChild);
+  function subscribe(fn) {
+    listeners.push(fn);
+    return () => (listeners = listeners.filter((f) => f !== fn));
+  }
 
-      default:
-        //Create the input then add label
-        var checkBoxInput = generateCheckbox(familyLineArray[0].toString() + "_input");
-        familyLineTR.insertBefore(checkBoxInput, familyLineTR.firstChild);
+  return { getState, setState, subscribe };
+})();
 
-        // Generate the label
-        var [checkBoxLabel] = generateLabel(checkBoxInput, [familyLineArray[0]]);
+/* -----------------------------
+   Persistence
+------------------------------ */
 
-        //Bundle into td objects and insert into familyLineTR
-        var checkBoxLabel_TD = document.createElement("td");
-        checkBoxLabel_TD.innerHTML += checkBoxLabel.innerHTML;
-        checkBoxLabel_TD.classList.add("pokemonPicture");
-        familyLineTR.insertBefore(checkBoxLabel_TD, familyLineTR.firstChild);
-        checkBoxLabel_TD.appendChild(checkBoxInput);
-        break;
+function loadPersisted() {
+  let choices = {};
+  try {
+    const c = JSON.parse(localStorage.getItem(LS_CHOICES) || "{}");
+    for (const [k, v] of Object.entries(c)) choices[k] = norm(v);
+  } catch {
+    /* noop */
+  }
+
+  let caught = {};
+  try {
+    caught = JSON.parse(localStorage.getItem(LS_CAUGHT) || "{}");
+  } catch {
+    /* noop */
+  }
+
+  store.setState({ choices, caught });
+}
+
+function saveChoices(choices) {
+  localStorage.setItem(LS_CHOICES, JSON.stringify(choices));
+}
+function saveCaught(caught) {
+  localStorage.setItem(LS_CAUGHT, JSON.stringify(caught));
+}
+
+function setChoice(key, value) {
+  const current = store.getState();
+  const choices = { ...current.choices, [key]: norm(value) };
+  saveChoices(choices);
+  store.setState({ choices });
+}
+
+function clearChoice(key) {
+  const current = store.getState();
+  const choices = { ...current.choices };
+  delete choices[key];
+  saveChoices(choices);
+  store.setState({ choices });
+}
+
+function toggleCaught(name) {
+  if (!name) return;
+  const current = store.getState();
+  const caught = { ...current.caught };
+  if (caught[name]) delete caught[name];
+  else caught[name] = true;
+  saveCaught(caught);
+  store.setState({ caught });
+}
+
+function resetAll() {
+  localStorage.removeItem(LS_CHOICES);
+  localStorage.removeItem(LS_CAUGHT);
+  store.setState({ choices: {}, caught: {} });
+}
+
+/* -----------------------------
+   Data Normalization / Model
+------------------------------ */
+
+/**
+ * Returns an ordered array of normalized rows to render.
+ * Each entry has a stable __key and a __kind for the renderer.
+ */
+function buildModel() {
+  const { choices, caught } = store.getState();
+  const out = [];
+
+  for (const [groupTitle, def] of Object.entries(BADGE_GROUPS)) {
+    const rows = Array.isArray(def) ? def : def && Array.isArray(def.rows) ? def.rows : [];
+    const summary = def && typeof def === "object" ? def.summary || null : null;
+
+    // Header
+    out.push({ __kind: "header", __key: `header:${groupTitle}`, title: groupTitle });
+
+    // Summary
+    if (summary) {
+      out.push({
+        __kind: "summary",
+        __key: `summary:${groupTitle}`,
+        text: summary
+      });
     }
-  }
-}
 
-/**
- * Generates a label object tied to a checkbox input
- * @param {object} ref - a reference to the relevant checkbox object
- * @param {Array} subarray - an argument that contains the mon's name, and if applicable, it's evolution info
- *    i.e. -> ["Bulbasaur", ["level", 16]]
- * @returns a reference to the created label object
- */
-function generateLabel(ref, subarray = []) {
-  var checkBoxLabel = document.createElement("label");
-  checkBoxLabel.htmlFor = ref.id.toString();
-  checkBoxLabel.id = ref.id.toString() + "_label";
-  // I use subarray[subarray.length - 1] because if subarray.length == 2 then the mon name is given second because its evolution info then name
-  var monName = subarray[subarray.length - 1].toString();
+    const choiceRows = rows.filter((r) => r.type === "choice");
+    const choiceKeys = [...new Set(choiceRows.map((r) => r.choiceKey))];
+    const allChoicesMade = choiceKeys.every((k) => !!choices[k]);
 
-  if (fileExists("..\\assets\\RBY\\BW_" + monName + ".png") && fileExists("..\\assets\\RBY\\C_" + monName + ".png")) {
-    //TODO: Build out an html element instead of whatever this is
-    checkBoxLabel.innerHTML +=
-      '<img onclick="toggleLabel(this)" class="pokemonSprite" src="..\\assets\\RBY\\BW_' + monName + '.png" />';
-    if (!debug) {
-      ref.style.cssText += "display:none;";
-    }
-  } else {
-    checkBoxLabel.innerHTML += monName;
-  }
+    const showChoiceRows = !allChoicesMade;
 
-  if (subarray.length == 2) {
-    if (subarray[0][0].toString() == "level") {
-      var evoArrow = document.createElement("svg");
-      evoArrow.innerHTML = generateLevelSVG(subarray[0][1].toString());
-    } else if (subarray[0][0].toString() == "item") {
-      var evoArrow = document.createElement("svg");
-      evoArrow.innerHTML = generateLevelSVG(subarray[0][1].toString());
-    }
-    return [checkBoxLabel, evoArrow];
-  }
+    // Materialize in original order (choices shown only if not all group choices are made)
+    for (let i = 0; i < rows.length; i++) {
+      const r = rows[i];
 
-  return [checkBoxLabel];
-}
+      if (r.type === "choice") {
+        if (!showChoiceRows) continue;
 
-/**
- * Helper function for an event listener, changes images BW <=> Color and updates cookies on change
- * @param {object} refObject - the object the needs to change
- */
-function toggleLabel(refObject) {
-  //Change Image
-  toggleImage(refObject);
-  var checkBoxInput = refObject.parentElement.lastChild;
-  checkBoxInput.checked = !checkBoxInput.checked;
+        const prev = rows[i - 1];
+        const next = rows[i + 1];
+        const isStart = !(prev && prev.type === "choice" && prev.choiceKey === r.choiceKey);
+        const isEnd = !(next && next.type === "choice" && next.choiceKey === r.choiceKey);
 
-  //Change Cookies
-  setCookie(checkBoxInput.id, checkBoxInput.checked, 30); //checkBoxInput.checked is inverted as it changes after this event listener finishes
-}
+        // Subheader appears exactly once per contiguous block
+        if (isStart) {
+          out.push({
+            __kind: "choiceSubheader",
+            __key: `choiceSubheader:${groupTitle}:${r.choiceKey}:${i}`,
+            __group: groupTitle,
+            label: `${cap(r.choiceKey)} — choose one`
+          });
+        }
 
-function generateLevelSVG(level) {
-  return (
-    '<svg width="30" height="36" style="transform: scale(2)">  <text x="-1" y="11" style="fill: white;font: 8px spritendo">Lv.</text>  <polygon points="0,14 0,25 17,25 17,30, 28,20 28,19 17,9 17,14 0,14"   style="fill:rgb(198,206,222);stroke:rgb(173,181,198);stroke-width:1"></polygon>  <text x="14" y="23" style="font: bold 8px sans-serif">' +
-    level.toString() +
-    "</text></svg>"
-  );
-}
-
-/**
- * Changes images between BW <=> Color
- * @param {object} refObject - Reference of image to change
- */
-function toggleImage(refObject) {
-  if (refObject.src.includes("C_")) {
-    refObject.src = refObject.src.toString().replace("C_", "BW_");
-  } else if (refObject.src.includes("BW_")) {
-    refObject.src = refObject.src.toString().replace("BW_", "C_");
-  }
-}
-
-/**
- * Generates and inserts a checkbox object
- * @param {object} parent - The form object to create the checkbox under
- * @param {String} id - unique identifier for the checkbox
- * @returns a reference to the checkbox object
- */
-function generateCheckbox(id) {
-  var checkBoxInput = document.createElement("input");
-  checkBoxInput.id = id;
-  checkBoxInput.type = "checkbox";
-  return checkBoxInput;
-}
-
-/**
- * Checks to see if a file exists
- * @param {String} url - file to check for
- * @returns Boolean
- */
-function fileExists(url) {
-  var http = new XMLHttpRequest();
-
-  http.open("HEAD", url, false);
-  http.send();
-
-  return http.status != 404;
-}
-
-/**
- * Sets a cookie with a unique value to track progress
- * @param {String} cname - pulled from the id of the checkbox
- * @param {Boolean} cvalue - value of the checkbox
- * @param {Integer} exdays - number of days to keep
- */
-function setCookie(cname, cvalue, exdays) {
-  const d = new Date();
-  d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
-  let expires = "expires=" + d.toUTCString();
-  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/;SameSite=Strict";
-
-  if (document.getElementById("cookieGeneral")) {
-    document.getElementById("cookieOutput").innerHTML = cname + "=" + cvalue;
-  }
-}
-
-/**
- * Splits all cookies into an array
- * @returns Array
- */
-function listCookies() {
-  var theCookies = document.cookie.split(";");
-  return theCookies;
-}
-
-/**
- * Goes through the cookies and sets all checkboxes with a matching id to their corresponding value
- */
-function updateCheckedBoxes() {
-  var cookieArray = listCookies();
-  for (var i = 0; i < cookieArray.length; i++)
-    if (cookieArray[i].includes("=true")) {
-      if (debug) {
-        console.log(i.toString() + ": " + cookieArray[i]);
-        console.log(cookieArray[i].split("=")[0].trim());
-        console.log(document.getElementById(cookieArray[i].split("=")[0].trim()));
+        const nm = r.pokemon?.name || "Choice";
+        out.push({
+          __kind: "choice",
+          __key: `choice:${groupTitle}:${r.choiceKey}:${norm(r.choiceValue)}`,
+          __group: groupTitle,
+          choiceKey: r.choiceKey,
+          choiceValue: norm(r.choiceValue),
+          pokemon: { name: nm, img: safeImg(r.pokemon?.img) },
+          method: r.method || "Pick an option",
+          groupRunStart: isStart,
+          groupRunEnd: isEnd
+        });
+        continue;
       }
-      // document.getElementById(cookieArray[i].split("=")[0].trim()).checked = true;
-      //Toggle Images
-      var targetCheckbox = document.getElementById(cookieArray[i].split("=")[0].trim());
-      if (targetCheckbox) {
-        targetCheckbox.parentElement.firstChild.click();
-      }
-    }
-}
 
-//NOT USED
-function pulse(polarity) {
-  var activeImages = document.getElementsByClassName("pokemonSprite");
-  var count = 0;
-  for (var i = 0; i < activeImages.length; i++) {
-    var element = activeImages.item(i);
-    if (element.src.toString().includes("/C_")) {
-      var rect = element.getBoundingClientRect();
-      console.log(rect.top);
-      count++;
+      // Pokémon rows
+      if (r.requires && !meetsRequirements(r, choices)) continue;
+
+      const nm = r.pokemon?.name || "Unknown";
+      out.push({
+        __kind: "pokemon",
+        __key: `pokemon:${groupTitle}:${nm}`,
+        __group: groupTitle,
+        pokemon: { name: nm, img: safeImg(r.pokemon?.img) },
+        method: r.method || "—",
+        caught: !!caught[nm]
+      });
+    }
+
+    // Progress at bottom ONLY if all group choices made
+    if (allChoicesMade) {
+      const total = rows
+        .filter((r) => r.type !== "choice")
+        .filter((r) => !r.requires || meetsRequirements(r, choices))
+        .filter((r) => r.pokemon).length;
+
+      const caughtCount = rows
+        .filter((r) => r.type !== "choice")
+        .filter((r) => !r.requires || meetsRequirements(r, choices))
+        .filter((r) => r.pokemon && caught[r.pokemon.name]).length;
+
+      out.push({
+        __kind: "progress",
+        __key: `progress:${groupTitle}`,
+        group: groupTitle,
+        total,
+        caught: caughtCount
+      });
     }
   }
 
-  console.log(count);
-  setTimeout(function () {
-    pulse(!polarity);
-  }, 1000);
+  return out;
 }
 
-function debugCookies() {
-  //Check if cookie box exists
-  if (document.getElementById("cookieGeneral") || debug == false) {
+function meetsRequirements(row, choices) {
+  if (!row.requires) return true;
+  for (const [k, v] of Object.entries(row.requires)) {
+    if (norm(choices[k]) !== norm(v)) return false;
+  }
+  return true;
+}
+
+/* -----------------------------
+   DOM References
+------------------------------ */
+
+function el(id) {
+  return document.getElementById(id);
+}
+function tbodyEl() {
+  return document.querySelector("#pokemon-table tbody");
+}
+
+/* -----------------------------
+   Choice Status Chips
+------------------------------ */
+
+function renderChoiceStatus() {
+  const host = el("choice-status");
+  if (!host) return;
+
+  host.textContent = "";
+  const { choices } = store.getState();
+  for (const [key, value] of Object.entries(choices)) {
+    const chip = document.createElement("div");
+    chip.className = "chip";
+
+    const span = document.createElement("span");
+    span.textContent = `${cap(key)}: ${cap(value)}`;
+
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.textContent = "Change";
+    btn.addEventListener("click", () => {
+      clearChoice(key);
+    });
+
+    chip.appendChild(span);
+    chip.appendChild(btn);
+    host.appendChild(chip);
+  }
+}
+
+/* -----------------------------
+   Row Factories (TR builders)
+------------------------------ */
+
+function trHeader(row) {
+  const tr = document.createElement("tr");
+  tr.className = "section-header";
+  const td = document.createElement("td");
+  td.colSpan = 3;
+  td.textContent = row.title;
+  tr.appendChild(td);
+  return tr;
+}
+
+function trSummary(row) {
+  const tr = document.createElement("tr");
+  tr.className = "section-summary";
+  const td = document.createElement("td");
+  td.colSpan = 3;
+  td.textContent = row.text;
+  tr.appendChild(td);
+  return tr;
+}
+
+function trProgress(row) {
+  const tr = document.createElement("tr");
+  tr.className = "section-progress progress-row";
+
+  const td = document.createElement("td");
+  td.colSpan = 3;
+
+  const bar = document.createElement("div");
+  bar.className = "progress-bar";
+
+  const fill = document.createElement("div");
+  fill.className = "progress-fill";
+  fill.style.width = "0%"; // start empty
+
+  const pct = row.total ? (row.caught / row.total) * 100 : 0;
+  requestAnimationFrame(() => {
+    fill.style.width = `${pct}%`; // animate
+  });
+
+  bar.appendChild(fill);
+
+  const label = document.createElement("div");
+  label.className = "progress-label";
+  label.textContent = `${row.caught} / ${row.total} caught`;
+
+  td.appendChild(bar);
+  td.appendChild(label);
+  tr.appendChild(td);
+
+  return tr;
+}
+
+function trChoiceSubheader(row) {
+  const tr = document.createElement("tr");
+  tr.className = "choice-subheader-row";
+  const td = document.createElement("td");
+  td.colSpan = 3;
+  td.textContent = row.label;
+  tr.appendChild(td);
+  return tr;
+}
+
+function trChoice(row) {
+  const tr = document.createElement("tr");
+  tr.className = "row-choice compact-band";
+
+  if (row.groupRunStart) tr.classList.add("choice-group-start");
+  if (row.groupRunEnd) tr.classList.add("choice-group-end");
+
+  const tdP = document.createElement("td");
+  const wrap = document.createElement("div");
+  wrap.className = "pkm";
+  const img = document.createElement("img");
+  img.src = row.pokemon?.img;
+  img.alt = row.pokemon?.name || "Choice";
+  const name = document.createElement("span");
+  name.textContent = row.pokemon?.name || "Choice";
+  wrap.append(img, name);
+  tdP.appendChild(wrap);
+
+  const tdM = document.createElement("td");
+  tdM.textContent = row.method || "Pick an option";
+
+  const tdA = document.createElement("td");
+  tdA.className = "center";
+  tdA.textContent = ""; // now empty
+
+  // Entire row is now clickable
+  const pick = () => setChoice(row.choiceKey, row.choiceValue);
+  tr.addEventListener("click", pick);
+
+  tr.append(tdP, tdM, tdA);
+  return tr;
+}
+
+function trPokemon(row) {
+  const tr = document.createElement("tr");
+  tr.className = "row-normal";
+  if (row.caught) tr.classList.add("caught-true");
+
+  const tdP = document.createElement("td");
+  const wrap = document.createElement("div");
+  wrap.className = "pkm";
+  const img = document.createElement("img");
+  img.src = row.pokemon.img;
+  img.alt = row.pokemon.name || "Pokémon";
+  const name = document.createElement("span");
+  name.textContent = row.pokemon.name || "Unknown";
+  wrap.append(img, name);
+  tdP.appendChild(wrap);
+
+  const tdM = document.createElement("td");
+  tdM.textContent = row.method;
+
+  const tdC = document.createElement("td");
+  tdC.className = "center";
+
+  const btn = document.createElement("button");
+  btn.type = "button";
+  btn.className = "catch-btn";
+  const icon = document.createElement("img");
+  icon.className = "catch-icon";
+  icon.alt = row.caught ? "Caught" : "Uncaught";
+  icon.src = row.caught ? POKEBALL_CAUGHT : POKEBALL_UNCAUGHT;
+  btn.appendChild(icon);
+
+  const toggle = () => toggleCaught(row.pokemon.name);
+  btn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    toggle();
+  });
+  tr.addEventListener("click", (e) => {
+    if (!btn.contains(e.target)) toggle();
+  });
+
+  tdC.appendChild(btn);
+  tr.append(tdP, tdM, tdC);
+  return tr;
+}
+
+/* -----------------------------
+   Diffing Renderer
+------------------------------ */
+
+const renderCtx = {
+  keyOrder: [],
+  rowNodes: new Map() // key -> tr
+};
+
+function render() {
+  renderChoiceStatus();
+
+  const model = buildModel();
+  const tbody = tbodyEl();
+  if (!tbody) return;
+
+  const newKeys = model.map((m) => m.__key);
+  const sameShape =
+    newKeys.length === renderCtx.keyOrder.length && newKeys.every((k, i) => k === renderCtx.keyOrder[i]);
+
+  if (!sameShape) {
+    // FULL REBUILD — no fade-out, only fade-in
+    const frag = document.createDocumentFragment();
+    renderCtx.rowNodes.clear();
+
+    for (const row of model) {
+      let tr;
+      if (row.__kind === "header") tr = trHeader(row);
+      else if (row.__kind === "summary") tr = trSummary(row);
+      else if (row.__kind === "progress") tr = trProgress(row);
+      else if (row.__kind === "choice") tr = trChoice(row);
+      else if (row.__kind === "pokemon") tr = trPokemon(row);
+      else if (row.__kind === "choiceSubheader") tr = trChoiceSubheader(row);
+
+      if (tr) {
+        tr.dataset.key = row.__key;
+        // fade-in on creation
+        tr.classList.add("fade-in");
+        setTimeout(() => tr.classList.remove("fade-in"), 170);
+
+        renderCtx.rowNodes.set(row.__key, tr);
+        frag.appendChild(tr);
+      }
+    }
+
+    tbody.textContent = "";
+    tbody.appendChild(frag);
+    renderCtx.keyOrder = newKeys;
     return;
   }
-  //Create Cookie Box
-  var cookieGeneral = document.createElement("div");
-  cookieGeneral.id = "cookieGeneral";
-  cookieGeneral.style.cssText =
-    "color: black; outline: 2px solid red; width: 400px; position: absolute; top: 2px; right: 2px; min-height: 25px;";
-  cookieGeneral.innerHTML = "Cookies: ";
-  document.body.appendChild(cookieGeneral);
 
-  var cookieOutput = document.createElement("div");
-  cookieOutput.id = "cookieOutput";
-  cookieOutput.style.cssText = "color: blue";
-  document.getElementById("cookieGeneral").appendChild(cookieOutput);
+  // PATCH PATH — shapes are identical: do fade-out for removed keys (none), and patch dynamic bits
 
-  var cookieOutputAll = document.createElement("div");
-  cookieOutputAll.id = "cookieOutput";
-  cookieOutputAll.style.cssText = "color: green";
-  document.getElementById("cookieGeneral").appendChild(cookieOutputAll);
+  // (There are no removed keys in same-shape mode; still keep this guard for future extensions)
 
-  var cookieButton = document.createElement("button");
-  cookieButton.type = "button";
-  cookieButton.onclick = function () {
-    var theCookies = document.cookie.split(";");
-    cookieOutputAll.innerHTML = theCookies;
-  };
-  cookieButton.innerHTML = "List All";
-  cookieButton.style.cssText = "position: fixed; top: 3px; right: 3px;";
-  document.getElementById("cookieGeneral").appendChild(cookieButton);
+  for (const row of model) {
+    const tr = renderCtx.rowNodes.get(row.__key);
+    if (!tr) continue;
+
+    if (row.__kind === "progress") {
+      const bar = tr.querySelector(".progress-fill");
+      const label = tr.querySelector(".progress-label");
+      if (bar) {
+        const pct = row.total ? (row.caught / row.total) * 100 : 0;
+        requestAnimationFrame(() => {
+          bar.style.width = `${pct}%`;
+        });
+      }
+      if (label) {
+        label.textContent = `${row.caught} / ${row.total} caught`;
+      }
+    } else if (row.__kind === "pokemon") {
+      tr.classList.toggle("caught-true", !!row.caught);
+      const icon = tr.querySelector(".catch-icon");
+      if (icon) {
+        icon.src = row.caught ? "../images/pokeball.png" : "../images/pokeball_dark.png";
+        icon.alt = row.caught ? "Caught" : "Uncaught";
+      }
+    }
+    // header/summary/choice rows are static after creation
+  }
 }
+
+/* -----------------------------
+   Boot
+------------------------------ */
+
+function boot() {
+  const titleEl = el("game-title");
+  if (titleEl) titleEl.textContent = GAME_TITLE;
+
+  loadPersisted();
+  render();
+
+  const unsub = store.subscribe(() => {
+    render();
+  });
+
+  const resetBtn = el("reset-all");
+  if (resetBtn) {
+    resetBtn.addEventListener("click", () => {
+      if (confirm("Reset all choices and caught progress?")) resetAll();
+    });
+  }
+  return () => unsub();
+}
+
+document.addEventListener("DOMContentLoaded", boot);

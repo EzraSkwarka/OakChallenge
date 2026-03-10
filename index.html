@@ -1,10 +1,43 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Landing</title>
-    <link rel="stylesheet" type="text/css" href="styles.css" />
-  </head>
-  <body>
-    <p><a href="./subpages/newGame.html">New Game</a></p>
-  </body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, viewport-fit=cover"
+  />
+  <title>Pokémon – FireRed</title>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+
+  <div class="container">
+    <!-- Title will be set by script.js from gameData.gameTitle -->
+    <h1 id="game-title"></h1>
+    <div id="choice-status" class="choice-status"></div>
+  </div>
+
+  <div class="table-wrap">
+    <table id="pokemon-table" aria-label="Pokémon capture status">
+      <thead>
+        <tr>
+          <th>Pokémon</th>
+          <th>Method</th>
+          <th class="center">Action / Caught</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <div class="footer-actions">
+    <button id="reset-all" type="button" class="reset-btn">
+      Reset all progress
+    </button>
+  </div>
+
+  <script src="./firered-data.js"></script>
+  <script src="../script.js"></script>
+</body>
 </html>
+``

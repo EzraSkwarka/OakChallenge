@@ -1,0 +1,344 @@
+/* -------------------------------------------------------
+   Root Variables
+------------------------------------------------------- */
+:root {
+  --border: #d1d5db;
+  --bg: #ffffff;
+  --bg-alt: #f9fafb;
+  --text: #111827;
+  --muted: #6b7280;
+
+  --hover: #f3f4f6;
+  --caught: #ecfdf5;
+  --caught-hover: #d1fae5;
+
+  --chip: #eef2ff;
+  --chip-text: #3730a3;
+
+  /* Choice block subtle band */
+  --choice-band: color-mix(in srgb, #f5d9b5 6%, white);
+  --choice-band-hover: color-mix(in srgb, #f5d9b5 10%, white);
+  --choice-accent: #e0a76f;
+}
+
+/* -------------------------------------------------------
+   Base Layout
+------------------------------------------------------- */
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  margin: 2rem 0;
+}
+
+.container {
+  width: 90vw;
+  margin: 0 auto;
+}
+
+/* -------------------------------------------------------
+   Choice Status Chip
+------------------------------------------------------- */
+.choice-status {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0.25rem 0 1rem;
+  min-height: 2rem;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.6rem;
+  border-radius: 999px;
+  background: var(--chip);
+  color: var(--chip-text);
+  font-size: 13px;
+  border: 1px solid rgba(55, 48, 163, 0.15);
+}
+
+.chip button {
+  border: 1px solid rgba(55, 48, 163, 0.25);
+  background: #fff;
+  color: var(--chip-text);
+  border-radius: 999px;
+  font-size: 12px;
+  padding: 2px 8px;
+  cursor: pointer;
+}
+
+/* -------------------------------------------------------
+   Table Wrapper + Table
+------------------------------------------------------- */
+.table-wrap {
+  width: 90vw;
+  margin: 0 auto;
+  max-width: 1400px;
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 14px;
+}
+
+thead th {
+  text-align: left;
+  background: var(--bg-alt);
+  color: var(--muted);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  border-bottom: 1px solid var(--border);
+  padding: 0.75rem 0.9rem;
+}
+
+tbody td {
+  border-bottom: 1px solid var(--border);
+  padding: 0.7rem 0.9rem;
+  vertical-align: middle;
+}
+
+/* -------------------------------------------------------
+   Subtle Choice Subheader Row
+------------------------------------------------------- */
+.choice-subheader-row td {
+  background: #fafafa;
+  color: #555;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 6px 10px;
+  border-left: 3px solid #e0e0e0;
+  border-bottom: 1px solid var(--border);
+}
+
+/* -------------------------------------------------------
+   Row Styles
+------------------------------------------------------- */
+tbody tr.row-normal {
+  cursor: pointer;
+  user-select: none;
+}
+
+tbody tr.row-normal:hover {
+  background: var(--hover);
+}
+
+.caught-true {
+  background: var(--caught);
+}
+tbody tr.caught-true:hover {
+  background: var(--caught-hover);
+}
+
+/* -------------------------------------------------------
+   Choice Rows (New subtle grouping)
+------------------------------------------------------- */
+tr.row-choice.compact-band td {
+  background: var(--choice-band);
+  position: relative;
+}
+
+/* Left accent, in-bounds */
+tr.row-choice.compact-band td:first-child::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 4px;
+  bottom: 4px;
+  width: 2px;
+  background: var(--choice-accent);
+  opacity: 0.8;
+  border-radius: 2px;
+}
+
+/* Subtle top separator for first row in block */
+tr.row-choice.compact-band.choice-group-start td {
+  box-shadow: inset 0 1px 0 0 rgba(0,0,0,0.06);
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+
+/* Rounded bottom corners */
+tr.row-choice.compact-band.choice-group-end td {
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+/* Avoid double borders between adjacent choice rows */
+tr.row-choice.compact-band + tr.row-choice.compact-band td {
+  border-top-color: transparent;
+}
+
+/* Gentle hover */
+tr.row-choice.compact-band:hover td {
+  background: var(--choice-band-hover);
+}
+
+/* -------------------------------------------------------
+   Pokémon Cell
+------------------------------------------------------- */
+.pkm {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.pkm img {
+  width: 42px;
+  height: 42px;
+  object-fit: cover;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #fff;
+}
+
+/* -------------------------------------------------------
+   Summary
+------------------------------------------------------- */
+.section-summary td {
+  background: #fff;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.45;
+  padding: 0.5rem 0.9rem 0.8rem;
+  border-bottom: 1px solid var(--border);
+}
+
+/* -------------------------------------------------------
+   Progress Bar (bottom of group)
+------------------------------------------------------- */
+.section-progress td {
+  background: #fff;
+  color: var(--muted);
+  font-size: 12px;
+  padding: 0.25rem 0.9rem 0.6rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.progress-row { padding: 0; }
+
+.progress-bar {
+  position: relative;
+  width: 100%;
+  height: 14px;
+  background: #e3e3e3;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-top: 4px;
+}
+
+.progress-fill {
+  height: 100%;
+  background: #4caf50;
+  width: 0%;
+  transition: width 400ms ease-in-out;
+}
+
+.progress-label {
+  font-size: 12px;
+  text-align: right;
+  margin-top: 4px;
+  color: #3c3c3c;
+}
+
+/* -------------------------------------------------------
+   Animations (fade in/out)
+------------------------------------------------------- */
+tr.fade-in {
+  opacity: 0;
+  transform: translateY(-4px);
+  animation: rowFadeIn 160ms ease-out forwards;
+}
+@keyframes rowFadeIn {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+tr.fade-out {
+  opacity: 1;
+  transform: translateY(0);
+  animation: rowFadeOut 160ms ease-in forwards;
+}
+@keyframes rowFadeOut {
+  to { opacity: 0; transform: translateY(-4px); }
+}
+
+/* -------------------------------------------------------
+   Footer Reset Button
+------------------------------------------------------- */
+.footer-actions {
+  width: 90vw;
+  margin: 1rem auto 2rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.reset-btn {
+  border: 1px solid #ef4444;
+  color: #991b1b;
+  background: #fff;
+  padding: 8px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.reset-btn:hover {
+  background: #fef2f2;
+}
+
+/* -------------------------------------------------------
+   Badge Section Headers
+------------------------------------------------------- */
+.section-header td {
+  background: var(--bg-alt);
+  color: #111;
+  font-weight: 700;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 0.6rem 0.9rem;
+}
+
+/* -------------------------------------------------------
+   Catch Button / Icons
+------------------------------------------------------- */
+.catch-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.catch-btn img.catch-icon {
+  width: 24px;
+  height: 24px;
+}
+
+tbody tr.row-normal .catch-btn:hover img.catch-icon {
+  filter: brightness(1.05);
+}
+
+.catch-icon {
+  transition: transform 120ms ease;
+}
+
+.catch-btn:active .catch-icon {
+  transform: scale(0.92);
+}
+
+/* -------------------------------------------------------
+   Utility
+------------------------------------------------------- */
+.muted { color: var(--muted); font-size: 12px; }
+.center { text-align: center; }
