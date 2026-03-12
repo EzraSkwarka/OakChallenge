@@ -1,0 +1,335 @@
+{
+  "games": [
+    {
+      "id": "red",
+      "name": "Pokémon Red",
+      "region": "Kanto",
+      "gen": "Gen 1",
+      "notes": "Original Kanto adventure.",
+      "cover": "./images/covers/red.png",
+      "href": "./subpages/red.html",
+      "available": false
+    },
+    {
+      "id": "blue",
+      "name": "Pokémon Blue",
+      "region": "Kanto",
+      "gen": "Gen 1",
+      "notes": "Paired version to Red.",
+      "cover": "./images/covers/blue.png",
+      "href": "./subpages/blue.html",
+      "available": false
+    },
+    {
+      "id": "yellow",
+      "name": "Pokémon Yellow",
+      "region": "Kanto",
+      "gen": "Gen 1",
+      "notes": "Special Pikachu Edition.",
+      "cover": "./images/covers/yellow.png",
+      "href": "./subpages/yellow.html",
+      "available": false
+    },
+
+    {
+      "id": "gold",
+      "name": "Pokémon Gold",
+      "region": "Johto",
+      "gen": "Gen 2",
+      "notes": "Begin your Johto journey.",
+      "cover": "./images/covers/gold.png",
+      "href": "./subpages/gold.html",
+      "available": false
+    },
+    {
+      "id": "silver",
+      "name": "Pokémon Silver",
+      "region": "Johto",
+      "gen": "Gen 2",
+      "notes": "Paired version to Gold.",
+      "cover": "./images/covers/silver.png",
+      "href": "./subpages/silver.html",
+      "available": false
+    },
+    {
+      "id": "crystal",
+      "name": "Pokémon Crystal",
+      "region": "Johto",
+      "gen": "Gen 2",
+      "notes": "Enhanced version of G/S.",
+      "cover": "./images/covers/crystal.png",
+      "href": "./subpages/crystal.html",
+      "available": false
+    },
+
+    {
+      "id": "ruby",
+      "name": "Pokémon Ruby",
+      "region": "Hoenn",
+      "gen": "Gen 3",
+      "notes": "Hoenn adventure featuring Team Magma.",
+      "cover": "./images/covers/ruby.png",
+      "href": "./subpages/ruby.html",
+      "available": false
+    },
+    {
+      "id": "sapphire",
+      "name": "Pokémon Sapphire",
+      "region": "Hoenn",
+      "gen": "Gen 3",
+      "notes": "Hoenn adventure featuring Team Aqua.",
+      "cover": "./images/covers/sapphire.png",
+      "href": "./subpages/sapphire.html",
+      "available": false
+    },
+    {
+      "id": "emerald",
+      "name": "Pokémon Emerald",
+      "region": "Hoenn",
+      "gen": "Gen 3",
+      "notes": "Enhanced R/S with Battle Frontier.",
+      "cover": "./images/covers/emerald.png",
+      "href": "./subpages/emerald.html",
+      "available": false
+    },
+
+    {
+      "id": "firered",
+      "name": "Pokémon FireRed",
+      "region": "Kanto",
+      "gen": "Gen 3",
+      "notes": "Kanto remake on GBA.",
+      "cover": "./images/covers/firered.png",
+      "href": "./subpages/firered.html",
+      "available": true
+    },
+    {
+      "id": "leafgreen",
+      "name": "Pokémon LeafGreen",
+      "region": "Kanto",
+      "gen": "Gen 3",
+      "notes": "Version pair to FireRed.",
+      "cover": "./images/covers/leafgreen.png",
+      "href": "./subpages/leafgreen.html",
+      "available": false
+    },
+
+    {
+      "id": "diamond",
+      "name": "Pokémon Diamond",
+      "region": "Sinnoh",
+      "gen": "Gen 4",
+      "notes": "Sinnoh adventure with the Pokétch.",
+      "cover": "./images/covers/diamond.png",
+      "href": "./subpages/diamond.html",
+      "available": false
+    },
+    {
+      "id": "pearl",
+      "name": "Pokémon Pearl",
+      "region": "Sinnoh",
+      "gen": "Gen 4",
+      "notes": "Paired version to Diamond.",
+      "cover": "./images/covers/pearl.png",
+      "href": "./subpages/pearl.html",
+      "available": false
+    },
+    {
+      "id": "platinum",
+      "name": "Pokémon Platinum",
+      "region": "Sinnoh",
+      "gen": "Gen 4",
+      "notes": "Enhanced D/P with Distortion World.",
+      "cover": "./images/covers/platinum.png",
+      "href": "./subpages/platinum.html",
+      "available": false
+    },
+
+    {
+      "id": "heartgold",
+      "name": "Pokémon HeartGold",
+      "region": "Johto",
+      "gen": "Gen 4",
+      "notes": "Johto remake; take your Pokémon for a walk.",
+      "cover": "./images/covers/heartgold.png",
+      "href": "./subpages/heartgold.html",
+      "available": false
+    },
+    {
+      "id": "soulsilver",
+      "name": "Pokémon SoulSilver",
+      "region": "Johto",
+      "gen": "Gen 4",
+      "notes": "Version pair to HeartGold.",
+      "cover": "./images/covers/soulsilver.png",
+      "href": "./subpages/soulsilver.html",
+      "available": false
+    },
+
+    {
+      "id": "black",
+      "name": "Pokémon Black",
+      "region": "Unova",
+      "gen": "Gen 5",
+      "notes": "Fresh regional Pokédex and story focus.",
+      "cover": "./images/covers/black.png",
+      "href": "./subpages/black.html",
+      "available": false
+    },
+    {
+      "id": "white",
+      "name": "Pokémon White",
+      "region": "Unova",
+      "gen": "Gen 5",
+      "notes": "Paired version to Black.",
+      "cover": "./images/covers/white.png",
+      "href": "./subpages/white.html",
+      "available": false
+    },
+    {
+      "id": "black2",
+      "name": "Pokémon Black 2",
+      "region": "Unova",
+      "gen": "Gen 5",
+      "notes": "Sequel set two years after B/W.",
+      "cover": "./images/covers/black2.png",
+      "href": "./subpages/black2.html",
+      "available": false
+    },
+    {
+      "id": "white2",
+      "name": "Pokémon White 2",
+      "region": "Unova",
+      "gen": "Gen 5",
+      "notes": "Sequel set two years after B/W.",
+      "cover": "./images/covers/white2.png",
+      "href": "./subpages/white2.html",
+      "available": false
+    },
+
+    {
+      "id": "omega-ruby",
+      "name": "Pokémon Omega Ruby",
+      "region": "Hoenn",
+      "gen": "Gen 6",
+      "notes": "3DS remake of Ruby with new features.",
+      "cover": "./images/covers/omega-ruby.png",
+      "href": "./subpages/omega-ruby.html",
+      "available": false
+    },
+    {
+      "id": "alpha-sapphire",
+      "name": "Pokémon Alpha Sapphire",
+      "region": "Hoenn",
+      "gen": "Gen 6",
+      "notes": "3DS remake of Sapphire with new features.",
+      "cover": "./images/covers/alpha-sapphire.png",
+      "href": "./subpages/alpha-sapphire.html",
+      "available": false
+    },
+
+    {
+      "id": "x",
+      "name": "Pokémon X",
+      "region": "Kalos",
+      "gen": "Gen 6",
+      "notes": "First fully 3D mainline titles.",
+      "cover": "./images/covers/x.png",
+      "href": "./subpages/x.html",
+      "available": false
+    },
+    {
+      "id": "y",
+      "name": "Pokémon Y",
+      "region": "Kalos",
+      "gen": "Gen 6",
+      "notes": "Paired version to X.",
+      "cover": "./images/covers/y.png",
+      "href": "./subpages/y.html",
+      "available": false
+    },
+
+    {
+      "id": "sun",
+      "name": "Pokémon Sun",
+      "region": "Alola",
+      "gen": "Gen 7",
+      "notes": "Island trials replace gyms.",
+      "cover": "./images/covers/sun.png",
+      "href": "./subpages/sun.html",
+      "available": false
+    },
+    {
+      "id": "moon",
+      "name": "Pokémon Moon",
+      "region": "Alola",
+      "gen": "Gen 7",
+      "notes": "Paired version to Sun.",
+      "cover": "./images/covers/moon.png",
+      "href": "./subpages/moon.html",
+      "available": false
+    },
+    {
+      "id": "ultra-sun",
+      "name": "Pokémon Ultra Sun",
+      "region": "Alola",
+      "gen": "Gen 7",
+      "notes": "Expanded Alola adventure.",
+      "cover": "./images/covers/ultra-sun.png",
+      "href": "./subpages/ultra-sun.html",
+      "available": false
+    },
+    {
+      "id": "ultra-moon",
+      "name": "Pokémon Ultra Moon",
+      "region": "Alola",
+      "gen": "Gen 7",
+      "notes": "Expanded Alola adventure.",
+      "cover": "./images/covers/ultra-moon.png",
+      "href": "./subpages/ultra-moon.html",
+      "available": false
+    },
+
+    {
+      "id": "sword",
+      "name": "Pokémon Sword",
+      "region": "Galar",
+      "gen": "Gen 8",
+      "notes": "Stadium-scale battles in Galar.",
+      "cover": "./images/covers/sword.png",
+      "href": "./subpages/sword.html",
+      "available": false
+    },
+    {
+      "id": "shield",
+      "name": "Pokémon Shield",
+      "region": "Galar",
+      "gen": "Gen 8",
+      "notes": "Paired version to Sword.",
+      "cover": "./images/covers/shield.png",
+      "href": "./subpages/shield.html",
+      "available": false
+    },
+
+    {
+      "id": "scarlet",
+      "name": "Pokémon Scarlet",
+      "region": "Paldea",
+      "gen": "Gen 9",
+      "notes": "Open-world Paldea adventure.",
+      "cover": "./images/covers/scarlet.png",
+      "href": "./subpages/scarlet.html",
+      "available": false
+    },
+    {
+      "id": "violet",
+      "name": "Pokémon Violet",
+      "region": "Paldea",
+      "gen": "Gen 9",
+      "notes": "Paired version to Scarlet.",
+      "cover": "./images/covers/violet.png",
+      "href": "./subpages/violet.html",
+      "available": false
+    }
+  ]
+}

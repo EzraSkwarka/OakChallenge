@@ -1,43 +1,73 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1, viewport-fit=cover"
-  />
-  <title>Pokémon – FireRed</title>
-  <link rel="stylesheet" href="../style.css" />
-</head>
-<body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Professor Oak's Challenge</title>
+    <link rel="stylesheet" href="./index.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <h1>Professor Oak's Challenge</h1>
+        <p class="tagline">
+          Catch <strong>every obtainable Pokémon</strong> before earning each badge — including gift, trades,
+          evolutions, and special encounters.
+        </p>
+        <details class="rules" aria-label="Challenge overview">
+          <summary>What is the challenge?</summary>
+          <div class="rules-body">
+            <ul>
+              <li>
+                Before taking each Gym, obtain <em>all Pokémon currently obtainable</em> with legal in-game methods.
+              </li>
+              <li>Evolutions that require items are required if the items are available at that point.</li>
+              <li>
+                Optional: No glitches/ACE; follow your preferred community rules for dupes, gift Pokémon, and
+                tradebacks.
+              </li>
+            </ul>
+            <p class="muted">
+              This site helps track progress per game, grouped by badge and persists your progress locally in your
+              browser.
+            </p>
+          </div>
+        </details>
+      </div>
+    </header>
 
-  <div class="container">
-    <!-- Title will be set by script.js from gameData.gameTitle -->
-    <h1 id="game-title"></h1>
-    <div id="choice-status" class="choice-status"></div>
-  </div>
+    <main class="container">
+      <h2 class="section-title">Choose a Game</h2>
 
-  <div class="table-wrap">
-    <table id="pokemon-table" aria-label="Pokémon capture status">
-      <thead>
-        <tr>
-          <th>Pokémon</th>
-          <th>Method</th>
-          <th class="center">Action / Caught</th>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
-  </div>
+      <!-- Search -->
+      <div class="search-wrap" role="search">
+        <label for="search" class="search-label">Search (name, region, or generation)</label>
+        <input id="search" name="search" type="search" placeholder="e.g., Kanto, Gen 3, FireRed" autocomplete="off" />
+      </div>
 
-  <div class="footer-actions">
-    <button id="reset-all" type="button" class="reset-btn">
-      Reset all progress
-    </button>
-  </div>
+      <!-- Primary matches -->
+      <div id="primary-wrap" aria-live="polite">
+        <h3 id="primary-title" class="result-title" hidden>Top matches</h3>
+        <div id="grid" class="card-grid"><!-- primary cards --></div>
+      </div>
 
-  <script src="./firered-data.js"></script>
-  <script src="../script.js"></script>
-</body>
+      <!-- Secondary matches -->
+      <div id="secondary-wrap" aria-live="polite" hidden>
+        <h3 id="secondary-title" class="result-title">More results</h3>
+        <div id="grid-secondary" class="card-grid"><!-- secondary cards --></div>
+      </div>
+
+      <div id="grid-fallback" class="grid-fallback muted" hidden>
+        Couldn’t load the game list. Check <code>games.json</code> and try again.
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p class="muted">Your progress is saved locally in this browser.</p>
+      </div>
+    </footer>
+
+    <script src="./index.js" defer></script>
+  </body>
 </html>
-``
