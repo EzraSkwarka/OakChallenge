@@ -43,10 +43,7 @@ const LS_CAUGHT = `poke-caught:${PAGE_NS}`;
 ------------------------------ */
 
 const store = (() => {
-  let state = {
-    choices: {},
-    caught: {} // { [pokemonName]: true }
-  };
+  let state = { choices: {}, caught: {} };
   let listeners = [];
 
   function getState() {
@@ -75,16 +72,12 @@ function loadPersisted() {
   try {
     const c = JSON.parse(localStorage.getItem(LS_CHOICES) || "{}");
     for (const [k, v] of Object.entries(c)) choices[k] = norm(v);
-  } catch {
-    /* noop */
-  }
+  } catch {}
 
   let caught = {};
   try {
     caught = JSON.parse(localStorage.getItem(LS_CAUGHT) || "{}");
-  } catch {
-    /* noop */
-  }
+  } catch {}
 
   store.setState({ choices, caught });
 }
@@ -115,8 +108,7 @@ function toggleCaught(name) {
   if (!name) return;
   const current = store.getState();
   const caught = { ...current.caught };
-  if (caught[name]) delete caught[name];
-  else caught[name] = true;
+  caught[name] ? delete caught[name] : (caught[name] = true);
   saveCaught(caught);
   store.setState({ caught });
 }
@@ -128,30 +120,192 @@ function resetAll() {
 }
 
 /* -----------------------------
+   Sticky Section Offset
+------------------------------ */
+
+/** sets --chrome-offset to current .site-header height */
+function applyStickyOffset() {
+  const h = document.querySelector(".site-header");
+  const px = h ? `${h.clientHeight}px` : "0px";
+  document.documentElement.style.setProperty("--chrome-offset", px);
+}
+function initStickyOffset() {
+  applyStickyOffset();
+  window.addEventListener("resize", applyStickyOffset, { passive: true });
+  const header = document.querySelector(".site-header");
+  if (header && "ResizeObserver" in window) {
+    new ResizeObserver(applyStickyOffset).observe(header);
+  }
+}
+
+/* -----------------------------
+   Sticky Visual State
+------------------------------ */
+
+/** toggles .stuck on header rows for a subtle shadow while sticky */
+function initStickyVisualState() {
+  const rows = document.querySelectorAll("tr.section-header");
+  if (!rows.length) return;
+
+  const topPx =
+    parseFloat(
+      getComputedStyle(document.documentElement).getPropertyValue(
+        "--section-sticky-top"
+      )
+    ) || 0;
+
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((e) => {
+        const stuck =
+          e.boundingClientRect.top <= topPx && e.intersectionRatio < 1;
+        e.target.classList.toggle("stuck", stuck);
+      });
+    },
+    { root: null, threshold: [1.0] }
+  );
+
+  rows.forEach((r) => io.observe(r));
+}
+
+/* -----------------------------
+   Floating Section Header
+------------------------------ */
+
+/** ensures fixed bar + spacer exist */
+function ensureFloatingHeaderHost() {
+  const band = document.querySelector(".page-band") || document.body;
+
+  let spacer = document.getElementById("floating-section-spacer");
+  if (!spacer) {
+    spacer = document.createElement("div");
+    spacer.id = "floating-section-spacer";
+    spacer.className = "floating-section-spacer";
+    band.insertBefore(spacer, band.querySelector(".table-wrap"));
+  }
+
+  let bar = document.getElementById("floating-section");
+  if (!bar) {
+    bar = document.createElement("div");
+    bar.id = "floating-section";
+    bar.className = "floating-section";
+    bar.innerHTML = `
+      <div class="floating-section-inner">
+        <img alt="" hidden>
+        <span class="section-header-title"></span>
+      </div>
+    `;
+    band.insertBefore(bar, band.querySelector(".table-wrap"));
+  }
+
+  return { spacer, bar };
+}
+
+/** updates bar content from current section and sets spacer height */
+function updateFloatingHeader() {
+  const { spacer, bar } = ensureFloatingHeaderHost();
+  const inner = bar.querySelector(".floating-section-inner");
+  const img = inner.querySelector("img");
+  const titleSpan = inner.querySelector(".section-header-title");
+
+  const headers = Array.from(document.querySelectorAll("tr.section-header"));
+  if (!headers.length) {
+    bar.style.display = "none";
+    spacer.style.height = "0px";
+    return;
+  }
+
+  const offsetTop =
+    (parseFloat(
+      getComputedStyle(document.documentElement).getPropertyValue(
+        "--section-sticky-top"
+      )
+    ) || 0) + 1;
+
+  let current = null;
+  for (const tr of headers) {
+    const rect = tr.getBoundingClientRect();
+    if (rect.top <= offsetTop) current = tr;
+    else break;
+  }
+
+  if (!current) {
+    const first = headers[0];
+    if (first.getBoundingClientRect().top > offsetTop) {
+      bar.style.display = "none";
+      spacer.style.height = "0px";
+      return;
+    }
+    current = first;
+  }
+
+  bar.style.display = "";
+  const content = current.querySelector(".section-header-content");
+  const title =
+    content?.querySelector(".section-header-title")?.textContent || "";
+  const badgeEl = content?.querySelector(".section-header-img");
+  const badge = badgeEl?.getAttribute("src") || "";
+  const alt = badgeEl?.getAttribute("alt") || "";
+
+  titleSpan.textContent = title;
+  if (badge) {
+    img.src = badge;
+    img.alt = alt || "";
+    img.hidden = false;
+  } else {
+    img.hidden = true;
+  }
+
+  const barH = bar.getBoundingClientRect().height;
+  spacer.style.height = `${barH}px`;
+}
+
+/** init listeners */
+function initFloatingHeader() {
+  ensureFloatingHeaderHost();
+  updateFloatingHeader();
+  window.addEventListener("scroll", updateFloatingHeader, { passive: true });
+  window.addEventListener(
+    "resize",
+    () => {
+      updateFloatingHeader();
+      applyStickyOffset();
+    },
+    { passive: true }
+  );
+}
+
+/* -----------------------------
    Data Normalization / Model
 ------------------------------ */
 
-/**
- * Returns an ordered array of normalized rows to render.
- * Each entry has a stable __key and a __kind for the renderer.
- */
 function buildModel() {
   const { choices, caught } = store.getState();
   const out = [];
 
   for (const [groupTitle, def] of Object.entries(BADGE_GROUPS)) {
-    const rows = Array.isArray(def) ? def : def && Array.isArray(def.rows) ? def.rows : [];
+    const rows = Array.isArray(def)
+      ? def
+      : def && Array.isArray(def.rows)
+      ? def.rows
+      : [];
+
     const summary = def && typeof def === "object" ? def.summary || null : null;
 
-    // Header
-    out.push({ __kind: "header", __key: `header:${groupTitle}`, title: groupTitle });
+    const headerTitle = def?.headerTitle || groupTitle;
+    out.push({
+      __kind: "header",
+      __key: `header:${groupTitle}`,
+      title: headerTitle,
+      headerImg: def?.headerImg || null,
+      headerImgAlt: def?.headerImgAlt || "",
+    });
 
-    // Summary
     if (summary) {
       out.push({
         __kind: "summary",
         __key: `summary:${groupTitle}`,
-        text: summary
+        text: summary,
       });
     }
 
@@ -159,77 +313,66 @@ function buildModel() {
     const choiceKeys = [...new Set(choiceRows.map((r) => r.choiceKey))];
     const allChoicesMade = choiceKeys.every((k) => !!choices[k]);
 
-    const showChoiceRows = !allChoicesMade;
-
-    // Materialize in original order (choices shown only if not all group choices are made)
     for (let i = 0; i < rows.length; i++) {
       const r = rows[i];
 
       if (r.type === "choice") {
-        if (!showChoiceRows) continue;
+        if (allChoicesMade) continue;
 
         const prev = rows[i - 1];
         const next = rows[i + 1];
-        const isStart = !(prev && prev.type === "choice" && prev.choiceKey === r.choiceKey);
-        const isEnd = !(next && next.type === "choice" && next.choiceKey === r.choiceKey);
+        const isStart = !(prev && prev.type === "choice");
+        const isEnd = !(next && next.type === "choice");
 
-        // Subheader appears exactly once per contiguous block
         if (isStart) {
           out.push({
             __kind: "choiceSubheader",
-            __key: `choiceSubheader:${groupTitle}:${r.choiceKey}:${i}`,
-            __group: groupTitle,
-            label: `${cap(r.choiceKey)} — choose one`
+            __key: `choiceSubheader:${groupTitle}:${i}`,
+            label: `${cap(r.choiceKey)} — choose one`,
           });
         }
 
-        const nm = r.pokemon?.name || "Choice";
         out.push({
           __kind: "choice",
-          __key: `choice:${groupTitle}:${r.choiceKey}:${norm(r.choiceValue)}`,
-          __group: groupTitle,
+          __key: `choice:${groupTitle}:${norm(r.choiceValue)}`,
           choiceKey: r.choiceKey,
           choiceValue: norm(r.choiceValue),
-          pokemon: { name: nm, img: safeImg(r.pokemon?.img) },
+          pokemon: {
+            name: r.pokemon?.name || "Choice",
+            img: safeImg(r.pokemon?.img),
+          },
           method: r.method || "Pick an option",
           groupRunStart: isStart,
-          groupRunEnd: isEnd
+          groupRunEnd: isEnd,
         });
         continue;
       }
 
-      // Pokémon rows
       if (r.requires && !meetsRequirements(r, choices)) continue;
 
       const nm = r.pokemon?.name || "Unknown";
       out.push({
         __kind: "pokemon",
         __key: `pokemon:${groupTitle}:${nm}`,
-        __group: groupTitle,
         pokemon: { name: nm, img: safeImg(r.pokemon?.img) },
         method: r.method || "—",
-        caught: !!caught[nm]
+        caught: !!caught[nm],
       });
     }
 
-    // Progress at bottom ONLY if all group choices made
     if (allChoicesMade) {
-      const total = rows
-        .filter((r) => r.type !== "choice")
-        .filter((r) => !r.requires || meetsRequirements(r, choices))
-        .filter((r) => r.pokemon).length;
-
-      const caughtCount = rows
-        .filter((r) => r.type !== "choice")
-        .filter((r) => !r.requires || meetsRequirements(r, choices))
-        .filter((r) => r.pokemon && caught[r.pokemon.name]).length;
-
+      const total = rows.filter(
+        (r) =>
+          r.type !== "choice" && (!r.requires || meetsRequirements(r, choices))
+      ).length;
+      const caughtCount = rows.filter(
+        (r) => r.type !== "choice" && caught[r.pokemon?.name]
+      ).length;
       out.push({
         __kind: "progress",
         __key: `progress:${groupTitle}`,
-        group: groupTitle,
         total,
-        caught: caughtCount
+        caught: caughtCount,
       });
     }
   }
@@ -249,12 +392,8 @@ function meetsRequirements(row, choices) {
    DOM References
 ------------------------------ */
 
-function el(id) {
-  return document.getElementById(id);
-}
-function tbodyEl() {
-  return document.querySelector("#pokemon-table tbody");
-}
+const el = (id) => document.getElementById(id);
+const tbodyEl = () => document.querySelector("#pokemon-table tbody");
 
 /* -----------------------------
    Choice Status Chips
@@ -263,31 +402,25 @@ function tbodyEl() {
 function renderChoiceStatus() {
   const host = el("choice-status");
   if (!host) return;
-
   host.textContent = "";
+
   const { choices } = store.getState();
   for (const [key, value] of Object.entries(choices)) {
     const chip = document.createElement("div");
     chip.className = "chip";
-
-    const span = document.createElement("span");
-    span.textContent = `${cap(key)}: ${cap(value)}`;
+    chip.textContent = `${cap(key)}: ${cap(value)}`;
 
     const btn = document.createElement("button");
-    btn.type = "button";
     btn.textContent = "Change";
-    btn.addEventListener("click", () => {
-      clearChoice(key);
-    });
+    btn.onclick = () => clearChoice(key);
 
-    chip.appendChild(span);
     chip.appendChild(btn);
     host.appendChild(chip);
   }
 }
 
 /* -----------------------------
-   Row Factories (TR builders)
+   Row Factories
 ------------------------------ */
 
 function trHeader(row) {
@@ -295,7 +428,24 @@ function trHeader(row) {
   tr.className = "section-header";
   const td = document.createElement("td");
   td.colSpan = 3;
-  td.textContent = row.title;
+
+  const wrap = document.createElement("div");
+  wrap.className = "section-header-content";
+
+  if (row.headerImg) {
+    const img = document.createElement("img");
+    img.className = "section-header-img";
+    img.src = row.headerImg;
+    img.alt = row.headerImgAlt || "";
+    wrap.appendChild(img);
+  }
+
+  const title = document.createElement("span");
+  title.className = "section-header-title";
+  title.textContent = row.title;
+  wrap.appendChild(title);
+
+  td.appendChild(wrap);
   tr.appendChild(td);
   return tr;
 }
@@ -307,38 +457,6 @@ function trSummary(row) {
   td.colSpan = 3;
   td.textContent = row.text;
   tr.appendChild(td);
-  return tr;
-}
-
-function trProgress(row) {
-  const tr = document.createElement("tr");
-  tr.className = "section-progress progress-row";
-
-  const td = document.createElement("td");
-  td.colSpan = 3;
-
-  const bar = document.createElement("div");
-  bar.className = "progress-bar";
-
-  const fill = document.createElement("div");
-  fill.className = "progress-fill";
-  fill.style.width = "0%"; // start empty
-
-  const pct = row.total ? (row.caught / row.total) * 100 : 0;
-  requestAnimationFrame(() => {
-    fill.style.width = `${pct}%`; // animate
-  });
-
-  bar.appendChild(fill);
-
-  const label = document.createElement("div");
-  label.className = "progress-label";
-  label.textContent = `${row.caught} / ${row.total} caught`;
-
-  td.appendChild(bar);
-  td.appendChild(label);
-  tr.appendChild(td);
-
   return tr;
 }
 
@@ -355,35 +473,22 @@ function trChoiceSubheader(row) {
 function trChoice(row) {
   const tr = document.createElement("tr");
   tr.className = "row-choice compact-band";
-
   if (row.groupRunStart) tr.classList.add("choice-group-start");
   if (row.groupRunEnd) tr.classList.add("choice-group-end");
 
-  const tdP = document.createElement("td");
-  const wrap = document.createElement("div");
-  wrap.className = "pkm";
-  const img = document.createElement("img");
-  img.src = row.pokemon?.img;
-  img.alt = row.pokemon?.name || "Choice";
-  const name = document.createElement("span");
-  name.textContent = row.pokemon?.name || "Choice";
-  wrap.append(img, name);
-  tdP.appendChild(wrap);
+  tr.onclick = () => setChoice(row.choiceKey, row.choiceValue);
 
-  const tdM = document.createElement("td");
-  tdM.textContent = row.method || "Pick an option";
-
-  const tdA = document.createElement("td");
-  tdA.className = "center";
-  tdA.textContent = ""; // now empty
-
-  // Entire row is now clickable
-  const pick = () => setChoice(row.choiceKey, row.choiceValue);
-  tr.addEventListener("click", pick);
-
-  tr.append(tdP, tdM, tdA);
+  tr.innerHTML = `
+    <td><div class="pkm"><img src="${row.pokemon.img}"><span>${row.pokemon.name}</span></div></td>
+    <td>${row.method}</td>
+    <td class="center"></td>
+  `;
   return tr;
 }
+
+/* -----------------------------
+   Row Factory: Pokémon
+------------------------------ */
 
 function trPokemon(row) {
   const tr = document.createElement("tr");
@@ -393,12 +498,15 @@ function trPokemon(row) {
   const tdP = document.createElement("td");
   const wrap = document.createElement("div");
   wrap.className = "pkm";
-  const img = document.createElement("img");
-  img.src = row.pokemon.img;
-  img.alt = row.pokemon.name || "Pokémon";
+
+  const sprite = document.createElement("img");
+  sprite.src = row.pokemon.img;
+  sprite.alt = row.pokemon.name || "Pokémon";
+
   const name = document.createElement("span");
   name.textContent = row.pokemon.name || "Unknown";
-  wrap.append(img, name);
+
+  wrap.append(sprite, name);
   tdP.appendChild(wrap);
 
   const tdM = document.createElement("td");
@@ -410,19 +518,21 @@ function trPokemon(row) {
   const btn = document.createElement("button");
   btn.type = "button";
   btn.className = "catch-btn";
+
   const icon = document.createElement("img");
   icon.className = "catch-icon";
   icon.alt = row.caught ? "Caught" : "Uncaught";
   icon.src = row.caught ? POKEBALL_CAUGHT : POKEBALL_UNCAUGHT;
+
   btn.appendChild(icon);
 
-  const toggle = () => toggleCaught(row.pokemon.name);
   btn.addEventListener("click", (e) => {
     e.stopPropagation();
-    toggle();
+    toggleCaught(row.pokemon.name);
   });
+
   tr.addEventListener("click", (e) => {
-    if (!btn.contains(e.target)) toggle();
+    if (!btn.contains(e.target)) toggleCaught(row.pokemon.name);
   });
 
   tdC.appendChild(btn);
@@ -430,86 +540,78 @@ function trPokemon(row) {
   return tr;
 }
 
+function trProgress(row) {
+  const tr = document.createElement("tr");
+  tr.className = "section-progress progress-row";
+  const pct = row.total ? (row.caught / row.total) * 100 : 0;
+  tr.innerHTML = `
+    <td colspan="3">
+      <div class="progress-bar"><div class="progress-fill" style="width:${pct}%"></div></div>
+      <div class="progress-label">${row.caught} / ${row.total} caught</div>
+    </td>
+  `;
+  return tr;
+}
+
 /* -----------------------------
    Diffing Renderer
 ------------------------------ */
 
-const renderCtx = {
-  keyOrder: [],
-  rowNodes: new Map() // key -> tr
-};
+const renderCtx = { keyOrder: [], rowNodes: new Map() };
 
 function render() {
   renderChoiceStatus();
-
   const model = buildModel();
   const tbody = tbodyEl();
   if (!tbody) return;
 
+  const tbl = el("pokemon-table");
+  tbl?.classList.toggle(
+    "has-data",
+    model.some((r) => r.__kind === "pokemon" || r.__kind === "choice")
+  );
+
   const newKeys = model.map((m) => m.__key);
   const sameShape =
-    newKeys.length === renderCtx.keyOrder.length && newKeys.every((k, i) => k === renderCtx.keyOrder[i]);
+    newKeys.length === renderCtx.keyOrder.length &&
+    newKeys.every((k, i) => k === renderCtx.keyOrder[i]);
 
   if (!sameShape) {
-    // FULL REBUILD — no fade-out, only fade-in
-    const frag = document.createDocumentFragment();
     renderCtx.rowNodes.clear();
+    tbody.textContent = "";
+    const frag = document.createDocumentFragment();
 
     for (const row of model) {
       let tr;
       if (row.__kind === "header") tr = trHeader(row);
       else if (row.__kind === "summary") tr = trSummary(row);
-      else if (row.__kind === "progress") tr = trProgress(row);
+      else if (row.__kind === "choiceSubheader") tr = trChoiceSubheader(row);
       else if (row.__kind === "choice") tr = trChoice(row);
       else if (row.__kind === "pokemon") tr = trPokemon(row);
-      else if (row.__kind === "choiceSubheader") tr = trChoiceSubheader(row);
+      else if (row.__kind === "progress") tr = trProgress(row);
 
       if (tr) {
         tr.dataset.key = row.__key;
-        // fade-in on creation
         tr.classList.add("fade-in");
         setTimeout(() => tr.classList.remove("fade-in"), 170);
-
         renderCtx.rowNodes.set(row.__key, tr);
         frag.appendChild(tr);
       }
     }
 
-    tbody.textContent = "";
     tbody.appendChild(frag);
     renderCtx.keyOrder = newKeys;
     return;
   }
 
-  // PATCH PATH — shapes are identical: do fade-out for removed keys (none), and patch dynamic bits
-
-  // (There are no removed keys in same-shape mode; still keep this guard for future extensions)
-
   for (const row of model) {
-    const tr = renderCtx.rowNodes.get(row.__key);
-    if (!tr) continue;
-
-    if (row.__kind === "progress") {
-      const bar = tr.querySelector(".progress-fill");
-      const label = tr.querySelector(".progress-label");
-      if (bar) {
-        const pct = row.total ? (row.caught / row.total) * 100 : 0;
-        requestAnimationFrame(() => {
-          bar.style.width = `${pct}%`;
-        });
-      }
-      if (label) {
-        label.textContent = `${row.caught} / ${row.total} caught`;
-      }
-    } else if (row.__kind === "pokemon") {
+    if (row.__kind === "pokemon") {
+      const tr = renderCtx.rowNodes.get(row.__key);
+      if (!tr) continue;
       tr.classList.toggle("caught-true", !!row.caught);
       const icon = tr.querySelector(".catch-icon");
-      if (icon) {
-        icon.src = row.caught ? "../images/pokeball.png" : "../images/pokeball_dark.png";
-        icon.alt = row.caught ? "Caught" : "Uncaught";
-      }
+      if (icon) icon.src = row.caught ? POKEBALL_CAUGHT : POKEBALL_UNCAUGHT;
     }
-    // header/summary/choice rows are static after creation
   }
 }
 
@@ -518,23 +620,22 @@ function render() {
 ------------------------------ */
 
 function boot() {
-  const titleEl = el("game-title");
-  if (titleEl) titleEl.textContent = GAME_TITLE;
+  const t = document.getElementById("game-title");
+  if (t) t.textContent = GAME_TITLE;
 
+  initStickyOffset();
   loadPersisted();
   render();
+  initFloatingHeader();
 
-  const unsub = store.subscribe(() => {
+  store.subscribe(() => {
     render();
+    updateFloatingHeader();
   });
 
-  const resetBtn = el("reset-all");
-  if (resetBtn) {
-    resetBtn.addEventListener("click", () => {
-      if (confirm("Reset all choices and caught progress?")) resetAll();
-    });
-  }
-  return () => unsub();
+  const resetBtn = document.getElementById("reset-all");
+  resetBtn?.addEventListener("click", () => {
+    if (confirm("Reset all choices and caught progress?")) resetAll();
+  });
 }
-
 document.addEventListener("DOMContentLoaded", boot);

@@ -6,9 +6,11 @@ const gameData = {
   gameTitle: "Pokémon FireRed",
 
   badgeGroups: {
-    "Pre Badge 1: Brock": {
-      summary:
-        "This first part will cover everything you can do BEFORE you get that first badge from Brock. This is probably the most daunting part of the challenge…",
+    "Pre Badge 1": {
+      headerTitle: "Pre Badge 1: Brock",
+      headerImg: "../images/badges/boulder-badge.png",
+      headerImgAlt: "Boulder Badge",
+      summary: "This is the pre badge 1 section summary",
       rows: [
         /* ---------------------------
            Starter Choice Rows
@@ -19,9 +21,9 @@ const gameData = {
           choiceValue: "bulbasaur",
           pokemon: {
             img: "../images/FRLG/Spr_3f_001.png",
-            name: "Bulbasaur"
+            name: "Bulbasaur",
           },
-          method: "Pick this starter to show the Bulbasaur line"
+          method: "Pick this starter to show the Bulbasaur line",
         },
         {
           type: "choice",
@@ -29,9 +31,9 @@ const gameData = {
           choiceValue: "charmander",
           pokemon: {
             img: "../images/FRLG/Spr_3f_004.png",
-            name: "Charmander"
+            name: "Charmander",
           },
-          method: "Pick this starter to show the Charmander line"
+          method: "Pick this starter to show the Charmander line",
         },
         {
           type: "choice",
@@ -39,9 +41,9 @@ const gameData = {
           choiceValue: "squirtle",
           pokemon: {
             img: "../images/FRLG/Spr_3f_007.png",
-            name: "Squirtle"
+            name: "Squirtle",
           },
-          method: "Pick this starter to show the Squirtle line"
+          method: "Pick this starter to show the Squirtle line",
         },
 
         /* ---------------------------
@@ -50,29 +52,29 @@ const gameData = {
         {
           pokemon: {
             img: "../images/FRLG/Spr_3f_001.png",
-            name: "Bulbasaur"
+            name: "Bulbasaur",
           },
           method: "Choose as Starter",
           caught: false,
-          requires: { starter: "bulbasaur" }
+          requires: { starter: "bulbasaur" },
         },
         {
           pokemon: {
             img: "../images/FRLG/Spr_3f_002.png",
-            name: "Ivysaur"
+            name: "Ivysaur",
           },
           method: "Evolve from Bulbasaur at Lvl. 16",
           caught: false,
-          requires: { starter: "bulbasaur" }
+          requires: { starter: "bulbasaur" },
         },
         {
           pokemon: {
             img: "../images/FRLG/Spr_3f_003.png",
-            name: "Venusaur"
+            name: "Venusaur",
           },
           method: "Evolve from Ivysaur at Lvl. 32",
           caught: false,
-          requires: { starter: "bulbasaur" }
+          requires: { starter: "bulbasaur" },
         },
 
         /* ---------------------------
@@ -81,29 +83,29 @@ const gameData = {
         {
           pokemon: {
             img: "../images/FRLG/Spr_3f_004.png",
-            name: "Charmander"
+            name: "Charmander",
           },
           method: "Choose as Starter",
           caught: false,
-          requires: { starter: "charmander" }
+          requires: { starter: "charmander" },
         },
         {
           pokemon: {
             img: "../images/FRLG/Spr_3f_005.png",
-            name: "Charmeleon"
+            name: "Charmeleon",
           },
           method: "Evolve from Charmander at Lvl. 16",
           caught: false,
-          requires: { starter: "charmander" }
+          requires: { starter: "charmander" },
         },
         {
           pokemon: {
             img: "../images/FRLG/Spr_3f_006.png",
-            name: "Charizard"
+            name: "Charizard",
           },
           method: "Evolve from Charmeleon at Lvl. 36",
           caught: false,
-          requires: { starter: "charmander" }
+          requires: { starter: "charmander" },
         },
 
         /* ---------------------------
@@ -112,29 +114,29 @@ const gameData = {
         {
           pokemon: {
             img: "../images/FRLG/Spr_3f_007.png",
-            name: "Squirtle"
+            name: "Squirtle",
           },
           method: "Choose as Starter",
           caught: false,
-          requires: { starter: "squirtle" }
+          requires: { starter: "squirtle" },
         },
         {
           pokemon: {
             img: "../images/FRLG/Spr_3f_008.png",
-            name: "Wartortle"
+            name: "Wartortle",
           },
           method: "Evolve from Squirtle at Lvl. 16",
           caught: false,
-          requires: { starter: "squirtle" }
+          requires: { starter: "squirtle" },
         },
         {
           pokemon: {
             img: "../images/FRLG/Spr_3f_009.png",
-            name: "Blastoise"
+            name: "Blastoise",
           },
           method: "Evolve from Wartortle at Lvl. 36",
           caught: false,
-          requires: { starter: "squirtle" }
+          requires: { starter: "squirtle" },
         },
 
         /* ---------------------------
@@ -143,132 +145,132 @@ const gameData = {
         {
           pokemon: {
             img: "../images/FRLG/Spr_3f_010.png",
-            name: "Caterpie"
+            name: "Caterpie",
           },
           method: "Catch in the Viridian Forest",
-          caught: false
+          caught: false,
         },
         {
           pokemon: {
             img: "../images/FRLG/Spr_3f_011.png",
-            name: "Metapod"
+            name: "Metapod",
           },
           method: "Evolve from Caterpie at level 7",
-          caught: false
+          caught: false,
         },
         {
           pokemon: {
             img: "../images/FRLG/Spr_3f_012.png",
-            name: "Butterfree"
+            name: "Butterfree",
           },
           method: "Evolve from Metapod at level 10",
-          caught: false
+          caught: false,
         },
         {
           pokemon: {
             img: "../images/FRLG/Spr_3f_013.png",
-            name: "Weedle"
+            name: "Weedle",
           },
           method: "Catch in the Viridian Forest",
-          caught: false
+          caught: false,
         },
         {
           pokemon: {
             img: "../images/FRLG/Spr_3f_014.png",
-            name: "Kakuna"
+            name: "Kakuna",
           },
           method: "Evolve from Weedle at level 7",
-          caught: false
+          caught: false,
         },
         {
           pokemon: {
             img: "../images/FRLG/Spr_3f_015.png",
-            name: "Beedrill"
+            name: "Beedrill",
           },
           method: "Evolve from Kakuna at level 10",
-          caught: false
+          caught: false,
         },
         {
           pokemon: {
             img: "../images/FRLG/Spr_3f_016.png",
-            name: "Pidgey"
+            name: "Pidgey",
           },
           method: "Catch on Route 1",
-          caught: false
+          caught: false,
         },
         {
           pokemon: {
             img: "../images/FRLG/Spr_3f_017.png",
-            name: "Pidgeotto"
+            name: "Pidgeotto",
           },
           method: "Evolve from Pidgey at level 18",
-          caught: false
+          caught: false,
         },
         {
           pokemon: {
             img: "../images/FRLG/Spr_3f_018.png",
-            name: "Pidgeot"
+            name: "Pidgeot",
           },
           method: "Evolve from Pidgeotto at level 36",
-          caught: false
+          caught: false,
         },
         {
           pokemon: {
             img: "../images/FRLG/Spr_3f_019.png",
-            name: "Rattata"
+            name: "Rattata",
           },
           method: "Catch on Route 1",
-          caught: false
+          caught: false,
         },
         {
           pokemon: {
             img: "../images/FRLG/Spr_3f_020.png",
-            name: "Raticate"
+            name: "Raticate",
           },
           method: "Evolve from Rattata at level 20",
-          caught: false
+          caught: false,
         },
         {
           pokemon: {
             img: "../images/FRLG/Spr_3f_021.png",
-            name: "Spearow"
+            name: "Spearow",
           },
           method: "Catch on Route 22; You will need two for a trade later",
-          caught: false
+          caught: false,
         },
         {
           pokemon: {
             img: "../images/FRLG/Spr_3f_022.png",
-            name: "Fearow"
+            name: "Fearow",
           },
           method: "Evolve from Spearow at level 20",
-          caught: false
+          caught: false,
         },
         {
           pokemon: {
             img: "../images/FRLG/Spr_3f_025.png",
-            name: "Pikachu"
+            name: "Pikachu",
           },
           method: "Viridian Forest",
-          caught: false
+          caught: false,
         },
         {
           pokemon: {
             img: "../images/FRLG/Spr_3f_056.png",
-            name: "Mankey"
+            name: "Mankey",
           },
           method: "Catch on Route 22",
-          caught: false
+          caught: false,
         },
         {
           pokemon: {
             img: "../images/FRLG/Spr_3f_057.png",
-            name: "Primeape"
+            name: "Primeape",
           },
           method: "Evolve from Mankey at level 28",
-          caught: false
-        }
-      ]
+          caught: false,
+        },
+      ],
     },
     "Pre Badge 2: Misty": {
       summary:
@@ -285,9 +287,9 @@ const gameData = {
           choiceValue: "dome",
           pokemon: {
             img: "link",
-            name: "Dome Fossil"
+            name: "Dome Fossil",
           },
-          method: "Pick this starter to show the Bulbasaur line"
+          method: "Pick this starter to show the Bulbasaur line",
         },
         {
           type: "choice",
@@ -295,167 +297,175 @@ const gameData = {
           choiceValue: "helix",
           pokemon: {
             img: "link",
-            name: "Helix Fossil"
+            name: "Helix Fossil",
           },
-          method: "Pick this starter to show the Charmander line"
+          method: "Pick this starter to show the Charmander line",
         },
 
         /* ---------------------------
            Wild Pokémon
         ---------------------------- */
-        { pokemon: { img: "../images/FRLG/Spr_3f_023.png", name: "Enkas" }, method: "Catch on Route 4", caught: false },
+        {
+          pokemon: { img: "../images/FRLG/Spr_3f_023.png", name: "Enkas" },
+          method: "Catch on Route 4",
+          caught: false,
+        },
         {
           pokemon: { img: "../images/FRLG/Spr_3f_024.png", name: "Arbok" },
           method: "Evolve from Enkas at level 22",
-          caught: false
+          caught: false,
         },
         {
           pokemon: { img: "../images/FRLG/Spr_3f_029.png", name: "Nidoran F" },
           method: "Catch on Route 3",
-          caught: false
+          caught: false,
         },
         {
           pokemon: { img: "../images/FRLG/Spr_3f_030.png", name: "Nidorina" },
           method: "Evolve from Nidoran F at level 16",
-          caught: false
+          caught: false,
         },
         {
           pokemon: { img: "../images/FRLG/Spr_3f_031.png", name: "Nidoqueen" },
           method: "Use a Moon Stone on ",
-          caught: false
+          caught: false,
         },
         {
           pokemon: { img: "../images/FRLG/Spr_3f_032.png", name: "Nidoran M" },
           method: "Catch on Route 3",
-          caught: false
+          caught: false,
         },
         {
           pokemon: { img: "../images/FRLG/Spr_3f_033.png", name: "Nidorino" },
           method: "Evolve from Nidoran M at level 16",
-          caught: false
+          caught: false,
         },
         {
           pokemon: { img: "../images/FRLG/Spr_3f_034.png", name: "Nidoking" },
           method: "Use a Moon Stone on ",
-          caught: false
+          caught: false,
         },
         {
           pokemon: { img: "../images/FRLG/Spr_3f_035.png", name: "Clefairy" },
           method: "Catch in Mt. Moon",
-          caught: false
+          caught: false,
         },
         {
           pokemon: { img: "../images/FRLG/Spr_3f_036.png", name: "Clefable" },
           method: "Use a Moon Stone on ",
-          caught: false
+          caught: false,
         },
         {
           pokemon: { img: "../images/FRLG/Spr_3f_039.png", name: "Jigglypuff" },
           method: "Catch on Route 3",
-          caught: false
+          caught: false,
         },
         {
           pokemon: { img: "../images/FRLG/Spr_3f_040.png", name: "Wigglytuff" },
           method: "Use a Moon Stone on ",
-          caught: false
+          caught: false,
         },
         {
           pokemon: { img: "../images/FRLG/Spr_3f_041.png", name: "Zubat" },
           method: "Catch in Mt. Moon",
-          caught: false
+          caught: false,
         },
         {
           pokemon: { img: "../images/FRLG/Spr_3f_042.png", name: "Golbat" },
           method: "Evolve from Zubat at level 22",
-          caught: false
+          caught: false,
         },
         {
           pokemon: { img: "../images/FRLG/Spr_3f_043.png", name: "Oddish" },
           method: "Catch on Route 24",
-          caught: false
+          caught: false,
         },
         {
           pokemon: { img: "../images/FRLG/Spr_3f_044.png", name: "Gloom" },
           method: "Evolve from Oddish at level 21",
-          caught: false
+          caught: false,
         },
         {
           pokemon: { img: "../images/FRLG/Spr_3f_046.png", name: "Paras" },
           method: "Catch in Mt. Moon",
-          caught: false
+          caught: false,
         },
         {
           pokemon: { img: "../images/FRLG/Spr_3f_047.png", name: "Parasect" },
           method: "Evolve from Paras at level 24",
-          caught: false
+          caught: false,
         },
         {
           pokemon: { img: "../images/FRLG/Spr_3f_050.png", name: "Diglett" },
           method: "Catch in Diglet Cave",
-          caught: false
+          caught: false,
         },
         {
           pokemon: { img: "../images/FRLG/Spr_3f_051.png", name: "Dugtrio" },
           method: "Evolve from Diglet at level 26",
-          caught: false
+          caught: false,
         },
         {
           pokemon: { img: "../images/FRLG/Spr_3f_052.png", name: "Meowth" },
           method: "Catch on Route 5",
-          caught: false
+          caught: false,
         },
         {
           pokemon: { img: "../images/FRLG/Spr_3f_053.png", name: "Persian" },
           method: "Evolve from Meowth at level 28",
-          caught: false
+          caught: false,
         },
-        { pokemon: { img: "../images/FRLG/Spr_3f_063.png", name: "Abra" }, method: "Catch on Route 24", caught: false },
+        {
+          pokemon: { img: "../images/FRLG/Spr_3f_063.png", name: "Abra" },
+          method: "Catch on Route 24",
+          caught: false,
+        },
         {
           pokemon: { img: "../images/FRLG/Spr_3f_064.png", name: "Kadabra" },
           method: "Evolve from Abra at level 16",
-          caught: false
+          caught: false,
         },
         {
           pokemon: { img: "../images/FRLG/Spr_3f_074.png", name: "Geodude" },
           method: "Catch in Mt. Moon",
-          caught: false
+          caught: false,
         },
         {
           pokemon: { img: "../images/FRLG/Spr_3f_075.png", name: "Graveler" },
           method: "Evlolve from Geodude at level 25",
-          caught: false
+          caught: false,
         },
         {
           pokemon: { img: "../images/FRLG/Spr_3f_083.png", name: "Farfetch'd" },
           method: "Trade for Spearow in Vermilion City",
-          caught: false
+          caught: false,
         },
         {
           pokemon: { img: "../images/FRLG/Spr_3f_096.png", name: "Drowzee" },
           method: "Catch on Route 11",
-          caught: false
+          caught: false,
         },
         {
           pokemon: { img: "../images/FRLG/Spr_3f_097.png", name: "Hypno" },
           method: "Evolve from Drowzee at level 26",
-          caught: false
+          caught: false,
         },
         {
           pokemon: { img: "../images/FRLG/Spr_3f_122.png", name: "Mr. Mime" },
           method: "Trade for Abra at the house North of Diglet Cave",
-          caught: false
+          caught: false,
         },
         {
           pokemon: { img: "../images/FRLG/Spr_3f_129.png", name: "Magikarp" },
           method: "Buy a from from the salesman in the pokemon center",
-          caught: false
+          caught: false,
         },
         {
           pokemon: { img: "../images/FRLG/Spr_3f_130.png", name: "Gyarados" },
           method: "Evole from Magikarp at level 20",
-          caught: false
-        }
-      ]
+          caught: false,
+        },
+      ],
     },
     "Pre Badge 3: Koga": {
       summary: "",
@@ -469,9 +479,9 @@ const gameData = {
           choiceValue: "vaporeon",
           pokemon: {
             img: "../images/FRLG/Spr_3f_134.png",
-            name: "Vaporeon"
+            name: "Vaporeon",
           },
-          method: "Pick this Eeveelution to show the Vaporeon line"
+          method: "Pick this Eeveelution to show the Vaporeon line",
         },
 
         {
@@ -480,9 +490,9 @@ const gameData = {
           choiceValue: "jolteon",
           pokemon: {
             img: "../images/FRLG/Spr_3f_135.png",
-            name: "Jolteon"
+            name: "Jolteon",
           },
-          method: "Pick this Eeveelution to show the Jolteon line"
+          method: "Pick this Eeveelution to show the Jolteon line",
         },
         {
           type: "choice",
@@ -490,9 +500,9 @@ const gameData = {
           choiceValue: "flareon",
           pokemon: {
             img: "../images/FRLG/Spr_3f_136.png",
-            name: "Flareon"
+            name: "Flareon",
           },
-          method: "Pick this Eeveelution to show the Flareon line"
+          method: "Pick this Eeveelution to show the Flareon line",
         },
         /* ---------------------------
            Dojo Choice Rows
@@ -503,9 +513,9 @@ const gameData = {
           choiceValue: "hitmonlee",
           pokemon: {
             img: "../images/FRLG/Spr_3f_106.png",
-            name: "Hitmonlee"
+            name: "Hitmonlee",
           },
-          method: "Pick this Hitmon to show the Hitmonlee line"
+          method: "Pick this Hitmon to show the Hitmonlee line",
         },
         {
           type: "choice",
@@ -513,9 +523,9 @@ const gameData = {
           choiceValue: "hitmonchan",
           pokemon: {
             img: "../images/FRLG/Spr_3f_107.png",
-            name: "Hitmonchan"
+            name: "Hitmonchan",
           },
-          method: "Pick this Hitmon to show the Hitmonchan line"
+          method: "Pick this Hitmon to show the Hitmonchan line",
         },
         /* ---------------------------
            Wild Pokémon
@@ -523,148 +533,153 @@ const gameData = {
         {
           pokemon: { img: "../images/FRLG/Spr_3f_026.png", name: "Raichu" },
           method: "Use a Thunder Stone on Pikachu",
-          caught: false
+          caught: false,
         },
         {
           pokemon: { img: "../images/FRLG/Spr_3f_045.png", name: "Vileplume" },
           method: "Use a Leaf Stone on Gloom",
-          caught: false
+          caught: false,
         },
         {
           pokemon: { img: "../images/FRLG/Spr_3f_048.png", name: "Venonat" },
           method: "Catch on Route 14",
-          caught: false
+          caught: false,
         },
         {
           pokemon: { img: "../images/FRLG/Spr_3f_049.png", name: "Venomoth" },
           method: "Evolve From Venonat at level 31",
-          caught: false
+          caught: false,
         },
         {
           pokemon: { img: "../images/FRLG/Spr_3f_054.png", name: "Psyduck" },
           method: "Fish in Viridian City",
-          caught: false
+          caught: false,
         },
         {
           pokemon: { img: "../images/FRLG/Spr_3f_055.png", name: "Golduck" },
           method: "Evolve From Psyduck at level 33; Need two",
-          caught: false
+          caught: false,
         },
         {
           pokemon: { img: "../images/FRLG/Spr_3f_058.png", name: "Growlithe" },
           method: "Catch on Route 8",
-          caught: false
+          caught: false,
         },
         {
           pokemon: { img: "../images/FRLG/Spr_3f_059.png", name: "Arcanine" },
           method: "Use a Fire Stone on Growlithe",
-          caught: false
+          caught: false,
         },
         {
           pokemon: { img: "../images/FRLG/Spr_3f_060.png", name: "Poliwag" },
           method: "Fish in Viridian City",
-          caught: false
+          caught: false,
         },
         {
           pokemon: { img: "../images/FRLG/Spr_3f_061.png", name: "Poliwhirl" },
           method: "Evolve From Poliwag at level 25; Need Two",
-          caught: false
+          caught: false,
         },
         {
           pokemon: { img: "../images/FRLG/Spr_3f_062.png", name: "Poliwrath" },
           method: "Use a Water Stone on Poliwhirl",
-          caught: false
+          caught: false,
         },
         {
           pokemon: { img: "../images/FRLG/Spr_3f_066.png", name: "Machop" },
           method: "Catch in Rock Tunnel",
-          caught: false
+          caught: false,
         },
         {
           pokemon: { img: "../images/FRLG/Spr_3f_067.png", name: "Machoke" },
           method: "Evolve From Machop at level 28",
-          caught: false
+          caught: false,
         },
         {
           pokemon: { img: "../images/FRLG/Spr_3f_084.png", name: "Doduo" },
           method: "Catch on Route 16",
-          caught: false
+          caught: false,
         },
         {
           pokemon: { img: "../images/FRLG/Spr_3f_085.png", name: "Dodrio" },
           method: "Evolve From Doduo at level 31",
-          caught: false
+          caught: false,
         },
         {
           pokemon: { img: "../images/FRLG/Spr_3f_088.png", name: "Grimer" },
           method: "Fish in Celadon City",
-          caught: false
+          caught: false,
         },
         {
           pokemon: { img: "../images/FRLG/Spr_3f_089.png", name: "Muk" },
           method: "Evolve From Grimer at level 38",
-          caught: false
+          caught: false,
         },
         {
           pokemon: { img: "../images/FRLG/Spr_3f_090.png", name: "Shellder" },
           method: "Fish in Pallet Town",
-          caught: false
+          caught: false,
         },
         {
           pokemon: { img: "../images/FRLG/Spr_3f_091.png", name: "Cloyster" },
           method: "Use a Water Stone on Shellder",
-          caught: false
+          caught: false,
         },
         {
           pokemon: { img: "../images/FRLG/Spr_3f_092.png", name: "Gastly" },
           method: "Catch in Pokemon Tower",
-          caught: false
+          caught: false,
         },
         {
           pokemon: { img: "../images/FRLG/Spr_3f_093.png", name: "Haunter" },
           method: "Evolve From Gastly at level 25",
-          caught: false
+          caught: false,
         },
         {
           pokemon: { img: "../images/FRLG/Spr_3f_095.png", name: "Onix" },
           method: "Catch in Rock Tunnel",
-          caught: false
+          caught: false,
         },
         {
           pokemon: { img: "../images/FRLG/Spr_3f_098.png", name: "Krabby" },
           method: "Fish in Pallet Town",
-          caught: false
+          caught: false,
         },
         {
           pokemon: { img: "../images/FRLG/Spr_3f_099.png", name: "Kingler" },
           method: "Evolve From Krabby at level 28",
-          caught: false
+          caught: false,
         },
         {
           pokemon: { img: "../images/FRLG/Spr_3f_100.png", name: "Voltorb" },
-          method: "East of Cerulean City, cut the tree down and pass through route 9 to go to route 10.",
-          caught: false
+          method:
+            "East of Cerulean City, cut the tree down and pass through route 9 to go to route 10.",
+          caught: false,
         },
         {
           pokemon: { img: "../images/FRLG/Spr_3f_101.png", name: "Electrode" },
           method: "Evolve From Voltorb at level 30",
-          caught: false
+          caught: false,
         },
-        { pokemon: { img: "../images/FRLG/Spr_3f_102.png", name: "Exeggcute" }, method: "Safari Zone", caught: false },
+        {
+          pokemon: { img: "../images/FRLG/Spr_3f_102.png", name: "Exeggcute" },
+          method: "Safari Zone",
+          caught: false,
+        },
         {
           pokemon: { img: "../images/FRLG/Spr_3f_103.png", name: "Exeggutor" },
           method: "Use a Leaf Stone on Exeggcute",
-          caught: false
+          caught: false,
         },
         {
           pokemon: { img: "../images/FRLG/Spr_3f_104.png", name: "Cubone" },
           method: "Catch in Pokemon Tower",
-          caught: false
+          caught: false,
         },
         {
           pokemon: { img: "../images/FRLG/Spr_3f_105.png", name: "Marowak" },
           method: "Evolve From Cubone at level 28",
-          caught: false
+          caught: false,
         },
         /* ---------------------------
            Hitmonlee Line
@@ -672,11 +687,11 @@ const gameData = {
         {
           pokemon: {
             img: "../images/FRLG/Spr_3f_106.png",
-            name: "Hitmonlee"
+            name: "Hitmonlee",
           },
           method: "Choose as Starter",
           caught: false,
-          requires: { dojo: "hitmonlee" }
+          requires: { dojo: "hitmonlee" },
         },
 
         /* ---------------------------
@@ -685,71 +700,99 @@ const gameData = {
         {
           pokemon: {
             img: "../images/FRLG/Spr_3f_107.png",
-            name: "Hitmonchan"
+            name: "Hitmonchan",
           },
           method: "Choose as Starter",
           caught: false,
-          requires: { dojo: "Hitmonchan" }
+          requires: { dojo: "Hitmonchan" },
         },
 
         {
           pokemon: { img: "../images/FRLG/Spr_3f_108.png", name: "Lickitung" },
           method: "Trade for Golduck",
-          caught: false
+          caught: false,
         },
-        { pokemon: { img: "../images/FRLG/Spr_3f_111.png", name: "Rhyhorn" }, method: "Safari Zone", caught: false },
+        {
+          pokemon: { img: "../images/FRLG/Spr_3f_111.png", name: "Rhyhorn" },
+          method: "Safari Zone",
+          caught: false,
+        },
         {
           pokemon: { img: "../images/FRLG/Spr_3f_112.png", name: "Rhydon" },
           method: "Evolve From Rhyhorn at level 42",
-          caught: false
+          caught: false,
         },
-        { pokemon: { img: "../images/FRLG/Spr_3f_113.png", name: "Chansey" }, method: "Safari Zone", caught: false },
-        { pokemon: { img: "../images/FRLG/Spr_3f_115.png", name: "Kangaskhan" }, method: "Safari Zone", caught: false },
+        {
+          pokemon: { img: "../images/FRLG/Spr_3f_113.png", name: "Chansey" },
+          method: "Safari Zone",
+          caught: false,
+        },
+        {
+          pokemon: { img: "../images/FRLG/Spr_3f_115.png", name: "Kangaskhan" },
+          method: "Safari Zone",
+          caught: false,
+        },
         {
           pokemon: { img: "../images/FRLG/Spr_3f_116.png", name: "Horsea" },
           method: "Fish in Pallet Town",
-          caught: false
+          caught: false,
         },
         {
           pokemon: { img: "../images/FRLG/Spr_3f_117.png", name: "Seadra" },
           method: "Evolve From Horsea at level 32",
-          caught: false
+          caught: false,
         },
         {
           pokemon: { img: "../images/FRLG/Spr_3f_118.png", name: "Goldeen" },
           method: "Fish in Viridian City",
-          caught: false
+          caught: false,
         },
         {
           pokemon: { img: "../images/FRLG/Spr_3f_119.png", name: "Seaking" },
           method: "Evolve From Goldeen at level 33",
-          caught: false
+          caught: false,
         },
-        { pokemon: { img: "../images/FRLG/Spr_3f_123.png", name: "Scyther" }, method: "Safari Zone", caught: false },
+        {
+          pokemon: { img: "../images/FRLG/Spr_3f_123.png", name: "Scyther" },
+          method: "Safari Zone",
+          caught: false,
+        },
         {
           pokemon: { img: "../images/FRLG/Spr_3f_124.png", name: "Jynx" },
           method: "Trade for Poliwhirl",
-          caught: false
+          caught: false,
         },
-        { pokemon: { img: "../images/FRLG/Spr_3f_128.png", name: "Tauros" }, method: "Safari Zone", caught: false },
-        { pokemon: { img: "../images/FRLG/Spr_3f_131.png", name: "Lapras" }, method: "Silph Co", caught: false },
+        {
+          pokemon: { img: "../images/FRLG/Spr_3f_128.png", name: "Tauros" },
+          method: "Safari Zone",
+          caught: false,
+        },
+        {
+          pokemon: { img: "../images/FRLG/Spr_3f_131.png", name: "Lapras" },
+          method: "Silph Co",
+          caught: false,
+        },
         {
           pokemon: { img: "../images/FRLG/Spr_3f_132.png", name: "Ditto" },
           method: "Catch on Route 14",
-          caught: false
+          caught: false,
         },
-        { pokemon: { img: "../images/FRLG/Spr_3f_133.png", name: "Eevee" }, method: "Celadon City", caught: false },
+        {
+          pokemon: { img: "../images/FRLG/Spr_3f_133.png", name: "Eevee" },
+          method: "Celadon City",
+          caught: false,
+        },
         /* ---------------------------
            Flareon Line
         ---------------------------- */
         {
           pokemon: {
             img: "../images/FRLG/Spr_3f_001.png",
-            name: "Flareon"
+            name: "Flareon",
           },
           method: "Choose as Starter",
           caught: false,
-          requires: { eeveelution: "flareon" }
+          requires: { eeveelution: "flareon" },
         },
 
         /* ---------------------------
@@ -758,11 +801,11 @@ const gameData = {
         {
           pokemon: {
             img: "../images/FRLG/Spr_3f_001.png",
-            name: "Jolteon"
+            name: "Jolteon",
           },
           method: "Choose as Starter",
           caught: false,
-          requires: { eeveelution: "jolteon" }
+          requires: { eeveelution: "jolteon" },
         },
 
         /* ---------------------------
@@ -771,38 +814,38 @@ const gameData = {
         {
           pokemon: {
             img: "../images/FRLG/Spr_3f_001.png",
-            name: "Vaporeon"
+            name: "Vaporeon",
           },
           method: "Choose as Starter",
           caught: false,
-          requires: { eeveelution: "vaporeon" }
+          requires: { eeveelution: "vaporeon" },
         },
         {
           pokemon: { img: "../images/FRLG/Spr_3f_137.png", name: "Porygon" },
           method: "Celadon City Game Corner",
-          caught: false
+          caught: false,
         },
         {
           pokemon: { img: "../images/FRLG/Spr_3f_143.png", name: "Snorlax" },
           method: "Catch on Route 12",
-          caught: false
+          caught: false,
         },
         {
           pokemon: { img: "../images/FRLG/Spr_3f_147.png", name: "Dratini" },
           method: "Safari Zone; Game Corner",
-          caught: false
+          caught: false,
         },
         {
           pokemon: { img: "../images/FRLG/Spr_3f_148.png", name: "Dragonair" },
           method: "Evolve From Dratini at level 30",
-          caught: false
+          caught: false,
         },
         {
           pokemon: { img: "../images/FRLG/Spr_3f_149.png", name: "Dragonite" },
           method: "Evolve From Dragonair at level 55",
-          caught: false
-        }
-      ]
+          caught: false,
+        },
+      ],
     },
     "Pre Badge 4: Blaine": {
       summary: "",
@@ -810,60 +853,76 @@ const gameData = {
         /* ---------------------------
            Wild Pokémon
         ---------------------------- */
-        { pokemon: { img: "../images/FRLG/Spr_3f_072.png", name: "Tentacool" }, method: "Surf", caught: false },
+        {
+          pokemon: { img: "../images/FRLG/Spr_3f_072.png", name: "Tentacool" },
+          method: "Surf",
+          caught: false,
+        },
         {
           pokemon: { img: "../images/FRLG/Spr_3f_073.png", name: "Tentacruel" },
           method: "Evlove from Tentacool at level 30",
-          caught: false
+          caught: false,
         },
-        { pokemon: { img: "../images/FRLG/Spr_3f_081.png", name: "Magnemite" }, method: "Power Plant", caught: false },
+        {
+          pokemon: { img: "../images/FRLG/Spr_3f_081.png", name: "Magnemite" },
+          method: "Power Plant",
+          caught: false,
+        },
         {
           pokemon: { img: "../images/FRLG/Spr_3f_082.png", name: "Magneton" },
           method: "Evolv from Magnemite at level 30",
-          caught: false
+          caught: false,
         },
-        { pokemon: { img: "../images/FRLG/Spr_3f_086.png", name: "Seel" }, method: "Seafoam Island", caught: false },
+        {
+          pokemon: { img: "../images/FRLG/Spr_3f_086.png", name: "Seel" },
+          method: "Seafoam Island",
+          caught: false,
+        },
         {
           pokemon: { img: "../images/FRLG/Spr_3f_087.png", name: "Dewgong" },
           method: "Evolve from See at level 34",
-          caught: false
+          caught: false,
         },
         {
           pokemon: { img: "../images/FRLG/Spr_3f_109.png", name: "Koffing" },
           method: "Pokemon Mansion",
-          caught: false
+          caught: false,
         },
         {
           pokemon: { img: "../images/FRLG/Spr_3f_110.png", name: "Weezing" },
           method: "Evolve from Koffing at level 35",
-          caught: false
+          caught: false,
         },
         {
           pokemon: { img: "../images/FRLG/Spr_3f_114.png", name: "Tangela" },
           method: "Pallet Town + Surf",
-          caught: false
+          caught: false,
         },
-        { pokemon: { img: "../images/FRLG/Spr_3f_125.png", name: "Electabuzz" }, method: "Power Plant", caught: false },
+        {
+          pokemon: { img: "../images/FRLG/Spr_3f_125.png", name: "Electabuzz" },
+          method: "Power Plant",
+          caught: false,
+        },
         /* ---------------------------
            Helix Line
         ---------------------------- */
         {
           pokemon: {
             img: "../images/FRLG/Spr_3f_138.png",
-            name: "Omanyte"
+            name: "Omanyte",
           },
           method: "Choose Helix Fossil",
           caught: false,
-          requires: { fossil: "helix" }
+          requires: { fossil: "helix" },
         },
         {
           pokemon: {
             img: "../images/FRLG/Spr_3f_139.png",
-            name: "Omastar"
+            name: "Omastar",
           },
           method: "Evlove Omanyte at level 40",
           caught: false,
-          requires: { fossil: "helix" }
+          requires: { fossil: "helix" },
         },
         /* ---------------------------
            Dome Line
@@ -871,39 +930,47 @@ const gameData = {
         {
           pokemon: {
             img: "../images/FRLG/Spr_3f_140.png",
-            name: "Kabuto"
+            name: "Kabuto",
           },
           method: "Choose Dome Fossil",
           caught: false,
-          requires: { fossil: "dome" }
+          requires: { fossil: "dome" },
         },
         {
           pokemon: {
             img: "../images/FRLG/Spr_3f_141.png",
-            name: "Kabutops"
+            name: "Kabutops",
           },
           method: "Evlove Kabuto at level 40",
           caught: false,
-          requires: { fossil: "dome" }
+          requires: { fossil: "dome" },
         },
         {
           pokemon: { img: "../images/FRLG/Spr_3f_142.png", name: "Aerodactyl" },
           method: "Cinnabar Island",
-          caught: false
+          caught: false,
         },
-        { pokemon: { img: "../images/FRLG/Spr_3f_145.png", name: "Zapdos" }, method: "Power Plant", caught: false }
-      ]
+        {
+          pokemon: { img: "../images/FRLG/Spr_3f_145.png", name: "Zapdos" },
+          method: "Power Plant",
+          caught: false,
+        },
+      ],
     },
     "Pre Badge 5: Erika": {
       summary: "",
       rows: [
-        { pokemon: { img: "../images/FRLG/Spr_3f_077.png", name: "Ponyta" }, method: "One Island", caught: false },
+        {
+          pokemon: { img: "../images/FRLG/Spr_3f_077.png", name: "Ponyta" },
+          method: "One Island",
+          caught: false,
+        },
         {
           pokemon: { img: "../images/FRLG/Spr_3f_078.png", name: "Rapidash" },
           method: "Evolve from Ponyta at level 40",
-          caught: false
-        }
-      ]
+          caught: false,
+        },
+      ],
     },
     "Pre Elite Four": {
       summary: "",
@@ -911,14 +978,18 @@ const gameData = {
         {
           pokemon: { img: "../images/FRLG/Spr_3f_144.png", name: "Articuno" },
           method: "Seafoam Island",
-          caught: false
+          caught: false,
         },
-        { pokemon: { img: "../images/FRLG/Spr_3f_146.png", name: "Moltres" }, method: "Mt. Ember", caught: false }
-      ]
+        {
+          pokemon: { img: "../images/FRLG/Spr_3f_146.png", name: "Moltres" },
+          method: "Mt. Ember",
+          caught: false,
+        },
+      ],
     },
     "Post Game": {
       summary: "",
-      rows: []
-    }
-  }
+      rows: [],
+    },
+  },
 };
