@@ -203,13 +203,33 @@ tr.row-choice.compact-band:hover td {
 /* -----------------------------
    Section Summary
 ------------------------------ */
-.section-summary td {
-  background: #fff;
+.summary-block {
+  display: grid;
+  gap: 6px;
+}
+.summary-short {
   color: var(--muted);
   font-size: 13px;
   line-height: 1.45;
-  padding: 0.5rem 0.9rem 0.8rem;
+}
+.summary-accordion {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #fff;
+}
+.summary-accordion > summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 6px 10px;
+  font-weight: 600;
+}
+.summary-accordion[open] > summary {
   border-bottom: 1px solid var(--border);
+}
+.summary-long {
+  padding: 8px 10px;
+  font-size: 13px;
+  color: #111;
 }
 
 /* -----------------------------

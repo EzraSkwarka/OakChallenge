@@ -289,7 +289,6 @@ function initFloatingHeader() {
 /* -----------------------------
    Data Normalization / Model
 ------------------------------ */
-
 function buildModel() {
   const { choices, caught } = store.getState();
   const out = [];
@@ -301,7 +300,23 @@ function buildModel() {
       ? def.rows
       : [];
 
-    const summary = def && typeof def === "object" ? def.summary || null : null;
+    const summaryShort =
+      def && typeof def === "object"
+        ? (typeof def.summaryShort === "string" && def.summaryShort) ||
+          (typeof def.summary === "string" && def.summary) ||
+          null
+        : null;
+
+    const summaryHtml =
+      def && typeof def === "object" && typeof def.summaryHtml === "string"
+        ? def.summaryHtml
+        : null;
+
+    const summaryOpen = !!(
+      def &&
+      typeof def === "object" &&
+      def.summaryOpen === true
+    );
 
     const headerTitle = def?.headerTitle || groupTitle;
     out.push({
@@ -312,11 +327,13 @@ function buildModel() {
       headerImgAlt: def?.headerImgAlt || "",
     });
 
-    if (summary) {
+    if (summaryShort || summaryHtml) {
       out.push({
         __kind: "summary",
         __key: `summary:${groupTitle}`,
-        text: summary,
+        short: summaryShort,
+        html: summaryHtml,
+        open: summaryOpen,
       });
     }
 
@@ -333,7 +350,6 @@ function buildModel() {
 
         const prev = rows[i - 1];
         const next = rows[i + 1];
-
         const isStart = !(
           prev &&
           prev.type === "choice" &&
@@ -354,14 +370,16 @@ function buildModel() {
           });
         }
 
-        const nm = r.pokemon?.name || "Choice";
         out.push({
           __kind: "choice",
           __key: `choice:${groupTitle}:${r.choiceKey}:${norm(r.choiceValue)}`,
           __group: groupTitle,
           choiceKey: r.choiceKey,
           choiceValue: norm(r.choiceValue),
-          pokemon: { name: nm, img: safeImg(r.pokemon?.img) },
+          pokemon: {
+            name: r.pokemon?.name || "Choice",
+            img: safeImg(r.pokemon?.img),
+          },
           method: r.method || "Pick an option",
           groupRunStart: isStart,
           groupRunEnd: isEnd,
@@ -383,13 +401,14 @@ function buildModel() {
     }
 
     if (allChoicesMade) {
-      const total = rows.filter(
-        (r) =>
-          r.type !== "choice" && (!r.requires || meetsRequirements(r, choices))
-      ).length;
-      const caughtCount = rows.filter(
-        (r) => r.type !== "choice" && caught[r.pokemon?.name]
-      ).length;
+      const total = rows
+        .filter((r) => r.type !== "choice")
+        .filter((r) => !r.requires || meetsRequirements(r, choices)).length;
+
+      const caughtCount = rows
+        .filter((r) => r.type !== "choice")
+        .filter((r) => r.pokemon && caught[r.pokemon.name]).length;
+
       out.push({
         __kind: "progress",
         __key: `progress:${groupTitle}`,
@@ -400,14 +419,6 @@ function buildModel() {
   }
 
   return out;
-}
-
-function meetsRequirements(row, choices) {
-  if (!row.requires) return true;
-  for (const [k, v] of Object.entries(row.requires)) {
-    if (norm(choices[k]) !== norm(v)) return false;
-  }
-  return true;
 }
 
 /* -----------------------------
@@ -492,12 +503,42 @@ function trHeader(row) {
   return tr;
 }
 
+/* -----------------------------
+   Row Factory: Summary (rich)
+------------------------------ */
 function trSummary(row) {
   const tr = document.createElement("tr");
   tr.className = "section-summary";
   const td = document.createElement("td");
   td.colSpan = 3;
-  td.textContent = row.text;
+
+  const wrap = document.createElement("div");
+  wrap.className = "summary-block";
+
+  if (row.short) {
+    const short = document.createElement("div");
+    short.className = "summary-short";
+    short.textContent = row.short;
+    wrap.appendChild(short);
+  }
+
+  if (row.html) {
+    const details = document.createElement("details");
+    details.className = "summary-accordion";
+    if (row.open) details.setAttribute("open", "");
+
+    const sum = document.createElement("summary");
+    sum.textContent = "More info";
+
+    const long = document.createElement("div");
+    long.className = "summary-long";
+    long.innerHTML = row.html;
+
+    details.append(sum, long);
+    wrap.appendChild(details);
+  }
+
+  td.appendChild(wrap);
   tr.appendChild(td);
   return tr;
 }
@@ -774,6 +815,37 @@ function updateCaptureUI() {
       mark.alt = isCaught ? "Caught" : "Uncaught";
     }
   });
+}
+
+/* -----------------------------
+   Requirements Check
+------------------------------ */
+function meetsRequirements(row, choices) {
+  if (!row || !row.requires) return true;
+
+  // supports object: { key: "value", ... }
+  if (typeof row.requires === "object" && !Array.isArray(row.requires)) {
+    for (const [k, v] of Object.entries(row.requires)) {
+      if ((choices[k] ?? "").toString().trim().toLowerCase() !== (v ?? "").toString().trim().toLowerCase()) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  if (Array.isArray(row.requires)) {
+    for (const req of row.requires) {
+      const k = req?.key;
+      const v = req?.value;
+      if (!k) return false;
+      if ((choices[k] ?? "").toString().trim().toLowerCase() !== (v ?? "").toString().trim().toLowerCase()) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  return true;
 }
 
 /* -----------------------------

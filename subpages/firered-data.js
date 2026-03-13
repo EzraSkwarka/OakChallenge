@@ -10,7 +10,11 @@ const gameData = {
       headerTitle: "Pre Badge 1: Brock",
       headerImg: "../images/badges/boulder-badge.png",
       headerImgAlt: "Boulder Badge",
-      summary: "This is the pre badge 1 section summary",
+      summaryShort: "This is the pre badge 1 section summary",
+      summaryHtml:
+        "<p>This is the <strong>FANCY</strong>pre badge 1 section summary.</p>",
+      summaryOpen: true,
+
       rows: [
         /* ---------------------------
            Starter Choice Rows
