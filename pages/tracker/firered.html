@@ -1,0 +1,44 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <link rel="stylesheet" href="/assets/css/base.css" />
+  <link rel="stylesheet" href="/assets/css/chrome.css" />
+  <link rel="stylesheet" href="/assets/css/tracker.css" />
+
+  <title>Pokémon FireRed — Oak Tracker</title>
+</head>
+<body>
+  <div id="site-header-host"></div>
+
+  <div class="page-band">
+    <div class="container">
+      <h1 id="game-title"></h1>
+      <div id="choice-status" class="choice-status"></div>
+    </div>
+
+    <div class="table-wrap">
+      <table id="pokemon-table" aria-label="Pokémon capture status">
+        <thead>
+          <tr><th>Pokémon</th><th>Method</th><th class="center">Action / Caught</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <div class="footer-actions">
+      <button id="reset-all" type="button" class="reset-btn">Reset all progress</button>
+    </div>
+  </div>
+
+  <div id="site-footer-host"></div>
+
+  <script src="/assets/js/site-chrome.js" defer></script>
+  <script src="/data/firered/progression.js" defer></script>
+  <script src="/assets/js/oak-tracker.js" defer></script>
+</body>
+</html>
+``
