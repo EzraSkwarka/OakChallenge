@@ -1,73 +1,44 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Professor Oak's Challenge</title>
-    <link rel="stylesheet" href="./index.css" />
-  </head>
-  <body>
-    <header class="site-header">
-      <div class="container">
-        <h1>Professor Oak's Challenge</h1>
-        <p class="tagline">
-          Catch <strong>every obtainable Pokémon</strong> before earning each badge — including gift, trades,
-          evolutions, and special encounters.
-        </p>
-        <details class="rules" aria-label="Challenge overview">
-          <summary>What is the challenge?</summary>
-          <div class="rules-body">
-            <ul>
-              <li>
-                Before taking each Gym, obtain <em>all Pokémon currently obtainable</em> with legal in-game methods.
-              </li>
-              <li>Evolutions that require items are required if the items are available at that point.</li>
-              <li>
-                Optional: No glitches/ACE; follow your preferred community rules for dupes, gift Pokémon, and
-                tradebacks.
-              </li>
-            </ul>
-            <p class="muted">
-              This site helps track progress per game, grouped by badge and persists your progress locally in your
-              browser.
-            </p>
-          </div>
-        </details>
-      </div>
-    </header>
 
-    <main class="container">
-      <h2 class="section-title">Choose a Game</h2>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Professor Oak's Challenge</title>
+  <link rel="stylesheet" href="/site.css" />
+  <script src="/site-chrome.js" defer></script>
+  <link rel="stylesheet" href="./index.css" />
+</head>
 
-      <!-- Search -->
-      <div class="search-wrap" role="search">
-        <label for="search" class="search-label">Search (name, region, or generation)</label>
-        <input id="search" name="search" type="search" placeholder="e.g., Kanto, Gen 3, FireRed" autocomplete="off" />
-      </div>
+<body>
 
-      <!-- Primary matches -->
-      <div id="primary-wrap" aria-live="polite">
-        <h3 id="primary-title" class="result-title" hidden>Top matches</h3>
-        <div id="grid" class="card-grid"><!-- primary cards --></div>
-      </div>
+  <main class="container">
+    <h2 class="section-title">Choose a Game</h2>
 
-      <!-- Secondary matches -->
-      <div id="secondary-wrap" aria-live="polite" hidden>
-        <h3 id="secondary-title" class="result-title">More results</h3>
-        <div id="grid-secondary" class="card-grid"><!-- secondary cards --></div>
-      </div>
+    <!-- Search -->
+    <div class="search-wrap" role="search">
+      <label for="search" class="search-label">Search (name, region, or generation)</label>
+      <input id="search" name="search" type="search" placeholder="e.g., Kanto, Gen 3, FireRed" autocomplete="off" />
+    </div>
 
-      <div id="grid-fallback" class="grid-fallback muted" hidden>
-        Couldn’t load the game list. Check <code>games.json</code> and try again.
-      </div>
-    </main>
+    <!-- Primary matches -->
+    <div id="primary-wrap" aria-live="polite">
+      <h3 id="primary-title" class="result-title" hidden>Top matches</h3>
+      <div id="grid" class="card-grid"><!-- primary cards --></div>
+    </div>
 
-    <footer class="site-footer">
-      <div class="container">
-        <p class="muted">Your progress is saved locally in this browser.</p>
-      </div>
-    </footer>
+    <!-- Secondary matches -->
+    <div id="secondary-wrap" aria-live="polite" hidden>
+      <h3 id="secondary-title" class="result-title">More results</h3>
+      <div id="grid-secondary" class="card-grid"><!-- secondary cards --></div>
+    </div>
 
-    <script src="./index.js" defer></script>
-  </body>
+    <div id="grid-fallback" class="grid-fallback muted" hidden>
+      Couldn’t load the game list. Check <code>games.json</code> and try again.
+    </div>
+  </main>
+
+  <script src="./index.js" defer></script>
+</body>
+
 </html>

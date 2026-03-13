@@ -25,7 +25,8 @@
    Base Layout
 ------------------------------------------------------- */
 body {
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif;
   background: var(--bg);
   color: var(--text);
   margin: 2rem 0;
@@ -160,7 +161,7 @@ tr.row-choice.compact-band td:first-child::before {
 
 /* Subtle top separator for first row in block */
 tr.row-choice.compact-band.choice-group-start td {
-  box-shadow: inset 0 1px 0 0 rgba(0,0,0,0.06);
+  box-shadow: inset 0 1px 0 0 rgba(0, 0, 0, 0.06);
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
 }
@@ -222,7 +223,9 @@ tr.row-choice.compact-band:hover td {
   border-bottom: 1px solid var(--border);
 }
 
-.progress-row { padding: 0; }
+.progress-row {
+  padding: 0;
+}
 
 .progress-bar {
   position: relative;
@@ -257,7 +260,10 @@ tr.fade-in {
   animation: rowFadeIn 160ms ease-out forwards;
 }
 @keyframes rowFadeIn {
-  to { opacity: 1; transform: translateY(0); }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 tr.fade-out {
@@ -266,7 +272,10 @@ tr.fade-out {
   animation: rowFadeOut 160ms ease-in forwards;
 }
 @keyframes rowFadeOut {
-  to { opacity: 0; transform: translateY(-4px); }
+  to {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
 }
 
 /* -------------------------------------------------------
@@ -340,5 +349,45 @@ tbody tr.row-normal .catch-btn:hover img.catch-icon {
 /* -------------------------------------------------------
    Utility
 ------------------------------------------------------- */
-.muted { color: var(--muted); font-size: 12px; }
-.center { text-align: center; }
+.muted {
+  color: var(--muted);
+  font-size: 12px;
+}
+.center {
+  text-align: center;
+}
+
+/* Shared 90% content band for subpages */
+.page-band {
+  width: 90vw; /* middle 90% of the viewport */
+  max-width: 1400px; /* keep your same max width */
+  margin: 0 auto; /* center the whole band */
+}
+
+/* Inside the band, all primary blocks use the full band width */
+.page-band .container,
+.page-band .table-wrap,
+.page-band .footer-actions {
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+/* Title area (left aligned by default) */
+.page-band .container h1 {
+  text-align: left; /* explicit, though it's default */
+}
+
+/* Table: use auto margins to center the table shell within the band */
+.page-band .table-wrap {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Reset row: right-aligned within the band */
+.page-band .footer-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 1rem 0 2rem;
+}

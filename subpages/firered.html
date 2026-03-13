@@ -1,16 +1,23 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Pokémon – FireRed</title>
-    <link rel="stylesheet" href="../style.css" />
-  </head>
-  <body>
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Pokémon – FireRed</title>
+  <link rel="stylesheet" href="/site.css" />
+  <script src="/site-chrome.js" defer></script>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+
+<body>
+  <div class="page-band">
+    <!-- Title + choice chip area (left aligned) -->
     <div class="container">
-      <h1>Pokémon – FireRed</h1>
+      <h1 id="game-title"></h1>
       <div id="choice-status" class="choice-status"></div>
     </div>
 
+    <!-- Table (centered) -->
     <div class="table-wrap">
       <table id="pokemon-table" aria-label="Pokémon capture status">
         <thead>
@@ -24,12 +31,14 @@
       </table>
     </div>
 
+    <!-- Reset (right aligned) -->
     <div class="footer-actions">
       <button id="reset-all" type="button" class="reset-btn">Reset all progress</button>
     </div>
+  </div>
 
-    <script src="./firered-data.js"></script>
-    <script src="../script.js"></script>
-  </body>
+  <script src="./firered-data.js"></script>
+  <script src="../script.js"></script>
+</body>
+
 </html>
-``
