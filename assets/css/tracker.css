@@ -25,6 +25,20 @@
 }
 
 /* -----------------------------
+   Tracker: Page Reset
+------------------------------ */
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+#site-header-host {
+  margin: 0;
+  padding: 0;
+  display: block;
+}
+
+/* -----------------------------
      Base
   ------------------------------ */
 body {
@@ -32,7 +46,7 @@ body {
     sans-serif;
   background: var(--bg);
   color: var(--text);
-  margin: 2rem 0;
+  /* margin: 2rem 0; */
 }
 
 .container {
@@ -74,26 +88,24 @@ body {
 }
 
 /* -----------------------------
-     Table Shell
-  ------------------------------ */
+   Table Shell
+------------------------------ */
 .table-wrap {
-  width: 90vw;
-  max-width: 1400px;
+  width: var(--band-width);
+  max-width: var(--band-max);
   margin: 0 auto;
   border: 1px solid var(--border);
-  border-radius: 10px;
-  background: var(--bg);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
   overflow-x: auto;
   overflow-y: visible;
 }
-
 table {
   border-collapse: collapse;
   width: 100%;
   font-size: 14px;
 }
-
 thead th {
   text-align: left;
   background: var(--bg-alt);
@@ -103,11 +115,13 @@ thead th {
   border-bottom: 1px solid var(--border);
   padding: 0.75rem 0.9rem;
 }
-
 tbody td {
   border-bottom: 1px solid var(--border);
   padding: 0.7rem 0.9rem;
   vertical-align: middle;
+}
+tbody tr.row-normal:hover {
+  background: var(--hover);
 }
 
 /* -----------------------------
@@ -319,7 +333,8 @@ tbody tr.row-normal .catch-btn:hover img.catch-icon {
   place-items: center;
   background: var(--bg-alt);
   border: 1px solid var(--border);
-  border-radius: 8px;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
 }
 
 .pkm-card-sprite {
@@ -342,7 +357,7 @@ tbody tr.row-normal .catch-btn:hover img.catch-icon {
 .pkm-card-name {
   text-align: center;
   font-size: 12px;
-  color: #111;
+  color: var(--text);
   line-height: 1.2;
 }
 
@@ -356,8 +371,8 @@ tbody tr.row-normal .catch-btn:hover img.catch-icon {
   border-color: var(--border);
 }
 
-.pkm-card.is-caught:hover .pkm-card-thumb {
-  background: var(--caught-hover);
+.pkm-card:is(:hover, :focus-visible) .pkm-card-thumb {
+  background: var(--hover);
 }
 
 @media (max-width: 360px) {
@@ -548,29 +563,41 @@ tr.fade-out {
 }
 
 /* -----------------------------
-     Floating section header 
-  ------------------------------ */
+   Floating section header 
+------------------------------ */
 .floating-section {
   position: sticky;
   top: 0;
   z-index: 100;
   background: transparent;
-  border: none;
 }
-
 .floating-section-inner {
-  width: 90vw;
-  max-width: 1400px;
+  width: var(--band-width);
+  max-width: var(--band-max);
   margin: 0 auto;
   padding: 0.6rem 0.9rem;
   display: flex;
   align-items: center;
   gap: 10px;
-  background: var(--bg-alt);
+  background: var(--surface);
   border: 1px solid var(--border);
   border-bottom: none;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  border-top-left-radius: var(--radius-md);
+  border-top-right-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+.floating-controls {
+  margin-left: auto;
+  display: inline-flex;
+  gap: 6px;
+}
+.view-btn {
+  composes: btn from global;
+  padding: 4px 10px;
+  font-size: 12px;
+}
+.view-btn.active {
+  background: var(--bg-alt);
 }
 
 .floating-section img {
@@ -583,30 +610,8 @@ tr.fade-out {
   display: none;
 }
 
-.floating-controls {
-  margin-left: auto;
-  display: inline-flex;
-  gap: 6px;
-}
-
-.view-btn {
-  border: 1px solid var(--border);
-  background: #fff;
-  color: #111;
-  font-size: 12px;
-  padding: 4px 8px;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
 .view-btn:hover {
   background: var(--hover);
-}
-
-.view-btn.active {
-  background: var(--bg-alt);
-  border-color: var(--border);
-  font-weight: 600;
 }
 
 /* -----------------------------
@@ -682,6 +687,233 @@ tr.fade-out {
 }
 .pkm-card.is-caught:hover .pkm-card-thumb {
   background: var(--caught-hover);
+}
+
+/* -----------------------------
+   Section Summary (dark-mode aware)
+------------------------------ */
+.section-summary td {
+  background: var(--surface);
+  color: var(--muted);
+  border-bottom: 1px solid var(--border);
+}
+
+/* -----------------------------
+   Table Section Headers (dark-mode aware)
+------------------------------ */
+.section-header td {
+  background: var(--bg-alt);
+  color: var(--text);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+/* -----------------------------
+   Choice Subheader Row (dark-mode aware)
+------------------------------ */
+.choice-subheader-row td {
+  background: var(--bg-alt);
+  color: var(--text);
+  border-left: 3px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+/* -----------------------------
+   Choice Rows (banded) — themeable bands
+------------------------------ */
+tr.row-choice.compact-band td {
+  background: var(--choice-band);
+}
+tr.row-choice.compact-band:hover td {
+  background: var(--choice-band-hover);
+}
+
+/* Light theme defaults (fallbacks if base.css didn't set them) */
+:root {
+  --choice-band: color-mix(in srgb, #f5d9b5 6%, var(--surface));
+  --choice-band-hover: color-mix(in srgb, #f5d9b5 12%, var(--surface));
+}
+
+/* Dark theme overrides for choice band tint */
+:root[data-theme="dark"] {
+  --choice-band: color-mix(in srgb, #f1c48a 8%, var(--surface));
+  --choice-band-hover: color-mix(in srgb, #f1c48a 16%, var(--surface));
+}
+
+/* -----------------------------
+   Pokémon Sprite Backgrounds (list mode)
+------------------------------ */
+.pkm img {
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+
+/* -----------------------------
+   Progress Row (ensure surface in dark mode)
+------------------------------ */
+.section-progress td {
+  background: var(--surface);
+  color: var(--muted);
+  border-bottom: 1px solid var(--border);
+}
+.progress-bar {
+  background: color-mix(in srgb, var(--border) 60%, transparent);
+}
+.progress-label {
+  color: var(--text);
+}
+
+/* -----------------------------
+   General Row Hover/States (use variables)
+------------------------------ */
+tbody tr.row-normal:hover {
+  background: var(--hover);
+}
+.row-normal.is-caught {
+  background: var(--caught);
+}
+.row-normal.is-caught:hover {
+  background: var(--caught-hover);
+}
+
+/* -----------------------------
+   Section Summary (accordion, theme-aware)
+------------------------------ */
+.summary-block {
+  display: grid;
+  gap: 6px;
+}
+.summary-short {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.summary-accordion {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md, 10px);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm, 0 1px 2px rgba(2, 6, 23, 0.05));
+  overflow: hidden;
+}
+
+.summary-accordion > summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 8px 12px;
+  font-weight: 600;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.summary-accordion > summary:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.summary-accordion[open] > summary {
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-alt);
+}
+
+.summary-long {
+  padding: 10px 12px;
+  font-size: 13px;
+  color: var(--text);
+  background: var(--surface);
+  line-height: 1.45;
+}
+
+.summary-long p {
+  margin: 0 0 0.6rem 0;
+}
+.summary-long ul,
+.summary-long ol {
+  margin: 0.4rem 0 0.6rem 1.1rem;
+}
+.summary-long li {
+  margin: 0.2rem 0;
+}
+.summary-long a {
+  color: var(--focus);
+  text-decoration: underline;
+}
+.summary-long code,
+.summary-long pre {
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm, 8px);
+}
+.summary-long code {
+  padding: 0 0.25rem;
+}
+.summary-long pre {
+  padding: 0.6rem 0.8rem;
+  overflow: auto;
+}
+
+/* disclosure caret */
+.summary-accordion > summary::marker,
+.summary-accordion > summary::-webkit-details-marker {
+  display: none;
+}
+
+.summary-accordion > summary::before {
+  content: "▸";
+  display: inline-block;
+  transform: translateY(1px);
+  color: var(--muted);
+}
+
+.summary-accordion[open] > summary::before {
+  content: "▾";
+  color: var(--muted);
+}
+/* -----------------------------
+   View Mode Buttons (theme-aware)
+------------------------------ */
+.section-header-controls,
+.floating-controls {
+  display: inline-flex;
+  gap: 6px;
+  margin-left: auto;
+}
+
+.view-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  font-size: 12px;
+  border-radius: var(--radius-sm, 8px);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.view-btn:hover {
+  background: var(--bg-alt);
+}
+
+.view-btn:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.view-btn.active {
+  background: var(--bg-alt);
+  border-color: var(--border);
+  font-weight: 600;
+  color: var(--text);
+}
+
+/* optional: keep label contrast high in dark mode */
+:root[data-theme="dark"] .view-btn.active {
+  background: var(--bg-alt);
+  color: var(--text);
 }
 
 /* -----------------------------

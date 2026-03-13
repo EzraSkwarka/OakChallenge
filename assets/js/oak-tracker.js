@@ -32,6 +32,19 @@ const slug = (s) =>
 const safeImg = (src) => (!src || src === "link" ? PLACEHOLDER_SRC : src);
 
 /* -----------------------------
+   View Mode Buttons Sync
+------------------------------ */
+function syncViewButtons() {
+  const isGrid = VIEW_MODE === "grid";
+  document
+    .querySelectorAll(".view-btn.view-list")
+    .forEach((b) => b.classList.toggle("active", !isGrid));
+  document
+    .querySelectorAll(".view-btn.view-grid")
+    .forEach((b) => b.classList.toggle("active", isGrid));
+}
+
+/* -----------------------------
    Validate / Load Game Data
 ------------------------------ */
 
@@ -128,15 +141,17 @@ function resetAll() {
 }
 
 /* -----------------------------
-View Mode
+   View Mode
 ------------------------------ */
 const VIEW_LS = `poke-view:${PAGE_NS}`;
 let VIEW_MODE = localStorage.getItem(VIEW_LS) === "grid" ? "grid" : "list";
+
 function setViewMode(mode) {
   VIEW_MODE = mode === "grid" ? "grid" : "list";
   localStorage.setItem(VIEW_LS, VIEW_MODE);
   render();
   updateFloatingHeader();
+  syncViewButtons();
 }
 
 /* -----------------------------
@@ -222,8 +237,8 @@ function ensureFloatingHeaderHost() {
         <span class="section-header-title"></span>
         <div class="floating-controls">
           <button type="button" class="view-btn view-list">List</button>
-          <button type="button" class="view-btn view-grid">Grid</button>
-        </div>
+         <button type="button" class="view-btn view-grid">Grid</button>
+       </div>      
       </div>
     `;
     if (headerHost) headerHost.insertAdjacentElement("afterend", bar);
@@ -491,15 +506,13 @@ function trHeader(row) {
 
   const btnList = document.createElement("button");
   btnList.type = "button";
-  btnList.className =
-    "view-btn view-list" + (VIEW_MODE === "list" ? " active" : "");
+  btnList.className = "view-btn view-list";
   btnList.textContent = "List";
   btnList.onclick = () => setViewMode("list");
 
   const btnGrid = document.createElement("button");
   btnGrid.type = "button";
-  btnGrid.className =
-    "view-btn view-grid" + (VIEW_MODE === "grid" ? " active" : "");
+  btnGrid.className = "view-btn view-grid";
   btnGrid.textContent = "Grid";
   btnGrid.onclick = () => setViewMode("grid");
 
@@ -834,7 +847,10 @@ function meetsRequirements(row, choices) {
   // supports object: { key: "value", ... }
   if (typeof row.requires === "object" && !Array.isArray(row.requires)) {
     for (const [k, v] of Object.entries(row.requires)) {
-      if ((choices[k] ?? "").toString().trim().toLowerCase() !== (v ?? "").toString().trim().toLowerCase()) {
+      if (
+        (choices[k] ?? "").toString().trim().toLowerCase() !==
+        (v ?? "").toString().trim().toLowerCase()
+      ) {
         return false;
       }
     }
@@ -846,7 +862,10 @@ function meetsRequirements(row, choices) {
       const k = req?.key;
       const v = req?.value;
       if (!k) return false;
-      if ((choices[k] ?? "").toString().trim().toLowerCase() !== (v ?? "").toString().trim().toLowerCase()) {
+      if (
+        (choices[k] ?? "").toString().trim().toLowerCase() !==
+        (v ?? "").toString().trim().toLowerCase()
+      ) {
         return false;
       }
     }
@@ -912,6 +931,7 @@ function render() {
     updateCaptureUI();
     adjustGridJustification();
     updateFloatingHeader();
+    syncViewButtons();
     return;
   }
 
@@ -943,6 +963,7 @@ function render() {
   updateCaptureUI();
   adjustGridJustification();
   updateFloatingHeader();
+  syncViewButtons();
 }
 
 /* -----------------------------

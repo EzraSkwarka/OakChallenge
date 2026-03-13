@@ -1,37 +1,13 @@
 /* -----------------------------
-   Root essentials (inherits from base.css)
+   Site Header
 ------------------------------ */
-:root {
-  --border: #d1d5db;
-  --bg: #ffffff;
-  --bg-alt: #f9fafb;
-  --text: #111827;
-  --muted: #6b7280;
-  --hover: #f3f4f6;
-  --focus: #3b82f6;
-  --radius: 12px;
-}
-
-/* -----------------------------
-     Shared band container
-  ------------------------------ */
-.container {
-  width: 90vw;
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 1.2rem 0;
-}
-
-/* -----------------------------
-     Site Header
-  ------------------------------ */
 .site-header {
   background: var(--bg);
   border-bottom: 1px solid var(--border);
 }
 .site-header .container {
-  width: 90vw;
-  max-width: 1400px;
+  width: var(--band-width, 90vw);
+  max-width: var(--band-max, 1400px);
   margin: 0 auto;
   padding: 0.4rem 0 0.8rem;
   display: flex;
@@ -41,26 +17,19 @@
 .site-header-bar {
   width: 100%;
   display: flex;
-  justify-content: flex-end;
   align-items: center;
   gap: 8px;
   margin-bottom: 0.15rem;
 }
-.home-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  border: 1px solid var(--border);
-  background: #fff;
-  color: #111;
-  font-size: 12px;
-  padding: 6px 10px;
-  border-radius: 8px;
-  text-decoration: none;
+.site-header-bar .spacer {
+  flex: 1 1 auto;
 }
-.home-btn:hover {
-  background: var(--hover);
+
+.home-btn.btn,
+.theme-btn.btn {
+  border-radius: var(--radius-sm, 8px);
 }
+
 .site-header h1 {
   margin: 0.15rem 0 0.2rem;
   font-size: 1.9rem;
@@ -72,19 +41,20 @@
 }
 
 /* -----------------------------
-     Rules block
+     Rules
   ------------------------------ */
 .rules summary {
   cursor: pointer;
   font-weight: 600;
-  color: #111;
+  color: var(--text);
 }
 .rules-body {
-  margin-top: 0.5rem;
-  background: var(--bg-alt);
+  /* margin-top: 0.5rem; */
+  background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 10px;
+  border-radius: var(--radius-md);
   padding: 0.75rem 0.9rem;
+  box-shadow: var(--shadow-sm);
 }
 .rules-body ul {
   margin: 0.25rem 0 0.5rem;
@@ -102,10 +72,10 @@
   border-top: 1px solid var(--border);
 }
 .site-footer .container {
-  width: 90vw;
-  max-width: 1400px;
+  width: var(--band-width);
+  max-width: var(--band-max);
   margin: 0 auto;
-  padding: 1.2rem 0 0.6rem;
+  padding: 1.1rem 0 0.8rem;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
