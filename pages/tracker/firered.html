@@ -1,18 +1,21 @@
 <!doctype html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pokémon FireRed — Oak Tracker</title>
 
+  <!-- Global CSS (load early so theme variables are active immediately) -->
   <link rel="stylesheet" href="/assets/css/base.css" />
   <link rel="stylesheet" href="/assets/css/chrome.css" />
   <link rel="stylesheet" href="/assets/css/tracker.css" />
   <link rel="stylesheet" href="/assets/css/sticky-header.css" />
+  <link rel="stylesheet" href="/assets/css/icons.css" />
 
-  <title>Pokémon FireRed — Oak Tracker</title>
+  <!-- Global JS (infrastructure) -->
+  <script src="/assets/js/site-chrome.js" defer></script>
+  <script src="/assets/js/site-theme.js" defer></script>
 </head>
-
 <body>
   <div id="site-header-host"></div>
 
@@ -42,11 +45,8 @@
 
   <div id="site-footer-host"></div>
 
-  <script src="/assets/js/site-chrome.js" defer></script>
-  <script src="/assets/js/site-theme.js" defer></script>
+  <!-- Page-specific JS only -->
   <script src="/data/firered/progression.js" defer></script>
-  <script src="/assets/js/sticky-header.js" defer></script>
   <script src="/assets/js/oak-tracker.js" defer></script>
 </body>
-
 </html>

@@ -1,0 +1,70 @@
+/*
+  icons.css
+  Adds mask-based SVG icons to existing buttons without changing JS.
+*/
+
+/* -----------------------------
+  Base icon pseudo-element
+------------------------------ */
+.view-btn::before,
+.theme-btn::before,
+.btn-game-select::before,
+.home-btn::before {
+  content: "";
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  background-color: currentColor;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  -webkit-mask-size: contain;
+}
+
+/* -----------------------------
+  View modes (existing .view-btn classes)
+------------------------------ */
+.view-btn.view-list::before {
+  mask-image: url("/assets/images/ui/list.svg");
+  -webkit-mask-image: url("/assets/images/ui/list.svg");
+}
+.view-btn.view-grid::before {
+  mask-image: url("/assets/images/ui/grid.svg");
+  -webkit-mask-image: url("/assets/images/ui/grid.svg");
+}
+
+/* -----------------------------
+  Theme toggle (.theme-btn button) via aria-pressed
+------------------------------ */
+.theme-btn[aria-pressed="true"]::before {
+  mask-image: url("/assets/images/ui/moon.svg");
+  -webkit-mask-image: url("/assets/images/ui/moon.svg");
+}
+.theme-btn[aria-pressed="false"]::before {
+  mask-image: url("/assets/images/ui/sun.svg");
+  -webkit-mask-image: url("/assets/images/ui/sun.svg");
+}
+
+/* -----------------------------
+  Game/home navigation
+  Use either .btn-game-select or .home-btn
+------------------------------ */
+.btn-game-select::before,
+.home-btn::before {
+  width: 18px;
+  height: 18px;
+  mask-image: url("/assets/images/ui/house.svg");
+  -webkit-mask-image: url("/assets/images/ui/house.svg");
+}
+
+/* Optional spacing if needed */
+.view-btn,
+.theme-btn,
+.btn-game-select,
+.home-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}

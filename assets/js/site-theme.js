@@ -1,39 +1,86 @@
-/* -----------------------------
-   Theme Toggle
------------------------------- */
+/*
+  site-theme.js
+  Applies theme to every common hook so CSS always reacts:
+  - <html data-theme="light|dark">  and  <body data-theme="...">
+  - .light / .dark classes on <html> and <body>
+  Keeps .theme-btn label + aria-pressed in sync.
+  Delegated click handler so injected headers work.
+  Emits a window "themechange" event after apply.
+*/
+
 (function () {
-    const KEY = "oak-theme";
-  
-    function apply(theme) {
-      const t = theme || (window.matchMedia && matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
-      document.documentElement.setAttribute("data-theme", t === "dark" ? "dark" : "light");
-      const btns = document.querySelectorAll(".theme-btn");
-      btns.forEach(b => {
-        const isDark = t === "dark";
-        b.setAttribute("aria-pressed", String(isDark));
-        b.textContent = isDark ? "Light Mode" : "Dark Mode";
-      });
-    }
-  
-    function current() {
-      return localStorage.getItem(KEY) || "";
-    }
-  
-    function set(theme) {
-      localStorage.setItem(KEY, theme);
-      apply(theme);
-    }
-  
-    function toggle() {
-      const t = current() || (document.documentElement.getAttribute("data-theme") || "");
-      set(t === "dark" ? "light" : "dark");
-    }
-  
-    document.addEventListener("DOMContentLoaded", () => {
-      apply(current());
-      document.body.addEventListener("click", (e) => {
-        const btn = e.target.closest(".theme-btn");
-        if (btn) toggle();
-      });
+  const LS_KEY = "site-theme";
+  const root = document.documentElement;
+
+  function readTheme() {
+    const attr = root.getAttribute("data-theme");
+    if (attr === "dark" || attr === "light") return attr;
+    const saved = localStorage.getItem(LS_KEY);
+    if (saved === "dark" || saved === "light") return saved;
+    const prefersDark =
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches;
+    return prefersDark ? "dark" : "light";
+  }
+
+  function labelFor(theme) {
+    return theme === "dark" ? "Dark Mode" : "Light Mode";
+  }
+
+  function applyTheme(theme) {
+    const t = theme === "dark" ? "dark" : "light";
+
+    // Attributes for :root/body attribute selectors
+    root.setAttribute("data-theme", t);
+    document.body.setAttribute("data-theme", t);
+
+    // Classes for .dark/.light selectors
+    root.classList.toggle("dark", t === "dark");
+    root.classList.toggle("light", t === "light");
+    document.body.classList.toggle("dark", t === "dark");
+    document.body.classList.toggle("light", t === "light");
+
+    // Persist
+    localStorage.setItem(LS_KEY, t);
+
+    // Button state (all theme buttons)
+    const isDark = t === "dark";
+    document.querySelectorAll(".theme-btn").forEach((btn) => {
+      btn.setAttribute("aria-pressed", String(isDark));
+      btn.textContent = labelFor(t);
     });
-  })();
+
+    // Broadcast for any listeners (optional)
+    window.dispatchEvent(
+      new CustomEvent("themechange", { detail: { theme: t } })
+    );
+  }
+
+  function toggleTheme() {
+    const current = readTheme();
+    applyTheme(current === "dark" ? "light" : "dark");
+  }
+
+  function init() {
+    applyTheme(readTheme());
+  }
+
+  // Delegated click so late-injected headers work
+  document.addEventListener("click", (e) => {
+    const btn = e.target.closest(".theme-btn");
+    if (!btn) return;
+    e.preventDefault();
+    toggleTheme();
+  });
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init, { once: true });
+  } else {
+    init();
+  }
+
+  // One-time sync hook for the injector
+  window.ThemeUI = Object.assign({}, window.ThemeUI, {
+    sync: () => applyTheme(readTheme()),
+  });
+})();

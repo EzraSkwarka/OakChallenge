@@ -1,9 +1,28 @@
-// /site-chrome.js
+/*
+  site-chrome.js
+  Injects site header/footer and ensures global head includes are present once per page.
+  After injection, calls ThemeUI.sync() once so the theme button text/aria match immediately.
+  Fixes ensureHost insertion and makes dynamically-added scripts non-async for predictable load.
+*/
+
 (function () {
   const HEADER_PATH = "/partials/header.html";
   const FOOTER_PATH = "/partials/footer.html";
 
-  // Find placeholders or create them if missing (safeguard)
+  const CSS_INCLUDES = [
+    "/assets/css/base.css",
+    "/assets/css/chrome.css",
+    "/assets/css/tracker.css",
+    "/assets/css/sticky-header.css",
+    "/assets/css/icons.css",
+  ];
+
+  const JS_INCLUDES = [
+    // do not self-include this file
+    "/assets/js/site-theme.js",
+    "/assets/js/sticky-header.js",
+  ];
+
   function ensureHost(id, parent, position) {
     let host = document.getElementById(id);
     if (!host) {
@@ -14,12 +33,39 @@
     return host;
   }
 
-  // Resolve absolute path for fetch regardless of current page depth
   function abs(path) {
     try {
       return new URL(path, window.location.origin).toString();
     } catch {
-      return path; // fallback
+      return path;
+    }
+  }
+
+  function ensureHeadLink(href) {
+    const head = document.head || document.getElementsByTagName("head")[0];
+    const url = abs(href);
+    const exists = !!Array.from(
+      head.querySelectorAll('link[rel="stylesheet"]')
+    ).find((l) => (l.href || "").split("#")[0] === url);
+    if (!exists) {
+      const link = document.createElement("link");
+      link.rel = "stylesheet";
+      link.href = url;
+      head.appendChild(link);
+    }
+  }
+
+  function ensureHeadScript(src) {
+    const head = document.head || document.getElementsByTagName("head")[0];
+    const url = abs(src);
+    const exists = !!Array.from(head.querySelectorAll("script")).find(
+      (s) => (s.src || "").split("#")[0] === url
+    );
+    if (!exists) {
+      const script = document.createElement("script");
+      script.src = url;
+      script.async = false; // important: predictable execution order for dynamically added scripts
+      head.appendChild(script);
     }
   }
 
@@ -27,22 +73,25 @@
     const host = ensureHost(id);
     try {
       const res = await fetch(abs(url), { cache: "no-cache" });
-      if (!res.ok) throw new Error(`Failed to load ${url} (${res.status})`);
+      if (!res.ok) throw new Error();
       const html = await res.text();
       host.innerHTML = html;
-    } catch (err) {
-      // Non-fatal: leave host empty
-      // If you want a visible warning during dev, you can insert a small note here.
-    }
+
+      // One-time post-inject theme button sync (safe no-op if ThemeUI is absent)
+      if (window.ThemeUI && typeof window.ThemeUI.sync === "function") {
+        window.ThemeUI.sync();
+      }
+    } catch {}
   }
 
   document.addEventListener("DOMContentLoaded", () => {
-    // Insert header at the very top of body
-    const body = document.body;
-    const headerHost = ensureHost("site-header-host", body, "prepend");
-    const footerHost = ensureHost("site-footer-host", body, "append");
+    CSS_INCLUDES.forEach(ensureHeadLink);
+    JS_INCLUDES.forEach(ensureHeadScript);
 
-    // Fetch and inject
+    const body = document.body;
+    ensureHost("site-header-host", body, "prepend");
+    ensureHost("site-footer-host", body, "append");
+
     inject("site-header-host", HEADER_PATH);
     inject("site-footer-host", FOOTER_PATH);
   });
