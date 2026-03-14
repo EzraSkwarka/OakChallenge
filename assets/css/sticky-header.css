@@ -1,0 +1,116 @@
+/*
+  sticky-header.css
+  Fixed floating section bar at the top of the viewport with spacer to preserve layout.
+*/
+
+/* -----------------------------
+  Floating section header (fixed)
+------------------------------ */
+.floating-section {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: transparent;
+}
+
+/* -----------------------------
+    Floating bar contents
+  ------------------------------ */
+.floating-section-inner {
+  width: var(--band-width, 90vw);
+  max-width: var(--band-max, 1400px);
+  margin: 0 auto;
+  padding: 0.6rem 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-bottom: none;
+  border-top-left-radius: var(--radius-md, 10px);
+  border-top-right-radius: var(--radius-md, 10px);
+  box-shadow: var(--shadow-sm, 0 1px 2px rgba(2, 6, 23, 0.05));
+}
+
+/* -----------------------------
+    Spacer to preserve layout flow
+  ------------------------------ */
+.floating-section-spacer {
+  height: var(--floatingBarH, 0px);
+}
+
+/* -----------------------------
+    Floating bar visuals
+  ------------------------------ */
+.floating-section img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
+.floating-controls {
+  margin-left: auto;
+  display: inline-flex;
+  gap: 6px;
+}
+
+/* -----------------------------
+    View Mode Buttons (shared)
+  ------------------------------ */
+.view-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  font-size: 12px;
+  border-radius: var(--radius-sm, 8px);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  cursor: pointer;
+}
+.view-btn:hover {
+  background: var(--bg-alt);
+}
+.view-btn:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+.view-btn.active {
+  background: var(--bg-alt);
+  border-color: var(--border);
+  font-weight: 600;
+  color: var(--text);
+}
+
+/* -----------------------------
+    Disable legacy in-table sticky
+  ------------------------------ */
+.section-header td,
+.section-header .section-header-content,
+.subheader-row td,
+.subheader-row .subheader-wrap {
+  position: static !important;
+  top: auto !important;
+  box-shadow: none !important;
+}
+
+/* -----------------------------
+    Scroll behavior
+  ------------------------------ */
+.table-wrap {
+  overflow-x: auto;
+  overflow-y: visible;
+}
+
+/* -----------------------------
+    Pointer events layering
+  ------------------------------ */
+.floating-section {
+  pointer-events: none;
+}
+.floating-section-inner {
+  pointer-events: auto;
+}

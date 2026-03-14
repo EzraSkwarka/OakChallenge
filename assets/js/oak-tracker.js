@@ -1,23 +1,10 @@
-/**
- * Professor Oak’s Challenge — Progress Tracker Engine
- *
- * Responsibilities:
- * - Render Pokémon progress by badge group
- * - Handle choice-gated progression
- * - Persist caught/choice state to localStorage
- * - Support List and Grid views with a unified data model
- * - Manage floating section headers and layout behavior
- *
- * This file is game-agnostic.
- * All game-specific content is supplied via data/<game>/progression.js.
- *
- * CSP-safe: no inline scripts, no inline styles.
- */
+/* -----------------------------
+   Professor Oak’s Challenge — Progress Tracker Engine
+------------------------------ */
 
 /* -----------------------------
    Constants / Helpers
 ------------------------------ */
-
 const PLACEHOLDER_SRC = "/assets/images/placeholder.png";
 const POKEBALL_CAUGHT = "/assets/images/ui/pokeball.png";
 const POKEBALL_UNCAUGHT = "/assets/images/ui/pokeball_dark.png";
@@ -32,61 +19,66 @@ const slug = (s) =>
 const safeImg = (src) => (!src || src === "link" ? PLACEHOLDER_SRC : src);
 
 /* -----------------------------
-   View Mode Buttons Sync
------------------------------- */
-function syncViewButtons() {
-  const isGrid = VIEW_MODE === "grid";
-  document
-    .querySelectorAll(".view-btn.view-list")
-    .forEach((b) => b.classList.toggle("active", !isGrid));
-  document
-    .querySelectorAll(".view-btn.view-grid")
-    .forEach((b) => b.classList.toggle("active", isGrid));
-}
-
-/* -----------------------------
    Validate / Load Game Data
 ------------------------------ */
-
-if (typeof gameData !== "object") {
-  throw new Error("gameData not found. Each page must load X-data.js first.");
+if (typeof window.gameData !== "object") {
+  throw new Error(
+    "gameData not found. Load data/<game>/progression.js before the tracker."
+  );
 }
-
 const PAGE_NS = gameData.gameId || "default";
 const GAME_TITLE = gameData.gameTitle || "Pokémon Game";
-const BADGE_GROUPS = gameData.progression || {};
 
-const LS_CHOICES = `poke-choices:${PAGE_NS}`;
-const LS_CAUGHT = `poke-caught:${PAGE_NS}`;
+const BADGE_GROUPS =
+  (gameData.badgeGroups &&
+    typeof gameData.badgeGroups === "object" &&
+    gameData.badgeGroups) ||
+  (gameData.progression &&
+    typeof gameData.progression === "object" &&
+    gameData.progression) ||
+  {};
+
+/* helpful empty-state if data didn't resolve */
+function ensureDataOrExplain() {
+  if (Object.keys(BADGE_GROUPS).length > 0) return;
+  const tbody = document.querySelector("#pokemon-table tbody");
+  if (!tbody) return;
+  const tr = document.createElement("tr");
+  const td = document.createElement("td");
+  td.colSpan = 3;
+  td.className = "muted";
+  td.textContent =
+    "No sections to display. Ensure your data file defines window.gameData.{badgeGroups|progression} and is included before the tracker.";
+  tr.appendChild(td);
+  tbody.textContent = "";
+  tbody.appendChild(tr);
+}
 
 /* -----------------------------
    State Atom (choices, caught)
 ------------------------------ */
-
 const store = (() => {
   let state = { choices: {}, caught: {} };
   let listeners = [];
-
   function getState() {
     return state;
   }
-
   function setState(partial) {
     state = Object.assign({}, state, partial);
     listeners.forEach((fn) => fn(state));
   }
-
   function subscribe(fn) {
     listeners.push(fn);
     return () => (listeners = listeners.filter((f) => f !== fn));
   }
-
   return { getState, setState, subscribe };
 })();
 
 /* -----------------------------
    Persistence
 ------------------------------ */
+const LS_CHOICES = `poke-choices:${PAGE_NS}`;
+const LS_CAUGHT = `poke-caught:${PAGE_NS}`;
 
 function loadPersisted() {
   let choices = {};
@@ -94,15 +86,12 @@ function loadPersisted() {
     const c = JSON.parse(localStorage.getItem(LS_CHOICES) || "{}");
     for (const [k, v] of Object.entries(c)) choices[k] = norm(v);
   } catch {}
-
   let caught = {};
   try {
     caught = JSON.parse(localStorage.getItem(LS_CAUGHT) || "{}");
   } catch {}
-
   store.setState({ choices, caught });
 }
-
 function saveChoices(choices) {
   localStorage.setItem(LS_CHOICES, JSON.stringify(choices));
 }
@@ -116,7 +105,6 @@ function setChoice(key, value) {
   saveChoices(choices);
   store.setState({ choices });
 }
-
 function clearChoice(key) {
   const current = store.getState();
   const choices = { ...current.choices };
@@ -124,7 +112,6 @@ function clearChoice(key) {
   saveChoices(choices);
   store.setState({ choices });
 }
-
 function toggleCaught(name) {
   if (!name) return;
   const current = store.getState();
@@ -133,7 +120,6 @@ function toggleCaught(name) {
   saveCaught(caught);
   store.setState({ caught });
 }
-
 function resetAll() {
   localStorage.removeItem(LS_CHOICES);
   localStorage.removeItem(LS_CAUGHT);
@@ -145,168 +131,21 @@ function resetAll() {
 ------------------------------ */
 const VIEW_LS = `poke-view:${PAGE_NS}`;
 let VIEW_MODE = localStorage.getItem(VIEW_LS) === "grid" ? "grid" : "list";
-
 function setViewMode(mode) {
   VIEW_MODE = mode === "grid" ? "grid" : "list";
   localStorage.setItem(VIEW_LS, VIEW_MODE);
   render();
-  updateFloatingHeader();
+  StickyHeader.update();
   syncViewButtons();
 }
-
-/* -----------------------------
-   Sticky Section Offset
------------------------------- */
-function measureHeaderOffset() {
-  const header =
-    document.querySelector("#site-header-host .site-header") ||
-    document.querySelector(".site-header");
-
-  if (!header) {
-    document.documentElement.style.setProperty("--chrome-offset", "0px");
-    return;
-  }
-
-  const headerRect = header.getBoundingClientRect();
-  const bodyRect = document.body.getBoundingClientRect();
-
-  const offset = Math.max(0, Math.round(headerRect.bottom - bodyRect.top));
-
-  document.documentElement.style.setProperty("--chrome-offset", `${offset}px`);
-}
-
-function applyStickyOffset() {
-  requestAnimationFrame(() => requestAnimationFrame(measureHeaderOffset));
-}
-
-function initStickyOffset() {
-  applyStickyOffset();
-
-  if ("ResizeObserver" in window) {
-    const ro = new ResizeObserver(applyStickyOffset);
-    ro.observe(document.body);
-  }
-
-  window.addEventListener("resize", applyStickyOffset, { passive: true });
-}
-
-/* -----------------------------
-   Sticky Visual State
------------------------------- */
-
-/** toggles .stuck on header rows for a subtle shadow while sticky */
-function initStickyVisualState() {
-  const rows = document.querySelectorAll("tr.section-header");
-  if (!rows.length) return;
-
-  const topPx =
-    parseFloat(
-      getComputedStyle(document.documentElement).getPropertyValue(
-        "--section-sticky-top"
-      )
-    ) || 0;
-
-  const io = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((e) => {
-        const stuck =
-          e.boundingClientRect.top <= topPx && e.intersectionRatio < 1;
-        e.target.classList.toggle("stuck", stuck);
-      });
-    },
-    { root: null, threshold: [1.0] }
-  );
-
-  rows.forEach((r) => io.observe(r));
-}
-
-/* -----------------------------
-   Floating Section Header
------------------------------- */
-function ensureFloatingHeaderHost() {
-  const headerHost = document.getElementById("site-header-host");
-  let bar = document.getElementById("floating-section");
-
-  if (!bar) {
-    bar = document.createElement("div");
-    bar.id = "floating-section";
-    bar.className = "floating-section";
-    bar.innerHTML = `
-      <div class="floating-section-inner">
-        <img alt="" hidden>
-        <span class="section-header-title"></span>
-        <div class="floating-controls">
-          <button type="button" class="view-btn view-list">List</button>
-         <button type="button" class="view-btn view-grid">Grid</button>
-       </div>      
-      </div>
-    `;
-    if (headerHost) headerHost.insertAdjacentElement("afterend", bar);
-    else document.body.insertAdjacentElement("afterbegin", bar);
-
-    const btnList = bar.querySelector(".view-list");
-    const btnGrid = bar.querySelector(".view-grid");
-    btnList.onclick = () => setViewMode("list");
-    btnGrid.onclick = () => setViewMode("grid");
-  }
-
-  return bar;
-}
-
-function updateFloatingHeader() {
-  const bar = ensureFloatingHeaderHost();
-  const inner = bar.querySelector(".floating-section-inner");
-  const img = inner.querySelector("img");
-  const titleSpan = inner.querySelector(".section-header-title");
-  const btnList = inner.querySelector(".view-list");
-  const btnGrid = inner.querySelector(".view-grid");
-
-  const headers = Array.from(document.querySelectorAll("tr.section-header"));
-  if (!headers.length) {
-    bar.style.display = "none";
-    return;
-  }
-
-  const firstRect = headers[0].getBoundingClientRect();
-  if (firstRect.top > 0) {
-    bar.style.display = "none";
-    return;
-  }
-
-  bar.style.display = "";
-
-  let current = headers[0];
-  for (const tr of headers) {
-    const r = tr.getBoundingClientRect();
-    if (r.top <= 0) current = tr;
-    else break;
-  }
-
-  const content = current.querySelector(".section-header-content");
-  const title =
-    content?.querySelector(".section-header-title")?.textContent || "";
-  const badgeEl = content?.querySelector(".section-header-img");
-  const badge = badgeEl?.getAttribute("src") || "";
-  const alt = badgeEl?.getAttribute("alt") || "";
-
-  titleSpan.textContent = title;
-  if (badge) {
-    img.src = badge;
-    img.alt = alt || "";
-    img.hidden = false;
-  } else {
-    img.hidden = true;
-  }
-
-  btnList.classList.toggle("active", VIEW_MODE === "list");
-  btnGrid.classList.toggle("active", VIEW_MODE === "grid");
-}
-
-function initFloatingHeader() {
-  ensureFloatingHeaderHost();
-  updateFloatingHeader();
-  window.addEventListener("scroll", updateFloatingHeader, { passive: true });
-  window.addEventListener("resize", updateFloatingHeader, { passive: true });
+function syncViewButtons() {
+  const isGrid = VIEW_MODE === "grid";
+  document
+    .querySelectorAll(".view-btn.view-list")
+    .forEach((b) => b.classList.toggle("active", !isGrid));
+  document
+    .querySelectorAll(".view-btn.view-grid")
+    .forEach((b) => b.classList.toggle("active", isGrid));
 }
 
 /* -----------------------------
@@ -361,15 +200,13 @@ function buildModel() {
     }
 
     const choiceRows = rows.filter((r) => r.type === "choice");
-    const choiceKeys = [...new Set(choiceRows.map((r) => r.choiceKey))];
-    const allChoicesMade = choiceKeys.every((k) => !!choices[k]);
+    const keys = [...new Set(choiceRows.map((r) => r.choiceKey))];
 
     for (let i = 0; i < rows.length; i++) {
       const r = rows[i];
 
       if (r.type === "choice") {
-        const keyChosen = !!choices[r.choiceKey];
-        if (keyChosen) continue;
+        if (choices[r.choiceKey]) continue;
 
         const prev = rows[i - 1];
         const next = rows[i + 1];
@@ -423,6 +260,7 @@ function buildModel() {
       });
     }
 
+    const allChoicesMade = keys.every((k) => !!choices[k]);
     if (allChoicesMade) {
       const total = rows
         .filter((r) => r.type !== "choice")
@@ -445,31 +283,57 @@ function buildModel() {
 }
 
 /* -----------------------------
+   Requirements Check
+------------------------------ */
+function meetsRequirements(row, choices) {
+  if (!row || !row.requires) return true;
+  if (typeof row.requires === "object" && !Array.isArray(row.requires)) {
+    for (const [k, v] of Object.entries(row.requires)) {
+      if (
+        (choices[k] ?? "").toString().trim().toLowerCase() !==
+        (v ?? "").toString().trim().toLowerCase()
+      )
+        return false;
+    }
+    return true;
+  }
+  if (Array.isArray(row.requires)) {
+    for (const req of row.requires) {
+      const k = req?.key;
+      const v = req?.value;
+      if (!k) return false;
+      if (
+        (choices[k] ?? "").toString().trim().toLowerCase() !==
+        (v ?? "").toString().trim().toLowerCase()
+      )
+        return false;
+    }
+    return true;
+  }
+  return true;
+}
+
+/* -----------------------------
    DOM References
 ------------------------------ */
-
 const el = (id) => document.getElementById(id);
 const tbodyEl = () => document.querySelector("#pokemon-table tbody");
 
 /* -----------------------------
    Choice Status Chips
 ------------------------------ */
-
 function renderChoiceStatus() {
   const host = el("choice-status");
   if (!host) return;
   host.textContent = "";
-
   const { choices } = store.getState();
   for (const [key, value] of Object.entries(choices)) {
     const chip = document.createElement("div");
     chip.className = "chip";
     chip.textContent = `${cap(key)}: ${cap(value)}`;
-
     const btn = document.createElement("button");
     btn.textContent = "Change";
     btn.onclick = () => clearChoice(key);
-
     chip.appendChild(btn);
     host.appendChild(chip);
   }
@@ -478,7 +342,6 @@ function renderChoiceStatus() {
 /* -----------------------------
    Row Factories
 ------------------------------ */
-
 function trHeader(row) {
   const tr = document.createElement("tr");
   tr.className = "section-header";
@@ -503,30 +366,24 @@ function trHeader(row) {
 
   const controls = document.createElement("div");
   controls.className = "section-header-controls";
-
   const btnList = document.createElement("button");
   btnList.type = "button";
   btnList.className = "view-btn view-list";
   btnList.textContent = "List";
   btnList.onclick = () => setViewMode("list");
-
   const btnGrid = document.createElement("button");
   btnGrid.type = "button";
   btnGrid.className = "view-btn view-grid";
   btnGrid.textContent = "Grid";
   btnGrid.onclick = () => setViewMode("grid");
-
   controls.append(btnList, btnGrid);
-  wrap.appendChild(controls);
 
+  wrap.appendChild(controls);
   td.appendChild(wrap);
   tr.appendChild(td);
   return tr;
 }
 
-/* -----------------------------
-   Row Factory: Summary (rich)
------------------------------- */
 function trSummary(row) {
   const tr = document.createElement("tr");
   tr.className = "section-summary";
@@ -547,14 +404,11 @@ function trSummary(row) {
     const details = document.createElement("details");
     details.className = "summary-accordion";
     if (row.open) details.setAttribute("open", "");
-
     const sum = document.createElement("summary");
     sum.textContent = "More info";
-
     const long = document.createElement("div");
     long.className = "summary-long";
     long.innerHTML = row.html;
-
     details.append(sum, long);
     wrap.appendChild(details);
   }
@@ -580,19 +434,29 @@ function trChoice(row) {
   if (row.groupRunStart) tr.classList.add("choice-group-start");
   if (row.groupRunEnd) tr.classList.add("choice-group-end");
 
-  tr.onclick = () => setChoice(row.choiceKey, row.choiceValue);
+  const tdP = document.createElement("td");
+  const wrap = document.createElement("div");
+  wrap.className = "pkm";
+  const img = document.createElement("img");
+  img.src = row.pokemon.img;
+  img.alt = row.pokemon.name || "Choice";
+  const name = document.createElement("span");
+  name.textContent = row.pokemon.name || "Choice";
+  wrap.append(img, name);
+  tdP.appendChild(wrap);
 
-  tr.innerHTML = `
-    <td><div class="pkm"><img src="${row.pokemon.img}"><span>${row.pokemon.name}</span></div></td>
-    <td>${row.method}</td>
-    <td class="center"></td>
-  `;
+  const tdM = document.createElement("td");
+  tdM.textContent = row.method || "Pick an option";
+
+  const tdA = document.createElement("td");
+  tdA.className = "center";
+
+  tr.append(tdP, tdM, tdA);
+
+  tr.addEventListener("click", () => setChoice(row.choiceKey, row.choiceValue));
   return tr;
 }
 
-/* -----------------------------
-   Row Factory: Pokémon (List)
------------------------------- */
 function trPokemon(row) {
   const tr = document.createElement("tr");
   tr.className = "row-normal pkm-node";
@@ -623,7 +487,6 @@ function trPokemon(row) {
   mark.alt = row.caught ? "Caught" : "Uncaught";
   mark.src = row.caught ? POKEBALL_CAUGHT : POKEBALL_UNCAUGHT;
   btn.appendChild(mark);
-
   btn.addEventListener("click", (e) => {
     e.stopPropagation();
     toggleCaught(row.pokemon.name);
@@ -631,33 +494,26 @@ function trPokemon(row) {
   tr.addEventListener("click", (e) => {
     if (!btn.contains(e.target)) toggleCaught(row.pokemon.name);
   });
-
   tdC.appendChild(btn);
+
   tr.append(tdP, tdM, tdC);
   return tr;
 }
 
-/* -----------------------------
-   Row Factory: Progress
------------------------------- */
 function trProgress(row) {
   const tr = document.createElement("tr");
   tr.className = "section-progress progress-row";
-
   const td = document.createElement("td");
   td.colSpan = 3;
 
   const bar = document.createElement("div");
   bar.className = "progress-bar";
-
   const fill = document.createElement("div");
   fill.className = "progress-fill";
-
   const pct = row.total
     ? Math.max(0, Math.min(100, Math.round((row.caught / row.total) * 100)))
     : 0;
   fill.classList.add(`w-${pct}`);
-
   bar.appendChild(fill);
 
   const label = document.createElement("div");
@@ -751,8 +607,8 @@ function adjustGridJustification() {
       stripGapClass(grid);
       return;
     }
-    const cardW = Math.ceil(sample.getBoundingClientRect().width);
 
+    const cardW = Math.ceil(sample.getBoundingClientRect().width);
     const cols = Math.max(1, Math.floor((gridW + baseGap) / (cardW + baseGap)));
     const rows = Math.ceil(cards.length / cols);
     if (rows <= 1) {
@@ -773,25 +629,21 @@ function adjustGridJustification() {
     }
   });
 }
-
 function applyGapClass(grid, px) {
   stripGapClass(grid);
   grid.classList.add(`gap-${px}`);
 }
-
 function stripGapClass(grid) {
   for (let i = 4; i <= 32; i++) grid.classList.remove(`gap-${i}`);
 }
 
 /* -----------------------------
-View Model Transform
+   View Model Transform
 ------------------------------ */
 function modelForView(model) {
   if (VIEW_MODE !== "grid") return model;
-
   const out = [];
   let bucket = [];
-
   function flushBucket() {
     if (!bucket.length) return;
     out.push({
@@ -805,7 +657,6 @@ function modelForView(model) {
     });
     bucket = [];
   }
-
   for (const row of model) {
     if (row.__kind === "pokemon") {
       bucket.push(row);
@@ -815,7 +666,6 @@ function modelForView(model) {
     out.push(row);
   }
   flushBucket();
-
   return out;
 }
 
@@ -829,7 +679,6 @@ function updateCaptureUI() {
     const name = node.dataset.name || "";
     const isCaught = !!caught[name];
     node.classList.toggle("is-caught", isCaught);
-
     const mark = node.querySelector(".catch-mark");
     if (mark) {
       mark.src = isCaught ? POKEBALL_CAUGHT : POKEBALL_UNCAUGHT;
@@ -839,48 +688,12 @@ function updateCaptureUI() {
 }
 
 /* -----------------------------
-   Requirements Check
------------------------------- */
-function meetsRequirements(row, choices) {
-  if (!row || !row.requires) return true;
-
-  // supports object: { key: "value", ... }
-  if (typeof row.requires === "object" && !Array.isArray(row.requires)) {
-    for (const [k, v] of Object.entries(row.requires)) {
-      if (
-        (choices[k] ?? "").toString().trim().toLowerCase() !==
-        (v ?? "").toString().trim().toLowerCase()
-      ) {
-        return false;
-      }
-    }
-    return true;
-  }
-
-  if (Array.isArray(row.requires)) {
-    for (const req of row.requires) {
-      const k = req?.key;
-      const v = req?.value;
-      if (!k) return false;
-      if (
-        (choices[k] ?? "").toString().trim().toLowerCase() !==
-        (v ?? "").toString().trim().toLowerCase()
-      ) {
-        return false;
-      }
-    }
-    return true;
-  }
-
-  return true;
-}
-
-/* -----------------------------
    Diffing Renderer
 ------------------------------ */
 const renderCtx = { keyOrder: [], rowNodes: new Map() };
 
 function render() {
+  ensureDataOrExplain();
   renderChoiceStatus();
 
   const model = buildModel();
@@ -902,7 +715,6 @@ function render() {
   if (!sameShape) {
     renderCtx.rowNodes.clear();
     tbody.textContent = "";
-
     const frag = document.createDocumentFragment();
 
     for (const row of viewModel) {
@@ -914,13 +726,11 @@ function render() {
       else if (row.__kind === "grid") tr = trGrid(row);
       else if (row.__kind === "pokemon") tr = trPokemon(row);
       else if (row.__kind === "progress") tr = trProgress(row);
-
       if (!tr) continue;
 
       tr.dataset.key = row.__key;
       tr.classList.add("fade-in");
       setTimeout(() => tr.classList.remove("fade-in"), 170);
-
       renderCtx.rowNodes.set(row.__key, tr);
       frag.appendChild(tr);
     }
@@ -930,7 +740,7 @@ function render() {
 
     updateCaptureUI();
     adjustGridJustification();
-    updateFloatingHeader();
+    StickyHeader.update();
     syncViewButtons();
     return;
   }
@@ -942,7 +752,6 @@ function render() {
     if (row.__kind === "progress") {
       const fill = tr.querySelector(".progress-fill");
       const label = tr.querySelector(".progress-label");
-
       if (fill) {
         const pct = row.total
           ? Math.max(
@@ -953,37 +762,32 @@ function render() {
         fill.className = fill.className.replace(/\bw-\d+\b/g, "").trim();
         fill.classList.add(`w-${pct}`);
       }
-
-      if (label) {
-        label.textContent = `${row.caught} / ${row.total} caught`;
-      }
+      if (label) label.textContent = `${row.caught} / ${row.total} caught`;
     }
   }
 
   updateCaptureUI();
   adjustGridJustification();
-  updateFloatingHeader();
+  StickyHeader.update();
   syncViewButtons();
 }
 
 /* -----------------------------
    Boot
 ------------------------------ */
-
 function boot() {
   const t = document.getElementById("game-title");
   if (t) t.textContent = GAME_TITLE;
 
-  initStickyOffset();
   loadPersisted();
   render();
-  initFloatingHeader();
+  StickyHeader.init();
 
   window.addEventListener("resize", adjustGridJustification, { passive: true });
 
   store.subscribe(() => {
     render();
-    updateFloatingHeader();
+    StickyHeader.update();
   });
 
   const resetBtn = document.getElementById("reset-all");

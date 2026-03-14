@@ -1,30 +1,4 @@
 /* -----------------------------
-   Root
------------------------------- */
-:root {
-  --border: #d1d5db;
-  --bg: #ffffff;
-  --bg-alt: #f9fafb;
-  --text: #111827;
-  --muted: #6b7280;
-
-  --hover: #f3f4f6;
-  --caught: #ecfdf5;
-  --caught-hover: #d1fae5;
-
-  --chip: #eef2ff;
-  --chip-text: #3730a3;
-
-  --choice-band: color-mix(in srgb, #f5d9b5 6%, white);
-  --choice-band-hover: color-mix(in srgb, #f5d9b5 10%, white);
-  --choice-accent: #e0a76f;
-
-  --chrome-offset: 0px;
-  --subheader-gap: 6px;
-  --section-sticky-top: calc(var(--chrome-offset) + var(--subheader-gap));
-}
-
-/* -----------------------------
    Tracker: Page Reset
 ------------------------------ */
 html,
@@ -39,65 +13,16 @@ body {
 }
 
 /* -----------------------------
-     Base
-  ------------------------------ */
-body {
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial,
-    sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  /* margin: 2rem 0; */
-}
-
-.container {
-  width: 90vw;
-  margin: 0 auto;
-}
-
-/* -----------------------------
-     Choice Status Chips
-  ------------------------------ */
-.choice-status {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin: 0.25rem 0 1rem;
-  min-height: 2rem;
-}
-
-.chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.35rem 0.6rem;
-  border-radius: 999px;
-  background: var(--chip);
-  color: var(--chip-text);
-  font-size: 13px;
-  border: 1px solid rgba(55, 48, 163, 0.15);
-}
-
-.chip button {
-  border: 1px solid rgba(55, 48, 163, 0.25);
-  background: #fff;
-  color: var(--chip-text);
-  border-radius: 999px;
-  font-size: 12px;
-  padding: 2px 8px;
-  cursor: pointer;
-}
-
-/* -----------------------------
    Table Shell
 ------------------------------ */
 .table-wrap {
-  width: var(--band-width);
-  max-width: var(--band-max);
+  width: var(--band-width, 90vw);
+  max-width: var(--band-max, 1400px);
   margin: 0 auto;
   border: 1px solid var(--border);
-  border-radius: var(--radius-md);
-  background: var(--surface);
-  box-shadow: var(--shadow-sm);
+  border-radius: var(--radius-md, 10px);
+  background: var(--surface, #fff);
+  box-shadow: var(--shadow-sm, 0 1px 2px rgba(2, 6, 23, 0.05));
   overflow-x: auto;
   overflow-y: visible;
 }
@@ -120,51 +45,92 @@ tbody td {
   padding: 0.7rem 0.9rem;
   vertical-align: middle;
 }
-tbody tr.row-normal:hover {
-  background: var(--hover);
+
+/* -----------------------------
+   Table Section Headers
+------------------------------ */
+.section-header td {
+  background: var(--bg-alt);
+  color: var(--text);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 0.6rem 0.9rem;
+}
+#pokemon-table.has-data thead {
+  display: none;
+}
+.section-header-content {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+.section-header-img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  image-rendering: auto;
+}
+.section-header-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+.section-header-controls {
+  margin-left: auto;
+  display: inline-flex;
+  gap: 6px;
 }
 
 /* -----------------------------
-     Choice Subheader Row
-  ------------------------------ */
+   Choice Subheader Row
+------------------------------ */
 .choice-subheader-row td {
-  background: #fafafa;
-  color: #555;
+  background: var(--bg-alt);
+  color: var(--text);
   font-size: 12px;
   font-weight: 500;
   padding: 6px 10px;
-  border-left: 3px solid #e0e0e0;
+  border-left: 3px solid var(--border);
   border-bottom: 1px solid var(--border);
 }
 
 /* -----------------------------
-     Rows
-  ------------------------------ */
+   Rows
+------------------------------ */
 tbody tr.row-normal {
   cursor: pointer;
   user-select: none;
 }
-
 tbody tr.row-normal:hover {
   background: var(--hover);
 }
-
-.caught-true {
+.row-normal.is-caught {
   background: var(--caught);
 }
-
-tbody tr.caught-true:hover {
+.row-normal.is-caught:hover {
   background: var(--caught-hover);
 }
 
 /* -----------------------------
-     Choice Rows
-  ------------------------------ */
+   Choice Rows (banded)
+------------------------------ */
+:root {
+  --choice-band: color-mix(in srgb, #f5d9b5 6%, var(--surface, #fff));
+  --choice-band-hover: color-mix(in srgb, #f5d9b5 12%, var(--surface, #fff));
+}
+:root[data-theme="dark"] {
+  --choice-band: color-mix(in srgb, #f1c48a 8%, var(--surface));
+  --choice-band-hover: color-mix(in srgb, #f1c48a 16%, var(--surface));
+}
+
 tr.row-choice.compact-band td {
   background: var(--choice-band);
   position: relative;
 }
-
+tr.row-choice.compact-band:hover td {
+  background: var(--choice-band-hover);
+}
 tr.row-choice.compact-band td:first-child::before {
   content: "";
   position: absolute;
@@ -172,612 +138,42 @@ tr.row-choice.compact-band td:first-child::before {
   top: 4px;
   bottom: 4px;
   width: 2px;
-  background: var(--choice-accent);
+  background: var(--choice-accent, #e0a76f);
   opacity: 0.8;
   border-radius: 2px;
 }
-
 tr.row-choice.compact-band.choice-group-start td {
   box-shadow: inset 0 1px 0 0 rgba(0, 0, 0, 0.06);
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
 }
-
 tr.row-choice.compact-band.choice-group-end td {
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;
 }
-
 tr.row-choice.compact-band + tr.row-choice.compact-band td {
   border-top-color: transparent;
 }
 
-tr.row-choice.compact-band:hover td {
-  background: var(--choice-band-hover);
-}
-
 /* -----------------------------
-     Pokémon Cell
-  ------------------------------ */
+   Pokémon Cell (list mode)
+------------------------------ */
 .pkm {
   display: flex;
   align-items: center;
   gap: 0.6rem;
 }
-
 .pkm img {
   width: 42px;
   height: 42px;
   object-fit: cover;
   border: 1px solid var(--border);
   border-radius: 8px;
-  background: #fff;
-}
-
-/* -----------------------------
-     Section Summary
-  ------------------------------ */
-.summary-block {
-  display: grid;
-  gap: 6px;
-}
-.summary-short {
-  color: var(--muted);
-  font-size: 13px;
-  line-height: 1.45;
-}
-.summary-accordion {
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  background: #fff;
-}
-.summary-accordion > summary {
-  list-style: none;
-  cursor: pointer;
-  padding: 6px 10px;
-  font-weight: 600;
-}
-.summary-accordion[open] > summary {
-  border-bottom: 1px solid var(--border);
-}
-.summary-long {
-  padding: 8px 10px;
-  font-size: 13px;
-  color: #111;
-}
-
-/* -----------------------------
-     Catch Button / Icons
-  ------------------------------ */
-.catch-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  padding: 0;
-  border: none;
-  background: transparent;
-  cursor: pointer;
-}
-
-.catch-btn img.catch-icon {
-  width: 16px;
-  height: 16px;
-  max-width: 16px;
-  max-height: 16px;
-  image-rendering: auto;
-}
-
-tbody tr.row-normal .catch-btn:hover img.catch-icon {
-  filter: brightness(1.05);
-}
-.catch-icon {
-  transition: transform 120ms ease;
-}
-.catch-btn:active .catch-icon {
-  transform: scale(0.92);
-}
-
-/* -----------------------------
-  Section header controls
-  ------------------------------ */
-.section-header-controls {
-  margin-left: auto;
-  display: inline-flex;
-  gap: 6px;
-}
-
-.view-btn {
-  border: 1px solid var(--border);
-  background: #fff;
-  color: #111;
-  font-size: 12px;
-  padding: 4px 8px;
-  border-radius: 6px;
-  cursor: pointer;
-}
-.view-btn:hover {
-  background: var(--hover);
-}
-.view-btn.active {
-  background: var(--bg-alt);
-  border-color: var(--border);
-  font-weight: 600;
-}
-
-/* -----------------------------
-     Grid cards (fixed-size layout)
-  ------------------------------ */
-.group-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--grid-gap, 12px);
-  align-items: flex-start;
-  justify-content: flex-start;
-  box-sizing: border-box;
-}
-
-.pkm-card {
-  width: 132px;
-  display: grid;
-  gap: 6px;
-  cursor: pointer;
-  outline: none;
-}
-
-.pkm-card-thumb {
-  position: relative;
-  aspect-ratio: 1 / 1;
-  display: grid;
-  place-items: center;
-  background: var(--bg-alt);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-sm);
-}
-
-.pkm-card-sprite {
-  width: 72px;
-  height: 72px;
-  object-fit: contain;
-}
-
-.pkm-card-thumb .catch-mark {
-  position: absolute;
-  right: 6px;
-  bottom: 6px;
-  width: 16px;
-  height: 16px;
-  max-width: 16px;
-  max-height: 16px;
-  object-fit: contain;
-}
-
-.pkm-card-name {
-  text-align: center;
-  font-size: 12px;
-  color: var(--text);
-  line-height: 1.2;
-}
-
-.pkm-card:focus-visible {
-  outline: 2px solid #3b82f6;
-  outline-offset: 2px;
-}
-
-.pkm-card.is-caught .pkm-card-thumb {
-  background: var(--caught);
-  border-color: var(--border);
-}
-
-.pkm-card:is(:hover, :focus-visible) .pkm-card-thumb {
-  background: var(--hover);
-}
-
-@media (max-width: 360px) {
-  .pkm-card {
-    width: 120px;
-  }
-}
-
-/* -----------------------------
-     Grid view: catch icon overlay size
-  ------------------------------ */
-.group-grid .catch-dot {
-  position: absolute;
-  right: 6px;
-  bottom: 6px;
-  width: 16px;
-  height: 16px;
-  max-width: 16px;
-  max-height: 16px;
-  object-fit: contain;
-  image-rendering: auto;
-}
-
-.group-grid .pkm-card-thumb img.catch-dot {
-  width: 16px !important;
-  height: 16px !important;
-  max-width: 16px !important;
-  max-height: 16px !important;
-}
-
-/* -----------------------------
-     Grid card caught state
-  ------------------------------ */
-.pkm-card.caught .pkm-card-thumb {
-  background: var(--caught);
-  border-color: var(--border);
-}
-
-.pkm-card.caught:hover .pkm-card-thumb {
-  background: var(--caught-hover);
-}
-
-.pkm-card.caught .pkm-card-name {
-  background: transparent;
-}
-
-/* -----------------------------
-     Grid spacing distribution
-  ------------------------------ */
-.group-grid {
-  justify-content: flex-start;
-}
-.grid-distribute .group-grid {
-  justify-content: space-between;
-}
-
-/* -----------------------------
-     Progress Bar
-  ------------------------------ */
-.section-progress td {
-  background: #fff;
-  color: var(--muted);
-  font-size: 12px;
-  padding: 0.25rem 0.9rem 0.6rem;
-  border-bottom: 1px solid var(--border);
-}
-
-.progress-row {
-  padding: 0;
-}
-
-.progress-bar {
-  position: relative;
-  width: 100%;
-  height: 14px;
-  background: #e3e3e3;
-  border-radius: 8px;
-  overflow: hidden;
-  margin-top: 4px;
-}
-
-.progress-fill {
-  height: 100%;
-  background: #4caf50;
-  width: 0%;
-  transition: width 400ms ease-in-out;
-}
-
-.progress-label {
-  font-size: 12px;
-  text-align: right;
-  margin-top: 4px;
-  color: #3c3c3c;
-}
-
-/* -----------------------------
-     Animations
-  ------------------------------ */
-tr.fade-in {
-  opacity: 0;
-  transform: translateY(-4px);
-  animation: rowFadeIn 160ms ease-out forwards;
-}
-
-@keyframes rowFadeIn {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-tr.fade-out {
-  opacity: 1;
-  transform: translateY(0);
-  animation: rowFadeOut 160ms ease-in forwards;
-}
-
-@keyframes rowFadeOut {
-  to {
-    opacity: 0;
-    transform: translateY(-4px);
-  }
-}
-
-/* -----------------------------
-     Reset Button
-  ------------------------------ */
-.footer-actions {
-  width: 90vw;
-  margin: 1rem auto 2rem;
-  display: flex;
-  justify-content: flex-end;
-}
-
-.reset-btn {
-  border: 1px solid #ef4444;
-  color: #991b1b;
-  background: #fff;
-  padding: 8px 12px;
-  border-radius: 10px;
-  cursor: pointer;
-  font-size: 14px;
-}
-
-.reset-btn:hover {
-  background: #fef2f2;
-}
-
-/* -----------------------------
-     Table Section Headers
-  ------------------------------ */
-.section-header td {
-  background: var(--bg-alt);
-  color: #111;
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  padding: 0.6rem 0.9rem;
-}
-
-#pokemon-table.has-data thead {
-  display: none;
-}
-
-.section-header-content {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  width: 100%;
-}
-
-.section-header-img {
-  width: 28px;
-  height: 28px;
-  object-fit: contain;
-  image-rendering: auto;
-}
-
-.section-header-title {
-  font-size: 1.05rem;
-  font-weight: 700;
-  line-height: 1.2;
-}
-
-.section-header-controls {
-  margin-left: auto;
-  display: inline-flex;
-  gap: 6px;
-}
-
-/* -----------------------------
-   Floating section header 
------------------------------- */
-.floating-section {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: transparent;
-}
-.floating-section-inner {
-  width: var(--band-width);
-  max-width: var(--band-max);
-  margin: 0 auto;
-  padding: 0.6rem 0.9rem;
-  display: flex;
-  align-items: center;
-  gap: 10px;
   background: var(--surface);
-  border: 1px solid var(--border);
-  border-bottom: none;
-  border-top-left-radius: var(--radius-md);
-  border-top-right-radius: var(--radius-md);
-  box-shadow: var(--shadow-sm);
-}
-.floating-controls {
-  margin-left: auto;
-  display: inline-flex;
-  gap: 6px;
-}
-.view-btn {
-  composes: btn from global;
-  padding: 4px 10px;
-  font-size: 12px;
-}
-.view-btn.active {
-  background: var(--bg-alt);
-}
-
-.floating-section img {
-  width: 28px;
-  height: 28px;
-  object-fit: contain;
-}
-
-.floating-section-spacer {
-  display: none;
-}
-
-.view-btn:hover {
-  background: var(--hover);
 }
 
 /* -----------------------------
-     Page Band
-  ------------------------------ */
-.page-band {
-  width: 90vw;
-  max-width: 1400px;
-  margin: 0 auto;
-}
-
-.page-band .container,
-.page-band .table-wrap,
-.page-band .footer-actions {
-  width: 100%;
-  margin-left: 0;
-  margin-right: 0;
-}
-
-.page-band .container h1 {
-  text-align: left;
-}
-
-.page-band .table-wrap {
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.page-band .footer-actions {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  margin: 1rem 0 2rem;
-}
-
-/* -----------------------------
-     Catch mark (both views)
-  ------------------------------ */
-.catch-mark {
-  width: 16px;
-  height: 16px;
-  max-width: 16px;
-  max-height: 16px;
-  image-rendering: auto;
-}
-
-/* list button keeps the same clickable target size */
-.catch-btn {
-  width: 32px;
-  height: 32px;
-}
-
-/* grid overlay positioning */
-.group-grid .pkm-card-thumb .catch-mark {
-  position: absolute;
-  right: 6px;
-  bottom: 6px;
-}
-
-/* -----------------------------
-     Caught state (both views)
-  ------------------------------ */
-.row-normal.is-caught {
-  background: var(--caught);
-}
-.row-normal.is-caught:hover {
-  background: var(--caught-hover);
-}
-
-.pkm-card.is-caught .pkm-card-thumb {
-  background: var(--caught);
-  border-color: var(--border);
-}
-.pkm-card.is-caught:hover .pkm-card-thumb {
-  background: var(--caught-hover);
-}
-
-/* -----------------------------
-   Section Summary (dark-mode aware)
------------------------------- */
-.section-summary td {
-  background: var(--surface);
-  color: var(--muted);
-  border-bottom: 1px solid var(--border);
-}
-
-/* -----------------------------
-   Table Section Headers (dark-mode aware)
------------------------------- */
-.section-header td {
-  background: var(--bg-alt);
-  color: var(--text);
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-}
-
-/* -----------------------------
-   Choice Subheader Row (dark-mode aware)
------------------------------- */
-.choice-subheader-row td {
-  background: var(--bg-alt);
-  color: var(--text);
-  border-left: 3px solid var(--border);
-  border-bottom: 1px solid var(--border);
-}
-
-/* -----------------------------
-   Choice Rows (banded) — themeable bands
------------------------------- */
-tr.row-choice.compact-band td {
-  background: var(--choice-band);
-}
-tr.row-choice.compact-band:hover td {
-  background: var(--choice-band-hover);
-}
-
-/* Light theme defaults (fallbacks if base.css didn't set them) */
-:root {
-  --choice-band: color-mix(in srgb, #f5d9b5 6%, var(--surface));
-  --choice-band-hover: color-mix(in srgb, #f5d9b5 12%, var(--surface));
-}
-
-/* Dark theme overrides for choice band tint */
-:root[data-theme="dark"] {
-  --choice-band: color-mix(in srgb, #f1c48a 8%, var(--surface));
-  --choice-band-hover: color-mix(in srgb, #f1c48a 16%, var(--surface));
-}
-
-/* -----------------------------
-   Pokémon Sprite Backgrounds (list mode)
------------------------------- */
-.pkm img {
-  background: var(--surface);
-  border: 1px solid var(--border);
-}
-
-/* -----------------------------
-   Progress Row (ensure surface in dark mode)
------------------------------- */
-.section-progress td {
-  background: var(--surface);
-  color: var(--muted);
-  border-bottom: 1px solid var(--border);
-}
-.progress-bar {
-  background: color-mix(in srgb, var(--border) 60%, transparent);
-}
-.progress-label {
-  color: var(--text);
-}
-
-/* -----------------------------
-   General Row Hover/States (use variables)
------------------------------- */
-tbody tr.row-normal:hover {
-  background: var(--hover);
-}
-.row-normal.is-caught {
-  background: var(--caught);
-}
-.row-normal.is-caught:hover {
-  background: var(--caught-hover);
-}
-
-/* -----------------------------
-   Section Summary (accordion, theme-aware)
+   Section Summary (rich)
 ------------------------------ */
 .summary-block {
   display: grid;
@@ -788,7 +184,6 @@ tbody tr.row-normal:hover {
   font-size: 13px;
   line-height: 1.45;
 }
-
 .summary-accordion {
   border: 1px solid var(--border);
   border-radius: var(--radius-md, 10px);
@@ -796,7 +191,6 @@ tbody tr.row-normal:hover {
   box-shadow: var(--shadow-sm, 0 1px 2px rgba(2, 6, 23, 0.05));
   overflow: hidden;
 }
-
 .summary-accordion > summary {
   list-style: none;
   cursor: pointer;
@@ -807,17 +201,14 @@ tbody tr.row-normal:hover {
   align-items: center;
   gap: 8px;
 }
-
 .summary-accordion > summary:focus-visible {
   outline: 2px solid var(--focus);
   outline-offset: 2px;
 }
-
 .summary-accordion[open] > summary {
   border-bottom: 1px solid var(--border);
   background: var(--bg-alt);
 }
-
 .summary-long {
   padding: 10px 12px;
   font-size: 13px;
@@ -825,7 +216,6 @@ tbody tr.row-normal:hover {
   background: var(--surface);
   line-height: 1.45;
 }
-
 .summary-long p {
   margin: 0 0 0.6rem 0;
 }
@@ -840,97 +230,226 @@ tbody tr.row-normal:hover {
   color: var(--focus);
   text-decoration: underline;
 }
-.summary-long code,
-.summary-long pre {
-  background: var(--bg-alt);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm, 8px);
-}
-.summary-long code {
-  padding: 0 0.25rem;
-}
-.summary-long pre {
-  padding: 0.6rem 0.8rem;
-  overflow: auto;
-}
-
-/* disclosure caret */
 .summary-accordion > summary::marker,
 .summary-accordion > summary::-webkit-details-marker {
   display: none;
 }
-
 .summary-accordion > summary::before {
   content: "▸";
   display: inline-block;
   transform: translateY(1px);
   color: var(--muted);
 }
-
 .summary-accordion[open] > summary::before {
   content: "▾";
   color: var(--muted);
 }
+
 /* -----------------------------
-   View Mode Buttons (theme-aware)
+   Grid cards (fixed-size layout)
 ------------------------------ */
-.section-header-controls,
-.floating-controls {
-  display: inline-flex;
-  gap: 6px;
-  margin-left: auto;
+.group-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--grid-gap, 12px);
+  align-items: flex-start;
+  justify-content: flex-start;
+  box-sizing: border-box;
 }
-
-.view-btn {
-  display: inline-flex;
-  align-items: center;
+.pkm-card {
+  width: 132px;
+  display: grid;
   gap: 6px;
-  padding: 4px 10px;
-  font-size: 12px;
-  border-radius: var(--radius-sm, 8px);
-  border: 1px solid var(--border);
-  background: var(--surface);
-  color: var(--text);
   cursor: pointer;
+  outline: none;
 }
-
-.view-btn:hover {
+.pkm-card-thumb {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  display: grid;
+  place-items: center;
   background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md, 10px);
+  box-shadow: var(--shadow-sm, 0 1px 2px rgba(2, 6, 23, 0.05));
 }
-
-.view-btn:focus-visible {
+.pkm-card-sprite {
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+}
+.pkm-card-name {
+  text-align: center;
+  font-size: 12px;
+  color: var(--text);
+  line-height: 1.2;
+}
+.pkm-card:is(:hover, :focus-visible) .pkm-card-thumb {
+  background: var(--hover);
+}
+.pkm-card.is-caught .pkm-card-thumb {
+  background: var(--caught);
+  border-color: var(--border);
+}
+.pkm-card.is-caught:hover .pkm-card-thumb {
+  background: var(--caught-hover);
+}
+.pkm-card:focus-visible {
   outline: 2px solid var(--focus);
   outline-offset: 2px;
 }
-
-.view-btn.active {
-  background: var(--bg-alt);
-  border-color: var(--border);
-  font-weight: 600;
-  color: var(--text);
-}
-
-/* optional: keep label contrast high in dark mode */
-:root[data-theme="dark"] .view-btn.active {
-  background: var(--bg-alt);
-  color: var(--text);
+@media (max-width: 360px) {
+  .pkm-card {
+    width: 120px;
+  }
 }
 
 /* -----------------------------
-     Utilities
-  ------------------------------ */
-.muted {
+   Grid catch mark overlay
+------------------------------ */
+.pkm-card-thumb .catch-mark {
+  position: absolute;
+  right: 6px;
+  bottom: 6px;
+  width: 16px;
+  height: 16px;
+  max-width: 16px;
+  max-height: 16px;
+  object-fit: contain;
+}
+
+/* -----------------------------
+   Grid spacing (per-grid gap classes)
+------------------------------ */
+.group-grid {
+  gap: var(--grid-gap, 12px);
+}
+.gap-4 {
+  --grid-gap: 4px;
+}
+.gap-5 {
+  --grid-gap: 5px;
+}
+.gap-6 {
+  --grid-gap: 6px;
+}
+.gap-7 {
+  --grid-gap: 7px;
+}
+.gap-8 {
+  --grid-gap: 8px;
+}
+.gap-9 {
+  --grid-gap: 9px;
+}
+.gap-10 {
+  --grid-gap: 10px;
+}
+.gap-11 {
+  --grid-gap: 11px;
+}
+.gap-12 {
+  --grid-gap: 12px;
+}
+.gap-13 {
+  --grid-gap: 13px;
+}
+.gap-14 {
+  --grid-gap: 14px;
+}
+.gap-15 {
+  --grid-gap: 15px;
+}
+.gap-16 {
+  --grid-gap: 16px;
+}
+.gap-17 {
+  --grid-gap: 17px;
+}
+.gap-18 {
+  --grid-gap: 18px;
+}
+.gap-19 {
+  --grid-gap: 19px;
+}
+.gap-20 {
+  --grid-gap: 20px;
+}
+.gap-21 {
+  --grid-gap: 21px;
+}
+.gap-22 {
+  --grid-gap: 22px;
+}
+.gap-23 {
+  --grid-gap: 23px;
+}
+.gap-24 {
+  --grid-gap: 24px;
+}
+.gap-25 {
+  --grid-gap: 25px;
+}
+.gap-26 {
+  --grid-gap: 26px;
+}
+.gap-27 {
+  --grid-gap: 27px;
+}
+.gap-28 {
+  --grid-gap: 28px;
+}
+.gap-29 {
+  --grid-gap: 29px;
+}
+.gap-30 {
+  --grid-gap: 30px;
+}
+.gap-31 {
+  --grid-gap: 31px;
+}
+.gap-32 {
+  --grid-gap: 32px;
+}
+
+/* -----------------------------
+   Progress Bar
+------------------------------ */
+.section-progress td {
+  background: var(--surface);
   color: var(--muted);
   font-size: 12px;
+  padding: 0.25rem 0.9rem 0.6rem;
+  border-bottom: 1px solid var(--border);
 }
-
-.center {
-  text-align: center;
+.progress-row {
+  padding: 0;
+}
+.progress-bar {
+  position: relative;
+  width: 100%;
+  height: 14px;
+  background: color-mix(in srgb, var(--border) 60%, transparent);
+  border-radius: 8px;
+  overflow: hidden;
+  margin-top: 4px;
+}
+.progress-fill {
+  height: 100%;
+  background: #4caf50;
+  width: 0%;
+  transition: width 400ms ease-in-out;
+}
+.progress-label {
+  font-size: 12px;
+  text-align: right;
+  margin-top: 4px;
+  color: var(--text);
 }
 
 /* -----------------------------
-     Progress width utilities
-  ------------------------------ */
+   Progress width utilities
+------------------------------ */
 .w-0 {
   width: 0%;
 }
@@ -1236,96 +755,122 @@ tbody tr.row-normal:hover {
 }
 
 /* -----------------------------
-     Grid card spacing
-  ------------------------------ */
-.group-grid {
-  gap: var(--grid-gap, 12px);
+   Animations
+------------------------------ */
+tr.fade-in {
+  opacity: 0;
+  transform: translateY(-4px);
+  animation: rowFadeIn 160ms ease-out forwards;
+}
+@keyframes rowFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+tr.fade-out {
+  opacity: 1;
+  transform: translateY(0);
+  animation: rowFadeOut 160ms ease-in forwards;
+}
+@keyframes rowFadeOut {
+  to {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
 }
 
-.gap-4 {
-  --grid-gap: 4px;
+/* -----------------------------
+   Reset Button Row
+------------------------------ */
+.footer-actions {
+  width: 90vw;
+  margin: 1rem auto 2rem;
+  display: flex;
+  justify-content: flex-end;
 }
-.gap-5 {
-  --grid-gap: 5px;
+.reset-btn {
+  border: 1px solid #ef4444;
+  color: #991b1b;
+  background: #fff;
+  padding: 8px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 14px;
 }
-.gap-6 {
-  --grid-gap: 6px;
+.reset-btn:hover {
+  background: #fef2f2;
 }
-.gap-7 {
-  --grid-gap: 7px;
+
+/* -----------------------------
+   Page Band
+------------------------------ */
+.page-band {
+  width: 90vw;
+  max-width: 1400px;
+  margin: 0 auto;
 }
-.gap-8 {
-  --grid-gap: 8px;
+.page-band .container,
+.page-band .table-wrap,
+.page-band .footer-actions {
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
 }
-.gap-9 {
-  --grid-gap: 9px;
+.page-band .container h1 {
+  text-align: left;
 }
-.gap-10 {
-  --grid-gap: 10px;
+.page-band .table-wrap {
+  margin-left: auto;
+  margin-right: auto;
 }
-.gap-11 {
-  --grid-gap: 11px;
+.page-band .footer-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 1rem 0 2rem;
 }
-.gap-12 {
-  --grid-gap: 12px;
+
+/* -----------------------------
+   Catch mark (both views) + Caught state
+------------------------------ */
+.catch-mark {
+  width: 16px;
+  height: 16px;
+  max-width: 16px;
+  max-height: 16px;
+  image-rendering: auto;
 }
-.gap-13 {
-  --grid-gap: 13px;
+.catch-btn {
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  cursor: pointer;
 }
-.gap-14 {
-  --grid-gap: 14px;
+.group-grid .pkm-card-thumb .catch-mark {
+  position: absolute;
+  right: 6px;
+  bottom: 6px;
 }
-.gap-15 {
-  --grid-gap: 15px;
+.pkm-card.is-caught .pkm-card-thumb {
+  background: var(--caught);
+  border-color: var(--border);
 }
-.gap-16 {
-  --grid-gap: 16px;
+.pkm-card.is-caught:hover .pkm-card-thumb {
+  background: var(--caught-hover);
 }
-.gap-17 {
-  --grid-gap: 17px;
+
+/* -----------------------------
+   Utilities
+------------------------------ */
+.muted {
+  color: var(--muted);
+  font-size: 12px;
 }
-.gap-18 {
-  --grid-gap: 18px;
-}
-.gap-19 {
-  --grid-gap: 19px;
-}
-.gap-20 {
-  --grid-gap: 20px;
-}
-.gap-21 {
-  --grid-gap: 21px;
-}
-.gap-22 {
-  --grid-gap: 22px;
-}
-.gap-23 {
-  --grid-gap: 23px;
-}
-.gap-24 {
-  --grid-gap: 24px;
-}
-.gap-25 {
-  --grid-gap: 25px;
-}
-.gap-26 {
-  --grid-gap: 26px;
-}
-.gap-27 {
-  --grid-gap: 27px;
-}
-.gap-28 {
-  --grid-gap: 28px;
-}
-.gap-29 {
-  --grid-gap: 29px;
-}
-.gap-30 {
-  --grid-gap: 30px;
-}
-.gap-31 {
-  --grid-gap: 31px;
-}
-.gap-32 {
-  --grid-gap: 32px;
+.center {
+  text-align: center;
 }
