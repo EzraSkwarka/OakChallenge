@@ -99,13 +99,20 @@ function saveCaught(caught) {
   localStorage.setItem(LS_CAUGHT, JSON.stringify(caught));
 }
 
+/* -----------------------------
+  UI Refresh
+------------------------------ */
+function refreshUI() {
+  render();
+  StickyHeader.update();
+}
+
 function setChoice(key, value) {
   const current = store.getState();
   const choices = { ...current.choices, [key]: norm(value) };
   saveChoices(choices);
   store.setState({ choices });
-  render();
-  StickyHeader.update();
+  refreshUI();
 }
 function clearChoice(key) {
   const current = store.getState();
@@ -113,8 +120,7 @@ function clearChoice(key) {
   delete choices[key];
   saveChoices(choices);
   store.setState({ choices });
-  render();
-  StickyHeader.update();
+  refreshUI();
 }
 function toggleCaught(name) {
   if (!name) return;
@@ -123,11 +129,13 @@ function toggleCaught(name) {
   caught[name] ? delete caught[name] : (caught[name] = true);
   saveCaught(caught);
   store.setState({ caught });
+  refreshUI();
 }
 function resetAll() {
   localStorage.removeItem(LS_CHOICES);
   localStorage.removeItem(LS_CAUGHT);
   store.setState({ choices: {}, caught: {} });
+  refreshUI();
 }
 
 /* -----------------------------

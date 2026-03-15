@@ -987,3 +987,18 @@ tr.fade-out {
 .choice-status .chip button:hover {
   background: var(--hover);
 }
+
+/* -----------------------------
+  Compact preformatted evolution blocks
+------------------------------ */
+.summary-long pre,
+.game-about pre {
+  margin: 0.2rem 0;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  white-space: pre;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono",
+    monospace;
+  line-height: 1.25;
+}
