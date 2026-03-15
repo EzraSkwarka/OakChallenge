@@ -1,4 +1,95 @@
 /* -----------------------------
+  Page Header: Game Title Logo
+------------------------------ */
+#game-title {
+  margin: 0.25rem 0 0.9rem;
+  text-align: left;
+}
+
+#game-title .game-logo-title {
+  display: inline-block;
+  width: auto;
+  height: 160px;
+  max-width: none;
+  object-fit: contain;
+  image-rendering: auto;
+  margin: 0;
+}
+
+@media (min-width: 900px) {
+  #game-title .game-logo-title {
+    height: 210px;
+  }
+}
+@media (min-width: 1280px) {
+  #game-title .game-logo-title {
+    height: 260px;
+  }
+}
+
+#game-title .game-logo-title.is-wide {
+  height: 190px;
+}
+
+@media (min-width: 900px) {
+  #game-title .game-logo-title.is-wide {
+    height: 240px;
+  }
+}
+@media (min-width: 1280px) {
+  #game-title .game-logo-title.is-wide {
+    height: 280px;
+  }
+}
+
+#game-title .game-logo-title.is-tall {
+  height: 280px;
+}
+@media (min-width: 900px) {
+  #game-title .game-logo-title.is-tall {
+    height: 320px;
+  }
+}
+@media (min-width: 1280px) {
+  #game-title .game-logo-title.is-tall {
+    height: 360px;
+  }
+}
+
+/* -----------------------------
+  Game Tips (Accordion)
+------------------------------ */
+.game-tips {
+  margin: 0 0 0.9rem;
+}
+.game-tips .summary-accordion > summary {
+  font-weight: 700;
+}
+
+/* -----------------------------
+Logo-as-title and Tips accordion
+------------------------------ */
+#game-title {
+  margin: 0.2rem 0 0.6rem;
+}
+
+#game-title .game-logo-title {
+  display: block;
+  height: 52px;
+  width: auto;
+  object-fit: contain;
+  image-rendering: auto;
+}
+
+.game-tips {
+  margin: 0 0 0.75rem;
+}
+
+.game-tips .summary-accordion > summary {
+  font-weight: 700;
+}
+
+/* -----------------------------
    Tracker: Page Reset
 ------------------------------ */
 html,
@@ -121,8 +212,7 @@ tbody tr.row-normal:hover {
 }
 
 html[data-theme="dark"],
-body[data-theme="dark"] 
- {
+body[data-theme="dark"] {
   --choice-band: color-mix(in srgb, #f1c48a 8%, var(--surface));
   --choice-band-hover: color-mix(in srgb, #f1c48a 16%, var(--surface));
 }

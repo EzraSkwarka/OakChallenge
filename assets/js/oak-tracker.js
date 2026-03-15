@@ -127,6 +127,71 @@ function resetAll() {
 }
 
 /* -----------------------------
+  Game Header
+------------------------------ */
+function setGameHeader() {
+  const titleEl = document.getElementById("game-title");
+  if (!titleEl) return;
+  titleEl.textContent = "";
+
+  const logo =
+    gameData && typeof gameData.logo === "string" ? gameData.logo.trim() : "";
+  if (logo) {
+    const img = document.createElement("img");
+    img.src = logo;
+    img.alt = (gameData.gameTitle || "Game") + " logo";
+    img.className = "game-logo-title";
+    img.decoding = "async";
+    img.loading = "lazy";
+
+    img.addEventListener("load", () => {
+      const r = img.naturalWidth / Math.max(1, img.naturalHeight);
+      if (r > 1.8) img.classList.add("is-wide");
+      else if (r < 0.7) img.classList.add("is-tall");
+    });
+
+    titleEl.appendChild(img);
+  } else {
+    titleEl.textContent = GAME_TITLE;
+  }
+}
+
+/* -----------------------------
+  Game Tips (accordion box like section "More info")
+------------------------------ */
+function renderGameTips() {
+  const host = document.querySelector(".page-band .container");
+  if (!host) return;
+
+  const existing = host.querySelector(".game-tips");
+  if (existing) existing.remove();
+
+  const html =
+    gameData && typeof gameData.aboutHtml === "string"
+      ? gameData.aboutHtml.trim()
+      : "";
+  if (!html) return;
+
+  const section = document.createElement("section");
+  section.className = "game-tips";
+
+  const details = document.createElement("details");
+  details.className = "summary-accordion";
+  details.setAttribute("open", ""); // open by default; remove if you prefer collapsed
+
+  const summary = document.createElement("summary");
+  summary.textContent = "Tips on this version";
+
+  const body = document.createElement("div");
+  body.className = "summary-long";
+  body.innerHTML = html; // dataset-controlled HTML
+
+  details.append(summary, body);
+  section.appendChild(details);
+  host.appendChild(section);
+}
+
+/* -----------------------------
    View Mode
 ------------------------------ */
 const VIEW_LS = `poke-view:${PAGE_NS}`;
@@ -776,8 +841,8 @@ function render() {
    Boot
 ------------------------------ */
 function boot() {
-  const t = document.getElementById("game-title");
-  if (t) t.textContent = GAME_TITLE;
+  setGameHeader();
+  renderGameTips();
 
   loadPersisted();
   render();

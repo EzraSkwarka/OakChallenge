@@ -1,10 +1,11 @@
 /* -----------------------------
-   Site Header
+  Site Header
 ------------------------------ */
 .site-header {
   background: var(--bg);
   border-bottom: 1px solid var(--border);
 }
+
 .site-header .container {
   width: var(--band-width, 90vw);
   max-width: var(--band-max, 1400px);
@@ -12,28 +13,30 @@
   padding: 0.4rem 0 0.8rem;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: stretch;
 }
+
 .site-header-bar {
   width: 100%;
   display: flex;
   align-items: center;
   gap: 8px;
+  justify-content: space-between;
   margin-bottom: 0.15rem;
 }
-.site-header-bar .spacer {
-  flex: 1 1 auto;
-}
 
-.home-btn.btn,
-.theme-btn.btn {
-  border-radius: var(--radius-sm, 8px);
-}
-
-.site-header h1 {
-  margin: 0.15rem 0 0.2rem;
+.site-title {
+  margin: 0;
   font-size: 1.9rem;
+  line-height: 1.2;
 }
+
+.site-header-bar .home-btn.btn,
+.site-header-bar .theme-btn.btn {
+  border-radius: var(--radius-sm, 8px);
+  white-space: nowrap;
+}
+
 .tagline {
   margin: 0.2rem 0 0.6rem;
   color: var(--muted);
@@ -71,6 +74,12 @@
   background: var(--bg);
   border-top: 1px solid var(--border);
 }
+
+.site-footer a {
+  color: var(--focus);
+  text-decoration: underline;
+}
+
 .site-footer .container {
   width: var(--band-width);
   max-width: var(--band-max);
