@@ -1,11 +1,10 @@
 /* -----------------------------
-  Page Header: Game Title Logo
+  Page Header: Game Title Logo (vertical flow)
 ------------------------------ */
 #game-title {
   margin: 0.25rem 0 0.9rem;
   text-align: left;
 }
-
 #game-title .game-logo-title {
   display: inline-block;
   width: auto;
@@ -15,7 +14,6 @@
   image-rendering: auto;
   margin: 0;
 }
-
 @media (min-width: 900px) {
   #game-title .game-logo-title {
     height: 210px;
@@ -26,11 +24,9 @@
     height: 260px;
   }
 }
-
 #game-title .game-logo-title.is-wide {
   height: 190px;
 }
-
 @media (min-width: 900px) {
   #game-title .game-logo-title.is-wide {
     height: 240px;
@@ -41,7 +37,6 @@
     height: 280px;
   }
 }
-
 #game-title .game-logo-title.is-tall {
   height: 280px;
 }
@@ -57,7 +52,7 @@
 }
 
 /* -----------------------------
-  Game Tips (Accordion)
+  Game Tips (Accordion, vertical below title)
 ------------------------------ */
 .game-tips {
   margin: 0 0 0.9rem;
@@ -67,30 +62,20 @@
 }
 
 /* -----------------------------
-Logo-as-title and Tips accordion
+  Tips Source
 ------------------------------ */
-#game-title {
-  margin: 0.2rem 0 0.6rem;
+.tips-source {
+  margin-top: 0.6rem;
+  color: var(--muted);
+  font-size: 0.95em;
 }
-
-#game-title .game-logo-title {
-  display: block;
-  height: 52px;
-  width: auto;
-  object-fit: contain;
-  image-rendering: auto;
-}
-
-.game-tips {
-  margin: 0 0 0.75rem;
-}
-
-.game-tips .summary-accordion > summary {
-  font-weight: 700;
+.tips-source a {
+  color: var(--focus);
+  text-decoration: underline;
 }
 
 /* -----------------------------
-   Tracker: Page Reset
+  Tracker: Page Reset
 ------------------------------ */
 html,
 body {
@@ -104,7 +89,7 @@ body {
 }
 
 /* -----------------------------
-   Table Shell
+  Table Shell
 ------------------------------ */
 .table-wrap {
   width: var(--band-width, 90vw);
@@ -138,7 +123,7 @@ tbody td {
 }
 
 /* -----------------------------
-   Table Section Headers
+  Table Section Headers
 ------------------------------ */
 .section-header td {
   background: var(--bg-alt);
@@ -174,7 +159,7 @@ tbody td {
 }
 
 /* -----------------------------
-   Choice Subheader Row
+  Choice Subheader Row
 ------------------------------ */
 .choice-subheader-row td {
   background: var(--bg-alt);
@@ -187,7 +172,7 @@ tbody td {
 }
 
 /* -----------------------------
-   Rows
+  Rows
 ------------------------------ */
 tbody tr.row-normal {
   cursor: pointer;
@@ -204,19 +189,17 @@ tbody tr.row-normal:hover {
 }
 
 /* -----------------------------
-   Choice Rows (banded)
+  Choice Rows (banded)
 ------------------------------ */
 :root {
   --choice-band: color-mix(in srgb, #f5d9b5 6%, var(--surface, #fff));
   --choice-band-hover: color-mix(in srgb, #f5d9b5 12%, var(--surface, #fff));
 }
-
 html[data-theme="dark"],
 body[data-theme="dark"] {
   --choice-band: color-mix(in srgb, #f1c48a 8%, var(--surface));
   --choice-band-hover: color-mix(in srgb, #f1c48a 16%, var(--surface));
 }
-
 tr.row-choice.compact-band td {
   background: var(--choice-band);
   position: relative;
@@ -249,7 +232,7 @@ tr.row-choice.compact-band + tr.row-choice.compact-band td {
 }
 
 /* -----------------------------
-   Pokémon Cell (list mode)
+  Pokémon Cell (list mode)
 ------------------------------ */
 .pkm {
   display: flex;
@@ -266,7 +249,7 @@ tr.row-choice.compact-band + tr.row-choice.compact-band td {
 }
 
 /* -----------------------------
-   Section Summary (rich)
+  Section Summary (rich)
 ------------------------------ */
 .summary-block {
   display: grid;
@@ -339,7 +322,7 @@ tr.row-choice.compact-band + tr.row-choice.compact-band td {
 }
 
 /* -----------------------------
-   Grid cards (fixed-size layout)
+  Grid cards (fixed-size layout)
 ------------------------------ */
 .group-grid {
   display: flex;
@@ -398,7 +381,7 @@ tr.row-choice.compact-band + tr.row-choice.compact-band td {
 }
 
 /* -----------------------------
-   Grid catch mark overlay
+  Grid catch mark overlay
 ------------------------------ */
 .pkm-card-thumb .catch-mark {
   position: absolute;
@@ -412,7 +395,7 @@ tr.row-choice.compact-band + tr.row-choice.compact-band td {
 }
 
 /* -----------------------------
-   Grid spacing (per-grid gap classes)
+  Grid spacing (per-grid gap classes)
 ------------------------------ */
 .group-grid {
   gap: var(--grid-gap, 12px);
@@ -506,7 +489,7 @@ tr.row-choice.compact-band + tr.row-choice.compact-band td {
 }
 
 /* -----------------------------
-   Progress Bar
+  Progress Bar
 ------------------------------ */
 .section-progress td {
   background: var(--surface);
@@ -541,7 +524,7 @@ tr.row-choice.compact-band + tr.row-choice.compact-band td {
 }
 
 /* -----------------------------
-   Progress width utilities
+  Progress width utilities
 ------------------------------ */
 .w-0 {
   width: 0%;
@@ -848,7 +831,7 @@ tr.row-choice.compact-band + tr.row-choice.compact-band td {
 }
 
 /* -----------------------------
-   Animations
+  Animations
 ------------------------------ */
 tr.fade-in {
   opacity: 0;
@@ -874,7 +857,7 @@ tr.fade-out {
 }
 
 /* -----------------------------
-   Reset Button Row
+  Reset Button Row
 ------------------------------ */
 .footer-actions {
   width: 90vw;
@@ -896,7 +879,7 @@ tr.fade-out {
 }
 
 /* -----------------------------
-   Page Band
+  Page Band
 ------------------------------ */
 .page-band {
   width: 90vw;
@@ -925,7 +908,7 @@ tr.fade-out {
 }
 
 /* -----------------------------
-   Catch mark (both views) + Caught state
+  Catch mark (both views) + Caught state
 ------------------------------ */
 .catch-mark {
   width: 16px;
@@ -958,7 +941,7 @@ tr.fade-out {
 }
 
 /* -----------------------------
-   Utilities
+  Utilities
 ------------------------------ */
 .muted {
   color: var(--muted);
@@ -966,4 +949,41 @@ tr.fade-out {
 }
 .center {
   text-align: center;
+}
+
+/* -----------------------------
+  Choice Status Chips
+------------------------------ */
+.choice-status {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0.4rem 0 0.8rem;
+}
+
+.choice-status .chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  font-size: 12px;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  box-shadow: var(--shadow-sm);
+}
+
+.choice-status .chip button {
+  padding: 2px 8px;
+  font-size: 12px;
+  color: var(--text);
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.choice-status .chip button:hover {
+  background: var(--hover);
 }

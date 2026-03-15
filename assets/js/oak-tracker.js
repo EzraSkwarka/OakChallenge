@@ -104,6 +104,8 @@ function setChoice(key, value) {
   const choices = { ...current.choices, [key]: norm(value) };
   saveChoices(choices);
   store.setState({ choices });
+  render();
+  StickyHeader.update();
 }
 function clearChoice(key) {
   const current = store.getState();
@@ -111,6 +113,8 @@ function clearChoice(key) {
   delete choices[key];
   saveChoices(choices);
   store.setState({ choices });
+  render();
+  StickyHeader.update();
 }
 function toggleCaught(name) {
   if (!name) return;
@@ -127,12 +131,47 @@ function resetAll() {
 }
 
 /* -----------------------------
-  Game Header
+  Header Layout (logo left, tips right)
+------------------------------ */
+function ensureHeaderGrid() {
+  const container = document.querySelector(".page-band .container");
+  if (!container) return null;
+
+  let grid = container.querySelector(".header-grid");
+  if (!grid) {
+    grid = document.createElement("section");
+    grid.className = "header-grid";
+    container.insertBefore(grid, container.firstChild);
+  }
+
+  let left = grid.querySelector(".header-left");
+  if (!left) {
+    left = document.createElement("div");
+    left.className = "header-left";
+    grid.appendChild(left);
+  }
+
+  let right = grid.querySelector(".header-right");
+  if (!right) {
+    right = document.createElement("div");
+    right.className = "header-right";
+    grid.appendChild(right);
+  }
+
+  return { grid, left, right };
+}
+
+/* -----------------------------
+  Game Header (logo replaces title)
 ------------------------------ */
 function setGameHeader() {
+  const slots = ensureHeaderGrid();
+  if (!slots) return;
+  const { left } = slots;
+
+  left.textContent = "";
   const titleEl = document.getElementById("game-title");
-  if (!titleEl) return;
-  titleEl.textContent = "";
+  if (titleEl) titleEl.textContent = "";
 
   const logo =
     gameData && typeof gameData.logo === "string" ? gameData.logo.trim() : "";
@@ -143,29 +182,22 @@ function setGameHeader() {
     img.className = "game-logo-title";
     img.decoding = "async";
     img.loading = "lazy";
-
-    img.addEventListener("load", () => {
-      const r = img.naturalWidth / Math.max(1, img.naturalHeight);
-      if (r > 1.8) img.classList.add("is-wide");
-      else if (r < 0.7) img.classList.add("is-tall");
-    });
-
-    titleEl.appendChild(img);
-  } else {
+    left.appendChild(img);
+  } else if (titleEl) {
     titleEl.textContent = GAME_TITLE;
+    left.appendChild(titleEl);
   }
 }
 
 /* -----------------------------
-  Game Tips (accordion box like section "More info")
+  Game Tips (accordion; dataset supplies full HTML)
 ------------------------------ */
 function renderGameTips() {
-  const host = document.querySelector(".page-band .container");
-  if (!host) return;
+  const slots = ensureHeaderGrid();
+  if (!slots) return;
+  const { right } = slots;
 
-  const existing = host.querySelector(".game-tips");
-  if (existing) existing.remove();
-
+  right.textContent = "";
   const html =
     gameData && typeof gameData.aboutHtml === "string"
       ? gameData.aboutHtml.trim()
@@ -177,18 +209,18 @@ function renderGameTips() {
 
   const details = document.createElement("details");
   details.className = "summary-accordion";
-  details.setAttribute("open", ""); // open by default; remove if you prefer collapsed
+  details.setAttribute("open", "");
 
   const summary = document.createElement("summary");
   summary.textContent = "Tips on this version";
 
   const body = document.createElement("div");
   body.className = "summary-long";
-  body.innerHTML = html; // dataset-controlled HTML
+  body.innerHTML = html;
 
   details.append(summary, body);
   section.appendChild(details);
-  host.appendChild(section);
+  right.appendChild(section);
 }
 
 /* -----------------------------
