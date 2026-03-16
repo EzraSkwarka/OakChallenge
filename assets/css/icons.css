@@ -27,24 +27,24 @@
   View modes (existing .view-btn classes)
 ------------------------------ */
 .view-btn.view-list::before {
-  mask-image: url("assets/images/ui/list.svg");
-  -webkit-mask-image: url("assets/images/ui/list.svg");
+  mask-image: url("../images/ui/list.svg");
+  -webkit-mask-image: url("../images/ui/list.svg");
 }
 .view-btn.view-grid::before {
-  mask-image: url("assets/images/ui/grid.svg");
-  -webkit-mask-image: url("assets/images/ui/grid.svg");
+  mask-image: url("../images/ui/grid.svg");
+  -webkit-mask-image: url("../images/ui/grid.svg");
 }
 
 /* -----------------------------
   Theme toggle (.theme-btn button) via aria-pressed
 ------------------------------ */
 .theme-btn[aria-pressed="true"]::before {
-  mask-image: url("assets/images/ui/moon.svg");
-  -webkit-mask-image: url("assets/images/ui/moon.svg");
+  mask-image: url("../images/ui/moon.svg");
+  -webkit-mask-image: url("../images/ui/moon.svg");
 }
 .theme-btn[aria-pressed="false"]::before {
-  mask-image: url("assets/images/ui/sun.svg");
-  -webkit-mask-image: url("assets/images/ui/sun.svg");
+  mask-image: url("../images/ui/sun.svg");
+  -webkit-mask-image: url("../images/ui/sun.svg");
 }
 
 /* -----------------------------
@@ -55,8 +55,8 @@
 .home-btn::before {
   width: 18px;
   height: 18px;
-  mask-image: url("assets/images/ui/house.svg");
-  -webkit-mask-image: url("assets/images/ui/house.svg");
+  mask-image: url("../images/ui/house.svg");
+  -webkit-mask-image: url("../images/ui/house.svg");
 }
 
 /* Optional spacing if needed */
