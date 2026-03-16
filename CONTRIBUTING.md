@@ -1,115 +1,207 @@
-# Contributing to Oak Challenge Tracker
+# Oak Challenge Tracker
 
-This document describes how to extend the Oak Challenge Tracker.
-It is intended for maintainers and contributors, not end users.
+A static, CSP-safe web application for tracking progress through the **Professor Oak Challenge** across multiple Pokémon games. Each game is defined entirely by data, allowing new titles to be added without modifying application logic.
+
+This project uses **plain HTML, CSS, and JavaScript**—no frameworks, no build step, and no inline scripts or styles.
 
 ---
 
-## Design Principles
+## What This Project Does
 
-- All game content is data-driven
-- Adding a game must not require changes to application logic
-- All files must remain CSP-safe
-- Code should be readable without inline commentary
+The Oak Challenge Tracker provides:
+
+- A landing page that lists supported games and routes to individual trackers
+- A per-game tracker that shows all obtainable Pokémon before each badge
+- Choice-based progression (starters, fossils, dojo rewards, roaming legendaries, etc.)
+- Persistent tracking of caught Pokémon and player choices
+- Both list and grid views backed by the same data model
+
+All progression content is declarative and lives in per-game data files.
+
+---
+
+## Guide Attribution
+
+Progression data and ordering are based on the **Professor Oak Challenge** guides written by **u/mewlax84**:
+
+- Author: https://www.reddit.com/user/mewlax84/
+- Guide collection: https://www.reddit.com/r/ProfessorOak/comments/bj6yeh/professor_oak_challenge_guides/
+
+---
+
+## Repository Structure
+
+```
+assets/
+  css/
+    landing.css
+    tracker.css
+  images/
+    covers/
+    logos/
+    FRLG/
+  js/
+    landing.js
+    oak-tracker.js
+    site-chrome.js
+    site-theme.js
+    sticky-header.js
+
+data/
+  manifest.games.json
+  <game-id>/
+    progression.js
+
+pages/
+  tracker/
+    <game-id>.html
+
+docs/
+  ADDING_A_NEW_GAME.md
+
+serve.ps1
+README.md
+```
+
+---
+
+## Architecture Overview
+
+### Landing Page
+- Driven by `manifest.games.json`
+- Renders a grid of games with search and filtering
+- Routes to per-game tracker pages
+
+### Per-Game Tracker
+- A static HTML page that loads:
+  - shared site chrome
+  - theme manager
+  - core tracker logic
+  - a game-specific `progression.js` file
+
+### Data-Driven Design
+- All game content is defined in `progression.js`
+- No game-specific logic exists in application code
+- Choices and caught state are persisted per game using `localStorage`
+
+### Security Model
+- Strict Content Security Policy
+- No inline scripts or styles
+- No `eval`, `Function`, or dynamic code generation
+
+---
+
+## Local Development
+
+### Requirements
+- Windows PowerShell 5.1 or PowerShell 7+
+- No external dependencies
+
+### Start the Local Server
+
+```powershell
+.\serve.ps1
+```
+
+If you encounter a listener permission error, run once as Administrator:
+
+```powershell
+netsh http add urlacl url=http://localhost:8000/ user=$env:USERNAME
+```
+
+Then open:
+
+```
+http://localhost:8000/
+```
+
+The local server mirrors production behavior with correct MIME types and a strict CSP.
 
 ---
 
 ## Adding a New Game
 
-Each game consists of:
+See **`ADDING_A_NEW_GAME.md`** for full documentation on:
 
-1. A manifest entry (`data/manifest.games.json`)
-2. A static HTML entry page (`pages/tracker/<game-id>.html`)
-3. A data file (`data/<game-id>/progression.js`)
-
-No other files should be modified when adding a game.
-
----
-
-## Manifest Entry
-
-```json
-{
-  "id": "blue",
-  "name": "Pokémon Blue",
-  "region": "Kanto",
-  "gen": "Gen 1",
-  "notes": "Paired version to Red.",
-  "cover": "/assets/images/covers/blue.png",
-  "href": "/pages/tracker/blue.html",
-  "available": true
-}
-```
+- Updating `manifest.games.json`
+- Creating a per-game HTML entry page
+- Image and sprite conventions
+- Building `progression.js`, including:
+  - choice rows
+  - gated rows
+  - non-gated rows
+  - ordering rules that match the written summary
 
 ---
 
-## progression.js Structure
+## Data and Assets
 
-Each game defines a single global object:
+### Covers
+Used on the landing page:
 
-```js
-window.gameData = {
-  gameId,
-  gameTitle,
-  logo,
-  aboutHtml,
-  progression
-};
+```
+/assets/images/covers/<game-id>.png
 ```
 
-Groups are rendered in insertion order.
+### Logos
+Used in the tracker header:
+
+```
+/assets/images/logos/<game-id>.png
+```
+
+### Sprites
+Organized by game family (for example):
+
+```
+/assets/images/FRLG/
+```
+
+Sprite paths referenced in data files are always absolute. If a sprite is not available, `img: "link"` may be used to fall back to a placeholder.
+
+### Fonts
+Some fonts used by the site are sourced from:
+
+https://pokemondungeon.com/media-downloads/fonts/
 
 ---
 
-## Row Types
+## Accessibility & Browser Support
 
-### Choice Rows
-
-```js
-{
-  type: "choice",
-  choiceKey: "starter",
-  choiceValue: "bulbasaur",
-  pokemon: { name: "Bulbasaur", img: "…" },
-  method: "Choose as starter"
-}
-```
-
-### Gated Rows
-
-```js
-{
-  pokemon: { name: "Ivysaur", img: "…" },
-  method: "Evolve Bulbasaur at Lv. 16",
-  requires: { starter: "bulbasaur" }
-}
-```
-
-### Non-Gated Rows
-
-```js
-{
-  pokemon: { name: "Pidgey", img: "…" },
-  method: "Catch on Route 1"
-}
-```
+- Full keyboard navigation on landing and tracker pages
+- Visible focus states for interactive elements
+- Lazy-loaded images where applicable
+- Tested in modern Chromium-based browsers, Firefox, and Safari
 
 ---
 
-## Assets
+## Contributing
 
-- Covers: `/assets/images/covers/<game-id>.png`
-- Logos: `/assets/images/logos/<game-id>.png`
-- Sprites: grouped by family (e.g. `/assets/images/FRLG/`)
-
-If an image is unavailable, use:
-
-```js
-img: "link"
-```
+- Keep all scripts and styles CSP-safe
+- Preserve section-header comments in CSS and JavaScript files
+- Avoid inline explanatory comments; favor clear structure
+- Use consistent lowercase slugs for choice values and requirements
+- Keep row ordering aligned with the summary narrative
 
 ---
 
 ## License
 
-By contributing, you agree that your contributions are licensed under the MIT License.
+Source code is provided under the repository’s license (see `LICENSE` if present).
+
+This license applies to the project’s source code only and does not grant rights to Pokémon names, images, or other copyrighted materials owned by their respective holders.”
+
+Pokémon and related media are © Nintendo / Creatures Inc. / GAME FREAK inc. This is a fan project for informational and organizational purposes only.
+
+---
+
+## Credits
+
+- **Professor Oak Challenge Guides**  
+  u/mewlax84  
+  https://www.reddit.com/user/mewlax84/  
+  https://www.reddit.com/r/ProfessorOak/comments/bj6yeh/professor_oak_challenge_guides/
+
+- **Fonts**  
+  Pokémon Dungeon media downloads  
+  https://pokemondungeon.com/media-downloads/fonts/
