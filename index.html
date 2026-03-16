@@ -1,48 +1,45 @@
 <!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <base href="/oakchallenge/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Professor Oak's Challenge</title>
+    <link rel="stylesheet" href="assets/css/base.css" />
+    <script src="/assets/js/site-chrome.js" defer></script>
+    <link rel="stylesheet" href="/assets/css/landing.css" />
+    <link rel="stylesheet" href="/assets/css/chrome.css" />
+    <script src="/assets/js/site-chrome.js" defer></script>
+    <script src="/assets/js/site-theme.js" defer></script>
+  </head>
 
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Professor Oak's Challenge</title>
-  <link rel="stylesheet" href="assets/css/base.css" />
-  <script src="/assets/js/site-chrome.js" defer></script>
-  <link rel="stylesheet" href="/assets/css/landing.css" />
-  <link rel="stylesheet" href="/assets/css/chrome.css" />
-  <script src="/assets/js/site-chrome.js" defer></script>
-  <script src="/assets/js/site-theme.js" defer></script>
+  <body>
+    <main class="container">
+      <h2 class="section-title">Choose a Game</h2>
 
-</head>
+      <!-- Search -->
+      <div class="search-wrap" role="search">
+        <label for="search" class="search-label">Search (name, region, or generation)</label>
+        <input id="search" name="search" type="search" placeholder="e.g., Kanto, Gen 3, FireRed" autocomplete="off" />
+      </div>
 
-<body>
+      <!-- Primary matches -->
+      <div id="primary-wrap" aria-live="polite">
+        <h3 id="primary-title" class="result-title" hidden>Top matches</h3>
+        <div id="grid" class="card-grid"><!-- primary cards --></div>
+      </div>
 
-  <main class="container">
-    <h2 class="section-title">Choose a Game</h2>
+      <!-- Secondary matches -->
+      <div id="secondary-wrap" aria-live="polite" hidden>
+        <h3 id="secondary-title" class="result-title">More results</h3>
+        <div id="grid-secondary" class="card-grid"><!-- secondary cards --></div>
+      </div>
 
-    <!-- Search -->
-    <div class="search-wrap" role="search">
-      <label for="search" class="search-label">Search (name, region, or generation)</label>
-      <input id="search" name="search" type="search" placeholder="e.g., Kanto, Gen 3, FireRed" autocomplete="off" />
-    </div>
+      <div id="grid-fallback" class="grid-fallback muted" hidden>
+        Couldn’t load the game list. Check <code>games.json</code> and try again.
+      </div>
+    </main>
 
-    <!-- Primary matches -->
-    <div id="primary-wrap" aria-live="polite">
-      <h3 id="primary-title" class="result-title" hidden>Top matches</h3>
-      <div id="grid" class="card-grid"><!-- primary cards --></div>
-    </div>
-
-    <!-- Secondary matches -->
-    <div id="secondary-wrap" aria-live="polite" hidden>
-      <h3 id="secondary-title" class="result-title">More results</h3>
-      <div id="grid-secondary" class="card-grid"><!-- secondary cards --></div>
-    </div>
-
-    <div id="grid-fallback" class="grid-fallback muted" hidden>
-      Couldn’t load the game list. Check <code>games.json</code> and try again.
-    </div>
-  </main>
-
-  <script src="/assets/js/landing.js" defer></script>
-</body>
-
+    <script src="/assets/js/landing.js" defer></script>
+  </body>
 </html>
