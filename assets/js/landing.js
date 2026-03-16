@@ -8,7 +8,7 @@
  *
  * It is responsible only for discovery and navigation into game pages.
  */
-const MANIFEST_URL = "/data/manifest.games.json";
+const MANIFEST_URL = "data/manifest.games.json";
 const PLACEHOLDER = "assets/images/covers/placeholder.png";
 
 const $ = (sel, root = document) => root.querySelector(sel);

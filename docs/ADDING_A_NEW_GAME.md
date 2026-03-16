@@ -25,7 +25,7 @@ All games are discovered via `manifest.games.json`. To add a new game, append a 
   "gen": "Gen 1",
   "notes": "Paired version to Red.",
   "cover": "assets/images/covers/blue.png",
-  "href": "/pages/tracker/blue.html",
+  "href": "pages/tracker/blue.html",
   "available": false
 }
 ```
@@ -34,7 +34,7 @@ All games are discovered via `manifest.games.json`. To add a new game, append a 
 
 - **`id`**  
   A unique, URL‑safe identifier. This must match:
-  - the folder name under `/data/blue/`
+  - the folder name under `data/blue/`
   - the `gameId` value inside `progression.js`
 
 - **`name`**  
@@ -72,7 +72,7 @@ Each game has its own static HTML entry page. This page loads the tracker UI and
 - Load order matters: `progression.js` **must be last**
 - Structure should match existing tracker pages
 
-### Minimal example (`/pages/tracker/blue.html`)
+### Minimal example (`pages/tracker/blue.html`)
 
 ```html
 <!doctype html>
@@ -115,7 +115,7 @@ Each game has its own static HTML entry page. This page loads the tracker UI and
     assets/js/site-theme.js</script>
     assets/js/site-chrome.js</script>
     assets/js/oak-tracker.js</script>
-    /data/blue/progression.js</script>
+    data/blue/progression.js</script>
   </body>
 </html>
 ```
