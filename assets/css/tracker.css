@@ -51,6 +51,14 @@
   }
 }
 
+#game-title .game-logo-title {
+  max-width: 90vw;
+  max-height: 90vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
 /* -----------------------------
   Game Tips (Accordion, vertical below title)
 ------------------------------ */
