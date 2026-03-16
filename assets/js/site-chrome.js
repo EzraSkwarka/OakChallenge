@@ -13,17 +13,17 @@
   const FOOTER_PATH = "OakChallenge/partials/footer.html";
 
   const CSS_INCLUDES = [
-    "assets/css/base.css",
-    "assets/css/chrome.css",
-    "assets/css/tracker.css",
-    "assets/css/sticky-header.css",
-    "assets/css/icons.css",
+    "OakChallenge/assets/css/base.css",
+    "OakChallenge/assets/css/chrome.css",
+    "OakChallenge/assets/css/tracker.css",
+    "OakChallenge/assets/css/sticky-header.css",
+    "OakChallenge/assets/css/icons.css",
   ];
 
   const JS_INCLUDES = [
     // do not self-include this file
-    "assets/js/site-theme.js",
-    "assets/js/sticky-header.js",
+    "OakChallenge/assets/js/site-theme.js",
+    "OakChallenge/assets/js/sticky-header.js",
   ];
 
   function ensureHost(id, parent, position) {
