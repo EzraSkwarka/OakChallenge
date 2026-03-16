@@ -109,9 +109,9 @@ window.gameData = {
           choiceValue: "bulbasaur",
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3f_001.png",
-            name: "Bulbasaur",
+            name: "Bulbasaur"
           },
-          method: "Pick this starter to show the Bulbasaur line",
+          method: "Pick this starter to show the Bulbasaur line"
         },
         {
           type: "choice",
@@ -119,9 +119,9 @@ window.gameData = {
           choiceValue: "charmander",
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3f_004.png",
-            name: "Charmander",
+            name: "Charmander"
           },
-          method: "Pick this starter to show the Charmander line",
+          method: "Pick this starter to show the Charmander line"
         },
         {
           type: "choice",
@@ -129,212 +129,217 @@ window.gameData = {
           choiceValue: "squirtle",
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3f_007.png",
-            name: "Squirtle",
+            name: "Squirtle"
           },
-          method: "Pick this starter to show the Squirtle line",
+          method: "Pick this starter to show the Squirtle line"
         },
 
         /* --------------------------- Bulbasaur Line ---------------------------- */
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3f_001.png",
-            name: "Bulbasaur",
+            name: "Bulbasaur"
           },
           method: "Choose as Starter",
 
-          requires: { starter: "bulbasaur" },
+          requires: { starter: "bulbasaur" }
         },
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3f_002.png",
-            name: "Ivysaur",
+            name: "Ivysaur"
           },
           method: "Evolve from Bulbasaur at Lvl. 16",
 
-          requires: { starter: "bulbasaur" },
+          requires: { starter: "bulbasaur" }
         },
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3f_003.png",
-            name: "Venusaur",
+            name: "Venusaur"
           },
           method: "Evolve from Ivysaur at Lvl. 32",
 
-          requires: { starter: "bulbasaur" },
+          requires: { starter: "bulbasaur" }
         },
 
         /* --------------------------- Charmander Line ---------------------------- */
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3f_004.png",
-            name: "Charmander",
+            name: "Charmander"
           },
           method: "Choose as Starter",
 
-          requires: { starter: "charmander" },
+          requires: { starter: "charmander" }
         },
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3f_005.png",
-            name: "Charmeleon",
+            name: "Charmeleon"
           },
           method: "Evolve from Charmander at Lvl. 16",
 
-          requires: { starter: "charmander" },
+          requires: { starter: "charmander" }
         },
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3f_006.png",
-            name: "Charizard",
+            name: "Charizard"
           },
           method: "Evolve from Charmeleon at Lvl. 36",
 
-          requires: { starter: "charmander" },
+          requires: { starter: "charmander" }
         },
 
         /* --------------------------- Squirtle Line ---------------------------- */
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3f_007.png",
-            name: "Squirtle",
+            name: "Squirtle"
           },
           method: "Choose as Starter",
 
-          requires: { starter: "squirtle" },
+          requires: { starter: "squirtle" }
         },
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3f_008.png",
-            name: "Wartortle",
+            name: "Wartortle"
           },
           method: "Evolve from Squirtle at Lvl. 16",
 
-          requires: { starter: "squirtle" },
+          requires: { starter: "squirtle" }
         },
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3f_009.png",
-            name: "Blastoise",
+            name: "Blastoise"
           },
           method: "Evolve from Wartortle at Lvl. 36",
 
-          requires: { starter: "squirtle" },
+          requires: { starter: "squirtle" }
         },
 
         /* --------------------------- Wild Pokémon ---------------------------- */
-        {
-          pokemon: {
-            img: "/assets/images/FRLG/Pokedex/Spr_3f_010.png",
-            name: "Caterpie",
-          },
-          method: "Catch in the Viridian Forest",
-        },
-        {
-          pokemon: {
-            img: "/assets/images/FRLG/Pokedex/Spr_3f_011.png",
-            name: "Metapod",
-          },
-          method: "Evolve from Caterpie at level 7",
-        },
-        {
-          pokemon: {
-            img: "/assets/images/FRLG/Pokedex/Spr_3f_012.png",
-            name: "Butterfree",
-          },
-          method: "Evolve from Metapod at level 10",
-        },
-        {
-          pokemon: {
-            img: "/assets/images/FRLG/Pokedex/Spr_3f_013.png",
-            name: "Weedle",
-          },
-          method: "Catch in the Viridian Forest",
-        },
-        {
-          pokemon: {
-            img: "/assets/images/FRLG/Pokedex/Spr_3f_014.png",
-            name: "Kakuna",
-          },
-          method: "Evolve from Weedle at level 7",
-        },
-        {
-          pokemon: {
-            img: "/assets/images/FRLG/Pokedex/Spr_3f_015.png",
-            name: "Beedrill",
-          },
-          method: "Evolve from Kakuna at level 10",
-        },
+        /* --------------------------- Route 1 --------------------------------- */
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3f_016.png",
-            name: "Pidgey",
+            name: "Pidgey"
           },
-          method: "Catch on Route 1",
+          method: "Catch on Route 1"
         },
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3f_017.png",
-            name: "Pidgeotto",
+            name: "Pidgeotto"
           },
-          method: "Evolve from Pidgey at level 18",
+          method: "Evolve from Pidgey at level 18"
         },
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3f_018.png",
-            name: "Pidgeot",
+            name: "Pidgeot"
           },
-          method: "Evolve from Pidgeotto at level 36",
+          method: "Evolve from Pidgeotto at level 36"
         },
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3f_019.png",
-            name: "Rattata",
+            name: "Rattata"
           },
-          method: "Catch on Route 1",
+          method: "Catch on Route 1"
         },
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3f_020.png",
-            name: "Raticate",
+            name: "Raticate"
           },
-          method: "Evolve from Rattata at level 20",
+          method: "Evolve from Rattata at level 20"
         },
+        /* --------------------------- Route 22 -------------------------------- */
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3f_021.png",
-            name: "Spearow",
+            name: "Spearow"
           },
-          method: "Catch on Route 22; You will need two for a trade later",
+          method: "Catch on Route 22; You will need two for a trade later"
         },
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3f_022.png",
-            name: "Fearow",
+            name: "Fearow"
           },
-          method: "Evolve from Spearow at level 20",
-        },
-        {
-          pokemon: {
-            img: "/assets/images/FRLG/Pokedex/Spr_3f_025.png",
-            name: "Pikachu",
-          },
-          method: "Viridian Forest",
+          method: "Evolve from Spearow at level 20"
         },
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3f_056.png",
-            name: "Mankey",
+            name: "Mankey"
           },
-          method: "Catch on Route 22",
+          method: "Catch on Route 22"
         },
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3f_057.png",
-            name: "Primeape",
+            name: "Primeape"
           },
-          method: "Evolve from Mankey at level 28",
+          method: "Evolve from Mankey at level 28"
         },
-      ],
+        /* --------------------------- Viridian Forest ------------------------- */
+
+        {
+          pokemon: {
+            img: "/assets/images/FRLG/Pokedex/Spr_3f_010.png",
+            name: "Caterpie"
+          },
+          method: "Catch in the Viridian Forest"
+        },
+        {
+          pokemon: {
+            img: "/assets/images/FRLG/Pokedex/Spr_3f_011.png",
+            name: "Metapod"
+          },
+          method: "Evolve from Caterpie at level 7"
+        },
+        {
+          pokemon: {
+            img: "/assets/images/FRLG/Pokedex/Spr_3f_012.png",
+            name: "Butterfree"
+          },
+          method: "Evolve from Metapod at level 10"
+        },
+        {
+          pokemon: {
+            img: "/assets/images/FRLG/Pokedex/Spr_3f_013.png",
+            name: "Weedle"
+          },
+          method: "Catch in the Viridian Forest"
+        },
+        {
+          pokemon: {
+            img: "/assets/images/FRLG/Pokedex/Spr_3f_014.png",
+            name: "Kakuna"
+          },
+          method: "Evolve from Weedle at level 7"
+        },
+        {
+          pokemon: {
+            img: "/assets/images/FRLG/Pokedex/Spr_3f_015.png",
+            name: "Beedrill"
+          },
+          method: "Evolve from Kakuna at level 10"
+        },
+
+        {
+          pokemon: {
+            img: "/assets/images/FRLG/Pokedex/Spr_3f_025.png",
+            name: "Pikachu"
+          },
+          method: "Viridian Forest"
+        }
+      ]
     },
 
     "Pre Badge 2: Misty": {
@@ -464,227 +469,239 @@ window.gameData = {
           choiceKey: "fossil",
           choiceValue: "dome",
           pokemon: {
-            img: "/assets/images/FRLG/Dream_Dome_Fossil_Sprite.png",
-            name: "Dome Fossil",
+            img: "/assets/images/FRLG/Pokedex/Dream_Dome_Fossil_Sprite.png",
+            name: "Dome Fossil"
           },
-          method: "Choose the Dome Fossil to unlock Kabuto/Kabutops later",
+          method: "Choose the Dome Fossil to unlock Kabuto/Kabutops later"
         },
         {
           type: "choice",
           choiceKey: "fossil",
           choiceValue: "helix",
           pokemon: {
-            img: "/assets/images/FRLG/Dream_Helix_Fossil_Sprite.png",
-            name: "Helix Fossil",
+            img: "/assets/images/FRLG/Pokedex/Dream_Helix_Fossil_Sprite.png",
+            name: "Helix Fossil"
           },
-          method: "Choose the Helix Fossil to unlock Omanyte/Omastar later",
+          method: "Choose the Helix Fossil to unlock Omanyte/Omastar later"
         },
 
         /* --------------------------- Wild Pokémon ---------------------------- */
-        {
-          pokemon: { img: "/assets/images/FRLG/Pokedex/Spr_3f_023.png", name: "Ekans" },
-          method: "Catch on Route 4",
-        },
-        {
-          pokemon: { img: "/assets/images/FRLG/Pokedex/Spr_3f_024.png", name: "Arbok" },
-          method: "Evolve from Ekans at level 22",
-        },
+        /* --------------------------- Route 3 --------------------------------- */
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3f_029.png",
-            name: "Nidoran F",
+            name: "Nidoran F"
           },
-          method: "Catch on Route 3",
+          method: "Catch on Route 3"
         },
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3f_030.png",
-            name: "Nidorina",
+            name: "Nidorina"
           },
-          method: "Evolve from Nidoran F at level 16",
+          method: "Evolve from Nidoran F at level 16"
         },
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3f_031.png",
-            name: "Nidoqueen",
+            name: "Nidoqueen"
           },
-          method: "Use a Moon Stone on Nidorina",
+          method: "Use a Moon Stone on Nidorina"
         },
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3f_032.png",
-            name: "Nidoran M",
+            name: "Nidoran M"
           },
-          method: "Catch on Route 3",
+          method: "Catch on Route 3"
         },
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3f_033.png",
-            name: "Nidorino",
+            name: "Nidorino"
           },
-          method: "Evolve from Nidoran M at level 16",
+          method: "Evolve from Nidoran M at level 16"
         },
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3f_034.png",
-            name: "Nidoking",
+            name: "Nidoking"
           },
-          method: "Use a Moon Stone on Nidorino",
-        },
-        {
-          pokemon: {
-            img: "/assets/images/FRLG/Pokedex/Spr_3f_035.png",
-            name: "Clefairy",
-          },
-          method: "Catch in Mt. Moon",
-        },
-        {
-          pokemon: {
-            img: "/assets/images/FRLG/Pokedex/Spr_3f_036.png",
-            name: "Clefable",
-          },
-          method: "Use a Moon Stone on Clefairy",
+          method: "Use a Moon Stone on Nidorino"
         },
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3f_039.png",
-            name: "Jigglypuff",
+            name: "Jigglypuff"
           },
-          method: "Catch on Route 3",
+          method: "Catch on Route 3"
         },
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3f_040.png",
-            name: "Wigglytuff",
+            name: "Wigglytuff"
           },
-          method: "Use a Moon Stone on Jigglypuff",
+          method: "Use a Moon Stone on Jigglypuff"
         },
-        {
-          pokemon: { img: "/assets/images/FRLG/Pokedex/Spr_3f_041.png", name: "Zubat" },
-          method: "Catch in Mt. Moon",
-        },
-        {
-          pokemon: {
-            img: "/assets/images/FRLG/Pokedex/Spr_3f_042.png",
-            name: "Golbat",
-          },
-          method: "Evolve from Zubat at level 22",
-        },
-        {
-          pokemon: {
-            img: "/assets/images/FRLG/Pokedex/Spr_3f_043.png",
-            name: "Oddish",
-          },
-          method: "Catch on Route 24",
-        },
-        {
-          pokemon: { img: "/assets/images/FRLG/Pokedex/Spr_3f_044.png", name: "Gloom" },
-          method: "Evolve from Oddish at level 21",
-        },
-        {
-          pokemon: { img: "/assets/images/FRLG/Pokedex/Spr_3f_046.png", name: "Paras" },
-          method: "Catch in Mt. Moon",
-        },
-        {
-          pokemon: {
-            img: "/assets/images/FRLG/Pokedex/Spr_3f_047.png",
-            name: "Parasect",
-          },
-          method: "Evolve from Paras at level 24",
-        },
-        {
-          pokemon: {
-            img: "/assets/images/FRLG/Pokedex/Spr_3f_050.png",
-            name: "Diglett",
-          },
-          method: "Catch in Diglett Cave",
-        },
-        {
-          pokemon: {
-            img: "/assets/images/FRLG/Pokedex/Spr_3f_051.png",
-            name: "Dugtrio",
-          },
-          method: "Evolve from Diglett at level 26",
-        },
-        {
-          pokemon: {
-            img: "/assets/images/FRLG/Pokedex/Spr_3f_052.png",
-            name: "Meowth",
-          },
-          method: "Catch on Route 5",
-        },
-        {
-          pokemon: {
-            img: "/assets/images/FRLG/Pokedex/Spr_3f_053.png",
-            name: "Persian",
-          },
-          method: "Evolve from Meowth at level 28",
-        },
-        {
-          pokemon: { img: "/assets/images/FRLG/Pokedex/Spr_3f_063.png", name: "Abra" },
-          method: "Catch on Route 24",
-        },
-        {
-          pokemon: {
-            img: "/assets/images/FRLG/Pokedex/Spr_3f_064.png",
-            name: "Kadabra",
-          },
-          method: "Evolve from Abra at level 16",
-        },
-        {
-          pokemon: {
-            img: "/assets/images/FRLG/Pokedex/Spr_3f_074.png",
-            name: "Geodude",
-          },
-          method: "Catch in Mt. Moon",
-        },
-        {
-          pokemon: {
-            img: "/assets/images/FRLG/Pokedex/Spr_3f_075.png",
-            name: "Graveler",
-          },
-          method: "Evolve from Geodude at level 25",
-        },
-        {
-          pokemon: {
-            img: "/assets/images/FRLG/Pokedex/Spr_3f_083.png",
-            name: "Farfetch'd",
-          },
-          method: "Trade for Spearow in Vermilion City",
-        },
-        {
-          pokemon: {
-            img: "/assets/images/FRLG/Pokedex/Spr_3f_096.png",
-            name: "Drowzee",
-          },
-          method: "Catch on Route 11",
-        },
-        {
-          pokemon: { img: "/assets/images/FRLG/Pokedex/Spr_3f_097.png", name: "Hypno" },
-          method: "Evolve from Drowzee at level 26",
-        },
-        {
-          pokemon: {
-            img: "/assets/images/FRLG/Pokedex/Spr_3f_122.png",
-            name: "Mr. Mime",
-          },
-          method: "Trade for Abra in the house north of Diglett Cave",
-        },
+        /* --------------------------- Route 4 --------------------------------- */
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3f_129.png",
-            name: "Magikarp",
+            name: "Magikarp"
           },
-          method: "Buy a Magikarp from the salesman in the Pokémon center",
+          method: "Buy a Magikarp from the salesman in the Pokémon center"
         },
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3f_130.png",
-            name: "Gyarados",
+            name: "Gyarados"
           },
-          method: "Evolve from Magikarp at level 20",
+          method: "Evolve from Magikarp at level 20"
         },
-      ],
+
+        /* --------------------------- Mt. Moon -------------------------------- */
+        {
+          pokemon: { img: "/assets/images/FRLG/Pokedex/Spr_3f_041.png", name: "Zubat" },
+          method: "Catch in Mt. Moon"
+        },
+        {
+          pokemon: {
+            img: "/assets/images/FRLG/Pokedex/Spr_3f_042.png",
+            name: "Golbat"
+          },
+          method: "Evolve from Zubat at level 22"
+        },
+        {
+          pokemon: {
+            img: "/assets/images/FRLG/Pokedex/Spr_3f_074.png",
+            name: "Geodude"
+          },
+          method: "Catch in Mt. Moon"
+        },
+        {
+          pokemon: {
+            img: "/assets/images/FRLG/Pokedex/Spr_3f_075.png",
+            name: "Graveler"
+          },
+          method: "Evolve from Geodude at level 25"
+        },
+        {
+          pokemon: { img: "/assets/images/FRLG/Pokedex/Spr_3f_046.png", name: "Paras" },
+          method: "Catch in Mt. Moon"
+        },
+        {
+          pokemon: {
+            img: "/assets/images/FRLG/Pokedex/Spr_3f_047.png",
+            name: "Parasect"
+          },
+          method: "Evolve from Paras at level 24"
+        },
+        {
+          pokemon: {
+            img: "/assets/images/FRLG/Pokedex/Spr_3f_035.png",
+            name: "Clefairy"
+          },
+          method: "Catch in Mt. Moon"
+        },
+        {
+          pokemon: {
+            img: "/assets/images/FRLG/Pokedex/Spr_3f_036.png",
+            name: "Clefable"
+          },
+          method: "Use a Moon Stone on Clefairy"
+        },
+
+        /* --------------------------- Route 4 after Mt. Moon ------------------ */
+        {
+          pokemon: { img: "/assets/images/FRLG/Pokedex/Spr_3f_023.png", name: "Ekans" },
+          method: "Catch on Route 4"
+        },
+        {
+          pokemon: { img: "/assets/images/FRLG/Pokedex/Spr_3f_024.png", name: "Arbok" },
+          method: "Evolve from Ekans at level 22"
+        },
+        /* --------------------------- Route 24 -------------------------------- */
+        {
+          pokemon: { img: "/assets/images/FRLG/Pokedex/Spr_3f_063.png", name: "Abra" },
+          method: "Catch on Route 24"
+        },
+        {
+          pokemon: {
+            img: "/assets/images/FRLG/Pokedex/Spr_3f_064.png",
+            name: "Kadabra"
+          },
+          method: "Evolve from Abra at level 16"
+        },
+        {
+          pokemon: {
+            img: "/assets/images/FRLG/Pokedex/Spr_3f_043.png",
+            name: "Oddish"
+          },
+          method: "Catch on Route 24"
+        },
+        {
+          pokemon: { img: "/assets/images/FRLG/Pokedex/Spr_3f_044.png", name: "Gloom" },
+          method: "Evolve from Oddish at level 21"
+        },
+        /* --------------------------- Route 5 --------------------------------- */
+        {
+          pokemon: {
+            img: "/assets/images/FRLG/Pokedex/Spr_3f_052.png",
+            name: "Meowth"
+          },
+          method: "Catch on Route 5"
+        },
+        {
+          pokemon: {
+            img: "/assets/images/FRLG/Pokedex/Spr_3f_053.png",
+            name: "Persian"
+          },
+          method: "Evolve from Meowth at level 28"
+        },
+        /* --------------------------- Vermilion City -------------------------- */
+        {
+          pokemon: {
+            img: "/assets/images/FRLG/Pokedex/Spr_3f_083.png",
+            name: "Farfetch'd"
+          },
+          method: "Trade for Spearow in Vermilion City"
+        },
+        /* --------------------------- Route 11 -------------------------------- */
+        {
+          pokemon: {
+            img: "/assets/images/FRLG/Pokedex/Spr_3f_096.png",
+            name: "Drowzee"
+          },
+          method: "Catch on Route 11"
+        },
+        {
+          pokemon: { img: "/assets/images/FRLG/Pokedex/Spr_3f_097.png", name: "Hypno" },
+          method: "Evolve from Drowzee at level 26"
+        },
+        /* --------------------------- Diglett Cave ---------------------------- */
+        {
+          pokemon: {
+            img: "/assets/images/FRLG/Pokedex/Spr_3f_050.png",
+            name: "Diglett"
+          },
+          method: "Catch in Diglett Cave"
+        },
+        {
+          pokemon: {
+            img: "/assets/images/FRLG/Pokedex/Spr_3f_051.png",
+            name: "Dugtrio"
+          },
+          method: "Evolve from Diglett at level 26"
+        },
+        /* --------------------------- Route 2 --------------------------------- */
+        {
+          pokemon: {
+            img: "/assets/images/FRLG/Pokedex/Spr_3f_122.png",
+            name: "Mr. Mime"
+          },
+          method: "Trade for Abra in the house north of Diglett Cave"
+        }
+      ]
     },
 
     "Pre Badge 3: Koga": {
@@ -823,9 +840,9 @@ window.gameData = {
           choiceValue: "vaporeon",
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3f_134.png",
-            name: "Vaporeon",
+            name: "Vaporeon"
           },
-          method: "Pick this Eeveelution to show the Vaporeon line",
+          method: "Pick this Eeveelution to show the Vaporeon line"
         },
         {
           type: "choice",
@@ -833,9 +850,9 @@ window.gameData = {
           choiceValue: "jolteon",
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3f_135.png",
-            name: "Jolteon",
+            name: "Jolteon"
           },
-          method: "Pick this Eeveelution to show the Jolteon line",
+          method: "Pick this Eeveelution to show the Jolteon line"
         },
         {
           type: "choice",
@@ -843,9 +860,9 @@ window.gameData = {
           choiceValue: "flareon",
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3f_136.png",
-            name: "Flareon",
+            name: "Flareon"
           },
-          method: "Pick this Eeveelution to show the Flareon line",
+          method: "Pick this Eeveelution to show the Flareon line"
         },
 
         /* --------------------------- Dojo Choice Rows ---------------------------- */
@@ -855,9 +872,9 @@ window.gameData = {
           choiceValue: "hitmonlee",
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3f_106.png",
-            name: "Hitmonlee",
+            name: "Hitmonlee"
           },
-          method: "Pick this Hitmon to show the Hitmonlee line",
+          method: "Pick this Hitmon to show the Hitmonlee line"
         },
         {
           type: "choice",
@@ -865,403 +882,411 @@ window.gameData = {
           choiceValue: "hitmonchan",
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3f_107.png",
-            name: "Hitmonchan",
+            name: "Hitmonchan"
           },
-          method: "Pick this Hitmon to show the Hitmonchan line",
+          method: "Pick this Hitmon to show the Hitmonchan line"
         },
 
         /* --------------------------- Wild Pokémon ---------------------------- */
-        {
-          pokemon: {
-            img: "/assets/images/FRLG/Pokedex/Spr_3f_026.png",
-            name: "Raichu",
-          },
-          method: "Use a Thunder Stone on Pikachu",
-        },
-        {
-          pokemon: {
-            img: "/assets/images/FRLG/Pokedex/Spr_3f_045.png",
-            name: "Vileplume",
-          },
-          method: "Use a Leaf Stone on Gloom",
-        },
-        {
-          pokemon: {
-            img: "/assets/images/FRLG/Pokedex/Spr_3f_048.png",
-            name: "Venonat",
-          },
-          method: "Catch on Route 14",
-        },
-        {
-          pokemon: {
-            img: "/assets/images/FRLG/Pokedex/Spr_3f_049.png",
-            name: "Venomoth",
-          },
-          method: "Evolve From Venonat at level 31",
-        },
-        {
-          pokemon: {
-            img: "/assets/images/FRLG/Pokedex/Spr_3f_054.png",
-            name: "Psyduck",
-          },
-          method: "Fish in Viridian City",
-        },
-        {
-          pokemon: {
-            img: "/assets/images/FRLG/Pokedex/Spr_3f_055.png",
-            name: "Golduck",
-          },
-          method: "Evolve From Psyduck at level 33; Need two",
-        },
-        {
-          pokemon: {
-            img: "/assets/images/FRLG/Pokedex/Spr_3f_058.png",
-            name: "Growlithe",
-          },
-          method: "Catch on Route 8",
-        },
-        {
-          pokemon: {
-            img: "/assets/images/FRLG/Pokedex/Spr_3f_059.png",
-            name: "Arcanine",
-          },
-          method: "Use a Fire Stone on Growlithe",
-        },
-        {
-          pokemon: {
-            img: "/assets/images/FRLG/Pokedex/Spr_3f_060.png",
-            name: "Poliwag",
-          },
-          method: "Fish in Viridian City",
-        },
-        {
-          pokemon: {
-            img: "/assets/images/FRLG/Pokedex/Spr_3f_061.png",
-            name: "Poliwhirl",
-          },
-          method: "Evolve From Poliwag at level 25; Need Two",
-        },
-        {
-          pokemon: {
-            img: "/assets/images/FRLG/Pokedex/Spr_3f_062.png",
-            name: "Poliwrath",
-          },
-          method: "Use a Water Stone on Poliwhirl",
-        },
-        {
-          pokemon: {
-            img: "/assets/images/FRLG/Pokedex/Spr_3f_066.png",
-            name: "Machop",
-          },
-          method: "Catch in Rock Tunnel",
-        },
-        {
-          pokemon: {
-            img: "/assets/images/FRLG/Pokedex/Spr_3f_067.png",
-            name: "Machoke",
-          },
-          method: "Evolve From Machop at level 28",
-        },
-        {
-          pokemon: { img: "/assets/images/FRLG/Pokedex/Spr_3f_084.png", name: "Doduo" },
-          method: "Catch on Route 16",
-        },
-        {
-          pokemon: {
-            img: "/assets/images/FRLG/Pokedex/Spr_3f_085.png",
-            name: "Dodrio",
-          },
-          method: "Evolve From Doduo at level 31",
-        },
-        {
-          pokemon: {
-            img: "/assets/images/FRLG/Pokedex/Spr_3f_088.png",
-            name: "Grimer",
-          },
-          method: "Fish in Celadon City",
-        },
-        {
-          pokemon: { img: "/assets/images/FRLG/Pokedex/Spr_3f_089.png", name: "Muk" },
-          method: "Evolve From Grimer at level 38",
-        },
-        {
-          pokemon: {
-            img: "/assets/images/FRLG/Pokedex/Spr_3f_090.png",
-            name: "Shellder",
-          },
-          method: "Fish in Pallet Town",
-        },
-        {
-          pokemon: {
-            img: "/assets/images/FRLG/Pokedex/Spr_3f_091.png",
-            name: "Cloyster",
-          },
-          method: "Use a Water Stone on Shellder",
-        },
-        {
-          pokemon: {
-            img: "/assets/images/FRLG/Pokedex/Spr_3f_092.png",
-            name: "Gastly",
-          },
-          method: "Catch in Pokémon Tower",
-        },
-        {
-          pokemon: {
-            img: "/assets/images/FRLG/Pokedex/Spr_3f_093.png",
-            name: "Haunter",
-          },
-          method: "Evolve From Gastly at level 25",
-        },
-        {
-          pokemon: { img: "/assets/images/FRLG/Pokedex/Spr_3f_095.png", name: "Onix" },
-          method: "Catch in Rock Tunnel",
-        },
-        {
-          pokemon: {
-            img: "/assets/images/FRLG/Pokedex/Spr_3f_098.png",
-            name: "Krabby",
-          },
-          method: "Fish in Pallet Town",
-        },
-        {
-          pokemon: {
-            img: "/assets/images/FRLG/Pokedex/Spr_3f_099.png",
-            name: "Kingler",
-          },
-          method: "Evolve From Krabby at level 28",
-        },
+        /* --------------------------- Route 9/Route 10 ------------------------ */
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3f_100.png",
-            name: "Voltorb",
+            name: "Voltorb"
           },
-          method:
-            "East of Cerulean City, cut the tree down and pass through Route 9 to reach Route 10.",
+          method: "East of Cerulean City, cut the tree down and pass through Route 9 to reach Route 10."
         },
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3f_101.png",
-            name: "Electrode",
+            name: "Electrode"
           },
-          method: "Evolve From Voltorb at level 30",
+          method: "Evolve From Voltorb at level 30"
+        },
+        /* --------------------------- Rock Tunnel ----------------------------- */
+        {
+          pokemon: {
+            img: "/assets/images/FRLG/Pokedex/Spr_3f_066.png",
+            name: "Machop"
+          },
+          method: "Catch in Rock Tunnel"
         },
         {
           pokemon: {
-            img: "/assets/images/FRLG/Pokedex/Spr_3f_102.png",
-            name: "Exeggcute",
+            img: "/assets/images/FRLG/Pokedex/Spr_3f_067.png",
+            name: "Machoke"
           },
-          method: "Safari Zone",
+          method: "Evolve From Machop at level 28"
+        },
+        {
+          pokemon: { img: "/assets/images/FRLG/Pokedex/Spr_3f_095.png", name: "Onix" },
+          method: "Catch in Rock Tunnel"
+        },
+        /* --------------------------- Route 8 --------------------------------- */
+        {
+          pokemon: {
+            img: "/assets/images/FRLG/Pokedex/Spr_3f_058.png",
+            name: "Growlithe"
+          },
+          method: "Catch on Route 8"
         },
         {
           pokemon: {
-            img: "/assets/images/FRLG/Pokedex/Spr_3f_103.png",
-            name: "Exeggutor",
+            img: "/assets/images/FRLG/Pokedex/Spr_3f_059.png",
+            name: "Arcanine"
           },
-          method: "Use a Leaf Stone on Exeggcute",
+          method: "Use a Fire Stone on Growlithe"
         },
-        {
-          pokemon: {
-            img: "/assets/images/FRLG/Pokedex/Spr_3f_104.png",
-            name: "Cubone",
-          },
-          method: "Catch in Pokémon Tower",
-        },
-        {
-          pokemon: {
-            img: "/assets/images/FRLG/Pokedex/Spr_3f_105.png",
-            name: "Marowak",
-          },
-          method: "Evolve From Cubone at level 28",
-        },
-
-        /* --------------------------- Hitmonlee Line ---------------------------- */
-        {
-          pokemon: {
-            img: "/assets/images/FRLG/Pokedex/Spr_3f_106.png",
-            name: "Hitmonlee",
-          },
-          method: "Choose as Starter",
-
-          requires: { dojo: "hitmonlee" },
-        },
-
-        /* --------------------------- Hitmonchan Line ---------------------------- */
-        {
-          pokemon: {
-            img: "/assets/images/FRLG/Pokedex/Spr_3f_107.png",
-            name: "Hitmonchan",
-          },
-          method: "Choose as Starter",
-
-          requires: { dojo: "hitmonchan" },
-        },
-
-        {
-          pokemon: {
-            img: "/assets/images/FRLG/Pokedex/Spr_3f_108.png",
-            name: "Lickitung",
-          },
-          method: "Trade (Route 18 gate): Golduck → Lickitung",
-        },
-        {
-          pokemon: {
-            img: "/assets/images/FRLG/Pokedex/Spr_3f_111.png",
-            name: "Rhyhorn",
-          },
-          method: "Safari Zone",
-        },
-        {
-          pokemon: {
-            img: "/assets/images/FRLG/Pokedex/Spr_3f_112.png",
-            name: "Rhydon",
-          },
-          method: "Evolve From Rhyhorn at level 42",
-        },
-        {
-          pokemon: {
-            img: "/assets/images/FRLG/Pokedex/Spr_3f_113.png",
-            name: "Chansey",
-          },
-          method: "Safari Zone",
-        },
-        {
-          pokemon: {
-            img: "/assets/images/FRLG/Pokedex/Spr_3f_115.png",
-            name: "Kangaskhan",
-          },
-          method: "Safari Zone",
-        },
-        {
-          pokemon: {
-            img: "/assets/images/FRLG/Pokedex/Spr_3f_116.png",
-            name: "Horsea",
-          },
-          method: "Fish in Pallet Town",
-        },
-        {
-          pokemon: {
-            img: "/assets/images/FRLG/Pokedex/Spr_3f_117.png",
-            name: "Seadra",
-          },
-          method: "Evolve From Horsea at level 32",
-        },
-        {
-          pokemon: {
-            img: "/assets/images/FRLG/Pokedex/Spr_3f_118.png",
-            name: "Goldeen",
-          },
-          method: "Fish in Viridian City",
-        },
-        {
-          pokemon: {
-            img: "/assets/images/FRLG/Pokedex/Spr_3f_119.png",
-            name: "Seaking",
-          },
-          method: "Evolve From Goldeen at level 33",
-        },
-        {
-          pokemon: {
-            img: "/assets/images/FRLG/Pokedex/Spr_3f_123.png",
-            name: "Scyther",
-          },
-          method: "Safari Zone",
-        },
-        {
-          pokemon: { img: "/assets/images/FRLG/Pokedex/Spr_3f_124.png", name: "Jynx" },
-          method: "Trade (Cerulean City): Poliwhirl → Jynx",
-        },
-        {
-          pokemon: {
-            img: "/assets/images/FRLG/Pokedex/Spr_3f_128.png",
-            name: "Tauros",
-          },
-          method: "Safari Zone",
-        },
-        {
-          pokemon: {
-            img: "/assets/images/FRLG/Pokedex/Spr_3f_131.png",
-            name: "Lapras",
-          },
-          method: "Silph Co",
-        },
-        {
-          pokemon: { img: "/assets/images/FRLG/Pokedex/Spr_3f_132.png", name: "Ditto" },
-          method: "Catch on Route 14",
-        },
+        /* --------------------------- Celadon City ---------------------------- */
         {
           pokemon: { img: "/assets/images/FRLG/Pokedex/Spr_3f_133.png", name: "Eevee" },
-          method: "Celadon City",
+          method: "Celadon City"
         },
 
         /* --------------------------- Flareon Line ---------------------------- */
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3f_136.png",
-            name: "Flareon",
+            name: "Flareon"
           },
           method: "Choose as Starter",
 
-          requires: { eeveelution: "flareon" },
+          requires: { eeveelution: "flareon" }
         },
 
         /* --------------------------- Jolteon Line ---------------------------- */
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3f_135.png",
-            name: "Jolteon",
+            name: "Jolteon"
           },
           method: "Choose as Starter",
 
-          requires: { eeveelution: "jolteon" },
+          requires: { eeveelution: "jolteon" }
         },
 
         /* --------------------------- Vaporeon Line ---------------------------- */
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3f_134.png",
-            name: "Vaporeon",
+            name: "Vaporeon"
           },
           method: "Choose as Starter",
 
-          requires: { eeveelution: "vaporeon" },
+          requires: { eeveelution: "vaporeon" }
         },
 
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3f_137.png",
-            name: "Porygon",
+            name: "Porygon"
           },
-          method: "Celadon City Game Corner",
+          method: "Celadon City Game Corner"
+        },
+        {
+          pokemon: {
+            img: "/assets/images/FRLG/Pokedex/Spr_3f_026.png",
+            name: "Raichu"
+          },
+          method: "Use a Thunder Stone on Pikachu"
+        },
+        {
+          pokemon: {
+            img: "/assets/images/FRLG/Pokedex/Spr_3f_045.png",
+            name: "Vileplume"
+          },
+          method: "Use a Leaf Stone on Gloom"
+        },
+        /* --------------------------- Route 16 -------------------------------- */
+        {
+          pokemon: { img: "/assets/images/FRLG/Pokedex/Spr_3f_084.png", name: "Doduo" },
+          method: "Catch on Route 16"
+        },
+        {
+          pokemon: {
+            img: "/assets/images/FRLG/Pokedex/Spr_3f_085.png",
+            name: "Dodrio"
+          },
+          method: "Evolve From Doduo at level 31"
+        },
+        /* --------------------------- Lavendar Town --------------------------- */
+        {
+          pokemon: {
+            img: "/assets/images/FRLG/Pokedex/Spr_3f_092.png",
+            name: "Gastly"
+          },
+          method: "Catch in Pokémon Tower"
+        },
+        {
+          pokemon: {
+            img: "/assets/images/FRLG/Pokedex/Spr_3f_093.png",
+            name: "Haunter"
+          },
+          method: "Evolve From Gastly at level 25"
+        },
+        {
+          pokemon: {
+            img: "/assets/images/FRLG/Pokedex/Spr_3f_104.png",
+            name: "Cubone"
+          },
+          method: "Catch in Pokémon Tower"
+        },
+        {
+          pokemon: {
+            img: "/assets/images/FRLG/Pokedex/Spr_3f_105.png",
+            name: "Marowak"
+          },
+          method: "Evolve From Cubone at level 28"
         },
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3f_143.png",
-            name: "Snorlax",
+            name: "Snorlax"
           },
-          method: "Catch on Route 12",
+          method: "Catch on Route 12"
+        },
+        /* --------------------------- "Fishing Spree" ------------------------- */
+        {
+          pokemon: {
+            img: "/assets/images/FRLG/Pokedex/Spr_3f_090.png",
+            name: "Shellder"
+          },
+          method: "Fish in Pallet Town"
         },
         {
           pokemon: {
-            img: "/assets/images/FRLG/Pokedex/Spr_3f_147.png",
-            name: "Dratini",
+            img: "/assets/images/FRLG/Pokedex/Spr_3f_091.png",
+            name: "Cloyster"
           },
-          method: "Safari Zone; Game Corner",
+          method: "Use a Water Stone on Shellder"
+        },
+        {
+          pokemon: {
+            img: "/assets/images/FRLG/Pokedex/Spr_3f_116.png",
+            name: "Horsea"
+          },
+          method: "Fish in Pallet Town"
+        },
+        {
+          pokemon: {
+            img: "/assets/images/FRLG/Pokedex/Spr_3f_117.png",
+            name: "Seadra"
+          },
+          method: "Evolve From Horsea at level 32"
+        },
+        {
+          pokemon: {
+            img: "/assets/images/FRLG/Pokedex/Spr_3f_054.png",
+            name: "Psyduck"
+          },
+          method: "Fish in Viridian City"
+        },
+        {
+          pokemon: {
+            img: "/assets/images/FRLG/Pokedex/Spr_3f_055.png",
+            name: "Golduck"
+          },
+          method: "Evolve From Psyduck at level 33; Need two"
+        },
+        {
+          pokemon: {
+            img: "/assets/images/FRLG/Pokedex/Spr_3f_060.png",
+            name: "Poliwag"
+          },
+          method: "Fish in Viridian City"
+        },
+        {
+          pokemon: {
+            img: "/assets/images/FRLG/Pokedex/Spr_3f_061.png",
+            name: "Poliwhirl"
+          },
+          method: "Evolve From Poliwag at level 25; Need Two"
+        },
+        {
+          pokemon: {
+            img: "/assets/images/FRLG/Pokedex/Spr_3f_062.png",
+            name: "Poliwrath"
+          },
+          method: "Use a Water Stone on Poliwhirl"
+        },
+        {
+          pokemon: {
+            img: "/assets/images/FRLG/Pokedex/Spr_3f_118.png",
+            name: "Goldeen"
+          },
+          method: "Fish in Viridian City"
+        },
+        {
+          pokemon: {
+            img: "/assets/images/FRLG/Pokedex/Spr_3f_119.png",
+            name: "Seaking"
+          },
+          method: "Evolve From Goldeen at level 33"
+        },
+        {
+          pokemon: {
+            img: "/assets/images/FRLG/Pokedex/Spr_3f_098.png",
+            name: "Krabby"
+          },
+          method: "Fish in Pallet Town"
+        },
+        {
+          pokemon: {
+            img: "/assets/images/FRLG/Pokedex/Spr_3f_099.png",
+            name: "Kingler"
+          },
+          method: "Evolve From Krabby at level 28"
+        },
+        {
+          pokemon: {
+            img: "/assets/images/FRLG/Pokedex/Spr_3f_088.png",
+            name: "Grimer"
+          },
+          method: "Fish in Celadon City"
+        },
+        {
+          pokemon: { img: "/assets/images/FRLG/Pokedex/Spr_3f_089.png", name: "Muk" },
+          method: "Evolve From Grimer at level 38"
+        },
+        {
+          pokemon: { img: "/assets/images/FRLG/Pokedex/Spr_3f_124.png", name: "Jynx" },
+          method: "Trade (Cerulean City): Poliwhirl → Jynx"
+        },
+        {
+          pokemon: {
+            img: "/assets/images/FRLG/Pokedex/Spr_3f_108.png",
+            name: "Lickitung"
+          },
+          method: "Trade (Route 18 gate): Golduck → Lickitung"
+        },
+        /* --------------------------- Route 14/Routeb 15 ---------------------- */
+        {
+          pokemon: { img: "/assets/images/FRLG/Pokedex/Spr_3f_132.png", name: "Ditto" },
+          method: "Catch on Route 14"
+        },
+        {
+          pokemon: {
+            img: "/assets/images/FRLG/Pokedex/Spr_3f_048.png",
+            name: "Venonat"
+          },
+          method: "Catch on Route 14"
+        },
+        {
+          pokemon: {
+            img: "/assets/images/FRLG/Pokedex/Spr_3f_049.png",
+            name: "Venomoth"
+          },
+          method: "Evolve From Venonat at level 31"
+        },
+        /* --------------------------- Safari Zone ----------------------------- */
+        {
+          pokemon: {
+            img: "/assets/images/FRLG/Pokedex/Spr_3f_147.png",
+            name: "Dratini"
+          },
+          method: "Safari Zone; Game Corner"
         },
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3f_148.png",
-            name: "Dragonair",
+            name: "Dragonair"
           },
-          method: "Evolve From Dratini at level 30",
+          method: "Evolve From Dratini at level 30"
         },
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3f_149.png",
-            name: "Dragonite",
+            name: "Dragonite"
           },
-          method: "Evolve From Dragonair at level 55",
+          method: "Evolve From Dragonair at level 55"
         },
-      ],
+
+        {
+          pokemon: {
+            img: "/assets/images/FRLG/Pokedex/Spr_3f_102.png",
+            name: "Exeggcute"
+          },
+          method: "Safari Zone"
+        },
+        {
+          pokemon: {
+            img: "/assets/images/FRLG/Pokedex/Spr_3f_103.png",
+            name: "Exeggutor"
+          },
+          method: "Use a Leaf Stone on Exeggcute"
+        },
+        {
+          pokemon: {
+            img: "/assets/images/FRLG/Pokedex/Spr_3f_111.png",
+            name: "Rhyhorn"
+          },
+          method: "Safari Zone"
+        },
+        {
+          pokemon: {
+            img: "/assets/images/FRLG/Pokedex/Spr_3f_112.png",
+            name: "Rhydon"
+          },
+          method: "Evolve From Rhyhorn at level 42"
+        },
+        {
+          pokemon: {
+            img: "/assets/images/FRLG/Pokedex/Spr_3f_113.png",
+            name: "Chansey"
+          },
+          method: "Safari Zone"
+        },
+        {
+          pokemon: {
+            img: "/assets/images/FRLG/Pokedex/Spr_3f_123.png",
+            name: "Scyther"
+          },
+          method: "Safari Zone"
+        },
+        {
+          pokemon: {
+            img: "/assets/images/FRLG/Pokedex/Spr_3f_128.png",
+            name: "Tauros"
+          },
+          method: "Safari Zone"
+        },
+        {
+          pokemon: {
+            img: "/assets/images/FRLG/Pokedex/Spr_3f_115.png",
+            name: "Kangaskhan"
+          },
+          method: "Safari Zone"
+        },
+        /* --------------------------- Saffron City ---------------------------- */
+        /* --------------------------- Hitmonlee Line ---------------------------- */
+        {
+          pokemon: {
+            img: "/assets/images/FRLG/Pokedex/Spr_3f_106.png",
+            name: "Hitmonlee"
+          },
+          method: "Choose Hitmonlee at the Dojo",
+
+          requires: { dojo: "hitmonlee" }
+        },
+
+        /* --------------------------- Hitmonchan Line ---------------------------- */
+        {
+          pokemon: {
+            img: "/assets/images/FRLG/Pokedex/Spr_3f_107.png",
+            name: "Hitmonchan"
+          },
+          method: "Choose Hitmonchan at the Dojo",
+
+          requires: { dojo: "hitmonchan" }
+        },
+        {
+          pokemon: {
+            img: "/assets/images/FRLG/Pokedex/Spr_3f_131.png",
+            name: "Lapras"
+          },
+          method: "Silph Co"
+        }
+      ]
     },
 
     "Pre Badge 4: Blaine": {
@@ -1328,129 +1353,134 @@ window.gameData = {
       `,
 
       rows: [
+        /* --------------------------- Wild Pokémon ---------------------------- */
+        /* --------------------------- Surf ------------------------------------ */
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3f_072.png",
-            name: "Tentacool",
+            name: "Tentacool"
           },
-          method: "Surf",
+          method: "Surf"
         },
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3f_073.png",
-            name: "Tentacruel",
+            name: "Tentacruel"
           },
-          method: "Evolve from Tentacool at level 30",
+          method: "Evolve from Tentacool at level 30"
         },
+        /* --------------------------- Power Plant ----------------------------- */
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3f_081.png",
-            name: "Magnemite",
+            name: "Magnemite"
           },
-          method: "Power Plant",
+          method: "Power Plant"
         },
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3f_082.png",
-            name: "Magneton",
+            name: "Magneton"
           },
-          method: "Evolve from Magnemite at level 30",
-        },
-        {
-          pokemon: { img: "/assets/images/FRLG/Pokedex/Spr_3f_086.png", name: "Seel" },
-          method: "Seafoam Islands",
-        },
-        {
-          pokemon: {
-            img: "/assets/images/FRLG/Pokedex/Spr_3f_087.png",
-            name: "Dewgong",
-          },
-          method: "Evolve from Seel at level 34",
-        },
-        {
-          pokemon: {
-            img: "/assets/images/FRLG/Pokedex/Spr_3f_109.png",
-            name: "Koffing",
-          },
-          method: "Pokémon Mansion",
-        },
-        {
-          pokemon: {
-            img: "/assets/images/FRLG/Pokedex/Spr_3f_110.png",
-            name: "Weezing",
-          },
-          method: "Evolve from Koffing at level 35",
-        },
-        {
-          pokemon: {
-            img: "/assets/images/FRLG/Pokedex/Spr_3f_114.png",
-            name: "Tangela",
-          },
-          method: "Pallet Town + Surf",
+          method: "Evolve from Magnemite at level 30"
         },
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3f_125.png",
-            name: "Electabuzz",
+            name: "Electabuzz"
           },
-          method: "Power Plant",
+          method: "Power Plant"
         },
-
+        {
+          pokemon: {
+            img: "/assets/images/FRLG/Pokedex/Spr_3f_145.png",
+            name: "Zapdos"
+          },
+          method: "Power Plant"
+        },
+        /* --------------------------- Pallet Town ----------------------------- */
+        {
+          pokemon: {
+            img: "/assets/images/FRLG/Pokedex/Spr_3f_114.png",
+            name: "Tangela"
+          },
+          method: "Pallet Town + Surf"
+        },
+        /* --------------------------- Cinnabar Island ------------------------- */
         /* Helix Line */
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3f_138.png",
-            name: "Omanyte",
+            name: "Omanyte"
           },
           method: "Choose Helix Fossil",
 
-          requires: { fossil: "helix" },
+          requires: { fossil: "helix" }
         },
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3f_139.png",
-            name: "Omastar",
+            name: "Omastar"
           },
           method: "Evolve Omanyte at level 40",
 
-          requires: { fossil: "helix" },
+          requires: { fossil: "helix" }
         },
 
         /* Dome Line */
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3f_140.png",
-            name: "Kabuto",
+            name: "Kabuto"
           },
           method: "Choose Dome Fossil",
 
-          requires: { fossil: "dome" },
+          requires: { fossil: "dome" }
         },
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3f_141.png",
-            name: "Kabutops",
+            name: "Kabutops"
           },
           method: "Evolve Kabuto at level 40",
 
-          requires: { fossil: "dome" },
+          requires: { fossil: "dome" }
         },
 
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3f_142.png",
-            name: "Aerodactyl",
+            name: "Aerodactyl"
           },
-          method: "Cinnabar Island",
+          method: "Cinnabar Island"
         },
         {
           pokemon: {
-            img: "/assets/images/FRLG/Pokedex/Spr_3f_145.png",
-            name: "Zapdos",
+            img: "/assets/images/FRLG/Pokedex/Spr_3f_109.png",
+            name: "Koffing"
           },
-          method: "Power Plant",
+          method: "Pokémon Mansion"
         },
-      ],
+        {
+          pokemon: {
+            img: "/assets/images/FRLG/Pokedex/Spr_3f_110.png",
+            name: "Weezing"
+          },
+          method: "Evolve from Koffing at level 35"
+        },
+        /* --------------------------- Seafoam Islands ------------------------- */
+        {
+          pokemon: { img: "/assets/images/FRLG/Pokedex/Spr_3f_086.png", name: "Seel" },
+          method: "Seafoam Islands"
+        },
+        {
+          pokemon: {
+            img: "/assets/images/FRLG/Pokedex/Spr_3f_087.png",
+            name: "Dewgong"
+          },
+          method: "Evolve from Seel at level 34"
+        }
+      ]
     },
 
     "Pre Badge 5: Erika": {
@@ -1481,18 +1511,18 @@ window.gameData = {
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3f_077.png",
-            name: "Ponyta",
+            name: "Ponyta"
           },
-          method: "One Island",
+          method: "One Island"
         },
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3f_078.png",
-            name: "Rapidash",
+            name: "Rapidash"
           },
-          method: "Evolve from Ponyta at level 40",
-        },
-      ],
+          method: "Evolve from Ponyta at level 40"
+        }
+      ]
     },
 
     "Pre Elite Four": {
@@ -1527,21 +1557,22 @@ window.gameData = {
       `,
 
       rows: [
+        /* --------------------------- Wild Pokémon ---------------------------- */
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3f_144.png",
-            name: "Articuno",
+            name: "Articuno"
           },
-          method: "Seafoam Islands",
+          method: "Seafoam Islands"
         },
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3f_146.png",
-            name: "Moltres",
+            name: "Moltres"
           },
-          method: "Mt. Ember",
-        },
-      ],
+          method: "Mt. Ember"
+        }
+      ]
     },
 
     "Post Game": {
@@ -1678,16 +1709,16 @@ window.gameData = {
           choiceValue: "raikou",
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3r_243.png",
-            name: "Raikou",
+            name: "Raikou"
           },
-          method: "Pick the Kanto roamer to track",
+          method: "Pick the Kanto roamer to track"
         },
         {
           type: "choice",
           choiceKey: "beast",
           choiceValue: "entei",
           pokemon: { img: "/assets/images/FRLG/Pokedex/Spr_3r_244.png", name: "Entei" },
-          method: "Pick the Kanto roamer to track",
+          method: "Pick the Kanto roamer to track"
         },
         {
           type: "choice",
@@ -1695,76 +1726,76 @@ window.gameData = {
           choiceValue: "suicune",
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3r_245.png",
-            name: "Suicune",
+            name: "Suicune"
           },
-          method: "Pick the Kanto roamer to track",
+          method: "Pick the Kanto roamer to track"
         },
 
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3r_243.png",
-            name: "Raikou",
+            name: "Raikou"
           },
           method: "Kanto (roaming) — recommended Master Ball target",
 
-          requires: { beast: "raikou" },
+          requires: { beast: "raikou" }
         },
         {
           pokemon: { img: "/assets/images/FRLG/Pokedex/Spr_3r_244.png", name: "Entei" },
           method: "Kanto (roaming) — recommended Master Ball target",
 
-          requires: { beast: "entei" },
+          requires: { beast: "entei" }
         },
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3r_245.png",
-            name: "Suicune",
+            name: "Suicune"
           },
           method: "Kanto (roaming) — recommended Master Ball target",
 
-          requires: { beast: "suicune" },
+          requires: { beast: "suicune" }
         },
 
         /* --------------------------- Cerulean Cave ---------------------------- */
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3f_150.png",
-            name: "Mewtwo",
+            name: "Mewtwo"
           },
-          method: "Cerulean Cave",
+          method: "Cerulean Cave"
         },
         /* --------------------------- Four Island (Breeding Center) ---------------------------- */
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3r_236.png",
-            name: "Tyrogue",
+            name: "Tyrogue"
           },
-          method: "Breed Hitmonlee/Hitmonchan with Ditto (Four Island Nursery)",
+          method: "Breed Hitmonlee/Hitmonchan with Ditto (Four Island Nursery)"
         },
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3f_106.png",
-            name: "Hitmonlee",
+            name: "Hitmonlee"
           },
           method: "Evolve Tyrogue at level 20 (Atk > Def)",
 
-          requires: { dojo: "hitmonchan" },
+          requires: { dojo: "hitmonchan" }
         } /* show the other one */,
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3f_107.png",
-            name: "Hitmonchan",
+            name: "Hitmonchan"
           },
           method: "Evolve Tyrogue at level 20 (Def > Atk)",
 
-          requires: { dojo: "hitmonlee" },
+          requires: { dojo: "hitmonlee" }
         } /* show the other one */,
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3r_237.png",
-            name: "Hitmontop",
+            name: "Hitmontop"
           },
-          method: "Evolve Tyrogue at level 20 (Atk = Def)",
+          method: "Evolve Tyrogue at level 20 (Atk = Def)"
         },
 
         /* --------------------------- Eeveelution cleanup (show only NOT chosen earlier) ---------------------------- */
@@ -1772,377 +1803,377 @@ window.gameData = {
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3f_136.png",
-            name: "Flareon",
+            name: "Flareon"
           },
           method: "Use a Fire Stone on Eevee (Four Island Nursery)",
 
-          requires: { eeveelution: "jolteon" },
+          requires: { eeveelution: "jolteon" }
         },
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3f_134.png",
-            name: "Vaporeon",
+            name: "Vaporeon"
           },
           method: "Use a Water Stone on Eevee (Four Island Nursery)",
 
-          requires: { eeveelution: "jolteon" },
+          requires: { eeveelution: "jolteon" }
         },
 
         /* If earlier pick was Flareon → show Jolteon & Vaporeon */
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3f_135.png",
-            name: "Jolteon",
+            name: "Jolteon"
           },
           method: "Use a Thunder Stone on Eevee (Four Island Nursery)",
 
-          requires: { eeveelution: "flareon" },
+          requires: { eeveelution: "flareon" }
         },
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3f_134.png",
-            name: "Vaporeon",
+            name: "Vaporeon"
           },
           method: "Use a Water Stone on Eevee (Four Island Nursery)",
 
-          requires: { eeveelution: "flareon" },
+          requires: { eeveelution: "flareon" }
         },
 
         /* If earlier pick was Vaporeon → show Jolteon & Flareon */
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3f_135.png",
-            name: "Jolteon",
+            name: "Jolteon"
           },
           method: "Use a Thunder Stone on Eevee (Four Island Nursery)",
 
-          requires: { eeveelution: "vaporeon" },
+          requires: { eeveelution: "vaporeon" }
         },
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3f_136.png",
-            name: "Flareon",
+            name: "Flareon"
           },
           method: "Use a Fire Stone on Eevee (Four Island Nursery)",
 
-          requires: { eeveelution: "vaporeon" },
+          requires: { eeveelution: "vaporeon" }
         },
 
         /* --------------------------- Extra Evolutions (National Dex) ---------------------------- */
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3r_242.png",
-            name: "Blissey",
+            name: "Blissey"
           },
-          method: "Evolve from Chansey with high Friendship",
+          method: "Evolve from Chansey with high Friendship"
         },
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3r_169.png",
-            name: "Crobat",
+            name: "Crobat"
           },
-          method: "Evolve from Golbat with high Friendship",
+          method: "Evolve from Golbat with high Friendship"
         },
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3r_182.png",
-            name: "Bellossom",
+            name: "Bellossom"
           },
-          method: "Use a Sun Stone on Gloom (Ruin Valley - Six Island)",
+          method: "Use a Sun Stone on Gloom (Ruin Valley - Six Island)"
         },
 
         /* Babies from breeding */
         {
           pokemon: { img: "/assets/images/FRLG/Pokedex/Spr_3r_172.png", name: "Pichu" },
-          method: "Breed Pikachu/Raichu",
+          method: "Breed Pikachu/Raichu"
         },
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3r_173.png",
-            name: "Cleffa",
+            name: "Cleffa"
           },
-          method: "Breed Clefairy/Clefable",
+          method: "Breed Clefairy/Clefable"
         },
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3r_174.png",
-            name: "Igglybuff",
+            name: "Igglybuff"
           },
-          method: "Breed Jigglypuff/Wigglytuff",
+          method: "Breed Jigglypuff/Wigglytuff"
         },
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3r_238.png",
-            name: "Smoochum",
+            name: "Smoochum"
           },
-          method: "Breed Jynx",
+          method: "Breed Jynx"
         },
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3r_239.png",
-            name: "Elekid",
+            name: "Elekid"
           },
-          method: "Breed Electabuzz",
+          method: "Breed Electabuzz"
         },
 
         /* --------------------------- One Island (Mt. Ember area) ---------------------------- */
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3r_218.png",
-            name: "Slugma",
+            name: "Slugma"
           },
-          method: "Mt. Ember (newly opened area)",
+          method: "Mt. Ember (newly opened area)"
         },
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3r_219.png",
-            name: "Magcargo",
+            name: "Magcargo"
           },
-          method: "Evolve from Slugma at level 38",
+          method: "Evolve from Slugma at level 38"
         },
 
         /* --------------------------- Three Island ---------------------------- */
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3r_206.png",
-            name: "Dunsparce",
+            name: "Dunsparce"
           },
-          method: "Three Island cave patch",
+          method: "Three Island cave patch"
         },
 
         /* --------------------------- Four Island (Icefall Cave & lake) ---------------------------- */
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3r_194.png",
-            name: "Wooper",
+            name: "Wooper"
           },
-          method: "Four Island lake / Icefall Cave",
+          method: "Four Island lake / Icefall Cave"
         },
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3r_195.png",
-            name: "Quagsire",
+            name: "Quagsire"
           },
-          method: "Evolve from Wooper at level 20",
+          method: "Evolve from Wooper at level 20"
         },
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3r_225.png",
-            name: "Delibird",
+            name: "Delibird"
           },
-          method: "Icefall Cave",
+          method: "Icefall Cave"
         },
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3r_220.png",
-            name: "Swinub",
+            name: "Swinub"
           },
-          method: "Icefall Cave",
+          method: "Icefall Cave"
         },
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3r_221.png",
-            name: "Piloswine",
+            name: "Piloswine"
           },
-          method: "Evolve from Swinub at level 33",
+          method: "Evolve from Swinub at level 33"
         },
 
         /* --------------------------- Five Island ---------------------------- */
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3r_187.png",
-            name: "Hoppip",
+            name: "Hoppip"
           },
-          method: "Five Island Meadow / water route",
+          method: "Five Island Meadow / water route"
         },
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3r_188.png",
-            name: "Skiploom",
+            name: "Skiploom"
           },
-          method: "Evolve from Hoppip at level 18",
+          method: "Evolve from Hoppip at level 18"
         },
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3r_189.png",
-            name: "Jumpluff",
+            name: "Jumpluff"
           },
-          method: "Evolve from Skiploom at level 27",
+          method: "Evolve from Skiploom at level 27"
         },
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3r_161.png",
-            name: "Sentret",
+            name: "Sentret"
           },
-          method: "Five Island Meadow",
+          method: "Five Island Meadow"
         },
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3r_162.png",
-            name: "Furret",
+            name: "Furret"
           },
-          method: "Evolve from Sentret at level 15",
+          method: "Evolve from Sentret at level 15"
         },
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3r_211.png",
-            name: "Qwilfish",
+            name: "Qwilfish"
           },
-          method: "Five Island (Super Rod)",
+          method: "Five Island (Super Rod)"
         },
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3r_175.png",
-            name: "Togepi",
+            name: "Togepi"
           },
-          method: "Gift Egg (happy mon check) → hatch",
+          method: "Gift Egg (happy mon check) → hatch"
         },
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3r_176.png",
-            name: "Togetic",
+            name: "Togetic"
           },
-          method: "Evolve from Togepi with high Friendship",
+          method: "Evolve from Togepi with high Friendship"
         },
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3r_198.png",
-            name: "Murkrow",
+            name: "Murkrow"
           },
-          method: "Lost Cave (rooms with items)",
+          method: "Lost Cave (rooms with items)"
         },
 
         /* --------------------------- Six Island ---------------------------- */
         {
           pokemon: { img: "/assets/images/FRLG/Pokedex/Spr_3r_193.png", name: "Yanma" },
-          method: "Ruin Valley / Pattern Bush approaches",
+          method: "Ruin Valley / Pattern Bush approaches"
         },
         {
           pokemon: { img: "/assets/images/FRLG/Pokedex/Spr_3r_177.png", name: "Natu" },
-          method: "Six Island (Ruin Valley/grass)",
+          method: "Six Island (Ruin Valley/grass)"
         },
         {
           pokemon: { img: "/assets/images/FRLG/Pokedex/Spr_3r_178.png", name: "Xatu" },
-          method: "Evolve from Natu at level 25",
+          method: "Evolve from Natu at level 25"
         },
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3r_202.png",
-            name: "Wobbuffet",
+            name: "Wobbuffet"
           },
-          method: "Six Island grass (safari-style areas)",
+          method: "Six Island grass (safari-style areas)"
         },
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3r_167.png",
-            name: "Spinarak",
+            name: "Spinarak"
           },
-          method: "Pattern Bush",
+          method: "Pattern Bush"
         },
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3r_168.png",
-            name: "Ariados",
+            name: "Ariados"
           },
-          method: "Evolve from Spinarak at level 22",
+          method: "Evolve from Spinarak at level 22"
         },
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3r_165.png",
-            name: "Ledyba",
+            name: "Ledyba"
           },
-          method: "Pattern Bush",
+          method: "Pattern Bush"
         },
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3r_166.png",
-            name: "Ledian",
+            name: "Ledian"
           },
-          method: "Evolve from Ledyba at level 18",
+          method: "Evolve from Ledyba at level 18"
         },
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3r_214.png",
-            name: "Heracross",
+            name: "Heracross"
           },
-          method: "Pattern Bush",
+          method: "Pattern Bush"
         },
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3r_360.png",
-            name: "Wynaut",
+            name: "Wynaut"
           },
-          method: "Breed Wobbuffet holding Lax Incense",
+          method: "Breed Wobbuffet holding Lax Incense"
         },
 
         /* --------------------------- Seven Island ---------------------------- */
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3r_231.png",
-            name: "Phanpy",
+            name: "Phanpy"
           },
-          method: "Canyon Entrance (Seven Island)",
+          method: "Canyon Entrance (Seven Island)"
         },
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3r_232.png",
-            name: "Donphan",
+            name: "Donphan"
           },
-          method: "Evolve from Phanpy at level 25",
+          method: "Evolve from Phanpy at level 25"
         },
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3r_246.png",
-            name: "Larvitar",
+            name: "Larvitar"
           },
-          method: "Sevault Canyon (Seven Island)",
+          method: "Sevault Canyon (Seven Island)"
         },
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3r_247.png",
-            name: "Pupitar",
+            name: "Pupitar"
           },
-          method: "Evolve from Larvitar at level 30",
+          method: "Evolve from Larvitar at level 30"
         },
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3r_248.png",
-            name: "Tyranitar",
+            name: "Tyranitar"
           },
-          method: "Evolve from Pupitar at level 55",
+          method: "Evolve from Pupitar at level 55"
         },
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3r_227.png",
-            name: "Skarmory",
+            name: "Skarmory"
           },
-          method: "Sevault Canyon (tall grass)",
+          method: "Sevault Canyon (tall grass)"
         },
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3r_201F.png",
-            name: "Unown",
+            name: "Unown"
           },
-          method: "Tanoby Ruins (after boulder puzzles)",
+          method: "Tanoby Ruins (after boulder puzzles)"
         },
 
         /* --------------------------- Switch Version Exclusives ---------------------------- */
         {
           pokemon: { img: "/assets/images/FRLG/Pokedex/Spr_3r_249.png", name: "Lugia" },
-          method: "Navel Rock (Switch re‑release ticket)",
+          method: "Navel Rock (Switch re‑release ticket)"
         },
         {
           pokemon: { img: "/assets/images/FRLG/Pokedex/Spr_3r_250.png", name: "Ho-Oh" },
-          method: "Navel Rock (Switch re‑release ticket)",
+          method: "Navel Rock (Switch re‑release ticket)"
         },
         {
           pokemon: {
             img: "/assets/images/FRLG/Pokedex/Spr_3f_386.png",
-            name: "Deoxys",
+            name: "Deoxys"
           },
-          method: "Birth Island (triangle puzzle; Switch re‑release ticket)",
-        },
-      ],
-    },
-  },
+          method: "Birth Island (triangle puzzle; Switch re‑release ticket)"
+        }
+      ]
+    }
+  }
 };
