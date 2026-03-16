@@ -1,10 +1,13 @@
-/* Two-grid landing with:
-   - Default (no query): available -> top grid, not available -> lower grid
-   - With query: matches -> top grid, non-matches -> lower grid
-   - Fixed 3-col layout handled in CSS (no resizing of cards)
-   - Arrow-key navigation across both grids
-   - Whole-card click for available entries
-*/
+/**
+ * Landing Page Controller
+ *
+ * This file loads the game manifest and renders the landing page grid.
+ * It partitions games into primary and secondary sections, applies
+ * search filtering, and manages keyboard and pointer navigation across
+ * game cards.
+ *
+ * It is responsible only for discovery and navigation into game pages.
+ */
 const MANIFEST_URL = "/data/manifest.games.json";
 const PLACEHOLDER = "/assets/images/covers/placeholder.png";
 

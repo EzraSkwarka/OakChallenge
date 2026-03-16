@@ -1,12 +1,12 @@
-/*
-  site-theme.js
-  Applies theme to every common hook so CSS always reacts:
-  - <html data-theme="light|dark">  and  <body data-theme="...">
-  - .light / .dark classes on <html> and <body>
-  Keeps .theme-btn label + aria-pressed in sync.
-  Delegated click handler so injected headers work.
-  Emits a window "themechange" event after apply.
-*/
+/**
+ * Theme State Manager
+ *
+ * This file manages global light/dark theme state for the site.
+ * It applies the active theme to the document root and persists
+ * the user’s preference across sessions.
+ *
+ * It has no knowledge of page content or layout.
+ */
 
 (function () {
   const LS_KEY = "site-theme";

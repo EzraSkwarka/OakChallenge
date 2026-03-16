@@ -1,9 +1,12 @@
-/*
-  sticky-header.js
-  Fixed-position floating section bar at viewport top with spacer.
-  Delegates all view-mode state and highlighting to setViewMode()/syncViewButtons() in oak-tracker.js.
-*/
-
+/**
+ * Sticky Header Synchronization
+ *
+ * This file manages the behavior of the sticky section header used in
+ * the tracker view. It keeps header state, controls, and scroll
+ * position synchronized with the main content.
+ *
+ * It does not render data or manage application state.
+ */
 (function (global) {
   const StickyHeader = {
     bar: null,

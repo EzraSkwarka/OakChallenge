@@ -1,7 +1,22 @@
 /* -----------------------------
    Professor Oak’s Challenge — Progress Tracker Engine
 ------------------------------ */
-
+/**
+ * This file reads the game-specific data exposed as `window.gameData`
+ * and renders it into an interactive tracker view. It is responsible
+ * for transforming declarative progression data into a normalized
+ * runtime model, applying choice-based gating, and syncing state
+ * changes back into the DOM.
+ *
+ * Core responsibilities:
+ * - Interpret `progression.js` and build renderable rows and sections
+ * - Apply choice requirements and recalculate visible rows
+ * - Persist and restore caught/choice state per game
+ * - Re-render affected sections when state changes
+ *
+ * This file assumes all game content is defined elsewhere and contains
+ * no game-specific logic or data.
+ */
 /* -----------------------------
    Constants / Helpers
 ------------------------------ */

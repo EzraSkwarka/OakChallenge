@@ -1,9 +1,12 @@
-/*
-  site-chrome.js
-  Injects site header/footer and ensures global head includes are present once per page.
-  After injection, calls ThemeUI.sync() once so the theme button text/aria match immediately.
-  Fixes ensureHost insertion and makes dynamically-added scripts non-async for predictable load.
-*/
+/**
+ * Site Chrome Injector
+ *
+ * This file injects shared site chrome (header, footer, and global UI)
+ * into pages at runtime. It centralizes layout elements that are common
+ * across the site so individual pages remain minimal and data-focused.
+ *
+ * It does not contain page-specific logic.
+ */
 
 (function () {
   const HEADER_PATH = "/partials/header.html";
