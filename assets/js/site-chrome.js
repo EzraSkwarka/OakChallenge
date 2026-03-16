@@ -9,8 +9,8 @@
  */
 
 (function () {
-  const HEADER_PATH = "partials/header.html";
-  const FOOTER_PATH = "partials/footer.html";
+  const HEADER_PATH = "OakChallenge/partials/header.html";
+  const FOOTER_PATH = "OakChallenge/partials/footer.html";
 
   const CSS_INCLUDES = [
     "assets/css/base.css",
