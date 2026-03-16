@@ -5,7 +5,7 @@ A static, CSP-safe web application for tracking progress through the
 
 Each game is defined entirely by data, allowing new titles to be added
 without modifying application logic. The project uses plain HTML, CSS,
-and JavaScript—no frameworks, no build step, and no inline scripts.
+and JavaScript.
 
 ---
 
