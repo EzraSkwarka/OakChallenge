@@ -6,7 +6,7 @@
         "region": "Kanto",
         "gen": "Gen 1",
         "notes": "Original Kanto adventure.",
-        "cover": "/assets/images/covers/red.png",
+        "cover": "assets/images/covers/red.png",
         "href": "/pages/tracker/red.html",
         "available": false
       },
@@ -16,7 +16,7 @@
         "region": "Kanto",
         "gen": "Gen 1",
         "notes": "Paired version to Red.",
-        "cover": "/assets/images/covers/blue.png",
+        "cover": "assets/images/covers/blue.png",
         "href": "/pages/tracker/blue.html",
         "available": false
       },
@@ -26,7 +26,7 @@
         "region": "Kanto",
         "gen": "Gen 1",
         "notes": "Special Pikachu Edition.",
-        "cover": "/assets/images/covers/yellow.png",
+        "cover": "assets/images/covers/yellow.png",
         "href": "/pages/tracker/yellow.html",
         "available": false
       },
@@ -37,7 +37,7 @@
         "region": "Johto",
         "gen": "Gen 2",
         "notes": "Begin your Johto journey.",
-        "cover": "/assets/images/covers/gold.png",
+        "cover": "assets/images/covers/gold.png",
         "href": "/pages/tracker/gold.html",
         "available": false
       },
@@ -47,7 +47,7 @@
         "region": "Johto",
         "gen": "Gen 2",
         "notes": "Paired version to Gold.",
-        "cover": "/assets/images/covers/silver.png",
+        "cover": "assets/images/covers/silver.png",
         "href": "/pages/tracker/silver.html",
         "available": false
       },
@@ -57,7 +57,7 @@
         "region": "Johto",
         "gen": "Gen 2",
         "notes": "Enhanced version of G/S.",
-        "cover": "/assets/images/covers/crystal.png",
+        "cover": "assets/images/covers/crystal.png",
         "href": "/pages/tracker/crystal.html",
         "available": false
       },
@@ -68,7 +68,7 @@
         "region": "Hoenn",
         "gen": "Gen 3",
         "notes": "Hoenn adventure featuring Team Magma.",
-        "cover": "/assets/images/covers/ruby.png",
+        "cover": "assets/images/covers/ruby.png",
         "href": "/pages/tracker/ruby.html",
         "available": false
       },
@@ -78,7 +78,7 @@
         "region": "Hoenn",
         "gen": "Gen 3",
         "notes": "Hoenn adventure featuring Team Aqua.",
-        "cover": "/assets/images/covers/sapphire.png",
+        "cover": "assets/images/covers/sapphire.png",
         "href": "/pages/tracker/sapphire.html",
         "available": false
       },
@@ -88,7 +88,7 @@
         "region": "Hoenn",
         "gen": "Gen 3",
         "notes": "Enhanced R/S with Battle Frontier.",
-        "cover": "/assets/images/covers/emerald.png",
+        "cover": "assets/images/covers/emerald.png",
         "href": "/pages/tracker/emerald.html",
         "available": false
       },
@@ -99,7 +99,7 @@
         "region": "Kanto",
         "gen": "Gen 3",
         "notes": "Kanto remake on GBA.",
-        "cover": "/assets/images/covers/firered.png",
+        "cover": "assets/images/covers/firered.png",
         "href": "/pages/tracker/firered.html",
         "available": true
       },
@@ -109,7 +109,7 @@
         "region": "Kanto",
         "gen": "Gen 3",
         "notes": "Version pair to FireRed.",
-        "cover": "/assets/images/covers/leafgreen.png",
+        "cover": "assets/images/covers/leafgreen.png",
         "href": "/pages/tracker/leafgreen.html",
         "available": false
       },
@@ -120,7 +120,7 @@
         "region": "Sinnoh",
         "gen": "Gen 4",
         "notes": "Sinnoh adventure with the Pokétch.",
-        "cover": "/assets/images/covers/diamond.png",
+        "cover": "assets/images/covers/diamond.png",
         "href": "/pages/tracker/diamond.html",
         "available": false
       },
@@ -130,7 +130,7 @@
         "region": "Sinnoh",
         "gen": "Gen 4",
         "notes": "Paired version to Diamond.",
-        "cover": "/assets/images/covers/pearl.png",
+        "cover": "assets/images/covers/pearl.png",
         "href": "/pages/tracker/pearl.html",
         "available": false
       },
@@ -140,7 +140,7 @@
         "region": "Sinnoh",
         "gen": "Gen 4",
         "notes": "Enhanced D/P with Distortion World.",
-        "cover": "/assets/images/covers/platinum.png",
+        "cover": "assets/images/covers/platinum.png",
         "href": "/pages/tracker/platinum.html",
         "available": false
       },
@@ -151,7 +151,7 @@
         "region": "Johto",
         "gen": "Gen 4",
         "notes": "Johto remake; take your Pokémon for a walk.",
-        "cover": "/assets/images/covers/heartgold.png",
+        "cover": "assets/images/covers/heartgold.png",
         "href": "/pages/tracker/heartgold.html",
         "available": false
       },
@@ -161,7 +161,7 @@
         "region": "Johto",
         "gen": "Gen 4",
         "notes": "Version pair to HeartGold.",
-        "cover": "/assets/images/covers/soulsilver.png",
+        "cover": "assets/images/covers/soulsilver.png",
         "href": "/pages/tracker/soulsilver.html",
         "available": false
       },
@@ -172,7 +172,7 @@
         "region": "Unova",
         "gen": "Gen 5",
         "notes": "Fresh regional Pokédex and story focus.",
-        "cover": "/assets/images/covers/black.png",
+        "cover": "assets/images/covers/black.png",
         "href": "/pages/tracker/black.html",
         "available": false
       },
@@ -182,7 +182,7 @@
         "region": "Unova",
         "gen": "Gen 5",
         "notes": "Paired version to Black.",
-        "cover": "/assets/images/covers/white.png",
+        "cover": "assets/images/covers/white.png",
         "href": "/pages/tracker/white.html",
         "available": false
       },
@@ -192,7 +192,7 @@
         "region": "Unova",
         "gen": "Gen 5",
         "notes": "Sequel set two years after B/W.",
-        "cover": "/assets/images/covers/black2.png",
+        "cover": "assets/images/covers/black2.png",
         "href": "/pages/tracker/black2.html",
         "available": false
       },
@@ -202,7 +202,7 @@
         "region": "Unova",
         "gen": "Gen 5",
         "notes": "Sequel set two years after B/W.",
-        "cover": "/assets/images/covers/white2.png",
+        "cover": "assets/images/covers/white2.png",
         "href": "/pages/tracker/white2.html",
         "available": false
       },
@@ -213,7 +213,7 @@
         "region": "Hoenn",
         "gen": "Gen 6",
         "notes": "3DS remake of Ruby with new features.",
-        "cover": "/assets/images/covers/omega-ruby.png",
+        "cover": "assets/images/covers/omega-ruby.png",
         "href": "/pages/tracker/omega-ruby.html",
         "available": false
       },
@@ -223,7 +223,7 @@
         "region": "Hoenn",
         "gen": "Gen 6",
         "notes": "3DS remake of Sapphire with new features.",
-        "cover": "/assets/images/covers/alpha-sapphire.png",
+        "cover": "assets/images/covers/alpha-sapphire.png",
         "href": "/pages/tracker/alpha-sapphire.html",
         "available": false
       },
@@ -234,7 +234,7 @@
         "region": "Kalos",
         "gen": "Gen 6",
         "notes": "First fully 3D mainline titles.",
-        "cover": "/assets/images/covers/x.png",
+        "cover": "assets/images/covers/x.png",
         "href": "/pages/tracker/x.html",
         "available": false
       },
@@ -244,7 +244,7 @@
         "region": "Kalos",
         "gen": "Gen 6",
         "notes": "Paired version to X.",
-        "cover": "/assets/images/covers/y.png",
+        "cover": "assets/images/covers/y.png",
         "href": "/pages/tracker/y.html",
         "available": false
       },
@@ -255,7 +255,7 @@
         "region": "Alola",
         "gen": "Gen 7",
         "notes": "Island trials replace gyms.",
-        "cover": "/assets/images/covers/sun.png",
+        "cover": "assets/images/covers/sun.png",
         "href": "/pages/tracker/sun.html",
         "available": false
       },
@@ -265,7 +265,7 @@
         "region": "Alola",
         "gen": "Gen 7",
         "notes": "Paired version to Sun.",
-        "cover": "/assets/images/covers/moon.png",
+        "cover": "assets/images/covers/moon.png",
         "href": "/pages/tracker/moon.html",
         "available": false
       },
@@ -275,7 +275,7 @@
         "region": "Alola",
         "gen": "Gen 7",
         "notes": "Expanded Alola adventure.",
-        "cover": "/assets/images/covers/ultra-sun.png",
+        "cover": "assets/images/covers/ultra-sun.png",
         "href": "/pages/tracker/ultra-sun.html",
         "available": false
       },
@@ -285,7 +285,7 @@
         "region": "Alola",
         "gen": "Gen 7",
         "notes": "Expanded Alola adventure.",
-        "cover": "/assets/images/covers/ultra-moon.png",
+        "cover": "assets/images/covers/ultra-moon.png",
         "href": "/pages/tracker/ultra-moon.html",
         "available": false
       },
@@ -296,7 +296,7 @@
         "region": "Galar",
         "gen": "Gen 8",
         "notes": "Stadium-scale battles in Galar.",
-        "cover": "/assets/images/covers/sword.png",
+        "cover": "assets/images/covers/sword.png",
         "href": "/pages/tracker/sword.html",
         "available": false
       },
@@ -306,7 +306,7 @@
         "region": "Galar",
         "gen": "Gen 8",
         "notes": "Paired version to Sword.",
-        "cover": "/assets/images/covers/shield.png",
+        "cover": "assets/images/covers/shield.png",
         "href": "/pages/tracker/shield.html",
         "available": false
       },
@@ -317,7 +317,7 @@
         "region": "Paldea",
         "gen": "Gen 9",
         "notes": "Open-world Paldea adventure.",
-        "cover": "/assets/images/covers/scarlet.png",
+        "cover": "assets/images/covers/scarlet.png",
         "href": "/pages/tracker/scarlet.html",
         "available": false
       },
@@ -327,7 +327,7 @@
         "region": "Paldea",
         "gen": "Gen 9",
         "notes": "Paired version to Scarlet.",
-        "cover": "/assets/images/covers/violet.png",
+        "cover": "assets/images/covers/violet.png",
         "href": "/pages/tracker/violet.html",
         "available": false
       }

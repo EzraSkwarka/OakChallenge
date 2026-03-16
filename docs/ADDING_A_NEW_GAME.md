@@ -24,7 +24,7 @@ All games are discovered via `manifest.games.json`. To add a new game, append a 
   "region": "Kanto",
   "gen": "Gen 1",
   "notes": "Paired version to Red.",
-  "cover": "/assets/images/covers/blue.png",
+  "cover": "assets/images/covers/blue.png",
   "href": "/pages/tracker/blue.html",
   "available": false
 }
@@ -81,7 +81,7 @@ Each game has its own static HTML entry page. This page loads the tracker UI and
     <meta charset="utf-8" />
     <title>Pokémon Blue – Oak Challenge Tracker</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    /assets/css/tracker.css
+    assets/css/tracker.css
   </head>
   <body>
     <header id="site-header-host"></header>
@@ -112,9 +112,9 @@ Each game has its own static HTML entry page. This page loads the tracker UI and
 
     <footer id="site-footer-host"></footer>
 
-    /assets/js/site-theme.js</script>
-    /assets/js/site-chrome.js</script>
-    /assets/js/oak-tracker.js</script>
+    assets/js/site-theme.js</script>
+    assets/js/site-chrome.js</script>
+    assets/js/oak-tracker.js</script>
     /data/blue/progression.js</script>
   </body>
 </html>
@@ -129,7 +129,7 @@ Each game has its own static HTML entry page. This page loads the tracker UI and
 - Used on the landing page
 - Stored at:  
   ```
-  /assets/images/covers/blue.png
+  assets/images/covers/blue.png
   ```
 
 ### 3.2 Logos
@@ -137,14 +137,14 @@ Each game has its own static HTML entry page. This page loads the tracker UI and
 - Used in the tracker header
 - Stored at:  
   ```
-  /assets/images/logos/blue.png
+  assets/images/logos/blue.png
   ```
 
 ### 3.3 Sprites
 
 - Store sprites under a logical folder, for example:
   ```
-  /assets/images/FRLG/
+  assets/images/FRLG/
   ```
 - Reference sprites using **absolute paths**
 - If a sprite is missing, use:
@@ -163,7 +163,7 @@ Each game defines **exactly one** global object:
 window.gameData = {
   gameId: "blue",
   gameTitle: "Pokémon Blue",
-  logo: "/assets/images/logos/blue.png",
+  logo: "assets/images/logos/blue.png",
 
   aboutHtml: `
     <section class="game-intro-content">
@@ -215,68 +215,68 @@ Each progression group represents a phase of the game.
       type: "choice",
       choiceKey: "starter",
       choiceValue: "bulbasaur",
-      pokemon: { img: "/assets/images/FRLG/Spr_3f_001.png", name: "Bulbasaur" },
+      pokemon: { img: "assets/images/FRLG/Spr_3f_001.png", name: "Bulbasaur" },
       method: "Choose as starter"
     },
     {
       type: "choice",
       choiceKey: "starter",
       choiceValue: "charmander",
-      pokemon: { img: "/assets/images/FRLG/Spr_3f_004.png", name: "Charmander" },
+      pokemon: { img: "assets/images/FRLG/Spr_3f_004.png", name: "Charmander" },
       method: "Choose as starter"
     },
     {
       type: "choice",
       choiceKey: "starter",
       choiceValue: "squirtle",
-      pokemon: { img: "/assets/images/FRLG/Spr_3f_007.png", name: "Squirtle" },
+      pokemon: { img: "assets/images/FRLG/Spr_3f_007.png", name: "Squirtle" },
       method: "Choose as starter"
     },
 
     /* ---- Gated results (only one line appears) ---- */
     {
-      pokemon: { img: "/assets/images/FRLG/Spr_3f_002.png", name: "Ivysaur" },
+      pokemon: { img: "assets/images/FRLG/Spr_3f_002.png", name: "Ivysaur" },
       method: "Evolve Bulbasaur at Lv. 16",
       requires: { starter: "bulbasaur" }
     },
     {
-      pokemon: { img: "/assets/images/FRLG/Spr_3f_003.png", name: "Venusaur" },
+      pokemon: { img: "assets/images/FRLG/Spr_3f_003.png", name: "Venusaur" },
       method: "Evolve Ivysaur at Lv. 32",
       requires: { starter: "bulbasaur" }
     },
 
     {
-      pokemon: { img: "/assets/images/FRLG/Spr_3f_005.png", name: "Charmeleon" },
+      pokemon: { img: "assets/images/FRLG/Spr_3f_005.png", name: "Charmeleon" },
       method: "Evolve Charmander at Lv. 16",
       requires: { starter: "charmander" }
     },
     {
-      pokemon: { img: "/assets/images/FRLG/Spr_3f_006.png", name: "Charizard" },
+      pokemon: { img: "assets/images/FRLG/Spr_3f_006.png", name: "Charizard" },
       method: "Evolve Charmeleon at Lv. 36",
       requires: { starter: "charmander" }
     },
 
     {
-      pokemon: { img: "/assets/images/FRLG/Spr_3f_008.png", name: "Wartortle" },
+      pokemon: { img: "assets/images/FRLG/Spr_3f_008.png", name: "Wartortle" },
       method: "Evolve Squirtle at Lv. 16",
       requires: { starter: "squirtle" }
     },
     {
-      pokemon: { img: "/assets/images/FRLG/Spr_3f_009.png", name: "Blastoise" },
+      pokemon: { img: "assets/images/FRLG/Spr_3f_009.png", name: "Blastoise" },
       method: "Evolve Wartortle at Lv. 36",
       requires: { starter: "squirtle" }
     },
       /* ---- Non-gated Pokémon (always shown) ---- */
 	{
-	  pokemon: { img: "/assets/images/FRLG/Spr_3f_016.png", name: "Pidgey" },
+	  pokemon: { img: "assets/images/FRLG/Spr_3f_016.png", name: "Pidgey" },
 	  method: "Catch on Route 1"
 	},
 	{
-	  pokemon: { img: "/assets/images/FRLG/Spr_3f_017.png", name: "Pidgeotto" },
+	  pokemon: { img: "assets/images/FRLG/Spr_3f_017.png", name: "Pidgeotto" },
 	  method: "Evolve Pidgey at Lv. 18"
 	},
 	{
-	  pokemon: { img: "/assets/images/FRLG/Spr_3f_018.png", name: "Pidgeot" },
+	  pokemon: { img: "assets/images/FRLG/Spr_3f_018.png", name: "Pidgeot" },
 	  method: "Evolve Pidgeotto at Lv. 36"
 	}
   ]

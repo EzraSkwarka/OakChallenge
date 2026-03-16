@@ -140,21 +140,21 @@ See **`ADDING_A_NEW_GAME.md`** for full documentation on:
 Used on the landing page:
 
 ```
-/assets/images/covers/<game-id>.png
+assets/images/covers/<game-id>.png
 ```
 
 ### Logos
 Used in the tracker header:
 
 ```
-/assets/images/logos/<game-id>.png
+assets/images/logos/<game-id>.png
 ```
 
 ### Sprites
 Organized by game family (for example):
 
 ```
-/assets/images/FRLG/
+assets/images/FRLG/
 ```
 
 Sprite paths referenced in data files are always absolute. If a sprite is not available, `img: "link"` may be used to fall back to a placeholder.

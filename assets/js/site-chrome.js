@@ -13,17 +13,17 @@
   const FOOTER_PATH = "/partials/footer.html";
 
   const CSS_INCLUDES = [
-    "/assets/css/base.css",
-    "/assets/css/chrome.css",
-    "/assets/css/tracker.css",
-    "/assets/css/sticky-header.css",
-    "/assets/css/icons.css",
+    "assets/css/base.css",
+    "assets/css/chrome.css",
+    "assets/css/tracker.css",
+    "assets/css/sticky-header.css",
+    "assets/css/icons.css",
   ];
 
   const JS_INCLUDES = [
     // do not self-include this file
-    "/assets/js/site-theme.js",
-    "/assets/js/sticky-header.js",
+    "assets/js/site-theme.js",
+    "assets/js/sticky-header.js",
   ];
 
   function ensureHost(id, parent, position) {

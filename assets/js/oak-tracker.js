@@ -20,9 +20,9 @@
 /* -----------------------------
    Constants / Helpers
 ------------------------------ */
-const PLACEHOLDER_SRC = "/assets/images/placeholder.png";
-const POKEBALL_CAUGHT = "/assets/images/ui/pokeball.png";
-const POKEBALL_UNCAUGHT = "/assets/images/ui/pokeball_dark.png";
+const PLACEHOLDER_SRC = "assets/images/placeholder.png";
+const POKEBALL_CAUGHT = "assets/images/ui/pokeball.png";
+const POKEBALL_UNCAUGHT = "assets/images/ui/pokeball_dark.png";
 
 const cap = (s) => (s ? s[0].toUpperCase() + s.slice(1) : s);
 const norm = (v) => (typeof v === "string" ? v.trim().toLowerCase() : v);
