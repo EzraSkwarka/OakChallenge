@@ -1582,125 +1582,161 @@ window.gameData = {
         "With no further Pokémon available in Kanto before the League, defeat Lt. Surge, Sabrina, and Giovanni, clear the Elite Four, and obtain the National Pokédex. From there, the remainder of the challenge can be completed in any order, beginning with finishing the Kanto Dex before moving on to National Dex Pokémon.",
 
       summaryHtml: `
-        <p>
-          Since no additional Pokémon can be caught in Kanto before earning more badges, continue your League challenge. Defeat Lt. Surge, Sabrina, and Giovanni to collect the remaining badges, then challenge the Elite Four.
-        </p>
-        <p>
-          After the credits roll, Professor Oak will evaluate your progress and award you the National Pokédex, expanding the Pokédex limit to 386 Pokémon. With no badges gating progress, the remaining objectives can be completed in any order. Before doing so, finish all remaining Kanto Pokédex entries.
-        </p>
+  <h5>Cerulean Cave </h5>
+  <p>
+    Note that this can’t be done until you’ve done the Ruby/Sapphire quest on Sevii Islands. Leave Cerulean City from the north exit, cross Nugget Bridge and then Surf along the river to reach Cerulean Cave. Deep inside you’ll find the 150th pokemon, Mewtwo. I’d recommend NOT using the Master Ball for this encounter, a far more deserving pokemon with potential challenge-breaking mechanics would be more beneficial. Mewtwo is Lv. 70 so bring your best ‘mons or come back later.
+  </p>
+  <pre>
+    Mewtwo
+  </pre>
 
-        <h5>Cerulean Cave</h5>
-        <p>This area cannot be accessed until you complete the Ruby/Sapphire quest on the Sevii Islands. Leave Cerulean City via the north exit, cross Nugget Bridge, and Surf along the river to reach Cerulean Cave.</p>
-        <p>Deep inside you’ll encounter:</p>
-        <pre>
-          Mewtwo
-        </pre>
-        <p>Mewtwo is level 70. It is recommended not to use the Master Ball here, as there is a later encounter where it is far more valuable.</p>
+  <h5>Four Island </h5>
+  <p>
+    Go back to One Island and talk to Celio in the pokemon center who will give you his pass to get to the other Sevii Islands and start the Ruby/Sapphire quest. Take the ferry to Four Island where you can access the breeding center. Breed your Hitmonlee/Hitmonchan with Ditto to get a Tyrogue which you can evolve into the one you didn’t pick. You can do the same with Eevee and evolve it into the other two Eeveelutions.
+  </p>
+  <pre>
+    Tyrogue → Lv. 20 → Hitmonlee/Hitmonchan (depending on its stats)
+    Eevee → Fire/Thunder/Water Stone → Flareon/Jolteon/Vaporeon
+  </pre>
+  <p>That’s as far as your Kanto dex can go!</p>
 
-        <h5>Four Island</h5>
-        <p>Return to One Island and speak with Celio in the Pokémon Center to receive the Rainbow Pass and begin the Ruby/Sapphire quest. Travel to Four Island to access the Breeding Center.</p>
-        <pre>
-          Tyrogue → Lv. 20 → Hitmonlee / Hitmonchan
-          Eevee → Fire / Thunder / Water Stone → Flareon / Jolteon / Vaporeon
-        </pre>
-        <p>This completes all possible Kanto Pokédex entries.</p>
+  <h5>Extra Evolutions -</h5>
+  <p>
+    With the National Dex in hand, some of your Kanto pokemon can evolve further! Two happiness evolutions and a stone evolution if you’re playing FireRed. The Sun Stone can be found in Ruin Valley on Six Island. There is no clock or day/night system so evolving Eevee into Espeon and Umbreon is not possible in these games.
+  </p>
+  <pre>
+    Chansey → Happiness → Blissey
+    Golbat → Happiness → Crobat
+    Gloom → Sun Stone → Bellossom
+  </pre>
+  <p>
+    A bunch of other pokemon can breed with Ditto to hatch some baby pokemon and you can evolve another Tyrogue to get the last Hitmon for your collection:
+  </p>
+  <pre>
+    Tyrogue → Lv. 20 (attack = defense) → Hitmontop
+    Breed Pikachu/Raichu → Pichu
+    Breed Clefairy/Clefable → Cleffa
+    Breed Jigglypuff/Wigglytuff → Igglybuff
+    Breed Jynx → Smoochum
+    Breed Electabuzz → Elekid
+  </pre>
 
-        <h5>Extra Evolutions (National Dex)</h5>
-        <p>With the National Dex obtained, additional evolutions become available. The Sun Stone can be found in Ruin Valley on Six Island. Note that Espeon and Umbreon are not obtainable due to the lack of a day/night system.</p>
-        <pre>
-          Chansey → Happiness → Blissey
-          Golbat → Happiness → Crobat
-          Gloom → Sun Stone → Bellossom
-        </pre>
-        <p>Additional baby Pokémon can be obtained through breeding:</p>
-        <pre>
-          Tyrogue → Lv. 20 (Atk = Def) → Hitmontop
-          Pikachu / Raichu → Breed → Pichu
-          Clefairy / Clefable → Breed → Cleffa
-          Jigglypuff / Wigglytuff → Breed → Igglybuff
-          Jynx → Breed → Smoochum
-          Electabuzz → Breed → Elekid
-        </pre>
+  <h5>One Island </h5>
+  <p>
+    Return to Mt Ember and you can exit a new area guarded by Team Rocket. Inside this cave you’ll encounter Slugma. Grab the gem at the end and return it to Celio.
+  </p>
+  <pre>
+    Slugma → Lv. 38 → Magcargo
+  </pre>
 
-        <h5>One Island</h5>
-        <p>Return to Mt. Ember and access the newly opened area guarded by Team Rocket.</p>
-        <pre>
-          Slugma → Lv. 38 → Magcargo
-        </pre>
+  <h5>Three Island</h5>
+  <p>
+    Straight off the ferry on Three Island, go through the nearby cave to find a patch of grass containing only one pokemon:
+  </p>
+  <pre>
+    Dunsparce
+  </pre>
 
-        <h5>Three Island</h5>
-        <pre>
-          Dunsparce
-        </pre>
+  <h5>Four Island </h5>
+  <p>
+    Surf in the lake to find Wooper, while Delibird/Sneasel and Swinub can be found within Icefall Cave (don’t forget the Waterfall HM and use it to fight Team Rocket to help unlock a pokemon later)
+  </p>
+  <pre>
+    Wooper → Lv. 20 → Quagsire
+    Delibird
+    Swinub → Lv. 33 → Piloswine
+  </pre>
 
-        <h5>Four Island</h5>
-        <p>Surf in the lake and explore Icefall Cave:</p>
-        <pre>
-          Wooper → Lv. 20 → Quagsire
-          Delibird
-          Swinub → Lv. 33 → Piloswine
-        </pre>
+  <h5>Five Island </h5>
+  <p>
+    First go east to Five Island Meadow to catch Sentret and use the Super Rod there to catch Qwilfish (FR) or Remoraid (LG). North of the harbor you can Surf to encounter Hoppip on the water. In the western part of the water route you can find a man who will give you a Togepi egg if you show him a happy pokemon. In the north east part of the island, Murkrow/Misdreavus can be found in Lost Cave in the rooms that have items in them. Pick up the Sea and Lax Incense while you’re here.
+  </p>
+  <pre>
+    Hoppip → Lv. 18 → Skiploom → Lv. 27 → Jumpluff
+    Sentret → Lv. 15 → Furret
+    Qwilfish
+    Togepi → Happiness → Togetic
+    Murkrow
+  </pre>
 
-        <h5>Five Island</h5>
-        <pre>
-          Hoppip → Lv. 18 → Skiploom → Lv. 27 → Jumpluff
-          Sentret → Lv. 15 → Furret
-          Qwilfish
-          Togepi → Happiness → Togetic
-          Murkrow
-        </pre>
 
-        <h5>Six Island</h5>
-        <pre>
-          Yanma
-          Natu → Lv. 25 → Xatu
-          Wobbuffet
-          Spinarak → Lv. 22 → Ariados
-          Ledyba → Lv. 18 → Ledian
-          Heracross
-          Wobbuffet → Breed (Lax Incense) → Wynaut
-        </pre>
+  <h5>Six Island </h5>
+  <p>
+    Go to Ruin Valley and catch a few Johto pokemon. Make sure you investigate Dotted Hole (use Cut to open the door) and allow the Team Rocket Scientist to steal the gem.
+  </p>
+  <pre>
+    Yanma
+    Natu → Lv. 25 → Xatu
+    Wobbuffet
+  </pre>
+  <p>Then go to the North side of Six Island to Pattern Bush where a few bug types are waiting for you:</p>
+  <pre>
+    Spinarak → Lv. 22 → Ariados
+    Ledyba → Lv. 18 → Ledian
+    Heracross
+  </pre>
+  <p>Go and breed with Wobbuffet with a Lax Incense:</p>
+  <pre>
+    Wobbuffet → Breed (holding Lax Incense) → Wynaut
+  </pre>
 
-        <h5>Seven Island</h5>
-        <pre>
-          Phanpy → Lv. 25 → Donphan
-          Larvitar → Lv. 30 → Pupitar → Lv. 55 → Tyranitar
-          Skarmory
-          Unown
-        </pre>
+  <h5>Seven Island </h5>
+  <p>
+    The last of the Sevii Islands. Go south to Canyon Entrance and catch Phanpy. Further South in Sevault Canyon, catch a Larvitar and a Skarmory (FireRed).
+  </p>
+  <pre>
+    Phanpy → Lv. 25 → Donphan
+    Larvitar → Lv. 30 → Pupitar → Lv. 55 → Tyranitar
+    Skarmory
+  </pre>
+  <p>
+    Solve the boulder puzzles in the cave in Sevault Canyon to unlock Tanoby Ruins will let you catch Unown. Surfing outside will get you a Mantine if you’re playing LeafGreen.
+  </p>
+  <pre>
+    Unown
+    (LG) Mantine
+  </pre>
 
-        <h5>Roaming Legendary</h5>
-        <p>After resolving Team Rocket activity and updating the trading system, return to Kanto to encounter the roaming beast based on your starter choice. This is the encounter recommended for the Master Ball.</p>
-        <pre>
-          Raikou
-          OR
-          Entei
-          OR
-          Suicune
-        </pre>
+  <p>
+    Finally, after clearing out Team Rocket and updating the trade system to allow trades with Ruby and Sapphire (which we’re not using), go back to Kanto where you can find one of the roaming beasts. Suicune if you picked Charmander, Raikou for Squirtle or Entei for Bulbasaur. THIS is the encounter you wanted to save the Master Ball for. There is a glitch in which the pokemon could use Roar and never be encountered again (fixed in Switch versions).
+  </p>
+  <pre>
+    Raikou
+    OR
+    Entei
+    OR
+    Suicune
+  </pre>
+  <p>
+    And with the roaming beast caught, that’s the end of the challenge! That’s the most number of pokemon you can possibly catch on your own.
+  </p>
 
-        <h5>Switch Version Exclusives</h5>
-        <p>On Nintendo Switch re‑releases, Mystic and Aurora Tickets are provided automatically.</p>
-        <pre>
-          Lugia
-          Ho‑Oh
-          Deoxys
-        </pre>
+  <h5>Switch Version Exclusives </h5>
+  <p>
+    With the re-release of the games on Nintendo Switch, once you’ve defeated the Elite Four you’ll enter the post game with the Mystic Ticket and Aurora Ticket already in your bag. With these you can board the ferry in Vermilion City to reach Navel Rock where Lugia is on the lowest floor and Ho-Oh is on the highest. On Birth Island you’ll need to solve the triangle puzzle but completing it will trigger an encounter with Deoxys.
+  </p>
+  <pre>
+    Lugia
+    Ho-Oh
+    Deoxys
+  </pre>
 
-        <h5>Levelling Tips</h5>
-        <p>The Sevii Islands provide excellent Vs. Seeker training opportunities. The hot spring area on One Island and hikers on Seven Island are particularly effective. The Elite Four can also be rematched at higher levels.</p>
+  <h5>Levelling Tips </h5>
+  <p>
+    Honestly, anywhere on the Sevii Islands is a great place to train with the Vs Seeker. One of my favourite spots was outside the hot springs on One Island. They all used fighting types but it was the ease of going to the hot spring to heal and then by the time you’re back outside, the Vs Seeker was recharged. The hikers on Seven Island are also great for high level pokemon. You can also rematch the Elite Four who have higher levels than before.
+  </p>
 
-        <p><strong>End of the Challenge</strong><br/>
-          Kanto Dex: Caught 125 · Remaining 26<br/>
-          FireRed National Dex: Caught 170 · Remaining 216<br/>
-          FireRed (Switch) National Dex: Caught 173 · Remaining 213
-        </p>
-        <p class="tips-source">
+  <p>
+    <strong>End of the challenge:</strong><br/>
+    (FireRed) National Dex Caught 170, Remaining 216<br/>
+    (FireRed Switch) National Dex Caught 173, Remaining 213<br/>
+  </p>
+          <p class="tips-source">
           <a href="https://docs.google.com/document/d/1KF_Qkn5YnPcYvSDVaI3mMhS8RgBsHRsXmbXWCzOhRk0/edit?usp=sharing" target="_blank" rel="noopener noreferrer">
             Source: Professor Oak Challenge Guide (Google Doc)
           </a>
         </p>
-      `,
+`,
       rows: [
         /* --------------------------- Roaming Legendary (choice) ---------------------------- */
         {
