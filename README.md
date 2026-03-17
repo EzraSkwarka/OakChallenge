@@ -73,3 +73,7 @@ This is a fan project for informational and organizational purposes only.
 - **Fonts**  
   Some fonts used by the site are sourced from:  
   https://pokemondungeon.com/media-downloads/fonts/
+
+  **Insporation**
+  I stumbled upon this repo trying to do something similar but as best i can tell its abandoned
+  https://github.com/PYR0M4NC3R/oak-challenge
