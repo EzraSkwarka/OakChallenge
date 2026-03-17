@@ -8,7 +8,7 @@
         "notes": "",
         "cover": "assets/images/covers/red.png",
         "href": "pages/tracker/red.html",
-        "available": false
+        "available": true
       },
       {
         "id": "blue",
