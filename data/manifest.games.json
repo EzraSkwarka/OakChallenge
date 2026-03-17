@@ -111,7 +111,7 @@
         "notes": "Version pair to FireRed.",
         "cover": "assets/images/covers/leafgreen.png",
         "href": "pages/tracker/leafgreen.html",
-        "available": false
+        "available": true
       },
   
       {

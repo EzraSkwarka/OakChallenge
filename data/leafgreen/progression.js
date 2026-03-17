@@ -6,9 +6,9 @@
 ----------------------- */
 window.gameData = {
   gameId: "firered",
-  gameTitle: "Pokémon FireRed",
+  gameTitle: "Pokémon LeafGreen",
 
-  logo: "assets/images/logos/firered.png",
+  logo: "assets/images/logos/leafgreen.png",
 
   aboutHtml: `
     <section class="game-intro-content">
@@ -400,14 +400,14 @@ window.gameData = {
         <h5>Route 4 (Post–Mt. Moon)</h5>
         <p>Once you’re confident you’ve caught Geodude, Clefairy, Zubat, Paras, and obtained all four Moon Stones, you can finally leave the cave. In the grass you can catch:</p>
         <pre>
-          Ekans → Lv. 22 → Arbok
+          Sandshrew → Lv. 22 → Sandslash
         </pre>
 
         <h5>Route 24</h5>
         <p>Enter Cerulean City, heal up, and head north to Route 24.</p>
         <pre>
           Abra → Lv. 16 → Kadabra
-          Oddish → Lv. 21 → Gloom
+          Bellsprout → Lv. 21 → Weepinbell
         </pre>
         <p>
           Catch a second Abra for a trade later. Continue east to Bill’s house and obtain the S.S. Ticket.
@@ -613,12 +613,12 @@ window.gameData = {
 
         /* --------------------------- Route 4 after Mt. Moon ------------------ */
         {
-          pokemon: { img: "assets/images/FRLG/Pokedex/Spr_3f_023.png", name: "Ekans" },
+          pokemon: { img: "assets/images/FRLG/Pokedex/Spr_3f_027.png", name: "Sandshrew" },
           method: "Catch on Route 4"
         },
         {
-          pokemon: { img: "assets/images/FRLG/Pokedex/Spr_3f_024.png", name: "Arbok" },
-          method: "Evolve from Ekans at level 22"
+          pokemon: { img: "assets/images/FRLG/Pokedex/Spr_3f_028.png", name: "Sandslash" },
+          method: "Evolve from Sandshrew at level 22"
         },
         /* --------------------------- Route 24 -------------------------------- */
         {
@@ -634,14 +634,14 @@ window.gameData = {
         },
         {
           pokemon: {
-            img: "assets/images/FRLG/Pokedex/Spr_3f_043.png",
-            name: "Oddish"
+            img: "assets/images/FRLG/Pokedex/Spr_3f_069.png",
+            name: "Bellsprout"
           },
           method: "Catch on Route 24"
         },
         {
-          pokemon: { img: "assets/images/FRLG/Pokedex/Spr_3f_044.png", name: "Gloom" },
-          method: "Evolve from Oddish at level 21"
+          pokemon: { img: "assets/images/FRLG/Pokedex/Spr_3f_070.png", name: "Weepinbell" },
+          method: "Evolve from Bellsprout at level 21"
         },
         /* --------------------------- Route 5 --------------------------------- */
         {
@@ -730,7 +730,7 @@ window.gameData = {
         <h5>Route 8</h5>
         <p>Pass through Lavender Town and head west to Route 8. The only new Pokémon here is:</p>
         <pre>
-          Growlithe
+          Vulpix
         </pre>
 
         <h5>Celadon City</h5>
@@ -745,8 +745,8 @@ window.gameData = {
         <pre>
           Pikachu → Thunder Stone → Raichu
           Eevee → Fire / Thunder / Water Stone → Flareon / Jolteon / Vaporeon
-          Growlithe → Fire Stone → Arcanine
-          Gloom → Leaf Stone → Vileplume
+          Vulpix → Fire Stone → Ninetails
+          Weepinbell → Leaf Stone → Victreebel
         </pre>
         <p>From this point onward, any Pokémon that requires a stone should be evolved here. While in Celadon, clear out the Rocket Hideout to obtain the Silph Scope.</p>
 
@@ -776,7 +776,7 @@ window.gameData = {
         <h5>Fishing Spree and Completing Trades</h5>
         <p>With both rods, tour Kanto to catch and evolve:</p>
         <pre>
-          Shellder → Water Stone → Cloyster (Super Rod – Pallet Town)
+          Staryu → Water Stone → Starmie (Super Rod – Pallet Town)
           Horsea → Lv. 32 → Seadra (Good Rod – Pallet Town)
           Psyduck → Lv. 33 → Golduck (Super Rod – Viridian City)
           Poliwag → Lv. 25 → Poliwhirl → Water Stone → Poliwrath (Good Rod – Viridian City)
@@ -803,7 +803,7 @@ window.gameData = {
           Exeggcute → Leaf Stone → Exeggutor
           Rhyhorn → Lv. 42 → Rhydon
           Chansey
-          Scyther
+          Pinsir
           Tauros
           Kangaskhan
         </pre>
@@ -925,17 +925,17 @@ window.gameData = {
         /* --------------------------- Route 8 --------------------------------- */
         {
           pokemon: {
-            img: "assets/images/FRLG/Pokedex/Spr_3f_058.png",
-            name: "Growlithe"
+            img: "assets/images/FRLG/Pokedex/Spr_3f_037.png",
+            name: "Vulpix"
           },
           method: "Catch on Route 8"
         },
         {
           pokemon: {
-            img: "assets/images/FRLG/Pokedex/Spr_3f_059.png",
-            name: "Arcanine"
+            img: "assets/images/FRLG/Pokedex/Spr_3f_038.png",
+            name: "Ninetails"
           },
-          method: "Use a Fire Stone on Growlithe"
+          method: "Use a Fire Stone on Vulpix"
         },
         /* --------------------------- Celadon City ---------------------------- */
         {
@@ -992,10 +992,10 @@ window.gameData = {
         },
         {
           pokemon: {
-            img: "assets/images/FRLG/Pokedex/Spr_3f_045.png",
-            name: "Vileplume"
+            img: "assets/images/FRLG/Pokedex/Spr_3f_071.png",
+            name: "Victreebel"
           },
-          method: "Use a Leaf Stone on Gloom"
+          method: "Use a Leaf Stone on Weepinbell"
         },
         /* --------------------------- Route 16 -------------------------------- */
         {
@@ -1048,17 +1048,17 @@ window.gameData = {
         /* --------------------------- "Fishing Spree" ------------------------- */
         {
           pokemon: {
-            img: "assets/images/FRLG/Pokedex/Spr_3f_090.png",
-            name: "Shellder"
+            img: "assets/images/FRLG/Pokedex/Spr_3f_120.png",
+            name: "Staryu"
           },
           method: "Fish in Pallet Town"
         },
         {
           pokemon: {
-            img: "assets/images/FRLG/Pokedex/Spr_3f_091.png",
-            name: "Cloyster"
+            img: "assets/images/FRLG/Pokedex/Spr_3f_121.png",
+            name: "Starmie"
           },
-          method: "Use a Water Stone on Shellder"
+          method: "Use a Water Stone on Staryu"
         },
         {
           pokemon: {
@@ -1076,17 +1076,17 @@ window.gameData = {
         },
         {
           pokemon: {
-            img: "assets/images/FRLG/Pokedex/Spr_3f_054.png",
-            name: "Psyduck"
+            img: "assets/images/FRLG/Pokedex/Spr_3f_079.png",
+            name: "Slowpoke"
           },
           method: "Fish in Viridian City"
         },
         {
           pokemon: {
-            img: "assets/images/FRLG/Pokedex/Spr_3f_055.png",
-            name: "Golduck"
+            img: "assets/images/FRLG/Pokedex/Spr_3f_080.png",
+            name: "Slowbro"
           },
-          method: "Evolve From Psyduck at level 33; Need two"
+          method: "Evolve From Slowpoke at level 37; Need two"
         },
         {
           pokemon: {
@@ -1238,8 +1238,8 @@ window.gameData = {
         },
         {
           pokemon: {
-            img: "assets/images/FRLG/Pokedex/Spr_3f_123.png",
-            name: "Scyther"
+            img: "assets/images/FRLG/Pokedex/Spr_3f_127.png",
+            name: "Pinsir"
           },
           method: "Safari Zone"
         },
@@ -1310,7 +1310,6 @@ window.gameData = {
         <p>Surf to the Power Plant to catch:</p>
         <pre>
           Magnemite → Lv. 30 → Magneton
-          Electabuzz
           Zapdos
         </pre>
         <p>Yes — you are catching a legendary Pokémon with only three badges.</p>
@@ -1344,7 +1343,7 @@ window.gameData = {
         <h5>Levelling Tips</h5>
         <p>Use the same levelling strategies as the previous section. You haven’t unlocked many new efficient training routes yet, so Vs. Seeker grinding remains your best option.</p>
 
-        <p><strong>End of Part 4</strong><br/>Caught: 117 · Remaining: 34</p>
+        <p><strong>End of Part 4</strong><br/>Caught: 116 · Remaining: 35</p>
         <p class="tips-source">
           <a href="https://docs.google.com/document/d/1KF_Qkn5YnPcYvSDVaI3mMhS8RgBsHRsXmbXWCzOhRk0/edit?usp=sharing" target="_blank" rel="noopener noreferrer">
             Source: Professor Oak Challenge Guide (Google Doc)
@@ -1383,13 +1382,6 @@ window.gameData = {
             name: "Magneton"
           },
           method: "Evolve from Magnemite at level 30"
-        },
-        {
-          pokemon: {
-            img: "assets/images/FRLG/Pokedex/Spr_3f_125.png",
-            name: "Electabuzz"
-          },
-          method: "Power Plant"
         },
         {
           pokemon: {
@@ -1499,7 +1491,7 @@ window.gameData = {
 
         <p>There is nothing further you can do without the ability to use Strength, making this section even shorter than the previous one.</p>
 
-        <p><strong>End of Part 5</strong><br/>FireRed: Caught 119 · Remaining 32</p>
+        <p><strong>End of Part 5</strong><br/>FireRed: Caught 118 · Remaining 33</p>
         <p class="tips-source">
           <a href="https://docs.google.com/document/d/1KF_Qkn5YnPcYvSDVaI3mMhS8RgBsHRsXmbXWCzOhRk0/edit?usp=sharing" target="_blank" rel="noopener noreferrer">
             Source: Professor Oak Challenge Guide (Google Doc)
@@ -1543,6 +1535,7 @@ window.gameData = {
         <h5>One Island / Mt. Ember</h5>
         <p>Return to One Island and travel to Mt. Ember. Catch:</p>
         <pre>
+          Magmar
           Moltres
         </pre>
 
@@ -1558,12 +1551,20 @@ window.gameData = {
 
       rows: [
         /* --------------------------- Wild Pokémon ---------------------------- */
+
         {
           pokemon: {
             img: "assets/images/FRLG/Pokedex/Spr_3f_144.png",
             name: "Articuno"
           },
           method: "Seafoam Islands"
+        },
+        {
+          pokemon: {
+            img: "assets/images/FRLG/Pokedex/Spr_3f_126.png",
+            name: "Magmar"
+          },
+          method: "Mt Ember"
         },
         {
           pokemon: {
@@ -1607,7 +1608,6 @@ window.gameData = {
   <pre>
     Chansey → Happiness → Blissey
     Golbat → Happiness → Crobat
-    Gloom → Sun Stone → Bellossom
   </pre>
   <p>
     A bunch of other pokemon can breed with Ditto to hatch some baby pokemon and you can evolve another Tyrogue to get the last Hitmon for your collection:
@@ -1618,7 +1618,7 @@ window.gameData = {
     Breed Clefairy/Clefable → Cleffa
     Breed Jigglypuff/Wigglytuff → Igglybuff
     Breed Jynx → Smoochum
-    Breed Electabuzz → Elekid
+    Breed Magmar → Magby
   </pre>
 
   <h5>One Island </h5>
@@ -1642,8 +1642,8 @@ window.gameData = {
     Surf in the lake to find Wooper, while Delibird/Sneasel and Swinub can be found within Icefall Cave (don’t forget the Waterfall HM and use it to fight Team Rocket to help unlock a pokemon later)
   </p>
   <pre>
-    Wooper → Lv. 20 → Quagsire
-    Delibird
+    Marill → Lv. 18 → Azumarill
+    Sneasel
     Swinub → Lv. 33 → Piloswine
   </pre>
 
@@ -1654,11 +1654,16 @@ window.gameData = {
   <pre>
     Hoppip → Lv. 18 → Skiploom → Lv. 27 → Jumpluff
     Sentret → Lv. 15 → Furret
-    Qwilfish
+    Remoraid → Lv. 25 → Octillery
     Togepi → Happiness → Togetic
-    Murkrow
+    Misdreavus
   </pre>
-
+  <p>
+    With the Sea Incense, attach it to a Marill and breed it to get Azurill.
+  </p>
+  <pre>
+    Marill/Azumarill → Breed (holding Seas Incense) → Azurill
+  </pre>
 
   <h5>Six Island </h5>
   <p>
@@ -1682,19 +1687,18 @@ window.gameData = {
 
   <h5>Seven Island </h5>
   <p>
-    The last of the Sevii Islands. Go south to Canyon Entrance and catch Phanpy. Further South in Sevault Canyon, catch a Larvitar and a Skarmory (FireRed).
+    The last of the Sevii Islands. Go south to Canyon Entrance and catch Phanpy. Further South in Sevault Canyon, catch a Larvitar.
   </p>
   <pre>
     Phanpy → Lv. 25 → Donphan
     Larvitar → Lv. 30 → Pupitar → Lv. 55 → Tyranitar
-    Skarmory
   </pre>
   <p>
-    Solve the boulder puzzles in the cave in Sevault Canyon to unlock Tanoby Ruins will let you catch Unown. Surfing outside will get you a Mantine if you’re playing LeafGreen.
+    Solve the boulder puzzles in the cave in Sevault Canyon to unlock Tanoby Ruins will let you catch Unown. Surfing outside will get you a Mantine.
   </p>
   <pre>
     Unown
-    (LG) Mantine
+    Mantine
   </pre>
 
   <p>
@@ -1728,8 +1732,9 @@ window.gameData = {
 
   <p>
     <strong>End of the challenge:</strong><br/>
-    (FireRed) National Dex Caught 170, Remaining 216<br/>
-    (FireRed Switch) National Dex Caught 173, Remaining 213<br/>
+    (Both Versions) Kanto Dex Caught 125, Remaining 26<br/>
+    (LeafGreen) National Dex Caught 171, Remaining 215<br/>
+    (LeafGreen Switch) National Dex Caught 174, Remaining 212
   </p>
           <p class="tips-source">
           <a href="https://docs.google.com/document/d/1KF_Qkn5YnPcYvSDVaI3mMhS8RgBsHRsXmbXWCzOhRk0/edit?usp=sharing" target="_blank" rel="noopener noreferrer">
@@ -1910,13 +1915,6 @@ window.gameData = {
           },
           method: "Evolve from Golbat with high Friendship"
         },
-        {
-          pokemon: {
-            img: "assets/images/FRLG/Pokedex/Spr_3r_182.png",
-            name: "Bellossom"
-          },
-          method: "Use a Sun Stone on Gloom (Ruin Valley - Six Island)"
-        },
 
         /* Babies from breeding */
         {
@@ -1946,10 +1944,10 @@ window.gameData = {
         },
         {
           pokemon: {
-            img: "assets/images/FRLG/Pokedex/Spr_3r_239.png",
-            name: "Elekid"
+            img: "assets/images/FRLG/Pokedex/Spr_3r_240.png",
+            name: "Magby"
           },
-          method: "Breed Electabuzz"
+          method: "Breed Magmar"
         },
 
         /* --------------------------- One Island (Mt. Ember area) ---------------------------- */
@@ -1980,22 +1978,22 @@ window.gameData = {
         /* --------------------------- Four Island (Icefall Cave & lake) ---------------------------- */
         {
           pokemon: {
-            img: "assets/images/FRLG/Pokedex/Spr_3r_194.png",
-            name: "Wooper"
+            img: "assets/images/FRLG/Pokedex/Spr_3r_183.png",
+            name: "Marill"
           },
           method: "Four Island lake / Icefall Cave"
         },
         {
           pokemon: {
-            img: "assets/images/FRLG/Pokedex/Spr_3r_195.png",
-            name: "Quagsire"
+            img: "assets/images/FRLG/Pokedex/Spr_3r_184.png",
+            name: "Azumarill"
           },
-          method: "Evolve from Wooper at level 20"
+          method: "Evolve from Wooper at level 18"
         },
         {
           pokemon: {
-            img: "assets/images/FRLG/Pokedex/Spr_3r_225.png",
-            name: "Delibird"
+            img: "assets/images/FRLG/Pokedex/Spr_3r_215.png",
+            name: "Sneasel"
           },
           method: "Icefall Cave"
         },
@@ -2052,10 +2050,17 @@ window.gameData = {
         },
         {
           pokemon: {
-            img: "assets/images/FRLG/Pokedex/Spr_3r_211.png",
-            name: "Qwilfish"
+            img: "assets/images/FRLG/Pokedex/Spr_3r_223.png",
+            name: "Remoraid"
           },
-          method: "Five Island (Super Rod)"
+          method: "Five Island - Super Rod"
+        },
+        {
+          pokemon: {
+            img: "assets/images/FRLG/Pokedex/Spr_3r_224.png",
+            name: "Octillery"
+          },
+          method: "Evolve from Remoraid at level 25"
         },
         {
           pokemon: {
@@ -2073,10 +2078,17 @@ window.gameData = {
         },
         {
           pokemon: {
-            img: "assets/images/FRLG/Pokedex/Spr_3r_198.png",
-            name: "Murkrow"
+            img: "assets/images/FRLG/Pokedex/Spr_3r_200.png",
+            name: "Misdreavus"
           },
           method: "Lost Cave (rooms with items)"
+        },
+        {
+          pokemon: {
+            img: "assets/images/FRLG/Pokedex/Spr_3r_298.png",
+            name: "Azuril"
+          },
+          method: "Breed Marill/Azumarill (holding Sea Incense)"
         },
 
         /* --------------------------- Six Island ---------------------------- */
@@ -2180,17 +2192,17 @@ window.gameData = {
         },
         {
           pokemon: {
-            img: "assets/images/FRLG/Pokedex/Spr_3r_227.png",
-            name: "Skarmory"
-          },
-          method: "Sevault Canyon (tall grass)"
-        },
-        {
-          pokemon: {
             img: "assets/images/FRLG/Pokedex/Spr_3r_201F.png",
             name: "Unown"
           },
           method: "Tanoby Ruins (after boulder puzzles)"
+        },
+        {
+          pokemon: {
+            img: "assets/images/FRLG/Pokedex/Spr_3r_226.png",
+            name: "Mantine"
+          },
+          method: "Tanoby Ruins"
         },
 
         /* --------------------------- Switch Version Exclusives ---------------------------- */
