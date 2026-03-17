@@ -71,6 +71,7 @@ Each game has its own static HTML entry page. This page loads the tracker UI and
 - CSP‑safe: **no inline scripts or styles**
 - Load order matters: `progression.js` **must be last**
 - Structure should match existing tracker pages
+- Do not forget the base href tag or your references WILL NOT WORK
 
 ### Minimal example (`pages/tracker/blue.html`)
 
@@ -79,6 +80,7 @@ Each game has its own static HTML entry page. This page loads the tracker UI and
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+    <base href="/OakChallenge/" />
     <title>Pokémon Blue – Oak Challenge Tracker</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     assets/css/tracker.css
