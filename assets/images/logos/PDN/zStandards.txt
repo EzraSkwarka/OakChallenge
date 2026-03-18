@@ -2,4 +2,4 @@ These are descriptive, not prescriptive. This is what I used but mi not claiming
 - Final Logo should be 850 x 365
 - Use Pocket Monk for the font for version name
 - Borderize; Alpha Threshold Default, Border Size 9, shadow Size 0: https://www.borderize.com/
--Curveing, 50 deg: https://fontmeme.com/bend-images/
+- Curveing, 50 deg: https://fontmeme.com/bend-images/
