@@ -3,8 +3,8 @@
  - Guide: https://docs.google.com/document/d/1gmp-piwpfUUyxnWULjQtB2m2lzWeYc-wwsXnnbyp_RY/edit?tab=t.0#heading=h.gjdgxs
 ----------------------- */
 window.gameData = {
-  gameId: "red",
-  gameTitle: "Pokémon Red",
+  gameId: "blue",
+  gameTitle: "Pokémon Blue",
 
   logo: "assets/images/logos/blue.png",
 
@@ -226,14 +226,6 @@ window.gameData = {
           pokemon: { img: "assets/images/Red and Blue/pokedex/Spr_1b_022.png", name: "Fearow" },
           method: "Evolve from Spearow at level 20"
         },
-        {
-          pokemon: { img: "assets/images/Red and Blue/pokedex/Spr_1b_056.png", name: "Mankey" },
-          method: "Catch on Route 22"
-        },
-        {
-          pokemon: { img: "assets/images/Red and Blue/pokedex/Spr_1b_057.png", name: "Primeape" },
-          method: "Evolve from Mankey at level 28"
-        },
 
         /* --------------------------- Viridian Forest ------------------------- */
         {
@@ -317,8 +309,7 @@ window.gameData = {
           If you’re confident you’ve caught Jigglypuff, Geodude, Clefairy, Zubat, Paras and obtained the two Moon Stones, you can finally leave the cave. In the patch of grass you can catch:
         </p>
         <pre>
-          (Red) Ekans → Lv. 22 → Arbok
-          (Blue) Sandshrew → Lv. 22 → Sandslash
+          Sandshrew → Lv. 22 → Sandslash
         </pre>
         <p>
           This is also another opportunity to catch another Spearow for a trade in this section if you forgot to earlier.
@@ -330,8 +321,7 @@ window.gameData = {
         </p>
         <pre>
           Abra → Lv. 16 → Kadabra
-          (Red) Oddish → Lv. 21 → Gloom
-          (Blue) Bellsprout → Lv. 21 → Weepinbell
+          Bellsprout → Lv. 21 → Weepinbell
         </pre>
         <p>
           Catch a second Abra for a trade later on. Continue east and go to Bill’s house where you can get the SS Ticket.
@@ -342,8 +332,7 @@ window.gameData = {
           Go back to Cerulean City but forget the Cerulean Gym. We can come back later. Go through the burgled house to go south to route 5. Here you’ll find:
         </p>
         <pre>
-          (Blue) Meowth → Lv. 28 → Persian
-          (Red) Mankey → Lv. 28 → Primeape
+          Meowth → Lv. 28 → Persian
         </pre>
         <p>
           If you allow the daycare in your run, it’s also on this route. Magikarp is a good contender if you haven’t been raising it so far.
@@ -491,16 +480,8 @@ window.gameData = {
 
         /* --------------------------- Route 4 (post–Mt Moon) ------------------ */
         {
-          pokemon: { img: "assets/images/Red and Blue/pokedex/Spr_1b_023.png", name: "Ekans" },
-          method: "Catch on Route 4 (Red)"
-        },
-        {
-          pokemon: { img: "assets/images/Red and Blue/pokedex/Spr_1b_024.png", name: "Arbok" },
-          method: "Evolve from Ekans at level 22"
-        },
-        {
           pokemon: { img: "assets/images/Red and Blue/pokedex/Spr_1b_027.png", name: "Sandshrew" },
-          method: "Catch on Route 4 (Blue)"
+          method: "Catch on Route 4"
         },
         {
           pokemon: { img: "assets/images/Red and Blue/pokedex/Spr_1b_028.png", name: "Sandslash" },
@@ -517,16 +498,8 @@ window.gameData = {
           method: "Evolve from Abra at level 16"
         },
         {
-          pokemon: { img: "assets/images/Red and Blue/pokedex/Spr_1b_043.png", name: "Oddish" },
-          method: "Catch on Route 24 (Red)"
-        },
-        {
-          pokemon: { img: "assets/images/Red and Blue/pokedex/Spr_1b_044.png", name: "Gloom" },
-          method: "Evolve from Oddish at level 21"
-        },
-        {
           pokemon: { img: "assets/images/Red and Blue/pokedex/Spr_1b_069.png", name: "Bellsprout" },
-          method: "Catch on Route 24 (Blue)"
+          method: "Catch on Route 24"
         },
         {
           pokemon: { img: "assets/images/Red and Blue/pokedex/Spr_1b_070.png", name: "Weepinbell" },
@@ -536,19 +509,11 @@ window.gameData = {
         /* --------------------------- Route 5 --------------------------------- */
         {
           pokemon: { img: "assets/images/Red and Blue/pokedex/Spr_1b_052.png", name: "Meowth" },
-          method: "Catch on Route 5 (Blue)"
+          method: "Catch on Route 5"
         },
         {
           pokemon: { img: "assets/images/Red and Blue/pokedex/Spr_1b_053.png", name: "Persian" },
           method: "Evolve from Meowth at level 28"
-        },
-        {
-          pokemon: { img: "assets/images/Red and Blue/pokedex/Spr_1b_056.png", name: "Mankey" },
-          method: "Catch on Route 5 (Red)"
-        },
-        {
-          pokemon: { img: "assets/images/Red and Blue/pokedex/Spr_1b_057.png", name: "Primeape" },
-          method: "Evolve from Mankey at level 28"
         },
 
         /* --------------------------- Vermilion City -------------------------- */
@@ -620,11 +585,10 @@ window.gameData = {
 
         <h5>Route 8</h5>
         <p>
-          Pass through Lavender Town for now and go West to route 8. The only new pokemon here is Growlithe/Vulpix.
+          Pass through Lavender Town for now and go West to route 8. The only new pokemon here is Vulpix.
         </p>
         <pre>
-          (Red) Growlithe
-          (Blue) Vulpix
+          Vulpix
         </pre>
 
         <h5>Celadon City</h5>
@@ -641,10 +605,8 @@ window.gameData = {
         <pre>
           Pikachu → Thunder Stone → Raichu
           Eevee → Fire/Thunder/Water Stone → Flareon/Jolteon/Vaporeon
-          (Red) Growlithe → Fire Stone → Arcanine
-          (Blue) Vulpix → Fire Stone → Ninetales
-          (Red) Gloom → Leaf Stone → Vileplume
-          (Blue) Weepinbell → Leaf Stone → Victreebel
+          Vulpix → Fire Stone → Ninetales
+          Weepinbell → Leaf Stone → Victreebel
         </pre>
         <p>
           From now on, every time you catch a pokemon that needs a stone, come back here to buy one. If you’re feeling flush right now, buy the 3 Water Stones and 1 Leaf Stone now which will cover the rest of the run.
@@ -730,13 +692,12 @@ window.gameData = {
           Exeggcute → Leaf Stone → Exeggutor
           Rhyhorn → Lv. 42 → Rhydon
           Chansey
-          (Red) Scyther
-          (Blue) Pinsir
+          Pinsir
           Tauros
           Kangaskhan
         </pre>
         <p>
-          In any area, fish in the water with the Super Rod for Dratini. The last four in this list will give you a headache…Scyther/Pinsir is best found in Area 1, Kangaskhan in Area 2, Chansey in Area 3 and Tauros in Area 4. All have a 4% encounter rate in those areas and also have low capture rates which may really frustrate you! If you save the game whilst in the Safari Zone you can simply soft reset (A+B+Start+Select) if your run wasn’t fruitful. This will save on some money from entering multiple times.
+          In any area, fish in the water with the Super Rod for Dratini. The last four in this list will give you a headache… Pinsir is best found in Area 1, Kangaskhan in Area 2, Chansey in Area 3 and Tauros in Area 4. All have a 4% encounter rate in those areas and also have low capture rates which may really frustrate you! If you save the game whilst in the Safari Zone you can simply soft reset (A+B+Start+Select) if your run wasn’t fruitful. This will save on some money from entering multiple times.
         </p>
 
         <h5>Saffron City</h5>
@@ -857,10 +818,6 @@ window.gameData = {
 
         /* --------------------------- Route 8 --------------------------------- */
         {
-          pokemon: { img: "assets/images/Red and Blue/pokedex/Spr_1b_058.png", name: "Growlithe" },
-          method: "Catch on Route 8"
-        },
-        {
           pokemon: { img: "assets/images/Red and Blue/pokedex/Spr_1b_037.png", name: "Vulpix" },
           method: "Catch on Route 8"
         },
@@ -894,16 +851,8 @@ window.gameData = {
           requires: { eeveelution: "vaporeon" }
         },
         {
-          pokemon: { img: "assets/images/Red and Blue/pokedex/Spr_1b_059.png", name: "Arcanine" },
-          method: "Use a Fire Stone on Growlithe"
-        },
-        {
           pokemon: { img: "assets/images/Red and Blue/pokedex/Spr_1b_038.png", name: "Ninetales" },
           method: "Use a Fire Stone on Vulpix"
-        },
-        {
-          pokemon: { img: "assets/images/Red and Blue/pokedex/Spr_1b_045.png", name: "Vileplume" },
-          method: "Use a Leaf Stone on Gloom"
         },
         {
           pokemon: { img: "assets/images/Red and Blue/pokedex/Spr_1b_071.png", name: "Victreebel" },
@@ -1094,10 +1043,6 @@ window.gameData = {
           method: "Safari Zone"
         },
         {
-          pokemon: { img: "assets/images/Red and Blue/pokedex/Spr_1b_123.png", name: "Scyther" },
-          method: "Safari Zone"
-        },
-        {
           pokemon: { img: "assets/images/Red and Blue/pokedex/Spr_1b_127.png", name: "Pinsir" },
           method: "Safari Zone"
         },
@@ -1143,7 +1088,6 @@ window.gameData = {
         </p>
         <pre>
           Magnemite → Lv. 30 → Magneton
-          (Red) Electabuzz
           Zapdos
         </pre>
         <p>
@@ -1173,7 +1117,7 @@ window.gameData = {
           Koffing → Lv. 35 → Weezing
           Grimer → Lv. 38 → Muk
           Ponyta → Lv. 40 → Rapidash
-          (Blue) Magmar
+          Magmar
         </pre>
 
         <h5>Seafoam Island</h5>
@@ -1214,10 +1158,6 @@ window.gameData = {
         {
           pokemon: { img: "assets/images/Red and Blue/pokedex/Spr_1b_082.png", name: "Magneton" },
           method: "Evolve from Magnemite at level 30"
-        },
-        {
-          pokemon: { img: "assets/images/Red and Blue/pokedex/Spr_1b_125.png", name: "Electabuzz" },
-          method: "Power Plant"
         },
         {
           pokemon: { img: "assets/images/Red and Blue/pokedex/Spr_1b_145.png", name: "Zapdos" },

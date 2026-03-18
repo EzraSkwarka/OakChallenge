@@ -318,7 +318,6 @@ window.gameData = {
         </p>
         <pre>
           (Red) Ekans → Lv. 22 → Arbok
-          (Blue) Sandshrew → Lv. 22 → Sandslash
         </pre>
         <p>
           This is also another opportunity to catch another Spearow for a trade in this section if you forgot to earlier.
@@ -331,7 +330,6 @@ window.gameData = {
         <pre>
           Abra → Lv. 16 → Kadabra
           (Red) Oddish → Lv. 21 → Gloom
-          (Blue) Bellsprout → Lv. 21 → Weepinbell
         </pre>
         <p>
           Catch a second Abra for a trade later on. Continue east and go to Bill’s house where you can get the SS Ticket.
@@ -342,7 +340,6 @@ window.gameData = {
           Go back to Cerulean City but forget the Cerulean Gym. We can come back later. Go through the burgled house to go south to route 5. Here you’ll find:
         </p>
         <pre>
-          (Blue) Meowth → Lv. 28 → Persian
           (Red) Mankey → Lv. 28 → Primeape
         </pre>
         <p>
@@ -498,14 +495,6 @@ window.gameData = {
           pokemon: { img: "assets/images/Red and Blue/pokedex/Spr_1b_024.png", name: "Arbok" },
           method: "Evolve from Ekans at level 22"
         },
-        {
-          pokemon: { img: "assets/images/Red and Blue/pokedex/Spr_1b_027.png", name: "Sandshrew" },
-          method: "Catch on Route 4 (Blue)"
-        },
-        {
-          pokemon: { img: "assets/images/Red and Blue/pokedex/Spr_1b_028.png", name: "Sandslash" },
-          method: "Evolve from Sandshrew at level 22"
-        },
 
         /* --------------------------- Route 24 -------------------------------- */
         {
@@ -524,24 +513,8 @@ window.gameData = {
           pokemon: { img: "assets/images/Red and Blue/pokedex/Spr_1b_044.png", name: "Gloom" },
           method: "Evolve from Oddish at level 21"
         },
-        {
-          pokemon: { img: "assets/images/Red and Blue/pokedex/Spr_1b_069.png", name: "Bellsprout" },
-          method: "Catch on Route 24 (Blue)"
-        },
-        {
-          pokemon: { img: "assets/images/Red and Blue/pokedex/Spr_1b_070.png", name: "Weepinbell" },
-          method: "Evolve from Bellsprout at level 21"
-        },
 
         /* --------------------------- Route 5 --------------------------------- */
-        {
-          pokemon: { img: "assets/images/Red and Blue/pokedex/Spr_1b_052.png", name: "Meowth" },
-          method: "Catch on Route 5 (Blue)"
-        },
-        {
-          pokemon: { img: "assets/images/Red and Blue/pokedex/Spr_1b_053.png", name: "Persian" },
-          method: "Evolve from Meowth at level 28"
-        },
         {
           pokemon: { img: "assets/images/Red and Blue/pokedex/Spr_1b_056.png", name: "Mankey" },
           method: "Catch on Route 5 (Red)"
@@ -620,11 +593,10 @@ window.gameData = {
 
         <h5>Route 8</h5>
         <p>
-          Pass through Lavender Town for now and go West to route 8. The only new pokemon here is Growlithe/Vulpix.
+          Pass through Lavender Town for now and go West to route 8. The only new pokemon here is Growlithe.
         </p>
         <pre>
           (Red) Growlithe
-          (Blue) Vulpix
         </pre>
 
         <h5>Celadon City</h5>
@@ -642,9 +614,7 @@ window.gameData = {
           Pikachu → Thunder Stone → Raichu
           Eevee → Fire/Thunder/Water Stone → Flareon/Jolteon/Vaporeon
           (Red) Growlithe → Fire Stone → Arcanine
-          (Blue) Vulpix → Fire Stone → Ninetales
           (Red) Gloom → Leaf Stone → Vileplume
-          (Blue) Weepinbell → Leaf Stone → Victreebel
         </pre>
         <p>
           From now on, every time you catch a pokemon that needs a stone, come back here to buy one. If you’re feeling flush right now, buy the 3 Water Stones and 1 Leaf Stone now which will cover the rest of the run.
@@ -731,12 +701,11 @@ window.gameData = {
           Rhyhorn → Lv. 42 → Rhydon
           Chansey
           (Red) Scyther
-          (Blue) Pinsir
           Tauros
           Kangaskhan
         </pre>
         <p>
-          In any area, fish in the water with the Super Rod for Dratini. The last four in this list will give you a headache…Scyther/Pinsir is best found in Area 1, Kangaskhan in Area 2, Chansey in Area 3 and Tauros in Area 4. All have a 4% encounter rate in those areas and also have low capture rates which may really frustrate you! If you save the game whilst in the Safari Zone you can simply soft reset (A+B+Start+Select) if your run wasn’t fruitful. This will save on some money from entering multiple times.
+          In any area, fish in the water with the Super Rod for Dratini. The last four in this list will give you a headache…Scyther is best found in Area 1, Kangaskhan in Area 2, Chansey in Area 3 and Tauros in Area 4. All have a 4% encounter rate in those areas and also have low capture rates which may really frustrate you! If you save the game whilst in the Safari Zone you can simply soft reset (A+B+Start+Select) if your run wasn’t fruitful. This will save on some money from entering multiple times.
         </p>
 
         <h5>Saffron City</h5>
@@ -860,10 +829,6 @@ window.gameData = {
           pokemon: { img: "assets/images/Red and Blue/pokedex/Spr_1b_058.png", name: "Growlithe" },
           method: "Catch on Route 8"
         },
-        {
-          pokemon: { img: "assets/images/Red and Blue/pokedex/Spr_1b_037.png", name: "Vulpix" },
-          method: "Catch on Route 8"
-        },
 
         /* --------------------------- Celadon City ---------------------------- */
         {
@@ -898,16 +863,8 @@ window.gameData = {
           method: "Use a Fire Stone on Growlithe"
         },
         {
-          pokemon: { img: "assets/images/Red and Blue/pokedex/Spr_1b_038.png", name: "Ninetales" },
-          method: "Use a Fire Stone on Vulpix"
-        },
-        {
           pokemon: { img: "assets/images/Red and Blue/pokedex/Spr_1b_045.png", name: "Vileplume" },
           method: "Use a Leaf Stone on Gloom"
-        },
-        {
-          pokemon: { img: "assets/images/Red and Blue/pokedex/Spr_1b_071.png", name: "Victreebel" },
-          method: "Use a Leaf Stone on Weepinbell"
         },
 
         /* --------------------------- Celadon (Hideout Moon Stone) ------------ */
@@ -1098,10 +1055,6 @@ window.gameData = {
           method: "Safari Zone"
         },
         {
-          pokemon: { img: "assets/images/Red and Blue/pokedex/Spr_1b_127.png", name: "Pinsir" },
-          method: "Safari Zone"
-        },
-        {
           pokemon: { img: "assets/images/Red and Blue/pokedex/Spr_1b_128.png", name: "Tauros" },
           method: "Safari Zone"
         },
@@ -1167,13 +1120,12 @@ window.gameData = {
           Kabuto/Omanyte → Lv. 40 → Kabutops/Omastar
         </pre>
         <p>
-          In Pokemon Mansion, there are a few new pokemon running around. For Blue players, Magmar is found in the basement. Also grab the key to the gym while you’re here.
+          In Pokemon Mansion, there are a few new pokemon running around. Also grab the key to the gym while you’re here.
         </p>
         <pre>
           Koffing → Lv. 35 → Weezing
           Grimer → Lv. 38 → Muk
           Ponyta → Lv. 40 → Rapidash
-          (Blue) Magmar
         </pre>
 
         <h5>Seafoam Island</h5>
@@ -1281,10 +1233,6 @@ window.gameData = {
         {
           pokemon: { img: "assets/images/Red and Blue/pokedex/Spr_1b_078.png", name: "Rapidash" },
           method: "Evolve from Ponyta at level 40"
-        },
-        {
-          pokemon: { img: "assets/images/Red and Blue/pokedex/Spr_1b_126.png", name: "Magmar" },
-          method: "Pokémon Mansion"
         },
 
         /* --------------------------- Seafoam Island -------------------------- */
