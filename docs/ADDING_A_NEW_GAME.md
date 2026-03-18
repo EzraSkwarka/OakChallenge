@@ -296,6 +296,56 @@ Each progression group represents a phase of the game.
 
 ---
 
+## 5.x Custom display text for choice subheaders
+
+By default, a choice block subheader is generated from the `choiceKey` and cap (for example: `Moon-stone-1 — choose up to 2`). While the *key* itself must remain stable and machine‑friendly, you can provide a **human‑readable label** that is shown on the page instead.
+
+There are **two supported ways** to do this. Both affect display only and do **not** change the underlying `choiceKey` used for gating.
+
+### Option 1: Per‑group display text (`choiceTitles`)
+
+Use this when all rows in the choice group should share the same label. Add a `choiceTitles` object to the progression group, keyed by `choiceKey`.
+
+```js
+"Pre Badge 2: Misty": {
+  headerTitle: "Pre Badge 2: Misty",
+  choiceTitles: {
+    "moon-stone-1": "Pick two Pokémon to use your Moon Stones on"
+  },
+  rows: [
+    { type: "choice", choiceKey: "moon-stone-1", choiceValue: "nidoqueen",  choiceCap: 2,
+      pokemon: { img: "assets/images/Red and Blue/pokedex/031.png", name: "Nidoqueen" },
+      method: "Use a Moon Stone on Nidorina" }
+  ]
+}
+```
+
+### Option 2: Per‑row display text (`choiceTitle`)
+
+Use this when you want the label defined close to the choice rows themselves. The value is read from the **first row of the choice run**.
+
+```js
+{ type: "choice",
+  choiceKey: "moon-stone-1",
+  choiceValue: "nidoqueen",
+  choiceCap: 2,
+  choiceTitle: "Pick two Pokémon to use your Moon Stones on",
+  pokemon: { img: "assets/images/Red and Blue/pokedex/031.png", name: "Nidoqueen" },
+  method: "Use a Moon Stone on Nidorina"
+}
+```
+
+### Resolution order
+
+When rendering a choice block:
+- `choiceTitle` on the row **wins** if present
+- otherwise, `choiceTitles[choiceKey]` is used
+- otherwise, the fallback label is generated from the key and cap
+
+This allows you to keep clean, stable identifiers like `moon-stone-1` in data while presenting clear, narrative instruction text to the player.
+
+---
+
 ## 6) Final Checklist
 
 Before marking a game as available:

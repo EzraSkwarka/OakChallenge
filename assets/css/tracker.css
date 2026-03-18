@@ -1,12 +1,11 @@
 /* -----------------------------
-   Tracker: Page Reset
+ Tracker: Page Reset
 ------------------------------ */
 html,
 body {
   margin: 0;
   padding: 0;
 }
-
 #site-header-host {
   margin: 0;
   padding: 0;
@@ -14,14 +13,13 @@ body {
 }
 
 /* -----------------------------
-   Page Band
+ Page Band
 ------------------------------ */
 .page-band {
   width: 90vw;
   max-width: 1400px;
   margin: 0 auto;
 }
-
 .page-band .container,
 .page-band .table-wrap,
 .page-band .footer-actions {
@@ -29,16 +27,13 @@ body {
   margin-left: 0;
   margin-right: 0;
 }
-
 .page-band .container h1 {
   text-align: left;
 }
-
 .page-band .table-wrap {
   margin-left: auto;
   margin-right: auto;
 }
-
 .page-band .footer-actions {
   display: flex;
   justify-content: flex-end;
@@ -47,14 +42,13 @@ body {
 }
 
 /* -----------------------------
-   Header: left column + logo
+ Header: left column + logo
 ------------------------------ */
 .header-left {
   min-width: 0;
   max-width: 100%;
   overflow: hidden;
 }
-
 .header-left img.game-logo-title,
 .header-left .game-logo-title img,
 .header-left .game-logo,
@@ -64,7 +58,6 @@ body {
   height: auto;
   object-fit: contain;
 }
-
 @media (max-width: 420px) {
   .header-left img.game-logo-title,
   .header-left .game-logo-title img,
@@ -75,12 +68,11 @@ body {
 }
 
 /* -----------------------------
-   Game Logo: responsive shrink
+ Game Logo: responsive shrink
 ------------------------------ */
 #game-title {
   max-width: 100%;
 }
-
 #game-title .game-logo-title {
   display: block;
   height: auto;
@@ -90,32 +82,30 @@ body {
 }
 
 /* -----------------------------
-   Game Tips (Accordion, vertical below title)
+ Game Tips (Accordion, vertical below title)
 ------------------------------ */
 .game-tips {
   margin: 0 0 0.9rem;
 }
-
 .game-tips .summary-accordion > summary {
   font-weight: 700;
 }
 
 /* -----------------------------
-   Tips Source
+ Tips Source
 ------------------------------ */
 .tips-source {
   margin-top: 0.6rem;
   color: var(--muted);
   font-size: 0.95em;
 }
-
 .tips-source a {
   color: var(--focus);
   text-decoration: underline;
 }
 
 /* -----------------------------
-   Table Shell
+ Table Shell
 ------------------------------ */
 .table-wrap {
   width: var(--band-width, 90vw);
@@ -128,13 +118,11 @@ body {
   overflow-x: auto;
   overflow-y: visible;
 }
-
 table {
   border-collapse: collapse;
   width: 100%;
   font-size: 14px;
 }
-
 thead th {
   text-align: left;
   background: var(--bg-alt);
@@ -144,7 +132,6 @@ thead th {
   border-bottom: 1px solid var(--border);
   padding: 0.75rem 0.9rem;
 }
-
 tbody td {
   border-bottom: 1px solid var(--border);
   padding: 0.7rem 0.9rem;
@@ -152,7 +139,7 @@ tbody td {
 }
 
 /* -----------------------------
-   Table Section Headers
+ Table Section Headers
 ------------------------------ */
 .section-header td {
   background: var(--bg-alt);
@@ -161,31 +148,26 @@ tbody td {
   border-bottom: 1px solid var(--border);
   padding: 0.6rem 0.9rem;
 }
-
 #pokemon-table.has-data thead {
   display: none;
 }
-
 .section-header-content {
   display: flex;
   align-items: center;
   gap: 10px;
   width: 100%;
 }
-
 .section-header-img {
   width: 28px;
   height: 28px;
   object-fit: contain;
   image-rendering: auto;
 }
-
 .section-header-title {
   font-size: 1.05rem;
   font-weight: 700;
   line-height: 1.2;
 }
-
 .section-header-controls {
   margin-left: auto;
   display: inline-flex;
@@ -193,7 +175,7 @@ tbody td {
 }
 
 /* -----------------------------
-   Choice Subheader Row
+ Choice Subheader Row
 ------------------------------ */
 .choice-subheader-row td {
   background: var(--bg-alt);
@@ -206,48 +188,44 @@ tbody td {
 }
 
 /* -----------------------------
-   Rows
+ Rows
 ------------------------------ */
 tbody tr.row-normal {
   cursor: pointer;
   user-select: none;
 }
-
 tbody tr.row-normal:hover {
   background: var(--hover);
 }
-
 .row-normal.is-caught {
   background: var(--caught);
 }
-
 .row-normal.is-caught:hover {
   background: var(--caught-hover);
 }
 
 /* -----------------------------
-   Choice Rows (banded)
+ Choice Rows (banded)
 ------------------------------ */
 :root {
   --choice-band: color-mix(in srgb, #f5d9b5 6%, var(--surface, #fff));
   --choice-band-hover: color-mix(in srgb, #f5d9b5 12%, var(--surface, #fff));
+  --choice-accent: #e0a76f;             /* left bar (default) */
+  --choice-accent-selected: #ff8c00;    /* left bar when selected */
 }
-
 html[data-theme="dark"],
 body[data-theme="dark"] {
   --choice-band: color-mix(in srgb, #f1c48a 8%, var(--surface));
   --choice-band-hover: color-mix(in srgb, #f1c48a 16%, var(--surface));
 }
-
 tr.row-choice.compact-band td {
   background: var(--choice-band);
   position: relative;
 }
-
 tr.row-choice.compact-band:hover td {
   background: var(--choice-band-hover);
 }
-
+/* Left indicator bar */
 tr.row-choice.compact-band td:first-child::before {
   content: "";
   position: absolute;
@@ -255,9 +233,18 @@ tr.row-choice.compact-band td:first-child::before {
   top: 4px;
   bottom: 4px;
   width: 2px;
-  background: var(--choice-accent, #e0a76f);
-  opacity: 0.8;
+  background: var(--choice-accent);
+  opacity: 0.9;
   border-radius: 2px;
+}
+/* Selected state: thicken and recolor the existing left indicator */
+tr.row-choice.compact-band.is-selected td:first-child::before {
+  width: 8px;
+  background: var(--choice-accent-selected);
+}
+/* Do not show any badge in the caught column */
+.row-choice .choice-badge {
+  display: none !important;
 }
 
 tr.row-choice.compact-band.choice-group-start td {
@@ -265,25 +252,22 @@ tr.row-choice.compact-band.choice-group-start td {
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
 }
-
 tr.row-choice.compact-band.choice-group-end td {
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;
 }
-
 tr.row-choice.compact-band + tr.row-choice.compact-band td {
   border-top-color: transparent;
 }
 
 /* -----------------------------
-   Pokémon Cell (list mode)
+ Pokémon Cell (list mode)
 ------------------------------ */
 .pkm {
   display: flex;
   align-items: center;
   gap: 0.6rem;
 }
-
 .pkm img {
   width: 42px;
   height: 42px;
@@ -294,19 +278,17 @@ tr.row-choice.compact-band + tr.row-choice.compact-band td {
 }
 
 /* -----------------------------
-   Section Summary (rich)
+ Section Summary (rich)
 ------------------------------ */
 .summary-block {
   display: grid;
   gap: 6px;
 }
-
 .summary-short {
   color: var(--muted);
   font-size: 13px;
   line-height: 1.45;
 }
-
 .summary-accordion {
   border: 1px solid var(--border);
   border-radius: var(--radius-md, 10px);
@@ -314,7 +296,6 @@ tr.row-choice.compact-band + tr.row-choice.compact-band td {
   box-shadow: var(--shadow-sm, 0 1px 2px rgba(2, 6, 23, 0.05));
   overflow: hidden;
 }
-
 .summary-accordion > summary {
   list-style: none;
   cursor: pointer;
@@ -325,17 +306,14 @@ tr.row-choice.compact-band + tr.row-choice.compact-band td {
   align-items: center;
   gap: 8px;
 }
-
 .summary-accordion > summary:focus-visible {
   outline: 2px solid var(--focus);
   outline-offset: 2px;
 }
-
 .summary-accordion[open] > summary {
   border-bottom: 1px solid var(--border);
   background: var(--bg-alt);
 }
-
 .summary-long {
   padding: 10px 12px;
   font-size: 13px;
@@ -343,44 +321,37 @@ tr.row-choice.compact-band + tr.row-choice.compact-band td {
   background: var(--surface);
   line-height: 1.45;
 }
-
 .summary-long p {
   margin: 0 0 0.6rem 0;
 }
-
 .summary-long ul,
 .summary-long ol {
   margin: 0.4rem 0 0.6rem 1.1rem;
 }
-
 .summary-long li {
   margin: 0.2rem 0;
 }
-
 .summary-long a {
   color: var(--focus);
   text-decoration: underline;
 }
-
 .summary-accordion > summary::marker,
 .summary-accordion > summary::-webkit-details-marker {
   display: none;
 }
-
 .summary-accordion > summary::before {
   content: "▸";
   display: inline-block;
   transform: translateY(1px);
   color: var(--muted);
 }
-
 .summary-accordion[open] > summary::before {
   content: "▾";
   color: var(--muted);
 }
 
 /* -----------------------------
-   Grid cards (fixed-size layout)
+ Grid cards (fixed-size layout)
 ------------------------------ */
 .group-grid {
   display: flex;
@@ -390,7 +361,6 @@ tr.row-choice.compact-band + tr.row-choice.compact-band td {
   justify-content: flex-start;
   box-sizing: border-box;
 }
-
 .pkm-card {
   width: 132px;
   display: grid;
@@ -398,7 +368,6 @@ tr.row-choice.compact-band + tr.row-choice.compact-band td {
   cursor: pointer;
   outline: none;
 }
-
 .pkm-card-thumb {
   position: relative;
   aspect-ratio: 1 / 1;
@@ -409,38 +378,31 @@ tr.row-choice.compact-band + tr.row-choice.compact-band td {
   border-radius: var(--radius-md, 10px);
   box-shadow: var(--shadow-sm, 0 1px 2px rgba(2, 6, 23, 0.05));
 }
-
 .pkm-card-sprite {
   width: 72px;
   height: 72px;
   object-fit: contain;
 }
-
 .pkm-card-name {
   text-align: center;
   font-size: 12px;
   color: var(--text);
   line-height: 1.2;
 }
-
 .pkm-card:is(:hover, :focus-visible) .pkm-card-thumb {
   background: var(--hover);
 }
-
 .pkm-card.is-caught .pkm-card-thumb {
   background: var(--caught);
   border-color: var(--border);
 }
-
 .pkm-card.is-caught:hover .pkm-card-thumb {
   background: var(--caught-hover);
 }
-
 .pkm-card:focus-visible {
   outline: 2px solid var(--focus);
   outline-offset: 2px;
 }
-
 @media (max-width: 360px) {
   .pkm-card {
     width: 120px;
@@ -448,7 +410,7 @@ tr.row-choice.compact-band + tr.row-choice.compact-band td {
 }
 
 /* -----------------------------
-   Grid catch mark overlay
+ Grid catch mark overlay
 ------------------------------ */
 .pkm-card-thumb .catch-mark {
   position: absolute;
@@ -462,18 +424,17 @@ tr.row-choice.compact-band + tr.row-choice.compact-band td {
 }
 
 /* -----------------------------
-   Grid spacing (per-grid gap classes)
+ Grid spacing (per-grid gap classes)
 ------------------------------ */
 .group-grid {
   gap: var(--grid-gap, 12px);
 }
-
-.gap-4 { --grid-gap: 4px; }
-.gap-5 { --grid-gap: 5px; }
-.gap-6 { --grid-gap: 6px; }
-.gap-7 { --grid-gap: 7px; }
-.gap-8 { --grid-gap: 8px; }
-.gap-9 { --grid-gap: 9px; }
+.gap-4  { --grid-gap: 4px; }
+.gap-5  { --grid-gap: 5px; }
+.gap-6  { --grid-gap: 6px; }
+.gap-7  { --grid-gap: 7px; }
+.gap-8  { --grid-gap: 8px; }
+.gap-9  { --grid-gap: 9px; }
 .gap-10 { --grid-gap: 10px; }
 .gap-11 { --grid-gap: 11px; }
 .gap-12 { --grid-gap: 12px; }
@@ -499,7 +460,7 @@ tr.row-choice.compact-band + tr.row-choice.compact-band td {
 .gap-32 { --grid-gap: 32px; }
 
 /* -----------------------------
-   Progress Bar
+ Progress Bar
 ------------------------------ */
 .section-progress td {
   background: var(--surface);
@@ -508,11 +469,9 @@ tr.row-choice.compact-band + tr.row-choice.compact-band td {
   padding: 0.25rem 0.9rem 0.6rem;
   border-bottom: 1px solid var(--border);
 }
-
 .progress-row {
   padding: 0;
 }
-
 .progress-bar {
   position: relative;
   width: 100%;
@@ -522,14 +481,12 @@ tr.row-choice.compact-band + tr.row-choice.compact-band td {
   overflow: hidden;
   margin-top: 4px;
 }
-
 .progress-fill {
   height: 100%;
-  background: #4caf50;
+  background: var(--choice-accent-selected, #ff8c00);
   width: 0%;
   transition: width 400ms ease-in-out;
 }
-
 .progress-label {
   font-size: 12px;
   text-align: right;
@@ -538,18 +495,18 @@ tr.row-choice.compact-band + tr.row-choice.compact-band td {
 }
 
 /* -----------------------------
-   Progress width utilities
+ Progress width utilities
 ------------------------------ */
-.w-0 { width: 0%; }
-.w-1 { width: 1%; }
-.w-2 { width: 2%; }
-.w-3 { width: 3%; }
-.w-4 { width: 4%; }
-.w-5 { width: 5%; }
-.w-6 { width: 6%; }
-.w-7 { width: 7%; }
-.w-8 { width: 8%; }
-.w-9 { width: 9%; }
+.w-0  { width: 0%; }
+.w-1  { width: 1%; }
+.w-2  { width: 2%; }
+.w-3  { width: 3%; }
+.w-4  { width: 4%; }
+.w-5  { width: 5%; }
+.w-6  { width: 6%; }
+.w-7  { width: 7%; }
+.w-8  { width: 8%; }
+.w-9  { width: 9%; }
 .w-10 { width: 10%; }
 .w-11 { width: 11%; }
 .w-12 { width: 12%; }
@@ -640,63 +597,49 @@ tr.row-choice.compact-band + tr.row-choice.compact-band td {
 .w-97 { width: 97%; }
 .w-98 { width: 98%; }
 .w-99 { width: 99%; }
-.w-100 { width: 100%; }
+.w-100{ width: 100%; }
 
 /* -----------------------------
-   Animations
+ Animations
 ------------------------------ */
-tr.fade-in {
-  opacity: 0;
-  transform: translateY(-4px);
-  animation: rowFadeIn 160ms ease-out forwards;
-}
-
-@keyframes rowFadeIn {
-  to {
-    opacity: 1;
-    transform: translateY(0);
+@media (prefers-reduced-motion: reduce) {
+  .row-enter,
+  .row-enter.row-enter-active,
+  .row-exit {
+    transition: none !important;
   }
 }
-
-tr.fade-out {
+.row-enter {
+  opacity: 0;
+  transform: translateY(6px);
+}
+.row-enter.row-enter-active {
+  transition: opacity 160ms ease, transform 160ms ease;
   opacity: 1;
   transform: translateY(0);
-  animation: rowFadeOut 160ms ease-in forwards;
 }
-
-@keyframes rowFadeOut {
-  to {
-    opacity: 0;
-    transform: translateY(-4px);
-  }
+.row-exit {
+  overflow: hidden;
+  transition: height 180ms ease, opacity 140ms ease;
+}
+.table-wrapper,
+#pokemon-table tbody {
+  will-change: contents, transform;
 }
 
 /* -----------------------------
-   Reset Button Row
+ Utilities
 ------------------------------ */
-.footer-actions {
-  width: 90vw;
-  margin: 1rem auto 2rem;
-  display: flex;
-  justify-content: flex-end;
+.muted {
+  color: var(--muted);
+  font-size: 12px;
 }
-
-.reset-btn {
-  border: 1px solid #ef4444;
-  color: #991b1b;
-  background: #fff;
-  padding: 8px 12px;
-  border-radius: 10px;
-  cursor: pointer;
-  font-size: 14px;
-}
-
-.reset-btn:hover {
-  background: #fef2f2;
+.center {
+  text-align: center;
 }
 
 /* -----------------------------
-   Catch mark (both views) + Caught state
+ Catch mark (both views) + Table pokéball sizing
 ------------------------------ */
 .catch-mark {
   width: 16px;
@@ -705,7 +648,6 @@ tr.fade-out {
   max-height: 16px;
   image-rendering: auto;
 }
-
 .catch-btn {
   width: 32px;
   height: 32px;
@@ -716,45 +658,26 @@ tr.fade-out {
   background: transparent;
   cursor: pointer;
 }
-
-.group-grid .pkm-card-thumb .catch-mark {
-  position: absolute;
-  right: 6px;
-  bottom: 6px;
-}
-
-.pkm-card.is-caught .pkm-card-thumb {
-  background: var(--caught);
-  border-color: var(--border);
-}
-
-.pkm-card.is-caught:hover .pkm-card-thumb {
-  background: var(--caught-hover);
+/* Force correct size for table-view pokéball inside the button */
+td .catch-btn .catch-mark,
+td .catch-btn img.catch-mark {
+  width: 16px !important;
+  height: 16px !important;
+  max-width: 16px !important;
+  max-height: 16px !important;
+  flex: 0 0 auto;
 }
 
 /* -----------------------------
-   Utilities
+ Choice Status Chips (scoped, higher specificity)
 ------------------------------ */
-.muted {
-  color: var(--muted);
-  font-size: 12px;
-}
-
-.center {
-  text-align: center;
-}
-
-/* -----------------------------
-   Choice Status Chips
------------------------------- */
-.choice-status {
+#choice-status.choice-status {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
   margin: 0.4rem 0 0.8rem;
 }
-
-.choice-status .chip {
+#choice-status .chip {
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -766,8 +689,9 @@ tr.fade-out {
   border-radius: 999px;
   box-shadow: var(--shadow-sm);
 }
-
-.choice-status .chip button {
+#choice-status .chip > button {
+  appearance: none;
+  -webkit-appearance: none;
   padding: 2px 8px;
   font-size: 12px;
   color: var(--text);
@@ -776,21 +700,10 @@ tr.fade-out {
   border-radius: 999px;
   cursor: pointer;
 }
-
-.choice-status .chip button:hover {
+#choice-status .chip > button:hover {
   background: var(--hover);
 }
-
-/* -----------------------------
-   Compact preformatted evolution blocks
------------------------------- */
-.summary-long pre,
-.game-about pre {
-  margin: 0.2rem 0;
-  padding: 0;
-  background: transparent;
-  border: 0;
-  white-space: pre;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
-  line-height: 1.25;
+#choice-status .chip > button:where(*) {
+  box-shadow: none;
+  text-decoration: none;
 }
