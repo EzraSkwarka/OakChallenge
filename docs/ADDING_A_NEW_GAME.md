@@ -3,6 +3,7 @@
 This document explains how to add a **new game** to the Oak Challenge Tracker. It covers updating the game manifest, creating the game’s HTML entry page, establishing conventions for images and data, and authoring the game’s `progression.js` file.
 
 All progression data is based on the **Professor Oak Challenge** guides written by **u/mewlax84**:
+
 - Author: <https://www.reddit.com/user/mewlax84/>
 - Guide collection: <https://www.reddit.com/r/ProfessorOak/comments/bj6yeh/professor_oak_challenge_guides/>
 
@@ -15,6 +16,7 @@ The examples below consistently use **Pokémon Blue** so the structure and relat
 All games are discovered via `manifest.games.json`. To add a new game, append a new object using the **full schema** shown below.
 
 ### Example entry (Pokémon Blue)
+
 ```json
 {
   "id": "blue",
@@ -29,25 +31,33 @@ All games are discovered via `manifest.games.json`. To add a new game, append a 
 ```
 
 ### Field definitions
+
 - **`id`**  
   A unique, URL‑safe identifier. This must match:
   - the folder name under `data/blue/`
   - the `gameId` value inside `progression.js`
+
 - **`name`**  
   The display name shown on the landing page.
+
 - **`region`**  
   The Pokémon region (e.g. `Kanto`, `Johto`, `Hoenn`).
+
 - **`gen`**  
   The generation label (e.g. `Gen 1`, `Gen 3`).
+
 - **`notes`**  
   Optional descriptive text shown on the landing page.
+
 - **`cover`**  
   Absolute path to the cover image used on the landing page.
+
 - **`href`**  
   Path to the HTML entry page for the game.
+
 - **`available`**  
-  Controls whether the game is selectable.  
-  - `false` = visible but disabled  
+  Controls whether the game is selectable.
+  - `false` = visible but disabled
   - `true` = playable
 
 ---
@@ -57,52 +67,57 @@ All games are discovered via `manifest.games.json`. To add a new game, append a 
 Each game has its own static HTML entry page. This page loads the tracker UI and the game’s data file.
 
 ### Requirements
+
 - CSP‑safe: **no inline scripts or styles**
 - Load order matters: `progression.js` **must be last**
 - Structure should match existing tracker pages
 - Do not forget the base href tag or your references WILL NOT WORK
 
 ### Minimal example (`pages/tracker/blue.html`)
+
 ```html
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <base href="/OakChallenge/" />
-    <link rel="stylesheet" href="assets/css/base.css" />
-    <link rel="stylesheet" href="assets/css/chrome.css" />
-    <link rel="stylesheet" href="assets/css/tracker.css" />
     <title>Pokémon Blue – Oak Challenge Tracker</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    assets/css/tracker.css
   </head>
   <body>
     <header id="site-header-host"></header>
 
     <main class="page-band">
       <section class="container">
+        <h1 id="game-title"></h1>
         <div id="choice-status" class="choice-status"></div>
+
         <div class="table-wrap">
           <table id="pokemon-table">
             <thead>
               <tr>
                 <th>Pokémon</th>
                 <th>Method</th>
-                <th>Caught</th>
+                <th class="center">Caught</th>
               </tr>
             </thead>
             <tbody></tbody>
           </table>
         </div>
+
         <div class="footer-actions">
-          <button id="reset-all" class="reset-btn" type="button">Reset All</button>
+          <button id="reset-all" class="reset-btn">Reset All</button>
         </div>
       </section>
     </main>
 
-    <script src="assets/js/site-theme.js" defer></script>
-    <script src="assets/js/site-chrome.js" defer></script>
-    <script src="assets/js/oak-tracker.js" defer></script>
-    <script src="data/blue/progression.js" defer></script>
+    <footer id="site-footer-host"></footer>
+
+    assets/js/site-theme.js</script>
+    assets/js/site-chrome.js</script>
+    assets/js/oak-tracker.js</script>
+    data/blue/progression.js</script>
   </body>
 </html>
 ```
@@ -112,30 +127,33 @@ Each game has its own static HTML entry page. This page loads the tracker UI and
 ## 3) Image and File Conventions
 
 ### 3.1 Cover images
+
 - Used on the landing page
-- Stored at:
-```text
-assets/images/covers/blue.png
-```
+- Stored at:  
+  ```
+  assets/images/covers/blue.png
+  ```
 
 ### 3.2 Logos
+
 - Used in the tracker header
-- Stored at:
-```text
-assets/images/logos/blue.png
-```
+- Stored at:  
+  ```
+  assets/images/logos/blue.png
+  ```
 
 ### 3.3 Sprites
+
 - Store sprites under a logical folder, for example:
-```text
-assets/images/FRLG/
-```
+  ```
+  assets/images/FRLG/
+  ```
 - Reference sprites using **absolute paths**
 - If a sprite is missing, use:
-```js
-img: "link"
-```
-This will fall back to the placeholder sprite.
+  ```js
+  img: "link"
+  ```
+  This will fall back to the placeholder sprite.
 
 ---
 
@@ -148,10 +166,18 @@ window.gameData = {
   gameId: "blue",
   gameTitle: "Pokémon Blue",
   logo: "assets/images/logos/blue.png",
+
   aboutHtml: `
-    <p>This tracker follows the Professor Oak Challenge rules.</p>
-    <p><a href="https://www.reddit.com/r/ProfessorOak/comments/bj6yeh/professor_oak_challenge_guides/">Source: u/mewlax84 – Professor Oak Challenge Guides</a></p>
+    <section class="game-intro-content">
+      <p>This tracker follows the Professor Oak Challenge rules.</p>
+      <p class="tips-source">
+        https://www.reddit.com/r/ProfessorOak/comments/bj6yeh/professor_oak_challenge_guides/
+          Source: u/mewlax84 – Professor Oak Challenge Guides
+        </a>
+      </p>
+    </section>
   `,
+
   progression: {
     "Pre Badge 1: Brock": { /* group */ },
     "Pre Badge 2: Misty": { /* group */ },
@@ -164,56 +190,103 @@ Groups are rendered **in insertion order**.
 
 ---
 
-## 5) Progression Groups and Rows (single‑select, multi‑select, and leftovers)
+## 5) Progression Groups and Rows (with Gated Choice Results)
 
 Each progression group represents a phase of the game.
 
-### 5.1 Single‑select choice with gated evolutions
+### Example: Pre Badge 1 (Starter choice with gated evolutions)
+
 ```js
 "Pre Badge 1: Brock": {
   headerTitle: "Pre Badge 1: Brock",
+
   summaryShort: "Everything available before Brock.",
   summaryHtml: `
-    <h6>Pallet Town</h6>
+    <h5>Pallet Town</h5>
     <p>Choose a starter and complete its evolution line.</p>
     <pre>
-        Bulbasaur → Ivysaur → Venusaur
-        Charmander → Charmeleon → Charizard
-        Squirtle → Wartortle → Blastoise
+      Bulbasaur → Ivysaur → Venusaur
+      Charmander → Charmeleon → Charizard
+      Squirtle → Wartortle → Blastoise
     </pre>
   `,
+
   rows: [
-    // ---- Choice rows (must come first) ----
-    { type: "choice", choiceKey: "starter", choiceValue: "bulbasaur",
-      pokemon: { img: "assets/images/FRLG/Spr_3f_001.png", name: "Bulbasaur" }, method: "Choose as starter" },
-    { type: "choice", choiceKey: "starter", choiceValue: "charmander",
-      pokemon: { img: "assets/images/FRLG/Spr_3f_004.png", name: "Charmander" }, method: "Choose as starter" },
-    { type: "choice", choiceKey: "starter", choiceValue: "squirtle",
-      pokemon: { img: "assets/images/FRLG/Spr_3f_007.png", name: "Squirtle" }, method: "Choose as starter" },
+    /* ---- Choice rows (must come first) ---- */
+    {
+      type: "choice",
+      choiceKey: "starter",
+      choiceValue: "bulbasaur",
+      pokemon: { img: "assets/images/FRLG/Spr_3f_001.png", name: "Bulbasaur" },
+      method: "Choose as starter"
+    },
+    {
+      type: "choice",
+      choiceKey: "starter",
+      choiceValue: "charmander",
+      pokemon: { img: "assets/images/FRLG/Spr_3f_004.png", name: "Charmander" },
+      method: "Choose as starter"
+    },
+    {
+      type: "choice",
+      choiceKey: "starter",
+      choiceValue: "squirtle",
+      pokemon: { img: "assets/images/FRLG/Spr_3f_007.png", name: "Squirtle" },
+      method: "Choose as starter"
+    },
 
-    // ---- Gated results (only one line appears) ----
-    { pokemon: { img: "assets/images/FRLG/Spr_3f_002.png", name: "Ivysaur" },
-      method: "Evolve Bulbasaur at Lv. 16", requires: { starter: "bulbasaur" } },
-    { pokemon: { img: "assets/images/FRLG/Spr_3f_003.png", name: "Venusaur" },
-      method: "Evolve Ivysaur at Lv. 32", requires: { starter: "bulbasaur" } },
-    { pokemon: { img: "assets/images/FRLG/Spr_3f_005.png", name: "Charmeleon" },
-      method: "Evolve Charmander at Lv. 16", requires: { starter: "charmander" } },
-    { pokemon: { img: "assets/images/FRLG/Spr_3f_006.png", name: "Charizard" },
-      method: "Evolve Charmeleon at Lv. 36", requires: { starter: "charmander" } },
-    { pokemon: { img: "assets/images/FRLG/Spr_3f_008.png", name: "Wartortle" },
-      method: "Evolve Squirtle at Lv. 16", requires: { starter: "squirtle" } },
-    { pokemon: { img: "assets/images/FRLG/Spr_3f_009.png", name: "Blastoise" },
-      method: "Evolve Wartortle at Lv. 36", requires: { starter: "squirtle" } },
+    /* ---- Gated results (only one line appears) ---- */
+    {
+      pokemon: { img: "assets/images/FRLG/Spr_3f_002.png", name: "Ivysaur" },
+      method: "Evolve Bulbasaur at Lv. 16",
+      requires: { starter: "bulbasaur" }
+    },
+    {
+      pokemon: { img: "assets/images/FRLG/Spr_3f_003.png", name: "Venusaur" },
+      method: "Evolve Ivysaur at Lv. 32",
+      requires: { starter: "bulbasaur" }
+    },
 
-    // ---- Non-gated Pokémon (always shown) ----
-    { pokemon: { img: "assets/images/FRLG/Spr_3f_016.png", name: "Pidgey" }, method: "Catch on Route 1" },
-    { pokemon: { img: "assets/images/FRLG/Spr_3f_017.png", name: "Pidgeotto" }, method: "Evolve Pidgey at Lv. 18" },
-    { pokemon: { img: "assets/images/FRLG/Spr_3f_018.png", name: "Pidgeot" }, method: "Evolve Pidgeotto at Lv. 36" }
+    {
+      pokemon: { img: "assets/images/FRLG/Spr_3f_005.png", name: "Charmeleon" },
+      method: "Evolve Charmander at Lv. 16",
+      requires: { starter: "charmander" }
+    },
+    {
+      pokemon: { img: "assets/images/FRLG/Spr_3f_006.png", name: "Charizard" },
+      method: "Evolve Charmeleon at Lv. 36",
+      requires: { starter: "charmander" }
+    },
+
+    {
+      pokemon: { img: "assets/images/FRLG/Spr_3f_008.png", name: "Wartortle" },
+      method: "Evolve Squirtle at Lv. 16",
+      requires: { starter: "squirtle" }
+    },
+    {
+      pokemon: { img: "assets/images/FRLG/Spr_3f_009.png", name: "Blastoise" },
+      method: "Evolve Wartortle at Lv. 36",
+      requires: { starter: "squirtle" }
+    },
+      /* ---- Non-gated Pokémon (always shown) ---- */
+	{
+	  pokemon: { img: "assets/images/FRLG/Spr_3f_016.png", name: "Pidgey" },
+	  method: "Catch on Route 1"
+	},
+	{
+	  pokemon: { img: "assets/images/FRLG/Spr_3f_017.png", name: "Pidgeotto" },
+	  method: "Evolve Pidgey at Lv. 18"
+	},
+	{
+	  pokemon: { img: "assets/images/FRLG/Spr_3f_018.png", name: "Pidgeot" },
+	  method: "Evolve Pidgeotto at Lv. 36"
+	}
   ]
 }
 ```
 
-**Rules demonstrated**
+### Rules demonstrated
+
 - **Choice rows always come first**
 - All choice rows share the same `choiceKey`
 - `choiceValue` must be lowercase
@@ -221,81 +294,74 @@ Each progression group represents a phase of the game.
 - Only rows matching the selected choice are rendered
 - Row order matches the narrative order in `summaryHtml`
 
-### 5.2 Multi‑select choice groups (pick X of N)
-Multi‑select uses the same `type: "choice"` rows, but the **cap is declared on the rows** with `choiceCap`. The engine derives the cap **per `choiceKey`** as the max of any `choiceCap` it sees; if none is present, the cap defaults to **1**. When the cap is reached, the entire choice block **disappears** from that section.
+---
 
-**Example: choose 2 Moon Stone evolutions now (2 of 4)**
+## 5.x Custom display text for choice subheaders
+
+By default, a choice block subheader is generated from the `choiceKey` and cap (for example: `Moon-stone-1 — choose up to 2`). While the *key* itself must remain stable and machine‑friendly, you can provide a **human‑readable label** that is shown on the page instead.
+
+There are **two supported ways** to do this. Both affect display only and do **not** change the underlying `choiceKey` used for gating.
+
+### Option 1: Per‑group display text (`choiceTitles`)
+
+Use this when all rows in the choice group should share the same label. Add a `choiceTitles` object to the progression group, keyed by `choiceKey`.
+
 ```js
 "Pre Badge 2: Misty": {
   headerTitle: "Pre Badge 2: Misty",
+  choiceTitles: {
+    "moon-stone-1": "Pick two Pokémon to use your Moon Stones on"
+  },
   rows: [
-    // multi-select choice block (cap 2)
     { type: "choice", choiceKey: "moon-stone-1", choiceValue: "nidoqueen",  choiceCap: 2,
-      pokemon: { img: "assets/images/Red and Blue/pokedex/031.png", name: "Nidoqueen" },  method: "Use a Moon Stone on Nidorina" },
-    { type: "choice", choiceKey: "moon-stone-1", choiceValue: "nidoking",   choiceCap: 2,
-      pokemon: { img: "assets/images/Red and Blue/pokedex/034.png", name: "Nidoking" },   method: "Use a Moon Stone on Nidorino" },
-    { type: "choice", choiceKey: "moon-stone-1", choiceValue: "clefable",   choiceCap: 2,
-      pokemon: { img: "assets/images/Red and Blue/pokedex/036.png", name: "Clefable" },   method: "Use a Moon Stone on Clefairy" },
-    { type: "choice", choiceKey: "moon-stone-1", choiceValue: "wigglytuff", choiceCap: 2,
-      pokemon: { img: "assets/images/Red and Blue/pokedex/040.png", name: "Wigglytuff" }, method: "Use a Moon Stone on Jigglypuff" },
-
-    // gated rows for whichever two were picked now
-    { pokemon: { img: "assets/images/Red and Blue/pokedex/031.png", name: "Nidoqueen" },  method: "Use a Moon Stone on Nidorina",  requires: { "moon-stone-1": "nidoqueen" } },
-    { pokemon: { img: "assets/images/Red and Blue/pokedex/034.png", name: "Nidoking" },   method: "Use a Moon Stone on Nidorino", requires: { "moon-stone-1": "nidoking" } },
-    { pokemon: { img: "assets/images/Red and Blue/pokedex/036.png", name: "Clefable" },   method: "Use a Moon Stone on Clefairy", requires: { "moon-stone-1": "clefable" } },
-    { pokemon: { img: "assets/images/Red and Blue/pokedex/040.png", name: "Wigglytuff" }, method: "Use a Moon Stone on Jigglypuff",requires: { "moon-stone-1": "wigglytuff" } }
+      pokemon: { img: "assets/images/Red and Blue/pokedex/031.png", name: "Nidoqueen" },
+      method: "Use a Moon Stone on Nidorina" }
   ]
 }
 ```
 
-**Authoring notes**
-- Use a **stable `choiceKey`** per group (e.g., `moon-stone-1`).
-- Put **all choice rows first**, then any gated results that reference that choice.
-- If a section needs different caps for different choice groups, set `choiceCap` on each group’s rows independently.
+### Option 2: Per‑row display text (`choiceTitle`)
 
-### 5.3 Showing unpicked options later (leftovers)
-If you want a later section to automatically show the options that **were not** selected earlier, use **inverse gating** with `requiresNot`. Declare all candidates again in the later section; only the **unpicked** ones will render.
+Use this when you want the label defined close to the choice rows themselves. The value is read from the **first row of the choice run**.
 
-**Example: later section shows the two Moon Stone evolutions *not* chosen earlier**
 ```js
-"Post Badge 2": {
-  headerTitle: "Post Badge 2",
-  rows: [
-    { pokemon: { img: "assets/images/Red and Blue/pokedex/031.png", name: "Nidoqueen" },  method: "Use a Moon Stone on Nidorina",  requiresNot: { "moon-stone-1": "nidoqueen" } },
-    { pokemon: { img: "assets/images/Red and Blue/pokedex/034.png", name: "Nidoking" },   method: "Use a Moon Stone on Nidorino", requiresNot: { "moon-stone-1": "nidoking" } },
-    { pokemon: { img: "assets/images/Red and Blue/pokedex/036.png", name: "Clefable" },   method: "Use a Moon Stone on Clefairy", requiresNot: { "moon-stone-1": "clefable" } },
-    { pokemon: { img: "assets/images/Red and Blue/pokedex/040.png", name: "Wigglytuff" }, method: "Use a Moon Stone on Jigglypuff",requiresNot: { "moon-stone-1": "wigglytuff" } }
-  ]
+{ type: "choice",
+  choiceKey: "moon-stone-1",
+  choiceValue: "nidoqueen",
+  choiceCap: 2,
+  choiceTitle: "Pick two Pokémon to use your Moon Stones on",
+  pokemon: { img: "assets/images/Red and Blue/pokedex/031.png", name: "Nidoqueen" },
+  method: "Use a Moon Stone on Nidorina"
 }
 ```
 
-**Behavior**
-- Earlier section: the user picks **2 of 4**; selected items appear there.
-- Later section: the **remaining 2** render automatically via `requiresNot`.
+### Resolution order
 
-**UI expectations (already handled by the tracker)**
-- Multi‑select rows indicate current picks by **thickening the existing left indicator** on the row; once the cap is reached, the remaining unselected options are disabled.
-- When the cap is met for a choice group, that block **disappears** from the section to reduce clutter.
+When rendering a choice block:
+- `choiceTitle` on the row **wins** if present
+- otherwise, `choiceTitles[choiceKey]` is used
+- otherwise, the fallback label is generated from the key and cap
+
+This allows you to keep clean, stable identifiers like `moon-stone-1` in data while presenting clear, narrative instruction text to the player.
 
 ---
 
 ## 6) Final Checklist
 
 Before marking a game as available:
-- `manifest.games.json` entry is complete and accurate
-- HTML entry page exists and loads scripts in the correct order
-- Cover and logo images are present and correctly pathed
+
+- `manifest.games.json` entry is complete and accurate  
+- HTML entry page exists and loads scripts in the correct order  
+- Cover and logo images are present and correctly pathed  
 - `progression.js`:
   - uses **HTML only** in summaries
   - places **choice rows first**
   - uses **lowercase choice values**
   - includes **gated rows** where applicable
-  - uses **`choiceCap`** for multi‑select groups (omit to default to 1)
-  - uses **`requiresNot`** in later sections to auto‑show leftovers
+  - does **not** include `caught` in row data  
 - Local testing confirms:
-  - choices (single‑ and multi‑select) gate rows correctly
-  - leftovers render via `requiresNot` as expected
+  - choices gate rows correctly
   - caught toggles work in list and grid views
-  - progress bars update as expected
+  - progress bars update as expected  
 
 Once these conditions are met, the game integrates cleanly with the tracker and behaves consistently with existing entries.

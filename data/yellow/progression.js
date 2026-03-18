@@ -28,8 +28,8 @@ window.gameData = {
   progression: {
     brock: {
       headerTitle: `Pre Badge #1 - Brock`,
-      headerImg: ``,
-      headerImgAlt: ``,
+      headerImg: `assets/images/Yellow/badges/Spr_Y_Brock.png`,
+      headerImgAlt: `Brock as he appered in Pokemon Yellow`,
 
       summaryShort: `This first part will cover everything you can do BEFORE you get that first badge from Brock. This is probably the most daunting part of the challenge…`,
 
@@ -93,6 +93,11 @@ window.gameData = {
           <strong>End of part 1:</strong><br/>
           Caught 17, Remaining 134
         </p>
+              <p class="tips-source">
+        <a href="https://docs.google.com/document/d/1_ffM1uUOhfVgxkQfhe41qPq1KHZ_ISAzxnJtHt23u9M/edit?usp=sharing" target="_blank" rel="noopener noreferrer">
+          Source: Professor Oak Challenge Guide (Google Doc)
+        </a>
+      </p>
       `,
       summaryOpen: false,
 
@@ -227,8 +232,8 @@ window.gameData = {
     },
     misty: {
       headerTitle: `Pre Badge #2 - Misty`,
-      headerImg: ``,
-      headerImgAlt: ``,
+      headerImg: `assets/images/Yellow/badges/Spr_Y_Misty.png`,
+      headerImgAlt: `Misty as she appered in Pokemon Yellow`,
 
       summaryShort: `Take on Brock with your fearsome team and get that first badge. You can finally leave through the eastern exit of Pewter City.`,
 
@@ -352,6 +357,11 @@ window.gameData = {
           <strong>End of part 2:</strong><br/>
           Caught 50, Remaining 101
         </p>
+              <p class="tips-source">
+        <a href="https://docs.google.com/document/d/1_ffM1uUOhfVgxkQfhe41qPq1KHZ_ISAzxnJtHt23u9M/edit?usp=sharing" target="_blank" rel="noopener noreferrer">
+          Source: Professor Oak Challenge Guide (Google Doc)
+        </a>
+      </p>
       `,
       summaryOpen: false,
 
@@ -359,6 +369,7 @@ window.gameData = {
         /* --------------------------- Moon Stone Choices --------------------------------- */
         {
           type: "choice",
+          choiceTitle: "Pick two Pokémon to use your Moon Stones on:",
           choiceKey: "moon-stone-1",
           choiceValue: "nidoqueen",
           choiceCap: 2,
@@ -370,6 +381,7 @@ window.gameData = {
         },
         {
           type: "choice",
+          choiceTitle: "Pick two Pokémon to use your Moon Stones on:",
           choiceKey: "moon-stone-1",
           choiceValue: "nidoking",
           choiceCap: 2,
@@ -381,6 +393,7 @@ window.gameData = {
         },
         {
           type: "choice",
+          choiceTitle: "Pick two Pokémon to use your Moon Stones on:",
           choiceKey: "moon-stone-1",
           choiceValue: "clefable",
           choiceCap: 2,
@@ -392,6 +405,7 @@ window.gameData = {
         },
         {
           type: "choice",
+          choiceTitle: "Pick two Pokémon to use your Moon Stones on:",
           choiceKey: "moon-stone-1",
           choiceValue: "wigglytuff",
           choiceCap: 2,
@@ -400,6 +414,30 @@ window.gameData = {
             name: "Wigglytuff",
           },
           method: "Use a Moon Stone on Jigglypuff",
+        },
+        /* --------------------------- Fossil Choices --------------------------------- */
+        {
+          type: "choice",
+          choiceKey: "fossil",
+          choiceValue: "kabuto",
+          choiceCap: 1,
+          choiceTitle: "Choose which Fossil to revive:",
+          pokemon: {
+            img: "assets/images/Yellow/pokedex/Spr_1y_140.png",
+            name: "Kabuto",
+          },
+          method: "Revive Dome Fossil (Cinnabar Lab)",
+        },
+        {
+          type: "choice",
+          choiceKey: "fossil",
+          choiceValue: "omanyte",
+          choiceCap: 1,
+          pokemon: {
+            img: "assets/images/Yellow/pokedex/Spr_1y_138.png",
+            name: "Omanyte",
+          },
+          method: "Revive Helix Fossil (Cinnabar Lab)",
         },
         /* --------------------------- Route 3 --------------------------------- */
         {
@@ -673,9 +711,9 @@ window.gameData = {
       ],
     },
     koga: {
-      headerTitle: `Pre Badge #3 from Koga`,
-      headerImg: ``,
-      headerImgAlt: ``,
+      headerTitle: `Pre Badge #3 - Koga`,
+      headerImg: `assets/images/Yellow/badges/Spr_Y_Koga.png`,
+      headerImgAlt: `Koga as he appered in Pokemon Yellow`,
 
       summaryShort: `Defeat Misty and get that Cascade Badge and the ability to use Cut. Whilst you’re in Cerulean City, exchange the bike voucher for a bike for faster movement whilst grinding. There’s no need to defeat Lt Surge as this only gives you access to Fly and three more pokemon so we can skip this gym until later. There is a LOT open to you at this point before considering another badge and you have almost the entirety of Kanto accessible.`,
 
@@ -837,11 +875,76 @@ window.gameData = {
           <strong>End of part 3:</strong><br/>
           Caught 105, Remaining 46
         </p>
+              <p class="tips-source">
+        <a href="https://docs.google.com/document/d/1_ffM1uUOhfVgxkQfhe41qPq1KHZ_ISAzxnJtHt23u9M/edit?usp=sharing" target="_blank" rel="noopener noreferrer">
+          Source: Professor Oak Challenge Guide (Google Doc)
+        </a>
+      </p>
       `,
 
       summaryOpen: false,
 
       rows: [
+        /* --------------------------- Eeveelution ------------------- */
+        {
+          type: "choice",
+          choiceKey: "eeveelution",
+          choiceValue: "flareon",
+          choiceCap: 1,
+          choiceTitle: "Choose your Eeveelution:",
+          pokemon: {
+            img: "assets/images/Yellow/pokedex/Spr_1y_136.png",
+            name: "Flareon",
+          },
+          method: "Use a Fire Stone on Eevee",
+        },
+        {
+          type: "choice",
+          choiceKey: "eeveelution",
+          choiceValue: "jolteon",
+          choiceCap: 1,
+          pokemon: {
+            img: "assets/images/Yellow/pokedex/Spr_1y_135.png",
+            name: "Jolteon",
+          },
+          method: "Use a Thunder Stone on Eevee",
+        },
+        {
+          type: "choice",
+          choiceKey: "eeveelution",
+          choiceValue: "vaporeon",
+          choiceCap: 1,
+          pokemon: {
+            img: "assets/images/Yellow/pokedex/Spr_1y_134.png",
+            name: "Vaporeon",
+          },
+          method: "Use a Water Stone on Eevee",
+        },
+        /* --------------------------- Hitmon ------------------- */
+        {
+          type: "choice",
+          choiceKey: "hitmon",
+          choiceValue: "hitmonlee",
+          choiceCap: 1,
+          choiceTitle: "Choose your Hitmon:",
+          pokemon: {
+            img: "assets/images/Yellow/pokedex/Spr_1y_106.png",
+            name: "Hitmonlee",
+          },
+          method: "Fighting Dojo (choose one)",
+        },
+        {
+          type: "choice",
+          choiceKey: "hitmon",
+          choiceValue: "hitmonchan",
+          choiceCap: 1,
+          pokemon: {
+            img: "assets/images/Yellow/pokedex/Spr_1y_107.png",
+            name: "Hitmonchan",
+          },
+          method: "Fighting Dojo (choose one)",
+        },
+
         /* --------------------------- Route 2 / Pewter City ------------------- */
 
         {
@@ -938,12 +1041,14 @@ window.gameData = {
           },
           method: "Celadon Game Corner (purchase)",
         },
+
         {
           pokemon: {
             img: "assets/images/Yellow/pokedex/Spr_1y_136.png",
             name: "Flareon",
           },
           method: "Use a Fire Stone on Eevee",
+          requires: { eeveelution: "flareon" },
         },
         {
           pokemon: {
@@ -951,6 +1056,7 @@ window.gameData = {
             name: "Jolteon",
           },
           method: "Use a Thunder Stone on Eevee",
+          requires: { eeveelution: "jolteon" },
         },
         {
           pokemon: {
@@ -958,6 +1064,7 @@ window.gameData = {
             name: "Vaporeon",
           },
           method: "Use a Water Stone on Eevee",
+          requires: { eeveelution: "vaporeon" },
         },
         {
           pokemon: {
@@ -1302,14 +1409,16 @@ window.gameData = {
             img: "assets/images/Yellow/pokedex/Spr_1y_106.png",
             name: "Hitmonlee",
           },
-          method: "Fighting Dojo (choose one)",
+          method: "Fighting Dojo",
+          requires: { hitmon: "hitmonlee" },
         },
         {
           pokemon: {
             img: "assets/images/Yellow/pokedex/Spr_1y_107.png",
             name: "Hitmonchan",
           },
-          method: "Fighting Dojo (choose one)",
+          method: "Fighting Dojo",
+          requires: { hitmon: "hitmonchan" },
         },
         {
           pokemon: {
@@ -1321,9 +1430,9 @@ window.gameData = {
       ],
     },
     surge: {
-      headerTitle: `Pre Badge #4 from Lt Surge`,
-      headerImg: ``,
-      headerImgAlt: ``,
+      headerTitle: `Pre Badge #4 - Lt Surge`,
+      headerImg: `assets/images/Yellow/badges/Spr_Y_Surge.png`,
+      headerImgAlt: `Lt Surge as he appered in Pokemon Yellow`,
 
       summaryShort: `You can pick between Lt. Surge, Sabrina, Koga and Erika at this point. Sabrina’s badge unlocks nothing, Erika’s Strength won’t actually be used anywhere without Surf, so it’s between Lt Surge (3 pokemon) or Koga (a lot more) so go get that Soul Badge! There’s a few places to go with Surf now unlocked.`,
       summaryHtml: `
@@ -1386,6 +1495,11 @@ window.gameData = {
           <strong>End of part 4:</strong><br/>
           Caught 122, Remaining 29
         </p>
+              <p class="tips-source">
+        <a href="https://docs.google.com/document/d/1_ffM1uUOhfVgxkQfhe41qPq1KHZ_ISAzxnJtHt23u9M/edit?usp=sharing" target="_blank" rel="noopener noreferrer">
+          Source: Professor Oak Challenge Guide (Google Doc)
+        </a>
+      </p>
         `,
       summaryOpen: false,
 
@@ -1471,6 +1585,7 @@ window.gameData = {
             name: "Kabuto",
           },
           method: "Revive Dome Fossil (Cinnabar Lab)",
+          requires: { fossil: "kabuto" },
         },
         {
           pokemon: {
@@ -1478,6 +1593,7 @@ window.gameData = {
             name: "Kabutops",
           },
           method: "Evolve from Kabuto at level 40",
+          requires: { fossil: "kabuto" },
         },
         {
           pokemon: {
@@ -1485,6 +1601,7 @@ window.gameData = {
             name: "Omanyte",
           },
           method: "Revive Helix Fossil (Cinnabar Lab)",
+          requires: { fossil: "omanyte" },
         },
         {
           pokemon: {
@@ -1492,6 +1609,7 @@ window.gameData = {
             name: "Omastar",
           },
           method: "Evolve from Omanyte at level 40",
+          requires: { fossil: "omanyte" },
         },
 
         /* --------------------------- Pokémon Mansion ------------------------- */
@@ -1535,9 +1653,9 @@ window.gameData = {
       ],
     },
     erika: {
-      headerTitle: `Pre Badge #5 from Erika`,
-      headerImg: ``,
-      headerImgAlt: ``,
+      headerTitle: `Pre Badge #5 - Erika`,
+      headerImg: `assets/images/Yellow/badges/Spr_Y_Erika.png`,
+      headerImgAlt: `Erika as she appered in Pokemon Yellow`,
 
       summaryShort: `Normally we would defeat Erika in Red and Blue next for Strength but that only unlocks one new pokemon whereas Lt. Surge gives three, so we’ll beat Surge now.`,
       summaryHtml: `
@@ -1558,6 +1676,11 @@ window.gameData = {
           <strong>End of part 5:</strong><br/>
           Caught 125, Remaining 26
         </p>
+              <p class="tips-source">
+        <a href="https://docs.google.com/document/d/1_ffM1uUOhfVgxkQfhe41qPq1KHZ_ISAzxnJtHt23u9M/edit?usp=sharing" target="_blank" rel="noopener noreferrer">
+          Source: Professor Oak Challenge Guide (Google Doc)
+        </a>
+      </p>
       `,
 
       summaryOpen: false,
@@ -1589,9 +1712,9 @@ window.gameData = {
       ],
     },
     "6-8": {
-      headerTitle: `Pre Badges #6 to #8`,
-      headerImg: ``,
-      headerImgAlt: ``,
+      headerTitle: `Pre Badges #6 to #8 - Giovanni`,
+      headerImg: `assets/images/Yellow/badges/Spr_Y_Giovanni.png`,
+      headerImgAlt: `Giovanni as he appered in Pokemon Yellow`,
 
       summaryShort: `There’s hardly any pokemon left in the challenge so it’s slim pickings at the moment. Defeating Erika gives you Strength which you can now use to catch ONE pokemon! No other badges by themselves give any benefits of new pokemon.`,
       summaryHtml: `
@@ -1607,6 +1730,11 @@ window.gameData = {
           <strong>End of part 6:</strong><br/>
           Caught 126, Remaining 25
         </p>
+              <p class="tips-source">
+        <a href="https://docs.google.com/document/d/1_ffM1uUOhfVgxkQfhe41qPq1KHZ_ISAzxnJtHt23u9M/edit?usp=sharing" target="_blank" rel="noopener noreferrer">
+          Source: Professor Oak Challenge Guide (Google Doc)
+        </a>
+      </p>
       `,
 
       summaryOpen: false,
@@ -1624,8 +1752,8 @@ window.gameData = {
     },
     E4: {
       headerTitle: `Pre Elite Four`,
-      headerImg: ``,
-      headerImgAlt: ``,
+      headerImg: `assets/images/Yellow/badges/Spr_Y_Lance.png`,
+      headerImgAlt: `Lance as he appered in Pokemon Yellow`,
 
       summaryShort: `Since there’s only one pokemon left to catch before the Elite Four, your Pokemon League challenge can continue in full swing. Defeat Sabrina, Blaine and Giovanni for the last badges and then head up to Victory Road.`,
       summaryHtml: `
@@ -1641,6 +1769,11 @@ window.gameData = {
           <strong>End of part 7:</strong><br/>
           Caught 127, Remaining 24
         </p>
+              <p class="tips-source">
+        <a href="https://docs.google.com/document/d/1_ffM1uUOhfVgxkQfhe41qPq1KHZ_ISAzxnJtHt23u9M/edit?usp=sharing" target="_blank" rel="noopener noreferrer">
+          Source: Professor Oak Challenge Guide (Google Doc)
+        </a>
+      </p>
       `,
       summaryOpen: true,
 
@@ -1657,8 +1790,8 @@ window.gameData = {
     },
     PG: {
       headerTitle: `Post Game`,
-      headerImg: ``,
-      headerImgAlt: ``,
+      headerImg: `assets/images/Yellow/badges/180px-RG_Pokédex.png`,
+      headerImgAlt: `The Kanto Pokédex`,
 
       summaryShort: `March up to the pokemon league and kick the Elite Four’s butts. You’re now the Champion! But there’s still one final challenge left…`,
       summaryHtml: `
@@ -1679,6 +1812,11 @@ window.gameData = {
           <strong>End of the challenge:</strong><br/>
           Caught 129, Remaining 22 (5 more pokemon than Red and Blue!)
         </p>
+              <p class="tips-source">
+        <a href="https://docs.google.com/document/d/1_ffM1uUOhfVgxkQfhe41qPq1KHZ_ISAzxnJtHt23u9M/edit?usp=sharing" target="_blank" rel="noopener noreferrer">
+          Source: Professor Oak Challenge Guide (Google Doc)
+        </a>
+      </p>
       `,
       summaryOpen: false,
 

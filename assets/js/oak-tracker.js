@@ -246,7 +246,15 @@ function buildModel() {
         const prev = rows[i - 1]; const next = rows[i + 1];
         const isStart = !(prev && prev.type === "choice" && prev.choiceKey === k);
         const isEnd = !(next && next.type === "choice" && next.choiceKey === k);
-        if (isStart) { out.push({ __kind: "choiceSubheader", __key: `choiceSubheader:${groupTitle}:${k}:${i}`, __group: groupTitle, label: `${cap(k)} — ${capN === 1 ? "choose one" : `choose ${capN}`}` }); }
+
+        // Custom subheader label support
+        let customLabel = null;
+        if (typeof r.choiceTitle === "string" && r.choiceTitle.trim()) customLabel = r.choiceTitle.trim();
+        else if (def && def.choiceTitles && typeof def.choiceTitles === "object" && typeof def.choiceTitles[k] === "string") customLabel = String(def.choiceTitles[k]).trim();
+        const defaultLabel = `${cap(k)} — ${capN === 1 ? "choose one" : `choose up to ${capN}`}`;
+        const label = customLabel || defaultLabel;
+
+        if (isStart) { out.push({ __kind: "choiceSubheader", __key: `choiceSubheader:${groupTitle}:${k}:${i}`, __group: groupTitle, label }); }
         out.push({ __kind: "choice", __key: `choice:${groupTitle}:${k}:${norm(r.choiceValue)}`, __group: groupTitle, choiceKey: k, choiceValue: norm(r.choiceValue), cap: capN, pokemon: { name: r.pokemon?.name || "Choice", img: safeImg(r.pokemon?.img) }, method: r.method || "Pick an option", groupRunStart: isStart, groupRunEnd: isEnd });
         continue;
       }
