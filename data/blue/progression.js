@@ -1,6 +1,7 @@
 /* ----------------------
  - img src: https://archives.bulbagarden.net/wiki/Category:Red_and_Blue_sprites
  - Guide: https://docs.google.com/document/d/1gmp-piwpfUUyxnWULjQtB2m2lzWeYc-wwsXnnbyp_RY/edit?tab=t.0#heading=h.gjdgxs
+ - Blastoise src: https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F00%2Ff0%2Fb4%2F00f0b4d0c1b4b06d09640de6f29716fd.png&f=1&nofb=1&ipt=360a7eee2366c5a49ea29588beaa93f23f13b4314635ab22e6b3ad476c1df7b6
 ----------------------- */
 window.gameData = {
   gameId: "blue",

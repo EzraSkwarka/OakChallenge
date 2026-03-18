@@ -1,6 +1,7 @@
 /* ----------------------
  - img src: https://archives.bulbagarden.net/wiki/Category:Red_and_Blue_sprites
  - Guide: https://docs.google.com/document/d/1gmp-piwpfUUyxnWULjQtB2m2lzWeYc-wwsXnnbyp_RY/edit?tab=t.0#heading=h.gjdgxs
+ - Charizard pic source: http://www.game-art-hq.com/wp-content/uploads/2016/09/Charizard-Pokemon-Red-and-Blue-Official-Art-Render.png
 ----------------------- */
 window.gameData = {
   gameId: "red",
