@@ -18,7 +18,7 @@
         "notes": "",
         "cover": "assets/images/covers/blue.png",
         "href": "pages/tracker/blue.html",
-        "available": false
+        "available": true
       },
       {
         "id": "yellow",
