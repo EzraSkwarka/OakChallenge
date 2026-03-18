@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <base href="/OakChallenge/" />
+    <link rel="icon" href="favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pokémon Red — Oak Tracker</title>
+
+    <!-- Global CSS (load early so theme variables are active immediately) -->
+    <link rel="stylesheet" href="assets/css/base.css" />
+    <link rel="stylesheet" href="assets/css/chrome.css" />
+    <link rel="stylesheet" href="assets/css/tracker.css" />
+    <link rel="stylesheet" href="assets/css/sticky-header.css" />
+    <link rel="stylesheet" href="assets/css/icons.css" />
+
+    <!-- Global JS (infrastructure) -->
+    <script src="assets/js/site-chrome.js" defer></script>
+    <script src="assets/js/site-theme.js" defer></script>
+  </head>
+  <body>
+    <div id="site-header-host"></div>
+
+    <div class="page-band">
+      <div class="container">
+        <h1 id="game-title"></h1>
+        <div id="choice-status" class="choice-status"></div>
+      </div>
+
+      <div class="table-wrap">
+        <table id="pokemon-table" aria-label="Pokémon capture status">
+          <thead>
+            <tr>
+              <th>Pokémon</th>
+              <th>Method</th>
+              <th class="center">Action / Caught</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+
+      <div class="footer-actions">
+        <button id="reset-all" type="button" class="reset-btn">Reset all progress</button>
+      </div>
+    </div>
+
+    <div id="site-footer-host"></div>
+
+    <!-- Page-specific JS only -->
+    <script src="data/red/progression.js" defer></script>
+    <script src="assets/js/oak-tracker.js" defer></script>
+  </body>
+</html>
