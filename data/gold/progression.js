@@ -18,9 +18,7 @@ window.gameData = {
         <li>Please note that this is not a full guide to the game, I am only listing the pokemon you can catch at the earliest opportunities and any required items. I do not go into full detail on optimal exp gains or where to find the highest level for an individual pokemon etc. This playthrough and guide were done as a casual play rather than a speed run. Please consult other guides for a full walkthrough or more detailed information. </li>
       </ul>
       <p class="tips-source">
-        <a href="
-        https://docs.google.com/document/d/1fXwvGspNnlGn9fw-SAJxVyDjYxQ43TOV38sgWhbaIT8/edit?tab=t.0
-        " target="_blank" rel="noopener noreferrer">
+        <a href="https://docs.google.com/document/d/1fXwvGspNnlGn9fw-SAJxVyDjYxQ43TOV38sgWhbaIT8/edit?tab=t.0" target="_blank" rel="noopener noreferrer">
           Source: Professor Oak Challenge Guide (Google Doc)
         </a>
       </p>
