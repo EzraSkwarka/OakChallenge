@@ -294,18 +294,6 @@ window.gameData = {
         },
 
         {
-          pokemon: { img: "assets/images/Gold/pokedex/Spr_2g_010.png", name: "Caterpie" },
-          method: "Catch on Route 30 (Gold, Morning/Day)"
-        },
-        {
-          pokemon: { img: "assets/images/Gold/pokedex/Spr_2g_011.png", name: "Metapod" },
-          method: "Evolve from Caterpie at level 7"
-        },
-        {
-          pokemon: { img: "assets/images/Gold/pokedex/Spr_2g_012.png", name: "Butterfree" },
-          method: "Evolve from Metapod at level 10"
-        },
-        {
           pokemon: { img: "assets/images/Gold/pokedex/Spr_2g_013.png", name: "Weedle" },
           method: "Catch on Route 30 (Silver, Morning/Day)"
         },
@@ -573,16 +561,6 @@ window.gameData = {
           method: "Route 32 swarm (Fisherman Ralph phone call)"
         },
 
-        /* --------------------------- Union Cave / Route 33 ------------------- */
-        {
-          pokemon: { img: "assets/images/Gold/pokedex/Spr_2g_027.png", name: "Sandshrew" },
-          method: "Union Cave (Gold only)"
-        },
-        {
-          pokemon: { img: "assets/images/Gold/pokedex/Spr_2g_028.png", name: "Sandslash" },
-          method: "Evolve from Sandshrew at level 22"
-        },
-
         /* --------------------------- Slowpoke Well --------------------------- */
         {
           pokemon: { img: "assets/images/Gold/pokedex/Spr_2g_079.png", name: "Slowpoke" },
@@ -742,14 +720,6 @@ window.gameData = {
 
         /* --------------------------- Goldenrod City -------------------------- */
         {
-          pokemon: { img: "assets/images/Gold/pokedex/Spr_2g_023.png", name: "Ekans" },
-          method: "Goldenrod Game Corner (coins)"
-        },
-        {
-          pokemon: { img: "assets/images/Gold/pokedex/Spr_2g_024.png", name: "Arbok" },
-          method: "Evolve from Ekans at level 22"
-        },
-        {
           pokemon: { img: "assets/images/Gold/pokedex/Spr_2g_027.png", name: "Sandshrew" },
           method: "Goldenrod Game Corner (coins)"
         },
@@ -812,18 +782,6 @@ window.gameData = {
         {
           pokemon: { img: "assets/images/Gold/pokedex/Spr_2g_127.png", name: "Pinsir" },
           method: "Bug-Catching Contest (National Park)"
-        },
-        {
-          pokemon: { img: "assets/images/Gold/pokedex/Spr_2g_013.png", name: "Weedle" },
-          method: "Bug-Catching Contest (Gold)"
-        },
-        {
-          pokemon: { img: "assets/images/Gold/pokedex/Spr_2g_014.png", name: "Kakuna" },
-          method: "Evolve from Weedle at level 7"
-        },
-        {
-          pokemon: { img: "assets/images/Gold/pokedex/Spr_2g_015.png", name: "Beedrill" },
-          method: "Evolve from Kakuna at level 10"
         },
         {
           pokemon: { img: "assets/images/Gold/pokedex/Spr_2g_010.png", name: "Caterpie" },
@@ -1370,10 +1328,6 @@ With the ability to use Surf we can access a few additional areas. Before we do 
       rows: [
         /* --------------------------- Version Legendaries --------------------- */
         {
-          pokemon: { img: "assets/images/Gold/pokedex/Spr_2g_250.png", name: "Ho-Oh" },
-          method: "Tin/Bell Tower (Gold) — Level 40"
-        },
-        {
           pokemon: { img: "assets/images/Gold/pokedex/Spr_2g_249.png", name: "Lugia" },
           method: "Whirl Islands NE path (Silver) — Level 40"
         },
@@ -1767,10 +1721,6 @@ With the ability to use Surf we can access a few additional areas. Before we do 
         { pokemon: { img: "assets/images/Gold/pokedex/Spr_2g_025.png", name: "Pikachu" }, method: "Route 2 area" },
 
         /* --------------------------- Other Box Legendary --------------------- */
-        {
-          pokemon: { img: "assets/images/Gold/pokedex/Spr_2g_249.png", name: "Lugia" },
-          method: "Pewter elder wing path (Gold) — Level 70"
-        },
         {
           pokemon: { img: "assets/images/Gold/pokedex/Spr_2g_250.png", name: "Ho-Oh" },
           method: "Pewter elder wing path (Silver) — Level 70"
