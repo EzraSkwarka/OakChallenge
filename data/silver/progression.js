@@ -1,6 +1,7 @@
 /* ----------------------
  - img src: https://archives.bulbagarden.net/wiki/Category:Silver_sprites
  - Guide: https://docs.google.com/document/d/1fXwvGspNnlGn9fw-SAJxVyDjYxQ43TOV38sgWhbaIT8/edit?tab=t.0
+ - Lugia: https://archives.bulbagarden.net/wiki/File:249Lugia_GS_2.png
 ----------------------- */
 window.gameData = {
   gameId: "silver",

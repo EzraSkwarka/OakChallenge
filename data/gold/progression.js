@@ -1,6 +1,7 @@
 /* ----------------------
  - img src: https://archives.bulbagarden.net/wiki/Category:Gold_sprites
  - Guide: https://docs.google.com/document/d/1fXwvGspNnlGn9fw-SAJxVyDjYxQ43TOV38sgWhbaIT8/edit?tab=t.0
+ - ho-oh: https://archives.bulbagarden.net/wiki/Category:Ho-Oh#/media/File:250Ho-Oh_GS_2.png
 ----------------------- */
 window.gameData = {
   gameId: "gold",
