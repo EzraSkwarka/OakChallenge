@@ -1220,7 +1220,7 @@ With the ability to use Surf we can access a few additional areas. Before we do 
     },
     "jasminechuck": {
       headerTitle: "Pre Badge #6 - Jasmine (also Chuck)",
-      headerImg: "assets/images/Gold/badges/Spr_GS_Jamsine.png",
+      headerImg: "assets/images/Gold/badges/Spr_GS_Jasmine.png",
       headerImgAlt: "Jasmine as she appeared in Pokemon Gold and Silver",
 
       summaryShort: `With Pryce defeated, Whirlpool can be used to get us into the Whirl Islands on Route 41. Running around in the caves you’ll be able to find a Seel, whilst Horsea can be found when you surf on the water.`,
