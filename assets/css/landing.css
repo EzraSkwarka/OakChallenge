@@ -185,7 +185,7 @@
   }
 }
 
-@media (max-width: 560px) {
+@media (max-width: 380px) {
   .card-grid {
     grid-template-columns: 1fr;
   }
