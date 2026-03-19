@@ -28,6 +28,9 @@ window.gameData = {
   progression: {
     "falkner": {
       headerTitle: "Pre Badge #1 - Falkner",
+      headerImg: "assets/images/Gold/badges/Spr_GS_Falkner.png",
+      headerImgAlt: "Falkner as he appeared in Pokemon Gold and Silver",
+
       summaryShort: `This first part will cover everything you can do BEFORE you get that first badge from Falkner. This is probably the most daunting part of the challenge…Before you start you need to ask yourself whether you’re a sane or an insane person. The difference being that an insane person will have a Wigglytuff before Falkner. If you are insane, read the below on how to get a Moon Stone before Falkner. Even if you aren’t going for the Moon Stone, you should have it for section 2 of the challenge, but you’ll need to make sure you’re smart with your money, try to make every pokeball count and don’t bother with buying anything. This is what you need to do before starting the challenge properly:`,
       summaryHtml: `
         <h5>Moon Stone</h5>
@@ -382,6 +385,9 @@ window.gameData = {
     },
     "bugsy": {
       headerTitle: "Pre Badge #2 - Bugsy",
+      headerImg: "assets/images/Gold/badges/Spr_GS_Bugsy.png",
+      headerImgAlt: "Bugsy as he appeared in Pokemon Gold and Silver",
+
       summaryShort: `You need to seriously consider getting the Moon Stone in this section as it’s a lot more feasible. Refer to the Moon Stone section at the beginning of the guide. Sell everything you have including pokeballs and your new TM (don’t worry you’ll get money to buy more pokeballs) before heading south from Violet City and deposit everything to your mother, making sure she will save money for you otherwise your winnings don’t get sent to her. The differences here are that you obviously have more trainers to battle to make some more money but make sure you leave enough trainers to trigger the phone calls once your mother has reached the thresholds. Trainers in Union Cave won’t trigger the calls (bad reception) so feel free to defeat them all as well as the trainers in the gym except for Bugsy of course. If you’re short on money still, you will have to repeat the daily berry trick but it’s much easier. Instead of berries, do this with the white Apricorn outside Kurt’s house which sell for P100 each which means you’ll have to do this a lot less than in section 1! Once you have the Moon Stone, retrieve your money and buy pokeballs and resume the challenge.`,
       summaryHtml: `
         <p>
@@ -650,6 +656,9 @@ window.gameData = {
     },
     "whitney": {
       headerTitle: "Pre Badge #3 - Whitney",
+      headerImg: "assets/images/Gold/badges/Spr_GS_Whitney.png",
+      headerImgAlt: "Whitney as she appeared in Pokemon Gold and Silver",
+      
       summaryShort: `With Bugsy defeated, we can finally use Cut and advance through Ilex Forest. There’s nothing else to catch here.`,
       summaryHtml: `
         <h5>Route 34</h5>
@@ -884,6 +893,9 @@ window.gameData = {
     },
     "morty": {
       headerTitle: "Pre Badge #4 - Morty",
+      headerImg: "assets/images/Gold/badges/Spr_GS_Morty.png",
+      headerImgAlt: "Morty as he appeared in Pokemon Gold and Silver",
+      
       summaryShort: `Defeat Whitney and then go to the flower shop to get the watering can which will help you get rid of the ‘tree’ on route 36. Head up there, save your game before hand as this is your only chance to capture a Sudowoodo. Once you’ve caught it, speak to the man on the right of Sudowoodo who will give you the TM for Rock Smash.`,
       summaryHtml: `
         <h5>Sudowoodo</h5>
@@ -1134,6 +1146,9 @@ window.gameData = {
     },
     "pryce": {
       headerTitle: "Pre Badge #5 - Pryce",
+      headerImg: "assets/images/Gold/badges/Spr_GS_Pryce.png",
+      headerImgAlt: "Pryce as he appeared in Pokemon Gold and Silver",
+      
       summaryShort: `We’ve got a choice between THREE gyms at this point! Defeating Chuck only gives us access to Fly which doesn’t give us any pokemon. Defeating Jasmine gives us NO perks therefore we will be going with Pryce who will give us access to use Whirlpool which lets us catch a small handful of pokemon.
 
 With the ability to use Surf we can access a few additional areas. Before we do that, let’s backtrack for a moment.`,
@@ -1274,6 +1289,9 @@ With the ability to use Surf we can access a few additional areas. Before we do 
     },
     "jasminechuck": {
       headerTitle: "Pre Badge #6 - Jasmine (also Chuck)",
+      headerImg: "assets/images/Gold/badges/Spr_GS_Jamsine.png",
+      headerImgAlt: "Jasmine as she appeared in Pokemon Gold and Silver",
+      
       summaryShort: `With Pryce defeated, Whirlpool can be used to get us into the Whirl Islands on Route 41. Running around in the caves you’ll be able to find a Seel, whilst Horsea can be found when you surf on the water.`,
       summaryHtml: `
         <h5>Whirl Islands</h5>
@@ -1329,6 +1347,9 @@ With the ability to use Surf we can access a few additional areas. Before we do 
     },
     "clair": {
       headerTitle: "Pre Badge #8 - Clair",
+      headerImg: "assets/images/Gold/badges/Spr_GS_Clair.png",
+      headerImgAlt: "Clair as she appeared in Pokemon Gold and Silver",
+      
       summaryShort: `Once you’ve obtained the seventh badge, Professor Elm will call you and you can kick off the events that require you to stop Team Rocket’s takeover in Goldenrod City’s Radio Tower. It is possible to venture onwards to Blackthorn before clearing the Radio Tower so consider obtaining some new Pokémon and training them up against the grunts. Once you’ve kicked out Team Rocket you’ll be given the Rainbow Wing (Gold) or Silver Wing (Silver) which will let you catch the box legendary.`,
       summaryHtml: `
         <h5>Version Legendaries</h5>
@@ -1440,7 +1461,10 @@ With the ability to use Surf we can access a few additional areas. Before we do 
           pokemon: { img: "assets/images/Gold/pokedex/Spr_2g_221.png", name: "Piloswine" },
           method: "Evolve from Swinub at level 33"
         },
-        { pokemon: { img: "assets/images/Gold/pokedex/Spr_2g_225.png", name: "Delibird" }, method: "Ice Path (Silver)" },
+        {
+          pokemon: { img: "assets/images/Gold/pokedex/Spr_2g_225.png", name: "Delibird" },
+          method: "Ice Path (Silver)"
+        },
 
         /* --------------------------- Blackthorn City ------------------------- */
         {
@@ -1451,7 +1475,10 @@ With the ability to use Surf we can access a few additional areas. Before we do 
           pokemon: { img: "assets/images/Gold/pokedex/Spr_2g_111.png", name: "Rhyhorn" },
           method: "Breed Rhydon with Ditto (Daycare)"
         },
-        { pokemon: { img: "assets/images/Gold/pokedex/Spr_2g_238.png", name: "Smoochum" }, method: "Breed Jynx (Daycare)" },
+        {
+          pokemon: { img: "assets/images/Gold/pokedex/Spr_2g_238.png", name: "Smoochum" },
+          method: "Breed Jynx (Daycare)"
+        },
 
         /* --------------------------- Route 45 -------------------------------- */
         {
@@ -1476,6 +1503,9 @@ With the ability to use Surf we can access a few additional areas. Before we do 
     },
     "E4": {
       headerTitle: "Pre Elite Four",
+      headerImg: "assets/images/Gold/badges/Spr_GS_Lance.png",
+      headerImgAlt: "Lance as he appeared in Pokemon Gold and Silver",
+      
       summaryShort: `Clair is defeated and you will need to do the trial in the Dragons Den. Once that’s over you’ll have your final badge and also be able to use Waterfall. Head to New Bark Town and see Prof Elm for a Master Ball. Before you head to the Pokemon League there’s a small detour to make. Bring your HM slaves to Mt Mortar leaving a spare slot in your party. Enter the middle section of Mt Mortar (surf over the water between Mahogany/Ecruteak) and climb up the waterfall, enter the next room and work your way round the cave until you reach a Karate King trainer. Defeat him and he’ll give you a Tyrogue. Depending on its stats at level 20 decides which pokemon it will evolve into. Once you’ve evolved it, breed that evolution with Ditto to hatch more eggs to get the other two evolutions.`,
       summaryHtml: `
         <h5>Mt Mortar (Karate King)</h5>
@@ -1541,7 +1571,10 @@ With the ability to use Surf we can access a few additional areas. Before we do 
           pokemon: { img: "assets/images/Gold/pokedex/Spr_2g_078.png", name: "Rapidash" },
           method: "Evolve from Ponyta at level 40"
         },
-        { pokemon: { img: "assets/images/Gold/pokedex/Spr_2g_084.png", name: "Doduo" }, method: "Route 27 (not at night)" },
+        {
+          pokemon: { img: "assets/images/Gold/pokedex/Spr_2g_084.png", name: "Doduo" },
+          method: "Route 27 (not at night)"
+        },
         {
           pokemon: { img: "assets/images/Gold/pokedex/Spr_2g_085.png", name: "Dodrio" },
           method: "Evolve from Doduo at level 31"
@@ -1550,6 +1583,9 @@ With the ability to use Surf we can access a few additional areas. Before we do 
     },
     "prekanto": {
       headerTitle: "Pre Kanto Badges",
+      headerImg: "assets/images/Gold/badges/Spr_GS_Blue.png",
+      headerImgAlt: "Blue as he appeared in Pokemon Gold and Silver",
+      
       summaryShort: `So you’re the Johto champion and you can now sail to Vermilion City and take on the gym challenge. The majority of the remaining pokemon in the challenge can be caught before obtaining a single badge from any of the Kanto Gym Leaders. Your two main objectives to get around Kanto properly is to restore the power plant and get the radio card upgrade.`,
       summaryHtml: `
         <h5>Restoring the Power</h5>
@@ -1765,7 +1801,10 @@ With the ability to use Surf we can access a few additional areas. Before we do 
           pokemon: { img: "assets/images/Gold/pokedex/Spr_2g_137.png", name: "Porygon" },
           method: "Celadon Game Corner (9,999 coins)"
         },
-        { pokemon: { img: "assets/images/Gold/pokedex/Spr_2g_218.png", name: "Slugma" }, method: "Routes 16–18 (rare grass)" },
+        {
+          pokemon: { img: "assets/images/Gold/pokedex/Spr_2g_218.png", name: "Slugma" },
+          method: "Routes 16–18 (rare grass)"
+        },
         {
           pokemon: { img: "assets/images/Gold/pokedex/Spr_2g_219.png", name: "Magcargo" },
           method: "Evolve from Slugma at level 38"
@@ -1925,6 +1964,9 @@ With the ability to use Surf we can access a few additional areas. Before we do 
     },
     "postkanto": {
       headerTitle: "Post Kanto Badges",
+      headerImg: "assets/images/Gold/badges/Spr_GS_Oak.png",
+      headerImgAlt: "Professor Oak as he appeared in Pokemon Gold and Silver",
+      
       summaryShort: `With all of the Kanto badges, go see Professor Oak who will let you access Mt Silver. Head up to the pokemon league gates and you can exit to the west on to Route 28.`,
       summaryHtml: `
         <h5>Route 28 and Silver Cave</h5>
