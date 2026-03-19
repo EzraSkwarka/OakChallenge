@@ -1,3 +1,7 @@
+/* ----------------------
+ - img src: https://archives.bulbagarden.net/wiki/Category:Silver_sprites
+ - Guide: https://docs.google.com/document/d/1fXwvGspNnlGn9fw-SAJxVyDjYxQ43TOV38sgWhbaIT8/edit?tab=t.0
+----------------------- */
 window.gameData = {
   gameId: "silver",
   gameTitle: "Silver",
@@ -95,10 +99,8 @@ window.gameData = {
           Pass through Cherrygrove City and head north to Route 30. You’ll find your first version exclusive as well as a pseudo one (can be caught later). You’ll find Caterpie (Gold) or Weedle (Silver) during Morning/Day and your version exclusive will either be Spinarak (Gold) available only at night or Ledyba (Silver) available only during the morning.
         </p>
         <pre>
-          (G) Caterpie → (Lv. 7) → Metapod → (Lv. 10) → Butterfree
-          (S) Weedle → (Lv. 7) → Kakuna → (Lv. 10) → Beedrill
-          (G) Spinarak → (Lv. 22) → Ariados
-          (S) Ledyba → (Lv. 18) → Ledian
+          Weedle → (Lv. 7) → Kakuna → (Lv. 10) → Beedrill
+          Ledyba → (Lv. 18) → Ledian
         </pre>
 
         <h5>Route 31</h5>
@@ -316,14 +318,6 @@ window.gameData = {
           method: "Evolve from Kakuna at level 10"
         },
         {
-          pokemon: { img: "assets/images/Gold/pokedex/Spr_2g_167.png", name: "Spinarak" },
-          method: "Catch on Route 30 (Gold, Night)"
-        },
-        {
-          pokemon: { img: "assets/images/Gold/pokedex/Spr_2g_168.png", name: "Ariados" },
-          method: "Evolve from Spinarak at level 22"
-        },
-        {
           pokemon: { img: "assets/images/Gold/pokedex/Spr_2g_165.png", name: "Ledyba" },
           method: "Catch on Route 30 (Silver, Morning)"
         },
@@ -403,7 +397,7 @@ window.gameData = {
           Mareep → (Lv. 15) → Flaaffy → (Lv. 30) → Ampharos
           Hoppip → (Lv. 18) → Skiploom → (Lv. 27) → Jumpluff
           Wooper → (Lv. 20) → Quagsire
-          (S) Ekans → (Lv. 22) → Arbok
+          Ekans → (Lv. 22) → Arbok
         </pre>
         <p>
           Whilst on this route you will eventually find a pokemon center where you can talk to a man inside to get the Old Rod.
@@ -420,14 +414,6 @@ window.gameData = {
           (Route 30) Poliwag → (Lv. 25) → Poliwhirl
           (Dark Cave) Goldeen → (Lv. 33) → Seaking
           (Route 32) Qwilfish
-        </pre>
-
-        <h5>Union Cave and Route 33</h5>
-        <p>
-          Venture into the cave at the southern end of Route 32 and you’ll wind your way through this cave. For Silver players there’s nothing new here. Gold players will be able to catch Sandshrew. This cave is bigger than it appears but we won’t be able to fully explore it yet. On the other side of the cave we’ll be in a small route with no new pokemon which leads in to Azalea Town.
-        </p>
-        <pre>
-          (G) Sandshrew → (Lv. 22) → Sandslash
         </pre>
 
         <h5>Slowpoke Well</h5>
@@ -674,8 +660,7 @@ window.gameData = {
           Here we are, the biggest city in Johto! There’s lots to do, don’t forget to grab the bike so that you can get around a bit quicker. If you go to the Underground, you’ll be able to get a Coin Case so you can start earning coins to grab a few pokemon from the Game Corner. It turns out that Ekans and Sandshrew aren’t version exclusives, you can grab the other one here for 700 coins as well as a Dratini for 2,100 coins. You’ll also be able to trade your spare Drowzee for a Machop who isn’t available until the next section. Speaking of trades, you can get a leg up on a future trade by obtaining another Dratini which MUST be female which then needs to evolve into Dragonair. Not required at this point, but be aware. Grab the radio card now from the Radio Tower to avoid any nasty surprises when you get to Kanto…
         </p>
         <pre>
-          (G) Ekans → (Lv. 22) → Arbok
-          (S) Sandshrew → (Lv. 22) → Sandslash
+          Sandshrew → (Lv. 22) → Sandslash
           Dratini → (Lv. 30) → Dragonair → (Lv. 55) → Dragonite
           Machop → (Lv. 28) → Machoke
         </pre>
@@ -698,8 +683,7 @@ window.gameData = {
           Sunkern
           Scyther
           Pinsir
-          (G) Weedle → (Lv. 7) → Kakuna → (Lv. 10) → Beedrill
-          (S) Caterpie → (Lv. 7) → Metapod → (Lv. 10) → Butterfree
+          Caterpie → (Lv. 7) → Metapod → (Lv. 10) → Butterfree
           Venonat → (Lv. 31) → Venomoth
         </pre>
 
@@ -708,8 +692,7 @@ window.gameData = {
           The final area we get to visit in this section. There’s a ‘tree’ blocking the way but we can still access a patch of grass which is what we need to catch more! These pokemon can be caught at all times of the day:
         </p>
         <pre>
-          (G) Growlithe
-          (S) Vulpix
+          Vulpix
           Stantler
         </pre>
 
@@ -862,10 +845,6 @@ window.gameData = {
 
         /* --------------------------- Route 36 -------------------------------- */
         {
-          pokemon: { img: "assets/images/Gold/pokedex/Spr_2g_058.png", name: "Growlithe" },
-          method: "Catch on Route 36 (Gold)"
-        },
-        {
           pokemon: { img: "assets/images/Gold/pokedex/Spr_2g_037.png", name: "Vulpix" },
           method: "Catch on Route 36 (Silver)"
         },
@@ -923,7 +902,7 @@ window.gameData = {
           Miltank
           Tauros
           Snubbull → (Lv. 23) → Granbull
-          (S) Meowth → (Lv. 28) → Persian
+          Meowth → (Lv. 28) → Persian
         </pre>
 
         <h5>Olivine City</h5>
@@ -952,12 +931,6 @@ window.gameData = {
         </p>
         <pre>
           Marill → (Lv. 18) → Azumarill
-        </pre>
-        <p>
-          Once out on the other side of the mountain, explore the grass if you’re playing Gold for a Mankey.
-        </p>
-        <pre>
-          (G) Mankey → (Lv. 28) → Primeape
         </pre>
 
         <h5>Route 43</h5>
@@ -1125,11 +1098,6 @@ window.gameData = {
           pokemon: { img: "assets/images/Gold/pokedex/Spr_2g_184.png", name: "Azumarill" },
           method: "Evolve from Marill at level 18"
         },
-        { pokemon: { img: "assets/images/Gold/pokedex/Spr_2g_056.png", name: "Mankey" }, method: "Route 42 (Gold)" },
-        {
-          pokemon: { img: "assets/images/Gold/pokedex/Spr_2g_057.png", name: "Primeape" },
-          method: "Evolve from Mankey at level 28"
-        },
 
         /* --------------------------- Route 43 --------------------------------- */
         {
@@ -1179,14 +1147,6 @@ With the ability to use Surf we can access a few additional areas. Before we do 
         </p>
         <pre>
           Psyduck → (Lv. 33) → Golduck
-        </pre>
-
-        <h5>Route 41</h5>
-        <p>
-          And now back to the story…Surf south from Olivine City on to Route 40 and then pass over onto Route 41 which borders Cianwood City. If you’re playing Gold, surfing on this route can net you a Mantine. The Silver equivalent version exclusive isn’t available until we’ve got seven badges so Gold will be ahead on the dex count for a while. Feel free to visit Cianwood City but there’s nothing to do here at the moment other than grab the medicine for Amphy.
-        </p>
-        <pre>
-          (G) Mantine
         </pre>
 
         <h5>The Lake of Rage and Team Rocket</h5>
@@ -1272,12 +1232,6 @@ With the ability to use Surf we can access a few additional areas. Before we do 
         {
           pokemon: { img: "assets/images/Gold/pokedex/Spr_2g_055.png", name: "Golduck" },
           method: "Evolve from Psyduck at level 33"
-        },
-
-        /* --------------------------- Route 41 (Surf) ------------------------- */
-        {
-          pokemon: { img: "assets/images/Gold/pokedex/Spr_2g_226.png", name: "Mantine" },
-          method: "Route 41 (Gold — Surf)"
         }
       ]
     },
@@ -1351,14 +1305,10 @@ With the ability to use Surf we can access a few additional areas. Before we do 
           In Pokemon Silver, you will need to traverse the Whirl Islands. Enter the north eastern island, hop over the ledge and then over the upper of the next two ledges. From there it’s a pretty straight forward route which requires you to go down a waterfall (no HM required) and enter the cave to the left where you can find Lugia.
         </p>
         <p>
-          In Gold, head to Ecruteak City where you’ll be able to enter Tin Tower/Bell Tower. All you need to do is climb to the top and you’ll be able to catch Ho-Oh.
-        </p>
-        <p>
           Both legendaries will be at level 40 and will know their signature moves which will be very powerful – Aeroblast for Lugia and Sacred Fire for Ho-Oh. Get their HP into the red and give them a status problem (paralyze or sleep) before throwing Ultra Balls. Heavy Balls can work on Lugia but they’re much more awkward to obtain for a small bonus so stick to Ultra Balls which can be purchased in Blackthorn City.
         </p>
         <pre>
-          (G) Ho-Oh
-          (S) Lugia
+          Lugia
         </pre>
 
         <h5>Route 44</h5>
@@ -1378,7 +1328,7 @@ With the ability to use Surf we can access a few additional areas. Before we do 
         <pre>
           Jynx
           Swinub → (Lv. 33) → Piloswine
-          (S) Delibird
+          Delibird
         </pre>
 
         <h5>Blackthorn City</h5>
@@ -1393,13 +1343,11 @@ With the ability to use Surf we can access a few additional areas. Before we do 
 
         <h5>Route 45</h5>
         <p>
-          South of Blackthorn you’ll be able to grab a few more pokemon. Be careful about jumping over any ledges or you’ll need Fly to get back. In the grass you’ll be able to catch a few version exclusives. In Gold, look out for Teddiursa and Gligar. In Silver, you’ll instead find Phanpy and Skarmory. Watch out because Teddiursa and Phanpy can flee!
+          South of Blackthorn you’ll be able to grab a few more pokemon. Be careful about jumping over any ledges or you’ll need Fly to get back. In the grass you’ll be able to catch a few version exclusives. You’ll find Phanpy and Skarmory. Watch out because Teddiursa and Phanpy can flee!
         </p>
         <pre>
-          (G) Teddiursa → (Lv. 30) → Ursaring
-          (G) Gligar
-          (S) Phanpy → (Lv. 25) → Donphan
-          (S) Skarmory
+          Phanpy → (Lv. 25) → Donphan
+          Skarmory
         </pre>
 
         <h5>Levelling Tips</h5>
@@ -1475,15 +1423,6 @@ With the ability to use Surf we can access a few additional areas. Before we do 
         },
 
         /* --------------------------- Route 45 -------------------------------- */
-        {
-          pokemon: { img: "assets/images/Gold/pokedex/Spr_2g_216.png", name: "Teddiursa" },
-          method: "Route 45 (Gold; can flee)"
-        },
-        {
-          pokemon: { img: "assets/images/Gold/pokedex/Spr_2g_217.png", name: "Ursaring" },
-          method: "Evolve from Teddiursa at level 30"
-        },
-        { pokemon: { img: "assets/images/Gold/pokedex/Spr_2g_207.png", name: "Gligar" }, method: "Route 45 (Gold)" },
         {
           pokemon: { img: "assets/images/Gold/pokedex/Spr_2g_231.png", name: "Phanpy" },
           method: "Route 45 (Silver; can flee)"
@@ -1624,8 +1563,7 @@ With the ability to use Surf we can access a few additional areas. Before we do 
           Snorlax
           Diglett → (Lv. 26) → Dugtrio
           Pikachu
-          (G) Lugia
-          (S) Ho-Oh
+          Ho-Oh
           Clefairy → (Moon Stone) → Clefable
           Nidorina/Nidorino → (Moon Stone) → Nidoqueen/Nidoking
           Mr Mime
@@ -1682,13 +1620,6 @@ With the ability to use Surf we can access a few additional areas. Before we do 
           choiceValue: "ninetales",
           pokemon: { img: "assets/images/Gold/pokedex/Spr_2g_038.png", name: "Ninetales" },
           method: "Pick the Fire Stone evolution (Vulpix → Ninetales)"
-        },
-        {
-          type: "choice",
-          choiceKey: "stone-fire",
-          choiceValue: "arcanine",
-          pokemon: { img: "assets/images/Gold/pokedex/Spr_2g_059.png", name: "Arcanine" },
-          method: "Pick the Fire Stone evolution (Growlithe → Arcanine)"
         },
         {
           type: "choice",
@@ -1891,11 +1822,6 @@ With the ability to use Surf we can access a few additional areas. Before we do 
           pokemon: { img: "assets/images/Gold/pokedex/Spr_2g_038.png", name: "Ninetales" },
           method: "Use a Fire Stone on Vulpix",
           requires: { "stone-fire": "ninetales" }
-        },
-        {
-          pokemon: { img: "assets/images/Gold/pokedex/Spr_2g_059.png", name: "Arcanine" },
-          method: "Use a Fire Stone on Growlithe",
-          requires: { "stone-fire": "arcanine" }
         },
         {
           pokemon: { img: "assets/images/Gold/pokedex/Spr_2g_136.png", name: "Flareon" },
