@@ -92,7 +92,7 @@ def main():
     "Pre Badge 1": {{
       headerTitle: "Pre Badge 1",
       
-      headerImg: "assets/images/{gname}}/badges/",
+      headerImg: "assets/images/{gname}/badges/",
       headerImgAlt: "",
 
       summaryShort: "",
