@@ -625,7 +625,7 @@ window.gameData = {
       headerTitle: "Pre Badge #3 - Whitney",
       headerImg: "assets/images/Gold/badges/Spr_GS_Whitney.png",
       headerImgAlt: "Whitney as she appeared in Pokemon Gold and Silver",
-      
+
       summaryShort: `With Bugsy defeated, we can finally use Cut and advance through Ilex Forest. There’s nothing else to catch here.`,
       summaryHtml: `
         <h5>Route 34</h5>
@@ -835,7 +835,7 @@ window.gameData = {
       headerTitle: "Pre Badge #4 - Morty",
       headerImg: "assets/images/Gold/badges/Spr_GS_Morty.png",
       headerImgAlt: "Morty as he appeared in Pokemon Gold and Silver",
-      
+
       summaryShort: `Defeat Whitney and then go to the flower shop to get the watering can which will help you get rid of the ‘tree’ on route 36. Head up there, save your game before hand as this is your only chance to capture a Sudowoodo. Once you’ve caught it, speak to the man on the right of Sudowoodo who will give you the TM for Rock Smash.`,
       summaryHtml: `
         <h5>Sudowoodo</h5>
@@ -1079,7 +1079,7 @@ window.gameData = {
       headerTitle: "Pre Badge #5 - Pryce",
       headerImg: "assets/images/Gold/badges/Spr_GS_Pryce.png",
       headerImgAlt: "Pryce as he appeared in Pokemon Gold and Silver",
-      
+
       summaryShort: `We’ve got a choice between THREE gyms at this point! Defeating Chuck only gives us access to Fly which doesn’t give us any pokemon. Defeating Jasmine gives us NO perks therefore we will be going with Pryce who will give us access to use Whirlpool which lets us catch a small handful of pokemon.
 
 With the ability to use Surf we can access a few additional areas. Before we do that, let’s backtrack for a moment.`,
@@ -1222,7 +1222,7 @@ With the ability to use Surf we can access a few additional areas. Before we do 
       headerTitle: "Pre Badge #6 - Jasmine (also Chuck)",
       headerImg: "assets/images/Gold/badges/Spr_GS_Jamsine.png",
       headerImgAlt: "Jasmine as she appeared in Pokemon Gold and Silver",
-      
+
       summaryShort: `With Pryce defeated, Whirlpool can be used to get us into the Whirl Islands on Route 41. Running around in the caves you’ll be able to find a Seel, whilst Horsea can be found when you surf on the water.`,
       summaryHtml: `
         <h5>Whirl Islands</h5>
@@ -1280,7 +1280,7 @@ With the ability to use Surf we can access a few additional areas. Before we do 
       headerTitle: "Pre Badge #8 - Clair",
       headerImg: "assets/images/Gold/badges/Spr_GS_Clair.png",
       headerImgAlt: "Clair as she appeared in Pokemon Gold and Silver",
-      
+
       summaryShort: `Once you’ve obtained the seventh badge, Professor Elm will call you and you can kick off the events that require you to stop Team Rocket’s takeover in Goldenrod City’s Radio Tower. It is possible to venture onwards to Blackthorn before clearing the Radio Tower so consider obtaining some new Pokémon and training them up against the grunts. Once you’ve kicked out Team Rocket you’ll be given the Rainbow Wing (Gold) or Silver Wing (Silver) which will let you catch the box legendary.`,
       summaryHtml: `
         <h5>Version Legendaries</h5>
@@ -1407,14 +1407,14 @@ With the ability to use Surf we can access a few additional areas. Before we do 
         {
           pokemon: { img: "assets/images/Gold/pokedex/Spr_2g_217.png", name: "Ursaring" },
           method: "Evolve from Teddiursa at level 30"
-        },
+        }
       ]
     },
     "E4": {
       headerTitle: "Pre Elite Four",
       headerImg: "assets/images/Gold/badges/Spr_GS_Lance.png",
       headerImgAlt: "Lance as he appeared in Pokemon Gold and Silver",
-      
+
       summaryShort: `Clair is defeated and you will need to do the trial in the Dragons Den. Once that’s over you’ll have your final badge and also be able to use Waterfall. Head to New Bark Town and see Prof Elm for a Master Ball. Before you head to the Pokemon League there’s a small detour to make. Bring your HM slaves to Mt Mortar leaving a spare slot in your party. Enter the middle section of Mt Mortar (surf over the water between Mahogany/Ecruteak) and climb up the waterfall, enter the next room and work your way round the cave until you reach a Karate King trainer. Defeat him and he’ll give you a Tyrogue. Depending on its stats at level 20 decides which pokemon it will evolve into. Once you’ve evolved it, breed that evolution with Ditto to hatch more eggs to get the other two evolutions.`,
       summaryHtml: `
         <h5>Mt Mortar (Karate King)</h5>
@@ -1494,7 +1494,7 @@ With the ability to use Surf we can access a few additional areas. Before we do 
       headerTitle: "Pre Kanto Badges",
       headerImg: "assets/images/Gold/badges/Spr_GS_Blue.png",
       headerImgAlt: "Blue as he appeared in Pokemon Gold and Silver",
-      
+
       summaryShort: `So you’re the Johto champion and you can now sail to Vermilion City and take on the gym challenge. The majority of the remaining pokemon in the challenge can be caught before obtaining a single badge from any of the Kanto Gym Leaders. Your two main objectives to get around Kanto properly is to restore the power plant and get the radio card upgrade.`,
       summaryHtml: `
         <h5>Restoring the Power</h5>
@@ -1761,11 +1761,13 @@ With the ability to use Surf we can access a few additional areas. Before we do 
         {
           pokemon: { img: "assets/images/Gold/pokedex/Spr_2g_031.png", name: "Nidoqueen" },
           method: "Use a Moon Stone on Nidorina (Mt. Moon)",
+          requires: { "moonstone-nido": "nidorino" },
           requiresNot: { "moonstone-nido": "nidorina" }
         },
         {
           pokemon: { img: "assets/images/Gold/pokedex/Spr_2g_034.png", name: "Nidoking" },
           method: "Use a Moon Stone on Nidorino (Mt. Moon)",
+          requires: { "moonstone-nido": "nidorina" },
           requiresNot: { "moonstone-nido": "nidorino" }
         },
         {
@@ -1857,7 +1859,7 @@ With the ability to use Surf we can access a few additional areas. Before we do 
       headerTitle: "Post Kanto Badges",
       headerImg: "assets/images/Gold/badges/Spr_GS_Oak.png",
       headerImgAlt: "Professor Oak as he appeared in Pokemon Gold and Silver",
-      
+
       summaryShort: `With all of the Kanto badges, go see Professor Oak who will let you access Mt Silver. Head up to the pokemon league gates and you can exit to the west on to Route 28.`,
       summaryHtml: `
         <h5>Route 28 and Silver Cave</h5>

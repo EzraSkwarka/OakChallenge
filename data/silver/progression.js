@@ -1739,11 +1739,13 @@ With the ability to use Surf we can access a few additional areas. Before we do 
         {
           pokemon: { img: "assets/images/Gold/pokedex/Spr_2g_031.png", name: "Nidoqueen" },
           method: "Use a Moon Stone on Nidorina (Mt. Moon)",
+          requires: { "moonstone-nido": "nidorino" },
           requiresNot: { "moonstone-nido": "nidorina" }
         },
         {
           pokemon: { img: "assets/images/Gold/pokedex/Spr_2g_034.png", name: "Nidoking" },
           method: "Use a Moon Stone on Nidorino (Mt. Moon)",
+          requires: { "moonstone-nido": "nidorina" },
           requiresNot: { "moonstone-nido": "nidorino" }
         },
         {
