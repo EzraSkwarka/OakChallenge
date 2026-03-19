@@ -39,7 +39,7 @@
         "notes": "",
         "cover": "assets/images/covers/gold.png",
         "href": "pages/tracker/gold.html",
-        "available": false
+        "available": true
       },
       {
         "id": "silver",
@@ -49,7 +49,7 @@
         "notes": "",
         "cover": "assets/images/covers/silver.png",
         "href": "pages/tracker/silver.html",
-        "available": false
+        "available": true
       },
       {
         "id": "crystal",

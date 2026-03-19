@@ -269,15 +269,19 @@ function renderGameTips() {
 ------------------------------ */
 const VIEW_LS = `poke-view:${PAGE_NS}`;
 let VIEW_MODE = localStorage.getItem(VIEW_LS) === "grid" ? "grid" : "list";
+
 function setViewMode(mode) {
   VIEW_MODE = mode === "grid" ? "grid" : "list";
   localStorage.setItem(VIEW_LS, VIEW_MODE);
   renderCtx.keyOrder = [];
   renderCtx.rowNodes.clear();
+  const tbody = document.querySelector("#pokemon-table tbody");
+  if (tbody) tbody.textContent = "";
   render();
   StickyHeader.update();
   syncViewButtons();
 }
+
 function syncViewButtons() {
   const isGrid = VIEW_MODE === "grid";
   document.querySelectorAll(".view-btn.view-list").forEach((b) => b.classList.toggle("active", !isGrid));
