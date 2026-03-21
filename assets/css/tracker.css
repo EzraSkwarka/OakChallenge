@@ -1,35 +1,45 @@
-/* -----------------------------
- Tracker: Page Reset
------------------------------- */
+/* -----------------------------  Root Variables  ------------------------------ */
+:root {
+  --card-w: 132px;
+
+  --choice-band: color-mix(in srgb, #f5d9b5 6%, var(--surface, #fff));
+  --choice-band-hover: color-mix(in srgb, #f5d9b5 12%, var(--surface, #fff));
+  --choice-accent: #e0a76f;
+  --choice-accent-selected: #ff8c00;
+}
+html[data-theme="dark"],
+body[data-theme="dark"] {
+  --choice-band: color-mix(in srgb, #f1c48a 8%, var(--surface));
+  --choice-band-hover: color-mix(in srgb, #f1c48a 16%, var(--surface));
+}
+
+@media (max-width: 600px) {
+  :root {
+    --band-width: 98vw;
+  }
+}
+@media (max-width: 360px) {
+  :root {
+    --card-w: 120px;
+  }
+}
+
+/* -----------------------------  Tracker: Page Reset  ------------------------------ */
 html,
 body {
   margin: 0;
   padding: 0;
 }
 #site-header-host {
-  margin: 0;
-  padding: 0;
   display: block;
 }
 
-ul, ol {
-  padding-inline-start: 1rem;
-}
-
-li {
-  padding-left: 0;
-}
-
-/* -----------------------------
- Page Band
------------------------------- */
+/* -----------------------------  Page Band  ------------------------------ */
 .page-band {
   width: var(--band-width);
   max-width: var(--band-max);
   margin: 0 auto;
 }
-
-
 .page-band .container,
 .page-band .table-wrap,
 .page-band .footer-actions {
@@ -51,9 +61,7 @@ li {
   margin: 1rem 0 2rem;
 }
 
-/* -----------------------------
- Header: left column + logo
------------------------------- */
+/* -----------------------------  Header: left column + logo  ------------------------------ */
 .header-left {
   min-width: 0;
   max-width: 100%;
@@ -77,9 +85,7 @@ li {
   }
 }
 
-/* -----------------------------
- Game Logo: responsive shrink
------------------------------- */
+/* -----------------------------  Game Logo: responsive shrink  ------------------------------ */
 #game-title {
   max-width: 100%;
 }
@@ -91,9 +97,7 @@ li {
   object-fit: contain;
 }
 
-/* -----------------------------
- Game Tips (Accordion, vertical below title)
------------------------------- */
+/* -----------------------------  Game Tips (Accordion, vertical below title)  ------------------------------ */
 .game-tips {
   margin: 0 0 0.9rem;
 }
@@ -101,9 +105,7 @@ li {
   font-weight: 700;
 }
 
-/* -----------------------------
- Tips Source
------------------------------- */
+/* -----------------------------  Tips Source  ------------------------------ */
 .tips-source {
   margin-top: 0.6rem;
   color: var(--muted);
@@ -114,9 +116,7 @@ li {
   text-decoration: underline;
 }
 
-/* -----------------------------
- Table Shell
------------------------------- */
+/* -----------------------------  Table Shell  ------------------------------ */
 .table-wrap {
   width: var(--band-width, 90vw);
   max-width: var(--band-max, 1400px);
@@ -144,13 +144,11 @@ thead th {
 }
 tbody td {
   border-bottom: 1px solid var(--border);
-  /* padding: 0.7rem 0.9rem; */
+  padding: 0.7rem 0.9rem;
   vertical-align: middle;
 }
 
-/* -----------------------------
- Table Section Headers
------------------------------- */
+/* -----------------------------  Table Section Headers  ------------------------------ */
 .section-header td {
   background: var(--bg-alt);
   color: var(--text);
@@ -179,14 +177,12 @@ tbody td {
   line-height: 1.2;
 }
 .section-header-controls {
-  margin-left: auto;
+  margin-left: 0;
   display: inline-flex;
   gap: 6px;
 }
 
-/* -----------------------------
- Choice Subheader Row
------------------------------- */
+/* -----------------------------  Choice Subheader Row  ------------------------------ */
 .choice-subheader-row td {
   background: var(--bg-alt);
   color: var(--text);
@@ -197,9 +193,7 @@ tbody td {
   border-bottom: 1px solid var(--border);
 }
 
-/* -----------------------------
- Rows
------------------------------- */
+/* -----------------------------  Rows  ------------------------------ */
 tbody tr.row-normal {
   cursor: pointer;
   user-select: none;
@@ -214,20 +208,7 @@ tbody tr.row-normal:hover {
   background: var(--caught-hover);
 }
 
-/* -----------------------------
- Choice Rows (banded)
------------------------------- */
-:root {
-  --choice-band: color-mix(in srgb, #f5d9b5 6%, var(--surface, #fff));
-  --choice-band-hover: color-mix(in srgb, #f5d9b5 12%, var(--surface, #fff));
-  --choice-accent: #e0a76f;             /* left bar (default) */
-  --choice-accent-selected: #ff8c00;    /* left bar when selected */
-}
-html[data-theme="dark"],
-body[data-theme="dark"] {
-  --choice-band: color-mix(in srgb, #f1c48a 8%, var(--surface));
-  --choice-band-hover: color-mix(in srgb, #f1c48a 16%, var(--surface));
-}
+/* -----------------------------  Choice Rows (banded)  ------------------------------ */
 tr.row-choice.compact-band td {
   background: var(--choice-band);
   position: relative;
@@ -235,7 +216,6 @@ tr.row-choice.compact-band td {
 tr.row-choice.compact-band:hover td {
   background: var(--choice-band-hover);
 }
-/* Left indicator bar */
 tr.row-choice.compact-band td:first-child::before {
   content: "";
   position: absolute;
@@ -247,16 +227,13 @@ tr.row-choice.compact-band td:first-child::before {
   opacity: 0.9;
   border-radius: 2px;
 }
-/* Selected state: thicken and recolor the existing left indicator */
 tr.row-choice.compact-band.is-selected td:first-child::before {
   width: 8px;
   background: var(--choice-accent-selected);
 }
-/* Do not show any badge in the caught column */
 .row-choice .choice-badge {
   display: none !important;
 }
-
 tr.row-choice.compact-band.choice-group-start td {
   box-shadow: inset 0 1px 0 0 rgba(0, 0, 0, 0.06);
   border-top-left-radius: 4px;
@@ -270,9 +247,7 @@ tr.row-choice.compact-band + tr.row-choice.compact-band td {
   border-top-color: transparent;
 }
 
-/* -----------------------------
- Pokémon Cell (list mode)
------------------------------- */
+/* -----------------------------  Pokémon Cell (list mode)  ------------------------------ */
 .pkm {
   display: flex;
   align-items: center;
@@ -287,9 +262,7 @@ tr.row-choice.compact-band + tr.row-choice.compact-band td {
   background: var(--surface);
 }
 
-/* -----------------------------
- Section Summary (rich)
------------------------------- */
+/* -----------------------------  Section Summary (rich)  ------------------------------ */
 .summary-block {
   display: grid;
   gap: 6px;
@@ -298,18 +271,19 @@ tr.row-choice.compact-band + tr.row-choice.compact-band td {
   color: var(--muted);
   font-size: 13px;
   line-height: 1.45;
-  text-indent: 0.3rem
 }
 .summary-accordion {
-  /* border: 1px solid var(--border); */
+  width: 100%;
+  border: 1px solid var(--border);
   border-radius: var(--radius-md, 10px);
   background: var(--surface);
-  /* box-shadow: var(--shadow-sm, 0 1px 2px rgba(2, 6, 23, 0.05)); */
+  box-shadow: var(--shadow-sm, 0 1px 2px rgba(2, 6, 23, 0.05));
   overflow: hidden;
 }
 .summary-accordion > summary {
   list-style: none;
   cursor: pointer;
+  padding: 8px 12px;
   font-weight: 600;
   color: var(--text);
   display: flex;
@@ -325,6 +299,7 @@ tr.row-choice.compact-band + tr.row-choice.compact-band td {
   background: var(--bg-alt);
 }
 .summary-long {
+  padding: 10px 12px;
   font-size: 13px;
   color: var(--text);
   background: var(--surface);
@@ -333,7 +308,13 @@ tr.row-choice.compact-band + tr.row-choice.compact-band td {
 .summary-long p {
   margin: 0 0 0.6rem 0;
 }
-
+.summary-long ul,
+.summary-long ol {
+  margin: 0.4rem 0 0.6rem 1.1rem;
+}
+.summary-long li {
+  margin: 0.2rem 0;
+}
 .summary-long a {
   color: var(--focus);
   text-decoration: underline;
@@ -353,26 +334,20 @@ tr.row-choice.compact-band + tr.row-choice.compact-band td {
   color: var(--muted);
 }
 
-.summary-long pre {
-  margin: 0.4rem 0;
-  padding: 0.35rem 0.6rem;
-  white-space: pre-wrap;
-  tab-size: 2;
+/* -----------------------------  Grid cards (CSS Grid layout)  ------------------------------ */
+.grid-row td {
+  padding: 0;
 }
-
-/* -----------------------------
- Grid cards (fixed-size layout)
------------------------------- */
 .group-grid {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, var(--card-w));
+  justify-content: space-evenly;
   gap: var(--grid-gap, 12px);
-  align-items: flex-start;
-  justify-content: flex-start;
+  align-items: start;
   box-sizing: border-box;
 }
 .pkm-card {
-  width: 132px;
+  width: var(--card-w);
   display: grid;
   gap: 6px;
   cursor: pointer;
@@ -413,65 +388,8 @@ tr.row-choice.compact-band + tr.row-choice.compact-band td {
   outline: 2px solid var(--focus);
   outline-offset: 2px;
 }
-@media (max-width: 360px) {
-  .pkm-card {
-    width: 120px;
-  }
-}
 
-/* -----------------------------
- Grid catch mark overlay
------------------------------- */
-.pkm-card-thumb .catch-mark {
-  position: absolute;
-  right: 6px;
-  bottom: 6px;
-  width: 16px;
-  height: 16px;
-  max-width: 16px;
-  max-height: 16px;
-  object-fit: contain;
-}
-
-/* -----------------------------
- Grid spacing (per-grid gap classes)
------------------------------- */
-.group-grid {
-  gap: var(--grid-gap, 12px);
-}
-.gap-4  { --grid-gap: 4px; }
-.gap-5  { --grid-gap: 5px; }
-.gap-6  { --grid-gap: 6px; }
-.gap-7  { --grid-gap: 7px; }
-.gap-8  { --grid-gap: 8px; }
-.gap-9  { --grid-gap: 9px; }
-.gap-10 { --grid-gap: 10px; }
-.gap-11 { --grid-gap: 11px; }
-.gap-12 { --grid-gap: 12px; }
-.gap-13 { --grid-gap: 13px; }
-.gap-14 { --grid-gap: 14px; }
-.gap-15 { --grid-gap: 15px; }
-.gap-16 { --grid-gap: 16px; }
-.gap-17 { --grid-gap: 17px; }
-.gap-18 { --grid-gap: 18px; }
-.gap-19 { --grid-gap: 19px; }
-.gap-20 { --grid-gap: 20px; }
-.gap-21 { --grid-gap: 21px; }
-.gap-22 { --grid-gap: 22px; }
-.gap-23 { --grid-gap: 23px; }
-.gap-24 { --grid-gap: 24px; }
-.gap-25 { --grid-gap: 25px; }
-.gap-26 { --grid-gap: 26px; }
-.gap-27 { --grid-gap: 27px; }
-.gap-28 { --grid-gap: 28px; }
-.gap-29 { --grid-gap: 29px; }
-.gap-30 { --grid-gap: 30px; }
-.gap-31 { --grid-gap: 31px; }
-.gap-32 { --grid-gap: 32px; }
-
-/* -----------------------------
- Progress Bar
------------------------------- */
+/* -----------------------------  Progress Bar  ------------------------------ */
 .section-progress td {
   background: var(--surface);
   color: var(--muted);
@@ -504,114 +422,312 @@ tr.row-choice.compact-band + tr.row-choice.compact-band td {
   color: var(--text);
 }
 
-/* -----------------------------
- Progress width utilities
------------------------------- */
-.w-0  { width: 0%; }
-.w-1  { width: 1%; }
-.w-2  { width: 2%; }
-.w-3  { width: 3%; }
-.w-4  { width: 4%; }
-.w-5  { width: 5%; }
-.w-6  { width: 6%; }
-.w-7  { width: 7%; }
-.w-8  { width: 8%; }
-.w-9  { width: 9%; }
-.w-10 { width: 10%; }
-.w-11 { width: 11%; }
-.w-12 { width: 12%; }
-.w-13 { width: 13%; }
-.w-14 { width: 14%; }
-.w-15 { width: 15%; }
-.w-16 { width: 16%; }
-.w-17 { width: 17%; }
-.w-18 { width: 18%; }
-.w-19 { width: 19%; }
-.w-20 { width: 20%; }
-.w-21 { width: 21%; }
-.w-22 { width: 22%; }
-.w-23 { width: 23%; }
-.w-24 { width: 24%; }
-.w-25 { width: 25%; }
-.w-26 { width: 26%; }
-.w-27 { width: 27%; }
-.w-28 { width: 28%; }
-.w-29 { width: 29%; }
-.w-30 { width: 30%; }
-.w-31 { width: 31%; }
-.w-32 { width: 32%; }
-.w-33 { width: 33%; }
-.w-34 { width: 34%; }
-.w-35 { width: 35%; }
-.w-36 { width: 36%; }
-.w-37 { width: 37%; }
-.w-38 { width: 38%; }
-.w-39 { width: 39%; }
-.w-40 { width: 40%; }
-.w-41 { width: 41%; }
-.w-42 { width: 42%; }
-.w-43 { width: 43%; }
-.w-44 { width: 44%; }
-.w-45 { width: 45%; }
-.w-46 { width: 46%; }
-.w-47 { width: 47%; }
-.w-48 { width: 48%; }
-.w-49 { width: 49%; }
-.w-50 { width: 50%; }
-.w-51 { width: 51%; }
-.w-52 { width: 52%; }
-.w-53 { width: 53%; }
-.w-54 { width: 54%; }
-.w-55 { width: 55%; }
-.w-56 { width: 56%; }
-.w-57 { width: 57%; }
-.w-58 { width: 58%; }
-.w-59 { width: 59%; }
-.w-60 { width: 60%; }
-.w-61 { width: 61%; }
-.w-62 { width: 62%; }
-.w-63 { width: 63%; }
-.w-64 { width: 64%; }
-.w-65 { width: 65%; }
-.w-66 { width: 66%; }
-.w-67 { width: 67%; }
-.w-68 { width: 68%; }
-.w-69 { width: 69%; }
-.w-70 { width: 70%; }
-.w-71 { width: 71%; }
-.w-72 { width: 72%; }
-.w-73 { width: 73%; }
-.w-74 { width: 74%; }
-.w-75 { width: 75%; }
-.w-76 { width: 76%; }
-.w-77 { width: 77%; }
-.w-78 { width: 78%; }
-.w-79 { width: 79%; }
-.w-80 { width: 80%; }
-.w-81 { width: 81%; }
-.w-82 { width: 82%; }
-.w-83 { width: 83%; }
-.w-84 { width: 84%; }
-.w-85 { width: 85%; }
-.w-86 { width: 86%; }
-.w-87 { width: 87%; }
-.w-88 { width: 88%; }
-.w-89 { width: 89%; }
-.w-90 { width: 90%; }
-.w-91 { width: 91%; }
-.w-92 { width: 92%; }
-.w-93 { width: 93%; }
-.w-94 { width: 94%; }
-.w-95 { width: 95%; }
-.w-96 { width: 96%; }
-.w-97 { width: 97%; }
-.w-98 { width: 98%; }
-.w-99 { width: 99%; }
-.w-100{ width: 100%; }
+/* -----------------------------  Progress width utilities  ------------------------------ */
+.w-0 {
+  width: 0%;
+}
+.w-1 {
+  width: 1%;
+}
+.w-2 {
+  width: 2%;
+}
+.w-3 {
+  width: 3%;
+}
+.w-4 {
+  width: 4%;
+}
+.w-5 {
+  width: 5%;
+}
+.w-6 {
+  width: 6%;
+}
+.w-7 {
+  width: 7%;
+}
+.w-8 {
+  width: 8%;
+}
+.w-9 {
+  width: 9%;
+}
+.w-10 {
+  width: 10%;
+}
+.w-11 {
+  width: 11%;
+}
+.w-12 {
+  width: 12%;
+}
+.w-13 {
+  width: 13%;
+}
+.w-14 {
+  width: 14%;
+}
+.w-15 {
+  width: 15%;
+}
+.w-16 {
+  width: 16%;
+}
+.w-17 {
+  width: 17%;
+}
+.w-18 {
+  width: 18%;
+}
+.w-19 {
+  width: 19%;
+}
+.w-20 {
+  width: 20%;
+}
+.w-21 {
+  width: 21%;
+}
+.w-22 {
+  width: 22%;
+}
+.w-23 {
+  width: 23%;
+}
+.w-24 {
+  width: 24%;
+}
+.w-25 {
+  width: 25%;
+}
+.w-26 {
+  width: 26%;
+}
+.w-27 {
+  width: 27%;
+}
+.w-28 {
+  width: 28%;
+}
+.w-29 {
+  width: 29%;
+}
+.w-30 {
+  width: 30%;
+}
+.w-31 {
+  width: 31%;
+}
+.w-32 {
+  width: 32%;
+}
+.w-33 {
+  width: 33%;
+}
+.w-34 {
+  width: 34%;
+}
+.w-35 {
+  width: 35%;
+}
+.w-36 {
+  width: 36%;
+}
+.w-37 {
+  width: 37%;
+}
+.w-38 {
+  width: 38%;
+}
+.w-39 {
+  width: 39%;
+}
+.w-40 {
+  width: 40%;
+}
+.w-41 {
+  width: 41%;
+}
+.w-42 {
+  width: 42%;
+}
+.w-43 {
+  width: 43%;
+}
+.w-44 {
+  width: 44%;
+}
+.w-45 {
+  width: 45%;
+}
+.w-46 {
+  width: 46%;
+}
+.w-47 {
+  width: 47%;
+}
+.w-48 {
+  width: 48%;
+}
+.w-49 {
+  width: 49%;
+}
+.w-50 {
+  width: 50%;
+}
+.w-51 {
+  width: 51%;
+}
+.w-52 {
+  width: 52%;
+}
+.w-53 {
+  width: 53%;
+}
+.w-54 {
+  width: 54%;
+}
+.w-55 {
+  width: 55%;
+}
+.w-56 {
+  width: 56%;
+}
+.w-57 {
+  width: 57%;
+}
+.w-58 {
+  width: 58%;
+}
+.w-59 {
+  width: 59%;
+}
+.w-60 {
+  width: 60%;
+}
+.w-61 {
+  width: 61%;
+}
+.w-62 {
+  width: 62%;
+}
+.w-63 {
+  width: 63%;
+}
+.w-64 {
+  width: 64%;
+}
+.w-65 {
+  width: 65%;
+}
+.w-66 {
+  width: 66%;
+}
+.w-67 {
+  width: 67%;
+}
+.w-68 {
+  width: 68%;
+}
+.w-69 {
+  width: 69%;
+}
+.w-70 {
+  width: 70%;
+}
+.w-71 {
+  width: 71%;
+}
+.w-72 {
+  width: 72%;
+}
+.w-73 {
+  width: 73%;
+}
+.w-74 {
+  width: 74%;
+}
+.w-75 {
+  width: 75%;
+}
+.w-76 {
+  width: 76%;
+}
+.w-77 {
+  width: 77%;
+}
+.w-78 {
+  width: 78%;
+}
+.w-79 {
+  width: 79%;
+}
+.w-80 {
+  width: 80%;
+}
+.w-81 {
+  width: 81%;
+}
+.w-82 {
+  width: 82%;
+}
+.w-83 {
+  width: 83%;
+}
+.w-84 {
+  width: 84%;
+}
+.w-85 {
+  width: 85%;
+}
+.w-86 {
+  width: 86%;
+}
+.w-87 {
+  width: 87%;
+}
+.w-88 {
+  width: 88%;
+}
+.w-89 {
+  width: 89%;
+}
+.w-90 {
+  width: 90%;
+}
+.w-91 {
+  width: 91%;
+}
+.w-92 {
+  width: 92%;
+}
+.w-93 {
+  width: 93%;
+}
+.w-94 {
+  width: 94%;
+}
+.w-95 {
+  width: 95%;
+}
+.w-96 {
+  width: 96%;
+}
+.w-97 {
+  width: 97%;
+}
+.w-98 {
+  width: 98%;
+}
+.w-99 {
+  width: 99%;
+}
+.w-100 {
+  width: 100%;
+}
 
-/* -----------------------------
- Animations
------------------------------- */
+/* -----------------------------  Animations  ------------------------------ */
 @media (prefers-reduced-motion: reduce) {
   .row-enter,
   .row-enter.row-enter-active,
@@ -624,22 +740,24 @@ tr.row-choice.compact-band + tr.row-choice.compact-band td {
   transform: translateY(6px);
 }
 .row-enter.row-enter-active {
-  transition: opacity 160ms ease, transform 160ms ease;
+  transition:
+    opacity 160ms ease,
+    transform 160ms ease;
   opacity: 1;
   transform: translateY(0);
 }
 .row-exit {
   overflow: hidden;
-  transition: height 180ms ease, opacity 140ms ease;
+  transition:
+    height 180ms ease,
+    opacity 140ms ease;
 }
 .table-wrapper,
 #pokemon-table tbody {
   will-change: contents, transform;
 }
 
-/* -----------------------------
- Utilities
------------------------------- */
+/* -----------------------------  Utilities  ------------------------------ */
 .muted {
   color: var(--muted);
   font-size: 12px;
@@ -648,9 +766,7 @@ tr.row-choice.compact-band + tr.row-choice.compact-band td {
   text-align: center;
 }
 
-/* -----------------------------
- Catch mark (both views) + Table pokéball sizing
------------------------------- */
+/* -----------------------------  Catch mark (both views) + Table pokéball sizing  ------------------------------ */
 .catch-mark {
   width: 16px;
   height: 16px;
@@ -668,7 +784,6 @@ tr.row-choice.compact-band + tr.row-choice.compact-band td {
   background: transparent;
   cursor: pointer;
 }
-/* Force correct size for table-view pokéball inside the button */
 td .catch-btn .catch-mark,
 td .catch-btn img.catch-mark {
   width: 16px !important;
@@ -678,9 +793,18 @@ td .catch-btn img.catch-mark {
   flex: 0 0 auto;
 }
 
-/* -----------------------------
- Choice Status Chips (scoped, higher specificity)
------------------------------- */
+.pkm-card-thumb .catch-mark {
+  position: absolute;
+  right: 6px;
+  bottom: 6px;
+  width: 16px;
+  height: 16px;
+  max-width: 16px;
+  max-height: 16px;
+  object-fit: contain;
+}
+
+/* -----------------------------  Choice Status Chips (scoped)  ------------------------------ */
 #choice-status.choice-status {
   display: flex;
   flex-wrap: wrap;

@@ -17,7 +17,8 @@
 
 /* -----------------------------
     Floating bar contents
-  ------------------------------ */
+
+------------------------------ */
 .floating-section-inner {
   width: var(--band-width, 90vw);
   max-width: var(--band-max, 1400px);
@@ -36,14 +37,16 @@
 
 /* -----------------------------
     Spacer to preserve layout flow
-  ------------------------------ */
+
+------------------------------ */
 .floating-section-spacer {
   height: var(--floatingBarH, 0px);
 }
 
 /* -----------------------------
     Floating bar visuals
-  ------------------------------ */
+
+------------------------------ */
 .floating-section img {
   width: 28px;
   height: 28px;
@@ -58,7 +61,8 @@
 
 /* -----------------------------
     View Mode Buttons (shared)
-  ------------------------------ */
+
+------------------------------ */
 .view-btn {
   display: inline-flex;
   align-items: center;
@@ -87,7 +91,8 @@
 
 /* -----------------------------
     Disable legacy in-table sticky
-  ------------------------------ */
+
+------------------------------ */
 .section-header td,
 .section-header .section-header-content,
 .subheader-row td,
@@ -99,7 +104,8 @@
 
 /* -----------------------------
     Scroll behavior
-  ------------------------------ */
+
+------------------------------ */
 .table-wrap {
   overflow-x: auto;
   overflow-y: visible;
@@ -107,7 +113,8 @@
 
 /* -----------------------------
     Pointer events layering
-  ------------------------------ */
+
+------------------------------ */
 .floating-section {
   pointer-events: none;
 }
