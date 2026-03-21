@@ -28,6 +28,12 @@
   --band-max: 1400px;
 }
 
+@media (max-width: 600px) {
+  :root {
+    --band-width: 96vw;
+  }
+}
+
 /* -----------------------------
    Dark Theme
 ------------------------------ */
@@ -69,11 +75,31 @@ body {
    Containers
 ------------------------------ */
 .container {
-  width: var(--band-width);
-  max-width: var(--band-max);
-  margin: 0 auto;
-  padding: 0.9rem 0 1.1rem;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-x: clip;
 }
+
+.container > * {
+  width: min(var(--band-width), 100%);
+  max-width: var(--band-max);
+  margin-inline: auto;
+  padding-inline: 0.9rem;
+  padding-block: 0.9rem;
+  box-sizing: border-box;
+}
+
+.container > * > * {
+  width: 100%;
+  max-width: 100%;
+  margin-inline: 0;
+  padding-inline: 0;
+  box-sizing: border-box;
+}
+
 
 /* -----------------------------
    Buttons

@@ -1,5 +1,5 @@
-/* -----------------------------
- Professor Oak’s Challenge — Progress Tracker Engine
+/* -----------------------------  
+| Professor Oak’s Challenge — Progress Tracker Engine 
 ------------------------------ */
 /**
  * This file reads the game-specific data exposed as `window.gameData`
@@ -17,13 +17,15 @@
  * This file assumes all game content is defined elsewhere and contains
  * no game-specific logic or data.
  */
-/* -----------------------------
- Constants / Helpers
+
+/* -----------------------------  
+|Constants / Helpers
 ------------------------------ */
 const PLACEHOLDER_SRC = "assets/images/placeholder.png";
 const POKEBALL_CAUGHT = "assets/images/ui/pokeball.png";
 const POKEBALL_UNCAUGHT = "assets/images/ui/pokeball_dark.png";
 const CHOICE_DEFAULT_CAP = 1;
+
 const cap = (s) => (s ? s[0].toUpperCase() + s.slice(1) : s);
 const norm = (v) => (typeof v === "string" ? v.trim().toLowerCase() : v);
 const slug = (s) =>
@@ -33,17 +35,25 @@ const slug = (s) =>
     .replace(/[^a-z0-9]+/g, "-");
 const safeImg = (src) => (!src || src === "link" ? PLACEHOLDER_SRC : src);
 
-/* -----------------------------
- Validate / Load Game Data
+/* -----------------------------  
+|Validate / Load Game Data
 ------------------------------ */
 if (typeof window.gameData !== "object") {
-  throw new Error("gameData not found. Load data/<game>/progression.js before the tracker.");
+  throw new Error(
+    "gameData not found. Load data/<game>/progression.js before the tracker.",
+  );
 }
+
 const PAGE_NS = gameData.gameId || "default";
 const GAME_TITLE = gameData.gameTitle || "Pokémon Game";
+
 const BADGE_GROUPS =
-  (gameData.badgeGroups && typeof gameData.badgeGroups === "object" && gameData.badgeGroups) ||
-  (gameData.progression && typeof gameData.progression === "object" && gameData.progression) ||
+  (gameData.badgeGroups &&
+    typeof gameData.badgeGroups === "object" &&
+    gameData.badgeGroups) ||
+  (gameData.progression &&
+    typeof gameData.progression === "object" &&
+    gameData.progression) ||
   {};
 
 function ensureDataOrExplain() {
@@ -61,8 +71,8 @@ function ensureDataOrExplain() {
   tbody.appendChild(tr);
 }
 
-/* -----------------------------
- State Atom (choices, caught)
+/* -----------------------------  
+|State Atom (choices, caught)
 ------------------------------ */
 const store = (() => {
   let state = { choices: {}, caught: {} };
@@ -81,11 +91,12 @@ const store = (() => {
   return { getState, setState, subscribe };
 })();
 
-/* -----------------------------
- Persistence
+/* -----------------------------  
+|Persistence
 ------------------------------ */
 const LS_CHOICES = `poke-choices:${PAGE_NS}`;
 const LS_CAUGHT = `poke-caught:${PAGE_NS}`;
+
 function loadPersisted() {
   let choices = {};
   try {
@@ -98,20 +109,26 @@ function loadPersisted() {
   } catch {}
   store.setState({ choices, caught });
 }
+
 function saveChoices(choices) {
   localStorage.setItem(LS_CHOICES, JSON.stringify(choices));
 }
+
 function saveCaught(caught) {
   localStorage.setItem(LS_CAUGHT, JSON.stringify(caught));
 }
 
-/* -----------------------------
- UI Refresh
+/* -----------------------------  
+|UI Refresh
 ------------------------------ */
 function refreshUI() {
   render();
   StickyHeader.update();
 }
+
+/* -----------------------------  
+|Choice Mutators
+------------------------------ */
 function setChoice(key, value) {
   const current = store.getState();
   const choices = { ...current.choices, [key]: norm(value) };
@@ -119,6 +136,7 @@ function setChoice(key, value) {
   store.setState({ choices });
   refreshUI();
 }
+
 function clearChoice(key) {
   const current = store.getState();
   const choices = { ...current.choices };
@@ -127,6 +145,7 @@ function clearChoice(key) {
   store.setState({ choices });
   refreshUI();
 }
+
 function toggleChoiceMulti(key, value, capN) {
   const current = store.getState();
   const choices = { ...current.choices };
@@ -137,12 +156,14 @@ function toggleChoiceMulti(key, value, capN) {
   if (i >= 0) arr.splice(i, 1);
   else if (arr.length < Math.max(1, capN || CHOICE_DEFAULT_CAP)) arr.push(v);
   if (arr.length === 0) delete choices[key];
-  else if (arr.length === 1 && (capN || CHOICE_DEFAULT_CAP) === 1) choices[key] = arr[0];
+  else if (arr.length === 1 && (capN || CHOICE_DEFAULT_CAP) === 1)
+    choices[key] = arr[0];
   else choices[key] = arr;
   saveChoices(choices);
   store.setState({ choices });
   refreshUI();
 }
+
 function toggleCaught(name) {
   if (!name) return;
   const current = store.getState();
@@ -152,6 +173,7 @@ function toggleCaught(name) {
   store.setState({ caught });
   refreshUI();
 }
+
 function resetAll() {
   localStorage.removeItem(LS_CHOICES);
   localStorage.removeItem(LS_CAUGHT);
@@ -159,23 +181,26 @@ function resetAll() {
   refreshUI();
 }
 
-/* -----------------------------
- Choice Helpers (selection/disable for multi-select)
+/* -----------------------------  
+|Choice Helpers
 ------------------------------ */
 function choiceSelections(key) {
   const cur = store.getState().choices[key];
   return Array.isArray(cur) ? cur : cur ? [cur] : [];
 }
+
 function isChoiceSelected(key, value) {
   const v = (value ?? "").toString().trim().toLowerCase();
   return choiceSelections(key).includes(v);
 }
+
 function isChoiceDisabled(capN, key, value) {
   if ((capN || 1) <= 1) return false;
   const sel = choiceSelections(key);
   if (sel.includes((value ?? "").toString().trim().toLowerCase())) return false;
   return sel.length >= (capN || 1);
 }
+
 function syncChoiceRowState(tr, row) {
   if (!tr || row.__kind !== "choice") return;
   const selected = isChoiceSelected(row.choiceKey, row.choiceValue);
@@ -187,8 +212,8 @@ function syncChoiceRowState(tr, row) {
   else tr.removeAttribute("aria-disabled");
 }
 
-/* -----------------------------
- Header Layout (logo left, tips right)
+/* -----------------------------  
+|Header Layout (logo left, tips right)
 ------------------------------ */
 function ensureHeaderGrid() {
   const container = document.querySelector(".page-band .container");
@@ -214,8 +239,8 @@ function ensureHeaderGrid() {
   return { grid, left, right };
 }
 
-/* -----------------------------
- Game Header (logo replaces title)
+/* -----------------------------  
+|Game Header (logo replaces title)
 ------------------------------ */
 function setGameHeader() {
   const slots = ensureHeaderGrid();
@@ -224,7 +249,8 @@ function setGameHeader() {
   left.textContent = "";
   const titleEl = document.getElementById("game-title");
   if (titleEl) titleEl.textContent = "";
-  const logo = gameData && typeof gameData.logo === "string" ? gameData.logo.trim() : "";
+  const logo =
+    gameData && typeof gameData.logo === "string" ? gameData.logo.trim() : "";
   if (logo) {
     const img = document.createElement("img");
     img.src = logo;
@@ -239,15 +265,18 @@ function setGameHeader() {
   }
 }
 
-/* -----------------------------
- Game Tips (accordion)
+/* -----------------------------  
+|Game Tips (accordion)
 ------------------------------ */
 function renderGameTips() {
   const slots = ensureHeaderGrid();
   if (!slots) return;
   const { right } = slots;
   right.textContent = "";
-  const html = gameData && typeof gameData.aboutHtml === "string" ? gameData.aboutHtml.trim() : "";
+  const html =
+    gameData && typeof gameData.aboutHtml === "string"
+      ? gameData.aboutHtml.trim()
+      : "";
   if (!html) return;
   const section = document.createElement("section");
   section.className = "game-tips";
@@ -262,10 +291,11 @@ function renderGameTips() {
   details.append(summary, body);
   section.appendChild(details);
   right.appendChild(section);
+  normalizeSummaryPreIndent(section);
 }
 
-/* -----------------------------
- View Mode
+/* -----------------------------  
+|View Mode
 ------------------------------ */
 const VIEW_LS = `poke-view:${PAGE_NS}`;
 let VIEW_MODE = localStorage.getItem(VIEW_LS) === "grid" ? "grid" : "list";
@@ -284,26 +314,65 @@ function setViewMode(mode) {
 
 function syncViewButtons() {
   const isGrid = VIEW_MODE === "grid";
-  document.querySelectorAll(".view-btn.view-list").forEach((b) => b.classList.toggle("active", !isGrid));
-  document.querySelectorAll(".view-btn.view-grid").forEach((b) => b.classList.toggle("active", isGrid));
+  document
+    .querySelectorAll(".view-btn.view-list")
+    .forEach((b) => b.classList.toggle("active", !isGrid));
+  document
+    .querySelectorAll(".view-btn.view-grid")
+    .forEach((b) => b.classList.toggle("active", isGrid));
 }
 
-/* -----------------------------
- Data Normalization / Model
+/* -----------------------------  
+|Normalize <pre> indent in summaries
+------------------------------ */
+function normalizeSummaryPreIndent(root) {
+  const scope = root || document;
+  const blocks = scope.querySelectorAll(".summary-long pre");
+  blocks.forEach((pre) => {
+    const text = pre.textContent.replace(/\r\n?/g, "\n").replace(/\t/g, " ");
+    const lines = text.split("\n");
+    const nonEmpty = lines.filter((l) => l.trim().length > 0);
+    if (nonEmpty.length === 0) return;
+    const indents = nonEmpty.map((l) => {
+      const m = l.match(/^ +/);
+      return m ? m[0].length : 0;
+    });
+    const min = Math.min(...indents);
+    if (!Number.isFinite(min) || min === 0) return;
+    const out = lines
+      .map((l) => (l.startsWith(" ".repeat(min)) ? l.slice(min) : l))
+      .join("\n");
+    pre.textContent = out;
+  });
+}
+
+/* -----------------------------  
+|Data Normalization / Model
 ------------------------------ */
 function buildModel() {
   const { choices, caught } = store.getState();
   const out = [];
   for (const [groupTitle, def] of Object.entries(BADGE_GROUPS)) {
-    const rows = Array.isArray(def) ? def : def && Array.isArray(def.rows) ? def.rows : [];
+    const rows = Array.isArray(def)
+      ? def
+      : def && Array.isArray(def.rows)
+        ? def.rows
+        : [];
     const summaryShort =
       def && typeof def === "object"
         ? (typeof def.summaryShort === "string" && def.summaryShort) ||
           (typeof def.summary === "string" && def.summary) ||
           null
         : null;
-    const summaryHtml = def && typeof def === "object" && typeof def.summaryHtml === "string" ? def.summaryHtml : null;
-    const summaryOpen = !!(def && typeof def === "object" && def.summaryOpen === true);
+    const summaryHtml =
+      def && typeof def === "object" && typeof def.summaryHtml === "string"
+        ? def.summaryHtml
+        : null;
+    const summaryOpen = !!(
+      def &&
+      typeof def === "object" &&
+      def.summaryOpen === true
+    );
     const headerTitle = def?.headerTitle || groupTitle;
 
     out.push({
@@ -311,15 +380,16 @@ function buildModel() {
       __key: `header:${groupTitle}`,
       title: headerTitle,
       headerImg: def?.headerImg || null,
-      headerImgAlt: def?.headerImgAlt || ""
+      headerImgAlt: def?.headerImgAlt || "",
     });
+
     if (summaryShort || summaryHtml)
       out.push({
         __kind: "summary",
         __key: `summary:${groupTitle}`,
         short: summaryShort,
         html: summaryHtml,
-        open: summaryOpen
+        open: summaryOpen,
       });
 
     const choiceRows = rows.filter((r) => r.type === "choice");
@@ -327,28 +397,35 @@ function buildModel() {
     const capMap = {};
     for (const r of choiceRows) {
       const k = r.choiceKey;
-      const c = Number.isFinite(r.choiceCap) && r.choiceCap > 0 ? Math.floor(r.choiceCap) : null;
+      const c =
+        Number.isFinite(r.choiceCap) && r.choiceCap > 0
+          ? Math.floor(r.choiceCap)
+          : null;
       if (c) capMap[k] = Math.max(capMap[k] || 0, c);
     }
 
     for (let i = 0; i < rows.length; i++) {
       const r = rows[i];
+
       if (r.type === "choice") {
         const k = r.choiceKey;
         const capN = capMap[k] || CHOICE_DEFAULT_CAP;
         const cur = choices[k];
         const selCount = Array.isArray(cur) ? cur.length : cur ? 1 : 0;
-        if (selCount >= capN) {
-          continue;
-        }
+        if (selCount >= capN) continue;
+
         const prev = rows[i - 1];
         const next = rows[i + 1];
-        const isStart = !(prev && prev.type === "choice" && prev.choiceKey === k);
+        const isStart = !(
+          prev &&
+          prev.type === "choice" &&
+          prev.choiceKey === k
+        );
         const isEnd = !(next && next.type === "choice" && next.choiceKey === k);
 
-        // Custom subheader label support
         let customLabel = null;
-        if (typeof r.choiceTitle === "string" && r.choiceTitle.trim()) customLabel = r.choiceTitle.trim();
+        if (typeof r.choiceTitle === "string" && r.choiceTitle.trim())
+          customLabel = r.choiceTitle.trim();
         else if (
           def &&
           def.choiceTitles &&
@@ -356,6 +433,7 @@ function buildModel() {
           typeof def.choiceTitles[k] === "string"
         )
           customLabel = String(def.choiceTitles[k]).trim();
+
         const defaultLabel = `${cap(k)} — ${capN === 1 ? "choose one" : `choose up to ${capN}`}`;
         const label = customLabel || defaultLabel;
 
@@ -364,9 +442,10 @@ function buildModel() {
             __kind: "choiceSubheader",
             __key: `choiceSubheader:${groupTitle}:${k}:${i}`,
             __group: groupTitle,
-            label
+            label,
           });
         }
+
         out.push({
           __kind: "choice",
           __key: `choice:${groupTitle}:${k}:${norm(r.choiceValue)}`,
@@ -374,14 +453,20 @@ function buildModel() {
           choiceKey: k,
           choiceValue: norm(r.choiceValue),
           cap: capN,
-          pokemon: { name: r.pokemon?.name || "Choice", img: safeImg(r.pokemon?.img) },
+          pokemon: {
+            name: r.pokemon?.name || "Choice",
+            img: safeImg(r.pokemon?.img),
+          },
           method: r.method || "Pick an option",
           groupRunStart: isStart,
-          groupRunEnd: isEnd
+          groupRunEnd: isEnd,
         });
+
         continue;
       }
+
       if (!meetsRequirements(r, choices)) continue;
+
       const nm = r.pokemon?.name || "Unknown";
       out.push({
         __kind: "pokemon",
@@ -389,13 +474,17 @@ function buildModel() {
         __group: groupTitle,
         pokemon: { name: nm, img: safeImg(r.pokemon?.img) },
         method: r.method || "—",
-        caught: !!caught[nm]
+        caught: !!caught[nm],
       });
     }
 
-    const eligible = rows.filter((r) => r.type !== "choice").filter((r) => meetsRequirements(r, choices));
+    const eligible = rows
+      .filter((r) => r.type !== "choice")
+      .filter((r) => meetsRequirements(r, choices));
     const total = eligible.length;
-    const caughtCount = eligible.filter((r) => r.pokemon && caught[r.pokemon.name]).length;
+    const caughtCount = eligible.filter(
+      (r) => r.pokemon && caught[r.pokemon.name],
+    ).length;
 
     const allChoicesMade = (() => {
       if (!keys.length) return true;
@@ -408,45 +497,58 @@ function buildModel() {
       return true;
     })();
 
-    if (allChoicesMade) out.push({ __kind: "progress", __key: `progress:${groupTitle}`, total, caught: caughtCount });
+    if (allChoicesMade)
+      out.push({
+        __kind: "progress",
+        __key: `progress:${groupTitle}`,
+        total,
+        caught: caughtCount,
+      });
   }
   return out;
 }
 
-/* -----------------------------
- Requirements Check (supports requires and requiresNot)
+/* -----------------------------  
+|Requirements Check
 ------------------------------ */
 function meetsRequirements(row, choices) {
   if (!row) return true;
   function hasValue(k, v) {
     const need = (v ?? "").toString().trim().toLowerCase();
     const cur = choices[k];
-    if (Array.isArray(cur)) return cur.some((x) => (x ?? "").toString().trim().toLowerCase() === need);
+    if (Array.isArray(cur))
+      return cur.some(
+        (x) => (x ?? "").toString().trim().toLowerCase() === need,
+      );
     return (cur ?? "").toString().trim().toLowerCase() === need;
   }
   function passRequires(req) {
     if (!req) return true;
-    if (Array.isArray(req)) return req.every((r) => r?.key && hasValue(r.key, r.value));
-    if (typeof req === "object") return Object.entries(req).every(([k, v]) => hasValue(k, v));
+    if (Array.isArray(req))
+      return req.every((r) => r?.key && hasValue(r.key, r.value));
+    if (typeof req === "object")
+      return Object.entries(req).every(([k, v]) => hasValue(k, v));
     return true;
   }
   function passRequiresNot(notReq) {
     if (!notReq) return true;
-    if (Array.isArray(notReq)) return notReq.every((r) => r?.key && !hasValue(r.key, r.value));
-    if (typeof notReq === "object") return Object.entries(notReq).every(([k, v]) => !hasValue(k, v));
+    if (Array.isArray(notReq))
+      return notReq.every((r) => r?.key && !hasValue(r.key, r.value));
+    if (typeof notReq === "object")
+      return Object.entries(notReq).every(([k, v]) => !hasValue(k, v));
     return true;
   }
   return passRequires(row.requires) && passRequiresNot(row.requiresNot);
 }
 
-/* -----------------------------
- DOM References
+/* -----------------------------  
+|DOM References
 ------------------------------ */
 const el = (id) => document.getElementById(id);
 const tbodyEl = () => document.querySelector("#pokemon-table tbody");
 
-/* -----------------------------
- Choice Status Chips
+/* -----------------------------  
+|Choice Status Chips
 ------------------------------ */
 function renderChoiceStatus() {
   const host = el("choice-status");
@@ -456,8 +558,7 @@ function renderChoiceStatus() {
   for (const [key, value] of Object.entries(choices)) {
     const chip = document.createElement("div");
     chip.className = "chip";
-    let label;
-    label = Array.isArray(value)
+    const label = Array.isArray(value)
       ? `${cap(key)}: ${value.map((v) => cap(String(v))).join(", ")}`
       : `${cap(key)}: ${cap(String(value))}`;
     chip.textContent = label;
@@ -469,8 +570,8 @@ function renderChoiceStatus() {
   }
 }
 
-/* -----------------------------
- Row Factories
+/* -----------------------------  
+|Row Factories
 ------------------------------ */
 function trHeader(row) {
   const tr = document.createElement("tr");
@@ -508,6 +609,7 @@ function trHeader(row) {
   tr.appendChild(td);
   return tr;
 }
+
 function trSummary(row) {
   const tr = document.createElement("tr");
   tr.className = "section-summary";
@@ -532,11 +634,13 @@ function trSummary(row) {
     long.innerHTML = row.html;
     details.append(sum, long);
     wrap.appendChild(details);
+    normalizeSummaryPreIndent(details);
   }
   td.appendChild(wrap);
   tr.appendChild(td);
   return tr;
 }
+
 function trChoiceSubheader(row) {
   const tr = document.createElement("tr");
   tr.className = "choice-subheader-row";
@@ -546,6 +650,7 @@ function trChoiceSubheader(row) {
   tr.appendChild(td);
   return tr;
 }
+
 function trChoice(row) {
   const tr = document.createElement("tr");
   tr.className = "row-choice compact-band";
@@ -564,16 +669,18 @@ function trChoice(row) {
   const tdM = document.createElement("td");
   tdM.textContent = row.method || "Pick an option";
   const tdA = document.createElement("td");
-  tdA.className = "center"; // empty
+  tdA.className = "center";
   tr.append(tdP, tdM, tdA);
   tr.addEventListener("click", () => {
     const disabled = isChoiceDisabled(row.cap, row.choiceKey, row.choiceValue);
     if (disabled) return;
-    if ((row.cap || CHOICE_DEFAULT_CAP) === 1) setChoice(row.choiceKey, row.choiceValue);
+    if ((row.cap || CHOICE_DEFAULT_CAP) === 1)
+      setChoice(row.choiceKey, row.choiceValue);
     else toggleChoiceMulti(row.choiceKey, row.choiceValue, row.cap);
   });
   return tr;
 }
+
 function trPokemon(row) {
   const tr = document.createElement("tr");
   tr.className = "row-normal pkm-node";
@@ -612,6 +719,7 @@ function trPokemon(row) {
   tr.append(tdP, tdM, tdC);
   return tr;
 }
+
 function trProgress(row) {
   const tr = document.createElement("tr");
   tr.className = "section-progress progress-row";
@@ -621,7 +729,9 @@ function trProgress(row) {
   bar.className = "progress-bar";
   const fill = document.createElement("div");
   fill.className = "progress-fill";
-  const pct = row.total ? Math.max(0, Math.min(100, Math.round((row.caught / row.total) * 100))) : 0;
+  const pct = row.total
+    ? Math.max(0, Math.min(100, Math.round((row.caught / row.total) * 100)))
+    : 0;
   fill.classList.add(`w-${pct}`);
   bar.appendChild(fill);
   const label = document.createElement("div");
@@ -633,8 +743,8 @@ function trProgress(row) {
   return tr;
 }
 
-/* -----------------------------
- Grid Renderer (Group)
+/* -----------------------------  
+|Grid Renderer (Group)
 ------------------------------ */
 function trGrid(row) {
   const tr = document.createElement("tr");
@@ -680,55 +790,50 @@ function trGrid(row) {
   return tr;
 }
 
-/* -----------------------------
- Grid Justification
+/* -----------------------------  
+| Grid Justification 
+| mI was way over complication this, i can just do this in css
 ------------------------------ */
 function adjustGridJustification() {
-  const grids = document.querySelectorAll(".group-grid");
-  if (!grids.length) return;
-  grids.forEach((grid) => {
-    const cards = grid.querySelectorAll(".pkm-card");
-    if (cards.length <= 1) {
-      stripGapClass(grid);
-      return;
-    }
-    const style = getComputedStyle(grid);
-    const baseGap = parseFloat(style.gap) || 12;
-    const gridW = Math.floor(grid.clientWidth);
-    const sample = grid.querySelector(".pkm-card");
-    if (!sample) {
-      stripGapClass(grid);
-      return;
-    }
-    const cardW = Math.ceil(sample.getBoundingClientRect().width);
-    const cols = Math.max(1, Math.floor((gridW + baseGap) / (cardW + baseGap)));
-    const rows = Math.ceil(cards.length / cols);
-    if (rows <= 1) {
-      stripGapClass(grid);
-      return;
-    }
-    const exactGap = (gridW - cols * cardW) / Math.max(1, cols - 1);
-    const gap = Math.round(exactGap);
-    const used = cols * cardW + (cols - 1) * gap;
-    const remaining = gridW - used;
-    if (remaining < cardW && gap > baseGap) {
-      const clamped = Math.max(4, Math.min(32, gap));
-      applyGapClass(grid, clamped);
-    } else {
-      stripGapClass(grid);
-    }
-  });
-}
-function applyGapClass(grid, px) {
-  stripGapClass(grid);
-  grid.classList.add(`gap-${px}`);
-}
-function stripGapClass(grid) {
-  for (let i = 4; i <= 32; i++) grid.classList.remove(`gap-${i}`);
+  // const grids = document.querySelectorAll(".group-grid");
+  // if (!grids.length) return;
+
+  // grids.forEach((grid) => {
+  //   grid.style.removeProperty("--grid-gap");
+  //   grid.style.removeProperty("--grid-pad-left");
+  //   grid.style.removeProperty("--grid-pad-right");
+
+  //   const gridW = grid.getBoundingClientRect().width;
+  //   if (!(gridW > 0)) return;
+
+  //   const sample = grid.querySelector(".pkm-card");
+  //   if (!sample) return;
+
+  //   const cardW = sample.getBoundingClientRect().width;
+  //   if (!(cardW > 0)) return;
+
+  //   const minGap = 4;
+  //   let cols = Math.max(1, Math.floor(gridW / cardW));
+  //   let g = 0;
+
+  //   for (; cols >= 1; cols--) {
+  //     g = (gridW - cols * cardW) / (cols + 1);
+  //     if (g >= minGap) break;
+  //   }
+
+  //   if (cols < 1) {
+  //     cols = 1;
+  //     g = Math.max(minGap, (gridW - cardW) / 2);
+  //   }
+
+  //   grid.style.setProperty("--grid-gap", g + "px");
+  //   grid.style.setProperty("--grid-pad-left", g + "px");
+  //   grid.style.setProperty("--grid-pad-right", g + "px");
+  // });
 }
 
-/* -----------------------------
- View Model Transform
+/* -----------------------------  
+| View Model Transform  
 ------------------------------ */
 function modelForView(model) {
   if (VIEW_MODE !== "grid") return model;
@@ -739,7 +844,11 @@ function modelForView(model) {
     out.push({
       __kind: "grid",
       __key: `grid:${out.length}`,
-      items: bucket.map((r) => ({ name: r.pokemon.name, img: r.pokemon.img, caught: !!r.caught }))
+      items: bucket.map((r) => ({
+        name: r.pokemon.name,
+        img: r.pokemon.img,
+        caught: !!r.caught,
+      })),
     });
     bucket = [];
   }
@@ -755,8 +864,8 @@ function modelForView(model) {
   return out;
 }
 
-/* -----------------------------
- Unified Capture/Choice UI Updater
+/* -----------------------------  
+| Unified Capture/Choice UI Updater  
 ------------------------------ */
 function updateCaptureUI() {
   const { caught } = store.getState();
@@ -773,10 +882,40 @@ function updateCaptureUI() {
   });
 }
 
-/* -----------------------------
- Diffing Renderer (animated)
+/* -----------------------------  
+| Post-render Orchestrator  
+------------------------------ */
+function runAfterRender(scope) {
+  const root = scope || document;
+  updateCaptureUI();
+  normalizeSummaryPreIndent(root);
+  // adjustGridJustification();
+  observeGridsForResize();
+  StickyHeader.update();
+  syncViewButtons();
+}
+
+/* -----------------------------  
+| Grid Resize Observer 
+ ------------------------------ */
+let gridResizeObserver = null;
+function observeGridsForResize() {
+  if (gridResizeObserver) gridResizeObserver.disconnect();
+  // const ro = new ResizeObserver(() => {
+  //   requestAnimationFrame(() => adjustGridJustification());
+  // });
+  document.querySelectorAll(".group-grid").forEach((grid) => {
+    ro.observe(grid);
+    if (grid.parentElement) ro.observe(grid.parentElement);
+  });
+  gridResizeObserver = ro;
+}
+
+/* -----------------------------  
+| Diffing Renderer (animated)  
 ------------------------------ */
 const renderCtx = { keyOrder: [], rowNodes: new Map() };
+
 function render() {
   ensureDataOrExplain();
   renderChoiceStatus();
@@ -784,20 +923,22 @@ function render() {
   const viewModel = modelForView(model);
   const tbody = tbodyEl();
   if (!tbody) return;
+
   const tbl = el("pokemon-table");
   tbl?.classList.toggle(
     "has-data",
-    model.some((r) => r.__kind === "pokemon" || r.__kind === "choice")
+    model.some((r) => r.__kind === "pokemon" || r.__kind === "choice"),
   );
+
   const newKeys = viewModel.map((m) => m.__key);
   const sameShape =
-    newKeys.length === renderCtx.keyOrder.length && newKeys.every((k, i) => k === renderCtx.keyOrder[i]);
+    newKeys.length === renderCtx.keyOrder.length &&
+    newKeys.every((k, i) => k === renderCtx.keyOrder[i]);
 
   if (!sameShape) {
     const existing = renderCtx.rowNodes;
     const toKeep = new Set(newKeys);
     const exitNodes = [];
-
     for (const [oldKey, tr] of existing.entries()) {
       if (!toKeep.has(oldKey)) {
         tr.classList.add("row-exit");
@@ -832,14 +973,15 @@ function render() {
       return tr;
     };
 
-    const tbody = tbodyEl();
     const anchor = { node: null };
     for (const row of viewModel) {
       const tr = ensureNodeFor(row);
       if (!tr) continue;
       if (tr.parentNode !== tbody) {
-        if (anchor.node && anchor.node.nextSibling) tbody.insertBefore(tr, anchor.node.nextSibling);
-        else if (!anchor.node && tbody.firstChild) tbody.insertBefore(tr, tbody.firstChild);
+        if (anchor.node && anchor.node.nextSibling)
+          tbody.insertBefore(tr, anchor.node.nextSibling);
+        else if (!anchor.node && tbody.firstChild)
+          tbody.insertBefore(tr, tbody.firstChild);
         else tbody.appendChild(tr);
       } else {
         const shouldBeAfter = anchor.node;
@@ -866,10 +1008,7 @@ function render() {
     });
 
     renderCtx.keyOrder = newKeys;
-    updateCaptureUI();
-    adjustGridJustification();
-    StickyHeader.update();
-    syncViewButtons();
+    runAfterRender(tbody);
     return;
   }
 
@@ -881,36 +1020,48 @@ function render() {
       const fill = tr.querySelector(".progress-fill");
       const label = tr.querySelector(".progress-label");
       if (fill) {
-        const pct = row.total ? Math.max(0, Math.min(100, Math.round((row.caught / row.total) * 100))) : 0;
+        const pct = row.total
+          ? Math.max(
+              0,
+              Math.min(100, Math.round((row.caught / row.total) * 100)),
+            )
+          : 0;
         fill.className = fill.className.replace(/\bw-\d+\b/g, "").trim();
         fill.classList.add(`w-${pct}`);
       }
       if (label) label.textContent = `${row.caught} / ${row.total} caught`;
     }
   }
-  updateCaptureUI();
-  adjustGridJustification();
-  StickyHeader.update();
-  syncViewButtons();
+
+  runAfterRender(tbody);
 }
 
-/* -----------------------------
- Boot
+/* -----------------------------  
+| Boot  
 ------------------------------ */
 function boot() {
   setGameHeader();
   renderGameTips();
   loadPersisted();
   render();
+  runAfterRender(document);
+
   StickyHeader.init();
-  window.addEventListener("resize", adjustGridJustification, { passive: true });
+
+  // window.addEventListener("resize", adjustGridJustification, { passive: true });
+  // window.addEventListener("orientationchange", adjustGridJustification, {
+  //   passive: true,
+  // });
+
   store.subscribe(() => {
     render();
-    StickyHeader.update();
+    runAfterRender(document);
   });
+
   const resetBtn = document.getElementById("reset-all");
   resetBtn?.addEventListener("click", () => {
     if (confirm("Reset all choices and caught progress?")) resetAll();
   });
 }
+
 document.addEventListener("DOMContentLoaded", boot);
