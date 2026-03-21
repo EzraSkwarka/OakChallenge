@@ -8,32 +8,65 @@
 ------------------------------ */
 .floating-section {
   position: fixed;
-  top: 0;
+  top: max(0px, env(safe-area-inset-top, 0px)); 
   left: 0;
   right: 0;
   z-index: 1000;
   background: transparent;
+  pointer-events: none;
 }
+
 
 /* -----------------------------
     Floating bar contents
-
 ------------------------------ */
 .floating-section-inner {
-  width: var(--band-width, 90vw);
+  width: min(var(--band-width, 90vw), 100%);
   max-width: var(--band-max, 1400px);
-  margin: 0 auto;
-  padding: 0.6rem 0.9rem;
+  margin-inline: auto;
+  padding-inline: var(--container-gutter, 0.9rem);
+  padding-block: 0.6rem;
+
+  position: relative;
+  box-sizing: border-box;
   display: flex;
   align-items: center;
   gap: 10px;
+  background: transparent;
+  border: none;
+  pointer-events: auto;
+  z-index: 0;
+}
+
+.floating-section-inner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  left: var(--container-gutter, 0.9rem);
+  right: var(--container-gutter, 0.9rem);
   background: var(--surface);
+  border-top-left-radius: var(--radius-md, 10px);
+  border-top-right-radius: var(--radius-md, 10px);
+  box-shadow: var(--shadow-sm, 0 1px 2px rgba(2, 6, 23, 0.05));
+  pointer-events: none;
+  z-index: -2;
+}
+
+.floating-section-inner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  left: var(--container-gutter, 0.9rem);
+  right: var(--container-gutter, 0.9rem);
   border: 1px solid var(--border);
   border-bottom: none;
   border-top-left-radius: var(--radius-md, 10px);
   border-top-right-radius: var(--radius-md, 10px);
-  box-shadow: var(--shadow-sm, 0 1px 2px rgba(2, 6, 23, 0.05));
+  pointer-events: none;
+  z-index: -1;
 }
+
+
 
 /* -----------------------------
     Spacer to preserve layout flow

@@ -42,9 +42,6 @@ body {
   margin: 0;
   padding: 0;
 }
-#site-header-host {
-  display: block;
-}
 
 /* -----------------------------  Page Band  ------------------------------ */
 .page-band {
@@ -161,6 +158,61 @@ tbody td {
 }
 
 /* -----------------------------  Table Section Headers  ------------------------------ */
+
+.table-wrap {
+  width: min(var(--band-width), 100%);
+  max-width: var(--band-max);
+  margin: 0 auto;
+
+  padding-inline: var(--container-gutter, 0.9rem);
+  padding-block: 0.75rem;
+  background: transparent;
+  border: none;
+  position: relative;
+  overflow-x: auto;
+  overflow-y: visible;
+  box-sizing: border-box;
+}
+
+.table-wrap::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--container-gutter, 0.9rem);
+  right: var(--container-gutter, 0.9rem);
+  background: var(--surface, #fff);
+  border-radius: var(--radius-md, 10px);
+  box-shadow: var(--shadow-sm, 0 1px 2px rgba(2, 6, 23, 0.05));
+  pointer-events: none;
+  z-index: 0;
+}
+
+.table-wrap::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--container-gutter, 0.9rem);
+  right: var(--container-gutter, 0.9rem);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md, 10px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.table-wrap > * {
+  position: relative;
+  z-index: 2;
+}
+
+#pokemon-table {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  box-sizing: border-box;
+}
+
 .section-header td {
   background: var(--bg-alt);
   color: var(--text);
@@ -171,12 +223,21 @@ tbody td {
 #pokemon-table.has-data thead {
   display: none;
 }
+
 .section-header-content {
   display: flex;
   align-items: center;
   gap: 10px;
   width: 100%;
 }
+
+.section-header-controls {
+  margin-left: auto;
+  display: inline-flex;
+  gap: 6px;
+  justify-content: flex-end;
+}
+
 .section-header-img {
   width: 28px;
   height: 28px;
@@ -187,11 +248,6 @@ tbody td {
   font-size: 1.05rem;
   font-weight: 700;
   line-height: 1.2;
-}
-.section-header-controls {
-  margin-left: 0;
-  display: inline-flex;
-  gap: 6px;
 }
 
 /* -----------------------------  Choice Subheader Row  ------------------------------ */
@@ -344,6 +400,14 @@ tr.row-choice.compact-band + tr.row-choice.compact-band td {
 .summary-accordion[open] > summary::before {
   content: "▾";
   color: var(--muted);
+}
+
+.summary-long pre {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 /* -----------------------------  Grid cards (CSS Grid layout)  ------------------------------ */
@@ -852,4 +916,15 @@ td .catch-btn img.catch-mark {
 #choice-status .chip > button:where(*) {
   box-shadow: none;
   text-decoration: none;
+}
+
+#choice-status,
+#choice-status .chip,
+#choice-status .chip > *,
+.site-header-bar .btn,
+.site-header-bar a,
+.site-header-bar button {
+  width: auto;
+  max-width: none;
+  flex: 0 0 auto;
 }
