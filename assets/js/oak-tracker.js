@@ -266,6 +266,23 @@ function setGameHeader() {
 }
 
 /* -----------------------------  
+| Section Break: convert #game-title  
+------------------------------ */
+function convertGameTitleToSectionBreak() {
+  const title = document.getElementById("game-title");
+  if (!title) return;
+  const label =
+    title.textContent.trim() || title.getAttribute("data-title") || "";
+  const wrap = document.createElement("div");
+  wrap.className = "section-break";
+  const span = document.createElement("span");
+  span.className = "section-break-label";
+  span.textContent = label;
+  wrap.appendChild(span);
+  title.replaceWith(wrap);
+}
+
+/* -----------------------------  
 |Game Tips (accordion)
 ------------------------------ */
 function renderGameTips() {
@@ -550,24 +567,71 @@ const tbodyEl = () => document.querySelector("#pokemon-table tbody");
 /* -----------------------------  
 |Choice Status Chips
 ------------------------------ */
+
 function renderChoiceStatus() {
-  const host = el("choice-status");
-  if (!host) return;
-  host.textContent = "";
+  const bar = document.querySelector(".footer-actions");
+  if (!bar) return;
+
+  let chipsHost = bar.querySelector("#choice-status");
+  if (!chipsHost) {
+    chipsHost = document.createElement("div");
+    chipsHost.id = "choice-status";
+    chipsHost.className = "choice-status";
+    bar.insertBefore(chipsHost, bar.firstChild);
+  }
+
+  chipsHost.textContent = "";
   const { choices } = store.getState();
+
   for (const [key, value] of Object.entries(choices)) {
     const chip = document.createElement("div");
     chip.className = "chip";
     const label = Array.isArray(value)
       ? `${cap(key)}: ${value.map((v) => cap(String(v))).join(", ")}`
       : `${cap(key)}: ${cap(String(value))}`;
-    chip.textContent = label;
+    const text = document.createElement("span");
+    text.textContent = label;
+
     const btn = document.createElement("button");
+    btn.type = "button";
     btn.textContent = "Change";
-    btn.onclick = () => clearChoice(key);
-    chip.appendChild(btn);
-    host.appendChild(chip);
+
+    chip.append(text, btn);
+
+    const clear = () => clearChoice(key);
+    chip.addEventListener("click", clear);
+    chip.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        clear();
+      }
+    });
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      clear();
+    });
+
+    chip.tabIndex = 0;
+    chip.setAttribute("role", "button");
+
+    chipsHost.appendChild(chip);
   }
+}
+
+function wireResetButton() {
+  const btn = document.getElementById("reset-all");
+  if (!btn) return;
+  btn.onclick = null;
+  btn.addEventListener("click", (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (confirm("Reset all choices and caught progress?")) resetAll();
+  });
+
+  // console.log(
+  //   "[reset] bind at load found:",
+  //   !!document.getElementById("reset-all"),
+  // );
 }
 
 /* -----------------------------  
@@ -797,35 +861,27 @@ function trGrid(row) {
 function adjustGridJustification() {
   // const grids = document.querySelectorAll(".group-grid");
   // if (!grids.length) return;
-
   // grids.forEach((grid) => {
   //   grid.style.removeProperty("--grid-gap");
   //   grid.style.removeProperty("--grid-pad-left");
   //   grid.style.removeProperty("--grid-pad-right");
-
   //   const gridW = grid.getBoundingClientRect().width;
   //   if (!(gridW > 0)) return;
-
   //   const sample = grid.querySelector(".pkm-card");
   //   if (!sample) return;
-
   //   const cardW = sample.getBoundingClientRect().width;
   //   if (!(cardW > 0)) return;
-
   //   const minGap = 4;
   //   let cols = Math.max(1, Math.floor(gridW / cardW));
   //   let g = 0;
-
   //   for (; cols >= 1; cols--) {
   //     g = (gridW - cols * cardW) / (cols + 1);
   //     if (g >= minGap) break;
   //   }
-
   //   if (cols < 1) {
   //     cols = 1;
   //     g = Math.max(minGap, (gridW - cardW) / 2);
   //   }
-
   //   grid.style.setProperty("--grid-gap", g + "px");
   //   grid.style.setProperty("--grid-pad-left", g + "px");
   //   grid.style.setProperty("--grid-pad-right", g + "px");
@@ -889,27 +945,29 @@ function runAfterRender(scope) {
   const root = scope || document;
   updateCaptureUI();
   normalizeSummaryPreIndent(root);
-  // adjustGridJustification();
-  observeGridsForResize();
-  StickyHeader.update();
+  // observeGridsForResize();
+  if (window.StickyHeader && typeof StickyHeader.update === "function") {
+    StickyHeader.update();
+  }
   syncViewButtons();
+  wireResetButton();
 }
 
 /* -----------------------------  
 | Grid Resize Observer 
  ------------------------------ */
-let gridResizeObserver = null;
-function observeGridsForResize() {
-  if (gridResizeObserver) gridResizeObserver.disconnect();
-  // const ro = new ResizeObserver(() => {
-  //   requestAnimationFrame(() => adjustGridJustification());
-  // });
-  document.querySelectorAll(".group-grid").forEach((grid) => {
-    ro.observe(grid);
-    if (grid.parentElement) ro.observe(grid.parentElement);
-  });
-  gridResizeObserver = ro;
-}
+// let gridResizeObserver = null;
+// function observeGridsForResize() {
+//   if (gridResizeObserver) gridResizeObserver.disconnect();
+//   // const ro = new ResizeObserver(() => {
+//   //   requestAnimationFrame(() => adjustGridJustification());
+//   // });
+//   document.querySelectorAll(".group-grid").forEach((grid) => {
+//     ro.observe(grid);
+//     if (grid.parentElement) ro.observe(grid.parentElement);
+//   });
+//   gridResizeObserver = ro;
+// }
 
 /* -----------------------------  
 | Diffing Renderer (animated)  
@@ -1041,26 +1099,19 @@ function render() {
 ------------------------------ */
 function boot() {
   setGameHeader();
+  convertGameTitleToSectionBreak();
   renderGameTips();
   loadPersisted();
   render();
   runAfterRender(document);
 
-  StickyHeader.init();
-
-  // window.addEventListener("resize", adjustGridJustification, { passive: true });
-  // window.addEventListener("orientationchange", adjustGridJustification, {
-  //   passive: true,
-  // });
+  if (window.StickyHeader && typeof StickyHeader.update === "function") {
+    StickyHeader.update();
+  }
 
   store.subscribe(() => {
     render();
     runAfterRender(document);
-  });
-
-  const resetBtn = document.getElementById("reset-all");
-  resetBtn?.addEventListener("click", () => {
-    if (confirm("Reset all choices and caught progress?")) resetAll();
   });
 }
 

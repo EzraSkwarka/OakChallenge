@@ -1,15 +1,33 @@
 /* -----------------------------
-   Section Titles
+ Section Title + Search bar wrap
 ------------------------------ */
-.section-title {
-  margin: 0.75rem 0;
-  font-size: 1.25rem;
+.container > .section-title,
+.container > .search-wrap {
+  width: min(var(--band-width, 90vw), 100%);
+  max-width: var(--band-max, 1400px);
+  margin-inline: auto; /* centers the BAND, not the text */
+  padding-inline: var(--container-gutter, 0.9rem);
+  box-sizing: border-box;
+  text-align: left;
+}
+
+.container > .section-title {
+  margin-top: 0.9rem;
+  margin-bottom: 0.9rem;
+}
+.container > .section-title > h1,
+.container > .section-title > h2 {
+  margin: 0.9rem 0;
+  text-align: left;
+}
+
+.container > .search-wrap {
+  margin: 0.5rem auto 1rem; 
 }
 
 /* -----------------------------
      Search
-
------------------------------- */
+  ------------------------------ */
 .search-wrap {
   display: grid;
   gap: 6px;
@@ -37,8 +55,7 @@
 
 /* -----------------------------
      Card Grid
-
------------------------------- */
+  ------------------------------ */
 .card-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -53,8 +70,7 @@
 
 /* -----------------------------
      Game Card
-
------------------------------- */
+  ------------------------------ */
 .game-card {
   position: relative;
   display: flex;
@@ -65,7 +81,9 @@
   overflow: hidden;
   outline: none;
   box-shadow: var(--shadow-sm);
-  transition: transform 120ms ease, box-shadow 120ms ease,
+  transition:
+    transform 120ms ease,
+    box-shadow 120ms ease,
     border-color 120ms ease;
 }
 
@@ -81,8 +99,7 @@
 
 /* -----------------------------
      Cover Slot
-
------------------------------- */
+  ------------------------------ */
 .cover-wrap {
   aspect-ratio: 3 / 4;
   background: var(--bg-alt);
@@ -107,8 +124,7 @@
 
 /* -----------------------------
      Card Body
-
------------------------------- */
+  ------------------------------ */
 .card-body {
   padding: 10px 12px;
   display: grid;
@@ -133,8 +149,7 @@
 
 /* -----------------------------
      Whole-card Link
-
------------------------------- */
+  ------------------------------ */
 .card-link {
   position: absolute;
   inset: 0;
@@ -143,8 +158,7 @@
 
 /* -----------------------------
      Disabled / Coming Soon
-
------------------------------- */
+  ------------------------------ */
 .game-card.is-disabled {
   filter: grayscale(1);
   opacity: 0.65;
@@ -174,8 +188,7 @@
 
 /* -----------------------------
      Fallback / Empty States
-
------------------------------- */
+  ------------------------------ */
 .grid-fallback {
   margin-top: 0.75rem;
 }
@@ -186,8 +199,7 @@
 
 /* -----------------------------
      Responsive
-
------------------------------- */
+  ------------------------------ */
 @media (max-width: 900px) {
   .card-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
