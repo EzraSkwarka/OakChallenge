@@ -12,14 +12,24 @@ body {
   display: block;
 }
 
+ul, ol {
+  padding-inline-start: 1rem;
+}
+
+li {
+  padding-left: 0;
+}
+
 /* -----------------------------
  Page Band
 ------------------------------ */
 .page-band {
-  width: 90vw;
-  max-width: 1400px;
+  width: var(--band-width);
+  max-width: var(--band-max);
   margin: 0 auto;
 }
+
+
 .page-band .container,
 .page-band .table-wrap,
 .page-band .footer-actions {
@@ -134,7 +144,7 @@ thead th {
 }
 tbody td {
   border-bottom: 1px solid var(--border);
-  padding: 0.7rem 0.9rem;
+  /* padding: 0.7rem 0.9rem; */
   vertical-align: middle;
 }
 
@@ -288,18 +298,18 @@ tr.row-choice.compact-band + tr.row-choice.compact-band td {
   color: var(--muted);
   font-size: 13px;
   line-height: 1.45;
+  text-indent: 0.3rem
 }
 .summary-accordion {
-  border: 1px solid var(--border);
+  /* border: 1px solid var(--border); */
   border-radius: var(--radius-md, 10px);
   background: var(--surface);
-  box-shadow: var(--shadow-sm, 0 1px 2px rgba(2, 6, 23, 0.05));
+  /* box-shadow: var(--shadow-sm, 0 1px 2px rgba(2, 6, 23, 0.05)); */
   overflow: hidden;
 }
 .summary-accordion > summary {
   list-style: none;
   cursor: pointer;
-  padding: 8px 12px;
   font-weight: 600;
   color: var(--text);
   display: flex;
@@ -315,7 +325,6 @@ tr.row-choice.compact-band + tr.row-choice.compact-band td {
   background: var(--bg-alt);
 }
 .summary-long {
-  padding: 10px 12px;
   font-size: 13px;
   color: var(--text);
   background: var(--surface);
@@ -324,13 +333,7 @@ tr.row-choice.compact-band + tr.row-choice.compact-band td {
 .summary-long p {
   margin: 0 0 0.6rem 0;
 }
-.summary-long ul,
-.summary-long ol {
-  margin: 0.4rem 0 0.6rem 1.1rem;
-}
-.summary-long li {
-  margin: 0.2rem 0;
-}
+
 .summary-long a {
   color: var(--focus);
   text-decoration: underline;
@@ -348,6 +351,13 @@ tr.row-choice.compact-band + tr.row-choice.compact-band td {
 .summary-accordion[open] > summary::before {
   content: "▾";
   color: var(--muted);
+}
+
+.summary-long pre {
+  margin: 0.4rem 0;
+  padding: 0.35rem 0.6rem;
+  white-space: pre-wrap;
+  tab-size: 2;
 }
 
 /* -----------------------------

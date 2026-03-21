@@ -262,6 +262,7 @@ function renderGameTips() {
   details.append(summary, body);
   section.appendChild(details);
   right.appendChild(section);
+  normalizeSummaryPreIndent(section);
 }
 
 /* -----------------------------
@@ -282,6 +283,31 @@ function syncViewButtons() {
   const isGrid = VIEW_MODE === "grid";
   document.querySelectorAll(".view-btn.view-list").forEach((b) => b.classList.toggle("active", !isGrid));
   document.querySelectorAll(".view-btn.view-grid").forEach((b) => b.classList.toggle("active", isGrid));
+}
+
+/* -----------------------------  
+Normalize <pre> indent in summaries 
+| Im doing this instead of removing the whitespace in the pre blocks themselves 
+| as i like how the layout in the progression.js files look with the whitespace
+------------------------------ */
+
+function normalizeSummaryPreIndent(root) {
+  const scope = root || document;
+  const blocks = scope.querySelectorAll('.summary-long pre');
+  blocks.forEach((pre) => {
+    const text = pre.textContent.replace(/\r\n?/g, '\n').replace(/\t/g, '  ');
+    const lines = text.split('\n');
+    const nonEmpty = lines.filter(l => l.trim().length > 0);
+    if (nonEmpty.length === 0) return;
+    const indents = nonEmpty.map(l => {
+      const m = l.match(/^ +/);
+      return m ? m[0].length : 0;
+    });
+    const min = Math.min(...indents);
+    if (!Number.isFinite(min) || min === 0) return;
+    const out = lines.map(l => l.startsWith(' '.repeat(min)) ? l.slice(min) : l).join('\n');
+    pre.textContent = out;
+  });
 }
 
 /* -----------------------------
@@ -528,6 +554,7 @@ function trSummary(row) {
     long.innerHTML = row.html;
     details.append(sum, long);
     wrap.appendChild(details);
+    normalizeSummaryPreIndent(details);
   }
   td.appendChild(wrap);
   tr.appendChild(td);
@@ -863,6 +890,7 @@ function render() {
 
     renderCtx.keyOrder = newKeys;
     updateCaptureUI();
+    normalizeSummaryPreIndent(tbody);
     adjustGridJustification();
     StickyHeader.update();
     syncViewButtons();
@@ -885,6 +913,7 @@ function render() {
     }
   }
   updateCaptureUI();
+  normalizeSummaryPreIndent(tbody);
   adjustGridJustification();
   StickyHeader.update();
   syncViewButtons();

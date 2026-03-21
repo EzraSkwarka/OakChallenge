@@ -43,6 +43,63 @@
   max-width: 68ch;
 }
 
+#site-header-host {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: var(--band-width, 90vw);
+  max-width: var(--band-max, 1400px);
+  margin: 0 auto;
+
+  padding: 0.75rem 0.9rem; 
+}
+
+#site-header-host > * {
+  min-width: 0;
+}
+
+#site-header-host .header-actions,
+#site-header-host .site-controls,
+#site-header-host .header-right {
+  margin-left: auto; 
+  display: inline-flex;
+  justify-content: flex-end; 
+  align-items: center;
+
+  gap: 8px;
+  padding: 4px 0; 
+  flex-wrap: wrap; 
+}
+
+#site-header-host .header-actions > a,
+#site-header-host .header-actions > button,
+#site-header-host .site-controls > a,
+#site-header-host .site-controls > button,
+#site-header-host .header-right > a,
+#site-header-host .header-right > button {
+  flex: 0 0 auto;
+}
+
+@media (max-width: 520px) {
+  #site-header-host {
+    flex-wrap: wrap;
+    padding: 0.75rem 0.9rem; 
+  }
+  #site-header-host .header-actions,
+  #site-header-host .site-controls,
+  #site-header-host .header-right {
+    width: 100%;
+    justify-content: flex-end;
+    row-gap: 8px;
+    padding-top: 0.5rem;
+  }
+}
+
+html body #site-header-host {
+  padding: 0.75rem 0.9rem !important;
+  box-sizing: border-box;
+}
 /* -----------------------------
      Rules
   ------------------------------ */

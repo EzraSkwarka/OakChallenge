@@ -7,6 +7,7 @@
  *
  * It does not render data or manage application state.
  */
+
 (function (global) {
   const StickyHeader = {
     bar: null,
@@ -16,33 +17,25 @@
     ticking: 0,
     mo: null,
 
-    /* -----------------------------
-        Utilities
-      ------------------------------ */
     syncWithTracker() {
-      if (typeof global.syncViewButtons === "function") {
+      if (typeof global.syncViewButtons === "function")
         global.syncViewButtons();
-      }
     },
 
-    /* -----------------------------
-        DOM: ensure bar and spacer
-      ------------------------------ */
     ensureBar() {
       if (this.bar) return this.bar;
-
       const host = document.getElementById("site-header-host");
       const bar = document.createElement("div");
       bar.id = "floating-section";
       bar.className = "floating-section";
       bar.innerHTML = [
         '<div class="floating-section-inner">',
-        '<img src="" alt="" hidden />',
-        '<span class="section-header-title"></span>',
-        '<div class="floating-controls">',
-        '<button type="button" class="view-btn view-list">List</button>',
-        '<button type="button" class="view-btn view-grid">Grid</button>',
-        "</div>",
+        '  <img alt="" aria-hidden="true">',
+        '  <span class="section-header-title"></span>',
+        '  <div class="floating-controls">',
+        '    <button type="button" class="view-btn view-list">List</button>',
+        '    <button type="button" class="view-btn view-grid">Grid</button>',
+        "  </div>",
         "</div>",
       ].join("");
 
@@ -55,38 +48,33 @@
 
       const btnList = bar.querySelector(".view-list");
       const btnGrid = bar.querySelector(".view-grid");
-      btnList.onclick = () => {
-        if (typeof global.setViewMode === "function")
-          global.setViewMode("list");
-      };
-      btnGrid.onclick = () => {
-        if (typeof global.setViewMode === "function")
-          global.setViewMode("grid");
-      };
+      if (btnList)
+        btnList.onclick = () => {
+          if (typeof global.setViewMode === "function")
+            global.setViewMode("list");
+        };
+      if (btnGrid)
+        btnGrid.onclick = () => {
+          if (typeof global.setViewMode === "function")
+            global.setViewMode("grid");
+        };
 
       this.bar = bar;
       this.spacer = spacer;
-
       this.syncWithTracker();
       return bar;
     },
 
-    /* -----------------------------
-        Measure
-      ------------------------------ */
     measure() {
       const bar = this.ensureBar();
       const rect = bar.getBoundingClientRect();
       this.barH = rect.height || 0;
       document.documentElement.style.setProperty(
         "--floatingBarH",
-        this.barH + "px"
+        this.barH + "px",
       );
     },
 
-    /* -----------------------------
-        Capture section headers
-      ------------------------------ */
     collectHeaders() {
       const selectors = [
         ".section-header",
@@ -100,9 +88,6 @@
       this.headers = nodes.filter((el) => el && el.getClientRects().length > 0);
     },
 
-    /* -----------------------------
-        Determine current section
-      ------------------------------ */
     computeIndex() {
       if (!this.headers.length) return -1;
 
@@ -119,25 +104,19 @@
       return current;
     },
 
-    /* -----------------------------
-        Extract display data
-      ------------------------------ */
     extractData(sectionEl) {
       const content =
         sectionEl.querySelector(".section-header-content") ||
         sectionEl.querySelector(".subheader-wrap") ||
         sectionEl;
-
       const titleEl =
         content.querySelector(".section-header-title") ||
         content.querySelector(".subheader-title") ||
         content.querySelector("[data-section-title]");
-
       const badgeEl =
         content.querySelector(".section-header-img") ||
         content.querySelector("[data-section-badge]") ||
         content.querySelector("img");
-
       const title = titleEl ? titleEl.textContent || "" : "";
       const badge =
         badgeEl && badgeEl.getAttribute ? badgeEl.getAttribute("src") : "";
@@ -145,54 +124,48 @@
         badgeEl && badgeEl.getAttribute
           ? badgeEl.getAttribute("alt") || ""
           : "";
-
       return { title, badge, alt };
     },
 
-    /* -----------------------------
-        Render bar contents
-      ------------------------------ */
     render(idx) {
       const bar = this.ensureBar();
+
       if (idx < 0) {
         bar.style.display = "none";
-        this.spacer.style.display = "none";
+        if (this.spacer) this.spacer.style.display = "none";
         return;
       }
+
       bar.style.display = "";
-      this.spacer.style.display = "";
+      if (this.spacer) this.spacer.style.display = "";
 
       const cur = this.headers[idx];
       const inner = bar.querySelector(".floating-section-inner");
+      if (!inner) return;
+
       const img = inner.querySelector("img");
       const titleSpan = inner.querySelector(".section-header-title");
-
       const data = this.extractData(cur);
 
-      titleSpan.textContent = data.title;
-      if (data.badge) {
-        img.src = data.badge;
-        img.alt = data.alt;
-        img.hidden = false;
-      } else {
-        img.hidden = true;
+      if (titleSpan) titleSpan.textContent = data.title;
+      if (img) {
+        if (data.badge) {
+          img.src = data.badge;
+          img.alt = data.alt || "";
+          img.hidden = false;
+        } else {
+          img.hidden = true;
+        }
       }
-
       this.syncWithTracker();
     },
 
-    /* -----------------------------
-        Update cycle
-      ------------------------------ */
     update() {
       this.measure();
       const idx = this.computeIndex();
       this.render(idx);
     },
 
-    /* -----------------------------
-        Throttled event bridge
-      ------------------------------ */
     onChange() {
       if (this.ticking) return;
       this.ticking = 1;
@@ -202,9 +175,6 @@
       });
     },
 
-    /* -----------------------------
-        Init
-      ------------------------------ */
     init() {
       this.ensureBar();
       this.collectHeaders();
@@ -219,7 +189,7 @@
           this.syncWithTracker();
           this.update();
         },
-        { once: true }
+        { once: true },
       );
 
       this.mo = new MutationObserver(() => {
@@ -238,6 +208,5 @@
   } else {
     StickyHeader.init();
   }
-
   global.StickyHeader = StickyHeader;
 })(window);
