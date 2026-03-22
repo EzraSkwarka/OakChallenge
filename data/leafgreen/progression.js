@@ -778,16 +778,15 @@ window.gameData = {
         <pre>
           Staryu → Water Stone → Starmie (Super Rod – Pallet Town)
           Horsea → Lv. 32 → Seadra (Good Rod – Pallet Town)
-          Psyduck → Lv. 33 → Golduck (Super Rod – Viridian City)
           Poliwag → Lv. 25 → Poliwhirl → Water Stone → Poliwrath (Good Rod – Viridian City)
           Goldeen → Lv. 33 → Seaking (Good Rod – Viridian City)
           Krabby → Lv. 28 → Kingler (Good Rod – Pallet Town)
           Grimer → Lv. 38 → Muk (Super Rod – Celadon City)
         </pre>
-        <p>Catching Grimer is particularly difficult due to its 1% encounter rate in Celadon City. Catch additional Poliwhirl and Golduck to complete two trades:</p>
+        <p>Catching Grimer is particularly difficult due to its 1% encounter rate in Celadon City. Catch an additional Poliwhirl and bring your extra Slowbro to complete two trades:</p>
         <pre>
-          Jynx
-          Lickitung
+          Slowbro → Lickitung
+          Poliwhirl → Jynx
         </pre>
 
         <h5>Route 14 and Route 15</h5>
@@ -1157,7 +1156,7 @@ window.gameData = {
             img: "assets/images/FRLG/Pokedex/Spr_3f_108.png",
             name: "Lickitung"
           },
-          method: "Trade (Route 18 gate): Golduck → Lickitung"
+          method: "Trade (Route 18 gate): Slowbro → Lickitung"
         },
         /* --------------------------- Route 14/Routeb 15 ---------------------- */
         {
