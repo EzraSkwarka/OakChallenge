@@ -786,8 +786,8 @@ window.gameData = {
         </pre>
         <p>Catching Grimer is particularly difficult due to its 1% encounter rate in Celadon City. Catch additional Poliwhirl and Golduck to complete two trades:</p>
         <pre>
-          Jynx
-          Lickitung
+          Poliwhirl → Jynx
+          Golduck → Lickitung
         </pre>
 
         <h5>Route 14 and Route 15</h5>
