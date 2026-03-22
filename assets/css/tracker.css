@@ -898,6 +898,7 @@ td .catch-btn img.catch-mark {
   flex-wrap: wrap;
   gap: 8px;
   margin: 0.4rem 0 0.8rem;
+  max-width: 100%;
 }
 #choice-status .chip {
   display: inline-flex;

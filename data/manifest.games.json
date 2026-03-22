@@ -67,20 +67,20 @@
         "name": "Pokémon Ruby",
         "region": "Hoenn",
         "gen": "Gen 3",
-        "notes": "Under Construction",
+        "notes": "",
         "cover": "assets/images/covers/ruby.png",
         "href": "pages/tracker/ruby.html",
-        "available": false
+        "available": true
       },
       {
         "id": "sapphire",
         "name": "Pokémon Sapphire",
         "region": "Hoenn",
         "gen": "Gen 3",
-        "notes": "Under Construction",
+        "notes": "",
         "cover": "assets/images/covers/sapphire.png",
         "href": "pages/tracker/sapphire.html",
-        "available": false
+        "available": true
       },
       {
         "id": "emerald",
