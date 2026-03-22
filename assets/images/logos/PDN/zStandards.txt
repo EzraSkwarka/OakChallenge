@@ -1,5 +1,6 @@
 These are descriptive, not prescriptive. This is what I used but mi not claiming it to be the best, just a base so I can remember
 - Final Logo should be 850 x 365
-- Use Pocket Monk for the font for version name
-- Borderize; Alpha Threshold Default, Border Size 9, shadow Size 0: https://www.borderize.com/
-- Curveing, 50 deg: https://fontmeme.com/bend-images/
+- Use 108pt Decotura ICG for the font for version name
+	- https://bulbapedia.bulbagarden.net/wiki/User:ThunderBrine/List_of_fonts_used_in_the_Pok%C3%A9mon_franchise
+- Borderize; Alpha Threshold Default, Border Size 5, shadow Size 0: https://www.borderize.com/
+- Curveing, 45 deg: https://fontmeme.com/bend-images/

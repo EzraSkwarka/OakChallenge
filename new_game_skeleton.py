@@ -83,11 +83,34 @@ def main():
 </html>
 """
 
-    progression = f"""window.gameData = {{
+    progression = f"""
+    /* ----------------------
+    - img src: 
+    - Guide: 
+    ----------------------- */
+    const guideLink = "";
+    const guideSource = `
+      <p class="tips-source">
+        <a href="${{guideLink}}" target="_blank" rel="noopener noreferrer">
+          Source: Professor Oak Challenge Guide (Google Doc)
+        </a>
+      </p>`;
+
+      const imgBasehref = ""
+      const badgeBasehref = ""
+
+    window.gameData = {{
   gameId: "{gid}",
   gameTitle: "{gname}",
   logo: "{logo_path}",
-  aboutHtml: "",
+  aboutHtml: `
+   <section class="game-intro-content">
+      <ul>
+    
+      </ul>
+      ${{guideSource}}
+    </section>
+    `,
   progression: {{
     "Pre Badge 1": {{
       headerTitle: "Pre Badge 1",
