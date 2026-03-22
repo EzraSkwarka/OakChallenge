@@ -950,7 +950,7 @@ function runAfterRender(scope) {
     StickyHeader.update();
   }
   syncViewButtons();
-  wireResetButton();
+  // wireResetButton();
 }
 
 /* -----------------------------  
@@ -1104,6 +1104,7 @@ function boot() {
   loadPersisted();
   render();
   runAfterRender(document);
+  wireResetButton();
 
   if (window.StickyHeader && typeof StickyHeader.update === "function") {
     StickyHeader.update();
