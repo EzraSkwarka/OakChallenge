@@ -677,11 +677,11 @@ window.gameData = {
           Caught 78, Remaining 173
         </p>
 
-        <p class="tips-source">
-          https://docs.google.com/document/d/1Np4qpfwQ_84w2jY5h8KPeIMJzxY-FOuV9SgSPexS70g/edit?tab=t.0
-            Source: Professor Oak Challenge Guide (Google Doc)
-          </a>
-        </p>
+      <p class="tips-source">
+        <a href="https://docs.google.com/document/d/1Np4qpfwQ_84w2jY5h8KPeIMJzxY-FOuV9SgSPexS70g/edit?tab=t.0" target="_blank" rel="noopener noreferrer">
+          Source: Professor Oak Challenge Guide (Google Doc)
+        </a>
+      </p>
   `,
 
       rows: [
@@ -1018,11 +1018,11 @@ window.gameData = {
           Caught 111, Remaining 140
         </p>
 
-        <p class="tips-source">
-          <a href="https://docs.google.com/document/d/1Np4qpfwQ_84w2jY5h8KPeIMJzxY-FOuV9SgSPexS70g/edit?tab=t.0" target="_blank" rel="noopener noreferrer">
-            Source: Professor Oak Challenge Guide (Google Doc)
-          </a>
-        </p>
+      <p class="tips-source">
+        <a href="https://docs.google.com/document/d/1Np4qpfwQ_84w2jY5h8KPeIMJzxY-FOuV9SgSPexS70g/edit?tab=t.0" target="_blank" rel="noopener noreferrer">
+          Source: Professor Oak Challenge Guide (Google Doc)
+        </a>
+      </p>
   `,
 
       rows: [
@@ -1433,11 +1433,11 @@ window.gameData = {
           Caught 143, Remaining 108
         </p>
 
-        <p class="tips-source">
-          https://docs.google.com/document/d/1Np4qpfwQ_84w2jY5h8KPeIMJzxY-FOuV9SgSPexS70g/edit?tab=t.0
-            Source: Professor Oak Challenge Guide (Google Doc)
-          </a>
-        </p>
+      <p class="tips-source">
+        <a href="https://docs.google.com/document/d/1Np4qpfwQ_84w2jY5h8KPeIMJzxY-FOuV9SgSPexS70g/edit?tab=t.0" target="_blank" rel="noopener noreferrer">
+          Source: Professor Oak Challenge Guide (Google Doc)
+        </a>
+      </p>
   `,
 
       rows: [
@@ -1741,37 +1741,14 @@ window.gameData = {
           Caught 150, Remaining 101
         </p>
 
-        <p class="tips-source">
-          <a href="https://docs.google.com/document/d/1Np4qpfwQ_84w2jY5h8KPeIMJzxY-FOuV9SgSPexS70g/edit?tab=t.0" target="_blank" rel="noopener noreferrer">
-            Source: Professor Oak Challenge Guide (Google Doc)
-          </a>
-        </p>
+      <p class="tips-source">
+        <a href="https://docs.google.com/document/d/1Np4qpfwQ_84w2jY5h8KPeIMJzxY-FOuV9SgSPexS70g/edit?tab=t.0" target="_blank" rel="noopener noreferrer">
+          Source: Professor Oak Challenge Guide (Google Doc)
+        </a>
+      </p>
   `,
 
       rows: [
-        /* --------------------------- Tohjo Falls (Moon Stone use) ----------- */
-        {
-          pokemon: {
-            img: "assets/images/Crystal/pokedex/Spr_2c_040.png",
-            name: "Wigglytuff",
-          },
-          method: "Use a Moon Stone on Jigglypuff (Tohjo Falls pickup)",
-        },
-        {
-          pokemon: {
-            img: "assets/images/Crystal/pokedex/Spr_2c_031.png",
-            name: "Nidoqueen",
-          },
-          method: "Use a Moon Stone on Nidorina (Tohjo Falls pickup)",
-        },
-        {
-          pokemon: {
-            img: "assets/images/Crystal/pokedex/Spr_2c_034.png",
-            name: "Nidoking",
-          },
-          method: "Use a Moon Stone on Nidorino (Tohjo Falls pickup)",
-        },
-
         /* --------------------------- Union Cave / Ruins of Alph -------------- */
         {
           pokemon: {
@@ -1868,11 +1845,11 @@ window.gameData = {
           Caught 154, Remaining 97
         </p>
 
-        <p class="tips-source">
-          https://docs.google.com/document/d/1Np4qpfwQ_84w2jY5h8KPeIMJzxY-FOuV9SgSPexS70g/edit?tab=t.0
-            Source: Professor Oak Challenge Guide (Google Doc)
-          </a>
-        </p>
+      <p class="tips-source">
+        <a href="https://docs.google.com/document/d/1Np4qpfwQ_84w2jY5h8KPeIMJzxY-FOuV9SgSPexS70g/edit?tab=t.0" target="_blank" rel="noopener noreferrer">
+          Source: Professor Oak Challenge Guide (Google Doc)
+        </a>
+      </p>
   `,
 
       rows: [
@@ -1965,11 +1942,11 @@ window.gameData = {
           Caught 170, Remaining 81
         </p>
 
-        <p class="tips-source">
-          https://docs.google.com/document/d/1Np4qpfwQ_84w2jY5h8KPeIMJzxY-FOuV9SgSPexS70g/edit?tab=t.0
-            Source: Professor Oak Challenge Guide (Google Doc)
-          </a>
-        </p>
+      <p class="tips-source">
+        <a href="https://docs.google.com/document/d/1Np4qpfwQ_84w2jY5h8KPeIMJzxY-FOuV9SgSPexS70g/edit?tab=t.0" target="_blank" rel="noopener noreferrer">
+          Source: Professor Oak Challenge Guide (Google Doc)
+        </a>
+      </p>
   `,
 
       rows: [
@@ -2131,11 +2108,11 @@ window.gameData = {
           Caught 174, Remaining 77
         </p>
 
-        <p class="tips-source">
-          https://docs.google.com/document/d/1Np4qpfwQ_84w2jY5h8KPeIMJzxY-FOuV9SgSPexS70g/edit?tab=t.0
-            Source: Professor Oak Challenge Guide (Google Doc)
-          </a>
-        </p>
+      <p class="tips-source">
+        <a href="https://docs.google.com/document/d/1Np4qpfwQ_84w2jY5h8KPeIMJzxY-FOuV9SgSPexS70g/edit?tab=t.0" target="_blank" rel="noopener noreferrer">
+          Source: Professor Oak Challenge Guide (Google Doc)
+        </a>
+      </p>
   `,
 
       rows: [
@@ -2267,11 +2244,11 @@ window.gameData = {
           (Virtual Console) Caught 204, Remaining 47
         </p>
 
-        <p class="tips-source">
-          https://docs.google.com/document/d/1Np4qpfwQ_84w2jY5h8KPeIMJzxY-FOuV9SgSPexS70g/edit?tab=t.0
-            Source: Professor Oak Challenge Guide (Google Doc)
-          </a>
-        </p>
+      <p class="tips-source">
+        <a href="https://docs.google.com/document/d/1Np4qpfwQ_84w2jY5h8KPeIMJzxY-FOuV9SgSPexS70g/edit?tab=t.0" target="_blank" rel="noopener noreferrer">
+          Source: Professor Oak Challenge Guide (Google Doc)
+        </a>
+      </p>
   `,
 
       rows: [
@@ -2514,11 +2491,11 @@ window.gameData = {
           (Virtual Console) Caught 207, Remaining 44
         </p>
 
-        <p class="tips-source">
-          https://docs.google.com/document/d/1Np4qpfwQ_84w2jY5h8KPeIMJzxY-FOuV9SgSPexS70g/edit?tab=t.0
-            Source: Professor Oak Challenge Guide (Google Doc)
-          </a>
-        </p>
+      <p class="tips-source">
+        <a href="https://docs.google.com/document/d/1Np4qpfwQ_84w2jY5h8KPeIMJzxY-FOuV9SgSPexS70g/edit?tab=t.0" target="_blank" rel="noopener noreferrer">
+          Source: Professor Oak Challenge Guide (Google Doc)
+        </a>
+      </p>
   `,
 
       rows: [
