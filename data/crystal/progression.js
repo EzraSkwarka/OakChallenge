@@ -24,7 +24,7 @@ window.gameData = {
   progression: {
     falkner: {
       headerTitle: "Pre Badge 1 - Falkner",
-      headerImg: "assets/images/Crystal/badges/Spr_GS_falkner.png",
+      headerImg: "assets/images/Crystal/badges/Spr_GS_Falkner.png",
       headerImgAlt: "Falkner as he appeared in Pokemon Crystal",
 
       summaryShort: `This first part will cover everything you can do BEFORE you get that first badge from Falkner. This is probably the most daunting part of the challenge…Thankfully there’s no Jigglypuff on Route 46 so you don’t need the Moon Stone prior to the first badge which makes the challenge on this version much more appealing than Gold/Silver despite being a generally ‘better’ game. You will need the Moon Stone eventually so make sure you follow the below information and get your Mother to start saving money from the get-go.`,
@@ -596,7 +596,7 @@ window.gameData = {
     },
     bugsy: {
       headerTitle: "Pre Badge 2 - Bugsy",
-      headerImg: "assets/images/Crystal/badges/Spr_GS_bugsy.png",
+      headerImg: "assets/images/Crystal/badges/Spr_GS_Bugsy.png",
       headerImgAlt: "Bugsy as he appeared in Pokemon Crystal",
 
       summaryShort: `With Falkner defeated you’ll get a call from Professor Elm stating that one of his aides is in the pokemon center with a present for you. It’s an egg! This will eventually hatch into Togepi which you want to keep in your party so that it’s happiness increases whilst grinding.`,
@@ -919,7 +919,7 @@ window.gameData = {
     },
     whitney: {
       headerTitle: "Pre Badge 3 - Whitney",
-      headerImg: "assets/images/Crystal/badges/Spr_GS_whitney.png",
+      headerImg: "assets/images/Crystal/badges/Spr_GS_Whitney.png",
       headerImgAlt: "Whitney as she appeared in Pokemon Crystal",
 
       summaryShort: `You need to make sure you can get the Moon Stone from your Mother in this section. Refer to the Moon Stone section at the beginning of the guide. If you haven’t already received it, deposit as much money as you can with her (up to P18,270 if you’ve not given her any money yet). If you’re still short, sell everything you don’t need. Make sure she is saving money for you from trainer battles and that you have trainers to battle against to trigger the calls.  `,
@@ -1321,7 +1321,7 @@ window.gameData = {
     },
     morty: {
       headerTitle: "Pre Badge 4 - Morty",
-      headerImg: "assets/images/Crystal/badges/Spr_GS_morty.png",
+      headerImg: "assets/images/Crystal/badges/Spr_GS_Morty.png",
       headerImgAlt: "Morty as he appeared in Pokemon Crystal",
 
       summaryShort: `Defeat Whitney and then go back to Route 36 to talk to the lady standing by the ‘tree’. She’ll return to the flower shop in Goldenrod so go and speak to the ladies inside to get the watering can. Return to the tree and save your game before using the watering can on it as this is your only chance to capture a Sudowoodo. Once you’ve caught it, speak to the man on the right of Sudowoodo who will give you the TM for Rock Smash.`,
@@ -1685,7 +1685,7 @@ window.gameData = {
     },
     pryce: {
       headerTitle: "Pre Badge 5 - Pryce",
-      headerImg: "assets/images/Crystal/badges/Spr_GS_pryce.png",
+      headerImg: "assets/images/Crystal/badges/Spr_GS_Pryce.png",
       headerImgAlt: "Pryce as he appeared in Pokemon Crystal",
 
       summaryShort: `With the ability to use Surf we can access a few additional areas. Before we do that, let’s backtrack for a moment.`,
@@ -1886,7 +1886,7 @@ window.gameData = {
     },
     clair: {
       headerTitle: "Pre Badge 8 - Clair",
-      headerImg: "assets/images/Crystal/badges/Spr_GS_clair.png",
+      headerImg: "assets/images/Crystal/badges/Spr_GS_Clair.png",
       headerImgAlt: "Clair as she appeared in Pokemon Crystal",
 
       summaryShort: `Once you’ve obtained the seventh badge, Professor Elm will call you and you can kick off the events that require you to stop Team Rocket’s takeover in Goldenrod City’s Radio Tower. It is possible to venture onwards to Blackthorn before clearing the Radio Tower so consider obtaining some new Pokémon and training them up against the grunts.`,
