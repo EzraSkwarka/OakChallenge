@@ -39,22 +39,14 @@ const safeImg = (src) => (!src || src === "link" ? PLACEHOLDER_SRC : src);
 |Validate / Load Game Data
 ------------------------------ */
 if (typeof window.gameData !== "object") {
-  throw new Error(
-    "gameData not found. Load data/<game>/progression.js before the tracker.",
-  );
+  throw new Error("gameData not found. Load data/<game>/progression.js before the tracker.");
 }
 
 const PAGE_NS = gameData.gameId || "default";
 const GAME_TITLE = gameData.gameTitle || "Pokémon Game";
 
 const BADGE_GROUPS =
-  (gameData.badgeGroups &&
-    typeof gameData.badgeGroups === "object" &&
-    gameData.badgeGroups) ||
-  (gameData.progression &&
-    typeof gameData.progression === "object" &&
-    gameData.progression) ||
-  {};
+  (gameData.badgeGroups && typeof gameData.badgeGroups === "object" && gameData.badgeGroups) || (gameData.progression && typeof gameData.progression === "object" && gameData.progression) || {};
 
 function ensureDataOrExplain() {
   if (Object.keys(BADGE_GROUPS).length > 0) return;
@@ -64,8 +56,7 @@ function ensureDataOrExplain() {
   const td = document.createElement("td");
   td.colSpan = 3;
   td.className = "muted";
-  td.textContent =
-    "No sections to display. Ensure your data file defines window.gameData.{badgeGroups|progression} and is included before the tracker.";
+  td.textContent = "No sections to display. Ensure your data file defines window.gameData.{badgeGroups|progression} and is included before the tracker.";
   tr.appendChild(td);
   tbody.textContent = "";
   tbody.appendChild(tr);
@@ -123,7 +114,18 @@ function saveCaught(caught) {
 ------------------------------ */
 function refreshUI() {
   render();
-  StickyHeader.update();
+  if (window.StickyHeader && typeof StickyHeader.update === "function") {
+    StickyHeader.update();
+  }
+}
+
+function forceRerender() {
+  renderCtx.keyOrder = [];
+  renderCtx.rowNodes.clear();
+  const tbody = tbodyEl();
+  if (tbody) tbody.textContent = "";
+  render();
+  runAfterRender(document);
 }
 
 /* -----------------------------  
@@ -135,6 +137,7 @@ function setChoice(key, value) {
   saveChoices(choices);
   store.setState({ choices });
   refreshUI();
+  forceRerender();
 }
 
 function clearChoice(key) {
@@ -144,6 +147,7 @@ function clearChoice(key) {
   saveChoices(choices);
   store.setState({ choices });
   refreshUI();
+  forceRerender();
 }
 
 function toggleChoiceMulti(key, value, capN) {
@@ -156,12 +160,12 @@ function toggleChoiceMulti(key, value, capN) {
   if (i >= 0) arr.splice(i, 1);
   else if (arr.length < Math.max(1, capN || CHOICE_DEFAULT_CAP)) arr.push(v);
   if (arr.length === 0) delete choices[key];
-  else if (arr.length === 1 && (capN || CHOICE_DEFAULT_CAP) === 1)
-    choices[key] = arr[0];
+  else if (arr.length === 1 && (capN || CHOICE_DEFAULT_CAP) === 1) choices[key] = arr[0];
   else choices[key] = arr;
   saveChoices(choices);
   store.setState({ choices });
   refreshUI();
+  forceRerender();
 }
 
 function toggleCaught(name) {
@@ -249,8 +253,7 @@ function setGameHeader() {
   left.textContent = "";
   const titleEl = document.getElementById("game-title");
   if (titleEl) titleEl.textContent = "";
-  const logo =
-    gameData && typeof gameData.logo === "string" ? gameData.logo.trim() : "";
+  const logo = gameData && typeof gameData.logo === "string" ? gameData.logo.trim() : "";
   if (logo) {
     const img = document.createElement("img");
     img.src = logo;
@@ -271,8 +274,7 @@ function setGameHeader() {
 function convertGameTitleToSectionBreak() {
   const title = document.getElementById("game-title");
   if (!title) return;
-  const label =
-    title.textContent.trim() || title.getAttribute("data-title") || "";
+  const label = title.textContent.trim() || title.getAttribute("data-title") || "";
   const wrap = document.createElement("div");
   wrap.className = "section-break";
   const span = document.createElement("span");
@@ -290,10 +292,7 @@ function renderGameTips() {
   if (!slots) return;
   const { right } = slots;
   right.textContent = "";
-  const html =
-    gameData && typeof gameData.aboutHtml === "string"
-      ? gameData.aboutHtml.trim()
-      : "";
+  const html = gameData && typeof gameData.aboutHtml === "string" ? gameData.aboutHtml.trim() : "";
   if (!html) return;
   const section = document.createElement("section");
   section.className = "game-tips";
@@ -331,12 +330,8 @@ function setViewMode(mode) {
 
 function syncViewButtons() {
   const isGrid = VIEW_MODE === "grid";
-  document
-    .querySelectorAll(".view-btn.view-list")
-    .forEach((b) => b.classList.toggle("active", !isGrid));
-  document
-    .querySelectorAll(".view-btn.view-grid")
-    .forEach((b) => b.classList.toggle("active", isGrid));
+  document.querySelectorAll(".view-btn.view-list").forEach((b) => b.classList.toggle("active", !isGrid));
+  document.querySelectorAll(".view-btn.view-grid").forEach((b) => b.classList.toggle("active", isGrid));
 }
 
 /* -----------------------------  
@@ -356,9 +351,7 @@ function normalizeSummaryPreIndent(root) {
     });
     const min = Math.min(...indents);
     if (!Number.isFinite(min) || min === 0) return;
-    const out = lines
-      .map((l) => (l.startsWith(" ".repeat(min)) ? l.slice(min) : l))
-      .join("\n");
+    const out = lines.map((l) => (l.startsWith(" ".repeat(min)) ? l.slice(min) : l)).join("\n");
     pre.textContent = out;
   });
 }
@@ -370,26 +363,10 @@ function buildModel() {
   const { choices, caught } = store.getState();
   const out = [];
   for (const [groupTitle, def] of Object.entries(BADGE_GROUPS)) {
-    const rows = Array.isArray(def)
-      ? def
-      : def && Array.isArray(def.rows)
-        ? def.rows
-        : [];
-    const summaryShort =
-      def && typeof def === "object"
-        ? (typeof def.summaryShort === "string" && def.summaryShort) ||
-          (typeof def.summary === "string" && def.summary) ||
-          null
-        : null;
-    const summaryHtml =
-      def && typeof def === "object" && typeof def.summaryHtml === "string"
-        ? def.summaryHtml
-        : null;
-    const summaryOpen = !!(
-      def &&
-      typeof def === "object" &&
-      def.summaryOpen === true
-    );
+    const rows = Array.isArray(def) ? def : def && Array.isArray(def.rows) ? def.rows : [];
+    const summaryShort = def && typeof def === "object" ? (typeof def.summaryShort === "string" && def.summaryShort) || (typeof def.summary === "string" && def.summary) || null : null;
+    const summaryHtml = def && typeof def === "object" && typeof def.summaryHtml === "string" ? def.summaryHtml : null;
+    const summaryOpen = !!(def && typeof def === "object" && def.summaryOpen === true);
     const headerTitle = def?.headerTitle || groupTitle;
 
     out.push({
@@ -397,7 +374,7 @@ function buildModel() {
       __key: `header:${groupTitle}`,
       title: headerTitle,
       headerImg: def?.headerImg || null,
-      headerImgAlt: def?.headerImgAlt || "",
+      headerImgAlt: def?.headerImgAlt || ""
     });
 
     if (summaryShort || summaryHtml)
@@ -406,7 +383,7 @@ function buildModel() {
         __key: `summary:${groupTitle}`,
         short: summaryShort,
         html: summaryHtml,
-        open: summaryOpen,
+        open: summaryOpen
       });
 
     const choiceRows = rows.filter((r) => r.type === "choice");
@@ -414,10 +391,7 @@ function buildModel() {
     const capMap = {};
     for (const r of choiceRows) {
       const k = r.choiceKey;
-      const c =
-        Number.isFinite(r.choiceCap) && r.choiceCap > 0
-          ? Math.floor(r.choiceCap)
-          : null;
+      const c = Number.isFinite(r.choiceCap) && r.choiceCap > 0 ? Math.floor(r.choiceCap) : null;
       if (c) capMap[k] = Math.max(capMap[k] || 0, c);
     }
 
@@ -433,23 +407,12 @@ function buildModel() {
 
         const prev = rows[i - 1];
         const next = rows[i + 1];
-        const isStart = !(
-          prev &&
-          prev.type === "choice" &&
-          prev.choiceKey === k
-        );
+        const isStart = !(prev && prev.type === "choice" && prev.choiceKey === k);
         const isEnd = !(next && next.type === "choice" && next.choiceKey === k);
 
         let customLabel = null;
-        if (typeof r.choiceTitle === "string" && r.choiceTitle.trim())
-          customLabel = r.choiceTitle.trim();
-        else if (
-          def &&
-          def.choiceTitles &&
-          typeof def.choiceTitles === "object" &&
-          typeof def.choiceTitles[k] === "string"
-        )
-          customLabel = String(def.choiceTitles[k]).trim();
+        if (typeof r.choiceTitle === "string" && r.choiceTitle.trim()) customLabel = r.choiceTitle.trim();
+        else if (def && def.choiceTitles && typeof def.choiceTitles === "object" && typeof def.choiceTitles[k] === "string") customLabel = String(def.choiceTitles[k]).trim();
 
         const defaultLabel = `${cap(k)} — ${capN === 1 ? "choose one" : `choose up to ${capN}`}`;
         const label = customLabel || defaultLabel;
@@ -459,7 +422,7 @@ function buildModel() {
             __kind: "choiceSubheader",
             __key: `choiceSubheader:${groupTitle}:${k}:${i}`,
             __group: groupTitle,
-            label,
+            label
           });
         }
 
@@ -472,11 +435,11 @@ function buildModel() {
           cap: capN,
           pokemon: {
             name: r.pokemon?.name || "Choice",
-            img: safeImg(r.pokemon?.img),
+            img: safeImg(r.pokemon?.img)
           },
           method: r.method || "Pick an option",
           groupRunStart: isStart,
-          groupRunEnd: isEnd,
+          groupRunEnd: isEnd
         });
 
         continue;
@@ -491,17 +454,13 @@ function buildModel() {
         __group: groupTitle,
         pokemon: { name: nm, img: safeImg(r.pokemon?.img) },
         method: r.method || "—",
-        caught: !!caught[nm],
+        caught: !!caught[nm]
       });
     }
 
-    const eligible = rows
-      .filter((r) => r.type !== "choice")
-      .filter((r) => meetsRequirements(r, choices));
+    const eligible = rows.filter((r) => r.type !== "choice").filter((r) => meetsRequirements(r, choices));
     const total = eligible.length;
-    const caughtCount = eligible.filter(
-      (r) => r.pokemon && caught[r.pokemon.name],
-    ).length;
+    const caughtCount = eligible.filter((r) => r.pokemon && caught[r.pokemon.name]).length;
 
     const allChoicesMade = (() => {
       if (!keys.length) return true;
@@ -519,7 +478,7 @@ function buildModel() {
         __kind: "progress",
         __key: `progress:${groupTitle}`,
         total,
-        caught: caughtCount,
+        caught: caughtCount
       });
   }
   return out;
@@ -533,26 +492,19 @@ function meetsRequirements(row, choices) {
   function hasValue(k, v) {
     const need = (v ?? "").toString().trim().toLowerCase();
     const cur = choices[k];
-    if (Array.isArray(cur))
-      return cur.some(
-        (x) => (x ?? "").toString().trim().toLowerCase() === need,
-      );
+    if (Array.isArray(cur)) return cur.some((x) => (x ?? "").toString().trim().toLowerCase() === need);
     return (cur ?? "").toString().trim().toLowerCase() === need;
   }
   function passRequires(req) {
     if (!req) return true;
-    if (Array.isArray(req))
-      return req.every((r) => r?.key && hasValue(r.key, r.value));
-    if (typeof req === "object")
-      return Object.entries(req).every(([k, v]) => hasValue(k, v));
+    if (Array.isArray(req)) return req.every((r) => r?.key && hasValue(r.key, r.value));
+    if (typeof req === "object") return Object.entries(req).every(([k, v]) => hasValue(k, v));
     return true;
   }
   function passRequiresNot(notReq) {
     if (!notReq) return true;
-    if (Array.isArray(notReq))
-      return notReq.every((r) => r?.key && !hasValue(r.key, r.value));
-    if (typeof notReq === "object")
-      return Object.entries(notReq).every(([k, v]) => !hasValue(k, v));
+    if (Array.isArray(notReq)) return notReq.every((r) => r?.key && !hasValue(r.key, r.value));
+    if (typeof notReq === "object") return Object.entries(notReq).every(([k, v]) => !hasValue(k, v));
     return true;
   }
   return passRequires(row.requires) && passRequiresNot(row.requiresNot);
@@ -586,9 +538,7 @@ function renderChoiceStatus() {
   for (const [key, value] of Object.entries(choices)) {
     const chip = document.createElement("div");
     chip.className = "chip";
-    const label = Array.isArray(value)
-      ? `${cap(key)}: ${value.map((v) => cap(String(v))).join(", ")}`
-      : `${cap(key)}: ${cap(String(value))}`;
+    const label = Array.isArray(value) ? `${cap(key)}: ${value.map((v) => cap(String(v))).join(", ")}` : `${cap(key)}: ${cap(String(value))}`;
     const text = document.createElement("span");
     text.textContent = label;
 
@@ -738,8 +688,7 @@ function trChoice(row) {
   tr.addEventListener("click", () => {
     const disabled = isChoiceDisabled(row.cap, row.choiceKey, row.choiceValue);
     if (disabled) return;
-    if ((row.cap || CHOICE_DEFAULT_CAP) === 1)
-      setChoice(row.choiceKey, row.choiceValue);
+    if ((row.cap || CHOICE_DEFAULT_CAP) === 1) setChoice(row.choiceKey, row.choiceValue);
     else toggleChoiceMulti(row.choiceKey, row.choiceValue, row.cap);
   });
   return tr;
@@ -793,9 +742,7 @@ function trProgress(row) {
   bar.className = "progress-bar";
   const fill = document.createElement("div");
   fill.className = "progress-fill";
-  const pct = row.total
-    ? Math.max(0, Math.min(100, Math.round((row.caught / row.total) * 100)))
-    : 0;
+  const pct = row.total ? Math.max(0, Math.min(100, Math.round((row.caught / row.total) * 100))) : 0;
   fill.classList.add(`w-${pct}`);
   bar.appendChild(fill);
   const label = document.createElement("div");
@@ -903,8 +850,8 @@ function modelForView(model) {
       items: bucket.map((r) => ({
         name: r.pokemon.name,
         img: r.pokemon.img,
-        caught: !!r.caught,
-      })),
+        caught: !!r.caught
+      }))
     });
     bucket = [];
   }
@@ -985,13 +932,11 @@ function render() {
   const tbl = el("pokemon-table");
   tbl?.classList.toggle(
     "has-data",
-    model.some((r) => r.__kind === "pokemon" || r.__kind === "choice"),
+    model.some((r) => r.__kind === "pokemon" || r.__kind === "choice")
   );
 
   const newKeys = viewModel.map((m) => m.__key);
-  const sameShape =
-    newKeys.length === renderCtx.keyOrder.length &&
-    newKeys.every((k, i) => k === renderCtx.keyOrder[i]);
+  const sameShape = newKeys.length === renderCtx.keyOrder.length && newKeys.every((k, i) => k === renderCtx.keyOrder[i]);
 
   if (!sameShape) {
     const existing = renderCtx.rowNodes;
@@ -1036,10 +981,8 @@ function render() {
       const tr = ensureNodeFor(row);
       if (!tr) continue;
       if (tr.parentNode !== tbody) {
-        if (anchor.node && anchor.node.nextSibling)
-          tbody.insertBefore(tr, anchor.node.nextSibling);
-        else if (!anchor.node && tbody.firstChild)
-          tbody.insertBefore(tr, tbody.firstChild);
+        if (anchor.node && anchor.node.nextSibling) tbody.insertBefore(tr, anchor.node.nextSibling);
+        else if (!anchor.node && tbody.firstChild) tbody.insertBefore(tr, tbody.firstChild);
         else tbody.appendChild(tr);
       } else {
         const shouldBeAfter = anchor.node;
@@ -1078,12 +1021,7 @@ function render() {
       const fill = tr.querySelector(".progress-fill");
       const label = tr.querySelector(".progress-label");
       if (fill) {
-        const pct = row.total
-          ? Math.max(
-              0,
-              Math.min(100, Math.round((row.caught / row.total) * 100)),
-            )
-          : 0;
+        const pct = row.total ? Math.max(0, Math.min(100, Math.round((row.caught / row.total) * 100))) : 0;
         fill.className = fill.className.replace(/\bw-\d+\b/g, "").trim();
         fill.classList.add(`w-${pct}`);
       }
