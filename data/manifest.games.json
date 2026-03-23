@@ -90,7 +90,7 @@
         "notes": "Under Construction",
         "cover": "assets/images/covers/emerald.png",
         "href": "pages/tracker/emerald.html",
-        "available": false
+        "available": true
       },
   
       {
