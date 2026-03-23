@@ -87,7 +87,7 @@
         "name": "Pokémon Emerald",
         "region": "Hoenn",
         "gen": "Gen 3",
-        "notes": "Under Construction",
+        "notes": "",
         "cover": "assets/images/covers/emerald.png",
         "href": "pages/tracker/emerald.html",
         "available": true
@@ -119,7 +119,7 @@
         "name": "Pokémon Diamond",
         "region": "Sinnoh",
         "gen": "Gen 4",
-        "notes": "",
+        "notes": "Under Construction",
         "cover": "assets/images/covers/diamond.png",
         "href": "pages/tracker/diamond.html",
         "available": false
@@ -129,7 +129,7 @@
         "name": "Pokémon Pearl",
         "region": "Sinnoh",
         "gen": "Gen 4",
-        "notes": "",
+        "notes": "Under Construction",
         "cover": "assets/images/covers/pearl.png",
         "href": "pages/tracker/pearl.html",
         "available": false
@@ -139,7 +139,7 @@
         "name": "Pokémon Platinum",
         "region": "Sinnoh",
         "gen": "Gen 4",
-        "notes": "",
+        "notes": "Under Construction",
         "cover": "assets/images/covers/platinum.png",
         "href": "pages/tracker/platinum.html",
         "available": false
