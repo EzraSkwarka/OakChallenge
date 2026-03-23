@@ -509,9 +509,7 @@ window.gameData = {
 
         /* --------------------------- Meteor Falls --------------------------- */
         { pokemon: { img: imgBasehref + "338.png", name: "Solrock" }, method: "Meteor Falls" },
-        { pokemon: { img: imgBasehref + "300.png", name: "Skitty" }, method: "Route 116 (previously caught; evolved here)" },
         { pokemon: { img: imgBasehref + "301.png", name: "Delcatty" }, method: "Use a Moon Stone on Skitty (Meteor Falls)" },
-        { pokemon: { img: imgBasehref + "044.png", name: "Gloom" }, method: "Evolve from Oddish (earlier)" },
         { pokemon: { img: imgBasehref + "182.png", name: "Bellossom" }, method: "Use a Sun Stone on Gloom (stolen from Solrock)" },
 
         /* --------------------------- Jagged Pass ---------------------------- */
@@ -906,7 +904,6 @@ window.gameData = {
         { pokemon: { img: imgBasehref + "172.png", name: "Pichu" }, method: "Breed Pikachu/Raichu (no item required)" },
 
         /* --------------------------- Lilycove, contests, evolutions ------------ */
-        { pokemon: { img: imgBasehref + "101.png", name: "Electrode" }, method: "Team Aqua Hideout (Poké Ball trap)" },
         { pokemon: { img: imgBasehref + "350.png", name: "Milotic" }, method: "Evolve Feebas by levelling with Beauty ≥ 170 (Pokéblocks)" },
 
         /* --------------------------- Shoal Cave ------------------------------- */
@@ -1011,7 +1008,6 @@ window.gameData = {
         { pokemon: { img: imgBasehref + "366.png", name: "Clamperl" }, method: "Underwater seaweed; can hold Blue Shard" },
 
         /* --------------------------- Stones via shards / Abandoned Ship ------ */
-        { pokemon: { img: imgBasehref + "120.png", name: "Staryu" }, method: "Fish at Lilycove beach (from prior section)" },
         { pokemon: { img: imgBasehref + "121.png", name: "Starmie" }, method: "Use a Water Stone on Staryu (shard trade or Abandoned Ship)" },
         { pokemon: { img: imgBasehref + "272.png", name: "Ludicolo" }, method: "Use a Water Stone on Lombre" },
 

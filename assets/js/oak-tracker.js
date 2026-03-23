@@ -183,6 +183,7 @@ function resetAll() {
   localStorage.removeItem(LS_CAUGHT);
   store.setState({ choices: {}, caught: {} });
   refreshUI();
+  forceRerender();
 }
 
 /* -----------------------------  
