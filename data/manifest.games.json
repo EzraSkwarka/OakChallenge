@@ -122,7 +122,7 @@
         "notes": "Under Construction",
         "cover": "assets/images/covers/diamond.png",
         "href": "pages/tracker/diamond.html",
-        "available": false
+        "available": true
       },
       {
         "id": "pearl",
@@ -132,7 +132,7 @@
         "notes": "Under Construction",
         "cover": "assets/images/covers/pearl.png",
         "href": "pages/tracker/pearl.html",
-        "available": false
+        "available": true
       },
       {
         "id": "platinum",
