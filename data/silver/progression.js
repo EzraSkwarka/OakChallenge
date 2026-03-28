@@ -25,7 +25,7 @@ window.gameData = {
       </p>
     </section>`,
   progression: {
-    "falkner": {
+    falkner: {
       headerTitle: "Pre Badge #1 - Falkner",
       headerImg: "assets/images/Gold/badges/Spr_GS_Falkner.png",
       headerImgAlt: "Falkner as he appeared in Pokemon Gold and Silver",
@@ -166,214 +166,337 @@ window.gameData = {
           type: "choice",
           choiceKey: "starter",
           choiceValue: "chikorita",
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_152.png", name: "Chikorita" },
-          method: "Pick this starter to show the Chikorita line"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_152.png",
+            name: "Chikorita",
+          },
+          method: "Pick this starter to show the Chikorita line",
         },
         {
           type: "choice",
           choiceKey: "starter",
           choiceValue: "cyndaquil",
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_155.png", name: "Cyndaquil" },
-          method: "Pick this starter to show the Cyndaquil line"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_155.png",
+            name: "Cyndaquil",
+          },
+          method: "Pick this starter to show the Cyndaquil line",
         },
         {
           type: "choice",
           choiceKey: "starter",
           choiceValue: "totodile",
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_158.png", name: "Totodile" },
-          method: "Pick this starter to show the Totodile line"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_158.png",
+            name: "Totodile",
+          },
+          method: "Pick this starter to show the Totodile line",
         },
 
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_152.png", name: "Chikorita" },
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_152.png",
+            name: "Chikorita",
+          },
           method: "Choose as Starter",
-          requires: { starter: "chikorita" }
+          requires: { starter: "chikorita" },
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_153.png", name: "Bayleef" },
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_153.png",
+            name: "Bayleef",
+          },
           method: "Evolve from Chikorita at level 16",
-          requires: { starter: "chikorita" }
+          requires: { starter: "chikorita" },
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_154.png", name: "Meganium" },
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_154.png",
+            name: "Meganium",
+          },
           method: "Evolve from Bayleef at level 32",
-          requires: { starter: "chikorita" }
+          requires: { starter: "chikorita" },
         },
 
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_155.png", name: "Cyndaquil" },
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_155.png",
+            name: "Cyndaquil",
+          },
           method: "Choose as Starter",
-          requires: { starter: "cyndaquil" }
+          requires: { starter: "cyndaquil" },
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_156.png", name: "Quilava" },
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_156.png",
+            name: "Quilava",
+          },
           method: "Evolve from Cyndaquil at level 14",
-          requires: { starter: "cyndaquil" }
+          requires: { starter: "cyndaquil" },
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_157.png", name: "Typhlosion" },
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_157.png",
+            name: "Typhlosion",
+          },
           method: "Evolve from Quilava at level 36",
-          requires: { starter: "cyndaquil" }
+          requires: { starter: "cyndaquil" },
         },
 
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_158.png", name: "Totodile" },
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_158.png",
+            name: "Totodile",
+          },
           method: "Choose as Starter",
-          requires: { starter: "totodile" }
+          requires: { starter: "totodile" },
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_159.png", name: "Croconaw" },
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_159.png",
+            name: "Croconaw",
+          },
           method: "Evolve from Totodile at level 18",
-          requires: { starter: "totodile" }
+          requires: { starter: "totodile" },
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_160.png", name: "Feraligatr" },
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_160.png",
+            name: "Feraligatr",
+          },
           method: "Evolve from Croconaw at level 30",
-          requires: { starter: "totodile" }
+          requires: { starter: "totodile" },
         },
 
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_016.png", name: "Pidgey" },
-          method: "Catch on Route 29 (Morning/Day)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_016.png",
+            name: "Pidgey",
+          },
+          method: "Catch on Route 29 (Morning/Day)",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_017.png", name: "Pidgeotto" },
-          method: "Evolve from Pidgey at level 18"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_017.png",
+            name: "Pidgeotto",
+          },
+          method: "Evolve from Pidgey at level 18",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_018.png", name: "Pidgeot" },
-          method: "Evolve from Pidgeotto at level 36"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_018.png",
+            name: "Pidgeot",
+          },
+          method: "Evolve from Pidgeotto at level 36",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_161.png", name: "Sentret" },
-          method: "Catch on Route 29 (Morning/Day)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_161.png",
+            name: "Sentret",
+          },
+          method: "Catch on Route 29 (Morning/Day)",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_162.png", name: "Furret" },
-          method: "Evolve from Sentret at level 15"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_162.png",
+            name: "Furret",
+          },
+          method: "Evolve from Sentret at level 15",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_163.png", name: "Hoothoot" },
-          method: "Catch on Route 29 (Night)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_163.png",
+            name: "Hoothoot",
+          },
+          method: "Catch on Route 29 (Night)",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_164.png", name: "Noctowl" },
-          method: "Evolve from Hoothoot at level 20"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_164.png",
+            name: "Noctowl",
+          },
+          method: "Evolve from Hoothoot at level 20",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_019.png", name: "Rattata" },
-          method: "Catch on Route 29 (All day)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_019.png",
+            name: "Rattata",
+          },
+          method: "Catch on Route 29 (All day)",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_020.png", name: "Raticate" },
-          method: "Evolve from Rattata at level 20"
-        },
-
-        {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_074.png", name: "Geodude" },
-          method: "Catch on Route 46 (lower section)"
-        },
-        {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_075.png", name: "Graveler" },
-          method: "Evolve from Geodude at level 25"
-        },
-        {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_039.png", name: "Jigglypuff" },
-          method: "Catch on Route 46"
-        },
-        {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_040.png", name: "Wigglytuff" },
-          method: "Use a Moon Stone on Jigglypuff"
-        },
-        {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_021.png", name: "Spearow" },
-          method: "Catch on Route 46 (not at night)"
-        },
-        {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_022.png", name: "Fearow" },
-          method: "Evolve from Spearow at level 20"
-        },
-
-        {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_013.png", name: "Weedle" },
-          method: "Catch on Route 30 (Silver, Morning/Day)"
-        },
-        {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_014.png", name: "Kakuna" },
-          method: "Evolve from Weedle at level 7"
-        },
-        {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_015.png", name: "Beedrill" },
-          method: "Evolve from Kakuna at level 10"
-        },
-        {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_165.png", name: "Ledyba" },
-          method: "Catch on Route 30 (Silver, Morning)"
-        },
-        {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_166.png", name: "Ledian" },
-          method: "Evolve from Ledyba at level 18"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_020.png",
+            name: "Raticate",
+          },
+          method: "Evolve from Rattata at level 20",
         },
 
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_069.png", name: "Bellsprout" },
-          method: "Catch on Route 31 (any time)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_074.png",
+            name: "Geodude",
+          },
+          method: "Catch on Route 46 (lower section)",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_070.png", name: "Weepinbell" },
-          method: "Evolve from Bellsprout at level 21"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_075.png",
+            name: "Graveler",
+          },
+          method: "Evolve from Geodude at level 25",
+        },
+        {
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_039.png",
+            name: "Jigglypuff",
+          },
+          method: "Catch on Route 46",
+        },
+        {
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_040.png",
+            name: "Wigglytuff",
+          },
+          method: "Use a Moon Stone on Jigglypuff",
+        },
+        {
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_021.png",
+            name: "Spearow",
+          },
+          method: "Catch on Route 46 (not at night)",
+        },
+        {
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_022.png",
+            name: "Fearow",
+          },
+          method: "Evolve from Spearow at level 20",
         },
 
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_041.png", name: "Zubat" },
-          method: "Catch in Dark Cave"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_013.png",
+            name: "Weedle",
+          },
+          method: "Catch on Route 30 (Silver, Morning/Day)",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_042.png", name: "Golbat" },
-          method: "Evolve from Zubat at level 22"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_014.png",
+            name: "Kakuna",
+          },
+          method: "Evolve from Weedle at level 7",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_169.png", name: "Crobat" },
-          method: "Evolve from Golbat with high Friendship"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_015.png",
+            name: "Beedrill",
+          },
+          method: "Evolve from Kakuna at level 10",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_206.png", name: "Dunsparce" },
-          method: "Catch in Dark Cave (very rare)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_165.png",
+            name: "Ledyba",
+          },
+          method: "Catch on Route 30 (Silver, Morning)",
+        },
+        {
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_166.png",
+            name: "Ledian",
+          },
+          method: "Evolve from Ledyba at level 18",
         },
 
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_092.png", name: "Gastly" },
-          method: "Catch in Sprout Tower (Night)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_069.png",
+            name: "Bellsprout",
+          },
+          method: "Catch on Route 31 (any time)",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_093.png", name: "Haunter" },
-          method: "Evolve from Gastly at level 25"
-        },
-        {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_095.png", name: "Onix" },
-          method: "Trade Bellsprout → Onix (Violet City)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_070.png",
+            name: "Weepinbell",
+          },
+          method: "Evolve from Bellsprout at level 21",
         },
 
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_201F.png", name: "Unown" },
-          method: "Ruins of Alph (after tile puzzle)"
-        }
-      ]
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_041.png",
+            name: "Zubat",
+          },
+          method: "Catch in Dark Cave",
+        },
+        {
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_042.png",
+            name: "Golbat",
+          },
+          method: "Evolve from Zubat at level 22",
+        },
+        {
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_169.png",
+            name: "Crobat",
+          },
+          method: "Evolve from Golbat with high Friendship",
+        },
+        {
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_206.png",
+            name: "Dunsparce",
+          },
+          method: "Catch in Dark Cave (very rare)",
+        },
+
+        {
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_092.png",
+            name: "Gastly",
+          },
+          method: "Catch in Sprout Tower (Night)",
+        },
+        {
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_093.png",
+            name: "Haunter",
+          },
+          method: "Evolve from Gastly at level 25",
+        },
+        {
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_095.png",
+            name: "Onix",
+          },
+          method: "Trade Bellsprout → Onix (Violet City)",
+        },
+
+        {
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_201F.png",
+            name: "Unown",
+          },
+          method: "Ruins of Alph (after tile puzzle)",
+        },
+      ],
     },
-    "bugsy": {
+    bugsy: {
       headerTitle: "Pre Badge #2 - Bugsy",
       headerImg: "assets/images/Gold/badges/Spr_GS_Bugsy.png",
       headerImgAlt: "Bugsy as he appeared in Pokemon Gold and Silver",
 
-      summaryShort: `You need to seriously consider getting the Moon Stone in this section as it’s a lot more feasible. Refer to the Moon Stone section at the beginning of the guide. Sell everything you have including pokeballs and your new TM (don’t worry you’ll get money to buy more pokeballs) before heading south from Violet City and deposit everything to your mother, making sure she will save money for you otherwise your winnings don’t get sent to her. The differences here are that you obviously have more trainers to battle to make some more money but make sure you leave enough trainers to trigger the phone calls once your mother has reached the thresholds. Trainers in Union Cave won’t trigger the calls (bad reception) so feel free to defeat them all as well as the trainers in the gym except for Bugsy of course. If you’re short on money still, you will have to repeat the daily berry trick but it’s much easier. Instead of berries, do this with the white Apricorn outside Kurt’s house which sell for P100 each which means you’ll have to do this a lot less than in section 1! Once you have the Moon Stone, retrieve your money and buy pokeballs and resume the challenge.`,
+      summaryShort: `With Falkner defeated you’ll get a call from Professor Elm stating that one of his aides is in the pokemon center with a present for you. It’s an egg! This will eventually hatch into Togepi which you want to keep in your party so that it’s happiness increases whilst grinding.`,
       summaryHtml: `
         <p>
-          Jigglypuff → (Moon Stone) → Wigglytuff
+          You need to seriously consider getting the Moon Stone in this section as it’s a lot more feasible. Refer to the Moon Stone section at the beginning of the guide. Sell everything you have including pokeballs and your new TM (don’t worry you’ll get money to buy more pokeballs) before heading south from Violet City and deposit everything to your mother, making sure she will save money for you otherwise your winnings don’t get sent to her. The differences here are that you obviously have more trainers to battle to make some more money but make sure you leave enough trainers to trigger the phone calls once your mother has reached the thresholds. Trainers in Union Cave won’t trigger the calls (bad reception) so feel free to defeat them all as well as the trainers in the gym except for Bugsy of course. If you’re short on money still, you will have to repeat the daily berry trick but it’s much easier. Instead of berries, do this with the white Apricorn outside Kurt’s house which sell for P100 each which means you’ll have to do this a lot less than in section 1! Once you have the Moon Stone, retrieve your money and buy pokeballs and resume the challenge.
         </p>
-
-        <p>
-          With Falkner defeated you’ll get a call from Professor Elm stating that one of his aides is in the pokemon center with a present for you. It’s an egg! This will eventually hatch into Togepi which you want to keep in your party so that it’s happiness increases whilst grinding.
-        </p>
+        
         <pre>
           Togepi → (Happiness) → Togetic
         </pre>
@@ -454,166 +577,258 @@ window.gameData = {
       `,
 
       rows: [
-        /* --------------------------- Moon Stone Evolution -------------------- */
-        {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_039.png", name: "Jigglypuff" },
-          method: "Evolve with Moon Stone → Wigglytuff (recommended this section)"
-        },
-        {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_040.png", name: "Wigglytuff" },
-          method: "Use a Moon Stone on Jigglypuff"
-        },
-
         /* --------------------------- Egg Gift & Happiness -------------------- */
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_175.png", name: "Togepi" },
-          method: "Gift Egg from Elm’s aide (Pokémon Center after Falkner)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_175.png",
+            name: "Togepi",
+          },
+          method: "Gift Egg from Elm’s aide (Pokémon Center after Falkner)",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_176.png", name: "Togetic" },
-          method: "Evolve from Togepi with high Friendship"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_176.png",
+            name: "Togetic",
+          },
+          method: "Evolve from Togepi with high Friendship",
         },
 
         /* --------------------------- Route 32 -------------------------------- */
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_179.png", name: "Mareep" },
-          method: "Catch on Route 32 (any time)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_179.png",
+            name: "Mareep",
+          },
+          method: "Catch on Route 32 (any time)",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_180.png", name: "Flaaffy" },
-          method: "Evolve from Mareep at level 15"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_180.png",
+            name: "Flaaffy",
+          },
+          method: "Evolve from Mareep at level 15",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_181.png", name: "Ampharos" },
-          method: "Evolve from Flaaffy at level 30"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_181.png",
+            name: "Ampharos",
+          },
+          method: "Evolve from Flaaffy at level 30",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_187.png", name: "Hoppip" },
-          method: "Catch on Route 32 (morning/day)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_187.png",
+            name: "Hoppip",
+          },
+          method: "Catch on Route 32 (morning/day)",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_188.png", name: "Skiploom" },
-          method: "Evolve from Hoppip at level 18"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_188.png",
+            name: "Skiploom",
+          },
+          method: "Evolve from Hoppip at level 18",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_189.png", name: "Jumpluff" },
-          method: "Evolve from Skiploom at level 27"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_189.png",
+            name: "Jumpluff",
+          },
+          method: "Evolve from Skiploom at level 27",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_194.png", name: "Wooper" },
-          method: "Catch on Route 32 (night/morning)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_194.png",
+            name: "Wooper",
+          },
+          method: "Catch on Route 32 (night/morning)",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_195.png", name: "Quagsire" },
-          method: "Evolve from Wooper at level 20"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_195.png",
+            name: "Quagsire",
+          },
+          method: "Evolve from Wooper at level 20",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_023.png", name: "Ekans" },
-          method: "Catch on Route 32 (Silver only; any time)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_023.png",
+            name: "Ekans",
+          },
+          method: "Catch on Route 32 (Silver only; any time)",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_024.png", name: "Arbok" },
-          method: "Evolve from Ekans at level 22"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_024.png",
+            name: "Arbok",
+          },
+          method: "Evolve from Ekans at level 22",
         },
 
         /* --------------------------- Old Fishing Tour ------------------------ */
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_129.png", name: "Magikarp" },
-          method: "Old Rod — anywhere"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_129.png",
+            name: "Magikarp",
+          },
+          method: "Old Rod — anywhere",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_130.png", name: "Gyarados" },
-          method: "Evolve from Magikarp at level 20"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_130.png",
+            name: "Gyarados",
+          },
+          method: "Evolve from Magikarp at level 20",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_072.png", name: "Tentacool" },
-          method: "Old Rod — New Bark Town"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_072.png",
+            name: "Tentacool",
+          },
+          method: "Old Rod — New Bark Town",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_073.png", name: "Tentacruel" },
-          method: "Evolve from Tentacool at level 30"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_073.png",
+            name: "Tentacruel",
+          },
+          method: "Evolve from Tentacool at level 30",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_098.png", name: "Krabby" },
-          method: "Old Rod — Cherrygrove City (catch two; one for trade)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_098.png",
+            name: "Krabby",
+          },
+          method: "Old Rod — Cherrygrove City (catch two; one for trade)",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_099.png", name: "Kingler" },
-          method: "Evolve from Krabby at level 28"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_099.png",
+            name: "Kingler",
+          },
+          method: "Evolve from Krabby at level 28",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_060.png", name: "Poliwag" },
-          method: "Old Rod — Route 30"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_060.png",
+            name: "Poliwag",
+          },
+          method: "Old Rod — Route 30",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_061.png", name: "Poliwhirl" },
-          method: "Evolve from Poliwag at level 25"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_061.png",
+            name: "Poliwhirl",
+          },
+          method: "Evolve from Poliwag at level 25",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_118.png", name: "Goldeen" },
-          method: "Old Rod — Dark Cave"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_118.png",
+            name: "Goldeen",
+          },
+          method: "Old Rod — Dark Cave",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_119.png", name: "Seaking" },
-          method: "Evolve from Goldeen at level 33"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_119.png",
+            name: "Seaking",
+          },
+          method: "Evolve from Goldeen at level 33",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_211.png", name: "Qwilfish" },
-          method: "Route 32 swarm (Fisherman Ralph phone call)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_211.png",
+            name: "Qwilfish",
+          },
+          method: "Route 32 swarm (Fisherman Ralph phone call)",
         },
 
         /* --------------------------- Slowpoke Well --------------------------- */
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_079.png", name: "Slowpoke" },
-          method: "Slowpoke Well"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_079.png",
+            name: "Slowpoke",
+          },
+          method: "Slowpoke Well",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_080.png", name: "Slowbro" },
-          method: "Evolve from Slowpoke at level 37"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_080.png",
+            name: "Slowbro",
+          },
+          method: "Evolve from Slowpoke at level 37",
         },
 
         /* --------------------------- Ilex Forest ----------------------------- */
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_043.png", name: "Oddish" },
-          method: "Ilex Forest (night)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_043.png",
+            name: "Oddish",
+          },
+          method: "Ilex Forest (night)",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_044.png", name: "Gloom" },
-          method: "Evolve from Oddish at level 21"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_044.png",
+            name: "Gloom",
+          },
+          method: "Evolve from Oddish at level 21",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_046.png", name: "Paras" },
-          method: "Ilex Forest (any time)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_046.png",
+            name: "Paras",
+          },
+          method: "Ilex Forest (any time)",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_047.png", name: "Parasect" },
-          method: "Evolve from Paras at level 24"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_047.png",
+            name: "Parasect",
+          },
+          method: "Evolve from Paras at level 24",
         },
 
         /* --------------------------- Headbutt Trees -------------------------- */
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_102.png", name: "Exeggcute" },
-          method: "Headbutt trees (Ilex Forest / Azalea Town)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_102.png",
+            name: "Exeggcute",
+          },
+          method: "Headbutt trees (Ilex Forest / Azalea Town)",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_204.png", name: "Pineco" },
-          method: "Headbutt trees (Ilex Forest / Azalea Town)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_204.png",
+            name: "Pineco",
+          },
+          method: "Headbutt trees (Ilex Forest / Azalea Town)",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_205.png", name: "Forretress" },
-          method: "Evolve from Pineco at level 31"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_205.png",
+            name: "Forretress",
+          },
+          method: "Evolve from Pineco at level 31",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_190.png", name: "Aipom" },
-          method: "Headbutt trees (Route 33)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_190.png",
+            name: "Aipom",
+          },
+          method: "Headbutt trees (Route 33)",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_214.png", name: "Heracross" },
-          method: "Headbutt trees (Route 33)"
-        }
-      ]
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_214.png",
+            name: "Heracross",
+          },
+          method: "Headbutt trees (Route 33)",
+        },
+      ],
     },
-    "whitney": {
+    whitney: {
       headerTitle: "Pre Badge #3 - Whitney",
       headerImg: "assets/images/Gold/badges/Spr_GS_Whitney.png",
       headerImgAlt: "Whitney as she appeared in Pokemon Gold and Silver",
@@ -703,127 +918,229 @@ window.gameData = {
 
       rows: [
         /* --------------------------- Route 34 -------------------------------- */
-        { pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_096.png", name: "Drowzee" }, method: "Catch on Route 34" },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_097.png", name: "Hypno" },
-          method: "Evolve from Drowzee at level 26"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_096.png",
+            name: "Drowzee",
+          },
+          method: "Catch on Route 34",
         },
-        { pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_063.png", name: "Abra" }, method: "Catch on Route 34" },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_064.png", name: "Kadabra" },
-          method: "Evolve from Abra at level 16"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_097.png",
+            name: "Hypno",
+          },
+          method: "Evolve from Drowzee at level 26",
         },
-        { pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_132.png", name: "Ditto" }, method: "Catch on Route 34" },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_174.png", name: "Igglybuff" },
-          method: "Breed Jigglypuff/Wigglytuff with Ditto (Route 34 Daycare)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_063.png",
+            name: "Abra",
+          },
+          method: "Catch on Route 34",
+        },
+        {
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_064.png",
+            name: "Kadabra",
+          },
+          method: "Evolve from Abra at level 16",
+        },
+        {
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_132.png",
+            name: "Ditto",
+          },
+          method: "Catch on Route 34",
+        },
+        {
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_174.png",
+            name: "Igglybuff",
+          },
+          method: "Breed Jigglypuff/Wigglytuff with Ditto (Route 34 Daycare)",
         },
 
         /* --------------------------- Goldenrod City -------------------------- */
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_027.png", name: "Sandshrew" },
-          method: "Goldenrod Game Corner (coins)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_027.png",
+            name: "Sandshrew",
+          },
+          method: "Goldenrod Game Corner (coins)",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_028.png", name: "Sandslash" },
-          method: "Evolve from Sandshrew at level 22"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_028.png",
+            name: "Sandslash",
+          },
+          method: "Evolve from Sandshrew at level 22",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_147.png", name: "Dratini" },
-          method: "Goldenrod Game Corner (coins)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_147.png",
+            name: "Dratini",
+          },
+          method: "Goldenrod Game Corner (coins)",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_148.png", name: "Dragonair" },
-          method: "Evolve from Dratini at level 30"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_148.png",
+            name: "Dragonair",
+          },
+          method: "Evolve from Dratini at level 30",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_149.png", name: "Dragonite" },
-          method: "Evolve from Dragonair at level 55"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_149.png",
+            name: "Dragonite",
+          },
+          method: "Evolve from Dragonair at level 55",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_066.png", name: "Machop" },
-          method: "Trade Drowzee → Machop (Goldenrod trade)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_066.png",
+            name: "Machop",
+          },
+          method: "Trade Drowzee → Machop (Goldenrod trade)",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_067.png", name: "Machoke" },
-          method: "Evolve from Machop at level 28"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_067.png",
+            name: "Machoke",
+          },
+          method: "Evolve from Machop at level 28",
         },
 
         /* --------------------------- Route 35 -------------------------------- */
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_029.png", name: "Nidoran F" },
-          method: "Catch on Route 35"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_029.png",
+            name: "Nidoran F",
+          },
+          method: "Catch on Route 35",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_030.png", name: "Nidorina" },
-          method: "Evolve from Nidoran F at level 16"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_030.png",
+            name: "Nidorina",
+          },
+          method: "Evolve from Nidoran F at level 16",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_032.png", name: "Nidoran M" },
-          method: "Catch on Route 35"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_032.png",
+            name: "Nidoran M",
+          },
+          method: "Catch on Route 35",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_033.png", name: "Nidorino" },
-          method: "Evolve from Nidoran M at level 16"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_033.png",
+            name: "Nidorino",
+          },
+          method: "Evolve from Nidoran M at level 16",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_193.png", name: "Yanma" },
-          method: "Catch on Route 35 (very rare; swarm via Bug Catcher call)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_193.png",
+            name: "Yanma",
+          },
+          method: "Catch on Route 35 (very rare; swarm via Bug Catcher call)",
         },
 
         /* --------------------------- National Park --------------------------- */
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_191.png", name: "Sunkern" },
-          method: "National Park (daytime)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_191.png",
+            name: "Sunkern",
+          },
+          method: "National Park (daytime)",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_123.png", name: "Scyther" },
-          method: "Bug-Catching Contest (National Park)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_123.png",
+            name: "Scyther",
+          },
+          method: "Bug-Catching Contest (National Park)",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_127.png", name: "Pinsir" },
-          method: "Bug-Catching Contest (National Park)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_127.png",
+            name: "Pinsir",
+          },
+          method: "Bug-Catching Contest (National Park)",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_010.png", name: "Caterpie" },
-          method: "Bug-Catching Contest (Silver)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_010.png",
+            name: "Caterpie",
+          },
+          method: "Bug-Catching Contest (Silver)",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_011.png", name: "Metapod" },
-          method: "Evolve from Caterpie at level 7"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_011.png",
+            name: "Metapod",
+          },
+          method: "Evolve from Caterpie at level 7",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_012.png", name: "Butterfree" },
-          method: "Evolve from Metapod at level 10"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_012.png",
+            name: "Butterfree",
+          },
+          method: "Evolve from Metapod at level 10",
         },
-        { pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_048.png", name: "Venonat" }, method: "National Park" },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_049.png", name: "Venomoth" },
-          method: "Evolve from Venonat at level 31"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_048.png",
+            name: "Venonat",
+          },
+          method: "National Park",
+        },
+        {
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_049.png",
+            name: "Venomoth",
+          },
+          method: "Evolve from Venonat at level 31",
         },
 
         /* --------------------------- Route 36 -------------------------------- */
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_037.png", name: "Vulpix" },
-          method: "Catch on Route 36 (Silver)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_037.png",
+            name: "Vulpix",
+          },
+          method: "Catch on Route 36 (Silver)",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_234.png", name: "Stantler" },
-          method: "Catch on Route 36"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_234.png",
+            name: "Stantler",
+          },
+          method: "Catch on Route 36",
         },
 
         /* --------------------------- Sun Stone Evolutions -------------------- */
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_192.png", name: "Sunflora" },
-          method: "Use a Sun Stone on Sunkern (Bug-Catching Contest prize)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_192.png",
+            name: "Sunflora",
+          },
+          method: "Use a Sun Stone on Sunkern (Bug-Catching Contest prize)",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_182.png", name: "Bellossom" },
-          method: "Use a Sun Stone on Gloom (Bug-Catching Contest prize)"
-        }
-      ]
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_182.png",
+            name: "Bellossom",
+          },
+          method: "Use a Sun Stone on Gloom (Bug-Catching Contest prize)",
+        },
+      ],
     },
-    "morty": {
+    morty: {
       headerTitle: "Pre Badge #4 - Morty",
       headerImg: "assets/images/Gold/badges/Spr_GS_Morty.png",
       headerImgAlt: "Morty as he appeared in Pokemon Gold and Silver",
@@ -933,139 +1250,242 @@ window.gameData = {
       rows: [
         /* --------------------------- Sudowoodo -------------------------------- */
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_185.png", name: "Sudowoodo" },
-          method: "Route 36 (stationary encounter; one chance)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_185.png",
+            name: "Sudowoodo",
+          },
+          method: "Route 36 (stationary encounter; one chance)",
         },
 
         /* --------------------------- Ecruteak / Bill's Gift ------------------- */
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_133.png", name: "Eevee" },
-          method: "Gift from Bill in Goldenrod after meeting him in Ecruteak Pokémon Center"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_133.png",
+            name: "Eevee",
+          },
+          method:
+            "Gift from Bill in Goldenrod after meeting him in Ecruteak Pokémon Center",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_196.png", name: "Espeon" },
-          method: "Evolve from Eevee with high Friendship (Day)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_196.png",
+            name: "Espeon",
+          },
+          method: "Evolve from Eevee with high Friendship (Day)",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_197.png", name: "Umbreon" },
-          method: "Evolve from Eevee with high Friendship (Night)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_197.png",
+            name: "Umbreon",
+          },
+          method: "Evolve from Eevee with high Friendship (Night)",
         },
 
         /* --------------------------- Burned Tower ----------------------------- */
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_109.png", name: "Koffing" },
-          method: "Burned Tower (main floor)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_109.png",
+            name: "Koffing",
+          },
+          method: "Burned Tower (main floor)",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_110.png", name: "Weezing" },
-          method: "Evolve from Koffing at level 35"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_110.png",
+            name: "Weezing",
+          },
+          method: "Evolve from Koffing at level 35",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_126.png", name: "Magmar" },
-          method: "Burned Tower (basement)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_126.png",
+            name: "Magmar",
+          },
+          method: "Burned Tower (basement)",
         },
-        { pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_240.png", name: "Magby" }, method: "Breed Magmar" },
+        {
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_240.png",
+            name: "Magby",
+          },
+          method: "Breed Magmar",
+        },
 
         /* --------------------------- Roaming Beasts --------------------------- */
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_243.png", name: "Raikou" },
-          method: "Johto (roaming after Burned Tower event)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_243.png",
+            name: "Raikou",
+          },
+          method: "Johto (roaming after Burned Tower event)",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_244.png", name: "Entei" },
-          method: "Johto (roaming after Burned Tower event)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_244.png",
+            name: "Entei",
+          },
+          method: "Johto (roaming after Burned Tower event)",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_245.png", name: "Suicune" },
-          method: "Johto (roaming after Burned Tower event)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_245.png",
+            name: "Suicune",
+          },
+          method: "Johto (roaming after Burned Tower event)",
         },
 
         /* --------------------------- Route 38 --------------------------------- */
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_081.png", name: "Magnemite" },
-          method: "Catch on Route 38"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_081.png",
+            name: "Magnemite",
+          },
+          method: "Catch on Route 38",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_082.png", name: "Magneton" },
-          method: "Evolve from Magnemite at level 30"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_082.png",
+            name: "Magneton",
+          },
+          method: "Evolve from Magnemite at level 30",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_083.png", name: "Farfetch'd" },
-          method: "Catch on Route 38 (not at night)"
-        },
-        { pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_241.png", name: "Miltank" }, method: "Catch on Route 38" },
-        { pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_128.png", name: "Tauros" }, method: "Catch on Route 38" },
-        {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_209.png", name: "Snubbull" },
-          method: "Catch on Route 38 (rare; swarm via Schoolboy Chad)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_083.png",
+            name: "Farfetch'd",
+          },
+          method: "Catch on Route 38 (not at night)",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_210.png", name: "Granbull" },
-          method: "Evolve from Snubbull at level 23"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_241.png",
+            name: "Miltank",
+          },
+          method: "Catch on Route 38",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_052.png", name: "Meowth" },
-          method: "Catch on Route 38 (Silver)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_128.png",
+            name: "Tauros",
+          },
+          method: "Catch on Route 38",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_053.png", name: "Persian" },
-          method: "Evolve from Meowth at level 28"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_209.png",
+            name: "Snubbull",
+          },
+          method: "Catch on Route 38 (rare; swarm via Schoolboy Chad)",
+        },
+        {
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_210.png",
+            name: "Granbull",
+          },
+          method: "Evolve from Snubbull at level 23",
+        },
+        {
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_052.png",
+            name: "Meowth",
+          },
+          method: "Catch on Route 38 (Silver)",
+        },
+        {
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_053.png",
+            name: "Persian",
+          },
+          method: "Evolve from Meowth at level 28",
         },
 
         /* --------------------------- Olivine / Route 40 ----------------------- */
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_100.png", name: "Voltorb" },
-          method: "Trade Krabby → Voltorb (Olivine City)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_100.png",
+            name: "Voltorb",
+          },
+          method: "Trade Krabby → Voltorb (Olivine City)",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_101.png", name: "Electrode" },
-          method: "Evolve from Voltorb at level 30"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_101.png",
+            name: "Electrode",
+          },
+          method: "Evolve from Voltorb at level 30",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_213.png", name: "Shuckle" },
-          method: "Rock Smash on Route 40 (chance encounter)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_213.png",
+            name: "Shuckle",
+          },
+          method: "Rock Smash on Route 40 (chance encounter)",
         },
 
         /* --------------------------- Good Rod Fishing ------------------------- */
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_090.png", name: "Shellder" },
-          method: "Good Rod — Olivine Harbor / New Bark Town"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_090.png",
+            name: "Shellder",
+          },
+          method: "Good Rod — Olivine Harbor / New Bark Town",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_170.png", name: "Chinchou" },
-          method: "Good Rod — Olivine Harbor / New Bark Town"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_170.png",
+            name: "Chinchou",
+          },
+          method: "Good Rod — Olivine Harbor / New Bark Town",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_171.png", name: "Lanturn" },
-          method: "Evolve from Chinchou at level 27"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_171.png",
+            name: "Lanturn",
+          },
+          method: "Evolve from Chinchou at level 27",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_222.png", name: "Corsola" },
-          method: "Good Rod — Olivine City (Day/Morning)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_222.png",
+            name: "Corsola",
+          },
+          method: "Good Rod — Olivine City (Day/Morning)",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_120.png", name: "Staryu" },
-          method: "Good Rod — Olivine City (Night)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_120.png",
+            name: "Staryu",
+          },
+          method: "Good Rod — Olivine City (Night)",
         },
 
         /* --------------------------- Route 42 / Mt. Mortar -------------------- */
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_183.png", name: "Marill" },
-          method: "Mt. Mortar first room (rare)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_183.png",
+            name: "Marill",
+          },
+          method: "Mt. Mortar first room (rare)",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_184.png", name: "Azumarill" },
-          method: "Evolve from Marill at level 18"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_184.png",
+            name: "Azumarill",
+          },
+          method: "Evolve from Marill at level 18",
         },
 
         /* --------------------------- Route 43 --------------------------------- */
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_203.png", name: "Girafarig" },
-          method: "Catch on Route 43"
-        }
-      ]
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_203.png",
+            name: "Girafarig",
+          },
+          method: "Catch on Route 43",
+        },
+      ],
     },
-    "pryce": {
+    pryce: {
       headerTitle: "Pre Badge #5 - Pryce",
       headerImg: "assets/images/Gold/badges/Spr_GS_Pryce.png",
       headerImgAlt: "Pryce as he appeared in Pokemon Gold and Silver",
@@ -1136,65 +1556,98 @@ With the ability to use Surf we can access a few additional areas. Before we do 
           type: "choice",
           choiceKey: "moonstone-nido",
           choiceValue: "nidorina",
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_030.png", name: "Nidorina" },
-          method: "Choose Nidorina to evolve with the Moon Stone (Tohjo Falls)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_030.png",
+            name: "Nidorina",
+          },
+          method: "Choose Nidorina to evolve with the Moon Stone (Tohjo Falls)",
         },
         {
           type: "choice",
           choiceKey: "moonstone-nido",
           choiceValue: "nidorino",
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_033.png", name: "Nidorino" },
-          method: "Choose Nidorino to evolve with the Moon Stone (Tohjo Falls)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_033.png",
+            name: "Nidorino",
+          },
+          method: "Choose Nidorino to evolve with the Moon Stone (Tohjo Falls)",
         },
 
         /* --------------------------- Choice Requires (apply selection) ------- */
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_031.png", name: "Nidoqueen" },
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_031.png",
+            name: "Nidoqueen",
+          },
           method: "Use a Moon Stone on Nidorina (Tohjo Falls)",
-          requires: { "moonstone-nido": "nidorina" }
+          requires: { "moonstone-nido": "nidorina" },
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_034.png", name: "Nidoking" },
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_034.png",
+            name: "Nidoking",
+          },
           method: "Use a Moon Stone on Nidorino (Tohjo Falls)",
-          requires: { "moonstone-nido": "nidorino" }
+          requires: { "moonstone-nido": "nidorino" },
         },
 
         /* --------------------------- Dark Cave (Surf section) ---------------- */
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_202.png", name: "Wobbuffet" },
-          method: "Dark Cave (northern section via Surf)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_202.png",
+            name: "Wobbuffet",
+          },
+          method: "Dark Cave (northern section via Surf)",
         },
 
         /* --------------------------- Union Cave / Ruins of Alph -------------- */
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_177.png", name: "Natu" },
-          method: "Ruins of Alph grass (from Union Cave basement via Surf)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_177.png",
+            name: "Natu",
+          },
+          method: "Ruins of Alph grass (from Union Cave basement via Surf)",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_178.png", name: "Xatu" },
-          method: "Evolve from Natu at level 25"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_178.png",
+            name: "Xatu",
+          },
+          method: "Evolve from Natu at level 25",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_235.png", name: "Smeargle" },
-          method: "Ruins of Alph grass (Surf path from Union Cave)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_235.png",
+            name: "Smeargle",
+          },
+          method: "Ruins of Alph grass (Surf path from Union Cave)",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_131.png", name: "Lapras" },
-          method: "Union Cave lowest floor (Friday encounter via Surf)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_131.png",
+            name: "Lapras",
+          },
+          method: "Union Cave lowest floor (Friday encounter via Surf)",
         },
 
         /* --------------------------- Ilex Forest (Surf pool) ----------------- */
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_054.png", name: "Psyduck" },
-          method: "Ilex Forest (Surf pool — also rare Golduck encounter)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_054.png",
+            name: "Psyduck",
+          },
+          method: "Ilex Forest (Surf pool — also rare Golduck encounter)",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_055.png", name: "Golduck" },
-          method: "Evolve from Psyduck at level 33"
-        }
-      ]
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_055.png",
+            name: "Golduck",
+          },
+          method: "Evolve from Psyduck at level 33",
+        },
+      ],
     },
-    "jasminechuck": {
+    jasminechuck: {
       headerTitle: "Pre Badge #6 - Jasmine (also Chuck)",
       headerImg: "assets/images/Gold/badges/Spr_GS_Jasmine.png",
       headerImgAlt: "Jasmine as she appeared in Pokemon Gold and Silver",
@@ -1235,24 +1688,36 @@ With the ability to use Surf we can access a few additional areas. Before we do 
       rows: [
         /* --------------------------- Whirl Islands (Route 41) ---------------- */
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_086.png", name: "Seel" },
-          method: "Whirl Islands (cave encounter)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_086.png",
+            name: "Seel",
+          },
+          method: "Whirl Islands (cave encounter)",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_087.png", name: "Dewgong" },
-          method: "Evolve from Seel at level 34"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_087.png",
+            name: "Dewgong",
+          },
+          method: "Evolve from Seel at level 34",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_116.png", name: "Horsea" },
-          method: "Whirl Islands (Surf encounter)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_116.png",
+            name: "Horsea",
+          },
+          method: "Whirl Islands (Surf encounter)",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_117.png", name: "Seadra" },
-          method: "Evolve from Horsea at level 32"
-        }
-      ]
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_117.png",
+            name: "Seadra",
+          },
+          method: "Evolve from Horsea at level 32",
+        },
+      ],
     },
-    "clair": {
+    clair: {
       headerTitle: "Pre Badge #8 - Clair",
       headerImg: "assets/images/Gold/badges/Spr_GS_Clair.png",
       headerImgAlt: "Clair as she appeared in Pokemon Gold and Silver",
@@ -1329,67 +1794,121 @@ With the ability to use Surf we can access a few additional areas. Before we do 
       rows: [
         /* --------------------------- Version Legendaries --------------------- */
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_249.png", name: "Lugia" },
-          method: "Whirl Islands NE path (Silver) — Level 40"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_249.png",
+            name: "Lugia",
+          },
+          method: "Whirl Islands NE path (Silver) — Level 40",
         },
 
         /* --------------------------- Route 44 -------------------------------- */
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_108.png", name: "Lickitung" },
-          method: "Catch on Route 44 (surf to central grass)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_108.png",
+            name: "Lickitung",
+          },
+          method: "Catch on Route 44 (surf to central grass)",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_114.png", name: "Tangela" },
-          method: "Catch on Route 44 (may flee)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_114.png",
+            name: "Tangela",
+          },
+          method: "Catch on Route 44 (may flee)",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_223.png", name: "Remoraid" },
-          method: "Route 44 swarm (Fisherman Wilton call)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_223.png",
+            name: "Remoraid",
+          },
+          method: "Route 44 swarm (Fisherman Wilton call)",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_224.png", name: "Octillery" },
-          method: "Evolve from Remoraid at level 25"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_224.png",
+            name: "Octillery",
+          },
+          method: "Evolve from Remoraid at level 25",
         },
 
         /* --------------------------- Ice Path -------------------------------- */
-        { pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_124.png", name: "Jynx" }, method: "Ice Path" },
-        { pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_220.png", name: "Swinub" }, method: "Ice Path" },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_221.png", name: "Piloswine" },
-          method: "Evolve from Swinub at level 33"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_124.png",
+            name: "Jynx",
+          },
+          method: "Ice Path",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_225.png", name: "Delibird" },
-          method: "Ice Path (Silver)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_220.png",
+            name: "Swinub",
+          },
+          method: "Ice Path",
+        },
+        {
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_221.png",
+            name: "Piloswine",
+          },
+          method: "Evolve from Swinub at level 33",
+        },
+        {
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_225.png",
+            name: "Delibird",
+          },
+          method: "Ice Path (Silver)",
         },
 
         /* --------------------------- Blackthorn City ------------------------- */
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_112.png", name: "Rhydon" },
-          method: "In‑game trade (requires female Dragonair)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_112.png",
+            name: "Rhydon",
+          },
+          method: "In‑game trade (requires female Dragonair)",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_111.png", name: "Rhyhorn" },
-          method: "Breed Rhydon with Ditto (Daycare)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_111.png",
+            name: "Rhyhorn",
+          },
+          method: "Breed Rhydon with Ditto (Daycare)",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_238.png", name: "Smoochum" },
-          method: "Breed Jynx (Daycare)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_238.png",
+            name: "Smoochum",
+          },
+          method: "Breed Jynx (Daycare)",
         },
 
         /* --------------------------- Route 45 -------------------------------- */
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_231.png", name: "Phanpy" },
-          method: "Route 45 (Silver; can flee)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_231.png",
+            name: "Phanpy",
+          },
+          method: "Route 45 (Silver; can flee)",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_232.png", name: "Donphan" },
-          method: "Evolve from Phanpy at level 25"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_232.png",
+            name: "Donphan",
+          },
+          method: "Evolve from Phanpy at level 25",
         },
-        { pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_227.png", name: "Skarmory" }, method: "Route 45 (Silver)" }
-      ]
+        {
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_227.png",
+            name: "Skarmory",
+          },
+          method: "Route 45 (Silver)",
+        },
+      ],
     },
-    "E4": {
+    E4: {
       headerTitle: "Pre Elite Four",
       headerImg: "assets/images/Gold/badges/Spr_GS_Lance.png",
       headerImgAlt: "Lance as he appeared in Pokemon Gold and Silver",
@@ -1437,39 +1956,67 @@ With the ability to use Surf we can access a few additional areas. Before we do 
       rows: [
         /* --------------------------- Mt. Mortar (Karate King) ---------------- */
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_236.png", name: "Tyrogue" },
-          method: "Gift from Karate King in Mt. Mortar (middle entrance; Waterfall required)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_236.png",
+            name: "Tyrogue",
+          },
+          method:
+            "Gift from Karate King in Mt. Mortar (middle entrance; Waterfall required)",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_107.png", name: "Hitmonchan" },
-          method: "Evolve Tyrogue at level 20 (Def > Atk)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_107.png",
+            name: "Hitmonchan",
+          },
+          method: "Evolve Tyrogue at level 20 (Def > Atk)",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_106.png", name: "Hitmonlee" },
-          method: "Evolve Tyrogue at level 20 (Atk > Def)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_106.png",
+            name: "Hitmonlee",
+          },
+          method: "Evolve Tyrogue at level 20 (Atk > Def)",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_237.png", name: "Hitmontop" },
-          method: "Evolve Tyrogue at level 20 (Atk = Def)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_237.png",
+            name: "Hitmontop",
+          },
+          method: "Evolve Tyrogue at level 20 (Atk = Def)",
         },
 
         /* --------------------------- Into Kanto (Routes 27/26) --------------- */
-        { pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_077.png", name: "Ponyta" }, method: "Route 27 (grass)" },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_078.png", name: "Rapidash" },
-          method: "Evolve from Ponyta at level 40"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_077.png",
+            name: "Ponyta",
+          },
+          method: "Route 27 (grass)",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_084.png", name: "Doduo" },
-          method: "Route 27 (not at night)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_078.png",
+            name: "Rapidash",
+          },
+          method: "Evolve from Ponyta at level 40",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_085.png", name: "Dodrio" },
-          method: "Evolve from Doduo at level 31"
-        }
-      ]
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_084.png",
+            name: "Doduo",
+          },
+          method: "Route 27 (not at night)",
+        },
+        {
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_085.png",
+            name: "Dodrio",
+          },
+          method: "Evolve from Doduo at level 31",
+        },
+      ],
     },
-    "prekanto": {
+    prekanto: {
       headerTitle: "Pre Kanto Badges",
       headerImg: "assets/images/Gold/badges/Spr_GS_Blue.png",
       headerImgAlt: "Blue as he appeared in Pokemon Gold and Silver",
@@ -1573,52 +2120,73 @@ With the ability to use Surf we can access a few additional areas. Before we do 
           type: "choice",
           choiceKey: "stone-fire",
           choiceValue: "ninetales",
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_038.png", name: "Ninetales" },
-          method: "Pick the Fire Stone evolution (Vulpix → Ninetales)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_038.png",
+            name: "Ninetales",
+          },
+          method: "Pick the Fire Stone evolution (Vulpix → Ninetales)",
         },
         {
           type: "choice",
           choiceKey: "stone-fire",
           choiceValue: "flareon",
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_136.png", name: "Flareon" },
-          method: "Pick the Fire Stone evolution (Eevee → Flareon)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_136.png",
+            name: "Flareon",
+          },
+          method: "Pick the Fire Stone evolution (Eevee → Flareon)",
         },
         /* --------------------------- Thunder Stone (choice) ------------------- */
         {
           type: "choice",
           choiceKey: "stone-thunder",
           choiceValue: "raichu",
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_026.png", name: "Raichu" },
-          method: "Pick the Thunder Stone evolution (Pikachu → Raichu)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_026.png",
+            name: "Raichu",
+          },
+          method: "Pick the Thunder Stone evolution (Pikachu → Raichu)",
         },
         {
           type: "choice",
           choiceKey: "stone-thunder",
           choiceValue: "jolteon",
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_135.png", name: "Jolteon" },
-          method: "Pick the Thunder Stone evolution (Eevee → Jolteon)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_135.png",
+            name: "Jolteon",
+          },
+          method: "Pick the Thunder Stone evolution (Eevee → Jolteon)",
         },
         /* --------------------------- Leaf Stone (choice) ---------------------- */
         {
           type: "choice",
           choiceKey: "stone-leaf",
           choiceValue: "vileplume",
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_045.png", name: "Vileplume" },
-          method: "Pick the Leaf Stone evolution (Gloom → Vileplume)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_045.png",
+            name: "Vileplume",
+          },
+          method: "Pick the Leaf Stone evolution (Gloom → Vileplume)",
         },
         {
           type: "choice",
           choiceKey: "stone-leaf",
           choiceValue: "victreebel",
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_071.png", name: "Victreebel" },
-          method: "Pick the Leaf Stone evolution (Weepinbell → Victreebel)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_071.png",
+            name: "Victreebel",
+          },
+          method: "Pick the Leaf Stone evolution (Weepinbell → Victreebel)",
         },
         {
           type: "choice",
           choiceKey: "stone-leaf",
           choiceValue: "exeggutor",
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_103.png", name: "Exeggutor" },
-          method: "Pick the Leaf Stone evolution (Exeggcute → Exeggutor)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_103.png",
+            name: "Exeggutor",
+          },
+          method: "Pick the Leaf Stone evolution (Exeggcute → Exeggutor)",
         },
 
         /* --------------------------- Water Stone (choice) --------------------- */
@@ -1626,216 +2194,363 @@ With the ability to use Surf we can access a few additional areas. Before we do 
           type: "choice",
           choiceKey: "stone-water",
           choiceValue: "poliwrath",
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_062.png", name: "Poliwrath" },
-          method: "Pick the Water Stone evolution (Poliwhirl → Poliwrath)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_062.png",
+            name: "Poliwrath",
+          },
+          method: "Pick the Water Stone evolution (Poliwhirl → Poliwrath)",
         },
         {
           type: "choice",
           choiceKey: "stone-water",
           choiceValue: "cloyster",
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_091.png", name: "Cloyster" },
-          method: "Pick the Water Stone evolution (Shellder → Cloyster)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_091.png",
+            name: "Cloyster",
+          },
+          method: "Pick the Water Stone evolution (Shellder → Cloyster)",
         },
         {
           type: "choice",
           choiceKey: "stone-water",
           choiceValue: "starmie",
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_121.png", name: "Starmie" },
-          method: "Pick the Water Stone evolution (Staryu → Starmie)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_121.png",
+            name: "Starmie",
+          },
+          method: "Pick the Water Stone evolution (Staryu → Starmie)",
         },
         {
           type: "choice",
           choiceKey: "stone-water",
           choiceValue: "vaporeon",
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_134.png", name: "Vaporeon" },
-          method: "Pick the Water Stone evolution (Eevee → Vaporeon)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_134.png",
+            name: "Vaporeon",
+          },
+          method: "Pick the Water Stone evolution (Eevee → Vaporeon)",
         },
 
         /* --------------------------- Power Plant / Route 10 ------------------ */
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_125.png", name: "Electabuzz" },
-          method: "Route 10 grass (Power Plant approach)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_125.png",
+            name: "Electabuzz",
+          },
+          method: "Route 10 grass (Power Plant approach)",
         },
 
         /* --------------------------- Rock Tunnel ----------------------------- */
-        { pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_104.png", name: "Cubone" }, method: "Rock Tunnel" },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_105.png", name: "Marowak" },
-          method: "Evolve from Cubone at level 28"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_104.png",
+            name: "Cubone",
+          },
+          method: "Rock Tunnel",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_115.png", name: "Kangaskhan" },
-          method: "Rock Tunnel (lower floors)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_105.png",
+            name: "Marowak",
+          },
+          method: "Evolve from Cubone at level 28",
+        },
+        {
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_115.png",
+            name: "Kangaskhan",
+          },
+          method: "Rock Tunnel (lower floors)",
         },
 
         /* --------------------------- Route 7 (Night) ------------------------- */
-        { pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_228.png", name: "Houndour" }, method: "Route 7 (night)" },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_229.png", name: "Houndoom" },
-          method: "Evolve from Houndour at level 24"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_228.png",
+            name: "Houndour",
+          },
+          method: "Route 7 (night)",
         },
-        { pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_198.png", name: "Murkrow" }, method: "Route 7 (night)" },
+        {
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_229.png",
+            name: "Houndoom",
+          },
+          method: "Evolve from Houndour at level 24",
+        },
+        {
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_198.png",
+            name: "Murkrow",
+          },
+          method: "Route 7 (night)",
+        },
 
         /* --------------------------- Celadon & West Routes ------------------- */
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_137.png", name: "Porygon" },
-          method: "Celadon Game Corner (9,999 coins)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_137.png",
+            name: "Porygon",
+          },
+          method: "Celadon Game Corner (9,999 coins)",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_218.png", name: "Slugma" },
-          method: "Routes 16–18 (rare grass)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_218.png",
+            name: "Slugma",
+          },
+          method: "Routes 16–18 (rare grass)",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_219.png", name: "Magcargo" },
-          method: "Evolve from Slugma at level 38"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_219.png",
+            name: "Magcargo",
+          },
+          method: "Evolve from Slugma at level 38",
         },
-        { pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_088.png", name: "Grimer" }, method: "Routes 16–18" },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_089.png", name: "Muk" },
-          method: "Evolve from Grimer at level 38"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_088.png",
+            name: "Grimer",
+          },
+          method: "Routes 16–18",
+        },
+        {
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_089.png",
+            name: "Muk",
+          },
+          method: "Evolve from Grimer at level 38",
         },
 
         /* --------------------------- Route 15 / 14 --------------------------- */
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_113.png", name: "Chansey" },
-          method: "Route 15 (repel trick lvl 24 lead)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_113.png",
+            name: "Chansey",
+          },
+          method: "Route 15 (repel trick lvl 24 lead)",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_242.png", name: "Blissey" },
-          method: "Evolve from Chansey with high Friendship"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_242.png",
+            name: "Blissey",
+          },
+          method: "Evolve from Chansey with high Friendship",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_142.png", name: "Aerodactyl" },
-          method: "Trade (Route 14): Chansey → Aerodactyl"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_142.png",
+            name: "Aerodactyl",
+          },
+          method: "Trade (Route 14): Chansey → Aerodactyl",
         },
 
         /* --------------------------- Snorlax / Diglett / Pikachu ------------- */
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_143.png", name: "Snorlax" },
-          method: "Vermilion east — Poké Flute (radio) wake"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_143.png",
+            name: "Snorlax",
+          },
+          method: "Vermilion east — Poké Flute (radio) wake",
         },
-        { pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_050.png", name: "Diglett" }, method: "Diglett Cave" },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_051.png", name: "Dugtrio" },
-          method: "Evolve from Diglett at level 26 (or catch in Diglett Cave)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_050.png",
+            name: "Diglett",
+          },
+          method: "Diglett Cave",
         },
-        { pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_025.png", name: "Pikachu" }, method: "Route 2 area" },
+        {
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_051.png",
+            name: "Dugtrio",
+          },
+          method: "Evolve from Diglett at level 26 (or catch in Diglett Cave)",
+        },
+        {
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_025.png",
+            name: "Pikachu",
+          },
+          method: "Route 2 area",
+        },
 
         /* --------------------------- Other Box Legendary --------------------- */
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_250.png", name: "Ho-Oh" },
-          method: "Pewter elder wing path (Silver) — Level 70"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_250.png",
+            name: "Ho-Oh",
+          },
+          method: "Pewter elder wing path (Silver) — Level 70",
         },
 
         /* --------------------------- Mt. Moon / Route 21 --------------------- */
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_035.png", name: "Clefairy" },
-          method: "Mt. Moon (Monday dance; Thief for Moon Stone chance)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_035.png",
+            name: "Clefairy",
+          },
+          method: "Mt. Moon (Monday dance; Thief for Moon Stone chance)",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_036.png", name: "Clefable" },
-          method: "Use a Moon Stone on Clefairy"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_036.png",
+            name: "Clefable",
+          },
+          method: "Use a Moon Stone on Clefairy",
         },
         /* --- Nido 'requiresNot' cleanup (evolve the one not chosen earlier) --- */
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_031.png", name: "Nidoqueen" },
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_031.png",
+            name: "Nidoqueen",
+          },
           method: "Use a Moon Stone on Nidorina (Mt. Moon)",
           requires: { "moonstone-nido": "nidorino" },
-          requiresNot: { "moonstone-nido": "nidorina" }
+          requiresNot: { "moonstone-nido": "nidorina" },
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_034.png", name: "Nidoking" },
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_034.png",
+            name: "Nidoking",
+          },
           method: "Use a Moon Stone on Nidorino (Mt. Moon)",
           requires: { "moonstone-nido": "nidorina" },
-          requiresNot: { "moonstone-nido": "nidorino" }
+          requiresNot: { "moonstone-nido": "nidorino" },
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_122.png", name: "Mr. Mime" },
-          method: "Route 21 grass (morning/night; can flee)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_122.png",
+            name: "Mr. Mime",
+          },
+          method: "Route 21 grass (morning/night; can flee)",
         },
 
         /* --------------------------- Kanto Breeding (babies) ----------------- */
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_239.png", name: "Elekid" },
-          method: "Breed Electabuzz (Daycare)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_239.png",
+            name: "Elekid",
+          },
+          method: "Breed Electabuzz (Daycare)",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_172.png", name: "Pichu" },
-          method: "Breed Pikachu/Raichu (Daycare)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_172.png",
+            name: "Pichu",
+          },
+          method: "Breed Pikachu/Raichu (Daycare)",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_173.png", name: "Cleffa" },
-          method: "Breed Clefairy/Clefable (Daycare)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_173.png",
+            name: "Cleffa",
+          },
+          method: "Breed Clefairy/Clefable (Daycare)",
         },
 
         /* =========================== Stone Gates (one each) =========================== */
         /* --------------------------- Fire Stone (gate) ---------------------- */
 
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_038.png", name: "Ninetales" },
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_038.png",
+            name: "Ninetales",
+          },
           method: "Use a Fire Stone on Vulpix",
-          requires: { "stone-fire": "ninetales" }
+          requires: { "stone-fire": "ninetales" },
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_136.png", name: "Flareon" },
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_136.png",
+            name: "Flareon",
+          },
           method: "Use a Fire Stone on Eevee",
-          requires: { "stone-fire": "flareon" }
+          requires: { "stone-fire": "flareon" },
         },
 
         /* --------------------------- Thunder Stone (gate) ------------------- */
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_026.png", name: "Raichu" },
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_026.png",
+            name: "Raichu",
+          },
           method: "Use a Thunder Stone on Pikachu",
-          requires: { "stone-thunder": "raichu" }
+          requires: { "stone-thunder": "raichu" },
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_135.png", name: "Jolteon" },
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_135.png",
+            name: "Jolteon",
+          },
           method: "Use a Thunder Stone on Eevee",
-          requires: { "stone-thunder": "jolteon" }
+          requires: { "stone-thunder": "jolteon" },
         },
 
         /* --------------------------- Leaf Stone (Gate) ---------------------- */
 
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_045.png", name: "Vileplume" },
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_045.png",
+            name: "Vileplume",
+          },
           method: "Use a Leaf Stone on Gloom",
-          requires: { "stone-leaf": "vileplume" }
+          requires: { "stone-leaf": "vileplume" },
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_071.png", name: "Victreebel" },
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_071.png",
+            name: "Victreebel",
+          },
           method: "Use a Leaf Stone on Weepinbell",
-          requires: { "stone-leaf": "victreebel" }
+          requires: { "stone-leaf": "victreebel" },
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_103.png", name: "Exeggutor" },
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_103.png",
+            name: "Exeggutor",
+          },
           method: "Use a Leaf Stone on Exeggcute",
-          requires: { "stone-leaf": "exeggutor" }
+          requires: { "stone-leaf": "exeggutor" },
         },
 
         /* --------------------------- Water Stone (gate) --------------------- */
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_062.png", name: "Poliwrath" },
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_062.png",
+            name: "Poliwrath",
+          },
           method: "Use a Water Stone on Poliwhirl",
-          requires: { "stone-water": "poliwrath" }
+          requires: { "stone-water": "poliwrath" },
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_091.png", name: "Cloyster" },
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_091.png",
+            name: "Cloyster",
+          },
           method: "Use a Water Stone on Shellder",
-          requires: { "stone-water": "cloyster" }
+          requires: { "stone-water": "cloyster" },
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_121.png", name: "Starmie" },
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_121.png",
+            name: "Starmie",
+          },
           method: "Use a Water Stone on Staryu",
-          requires: { "stone-water": "starmie" }
+          requires: { "stone-water": "starmie" },
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_134.png", name: "Vaporeon" },
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_134.png",
+            name: "Vaporeon",
+          },
           method: "Use a Water Stone on Eevee",
-          requires: { "stone-water": "vaporeon" }
-        }
-      ]
+          requires: { "stone-water": "vaporeon" },
+        },
+      ],
     },
-    "postkanto": {
+    postkanto: {
       headerTitle: "Post Kanto Badges",
       headerImg: "assets/images/Gold/badges/Spr_GS_Oak.png",
       headerImgAlt: "Professor Oak as he appeared in Pokemon Gold and Silver",
@@ -1876,28 +2591,43 @@ With the ability to use Surf we can access a few additional areas. Before we do 
       rows: [
         /* --------------------------- Route 28 -------------------------------- */
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_215.png", name: "Sneasel" },
-          method: "Route 28 grass (night only)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_215.png",
+            name: "Sneasel",
+          },
+          method: "Route 28 grass (night only)",
         },
 
         /* --------------------------- Silver Cave ----------------------------- */
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_246.png", name: "Larvitar" },
-          method: "Silver Cave (any floor; low level)"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_246.png",
+            name: "Larvitar",
+          },
+          method: "Silver Cave (any floor; low level)",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_247.png", name: "Pupitar" },
-          method: "Evolve from Larvitar at level 30"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_247.png",
+            name: "Pupitar",
+          },
+          method: "Evolve from Larvitar at level 30",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_248.png", name: "Tyranitar" },
-          method: "Evolve from Pupitar at level 55"
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_248.png",
+            name: "Tyranitar",
+          },
+          method: "Evolve from Pupitar at level 55",
         },
         {
-          pokemon: { img: "assets/images/Silver/pokedex/Spr_2s_200.png", name: "Misdreavus" },
-          method: "Silver Cave deeper floors (night only)"
-        }
-      ]
-    }
-  }
+          pokemon: {
+            img: "assets/images/Silver/pokedex/Spr_2s_200.png",
+            name: "Misdreavus",
+          },
+          method: "Silver Cave deeper floors (night only)",
+        },
+      ],
+    },
+  },
 };

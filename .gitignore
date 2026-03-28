@@ -1,2 +1,2 @@
-assets/spriteExtractor/data
-assets/spriteExtractor/Output
+sprites_to_delete.txt
+/node_modules

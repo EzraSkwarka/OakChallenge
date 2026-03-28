@@ -349,7 +349,7 @@ tr.row-choice.compact-band + tr.row-choice.compact-band td {
 }
 .summary-short {
   color: var(--muted);
-  font-size: 13px;
+  font-size: 15px;
   line-height: 1.45;
 }
 .summary-accordion {

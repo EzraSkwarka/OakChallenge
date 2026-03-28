@@ -1431,7 +1431,7 @@ window.gameData = {
     },
     surge: {
       headerTitle: `Pre Badge #4 - Lt Surge`,
-      headerImg: `assets/images/Yellow/badges/Spr_Y_Surge.png`,
+      headerImg: `assets/images/Yellow/badges/Spr_Y_Lt_Surge.png`,
       headerImgAlt: `Lt Surge as he appered in Pokemon Yellow`,
 
       summaryShort: `You can pick between Lt. Surge, Sabrina, Koga and Erika at this point. Sabrina’s badge unlocks nothing, Erika’s Strength won’t actually be used anywhere without Surf, so it’s between Lt Surge (3 pokemon) or Koga (a lot more) so go get that Soul Badge! There’s a few places to go with Surf now unlocked.`,

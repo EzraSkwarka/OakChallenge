@@ -365,16 +365,13 @@ window.gameData = {
       headerImg: "assets/images/Gold/badges/Spr_GS_Bugsy.png",
       headerImgAlt: "Bugsy as he appeared in Pokemon Gold and Silver",
 
-      summaryShort: `You need to seriously consider getting the Moon Stone in this section as it’s a lot more feasible. Refer to the Moon Stone section at the beginning of the guide. Sell everything you have including pokeballs and your new TM (don’t worry you’ll get money to buy more pokeballs) before heading south from Violet City and deposit everything to your mother, making sure she will save money for you otherwise your winnings don’t get sent to her. The differences here are that you obviously have more trainers to battle to make some more money but make sure you leave enough trainers to trigger the phone calls once your mother has reached the thresholds. Trainers in Union Cave won’t trigger the calls (bad reception) so feel free to defeat them all as well as the trainers in the gym except for Bugsy of course. If you’re short on money still, you will have to repeat the daily berry trick but it’s much easier. Instead of berries, do this with the white Apricorn outside Kurt’s house which sell for P100 each which means you’ll have to do this a lot less than in section 1! Once you have the Moon Stone, retrieve your money and buy pokeballs and resume the challenge.`,
+      summaryShort: `With Falkner defeated you’ll get a call from Professor Elm stating that one of his aides is in the pokemon center with a present for you. It’s an egg! This will eventually hatch into Togepi which you want to keep in your party so that it’s happiness increases whilst grinding.`,
       summaryHtml: `
         <p>
-          Jigglypuff → (Moon Stone) → Wigglytuff
-        </p>
-
-        <p>
-          With Falkner defeated you’ll get a call from Professor Elm stating that one of his aides is in the pokemon center with a present for you. It’s an egg! This will eventually hatch into Togepi which you want to keep in your party so that it’s happiness increases whilst grinding.
+          You need to seriously consider getting the Moon Stone in this section as it’s a lot more feasible. Refer to the Moon Stone section at the beginning of the guide. Sell everything you have including pokeballs and your new TM (don’t worry you’ll get money to buy more pokeballs) before heading south from Violet City and deposit everything to your mother, making sure she will save money for you otherwise your winnings don’t get sent to her. The differences here are that you obviously have more trainers to battle to make some more money but make sure you leave enough trainers to trigger the phone calls once your mother has reached the thresholds. Trainers in Union Cave won’t trigger the calls (bad reception) so feel free to defeat them all as well as the trainers in the gym except for Bugsy of course. If you’re short on money still, you will have to repeat the daily berry trick but it’s much easier. Instead of berries, do this with the white Apricorn outside Kurt’s house which sell for P100 each which means you’ll have to do this a lot less than in section 1! Once you have the Moon Stone, retrieve your money and buy pokeballs and resume the challenge.
         </p>
         <pre>
+          Jigglypuff → (Moon Stone) → Wigglytuff
           Togepi → (Happiness) → Togetic
         </pre>
 
@@ -461,16 +458,6 @@ window.gameData = {
       `,
 
       rows: [
-        /* --------------------------- Moon Stone Evolution -------------------- */
-        {
-          pokemon: { img: "assets/images/Gold/pokedex/Spr_2g_039.png", name: "Jigglypuff" },
-          method: "Evolve with Moon Stone → Wigglytuff (recommended this section)"
-        },
-        {
-          pokemon: { img: "assets/images/Gold/pokedex/Spr_2g_040.png", name: "Wigglytuff" },
-          method: "Use a Moon Stone on Jigglypuff"
-        },
-
         /* --------------------------- Egg Gift & Happiness -------------------- */
         {
           pokemon: { img: "assets/images/Gold/pokedex/Spr_2g_175.png", name: "Togepi" },
