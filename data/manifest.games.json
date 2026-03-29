@@ -139,10 +139,10 @@
         "name": "Pokémon Platinum",
         "region": "Sinnoh",
         "gen": "Gen 4",
-        "notes": "Under Construction",
+        "notes": "",
         "cover": "assets/images/covers/platinum.png",
         "href": "pages/tracker/platinum.html",
-        "available": false
+        "available": true
       },
   
       {
@@ -150,7 +150,7 @@
         "name": "Pokémon HeartGold",
         "region": "Johto",
         "gen": "Gen 4",
-        "notes": "",
+        "notes": "Under Construction",
         "cover": "assets/images/covers/heartgold.png",
         "href": "pages/tracker/heartgold.html",
         "available": false
@@ -160,7 +160,7 @@
         "name": "Pokémon SoulSilver",
         "region": "Johto",
         "gen": "Gen 4",
-        "notes": "",
+        "notes": "Under Construction",
         "cover": "assets/images/covers/soulsilver.png",
         "href": "pages/tracker/soulsilver.html",
         "available": false
