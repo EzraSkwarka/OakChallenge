@@ -363,6 +363,8 @@ function normalizeSummaryPreIndent(root) {
 function buildModel() {
   const { choices, caught } = store.getState();
   const out = [];
+  let cumulativeTotal = 0;
+  let cumulativeCaught = 0;
   for (const [groupTitle, def] of Object.entries(BADGE_GROUPS)) {
     const rows = Array.isArray(def) ? def : def && Array.isArray(def.rows) ? def.rows : [];
     const summaryShort = def && typeof def === "object" ? (typeof def.summaryShort === "string" && def.summaryShort) || (typeof def.summary === "string" && def.summary) || null : null;
@@ -375,7 +377,7 @@ function buildModel() {
       __key: `header:${groupTitle}`,
       title: headerTitle,
       headerImg: def?.headerImg || null,
-      headerImgAlt: def?.headerImgAlt || ""
+      headerImgAlt: def?.headerImgAlt || "",
     });
 
     if (summaryShort || summaryHtml)
@@ -384,7 +386,7 @@ function buildModel() {
         __key: `summary:${groupTitle}`,
         short: summaryShort,
         html: summaryHtml,
-        open: summaryOpen
+        open: summaryOpen,
       });
 
     const choiceRows = rows.filter((r) => r.type === "choice");
@@ -423,7 +425,7 @@ function buildModel() {
             __kind: "choiceSubheader",
             __key: `choiceSubheader:${groupTitle}:${k}:${i}`,
             __group: groupTitle,
-            label
+            label,
           });
         }
 
@@ -436,11 +438,11 @@ function buildModel() {
           cap: capN,
           pokemon: {
             name: r.pokemon?.name || "Choice",
-            img: safeImg(r.pokemon?.img)
+            img: safeImg(r.pokemon?.img),
           },
           method: r.method || "Pick an option",
           groupRunStart: isStart,
-          groupRunEnd: isEnd
+          groupRunEnd: isEnd,
         });
 
         continue;
@@ -455,13 +457,17 @@ function buildModel() {
         __group: groupTitle,
         pokemon: { name: nm, img: safeImg(r.pokemon?.img) },
         method: r.method || "—",
-        caught: !!caught[nm]
+        caught: !!caught[nm],
       });
     }
 
     const eligible = rows.filter((r) => r.type !== "choice").filter((r) => meetsRequirements(r, choices));
     const total = eligible.length;
     const caughtCount = eligible.filter((r) => r.pokemon && caught[r.pokemon.name]).length;
+    if (total > 0) {
+      cumulativeTotal += total;
+      cumulativeCaught += caughtCount;
+    }
 
     const allChoicesMade = (() => {
       if (!keys.length) return true;
@@ -474,12 +480,14 @@ function buildModel() {
       return true;
     })();
 
-    if (allChoicesMade)
+    if (allChoicesMade && total > 0)
       out.push({
         __kind: "progress",
         __key: `progress:${groupTitle}`,
         total,
-        caught: caughtCount
+        caught: caughtCount,
+        cumulativeTotal,
+        cumulativeCaught,
       });
   }
   return out;
@@ -748,7 +756,7 @@ function trProgress(row) {
   bar.appendChild(fill);
   const label = document.createElement("div");
   label.className = "progress-label";
-  label.textContent = `${row.caught} / ${row.total} caught`;
+  label.textContent = row.cumulativeTotal > row.total ? `${row.caught} / ${row.total} caught (${row.cumulativeTotal} total)` : `${row.caught} / ${row.total} caught`;
   td.appendChild(bar);
   td.appendChild(label);
   tr.appendChild(td);
@@ -851,8 +859,8 @@ function modelForView(model) {
       items: bucket.map((r) => ({
         name: r.pokemon.name,
         img: r.pokemon.img,
-        caught: !!r.caught
-      }))
+        caught: !!r.caught,
+      })),
     });
     bucket = [];
   }
@@ -933,7 +941,7 @@ function render() {
   const tbl = el("pokemon-table");
   tbl?.classList.toggle(
     "has-data",
-    model.some((r) => r.__kind === "pokemon" || r.__kind === "choice")
+    model.some((r) => r.__kind === "pokemon" || r.__kind === "choice"),
   );
 
   const newKeys = viewModel.map((m) => m.__key);
@@ -1026,7 +1034,8 @@ function render() {
         fill.className = fill.className.replace(/\bw-\d+\b/g, "").trim();
         fill.classList.add(`w-${pct}`);
       }
-      if (label) label.textContent = `${row.caught} / ${row.total} caught`;
+
+      if (label) label.textContent = row.cumulativeTotal > row.total ? `${row.caught} / ${row.total} caught (${row.cumulativeTotal} total)` : `${row.caught} / ${row.total} caught`;
     }
   }
 
