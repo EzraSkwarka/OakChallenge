@@ -142,7 +142,7 @@
         "notes": "Under Construction",
         "cover": "assets/images/covers/platinum.png",
         "href": "pages/tracker/platinum.html",
-        "available": false
+        "available": true
       },
   
       {
