@@ -38,12 +38,22 @@ const safeImg = (src) => (!src || src === "link" ? PLACEHOLDER_SRC : src);
 /* -----------------------------  
 | Game Data Patching
 ------------------------------ */
+
 function applySummaryPatch(summaryHtml, patch) {
   let result = summaryHtml;
 
   if (patch.remove) {
     for (const text of patch.remove) {
       result = result.split(text).join("");
+    }
+  }
+
+  if (patch.replace) {
+    for (const { match, value } of patch.replace) {
+      const idx = result.indexOf(match);
+      if (idx === -1) continue;
+
+      result = result.slice(0, idx) + value + result.slice(idx + match.length);
     }
   }
 
@@ -65,6 +75,15 @@ function applyRowPatch(rows, patch) {
 
   if (patch.remove) {
     result = result.filter((r) => !patch.remove.some((fn) => fn(r)));
+  }
+
+  if (patch.replace) {
+    for (const { match, value } of patch.replace) {
+      const idx = result.findIndex(match);
+      if (idx === -1) continue;
+
+      result = [...result.slice(0, idx), value, ...result.slice(idx + 1)];
+    }
   }
 
   if (patch.insertAfter) {
