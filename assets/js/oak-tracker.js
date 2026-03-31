@@ -36,10 +36,80 @@ const slug = (s) =>
 const safeImg = (src) => (!src || src === "link" ? PLACEHOLDER_SRC : src);
 
 /* -----------------------------  
+| Game Data Patching
+------------------------------ */
+function applySummaryPatch(summaryHtml, patch) {
+  let result = summaryHtml;
+
+  if (patch.remove) {
+    for (const text of patch.remove) {
+      result = result.split(text).join("");
+    }
+  }
+
+  if (patch.insertAfter) {
+    for (const { match, value } of patch.insertAfter) {
+      const idx = result.indexOf(match);
+      if (idx === -1) continue;
+
+      const pos = idx + match.length;
+      result = result.slice(0, pos) + value + result.slice(pos);
+    }
+  }
+
+  return result;
+}
+
+function applyRowPatch(rows, patch) {
+  let result = [...rows];
+
+  if (patch.remove) {
+    result = result.filter((r) => !patch.remove.some((fn) => fn(r)));
+  }
+
+  if (patch.insertAfter) {
+    for (const { match, value } of patch.insertAfter) {
+      const idx = result.findIndex(match);
+      if (idx === -1) continue;
+
+      result = [...result.slice(0, idx + 1), value, ...result.slice(idx + 1)];
+    }
+  }
+
+  return result;
+}
+
+function applyGameDataPatch(baseData, patchData) {
+  if (!patchData?.progression) return baseData;
+
+  const out = structuredClone(baseData);
+
+  for (const sectionKey of Object.keys(patchData.progression)) {
+    const baseSection = out.progression?.[sectionKey];
+    const patchSection = patchData.progression[sectionKey];
+    if (!baseSection) continue;
+
+    if (patchSection.summary) {
+      baseSection.summaryHtml = applySummaryPatch(baseSection.summaryHtml || "", patchSection.summary);
+    }
+
+    if (patchSection.rows) {
+      baseSection.rows = applyRowPatch(baseSection.rows || [], patchSection.rows);
+    }
+  }
+
+  return out;
+}
+
+/* -----------------------------  
 |Validate / Load Game Data
 ------------------------------ */
 if (typeof window.gameData !== "object") {
   throw new Error("gameData not found. Load data/<game>/progression.js before the tracker.");
+}
+
+if (window.gameDataPatch && typeof window.gameDataPatch === "object") {
+  window.gameData = applyGameDataPatch(window.gameData, window.gameDataPatch);
 }
 
 const PAGE_NS = gameData.gameId || "default";
@@ -377,7 +447,7 @@ function buildModel() {
       __key: `header:${groupTitle}`,
       title: headerTitle,
       headerImg: def?.headerImg || null,
-      headerImgAlt: def?.headerImgAlt || "",
+      headerImgAlt: def?.headerImgAlt || ""
     });
 
     if (summaryShort || summaryHtml)
@@ -386,7 +456,7 @@ function buildModel() {
         __key: `summary:${groupTitle}`,
         short: summaryShort,
         html: summaryHtml,
-        open: summaryOpen,
+        open: summaryOpen
       });
 
     const choiceRows = rows.filter((r) => r.type === "choice");
@@ -425,7 +495,7 @@ function buildModel() {
             __kind: "choiceSubheader",
             __key: `choiceSubheader:${groupTitle}:${k}:${i}`,
             __group: groupTitle,
-            label,
+            label
           });
         }
 
@@ -438,11 +508,11 @@ function buildModel() {
           cap: capN,
           pokemon: {
             name: r.pokemon?.name || "Choice",
-            img: safeImg(r.pokemon?.img),
+            img: safeImg(r.pokemon?.img)
           },
           method: r.method || "Pick an option",
           groupRunStart: isStart,
-          groupRunEnd: isEnd,
+          groupRunEnd: isEnd
         });
 
         continue;
@@ -457,7 +527,7 @@ function buildModel() {
         __group: groupTitle,
         pokemon: { name: nm, img: safeImg(r.pokemon?.img) },
         method: r.method || "—",
-        caught: !!caught[nm],
+        caught: !!caught[nm]
       });
     }
 
@@ -487,7 +557,7 @@ function buildModel() {
         total,
         caught: caughtCount,
         cumulativeTotal,
-        cumulativeCaught,
+        cumulativeCaught
       });
   }
   return out;
@@ -859,8 +929,8 @@ function modelForView(model) {
       items: bucket.map((r) => ({
         name: r.pokemon.name,
         img: r.pokemon.img,
-        caught: !!r.caught,
-      })),
+        caught: !!r.caught
+      }))
     });
     bucket = [];
   }
@@ -941,7 +1011,7 @@ function render() {
   const tbl = el("pokemon-table");
   tbl?.classList.toggle(
     "has-data",
-    model.some((r) => r.__kind === "pokemon" || r.__kind === "choice"),
+    model.some((r) => r.__kind === "pokemon" || r.__kind === "choice")
   );
 
   const newKeys = viewModel.map((m) => m.__key);
