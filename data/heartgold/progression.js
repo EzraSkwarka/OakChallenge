@@ -10,7 +10,7 @@ const guideSource = `
         </a>
       </p>`;
 
-const imgBasehref = "";
+const imgBasehref = "assets/images/HeartGold and SoulSilver/pokedex/Spr_4h_";
 const badgeBasehref = "";
 
 window.gameData = {
