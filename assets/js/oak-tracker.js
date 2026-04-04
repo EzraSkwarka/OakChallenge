@@ -25,6 +25,7 @@ const PLACEHOLDER_SRC = "assets/images/placeholder.png";
 const POKEBALL_CAUGHT = "assets/images/ui/pokeball.png";
 const POKEBALL_UNCAUGHT = "assets/images/ui/pokeball_dark.png";
 const CHOICE_DEFAULT_CAP = 1;
+const applyGameDataPatch = window.applyGameDataPatch;
 
 const cap = (s) => (s ? s[0].toUpperCase() + s.slice(1) : s);
 const norm = (v) => (typeof v === "string" ? v.trim().toLowerCase() : v);
@@ -40,6 +41,11 @@ const safeImg = (src) => (!src || src === "link" ? PLACEHOLDER_SRC : src);
 ------------------------------ */
 if (typeof window.gameData !== "object") {
   throw new Error("gameData not found. Load data/<game>/progression.js before the tracker.");
+}
+
+if (window.gameDataPatch && typeof window.gameDataPatch === "object") {
+  const patchResult = applyGameDataPatch(window.gameData, window.gameDataPatch);
+  window.gameData = patchResult.data;
 }
 
 const PAGE_NS = gameData.gameId || "default";

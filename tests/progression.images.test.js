@@ -29,11 +29,43 @@ function findFilesRecursive(dir, predicate) {
 function findProgressionFiles(dir) {
   return findFilesRecursive(
     dir,
-    (entry) =>
+    entry =>
       entry.isFile() &&
       entry.name.startsWith("progression") &&
-      entry.name.endsWith(".js"),
+      entry.name.endsWith(".js")
   );
+}
+
+/* ===================== PATCH APPLICATION ===================== */
+
+function applyPatchIfPresent(progressionPath) {
+  const gameDir = path.dirname(progressionPath);
+  const patchPath = path.join(gameDir, "patch.js");
+
+  if (!fs.existsSync(patchPath)) return;
+
+  delete require.cache[require.resolve(patchPath)];
+  delete require.cache[
+    require.resolve("../assets/js/game-data-patcher.js")
+  ];
+
+  require(patchPath);
+
+  if (!window.gameDataPatch) {
+    throw new Error(
+      `patch.js exists in ${gameDir} but did not define window.gameDataPatch`
+    );
+  }
+
+  const { applyGameDataPatch } =
+    require("../assets/js/game-data-patcher.js");
+
+  const result = applyGameDataPatch(
+    window.gameData,
+    window.gameDataPatch
+  );
+
+  window.gameData = result.data;
 }
 
 /* ===================== IMAGE EXTRACTION =================== */
@@ -104,7 +136,7 @@ function extractUnconditionalPokemonRows(gameData) {
 
 /* =========================== TEST ========================= */
 
-describe("Progression image integrity", () => {
+describe("Progression image integrity (patched data)", () => {
   const progressionFiles = findProgressionFiles(DATA_DIR);
   const referencedImages = new Set();
 
@@ -119,16 +151,21 @@ describe("Progression image integrity", () => {
 
     test(`${relativeFilePath} → image and data integrity`, () => {
       delete require.cache[require.resolve(filePath)];
-      global.window = {};
 
+      global.window = {};
       require(filePath);
 
       if (!window.gameData) {
-        throw new Error(`${relativeFilePath} did not define window.gameData`);
+        throw new Error(
+          `${relativeFilePath} did not define window.gameData`
+        );
       }
 
-      const images = extractAllImages(window.gameData);
+      applyPatchIfPresent(filePath);
 
+      /* ---------- image validation ---------- */
+
+      const images = extractAllImages(window.gameData);
       const missingImages = [];
 
       for (const img of images) {
@@ -146,9 +183,11 @@ describe("Progression image integrity", () => {
             `Missing image references in ${relativeFilePath}:`,
             "",
             ...missingImages,
-          ].join("\n"),
+          ].join("\n")
         );
       }
+
+      /* ---------- duplicate Pokémon detection ---------- */
 
       const rows = extractUnconditionalPokemonRows(window.gameData);
       const seen = new Map();
@@ -172,14 +211,16 @@ describe("Progression image integrity", () => {
             `Duplicate Pokémon entries detected in ${relativeFilePath}:`,
             "",
             ...duplicates.map(
-              (d) =>
-                `${d.img}\n  first: ${d.first}\n  duplicate: ${d.duplicate}`,
+              d =>
+                `${d.img}\n  first: ${d.first}\n  duplicate: ${d.duplicate}`
             ),
-          ].join("\n"),
+          ].join("\n")
         );
       }
     });
   }
+
+  /* ---------- unused image detection ---------- */
 
   test("No unused images in badges or pokedex directories", () => {
     const diskImages = findFilesRecursive(
@@ -187,12 +228,14 @@ describe("Progression image integrity", () => {
       (entry, fullPath) =>
         IMAGE_EXTENSIONS.test(entry.name) &&
         (fullPath.includes(`${path.sep}badges${path.sep}`) ||
-          fullPath.includes(`${path.sep}pokedex${path.sep}`)),
-    ).map((absolutePath) =>
-      path.relative(PROJECT_ROOT, absolutePath).replace(/\\/g, "/"),
+          fullPath.includes(`${path.sep}pokedex${path.sep}`))
+    ).map(absolutePath =>
+      path
+        .relative(PROJECT_ROOT, absolutePath)
+        .replace(/\\/g, "/")
     );
 
-    const unused = diskImages.filter((img) => !referencedImages.has(img));
+    const unused = diskImages.filter(img => !referencedImages.has(img));
 
     if (unused.length > 0) {
       throw new Error(
@@ -200,7 +243,7 @@ describe("Progression image integrity", () => {
           "Unused images found in badges / pokedex directories:",
           "",
           ...unused,
-        ].join("\n"),
+        ].join("\n")
       );
     }
   });

@@ -150,20 +150,20 @@
         "name": "Pokémon HeartGold",
         "region": "Johto",
         "gen": "Gen 4",
-        "notes": "Under Construction",
+        "notes": "",
         "cover": "assets/images/covers/heartgold.png",
         "href": "pages/tracker/heartgold.html",
-        "available": false
+        "available": true
       },
       {
         "id": "soulsilver",
         "name": "Pokémon SoulSilver",
         "region": "Johto",
         "gen": "Gen 4",
-        "notes": "Under Construction",
+        "notes": "",
         "cover": "assets/images/covers/soulsilver.png",
         "href": "pages/tracker/soulsilver.html",
-        "available": false
+        "available": true
       },
   
       {
@@ -171,7 +171,7 @@
         "name": "Pokémon Black",
         "region": "Unova",
         "gen": "Gen 5",
-        "notes": "",
+        "notes": "Under Construction",
         "cover": "assets/images/covers/black.png",
         "href": "pages/tracker/black.html",
         "available": false
@@ -181,7 +181,7 @@
         "name": "Pokémon White",
         "region": "Unova",
         "gen": "Gen 5",
-        "notes": "",
+        "notes": "Under Construction",
         "cover": "assets/images/covers/white.png",
         "href": "pages/tracker/white.html",
         "available": false

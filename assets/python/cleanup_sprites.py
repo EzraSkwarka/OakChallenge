@@ -2,8 +2,8 @@
 import os
 import sys
 
-FIND = "_3r_"
-REPLACE = "_3f_"
+FIND = "_4d_"
+REPLACE = "_4h_"
 
 def cleanup_directory(path):
     if not os.path.isdir(path):
