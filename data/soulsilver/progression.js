@@ -14,9 +14,9 @@ const imgBasehref = "assets/images/HeartGold and SoulSilver/pokedex/Spr_4h_";
 const badgeBasehref = "";
 
 window.gameData = {
-  gameId: "heartgold",
-  gameTitle: "HeartGold",
-  logo: "assets/images/logos/heartgold.png",
+  gameId: "soulsilver",
+  gameTitle: "SoulSilver",
+  logo: "assets/images/logos/soulsilver.png",
   aboutHtml: `
    <section class="game-intro-content">
       <ul>
