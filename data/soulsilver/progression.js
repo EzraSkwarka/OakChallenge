@@ -35,8 +35,8 @@ window.gameData = {
     falkner: {
       headerTitle: "Pre Badge 1 - Falkner",
 
-      headerimg: badgeBasehref + "",
-      headerImgAlt: "",
+      headerImg: badgeBasehref + "Falkner.png",
+      headerImgAlt: "Falkner as he appeared in Pokemon HeartGold and SoulSilver.",
 
       summaryShort:
         "This first part will cover everything you can do from the get-go up right up to the Violet City Gym BEFORE you get that first badge from Falkner. This WILL take a while so it will really test your patience…",
@@ -304,8 +304,8 @@ window.gameData = {
     bugsy: {
       headerTitle: "Pre Badge 2 - Bugsy",
 
-      headerImg: badgeBasehref + "",
-      headerImgAlt: "",
+      headerImg: badgeBasehref + "Bugsy.png",
+      headerImgAlt: "Bugsy as he appeared in Pokemon HeartGold and SoulSilver.",
 
       summaryShort: "Defeating Falkner will allow you to pass through Route 32 and begin expanding your Johto Pokédex before facing Bugsy.",
 
@@ -445,8 +445,8 @@ window.gameData = {
     whitney: {
       headerTitle: "Pre Badge 3 - Whitney",
 
-      headerimg: badgeBasehref + "",
-      headerImgAlt: "",
+      headerImg: badgeBasehref + "Whitney.png",
+      headerImgAlt: "Whitney as she appeared in Pokemon HeartGold and SoulSilver.",
 
       summaryShort:
         "You can finally get through Ilex Forest with Cut. Do you know what’s on the other side of the forest? Wild pokemon that are over level 10! There is nothing to do in the forest so get through as quickly as possible.",
@@ -620,8 +620,8 @@ window.gameData = {
     morty: {
       headerTitle: "Pre Badge 4 - Morty",
 
-      headerimg: badgeBasehref + "",
-      headerImgAlt: "",
+      headerImg: badgeBasehref + "Morty.png",
+      headerImgAlt: "Morty as he appeared in Pokemon HeartGold and SoulSilver.",
 
       summaryShort:
         "Having the Plain Badge from Whitney lets you use Strength which we don’t have yet and even with it, it doesn’t give us any new areas to access without Surf as well. Beating Whitney does however allow us to finally progress to other towns and cities.",
@@ -799,8 +799,8 @@ window.gameData = {
     pryce: {
       headerTitle: "Pre Badge 5 - Pryce",
 
-      headerimg: badgeBasehref + "",
-      headerImgAlt: "",
+      headerImg: badgeBasehref + "Pryce.png",
+      headerImgAlt: "Pryce as he appeared in Pokemon HeartGold and SoulSilver.",
 
       summaryShort:
         "Here we go! As with most games, having access to Surf has a plethora of additional areas for you to now delve into! Although you are free to start exploring now, there is a time-sensitive event to be aware of. Getting the Safari Zone side quest started is your main priority. ",
@@ -987,8 +987,8 @@ window.gameData = {
     "chuck-jasmine": {
       headerTitle: "Pre Badges 6 and 7 - Chuck, Jasmine",
 
-      headerimg: badgeBasehref + "",
-      headerImgAlt: "",
+      headerImg: badgeBasehref + "Chuck.png",
+      headerImgAlt: "Chuck as he appeared in Pokemon HeartGold and SoulSilver.",
 
       summaryShort:
         "So there’s a dilemma here…We have three gyms we can access in any order, so which do we pick? Well Jasmine’s badge doesn’t give any perks. Chuck’s badge lets you use Fly which, while useful, doesn’t give new pokemon. What about Pryce? His badge lets you use Whirlpool which DOES give access to a small area for new pokemon so we’ll take his badge first.",
@@ -1015,8 +1015,8 @@ window.gameData = {
     clair: {
       headerTitle: "Pre Badge 8 - Clair",
 
-      headerimg: badgeBasehref + "",
-      headerImgAlt: "",
+      headerImg: badgeBasehref + "Clair.png",
+      headerImgAlt: "Clair as she appeared in Pokemon HeartGold and SoulSilver.",
 
       summaryShort:
         "Since they give no new pokemon by themselves, let’s cover both gyms at once. As soon as badge number 7 is in your possession, you’ll get a call from Prof. Elm and you can take on Team Rocket in Goldenrod City at the Radio Tower. Sadly there’s nowhere to go for new pokemon until AFTER this section so feel free to let your toughest pokemon level up even more (Tyranitar/Dragonite/Pickup pokemon). Once Team Rocket is out of the way you can FINALLY get past Mahogany Town!",
@@ -1096,8 +1096,8 @@ window.gameData = {
     "pre-elite-4": {
       headerTitle: "Pre Elite 4",
 
-      headerimg: badgeBasehref + "",
-      headerImgAlt: "",
+      headerImg: badgeBasehref + "Lance.png",
+      headerImgAlt: "Lance as he appeared in Pokemon HeartGold and SoulSilver.",
 
       summaryShort:
         "Defeat Clair and clear the Dragon’s Den and then, with your final Johto badge in your case, either jump down the ledges or Fly to New Bark Town. Speak to Professor Elm to receive a Master Ball. He will mention that the Kimono girls are looking for you. ",
@@ -1157,8 +1157,8 @@ window.gameData = {
     misty: {
       headerTitle: "Pre Kanto Badge 1 - Misty",
 
-      headerimg: badgeBasehref + "",
-      headerImgAlt: "",
+      headerImg: badgeBasehref + "Misty.png",
+      headerImgAlt: "Misty as she appeared in Pokemon HeartGold and SoulSilver.",
 
       summaryShort: "Be prepared for a ridiculously large undertaking…",
       summaryHtml: `
@@ -1770,8 +1770,8 @@ window.gameData = {
     "pre-elite-4-kanto": {
       headerTitle: "Pre Kanto Elite Four",
 
-      headerimg: badgeBasehref + "",
-      headerImgAlt: "",
+      headerImg: badgeBasehref + "Blue.png",
+      headerImgAlt: "Blue as he appeared in Pokemon HeartGold and SoulSilver.",
 
       summaryShort: "",
       summaryHtml: `
@@ -1804,8 +1804,8 @@ window.gameData = {
     red: {
       headerTitle: "Pre Red",
 
-      headerimg: badgeBasehref + "",
-      headerImgAlt: "",
+      headerImg: badgeBasehref + "Red.png",
+      headerImgAlt: "Red as he appeared in Pokemon HeartGold and SoulSilver.",
 
       summaryShort:
         "Earn all the remaining 8 badges in a row, finishing with Blue in Viridian City (after meeting him on Cinnabar Island). Go speak to Professor Oak and he’ll let you explore more areas of Kanto. He’ll also give you HM08 Rock Climb. ",
@@ -1947,8 +1947,8 @@ window.gameData = {
     postgame: {
       headerTitle: "Post Red",
 
-      headerimg: badgeBasehref + "",
-      headerImgAlt: "",
+      headerImg: badgeBasehref + "Oak.png",
+      headerImgAlt: "Prof Oak as he appeared in Pokemon HeartGold and SoulSilver.",
 
       summaryShort: "Go see Professor Oak once Red is defeated and he’ll let you pick ONE of the Kanto starters!",
       summaryHtml: `
