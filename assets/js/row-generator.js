@@ -1060,12 +1060,11 @@ function saveToLocalStorage() {
       meta: collectSectionMeta(section),
       summaryInput: qs(section, ".summary-input").value,
       useHtml: qs(section, ".use-html").checked,
-      rows: collectRowsFromTable(section)
+      rows: serializeRowsTable(section)
     });
   });
 
-  const state = { gameMeta, sections };
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  localStorage.setItem(STORAGE_KEY, JSON.stringify({ gameMeta, sections }));
 }
 
 function loadFromLocalStorage() {
@@ -1079,7 +1078,7 @@ function loadFromLocalStorage() {
     return;
   }
 
-  /* Game meta */
+  /* ---- Game Meta ---- */
   const gm = state.gameMeta || {};
   document.querySelector(".game-id").value = gm.gameId || "";
   document.querySelector(".game-title").value = gm.gameTitle || "";
@@ -1088,14 +1087,14 @@ function loadFromLocalStorage() {
   document.querySelector(".badge-basehref").value = gm.badgeBasehref || "";
   document.querySelector(".about-html").value = gm.aboutHtml || "";
 
-  /* Sections */
-  const container = document.getElementById("sections-root");
-  const template = document.querySelector(".section-editor");
+  /* ---- Sections ---- */
+  const root = document.getElementById("sections-root");
+  const template = root.querySelector(".section-editor");
 
-  template.remove();
+  root.innerHTML = "";
 
-  state.sections.forEach((data, index) => {
-    const section = index === 0 ? template : template.cloneNode(true);
+  state.sections.forEach((data, i) => {
+    const section = template.cloneNode(true);
 
     /* Meta */
     qs(section, ".section-key").value = data.meta.sectionKey || "";
@@ -1109,9 +1108,32 @@ function loadFromLocalStorage() {
     qs(section, ".use-html").checked = !!data.useHtml;
 
     /* Rows */
-    renderRowsTable(qs(section, ".rows-table tbody"), data.rows || []);
+    const tbody = qs(section, ".rows-table tbody");
+    tbody.innerHTML = "";
 
-    container.appendChild(section);
+    for (const row of data.rows || []) {
+      const tr = document.createElement("tr");
+
+      tr.innerHTML = `
+        <td>
+          <select class="row-type">
+            <option value="normal">Normal</option>
+            <option value="choice">Choice</option>
+            <option value="conditional">Conditional</option>
+            <option value="omit">Omit</option>
+          </select>
+        </td>
+        <td>${row.pokemon.name}</td>
+        <td>${row.pokemon.img ?? ""}</td>
+        <td><input type="text" value="${row.method}" /></td>
+        <td><input type="text" value="${row.meta ?? ""}" /></td>
+      `;
+
+      tr.querySelector(".row-type").value = row.type;
+      tbody.appendChild(tr);
+    }
+
+    root.appendChild(section);
   });
 
   updateRemoveButtons();
@@ -1304,6 +1326,7 @@ function renderRowsTable(tbody, rows) {
           <option value="normal">Normal</option>
           <option value="choice">Choice</option>
           <option value="conditional">Conditional</option>
+          <option value="omit">Omit</option>
         </select>
       </td>
     `;
@@ -1339,6 +1362,11 @@ function collectRowsFromTable(section) {
 
     const type = tds[0].querySelector("select").value;
 
+    /* -------- OMIT -------- */
+    if (type === "omit") {
+      continue;
+    }
+
     const pokemon = {
       name: tds[1].textContent.trim(),
       img: tds[2].textContent.trim() || null
@@ -1347,7 +1375,7 @@ function collectRowsFromTable(section) {
     const method = tds[3].querySelector("input").value.trim();
     const metaInput = tds[4].querySelector("input").value.trim();
 
-    /* ---------------- Choice Row ---------------- */
+    /* -------- CHOICE -------- */
     if (type === "choice") {
       if (!metaInput.includes("=")) continue;
 
@@ -1364,7 +1392,7 @@ function collectRowsFromTable(section) {
       continue;
     }
 
-    /* ---------------- Normal / Conditional ---------------- */
+    /* -------- NORMAL / CONDITIONAL -------- */
     const row = { pokemon, method };
 
     if (type === "conditional" && metaInput) {
@@ -1378,6 +1406,10 @@ function collectRowsFromTable(section) {
 }
 
 function insertConditionalRowFromChoice(choiceRow, tbody) {
+  if (choiceRow.nextElementSibling?.querySelector(".row-type")?.value === "conditional") {
+    return;
+  }
+
   const tds = choiceRow.querySelectorAll("td");
 
   const name = tds[1].textContent.trim();
@@ -1400,6 +1432,7 @@ function insertConditionalRowFromChoice(choiceRow, tbody) {
         <option value="normal">Normal</option>
         <option value="choice">Choice</option>
         <option value="conditional" selected>Conditional</option>
+        <option value="omit">Omit</option>
       </select>
     </td>
     <td>${name}</td>
@@ -1504,6 +1537,27 @@ function serializeRow(row) {
       },
       method: "${row.method}"${requiresBlock}
     }`;
+}
+
+function serializeRowsTable(section) {
+  const rows = [];
+  const tbody = qs(section, ".rows-table tbody");
+
+  for (const tr of tbody.querySelectorAll("tr")) {
+    const tds = tr.querySelectorAll("td");
+
+    rows.push({
+      type: tds[0].querySelector("select").value,
+      pokemon: {
+        name: tds[1].textContent.trim(),
+        img: tds[2].textContent.trim() || null
+      },
+      method: tds[3].querySelector("input").value,
+      meta: tds[4].querySelector("input").value
+    });
+  }
+
+  return rows;
 }
 
 function exportAllSections() {
@@ -1612,6 +1666,12 @@ document.addEventListener("change", (e) => {
   if (e.target.value !== "choice") return;
 
   insertConditionalRowFromChoice(tr, tbody);
+});
+
+document.addEventListener("input", (e) => {
+  if (e.target.closest(".rows-table") || e.target.closest(".section-meta") || e.target.closest(".summary-authoring") || e.target.closest(".game-meta")) {
+    saveToLocalStorage();
+  }
 });
 
 document.getElementById("export-js").addEventListener("click", exportAllSections);

@@ -79,3 +79,8 @@ textarea:focus {
   gap: 12px;
   flex-wrap: wrap;
 }
+
+tr:has(.row-type[value="omit"]),
+tr:has(.row-type option:checked[value="omit"]) {
+  opacity: 0.45;
+}
