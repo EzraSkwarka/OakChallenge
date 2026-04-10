@@ -98,7 +98,96 @@ window.gameData = {
           Caught 11, Remaining 145
         </p>
         `,
-      rows: []
+      rows: [
+        {
+          pokemon: { img: imgBasehref + "495.png", name: "Snivy" },
+          method: "Choose as your starter.",
+          requires: { "starter": "snivy" }
+        },
+        {
+          pokemon: { img: imgBasehref + "496.png", name: "Servine" },
+          method: "Evolve from Snivy at level 17",
+          requires: { "starter": "snivy" }
+        },
+        {
+          pokemon: { img: imgBasehref + "497.png", name: "Serperior" },
+          method: "Evolve from Servine at level 36",
+          requires: { "starter": "snivy" }
+        },
+        {
+          pokemon: { img: imgBasehref + "498.png", name: "Tepig" },
+          method: "Choose as your starter.",
+          requires: { "starter": "tepig" }
+        },
+        {
+          pokemon: { img: imgBasehref + "499.png", name: "Pignite" },
+          method: "Evolve from Tepig at level 17",
+          requires: { "starter": "tepig" }
+        },
+        {
+          pokemon: { img: imgBasehref + "500.png", name: "Emboar" },
+          method: "Evolve from Pignite at level 36",
+          requires: { "starter": "tepig" }
+        },
+        {
+          pokemon: { img: imgBasehref + "501.png", name: "Oshawott" },
+          method: "Choose as your starter.",
+          requires: { "starter": "oshawott" }
+        },
+        {
+          pokemon: { img: imgBasehref + "502.png", name: "Dewott" },
+          method: "Evolve from Oshawott at level 17",
+          requires: { "starter": "oshawott" }
+        },
+        {
+          pokemon: { img: imgBasehref + "503.png", name: "Samurott" },
+          method: "Evolve from Dewott at level 36",
+          requires: { "starter": "oshawott" }
+        },
+        {
+          pokemon: { img: imgBasehref + "506.png", name: "Lillipup" },
+          method: "Catch in Route 1"
+        },
+        {
+          pokemon: { img: imgBasehref + "507.png", name: "Herdier" },
+          method: "Evolve from Lillipup at level 16"
+        },
+        {
+          pokemon: { img: imgBasehref + "508.png", name: "Stoutland" },
+          method: "Evolve from Herdier at level 32"
+        },
+        {
+          pokemon: { img: imgBasehref + "504.png", name: "Patrat" },
+          method: "Catch in Route 1"
+        },
+        {
+          pokemon: { img: imgBasehref + "505.png", name: "Watchog" },
+          method: "Evolve from Patrat at level 20"
+        },
+        {
+          pokemon: { img: imgBasehref + "509.png", name: "Purrloin" },
+          method: "Catch in Accumula Town and Route 2"
+        },
+        {
+          pokemon: { img: imgBasehref + "510.png", name: "Liepard" },
+          method: "Evolve from Purrloin at level 20"
+        },
+        {
+          pokemon: { img: imgBasehref + "515.png", name: "Panpour" },
+          method: "Dream Yard",
+          requires: { "starter": "snivy" }
+        },
+        {
+          pokemon: { img: imgBasehref + "511.png", name: "Pansage" },
+          method: "Dream Yard",
+          requires: { "starter": "tepig" }
+        },
+        {
+          pokemon: { img: imgBasehref + "513.png", name: "Pansear" },
+          method: "Dream Yard",
+          requires: { "starter": "oshawott" }
+        }
+      ]
     },
     "Pre Badge 2": {
       headerTitle: "Pre Badge #2 (Nacrene Gym)",

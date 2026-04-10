@@ -1145,7 +1145,7 @@ function pokemonEntry(rawName) {
 
   return {
     name,
-    img: dex ? `baseImghref + "${dex}.png"` : null
+    img: dex ? `imgBasehref + "${dex}.png"` : null
   };
 }
 
@@ -1298,12 +1298,33 @@ function renderRowsTable(tbody, rows) {
   for (const row of rows) {
     const tr = document.createElement("tr");
 
-    tr.innerHTML = `
-      <td>${row.pokemon.name}</td>
-      <td>${row.pokemon.img ?? ""}</td>
-      <td><input type="text" value="${row.method}" /></td>
-      <td><input type="text" placeholder='starter: "snivy"' /></td>
+    const typeCell = `
+      <td>
+        <select class="row-type">
+          <option value="normal">Normal</option>
+          <option value="choice">Choice</option>
+          <option value="conditional">Conditional</option>
+        </select>
+      </td>
     `;
+
+    const pokemonCell = `<td>${row.pokemon.name}</td>`;
+    const imgCell = `<td>${row.pokemon.img ?? ""}</td>`;
+    const methodCell = `
+      <td>
+        <input type="text" value="${row.method}" />
+      </td>
+    `;
+    const metaCell = `
+      <td>
+        <input
+          type="text"
+          placeholder='starter: "snivy"  or  starter=bulbasaur'
+        />
+      </td>
+    `;
+
+    tr.innerHTML = typeCell + pokemonCell + imgCell + methodCell + metaCell;
 
     tbody.appendChild(tr);
   }
@@ -1316,21 +1337,84 @@ function collectRowsFromTable(section) {
   for (const tr of tbody.querySelectorAll("tr")) {
     const tds = tr.querySelectorAll("td");
 
-    const row = {
-      pokemon: {
-        name: tds[0].textContent.trim(),
-        img: tds[1].textContent.trim() || null
-      },
-      method: tds[2].querySelector("input").value.trim()
+    const type = tds[0].querySelector("select").value;
+
+    const pokemon = {
+      name: tds[1].textContent.trim(),
+      img: tds[2].textContent.trim() || null
     };
 
-    const requiresRaw = tds[3].querySelector("input").value.trim();
-    if (requiresRaw) row.requires = parseRequires(requiresRaw);
+    const method = tds[3].querySelector("input").value.trim();
+    const metaInput = tds[4].querySelector("input").value.trim();
+
+    /* ---------------- Choice Row ---------------- */
+    if (type === "choice") {
+      if (!metaInput.includes("=")) continue;
+
+      const [choiceKey, choiceValue] = metaInput.split("=").map((s) => s.trim());
+
+      rows.push({
+        type: "choice",
+        choiceKey,
+        choiceValue,
+        pokemon,
+        method
+      });
+
+      continue;
+    }
+
+    /* ---------------- Normal / Conditional ---------------- */
+    const row = { pokemon, method };
+
+    if (type === "conditional" && metaInput) {
+      row.requires = parseRequires(metaInput);
+    }
 
     rows.push(row);
   }
 
   return rows;
+}
+
+function insertConditionalRowFromChoice(choiceRow, tbody) {
+  const tds = choiceRow.querySelectorAll("td");
+
+  const name = tds[1].textContent.trim();
+  const img = tds[2].textContent.trim();
+  const method = tds[3].querySelector("input").value.trim();
+  const metaInput = tds[4].querySelector("input");
+
+  let requiresValue = "";
+
+  if (metaInput.value.includes("=")) {
+    const [key, value] = metaInput.value.split("=").map((s) => s.trim());
+    requiresValue = `${key}: "${value}"`;
+  }
+
+  const tr = document.createElement("tr");
+
+  tr.innerHTML = `
+    <td>
+      <select class="row-type">
+        <option value="normal">Normal</option>
+        <option value="choice">Choice</option>
+        <option value="conditional" selected>Conditional</option>
+      </select>
+    </td>
+    <td>${name}</td>
+    <td>${img}</td>
+    <td><input type="text" value="${method}" /></td>
+    <td>
+      <input
+        type="text"
+        value='${requiresValue}'
+        placeholder='starter: "bulbasaur"'
+      />
+    </td>
+  `;
+
+  choiceRow.after(tr);
 }
 
 /* ========================== Requires ========================== */
@@ -1398,10 +1482,27 @@ function renderSectionPreview(section, meta, summaryHtml, rows) {
 /* ========================== Export ========================== */
 
 function serializeRow(row) {
-  const r = row.requires ? `,\n        requires: ${JSON.stringify(row.requires)}` : "";
+  if (row.type === "choice") {
+    return `    {
+      type: "choice",
+      choiceKey: "${row.choiceKey}",
+      choiceValue: "${row.choiceValue}",
+      pokemon: {
+        img: ${row.pokemon.img},
+        name: "${row.pokemon.name}"
+      },
+      method: "${row.method}"
+    }`;
+  }
+
+  const requiresBlock = row.requires ? `,\n        requires: ${JSON.stringify(row.requires)}` : "";
+
   return `    {
-      pokemon: { img: ${row.pokemon.img}, name: "${row.pokemon.name}" },
-      method: "${row.method}"${r}
+      pokemon: {
+        img: ${row.pokemon.img},
+        name: "${row.pokemon.name}"
+      },
+      method: "${row.method}"${requiresBlock}
     }`;
 }
 
@@ -1500,6 +1601,17 @@ document.getElementById("add-section").addEventListener("click", () => {
 
   sections[sections.length - 1].after(clone);
   updateRemoveButtons();
+});
+
+document.addEventListener("change", (e) => {
+  if (!e.target.classList.contains("row-type")) return;
+
+  const tr = e.target.closest("tr");
+  const tbody = tr.parentElement;
+
+  if (e.target.value !== "choice") return;
+
+  insertConditionalRowFromChoice(tr, tbody);
 });
 
 document.getElementById("export-js").addEventListener("click", exportAllSections);
