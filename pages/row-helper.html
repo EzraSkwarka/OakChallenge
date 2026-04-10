@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <base href="/OakChallenge/" />
+    <link rel="icon" href="favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Oak Tracker – Row Generator</title>
+
+    <link rel="stylesheet" href="assets/css/base.css" />
+    <link rel="stylesheet" href="assets/css/chrome.css" />
+    <link rel="stylesheet" href="assets/css/tracker.css" />
+    <link rel="stylesheet" href="assets/css/sticky-header.css" />
+    <link rel="stylesheet" href="assets/css/icons.css" />
+    <link rel="stylesheet" href="assets/css/row-generator.css" />
+    <script src="assets/js/site-theme.js" defer></script>
+    <script src="assets/js/site-chrome.js" defer></script>
+  </head>
+  <body>
+    <div id="site-header-host"></div>
+
+    <div class="page-band">
+      <div class="container">
+        <h1>Row Generator</h1>
+
+        <p class="summary-short">Author one or more Oak Tracker sections, generate rows, preview them, and export ready-to-paste progression.js data.</p>
+
+        <!-- ===================== HELP ===================== -->
+
+        <section class="page-help">
+          <details class="help-accordion">
+            <summary>How to Use the Row Generator</summary>
+
+            <div class="help-content">
+              <p>This page lets you create Oak Tracker progression data without writing JavaScript by hand.</p>
+
+              <h3>Quick Authoring Rules</h3>
+              <ul>
+                <li><code># Header</code> → section headers</li>
+                <li>Plain text → paragraphs</li>
+                <li>Indented lines → Pokémon lists</li>
+                <li>Enable <strong>Use HTML</strong> for raw HTML input</li>
+              </ul>
+
+              <h3>Workflow</h3>
+              <ol>
+                <li>Fill in Game Data (once)</li>
+                <li>Fill in Section Metadata</li>
+                <li>Write the summary</li>
+                <li>Click <strong>Generate Rows</strong></li>
+                <li>Review the preview</li>
+                <li>Export all sections</li>
+              </ol>
+            </div>
+          </details>
+        </section>
+
+        <!-- ===================== GAME DATA ===================== -->
+
+        <section class="game-meta">
+          <h2>Game Data</h2>
+
+          <div class="meta-stack">
+            <div class="meta-field">
+              <div class="field-label">Game ID</div>
+              <input class="game-id" type="text" placeholder="black" />
+            </div>
+
+            <div class="meta-field">
+              <div class="field-label">Game Title</div>
+              <input class="game-title" type="text" placeholder="Black" />
+            </div>
+
+            <div class="meta-field">
+              <div class="field-label">Logo Path</div>
+              <input class="game-logo" type="text" placeholder="assets/images/logos/black.png" />
+            </div>
+
+            <div class="meta-field">
+              <div class="field-label">Pokédex Image Base Path</div>
+              <input class="img-basehref" type="text" placeholder="assets/images/Black and White/pokedex/" />
+            </div>
+
+            <div class="meta-field">
+              <div class="field-label">Badge Image Base Path</div>
+              <input class="badge-basehref" type="text" placeholder="assets/images/Black and White/badges/" />
+            </div>
+
+            <div class="meta-field">
+              <div class="field-label">About (HTML)</div>
+              <textarea class="about-html" rows="5" placeholder="Optional HTML content shown at the top of the tracker"></textarea>
+            </div>
+          </div>
+        </section>
+
+        <h1>Section Generator</h1>
+
+        <p class="summary-short">Author one or more Oak Tracker sections, generate rows, preview them, and export progression.js data.</p>
+
+        <!-- ===================== SECTION EDITOR (Template) ===================== -->
+        <div id="sections-root">
+          <div class="section-editor">
+            <!-- ---------- Section Metadata ---------- -->
+            <section class="section-meta">
+              <h2>Section Metadata</h2>
+
+              <div class="meta-stack">
+                <div class="meta-field">
+                  <div class="field-label">Section Key</div>
+                  <input class="section-key" type="text" placeholder="Pre Badge 1" />
+                </div>
+
+                <div class="meta-field">
+                  <div class="field-label">Header Title</div>
+                  <input class="header-title" type="text" placeholder="Pre Badge 1 - Striaton Gym" />
+                </div>
+
+                <div class="meta-field">
+                  <div class="field-label">Header Image</div>
+                  <input class="header-img" type="text" placeholder='badgeBasehref + ".png"' />
+                </div>
+
+                <div class="meta-field">
+                  <div class="field-label">Header Image Alt</div>
+                  <input class="header-img-alt" type="text" />
+                </div>
+
+                <div class="meta-field">
+                  <div class="field-label">Summary Short</div>
+                  <textarea class="summary-short" rows="4"></textarea>
+                </div>
+              </div>
+
+              <div class="footer-actions section-actions">
+                <button type="button" class="btn btn-secondary remove-section">Remove Section</button>
+              </div>
+            </section>
+
+            <!-- ---------- Summary Authoring ---------- -->
+            <section class="summary-authoring">
+              <h3>Summary Content</h3>
+
+              <div class="meta-field">
+                <div class="field-label">Summary Input</div>
+                <textarea class="summary-input" rows="12" placeholder="# Town Name&#10;Plain paragraph text&#10;&#10;  Indented lines become &lt;pre&gt;"></textarea>
+              </div>
+
+              <div class="meta-field">
+                <label>
+                  <input type="checkbox" class="use-html" />
+                  Use HTML
+                </label>
+              </div>
+
+              <button type="button" class="btn btn-primary generate-rows">Generate Rows</button>
+            </section>
+
+            <!-- ---------- Rows Table ---------- -->
+            <section class="rows-editor">
+              <h3>Generated Rows</h3>
+
+              <div class="table-wrap">
+                <table class="rows-table">
+                  <thead>
+                    <tr>
+                      <th>Pokémon</th>
+                      <th>Image</th>
+                      <th>Method</th>
+                      <th>Requires</th>
+                    </tr>
+                  </thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+            </section>
+
+            <!-- ---------- Section Preview ---------- -->
+            <section class="section-preview">
+              <h3>Section Preview</h3>
+
+              <div class="table-wrap">
+                <table class="tracker-preview">
+                  <tbody class="preview-body"></tbody>
+                </table>
+              </div>
+            </section>
+          </div>
+        </div>
+
+        <!-- ===================== PAGE ACTIONS ===================== -->
+
+        <button id="add-section" type="button" class="btn">Add New Section</button>
+
+        <button id="export-js" type="button" class="btn btn-primary">Export All Sections</button>
+
+        <!-- ---------- Export Output ---------- -->
+        <section class="export-output">
+          <h2>Exported JS</h2>
+          <textarea id="export-output" rows="20"></textarea>
+        </section>
+      </div>
+    </div>
+
+    <div id="site-footer-host"></div>
+
+    <script src="assets/js/row-generator.js" defer></script>
+  </body>
+</html>

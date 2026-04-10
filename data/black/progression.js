@@ -10,8 +10,8 @@ const guideSource = `
         </a>
       </p>`;
 
-const imgBasehref = "";
-const badgeBasehref = "";
+const imgBasehref = "assets/images/Black and White/pokedex/";
+const badgeBasehref = "assets/images/Black and White/badges/";
 
 window.gameData = {
   gameId: "black",
@@ -29,7 +29,7 @@ window.gameData = {
     "Pre Badge 1": {
       headerTitle: "Pre Badge 1 - Striaton Gym",
 
-      headerImg: "assets/images/black/badges/",
+      headerImg: badgeBasehref + ".png",
       headerImgAlt: "",
 
       summaryShort:
@@ -213,6 +213,7 @@ window.gameData = {
           <strong>End of part 2:</strong><br/>
           Caught 33, Remaining 123
         </p>
+        ${guideSource}
         `,
       rows: []
     },
@@ -279,6 +280,7 @@ window.gameData = {
           <strong>End of part 3:</strong><br/>
           Caught 54, Remaining 102
         </p>
+        ${guideSource}
         `,
       rows: []
     },

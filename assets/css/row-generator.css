@@ -1,0 +1,81 @@
+/* ===================== Metadata Layout ===================== */
+
+.section-meta,
+.game-meta {
+  border-bottom: 1px solid var(--border-subtle);
+  margin-bottom: 32px;
+  padding-bottom: 24px;
+}
+
+.meta-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.meta-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field-label {
+  font-weight: 600;
+  opacity: 0.8;
+}
+
+.section-meta input,
+.section-meta textarea,
+.game-meta input,
+.game-meta textarea {
+  padding: 10px 12px;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+textarea {
+  resize: vertical;
+  line-height: 1.5;
+  tab-size: 2;
+  width: 100%;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: none;
+}
+
+/* ===================== Help Accordion ===================== */
+
+.page-help {
+  margin-bottom: 32px;
+}
+
+.help-accordion summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.help-content {
+  margin-top: 12px;
+}
+
+.help-content h3 {
+  margin-top: 16px;
+}
+
+/* ===================== Buttons ===================== */
+
+.btn-primary:hover {
+  background-color: var(--choice-accent-selected);
+  border-color: var(--choice-accent-selected);
+  color: var(--accent-contrast);
+}
+
+.footer-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
