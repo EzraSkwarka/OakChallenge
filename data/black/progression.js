@@ -20,7 +20,11 @@ window.gameData = {
   aboutHtml: `
    <section class="game-intro-content">
       <ul>
-    
+        <li>Grinding – The first section of a Professor Oak Challenge is always very daunting as you need to get your starter fully evolved. In Generation 5, experience gains have changed a lot. The amount of exp isn’t determined solely by the level and species of the pokemon you’ve defeated. It now takes your level into consideration. The higher your level is compared to the opponent means that exp is reduced. This gets really awkward when you get past level 20 in the first section of the run and your exp per battle starts dwindling. By the time your starter is about to evolve you will literally be earning 11-12 exp per battle against the highest levelled (Lv. 7) wild pokemon! There is also no way to rematch trainers in Black and White as there is no Vs Seeker. There are a couple of training spots with trainers that refresh daily (covered later). Audino is your best friend in this challenge. Once you have your first badge you can start finding them in the rustling grass and they give HUGE exp. </li>
+        <li>Learning new moves shouldn’t be taken for granted, particularly with pokemon that evolve at higher levels. During a normal game you might be quick to replace a weak move with a stronger one but getting rid of non-attacking moves is a better strategy here. On the first part of the challenge before the Striaton Gym, you are battling low level pokemon and will run out of PP very quickly while that exp bar goes up very slowly. You need to maximize the amount of pokemon you can defeat, so having multiple attacking moves, regardless of how weak they are, will be beneficial. You have no need for moves like Growl or Sand Attack. Also consider keeping three stage pokemon unevolved so that they learn moves faster than their middle stage would.</li>
+        <li>This challenge is a fun alternative to a regular play through and you may really appreciate having to train pokemon up yourself that you never trained before. On the other hand you may end up despising certain pokemon due to their inability to attack when you first get them or their generally poor stats/levelling up moves. </li>
+        <li>Please note that this is not a full guide to the game, I am only listing the pokemon you can catch at the earliest opportunities and any required items. Please consult other guides for a full walkthrough. This guide assumes you know how to get through the caves etc throughout the game.</li>
+        <li>And finally, remember that this is YOUR challenge. There are things you can do to make this run easier or harder and it’s entirely at your discretion how you want to handle this. A lot of people like to use pokemon with the Pickup ability (e.g. Lillipup) to farm Rare Candies to level up your pokemon. You could use exp share, you could put pokemon in the day-care and you could switch train pokemon (send it out and then replace with a better pokemon). I’m quite hard core/sadistic with these challenges and don’t like using any of the above methods, I only like gaining experience through battling to make this a real challenge! With rustling grass/dust clouds, aside from Audino there is usually a pokemon on each route that can be encountered at a lower rate, often this is a fully evolved pokemon. It’s up to you if you just catch them fully evolved or train them up and evolve their earlier stage.</li>
       </ul>
       ${guideSource}
     </section>
@@ -100,91 +104,178 @@ window.gameData = {
         `,
       rows: [
         {
-          pokemon: { img: imgBasehref + "495.png", name: "Snivy" },
-          method: "Choose as your starter.",
+          type: "choice",
+          choiceKey: "starter",
+          choiceValue: "snivy",
+          pokemon: {
+            img: imgBasehref + "495.png",
+            name: "Snivy"
+          },
+          method: "Choose as your Starter"
+        },
+        {
+          pokemon: {
+            img: imgBasehref + "495.png",
+            name: "Snivy"
+          },
+          method: "Choose as your Starter",
           requires: { "starter": "snivy" }
         },
         {
-          pokemon: { img: imgBasehref + "496.png", name: "Servine" },
+          pokemon: {
+            img: imgBasehref + "496.png",
+            name: "Servine"
+          },
           method: "Evolve from Snivy at level 17",
           requires: { "starter": "snivy" }
         },
         {
-          pokemon: { img: imgBasehref + "497.png", name: "Serperior" },
+          pokemon: {
+            img: imgBasehref + "497.png",
+            name: "Serperior"
+          },
           method: "Evolve from Servine at level 36",
           requires: { "starter": "snivy" }
         },
         {
-          pokemon: { img: imgBasehref + "498.png", name: "Tepig" },
-          method: "Choose as your starter.",
+          type: "choice",
+          choiceKey: "starter",
+          choiceValue: "tepig",
+          pokemon: {
+            img: imgBasehref + "498.png",
+            name: "Tepig"
+          },
+          method: "Choose as your Starter"
+        },
+        {
+          pokemon: {
+            img: imgBasehref + "498.png",
+            name: "Tepig"
+          },
+          method: "Choose as your Starter",
           requires: { "starter": "tepig" }
         },
         {
-          pokemon: { img: imgBasehref + "499.png", name: "Pignite" },
+          pokemon: {
+            img: imgBasehref + "499.png",
+            name: "Pignite"
+          },
           method: "Evolve from Tepig at level 17",
           requires: { "starter": "tepig" }
         },
         {
-          pokemon: { img: imgBasehref + "500.png", name: "Emboar" },
+          pokemon: {
+            img: imgBasehref + "500.png",
+            name: "Emboar"
+          },
           method: "Evolve from Pignite at level 36",
           requires: { "starter": "tepig" }
         },
         {
-          pokemon: { img: imgBasehref + "501.png", name: "Oshawott" },
-          method: "Choose as your starter.",
+          type: "choice",
+          choiceKey: "starter",
+          choiceValue: "oshawott",
+          pokemon: {
+            img: imgBasehref + "501.png",
+            name: "Oshawott"
+          },
+          method: "Choose as your Starter"
+        },
+        {
+          pokemon: {
+            img: imgBasehref + "501.png",
+            name: "Oshawott"
+          },
+          method: "Choose as your Starter",
           requires: { "starter": "oshawott" }
         },
         {
-          pokemon: { img: imgBasehref + "502.png", name: "Dewott" },
+          pokemon: {
+            img: imgBasehref + "502.png",
+            name: "Dewott"
+          },
           method: "Evolve from Oshawott at level 17",
           requires: { "starter": "oshawott" }
         },
         {
-          pokemon: { img: imgBasehref + "503.png", name: "Samurott" },
+          pokemon: {
+            img: imgBasehref + "503.png",
+            name: "Samurott"
+          },
           method: "Evolve from Dewott at level 36",
           requires: { "starter": "oshawott" }
         },
         {
-          pokemon: { img: imgBasehref + "506.png", name: "Lillipup" },
+          pokemon: {
+            img: imgBasehref + "506.png",
+            name: "Lillipup"
+          },
           method: "Catch in Route 1"
         },
         {
-          pokemon: { img: imgBasehref + "507.png", name: "Herdier" },
+          pokemon: {
+            img: imgBasehref + "507.png",
+            name: "Herdier"
+          },
           method: "Evolve from Lillipup at level 16"
         },
         {
-          pokemon: { img: imgBasehref + "508.png", name: "Stoutland" },
+          pokemon: {
+            img: imgBasehref + "508.png",
+            name: "Stoutland"
+          },
           method: "Evolve from Herdier at level 32"
         },
         {
-          pokemon: { img: imgBasehref + "504.png", name: "Patrat" },
+          pokemon: {
+            img: imgBasehref + "504.png",
+            name: "Patrat"
+          },
           method: "Catch in Route 1"
         },
         {
-          pokemon: { img: imgBasehref + "505.png", name: "Watchog" },
+          pokemon: {
+            img: imgBasehref + "505.png",
+            name: "Watchog"
+          },
           method: "Evolve from Patrat at level 20"
         },
         {
-          pokemon: { img: imgBasehref + "509.png", name: "Purrloin" },
+          pokemon: {
+            img: imgBasehref + "509.png",
+            name: "Purrloin"
+          },
           method: "Catch in Accumula Town and Route 2"
         },
         {
-          pokemon: { img: imgBasehref + "510.png", name: "Liepard" },
+          pokemon: {
+            img: imgBasehref + "510.png",
+            name: "Liepard"
+          },
           method: "Evolve from Purrloin at level 20"
         },
         {
-          pokemon: { img: imgBasehref + "515.png", name: "Panpour" },
-          method: "Dream Yard",
+          pokemon: {
+            img: imgBasehref + "515.png",
+            name: "Panpour"
+          },
+          method: "Catch in Striaton City and the Dream Yard",
           requires: { "starter": "snivy" }
         },
         {
-          pokemon: { img: imgBasehref + "511.png", name: "Pansage" },
-          method: "Dream Yard",
+          pokemon: {
+            img: imgBasehref + "511.png",
+            name: "Pansage"
+          },
+          method: "Catch in Striaton City and the Dream Yard",
           requires: { "starter": "tepig" }
         },
         {
-          pokemon: { img: imgBasehref + "513.png", name: "Pansear" },
-          method: "Dream Yard",
+          pokemon: {
+            img: imgBasehref + "513.png",
+            name: "Pansear"
+          },
+          method: "Catch in Striaton City and the Dream Yard",
           requires: { "starter": "oshawott" }
         }
       ]

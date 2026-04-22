@@ -36,6 +36,14 @@ const slug = (s) =>
     .replace(/[^a-z0-9]+/g, "-");
 const safeImg = (src) => (!src || src === "link" ? PLACEHOLDER_SRC : src);
 
+function guardImage(img) {
+  img.onerror = () => {
+    img.onerror = null;
+    img.src = PLACEHOLDER_SRC;
+  };
+}
+
+
 /* -----------------------------  
 |Validate / Load Game Data
 ------------------------------ */
@@ -99,11 +107,11 @@ function loadPersisted() {
   try {
     const c = JSON.parse(localStorage.getItem(LS_CHOICES) || "{}");
     for (const [k, v] of Object.entries(c)) choices[k] = norm(v);
-  } catch {}
+  } catch { }
   let caught = {};
   try {
     caught = JSON.parse(localStorage.getItem(LS_CAUGHT) || "{}");
-  } catch {}
+  } catch { }
   store.setState({ choices, caught });
 }
 
@@ -263,7 +271,8 @@ function setGameHeader() {
   const logo = gameData && typeof gameData.logo === "string" ? gameData.logo.trim() : "";
   if (logo) {
     const img = document.createElement("img");
-    img.src = logo;
+    img.src = safeImg(logo);
+    guardImage(img);
     img.alt = (gameData.gameTitle || "Game") + " logo";
     img.className = "game-logo-title";
     img.decoding = "async";
@@ -614,6 +623,7 @@ function trHeader(row) {
     img.className = "section-header-img";
     img.src = row.headerImg;
     img.alt = row.headerImgAlt || "";
+    guardImage(img);
     wrap.appendChild(img);
   }
   const title = document.createElement("span");
@@ -691,6 +701,7 @@ function trChoice(row) {
   const img = document.createElement("img");
   img.src = row.pokemon.img;
   img.alt = row.pokemon.name || "Choice";
+  guardImage(img);
   const name = document.createElement("span");
   name.textContent = row.pokemon.name || "Choice";
   wrap.append(img, name);
@@ -718,8 +729,9 @@ function trPokemon(row) {
   const wrap = document.createElement("div");
   wrap.className = "pkm";
   const sprite = document.createElement("img");
-  sprite.src = row.pokemon.img;
-  sprite.alt = row.pokemon.name || "Pokémon";
+  sprite.src = safeImg(row.pokemon.img);
+  sprite.alt = row.pokemon.name + " Pokémon";
+  guardImage(sprite);
   const name = document.createElement("span");
   name.textContent = row.pokemon.name || "Unknown";
   wrap.append(sprite, name);
@@ -792,6 +804,7 @@ function trGrid(row) {
     img.className = "pkm-card-sprite";
     img.src = it.img;
     img.alt = it.name;
+    guardImage(img);
     const dot = document.createElement("img");
     dot.className = "catch-mark";
     dot.alt = it.caught ? "Caught" : "Uncaught";

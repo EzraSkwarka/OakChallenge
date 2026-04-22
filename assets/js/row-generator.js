@@ -1034,13 +1034,88 @@ const pokedex = {
   "Pecharunt": 1025
 };
 const STORAGE_KEY = "oak-row-generator-state";
-/* ========================== Utilities ========================== */
 
-function valueOrPlaceholder(input) {
-  if (!input) return "";
-  return input.value.trim() || input.placeholder || "";
+/* --------------------------------------------------------------------------
+ Section Pipline
+ -------------------------------------------------------------------------- */
+
+const SectionStore = {
+  sections: new Map(),
+
+  addSection(initial = {}) {
+    const id = crypto.randomUUID();
+    const section = createDefaultSection(id, initial);
+    this.sections.set(id, section);
+    return section;
+  },
+
+  removeSection(id) {
+    this.sections.delete(id);
+  },
+
+  updateSection(id, updater) {
+    const section = this.sections.get(id);
+    if (!section) return;
+    updater(section);
+  },
+
+  getAll() {
+    return [...this.sections.values()];
+  }
+};
+
+function renderSection(section) {
+  const el = document.createElement("div");
+  el.className = "section-editor";
+  el.dataset.sectionId = section.id;
+
+  el.append(
+    renderSectionMeta(section.meta),
+    renderSummary(section.summary),
+    renderRowsTable(section.rows),
+    renderSectionControls(section.id)
+  );
+
+  return el;
 }
 
+function renderAllSections() {
+  const root = document.getElementById("sections-root");
+  root.innerHTML = "";
+
+  SectionStore.getAll().forEach(section => {
+    root.appendChild(renderSection(section));
+  });
+}
+
+
+/* --------------------------------------------------------------------------
+ Row Types
+ -------------------------------------------------------------------------- */
+const ROW_TYPES = {
+  NORMAL: { value: "normal", label: "Normal" },
+  CHOICE: { value: "choice", label: "Choice" },
+  CONDITIONAL: { value: "conditional", label: "Conditional" },
+  OMIT: { value: "omit", label: "Omit" }
+};
+
+function renderRowTypeSelect(selected = ROW_TYPES.NORMAL.value) {
+  return `
+    <select class="row-type">
+      ${Object.values(ROW_TYPES)
+      .map(t => `
+          <option value="${t.value}"${t.value === selected ? " selected" : ""}>
+            ${t.label}
+          </option>
+        `)
+      .join("")}
+    </select>
+  `;
+}
+
+/* --------------------------------------------------------------------------
+ Utilities
+ -------------------------------------------------------------------------- */
 function qs(root, selector) {
   return root.querySelector(selector);
 }
@@ -1049,98 +1124,48 @@ function getSectionEl(el) {
   return el.closest(".section-editor");
 }
 
-/* ========================== Persistance ========================== */
-
-function saveToLocalStorage() {
-  const gameMeta = collectGameMeta();
-  const sections = [];
-
-  document.querySelectorAll(".section-editor").forEach((section) => {
-    sections.push({
-      meta: collectSectionMeta(section),
-      summaryInput: qs(section, ".summary-input").value,
-      useHtml: qs(section, ".use-html").checked,
-      rows: serializeRowsTable(section)
-    });
-  });
-
-  localStorage.setItem(STORAGE_KEY, JSON.stringify({ gameMeta, sections }));
+function valueOrPlaceholder(input) {
+  if (!input) return "";
+  return input.value.trim() || input.placeholder || "";
 }
 
-function loadFromLocalStorage() {
-  const raw = localStorage.getItem(STORAGE_KEY);
-  if (!raw) return;
-
-  let state;
-  try {
-    state = JSON.parse(raw);
-  } catch {
-    return;
-  }
-
-  /* ---- Game Meta ---- */
-  const gm = state.gameMeta || {};
-  document.querySelector(".game-id").value = gm.gameId || "";
-  document.querySelector(".game-title").value = gm.gameTitle || "";
-  document.querySelector(".game-logo").value = gm.logo || "";
-  document.querySelector(".img-basehref").value = gm.imgBasehref || "";
-  document.querySelector(".badge-basehref").value = gm.badgeBasehref || "";
-  document.querySelector(".about-html").value = gm.aboutHtml || "";
-
-  /* ---- Sections ---- */
-  const root = document.getElementById("sections-root");
-  const template = root.querySelector(".section-editor");
-
-  root.innerHTML = "";
-
-  state.sections.forEach((data, i) => {
-    const section = template.cloneNode(true);
-
-    /* Meta */
-    qs(section, ".section-key").value = data.meta.sectionKey || "";
-    qs(section, ".header-title").value = data.meta.headerTitle || "";
-    qs(section, ".header-img").value = data.meta.headerImg || "";
-    qs(section, ".header-img-alt").value = data.meta.headerImgAlt || "";
-    qs(section, ".summary-short").value = data.meta.summaryShort || "";
-
-    /* Summary */
-    qs(section, ".summary-input").value = data.summaryInput || "";
-    qs(section, ".use-html").checked = !!data.useHtml;
-
-    /* Rows */
-    const tbody = qs(section, ".rows-table tbody");
-    tbody.innerHTML = "";
-
-    for (const row of data.rows || []) {
-      const tr = document.createElement("tr");
-
-      tr.innerHTML = `
-        <td>
-          <select class="row-type">
-            <option value="normal">Normal</option>
-            <option value="choice">Choice</option>
-            <option value="conditional">Conditional</option>
-            <option value="omit">Omit</option>
-          </select>
-        </td>
-        <td>${row.pokemon.name}</td>
-        <td>${row.pokemon.img ?? ""}</td>
-        <td><input type="text" value="${row.method}" /></td>
-        <td><input type="text" value="${row.meta ?? ""}" /></td>
-      `;
-
-      tr.querySelector(".row-type").value = row.type;
-      tbody.appendChild(tr);
-    }
-
-    root.appendChild(section);
-  });
-
-  updateRemoveButtons();
+function debounce(fn, delay = 300) {
+  let t;
+  return (...args) => {
+    clearTimeout(t);
+    t = setTimeout(() => fn(...args), delay);
+  };
 }
 
-/* ========================== Game Meta ========================== */
+function insertConditionalAfter(tr) {
+  const tbody = tr.parentElement;
+  const next = tr.nextElementSibling;
+  if (next && next.querySelector(".row-type")?.value === "conditional") return;
 
+  const clone = tr.cloneNode(true);
+  clone.querySelector(".row-type").value = "conditional";
+  clone.querySelector(".cell-meta input").value =
+    tr.querySelector(".cell-meta input").value || "";
+
+  tbody.insertBefore(clone, tr.nextSibling);
+}
+
+/* --------------------------------------------------------------------------
+ Section Meta
+ -------------------------------------------------------------------------- */
+function collectSectionMeta(section) {
+  return {
+    sectionKey: valueOrPlaceholder(qs(section, ".section-key")),
+    headerTitle: valueOrPlaceholder(qs(section, ".header-title")),
+    headerImg: valueOrPlaceholder(qs(section, ".header-img")),
+    headerImgAlt: valueOrPlaceholder(qs(section, ".header-img-alt")),
+    summaryShort: valueOrPlaceholder(qs(section, ".summary-short"))
+  };
+}
+
+/* --------------------------------------------------------------------------
+ Game Meta
+ -------------------------------------------------------------------------- */
 function collectGameMeta() {
   return {
     gameId: valueOrPlaceholder(document.querySelector(".game-id")),
@@ -1152,48 +1177,9 @@ function collectGameMeta() {
   };
 }
 
-/* ========================== Pokémon Helpers ========================== */
-
-function normalizePokemonName(raw) {
-  return raw
-    .replace(/\(.*?\)/g, "")
-    .replace(/\s+/g, " ")
-    .trim();
-}
-
-function pokemonEntry(rawName) {
-  const name = normalizePokemonName(rawName);
-  const dex = pokedex[name];
-
-  return {
-    name,
-    img: dex ? `imgBasehref + "${dex}.png"` : null
-  };
-}
-
-/* ========================== Section Meta ========================== */
-
-function collectSectionMeta(section) {
-  return {
-    sectionKey: valueOrPlaceholder(qs(section, ".section-key")),
-    headerTitle: valueOrPlaceholder(qs(section, ".header-title")),
-    headerImg: valueOrPlaceholder(qs(section, ".header-img")),
-    headerImgAlt: valueOrPlaceholder(qs(section, ".header-img-alt")),
-    summaryShort: valueOrPlaceholder(qs(section, ".summary-short"))
-  };
-}
-
-function updateRemoveButtons() {
-  const sections = document.querySelectorAll(".section-editor");
-  sections.forEach((section, index) => {
-    const btn = section.querySelector(".remove-section");
-    if (!btn) return;
-    btn.style.display = index === 0 ? "none" : "";
-  });
-}
-
-/* ========================== Author Input → HTML ========================== */
-
+/* --------------------------------------------------------------------------
+ Author Text → HTML
+ -------------------------------------------------------------------------- */
 function authorTextToHtml(text) {
   const lines = text.replace(/\u00A0/g, " ").split("\n");
   const blocks = [];
@@ -1216,42 +1202,37 @@ function authorTextToHtml(text) {
 
   for (const raw of lines) {
     const line = raw.trimEnd();
-
     if (!line.trim()) {
       flushPara();
       flushPre();
       continue;
     }
-
     if (line.startsWith("# ")) {
       flushPara();
       flushPre();
       blocks.push(`<h5>${line.slice(2).trim()}</h5>`);
       continue;
     }
-
     if (/^(\s{2,}|\t)/.test(raw)) {
       flushPara();
       pre.push(line.trim());
       continue;
     }
-
     flushPre();
     para.push(line.trim());
   }
 
   flushPara();
   flushPre();
-
   return blocks.join("\n\n");
 }
 
-/* ========================== HTML → Rows ========================== */
-
+/* --------------------------------------------------------------------------
+ Row Generation (HTML → DRAFT ROWS)
+ -------------------------------------------------------------------------- */
 function generateRowsFromHtml(html) {
   const root = document.createElement("div");
   root.innerHTML = html;
-
   const rows = [];
   let currentSection = null;
 
@@ -1260,310 +1241,201 @@ function generateRowsFromHtml(html) {
       currentSection = el.textContent.trim();
       continue;
     }
-
     if (el.tagName !== "PRE" || !currentSection) continue;
 
     const lines = el.textContent
       .split("\n")
-      .map((l) => l.trim())
-      .filter((l) => l && l !== "OR");
+      .map(l => l.trim())
+      .filter(Boolean);
 
     for (const line of lines) {
-      const parts = line.split("→").map((p) => p.trim());
-
-      if (parts.length === 1) {
-        rows.push({
-          pokemon: pokemonEntry(parts[0]),
-          method: `Catch in ${currentSection}`
-        });
-      }
-
-      if (parts.length === 3) {
-        const [from, lvl, to] = parts;
-        const level = lvl.match(/\d+/)?.[0];
-
-        rows.push({
-          pokemon: pokemonEntry(from),
-          method: `Catch in ${currentSection}`
-        });
-
-        rows.push({
-          pokemon: pokemonEntry(to),
-          method: `Evolve from ${from} at level ${level}`
-        });
-      }
-
-      if (parts.length === 5) {
-        rows.push({
-          pokemon: pokemonEntry(parts[0]),
-          method: `Catch in ${currentSection}`
-        });
-
-        for (let i = 0; i < parts.length - 2; i += 2) {
-          rows.push({
-            pokemon: pokemonEntry(parts[i + 2]),
-            method: `Evolve from ${parts[i]} at level ${parts[i + 1].match(/\d+/)?.[0]}`
-          });
-        }
-      }
+      rows.push({
+        pokemon: { name: line, img: null },
+        method: `Catch in ${currentSection}`
+      });
     }
   }
 
   return rows;
 }
 
-/* ========================== Rows Table ========================== */
-
+/* --------------------------------------------------------------------------
+ Rows Table (EDITOR UI)
+ -------------------------------------------------------------------------- */
 function renderRowsTable(tbody, rows) {
   tbody.innerHTML = "";
-
   for (const row of rows) {
     const tr = document.createElement("tr");
-
-    const typeCell = `
-      <td>
-        <select class="row-type">
-          <option value="normal">Normal</option>
-          <option value="choice">Choice</option>
-          <option value="conditional">Conditional</option>
-          <option value="omit">Omit</option>
-        </select>
-      </td>
-    `;
-
-    const pokemonCell = `<td>${row.pokemon.name}</td>`;
-    const imgCell = `<td>${row.pokemon.img ?? ""}</td>`;
-    const methodCell = `
-      <td>
+    tr.innerHTML = `
+      <td class="cell-type">${renderRowTypeSelect()}</td>
+      <td class="cell-name">${row.pokemon.name}</td>
+      <td class="cell-img">${row.pokemon.img ?? ""}</td>
+      <td class="cell-method">
         <input type="text" value="${row.method}" />
       </td>
-    `;
-    const metaCell = `
-      <td>
-        <input
-          type="text"
-          placeholder='starter: "snivy"  or  starter=bulbasaur'
-        />
+      <td class="cell-meta">
+        <input type="text"
+          placeholder='starter=bulbasaur or starter:"bulbasaur"' />
       </td>
     `;
-
-    tr.innerHTML = typeCell + pokemonCell + imgCell + methodCell + metaCell;
-
     tbody.appendChild(tr);
   }
 }
 
-function collectRowsFromTable(section) {
-  const rows = [];
-  const tbody = qs(section, ".rows-table tbody");
+/* --------------------------------------------------------------------------
+ Semantic Row Reader
+ -------------------------------------------------------------------------- */
+function readRowFromTr(tr) {
+  const type = tr.querySelector(".row-type")?.value ?? ROW_TYPES.NORMAL.value;
+  const meta = tr.querySelector(".cell-meta input")?.value.trim() ?? "";
 
-  for (const tr of tbody.querySelectorAll("tr")) {
-    const tds = tr.querySelectorAll("td");
+  const base = {
+    type,
+    pokemon: {
+      name: tr.querySelector(".cell-name")?.textContent.trim() ?? "",
+      img: tr.querySelector(".cell-img")?.textContent.trim() ?? null
+    },
+    method: tr.querySelector(".cell-method input")?.value.trim() ?? "",
+    meta
+  };
 
-    const type = tds[0].querySelector("select").value;
-
-    /* -------- OMIT -------- */
-    if (type === "omit") {
-      continue;
+  if (type === "choice") {
+    const parsed = parseChoiceMeta(meta);
+    if (parsed) {
+      base.choiceKey = parsed.choiceKey;
+      base.choiceValue = parsed.choiceValue;
     }
-
-    const pokemon = {
-      name: tds[1].textContent.trim(),
-      img: tds[2].textContent.trim() || null
-    };
-
-    const method = tds[3].querySelector("input").value.trim();
-    const metaInput = tds[4].querySelector("input").value.trim();
-
-    /* -------- CHOICE -------- */
-    if (type === "choice") {
-      if (!metaInput.includes("=")) continue;
-
-      const [choiceKey, choiceValue] = metaInput.split("=").map((s) => s.trim());
-
-      rows.push({
-        type: "choice",
-        choiceKey,
-        choiceValue,
-        pokemon,
-        method
-      });
-
-      continue;
-    }
-
-    /* -------- NORMAL / CONDITIONAL -------- */
-    const row = { pokemon, method };
-
-    if (type === "conditional" && metaInput) {
-      row.requires = parseRequires(metaInput);
-    }
-
-    rows.push(row);
   }
 
-  return rows;
+  if (type === "conditional") {
+    base.requires = parseRequires(meta);
+  }
+
+  return base;
 }
 
-function insertConditionalRowFromChoice(choiceRow, tbody) {
-  if (choiceRow.nextElementSibling?.querySelector(".row-type")?.value === "conditional") {
-    return;
-  }
-
-  const tds = choiceRow.querySelectorAll("td");
-
-  const name = tds[1].textContent.trim();
-  const img = tds[2].textContent.trim();
-  const method = tds[3].querySelector("input").value.trim();
-  const metaInput = tds[4].querySelector("input");
-
-  let requiresValue = "";
-
-  if (metaInput.value.includes("=")) {
-    const [key, value] = metaInput.value.split("=").map((s) => s.trim());
-    requiresValue = `${key}: "${value}"`;
-  }
-
-  const tr = document.createElement("tr");
-
-  tr.innerHTML = `
-    <td>
-      <select class="row-type">
-        <option value="normal">Normal</option>
-        <option value="choice">Choice</option>
-        <option value="conditional" selected>Conditional</option>
-        <option value="omit">Omit</option>
-      </select>
-    </td>
-    <td>${name}</td>
-    <td>${img}</td>
-    <td><input type="text" value="${method}" /></td>
-    <td>
-      <input
-        type="text"
-        value='${requiresValue}'
-        placeholder='starter: "bulbasaur"'
-      />
-    </td>
-  `;
-
-  choiceRow.after(tr);
+/* --------------------------------------------------------------------------
+ Choice / Requires Parsing
+ -------------------------------------------------------------------------- */
+function normalizeQuotedValue(v) {
+  v = v.trim();
+  if (
+    (v.startsWith('"') && v.endsWith('"')) ||
+    (v.startsWith("'") && v.endsWith("'"))
+  ) return v;
+  return `"${v}"`;
 }
 
-/* ========================== Requires ========================== */
+function parseChoiceMeta(input) {
+  if (!input || !input.includes("=")) return null;
+  const [k, v] = input.split("=").map(s => s.trim());
+  if (!k || !v) return null;
+  return {
+    choiceKey: k,
+    choiceValue: normalizeQuotedValue(v).slice(1, -1)
+  };
+}
 
 function parseRequires(input) {
-  const result = {};
-
-  const parts = input
-    .replace(/[“”]/g, '"')
-    .replace(/[‘’]/g, "'")
-    .split(",")
-    .map((p) => p.trim())
-    .filter(Boolean);
-
-  for (const part of parts) {
-    const [, key, rawVal] = part.match(/^([a-zA-Z0-9_]+)\s*:\s*(.+)$/) || [];
-    if (!key) throw new Error(`Invalid requires entry: ${part}`);
-
-    let value = rawVal;
-    if (/^["'].*["']$/.test(value)) value = value.slice(1, -1);
-    else if (value === "true" || value === "false") value = value === "true";
-    else if (!isNaN(value)) value = Number(value);
-    else throw new Error(`Invalid requires value: ${value}`);
-
-    result[key] = value;
-  }
-
-  return result;
+  const obj = {};
+  input.split(",").forEach(part => {
+    const [k, v] = part.split(":").map(s => s.trim());
+    if (!k || !v) return;
+    obj[k] = v.replace(/^['"]|['"]$/g, "");
+  });
+  return obj;
 }
 
-/* ========================== Preview ========================== */
-
-function renderSectionPreview(section, meta, summaryHtml, rows) {
-  const tbody = qs(section, ".preview-body");
-  tbody.innerHTML = "";
-
-  tbody.innerHTML += `
-    <tr class="section-header">
-      <td colspan="3"><div class="section-header-title">${meta.headerTitle}</div></td>
-    </tr>
-    <tr class="section-summary">
-      <td colspan="3">
-        <div class="summary-block">
-          <div class="summary-short">${meta.summaryShort}</div>
-          <details open>
-            <summary>More info</summary>
-            <div class="summary-long">${summaryHtml}</div>
-          </details>
-        </div>
-      </td>
-    </tr>
-  `;
-
-  for (const row of rows) {
-    tbody.innerHTML += `
-      <tr class="pokemon-row">
-        <td>${row.pokemon.name}</td>
-        <td>${row.method}</td>
-        <td><span class="status-pill">Not Caught</span></td>
-      </tr>
-    `;
-  }
-}
-
-/* ========================== Export ========================== */
-
-function serializeRow(row) {
-  if (row.type === "choice") {
-    return `    {
+/* --------------------------------------------------------------------------
+ Row Export Interpretation
+ -------------------------------------------------------------------------- */
+const ROW_TYPE_EXPORTERS = {
+  normal: d => ({
+    pokemon: d.pokemon,
+    method: d.method
+  }),
+  conditional: d => ({
+    pokemon: d.pokemon,
+    method: d.method,
+    requires: parseRequires(d.meta)
+  }),
+  choice: d => {
+    const c = parseChoiceMeta(d.meta);
+    if (!c) return null;
+    return {
       type: "choice",
-      choiceKey: "${row.choiceKey}",
-      choiceValue: "${row.choiceValue}",
-      pokemon: {
-        img: ${row.pokemon.img},
-        name: "${row.pokemon.name}"
-      },
-      method: "${row.method}"
-    }`;
-  }
+      choiceKey: c.choiceKey,
+      choiceValue: c.choiceValue,
+      pokemon: d.pokemon,
+      method: d.method
+    };
+  },
+  omit: () => null
+};
 
-  const requiresBlock = row.requires ? `,\n        requires: ${JSON.stringify(row.requires)}` : "";
-
-  return `    {
-      pokemon: {
-        img: ${row.pokemon.img},
-        name: "${row.pokemon.name}"
-      },
-      method: "${row.method}"${requiresBlock}
-    }`;
-}
-
-function serializeRowsTable(section) {
+function collectRowsFromTable(section) {
+  const gameMeta = collectGameMeta();
   const rows = [];
-  const tbody = qs(section, ".rows-table tbody");
 
-  for (const tr of tbody.querySelectorAll("tr")) {
-    const tds = tr.querySelectorAll("td");
+  section.querySelectorAll(".rows-table tbody tr")
+    .forEach(tr => {
+      const r = readRowFromTr(tr);
+      if (r.type === ROW_TYPES.OMIT.value) return;
 
-    rows.push({
-      type: tds[0].querySelector("select").value,
-      pokemon: {
-        name: tds[1].textContent.trim(),
-        img: tds[2].textContent.trim() || null
-      },
-      method: tds[3].querySelector("input").value,
-      meta: tds[4].querySelector("input").value
+      r.pokemon.img = resolveEditorPath(
+        r.pokemon.img ?? "",
+        gameMeta
+      );
+
+      if (r.type === ROW_TYPES.NORMAL.value) {
+        delete r.meta;
+        delete r.requires;
+      }
+
+      rows.push(r);
     });
-  }
 
   return rows;
+}
+
+
+function resolveEditorPath(src, gameMeta) {
+  if (!src || typeof src !== "string") return ""
+
+  const m = src.match(/^(\w+)\s*\+\s*"(.+)"$/)
+  if (!m) return src
+
+  const [, base, file] = m
+
+  if (base === "imgBasehref") {
+    return gameMeta.imgBasehref + file
+  }
+
+  if (base === "badgeBasehref") {
+    return gameMeta.badgeBasehref + file
+  }
+
+  return src
+}
+
+function reorderRowsForExport(rows) {
+  const groups = new Map();
+  const rest = [];
+  for (const r of rows) {
+    if (r.type === "choice") {
+      if (!groups.has(r.choiceKey)) groups.set(r.choiceKey, []);
+      groups.get(r.choiceKey).push(r);
+    } else {
+      rest.push(r);
+    }
+  }
+  return [...groups.values()].flat().concat(rest);
 }
 
 function exportAllSections() {
   const gameMeta = collectGameMeta();
   const sections = document.querySelectorAll(".section-editor");
-  const progression = [];
+  const sectionBlocks = [];
 
   for (const section of sections) {
     const meta = collectSectionMeta(section);
@@ -1572,111 +1444,501 @@ function exportAllSections() {
     const raw = qs(section, ".summary-input").value.trim();
     const useHtml = qs(section, ".use-html").checked;
     const summaryHtml = useHtml && raw ? raw : authorTextToHtml(raw);
-    const rows = collectRowsFromTable(section);
 
-    progression.push(
+    const rawRows = collectRowsFromTable(section);
+    const rows = reorderRowsForExport(rawRows);
+
+    const rowBlocks = rows.map(row => {
+      if (row.type === "choice") {
+        return `{
+          type: "choice",
+          choiceKey: "${row.choiceKey}",
+          choiceValue: "${row.choiceValue}",
+          pokemon: {
+            name: "${row.pokemon.name}",
+            img: ${row.pokemon.img ?? '""'}
+          },
+          method: "${row.method}"
+        }`;
+      }
+
+      const requiresBlock = row.requires
+        ? `,
+          requires: ${JSON.stringify(row.requires)}
+        `
+        : "";
+
+      return `{
+          pokemon: {
+            name: "${row.pokemon.name}",
+            img: ${row.pokemon.img ?? '""'}
+          },
+          method: "${row.method}"${requiresBlock}
+        }`;
+    });
+
+    sectionBlocks.push(
       `"${meta.sectionKey}": {
-  headerTitle: "${meta.headerTitle}",
-  headerImg: ${meta.headerImg || '""'},
-  headerImgAlt: "${meta.headerImgAlt}",
-  summaryShort: "${meta.summaryShort}",
-  summaryHtml: \`
+        headerTitle: "${meta.headerTitle}",
+        headerImg: ${meta.headerImg ? `"${meta.headerImg}"` : '""'},
+        headerImgAlt: "${meta.headerImgAlt}",
+        summaryShort: "${meta.summaryShort}",
+        summaryHtml: \`
 ${summaryHtml}
-  \`,
-  rows: [
-${rows.map(serializeRow).join(",\n")}
-  ]
-}`
+        \`,
+        rows: [
+${rowBlocks.join(",\n")}
+        ]
+      }`
     );
   }
 
   document.getElementById("export-output").value = `window.gameData = {
-  gameId: "${gameMeta.gameId}",
-  gameTitle: "${gameMeta.gameTitle}",
-  logo: "${gameMeta.logo}",
-  imgBasehref: "${gameMeta.imgBasehref}",
-  badgeBasehref: "${gameMeta.badgeBasehref}",
-  aboutHtml: \`
+    gameId: "${gameMeta.gameId}",
+    gameTitle: "${gameMeta.gameTitle}",
+    logo: "${gameMeta.logo}",
+    imgBasehref: "${gameMeta.imgBasehref}",
+    badgeBasehref: "${gameMeta.badgeBasehref}",
+    aboutHtml: \`
 ${gameMeta.aboutHtml}
-  \`,
-  progression: {
-${progression.join(",\n\n")}
-  }
-};`;
+    \`,
+    progression: {
+${sectionBlocks.join(",\n\n")}
+    }
+  };`;
 }
 
-/* ========================== Events ========================== */
 
-document.addEventListener("input", (e) => {
-  if (e.target.closest(".section-editor") || e.target.closest(".game-meta")) {
+
+/* --------------------------------------------------------------------------
+ Preview (Oak Tracker Accurate)
+ -------------------------------------------------------------------------- */
+function updateOakPreview() {
+  const gameMeta = collectGameMeta();
+
+  const progression = {};
+
+  document.querySelectorAll(".section-editor").forEach(section => {
+    const meta = collectSectionMeta(section);
+    if (!meta.sectionKey) return;
+
+    progression[meta.sectionKey] = {
+      headerTitle: meta.headerTitle,
+      headerImg: meta.headerImg || "",
+      headerImgAlt: meta.headerImgAlt || "",
+      summaryShort: meta.summaryShort,
+      summaryHtml: authorTextToHtml(
+        qs(section, ".summary-input").value
+      ),
+      rows: reorderRowsForExport(
+        collectRowsFromTable(section)
+      )
+    };
+  });
+
+  const gameData = {
+    gameId: gameMeta.gameId,
+    gameTitle: gameMeta.gameTitle,
+    logo: gameMeta.logo,
+    imgBasehref: gameMeta.imgBasehref,
+    badgeBasehref: gameMeta.badgeBasehref,
+    aboutHtml: gameMeta.aboutHtml,
+    progression
+  };
+
+  document
+    .getElementById("oak-preview")
+    ?.contentWindow
+    ?.postMessage(
+      { type: "oak-preview", payload: gameData, theme: getTheme() },
+      "*"
+    );
+}
+
+function buildSingleSectionPreviewGameData(section) {
+  const gameMeta = collectGameMeta();
+  const meta = collectSectionMeta(section);
+
+  if (!meta.sectionKey) return null;
+
+  return {
+    gameId: gameMeta.gameId,
+    gameTitle: gameMeta.gameTitle,
+    logo: gameMeta.logo,
+    imgBasehref: gameMeta.imgBasehref,
+    badgeBasehref: gameMeta.badgeBasehref,
+
+    aboutHtml: "",
+
+    progression: {
+      [meta.sectionKey]: {
+        headerTitle: meta.headerTitle,
+        headerImg:
+          resolveEditorPath(meta.headerImg, gameMeta),
+        headerImgAlt: meta.headerImgAlt || "",
+        summaryShort: meta.summaryShort,
+        summaryHtml: authorTextToHtml(
+          qs(section, ".summary-input").value
+        ),
+        rows: reorderRowsForExport(
+          collectRowsFromTable(section)
+        )
+      }
+    }
+  };
+}
+
+function updateOakPreviewForSection(section) {
+  const gameData = buildSingleSectionPreviewGameData(section);
+  if (!gameData) return;
+
+  document
+    .getElementById("oak-preview")
+    ?.contentWindow
+    ?.postMessage(
+      { type: "oak-preview", payload: gameData },
+      "*"
+    );
+}
+
+
+/* --------------------------------------------------------------------------
+ Live Preview Wiring
+ -------------------------------------------------------------------------- */
+const updatePreviewDebounced = debounce(section => {
+  const meta = collectSectionMeta(section);
+  const raw = qs(section, ".summary-input").value;
+  const useHtml = qs(section, ".use-html").checked;
+  const summaryHtml = useHtml ? raw : authorTextToHtml(raw);
+});
+
+/* --------------------------------------------------------------------------
+ Local Storage Persistence
+ -------------------------------------------------------------------------- */
+function saveToLocalStorage() {
+  const prevRaw = localStorage.getItem(STORAGE_KEY);
+  let createdAt = new Date().toISOString();
+
+  if (prevRaw) {
+    try {
+      const prev = JSON.parse(prevRaw);
+      if (prev.createdAt) {
+        createdAt = prev.createdAt;
+      }
+    } catch { }
+  }
+
+  const sections = [];
+
+  document.querySelectorAll(".section-editor").forEach(section => {
+    sections.push({
+      meta: collectSectionMeta(section),
+      summaryInput: qs(section, ".summary-input").value,
+      useHtml: qs(section, ".use-html").checked,
+      rows: [...qs(section, ".rows-table tbody").querySelectorAll("tr")]
+        .map(readRowFromTr)
+        .filter(r => r.type !== ROW_TYPES.OMIT.value)
+    });
+  });
+
+  const payload = {
+    version: 1,
+    createdAt,
+    updatedAt: new Date().toISOString(),
+    gameMeta: collectGameMeta(),
+    sections
+  };
+
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
+}
+
+
+function loadFromLocalStorage() {
+  const raw = localStorage.getItem(STORAGE_KEY);
+  if (!raw) return;
+  const state = JSON.parse(raw);
+
+  if (state.gameMeta) {
+    Object.entries(state.gameMeta).forEach(([key, value]) => {
+      const el = document.querySelector(
+        "." + key.replace(/[A-Z]/g, m => "-" + m.toLowerCase())
+      );
+      if (el) el.value = value ?? "";
+    });
+  }
+
+  const root = document.getElementById("sections-root");
+  const template = root.querySelector(".section-editor");
+  root.innerHTML = "";
+
+  state.sections.forEach(s => {
+    const section = template.cloneNode(true);
+    Object.entries(s.meta).forEach(([k, v]) => {
+      const el = qs(section, "." + k.replace(/[A-Z]/g, m => "-" + m.toLowerCase()));
+      if (el) el.value = v;
+    });
+
+    qs(section, ".summary-input").value = s.summaryInput;
+    qs(section, ".use-html").checked = s.useHtml;
+
+    const tbody = qs(section, ".rows-table tbody");
+    tbody.innerHTML = "";
+    s.rows.forEach(r => {
+      if (r.type === ROW_TYPES.OMIT.value) return;
+
+      const tr = document.createElement("tr");
+      tr.innerHTML = `
+    <td class="cell-type">${renderRowTypeSelect(r.type)}</td>
+    <td class="cell-name">${r.pokemon.name}</td>
+    <td class="cell-img">${r.pokemon.img ?? ""}</td>
+    <td class="cell-method"><input value="${r.method}" /></td>
+    <td class="cell-meta"><input value="${r.meta ?? ""}" /></td>
+     `;
+      tbody.appendChild(tr);
+    });
+
+
+    root.appendChild(section);
+    updatePreviewDebounced(section);
+    updateOakPreview();
+  });
+}
+
+/* --------------------------------------------------------------------------
+ Drafting
+ -------------------------------------------------------------------------- */
+function exportDraftToFile() {
+  const raw = localStorage.getItem(STORAGE_KEY);
+  if (!raw) {
+    alert("No draft data to export.");
+    return;
+  }
+
+  const data = JSON.parse(raw);
+  const stamp = (data.updatedAt || new Date().toISOString())
+    .replace(/[:.]/g, "-");
+
+  const blob = new Blob(
+    [JSON.stringify(data, null, 2)],
+    { type: "application/json" }
+  );
+
+  const url = URL.createObjectURL(blob);
+
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = `oak-tracker-draft-${stamp}.json`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+
+  URL.revokeObjectURL(url);
+}
+
+
+function importDraftFromFile(file) {
+  const reader = new FileReader();
+
+  reader.onload = () => {
+    try {
+      const parsed = JSON.parse(reader.result);
+
+      if (!parsed || !parsed.sections || !parsed.gameMeta) {
+        throw new Error("Invalid draft format.");
+      }
+
+      const now = new Date().toISOString();
+
+      const payload = {
+        version: parsed.version ?? 1,
+        createdAt: parsed.createdAt ?? now,
+        updatedAt: now,
+        gameMeta: parsed.gameMeta,
+        sections: parsed.sections
+      };
+
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
+      loadFromLocalStorage();
+
+      const firstSection = document.querySelector(".section-editor");
+      if (firstSection) {
+        updateOakPreviewForSection(firstSection);
+      }
+    } catch (err) {
+      alert("Failed to import draft: " + err.message);
+    }
+  };
+
+  reader.readAsText(file);
+}
+
+document.getElementById("export-draft")
+  ?.addEventListener("click", exportDraftToFile);
+
+document.getElementById("import-draft")
+  ?.addEventListener("click", () => {
+    document.getElementById("import-draft-file")?.click();
+  });
+
+document.getElementById("import-draft-file")
+  ?.addEventListener("change", e => {
+    const file = e.target.files[0];
+    if (file) importDraftFromFile(file);
+    e.target.value = "";
+  });
+
+
+/* --------------------------------------------------------------------------
+ Theme
+ -------------------------------------------------------------------------- */
+function getTheme() {
+  return document.documentElement.dataset.theme || "light";
+}
+
+/* --------------------------------------------------------------------------
+ Events
+ -------------------------------------------------------------------------- */
+document.addEventListener("input", e => {
+  const section = e.target.closest(".section-editor");
+  if (!section) return;
+
+  if (
+    e.target.closest(".rows-table") ||
+    e.target.classList.contains("summary-input")
+  ) {
+    updateOakPreviewForSection(section);
     saveToLocalStorage();
   }
 });
 
-document.addEventListener("click", (e) => {
-  if (!e.target.classList.contains("generate-rows")) return;
-
-  const section = getSectionEl(e.target);
-  const raw = qs(section, ".summary-input").value;
-  if (!raw.trim()) return;
-
-  const useHtml = qs(section, ".use-html").checked;
-  const summaryHtml = useHtml ? raw : authorTextToHtml(raw);
-  const rows = generateRowsFromHtml(summaryHtml);
-
-  renderRowsTable(qs(section, ".rows-table tbody"), rows);
-  renderSectionPreview(section, collectSectionMeta(section), summaryHtml, rows);
-
-  saveToLocalStorage();
-  updateRemoveButtons();
-});
-
-document.addEventListener("click", (e) => {
-  if (!e.target.classList.contains("remove-section")) return;
-
-  const section = e.target.closest(".section-editor");
-  const allSections = document.querySelectorAll(".section-editor");
-
-  if (allSections.length <= 1) return;
-
-  section.remove();
-  saveToLocalStorage();
-  updateRemoveButtons();
-});
-
-document.getElementById("add-section").addEventListener("click", () => {
-  const sections = document.querySelectorAll(".section-editor");
-  const clone = sections[sections.length - 1].cloneNode(true);
-
-  clone.querySelectorAll("input, textarea").forEach((el) => {
-    el.type === "checkbox" ? (el.checked = false) : (el.value = "");
-  });
-  clone.querySelectorAll("tbody").forEach((tb) => (tb.innerHTML = ""));
-
-  sections[sections.length - 1].after(clone);
-  updateRemoveButtons();
-});
-
-document.addEventListener("change", (e) => {
+document.addEventListener("change", e => {
   if (!e.target.classList.contains("row-type")) return;
 
   const tr = e.target.closest("tr");
-  const tbody = tr.parentElement;
+  const section = tr.closest(".section-editor");
+  if (!section) return;
 
-  if (e.target.value !== "choice") return;
+  if (e.target.value === "choice") {
+    insertConditionalAfter(tr);
+  }
 
-  insertConditionalRowFromChoice(tr, tbody);
+  updateOakPreviewForSection(section);
+  saveToLocalStorage();
 });
 
-document.addEventListener("input", (e) => {
-  if (e.target.closest(".rows-table") || e.target.closest(".section-meta") || e.target.closest(".summary-authoring") || e.target.closest(".game-meta")) {
+document.addEventListener("click", e => {
+  // Generate rows
+  if (e.target.classList.contains("generate-rows")) {
+    const section = e.target.closest(".section-editor");
+    if (!section) return;
+
+    updateOakPreviewForSection(section);
     saveToLocalStorage();
+    return;
+  }
+
+  // Remove section
+  if (e.target.classList.contains("remove-section")) {
+    const section = e.target.closest(".section-editor");
+    if (!section) return;
+
+    section.remove();
+    saveToLocalStorage();
+
+    const fallback = document.querySelector(".section-editor");
+    if (fallback) {
+      updateOakPreviewForSection(fallback);
+    }
+    return;
+  }
+
+  // Add section
+  if (e.target.id === "add-section") {
+    const sections = document.querySelectorAll(".section-editor");
+    if (!sections.length) return;
+
+    const clone = sections[sections.length - 1].cloneNode(true);
+
+    clone.querySelectorAll("input, textarea").forEach(el => {
+      if (el.type === "checkbox") {
+        el.checked = false;
+      } else {
+        el.value = "";
+      }
+    });
+
+    clone.querySelectorAll("tbody").forEach(tb => tb.innerHTML = "");
+
+    sections[sections.length - 1].after(clone);
+
+    saveToLocalStorage();
+    updateOakPreviewForSection(clone);
   }
 });
 
-document.getElementById("export-js").addEventListener("click", exportAllSections);
-
 document.addEventListener("DOMContentLoaded", () => {
   loadFromLocalStorage();
-  updateRemoveButtons();
+
+  const firstSection = document.querySelector(".section-editor");
+  if (firstSection) {
+    pendingInitialPreviewSection = firstSection;
+  }
 });
+
+window.addEventListener("message", e => {
+  if (e.data?.type !== "oak-preview-ready") return;
+
+  previewIframeReady = true;
+
+  if (pendingInitialPreviewSection) {
+    updateOakPreviewForSection(pendingInitialPreviewSection);
+    pendingInitialPreviewSection = null;
+  }
+});
+
+function attemptInitialPreviewRender() {
+  const iframe = document.getElementById("oak-preview");
+  if (!iframe || !iframe.contentWindow) return;
+
+  const firstSection = document.querySelector(".section-editor");
+  if (!firstSection) return;
+
+  updateOakPreviewForSection(firstSection);
+}
+
+document.getElementById("export-js")
+  ?.addEventListener("click", exportAllSections);
+
+document.addEventListener("DOMContentLoaded", () => {
+  const iframe = document.getElementById("oak-preview");
+  if (!iframe) return;
+
+  new MutationObserver(() => {
+    if (!iframe.contentWindow) return;
+
+    iframe.contentWindow.postMessage(
+      {
+        type: "oak-preview-theme",
+        theme: getTheme()
+      },
+      "*"
+    );
+  }).observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ["data-theme"]
+  });
+
+  iframe.addEventListener("load", () => {
+    iframe.contentWindow.postMessage(
+      {
+        type: "oak-preview-theme",
+        theme: getTheme()
+      },
+      "*"
+    );
+  });
+});
+
+
+let pendingInitialPreviewSection = null;
+let previewIframeReady = false;

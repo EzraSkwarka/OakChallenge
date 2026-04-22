@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <base href="/OakChallenge/">
+
+    <!-- Core styles (order matters) -->
+    <link rel="stylesheet" href="assets/css/base.css" />
+    <link rel="stylesheet" href="assets/css/chrome.css" />
+    <link rel="stylesheet" href="assets/css/tracker.css" />
+    <link rel="stylesheet" href="assets/css/sticky-header.css" />
+    <link rel="stylesheet" href="assets/css/icons.css" />
+    <link rel="stylesheet" href="assets/css/row-generator.css" />
+</head>
+
+<body>
+
+    <!-- REQUIRED table structure for Oak Tracker -->
+    <div class="table-wrap">
+        <table id="pokemon-table" aria-label="Pokémon capture status">
+            <thead>
+                <tr>
+                    <th>Pokémon</th>
+                    <th>Method</th>
+                    <th class="center">Action / Caught</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+    <button id="reset-preview" type="button" class="reset-preview-btn">
+        Reset Preview Choices
+    </button>
+
+
+    <!-- Stub gameData (must exist BEFORE oak-tracker loads) -->
+    <script src="assets/js/oak-preview-stub.js"></script>
+
+    <!-- Oak Tracker engine -->
+    <script src="assets/js/oak-tracker.js"></script>
+
+    <!-- CSP-safe iframe bridge (disables StickyHeader, receives messages) -->
+    <script src="assets/js/oak-preview-bridge.js"></script>
+
+</body>
+
+</html>

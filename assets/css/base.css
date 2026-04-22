@@ -148,6 +148,10 @@ body {
   filter: brightness(0.95);
 }
 
+.btn-secondary:hover {
+  filter: brightness(0.95);
+}
+
 /* -----------------------------
    Focus
 ------------------------------ */

@@ -5,6 +5,7 @@ param(
 
 $prefix = "http://localhost:$Port/"
 $listener = $null
+$placeholderPath = Join-Path $Root "assets/images/placeholder.png"
 
 $mime = @{
   ".html"  = "text/html; charset=utf-8"
@@ -28,17 +29,32 @@ $mime = @{
 
 $csp = "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; connect-src 'self'; base-uri 'self'; form-action 'self'"
 
-function Write-Response($resp, [int]$status, [string]$contentType, [byte[]]$bytes) {
+function Write-Response(
+  $resp,
+  [int]$status,
+  [string]$contentType,
+  [byte[]]$bytes,
+  [bool]$SendCsp = $true
+) {
   $resp.StatusCode = $status
   $resp.ContentType = $contentType
-  $resp.Headers["Content-Security-Policy"] = $csp
-  if ($contentType -like "text/html*") { $resp.Headers["Cache-Control"] = "no-store" } else { $resp.Headers["Cache-Control"] = "public, max-age=3600" }
+
+  if ($SendCsp) {
+    $resp.Headers["Content-Security-Policy"] = $csp
+  }
+
+  if ($contentType -like "text/html*") {
+    $resp.Headers["Cache-Control"] = "no-store"
+  } else {
+    $resp.Headers["Cache-Control"] = "public, max-age=3600"
+  }
+
   $resp.OutputStream.Write($bytes, 0, $bytes.Length)
 }
 
 function Send-404($resp) {
   $bytes = [Text.Encoding]::UTF8.GetBytes("<!doctype html><title>404</title><h1>404</h1>")
-  Write-Response $resp 404 "text/html; charset=utf-8" $bytes
+  Write-Response $resp 404 "text/html; charset=utf-8" $bytes $true
 }
 
 try {
@@ -50,35 +66,83 @@ try {
   while ($listener.IsListening) {
     $ctx = $listener.GetContext()
     $resp = $ctx.Response
+
     try {
       $path = $ctx.Request.Url.LocalPath
+
       if ($path.StartsWith("/OakChallenge/", [System.StringComparison]::OrdinalIgnoreCase)) {
         $path = $path.Substring("/OakChallenge/".Length)
-      } else {
-        if ($path -eq "/" -or $path -eq "") { $path = "index.html" }
+      } elseif ($path -eq "/" -or $path -eq "") {
+        $path = "index.html"
       }
+
       $path = $path.TrimStart('/')
-      if ([string]::IsNullOrWhiteSpace($path)) { $path = "index.html" }
+      if ([string]::IsNullOrWhiteSpace($path)) {
+        $path = "index.html"
+      }
 
       $full = Join-Path $Root $path
+
       if ((Test-Path $full) -and (Get-Item $full).PSIsContainer) {
         $full = Join-Path $full "index.html"
       }
-      if (-not (Test-Path $full)) { Send-404 $resp; continue }
+
+      if (-not (Test-Path $full)) {
+
+        $ext = [IO.Path]::GetExtension($full).ToLower()
+
+        if ($ext -in ".png", ".jpg", ".jpeg", ".gif", ".svg", ".webp") {
+
+          if (Test-Path $placeholderPath) {
+            try {
+              $bytes = [IO.File]::ReadAllBytes($placeholderPath)
+              Write-Response $resp 200 $mime[".png"] $bytes
+              continue
+            } catch {
+              # Absolute last‑ditch fallback: empty 200 response
+              Write-Response $resp 200 "image/png" ([byte[]]@())
+              continue
+            }
+          }
+
+          # Placeholder missing — still do not error
+          Write-Response $resp 200 "image/png" ([byte[]]@())
+          continue
+        }
+
+        Send-404 $resp
+        continue
+      }
 
       $ext = [IO.Path]::GetExtension($full).ToLower()
       $contentType = $mime[$ext]
-      if (-not $contentType) { $contentType = "application/octet-stream" }
+      if (-not $contentType) {
+        $contentType = "application/octet-stream"
+      }
 
       $bytes = [IO.File]::ReadAllBytes($full)
-      Write-Response $resp 200 $contentType $bytes
+
+      # Disable CSP ONLY for oak-preview.html
+      $sendCsp = $true
+
+      if ($path.EndsWith("oak-preview.html", [System.StringComparison]::OrdinalIgnoreCase)) {
+          $sendCsp = $false
+      }
+
+
+      Write-Response $resp 200 $contentType $bytes $sendCsp
+
     } catch {
-      $err = [Text.Encoding]::UTF8.GetBytes("<!doctype html><title>500</title><h1>500</h1><pre>$($_.Exception.Message)</pre>")
-      Write-Response $resp 500 "text/html; charset=utf-8" $err
+      $err = [Text.Encoding]::UTF8.GetBytes(
+        "<!doctype html><title>500</title><h1>500</h1><pre>$($_.Exception.Message)</pre>"
+      )
+      Write-Response $resp 500 "text/html; charset=utf-8" $err $true
     } finally {
       try { $resp.Close() } catch {}
     }
   }
 } finally {
-  if ($listener) { try { $listener.Stop() } catch {} }
+  if ($listener) {
+    try { $listener.Stop() } catch {}
+  }
 }
