@@ -109,3 +109,35 @@ tr:has(.row-type option:checked[value="omit"]) {
 .reset-preview-btn:hover {
   background: var(--hover);
 }
+
+.rows-table td {
+  vertical-align: top;
+  padding: 6px;
+}
+
+.row-pokemon-cell input {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.row-method-cell input {
+  font-size: 13px;
+}
+
+.row-meta-cell input {
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+.row-type-cell select {
+  font-size: 12px;
+}
+
+.row-editor:hover {
+  background: var(--hover, #f5f5f5);
+}
+
+.row-editor .row-meta-cell input[value="generated"] {
+  opacity: 0.5;
+  font-style: italic;
+}
