@@ -1491,7 +1491,8 @@ function generateRowsFromHtml(html) {
                   img: ""
                 },
                 method: `Catch in ${currentLocation}`,
-                meta: "generated"
+                // meta: "generated"
+                meta: ""
               })
             );
             previousPokemon = part;
@@ -1598,24 +1599,26 @@ function normalizeQuotedValue(v) {
   return `"${v}"`;
 }
 
-function parseChoiceMeta(input) {
-  if (!input || !input.includes("=")) return null;
-  const [k, v] = input.split("=").map(s => s.trim());
-  if (!k || !v) return null;
+function inferChoiceFromMeta(meta) {
+  const value = meta.trim();
+  if (!value || value.includes(":")) return null;
+  if (!/^[^\s:]+$/.test(value)) return null;
+
   return {
-    choiceKey: k,
-    choiceValue: normalizeQuotedValue(v).slice(1, -1)
+    choiceKey: value,
   };
 }
 
-function parseRequires(input) {
-  const obj = {};
-  input.split(",").forEach(part => {
-    const [k, v] = part.split(":").map(s => s.trim());
-    if (!k || !v) return;
-    obj[k] = v.replace(/^['"]|['"]$/g, "");
-  });
-  return obj;
+function inferRequiresFromMeta(meta) {
+  const value = meta.trim();
+  if (!value.includes(":")) return null;
+
+  const [left, right] = value.split(":").map(v => v.trim());
+  if (!left || !right) return null;
+
+  return {
+    [left]: right
+  };
 }
 
 /* --------------------------------------------------------------------------
@@ -1674,9 +1677,23 @@ document.addEventListener("input", e => {
 
   if (e.target.classList.contains("row-meta")) {
     row.meta = e.target.value;
+
+    const inferredType = inferRowTypeFromMeta(row.meta);
+
+    if (row.type !== inferredType) {
+      row.type = inferredType;
+
+      const rowEl = e.target.closest("[data-row-id]");
+      const select = rowEl?.querySelector(".row-type");
+      if (select) {
+        select.value = inferredType;
+      }
+    }
+
     markSectionSoft(sectionId);
     return;
   }
+
 });
 
 //Row type change
@@ -1740,21 +1757,46 @@ document.addEventListener("click", e => {
 /* --------------------------------------------------------------------------
  Preview (Oak Tracker Accurate)
  -------------------------------------------------------------------------- */
-function materializeSection(section) {
+function materializeRow(row) {
+  if (row.type === "omit") return null;
+
+  const meta = row.meta?.trim() ?? "";
+
+  // CHOICE: meta is a single word
+  if (meta && !meta.includes(":") && /^[^\s:]+$/.test(meta)) {
+    return {
+      type: "choice",
+      choiceKey: meta,
+      choiceValue: row.pokemon.name.toLowerCase(),
+      pokemon: row.pokemon,
+      method: row.method,
+      meta
+    };
+  }
+
+  // CONDITIONAL: meta = key:value
+  if (meta.includes(":")) {
+    const [key, value] = meta.split(":").map(s => s.trim());
+    if (key && value) {
+      return {
+        pokemon: row.pokemon,
+        method: row.method,
+        requires: {
+          [key]: value
+        },
+        meta
+      };
+    }
+  }
+
+  // NORMAL
   return {
-    headerTitle: section.meta.headerTitle,
-    headerImg: resolveEditorPath(
-      section.meta.headerImg,
-      collectGameMeta()
-    ),
-    headerImgAlt: section.meta.headerImgAlt,
-    summaryShort: section.meta.summaryShort,
-    summaryHtml: materializeSummaryHtml(section),
-    rows: section.rows
-      .map(materializeRow)
-      .filter(Boolean)
+    pokemon: row.pokemon,
+    method: row.method,
+    meta
   };
 }
+
 
 function materializeSummaryHtml(section) {
   const text = section.summary.text;
@@ -1769,24 +1811,23 @@ function materializeSummaryHtml(section) {
 function materializeRow(row) {
   if (row.type === "omit") return null;
 
-  if (row.type === "choice") {
-    const parsed = parseChoiceMeta(row.meta);
-    if (!parsed) return null;
-
+  const choice = inferChoiceFromMeta(row.meta);
+  if (choice) {
     return {
       type: "choice",
-      choiceKey: parsed.choiceKey,
-      choiceValue: parsed.choiceValue,
+      choiceKey: choice.choiceKey,
+      choiceValue: row.pokemon.name.toLowerCase(),
       pokemon: row.pokemon,
       method: row.method
     };
   }
 
-  if (row.type === "conditional") {
+  const requires = inferRequiresFromMeta(row.meta);
+  if (requires) {
     return {
       pokemon: row.pokemon,
       method: row.method,
-      requires: parseRequires(row.meta)
+      requires
     };
   }
 
@@ -1795,6 +1836,32 @@ function materializeRow(row) {
     method: row.method
   };
 }
+
+function inferRowTypeFromMeta(meta) {
+  if (!meta) return "normal";
+
+  const value = meta.trim();
+  if (!value) return "normal";
+
+  if (!value.includes(":")) {
+    if (/^[^\s:]+$/.test(value)) {
+      return "choice";
+    }
+    return "normal";
+  }
+
+  const parts = value.split(":");
+  if (parts.length === 2) {
+    const [left, right] = parts.map(p => p.trim());
+    if (left && right && /^[^\s]+$/.test(left) && /^[^\s]+$/.test(right)) {
+      return "conditional";
+    }
+  }
+
+  return "normal";
+}
+
+
 
 function updatePreviewForSection(sectionId) {
   const section = SectionStore.get(sectionId);
@@ -1872,12 +1939,9 @@ function buildPreviewGameDataForSection(section) {
           summaryShort: section.meta.summaryShort
         },
         summaryHtml: materializeSummaryHtml(section),
-        rows: section.rows.map(row => ({
-          type: row.type,
-          pokemon: row.pokemon,
-          method: row.method,
-          meta: row.meta
-        }))
+        rows: section.rows
+          .map(materializeRow)
+          .filter(Boolean)
       }
     ]
   };
@@ -1895,15 +1959,13 @@ function materializeOakTrackerData() {
         summaryShort: section.meta.summaryShort
       },
       summaryHtml: materializeSummaryHtml(section),
-      rows: section.rows.map(row => ({
-        type: row.type,
-        pokemon: row.pokemon,
-        method: row.method,
-        meta: row.meta
-      }))
+      rows: section.rows
+        .map(materializeRow)
+        .filter(Boolean)
     }))
   };
 }
+``
 
 window.OAK_TRACKER_EDITOR_OUTPUT = materializeOakTrackerData();
 
