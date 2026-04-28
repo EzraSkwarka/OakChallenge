@@ -1090,13 +1090,15 @@ function generateSectionId() {
 
 const SectionStore = {
   sections: new Map(),
+  listeners: new Set(),
 
-  add(section) {
-    this.sections.set(section.id, section);
+  subscribe(fn) {
+    this.listeners.add(fn);
+    return () => this.listeners.delete(fn);
   },
 
-  remove(id) {
-    this.sections.delete(id);
+  notify(sectionId, mode = "soft") {
+    this.listeners.forEach(fn => fn(sectionId, mode));
   },
 
   get(id) {
@@ -1107,9 +1109,20 @@ const SectionStore = {
     return [...this.sections.values()];
   },
 
+  add(section) {
+    this.sections.set(section.id, section);
+    this.notify(section.id);
+  },
+
+  remove(id) {
+    this.sections.delete(id);
+    this.notify(id);
+  },
+
   clear() {
     this.sections.clear();
   }
+
 };
 
 function renderSection(section) {
@@ -1119,49 +1132,40 @@ function renderSection(section) {
 
   el.innerHTML = `
     <section class="section-meta">
-      <h2>Section Metadata</h2>
+      <div class="section-meta-header">
+        <input
+          class="header-title"
+          type="text"
+          placeholder="Pre Badge # – Town Gym"
+        >
 
-      <div class="meta-stack">
-        <div class="meta-field">
-          <div class="field-label">Section Key</div>
-          <input class="section-key" type="text"
-                 placeholder="Pre Badge 1"
-                 value="${section.meta.sectionKey}">
-        </div>
-
-        <div class="meta-field">
-          <div class="field-label">Header Title</div>
-          <input class="header-title" type="text"
-                 placeholder="Pre Badge 1 - Striaton Gym"
-                 value="${section.meta.headerTitle}">
-        </div>
-
-        <div class="meta-field">
-          <div class="field-label">Header Image</div>
-          <input class="header-img" type="text"
-                 placeholder='badgeBasehref + ".png"'
-                 value="${section.meta.headerImg}">
-        </div>
-
-        <div class="meta-field">
-          <div class="field-label">Header Image Alt</div>
-          <input class="header-img-alt" type="text"
-                 value="${section.meta.headerImgAlt}">
-        </div>
-
-        <div class="meta-field">
-          <div class="field-label">Summary Short</div>
-          <textarea class="summary-short"
-                    rows="4">${section.meta.summaryShort}</textarea>
-        </div>
-      </div>
-
-      <div class="footer-actions section-actions">
-        <button type="button"
-                class="btn btn-secondary remove-section">
+        <button
+          type="button"
+          class="btn reset-btn remove-section"
+        >
           Remove Section
         </button>
       </div>
+
+      <div class="section-meta-grid">
+        <input
+          class="header-img"
+          type="text"
+          placeholder='badgeBasehref + ".png"'
+        >
+
+        <input
+          class="header-img-alt"
+          type="text"
+          placeholder="Header image alt text"
+        >
+      </div>
+
+      <textarea
+        class="summary-short"
+        rows="4"
+        placeholder="Short summary shown in the tracker"
+      ></textarea>
     </section>
 
     <section class="summary-authoring">
@@ -1182,8 +1186,8 @@ function renderSection(section) {
 
     <section class="rows-editor">
       <h3>Generated Rows</h3>
-      <div class="table-wrap"></div>
     </section>
+
 
     <section class="section-preview">
       <h3>Section Preview</h3>
@@ -1195,8 +1199,11 @@ function renderSection(section) {
     </section>
   `;
 
-  el.querySelector(".rows-editor .table-wrap")
-    .appendChild(renderRowsTable(section));
+  populateSectionMeta(el, section);
+
+  el.querySelector(".rows-editor")
+    .appendChild(renderRowsEditor(section));
+
 
   return el;
 }
@@ -1210,6 +1217,22 @@ function renderAllSectionsFromStore() {
   SectionStore.getAll().forEach(section => {
     root.appendChild(renderSection(section));
   });
+}
+
+
+function deriveSectionKey(title) {
+  return title
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+}
+
+function markSectionSoft(sectionId) {
+  SectionStore.notify(sectionId, "soft");
+}
+
+function markSectionHard(sectionId) {
+  SectionStore.notify(sectionId, "hard");
 }
 
 
@@ -1238,60 +1261,62 @@ function renderRowTypeSelect(selected = ROW_TYPES.NORMAL.value) {
 }
 
 function renderRow(sectionId, row) {
-  const tr = document.createElement("tr");
-  tr.dataset.rowId = row.id;
-  tr.className = "row-editor";
+  const el = document.createElement("div");
+  el.className = "row-card";
+  el.dataset.rowId = row.id;
+  el.draggable = true;
 
-  tr.innerHTML = `
-    <td class="row-type-cell">
-      <select class="row-type">
-        <option value="normal"${row.type === "normal" ? " selected" : ""}>Normal</option>
-        <option value="choice"${row.type === "choice" ? " selected" : ""}>Choice</option>
-        <option value="conditional"${row.type === "conditional" ? " selected" : ""}>Conditional</option>
-        <option value="omit"${row.type === "omit" ? " selected" : ""}>Omit</option>
-      </select>
-    </td>
-
-    <td class="row-pokemon-cell">
+  el.innerHTML = `
+    <!-- <div class="row-image">
+      <img class="pokemon-sprite" draggable="false">
+    </div> -->
+    <div class="row-header">
       <input
         type="text"
         class="pokemon-name"
         value="${row.pokemon.name}"
         placeholder="Pokémon name"
       >
-    </td>
 
-    <td class="row-image-cell">
-      <input
-        type="text"
-        class="pokemon-img"
-        value="${row.pokemon.img}"
-        placeholder="Image override (optional)"
-      >
-    </td>
+      <select class="row-type">
+        <option value="normal"${row.type === "normal" ? " selected" : ""}>Normal</option>
+        <option value="choice"${row.type === "choice" ? " selected" : ""}>Choice</option>
+        <option value="conditional"${row.type === "conditional" ? " selected" : ""}>Conditional</option>
+        <option value="omit"${row.type === "omit" ? " selected" : ""}>Omit</option>
+      </select>
 
-    <td class="row-method-cell">
-      <input
-        type="text"
+      <button type="button" class="remove-row btn btn-ghost">✕</button>
+    </div>
+
+    <div class="row-body">
+      <textarea
         class="row-method"
-        value="${row.method}"
-        placeholder="How to obtain"
-      >
-    </td>
+        rows="2"
+        placeholder="How to obtain / evolve this Pokémon"
+      >${row.method}</textarea>
 
-    <td class="row-meta-cell">
       <input
         type="text"
         class="row-meta"
         value="${row.meta}"
-        placeholder="Requirements / choice rule"
+        placeholder="Requirements / choice rule (optional)"
       >
-    </td>
+    </div>
   `;
 
-  return tr;
+  return el;
 }
 
+function updateRowImages(sectionEl) {
+  sectionEl.querySelectorAll(".row-card").forEach(card => {
+    const nameInput = card.querySelector(".pokemon-name");
+    const img = card.querySelector(".pokemon-sprite");
+    if (!nameInput || !img) return;
+
+    const name = nameInput.value.trim();
+    img.src = resolvePokemonImage(name);
+  });
+}
 
 /* --------------------------------------------------------------------------
  Utilities
@@ -1541,30 +1566,23 @@ function generateRowsFromHtml(html) {
 /* --------------------------------------------------------------------------
  Rows Table (EDITOR UI)
  -------------------------------------------------------------------------- */
-function renderRowsTable(section) {
-  const table = document.createElement("table");
-  table.className = "rows-table";
-
-  table.innerHTML = `
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Pokémon</th>
-        <th>Image</th>
-        <th>Method</th>
-        <th>Requires / Choice</th>
-      </tr>
-    </thead>
-    <tbody></tbody>
-  `;
-
-  const tbody = table.querySelector("tbody");
+function renderRowsEditor(section) {
+  const container = document.createElement("div");
+  container.className = "rows-list";
 
   section.rows.forEach(row => {
-    tbody.appendChild(renderRow(section.id, row));
+    container.appendChild(renderRow(section.id, row));
   });
 
-  return table;
+  const addCard = document.createElement("button");
+  addCard.type = "button";
+  addCard.className = "row-card add-row-card";
+  addCard.setAttribute("aria-label", "Add row");
+  addCard.innerHTML = `<span class="add-icon">+</span>`;
+
+  container.appendChild(addCard);
+
+  return container;
 }
 
 
@@ -1632,32 +1650,33 @@ document.addEventListener("input", e => {
   const sectionEl = e.target.closest("[data-section-id]");
   if (!sectionEl) return;
 
+  const sectionId = sectionEl.dataset.sectionId;
+  const section = SectionStore.get(sectionId);
+  if (!section) return;
+
   const rowEl = e.target.closest("[data-row-id]");
   if (!rowEl) return;
-
-  const section = SectionStore.get(sectionEl.dataset.sectionId);
-  if (!section) return;
 
   const row = section.rows.find(r => r.id === rowEl.dataset.rowId);
   if (!row) return;
 
-  if (e.target.closest(".cell-method")) {
-    row.method = e.target.value;
-  }
-
-  if (e.target.closest(".cell-meta")) {
-    row.meta = e.target.value;
-  }
-
   if (e.target.classList.contains("pokemon-name")) {
     row.pokemon.name = e.target.value;
+    markSectionSoft(sectionId);
+    return;
   }
 
-  if (e.target.classList.contains("pokemon-img")) {
-    row.pokemon.img = e.target.value;
+  if (e.target.classList.contains("row-method")) {
+    row.method = e.target.value;
+    markSectionSoft(sectionId);
+    return;
   }
 
-  section.ui.lastEdited = Date.now();
+  if (e.target.classList.contains("row-meta")) {
+    row.meta = e.target.value;
+    markSectionSoft(sectionId);
+    return;
+  }
 });
 
 //Row type change
@@ -1685,19 +1704,20 @@ document.addEventListener("change", e => {
 
 //Add row
 document.addEventListener("click", e => {
-  const btn = e.target.closest(".add-row");
+  const btn = e.target.closest(".add-row-card");
   if (!btn) return;
 
   const sectionEl = btn.closest("[data-section-id]");
   if (!sectionEl) return;
 
-  const section = SectionStore.get(sectionEl.dataset.sectionId);
+  const sectionId = sectionEl.dataset.sectionId;
+  const section = SectionStore.get(sectionId);
   if (!section) return;
 
   section.rows.push(createDefaultRow());
-  renderAllSectionsFromStore();
-  commitSectionChange(section);
+  markSectionHard(sectionId);
 });
+
 
 //Remove row
 document.addEventListener("click", e => {
@@ -1713,7 +1733,7 @@ document.addEventListener("click", e => {
 
   section.rows = section.rows.filter(r => r.id !== rowEl.dataset.rowId);
   renderAllSectionsFromStore();
-  commitSectionChange(section);
+  // commitSectionChange(section);
 });
 
 
@@ -1840,38 +1860,52 @@ function updateOakPreview() {
 }
 
 function buildPreviewGameDataForSection(section) {
-  const gameMeta = collectGameMeta();
-
   return {
-    gameId: gameMeta.gameId,
-    gameTitle: gameMeta.gameTitle,
-    logo: gameMeta.logo,
-    imgBasehref: gameMeta.imgBasehref,
-    badgeBasehref: gameMeta.badgeBasehref,
-    aboutHtml: "",
-    progression: {
-      [section.meta.sectionKey]: materializeSection(section)
-    }
+    game: collectGameMeta(),
+    badgeGroups: [
+      {
+        key: section.meta.sectionKey,
+        header: {
+          title: section.meta.headerTitle,
+          image: section.meta.headerImg,
+          imageAlt: section.meta.headerImgAlt,
+          summaryShort: section.meta.summaryShort
+        },
+        summaryHtml: materializeSummaryHtml(section),
+        rows: section.rows.map(row => ({
+          type: row.type,
+          pokemon: row.pokemon,
+          method: row.method,
+          meta: row.meta
+        }))
+      }
+    ]
   };
 }
 
-// function updateOakPreviewForSectionId(sectionId) { //Can remove?
-//   const gameData = buildPreviewGameDataForSectionId(sectionId);
-//   if (!gameData) return;
+function materializeOakTrackerData() {
+  return {
+    game: collectGameMeta(),
+    sections: SectionStore.getAll().map(section => ({
+      key: section.meta.sectionKey,
+      header: {
+        title: section.meta.headerTitle,
+        image: section.meta.headerImg,
+        imageAlt: section.meta.headerImgAlt,
+        summaryShort: section.meta.summaryShort
+      },
+      summaryHtml: materializeSummaryHtml(section),
+      rows: section.rows.map(row => ({
+        type: row.type,
+        pokemon: row.pokemon,
+        method: row.method,
+        meta: row.meta
+      }))
+    }))
+  };
+}
 
-//   document
-//     .getElementById("oak-preview")
-//     ?.contentWindow
-//     ?.postMessage(
-//       {
-//         type: "oak-preview",
-//         payload: gameData,
-//         theme: getTheme()
-//       },
-//       "*"
-//     );
-// }
-
+window.OAK_TRACKER_EDITOR_OUTPUT = materializeOakTrackerData();
 
 /* --------------------------------------------------------------------------
  Live Preview Wiring
@@ -1882,6 +1916,33 @@ const updatePreviewDebounced = debounce(section => {
   const useHtml = qs(section, ".use-html").checked;
   const summaryHtml = useHtml ? raw : authorTextToHtml(raw);
 });
+
+const MAX_OUTPUT_LINES = 25;
+
+function updateOakOutputPreview() {
+  const pre = document.querySelector(".output-js");
+  const toggleBtn = document.querySelector(".toggle-output-btn");
+  if (!pre || !toggleBtn) return;
+
+  const jsText =
+    "const GAME_DATA = " +
+    JSON.stringify(window.OAK_TRACKER_EDITOR_OUTPUT, null, 2) +
+    ";";
+
+  pre.textContent = jsText;
+
+  const lineCount = jsText.split("\n").length;
+
+  if (lineCount > MAX_OUTPUT_LINES) {
+    pre.classList.add("collapsed");
+    toggleBtn.hidden = false;
+    toggleBtn.textContent = "Read more";
+  } else {
+    pre.classList.remove("collapsed");
+    toggleBtn.hidden = true;
+  }
+}
+
 
 /* --------------------------------------------------------------------------
  Local Storage Persistence
@@ -1911,6 +1972,7 @@ function saveDraft() {
 
   localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
 }
+
 
 
 function loadDraft() {
@@ -1945,8 +2007,6 @@ function loadDraft() {
       if (el) el.value = value ?? "";
     });
   }
-
-  renderAllSectionsFromStore();
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -1954,17 +2014,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (SectionStore.getAll().length === 0) {
     SectionStore.add(createDefaultSection(generateSectionId()));
-    renderAllSectionsFromStore();
   }
 });
 
-function commitSectionChange(sectionId) {
-  const section = SectionStore.get(sectionId);
-  if (!section) return;
+function populateSectionMeta(sectionEl, section) {
+  const title = sectionEl.querySelector(".header-title");
+  if (title) title.value = section.meta.headerTitle ?? "";
 
-  section.ui.lastEdited = Date.now();
-  saveDraft();
-  updatePreviewForSection(sectionId);
+  const img = sectionEl.querySelector(".header-img");
+  if (img) img.value = section.meta.headerImg ?? "";
+
+  const imgAlt = sectionEl.querySelector(".header-img-alt");
+  if (imgAlt) imgAlt.value = section.meta.headerImgAlt ?? "";
+
+  const summaryShort = sectionEl.querySelector(".summary-short");
+  if (summaryShort) summaryShort.value = section.meta.summaryShort ?? "";
+
+  const summaryInput = sectionEl.querySelector(".summary-input");
+  if (summaryInput) summaryInput.value = section.summary.text ?? "";
 }
 
 
@@ -2001,10 +2068,13 @@ function importDraftFromFile(file) {
         return;
       }
 
-      localStorage.setItem(STORAGE_KEY, JSON.stringify({
-        ...parsed,
-        updatedAt: new Date().toISOString()
-      }));
+      localStorage.setItem(
+        STORAGE_KEY,
+        JSON.stringify({
+          ...parsed,
+          updatedAt: new Date().toISOString()
+        })
+      );
 
       loadDraft();
     } catch {
@@ -2015,12 +2085,59 @@ function importDraftFromFile(file) {
   reader.readAsText(file);
 }
 
+document.addEventListener("click", e => {
+  const btn = e.target.closest("#export-draft-btn");
+  if (!btn) return;
+
+  exportDraftToFile();
+});
+
+document.addEventListener("click", e => {
+  const btn = e.target.closest("#import-draft-btn");
+  if (!btn) return;
+
+  const input = document.getElementById("draft-file");
+  if (!input) return;
+
+  input.value = "";
+  input.click();
+});
+
+document.addEventListener("change", e => {
+  if (e.target.id !== "draft-file") return;
+
+  const file = e.target.files?.[0];
+  if (!file) return;
+
+  importDraftFromFile(file);
+});
+
+
 /* --------------------------------------------------------------------------
  Theme
  -------------------------------------------------------------------------- */
 function getTheme() {
   return document.documentElement.dataset.theme || "light";
 }
+
+new MutationObserver(() => {
+  document
+    .querySelectorAll(".oak-preview-frame")
+    .forEach(iframe => {
+      if (!iframe.contentWindow) return;
+
+      iframe.contentWindow.postMessage(
+        {
+          type: "oak-preview-theme",
+          theme: getTheme()
+        },
+        "*"
+      );
+    });
+}).observe(document.documentElement, {
+  attributes: true,
+  attributeFilter: ["data-theme"]
+});
 
 /* --------------------------------------------------------------------------
  Events
@@ -2033,44 +2150,70 @@ document.addEventListener("input", e => {
     e.target.closest(".rows-table") ||
     e.target.classList.contains("summary-input")
   ) {
-    commitSectionChange(section);
+    // commitSectionChange(section);
+  }
+});
+
+//Save Changes tyed to Section Meta
+document.addEventListener("input", e => {
+  const sectionEl = e.target.closest("[data-section-id]");
+  if (!sectionEl) return;
+
+  const sectionId = sectionEl.dataset.sectionId;
+  const section = SectionStore.get(sectionId);
+  if (!section) return;
+
+  if (e.target.classList.contains("header-title")) {
+    section.meta.headerTitle = e.target.value;
+    section.meta.sectionKey = deriveSectionKey(e.target.value);
+    markSectionSoft(sectionId);
+    return;
+  }
+
+  if (e.target.classList.contains("header-img")) {
+    section.meta.headerImg = e.target.value;
+    markSectionSoft(sectionId);
+    return;
+  }
+
+  if (e.target.classList.contains("header-img-alt")) {
+    section.meta.headerImgAlt = e.target.value;
+    markSectionSoft(sectionId);
+    return;
+  }
+
+  if (e.target.classList.contains("summary-short")) {
+    section.meta.summaryShort = e.target.value;
+    markSectionSoft(sectionId);
+    return;
+  }
+
+  if (e.target.classList.contains("summary-input")) {
+    section.summary.text = e.target.value;
+    markSectionSoft(sectionId);
+    return;
   }
 });
 
 
+//Click on "Generate Rows"
 document.addEventListener("click", e => {
   const btn = e.target.closest(".generate-rows");
   if (!btn) return;
 
-  // console.log("Generate Rows: clicked");
-
   const sectionEl = btn.closest("[data-section-id]");
-  if (!sectionEl) {
-    console.log("Generate Rows: no section element");
-    return;
-  }
+  if (!sectionEl) return;
 
   const sectionId = sectionEl.dataset.sectionId;
   const section = SectionStore.get(sectionId);
-
-  // console.log("Generate Rows: section", section);
-
   if (!section) return;
-
-  // console.log("Generate Rows: summary text", section.summary.text);
 
   const generatedRows = generateRowsFromHtml(section.summary.text);
 
-  // console.log("Generate Rows: generated rows", generatedRows);
-
   section.rows = generatedRows;
 
-  // console.log("Generate Rows: rows after assign", section.rows);
-
-  commitSectionChange(sectionId);
-  renderAllSectionsFromStore();
+  markSectionHard(sectionId);
 });
-
 
 
 document.getElementById("add-section")?.addEventListener("click", () => {
@@ -2078,7 +2221,7 @@ document.getElementById("add-section")?.addEventListener("click", () => {
 
   SectionStore.add(section);
   renderAllSectionsFromStore();
-  commitSectionChange(section.id);
+  // commitSectionChange(section.id);
 });
 
 document.addEventListener("click", e => {
@@ -2096,34 +2239,13 @@ document.addEventListener("click", e => {
 });
 
 
-//TEMP
-document.addEventListener("input", e => {
-  const sectionEl = e.target.closest("[data-section-id]");
-  if (!sectionEl) return;
-
-  const sectionId = sectionEl.dataset.sectionId;
-  const section = SectionStore.get(sectionId);
-  if (!section) return;
-
-  if (e.target.classList.contains("section-key")) {
-    section.meta.sectionKey = e.target.value;
-  }
-
-  if (e.target.classList.contains("header-title")) {
-    section.meta.headerTitle = e.target.value;
-  }
-
-  if (e.target.classList.contains("summary-input")) {
-    section.summary.text = e.target.value;
-  }
-
-  section.ui.lastEdited = Date.now();
-});
-
-
 document.addEventListener("DOMContentLoaded", () => {
   if (SectionStore.getAll().length === 0) {
     SectionStore.add(createDefaultSection(generateSectionId()));
+  } else {
+    SectionStore.getAll().forEach(section => {
+      updatePreviewForSection(section.id);
+    });
   }
 
   renderAllSectionsFromStore();
@@ -2137,7 +2259,7 @@ document.addEventListener("load", e => {
     iframe.closest("[data-section-id]")?.dataset.sectionId;
   if (!sectionId) return;
 
-  commitSectionChange(sectionId);
+  // commitSectionChange(sectionId);
 }, true);
 
 
@@ -2148,7 +2270,7 @@ window.addEventListener("message", e => {
 
   if (pendingInitialPreviewSection) {
     // updateOakPreviewForSection(pendingInitialPreviewSection);
-    commitSectionChange(pendingInitialPreviewSection);
+    // commitSectionChange(pendingInitialPreviewSection);
     pendingInitialPreviewSection = null;
   }
 });
@@ -2161,43 +2283,147 @@ function attemptInitialPreviewRender() {
   if (!firstSection) return;
 
   // updateOakPreviewForSection(firstSection);
-  commitSectionChange(firstSection);
+  // commitSectionChange(firstSection);
 }
 
-// document.getElementById("export-js")
-//   ?.addEventListener("click", exportAllSections);
+// Add Conditional row to a Choice row
+//TODO
 
-//Prieview First load
-document.addEventListener("DOMContentLoaded", () => {
-  const iframe = document.getElementById("oak-preview");
-  if (!iframe) return;
+//Add Row Card
+document.addEventListener("click", e => {
+  const btn = e.target.closest(".add-row-btn");
+  if (!btn) return;
 
-  new MutationObserver(() => {
-    if (!iframe.contentWindow) return;
+  const sectionEl = btn.closest("[data-section-id]");
+  if (!sectionEl) return;
 
-    iframe.contentWindow.postMessage(
-      {
-        type: "oak-preview-theme",
-        theme: getTheme()
-      },
-      "*"
-    );
-  }).observe(document.documentElement, {
-    attributes: true,
-    attributeFilter: ["data-theme"]
-  });
+  const sectionId = sectionEl.dataset.sectionId;
+  const section = SectionStore.get(sectionId);
+  if (!section) return;
 
-  iframe.addEventListener("load", () => {
-    iframe.contentWindow.postMessage(
-      {
-        type: "oak-preview-theme",
-        theme: getTheme()
-      },
-      "*"
-    );
+  section.rows.push(createDefaultRow());
+  markSectionHard(sectionId);
+});
+
+let pendingInitialPreviewSection = null;
+let previewIframeReady = false;
+
+
+
+//Dragable cards
+let draggedRowId = null;
+let placeholderEl = null;
+
+
+document.addEventListener("dragstart", e => {
+  const card = e.target.closest(".row-card");
+  if (!card) return;
+
+  draggedRowId = card.dataset.rowId;
+  card.classList.add("dragging");
+  e.dataTransfer.effectAllowed = "move";
+});
+
+document.addEventListener("dragend", e => {
+  const card = e.target.closest(".row-card");
+  if (card) card.classList.remove("dragging");
+
+  if (placeholderEl) {
+    placeholderEl.remove();
+    placeholderEl = null;
+  }
+
+  draggedRowId = null;
+});
+
+
+document.addEventListener("dragover", e => {
+  const targetCard = e.target.closest(".row-card");
+  if (!targetCard || !draggedRowId) return;
+
+  e.preventDefault();
+
+  const container = targetCard.parentElement;
+
+  if (!placeholderEl) {
+    placeholderEl = document.createElement("div");
+    placeholderEl.className = "row-card placeholder";
+  }
+
+  if (placeholderEl !== targetCard.nextSibling) {
+    container.insertBefore(placeholderEl, targetCard);
+  }
+});
+
+document.addEventListener("drop", e => {
+  const targetCard = e.target.closest(".row-card");
+  if (!targetCard || !draggedRowId) return;
+
+  const sectionEl = targetCard.closest("[data-section-id]");
+  if (!sectionEl) return;
+
+  const sectionId = sectionEl.dataset.sectionId;
+  const section = SectionStore.get(sectionId);
+  if (!section) return;
+
+  const fromIndex = section.rows.findIndex(r => r.id === draggedRowId);
+  const toIndex = [...sectionEl.querySelectorAll(".row-card")]
+    .indexOf(placeholderEl);
+
+  if (fromIndex !== -1 && toIndex !== -1) {
+    const [row] = section.rows.splice(fromIndex, 1);
+    section.rows.splice(toIndex, 0, row);
+  }
+
+  if (placeholderEl) {
+    placeholderEl.remove();
+    placeholderEl = null;
+  }
+
+  draggedRowId = null;
+  markSectionHard(sectionId);
+});
+
+// Show More/Less
+document.addEventListener("click", e => {
+  const btn = e.target.closest(".toggle-output-btn");
+  if (!btn) return;
+
+  const pre = document.querySelector(".output-js");
+  if (!pre) return;
+
+  const collapsed = pre.classList.toggle("collapsed");
+  btn.textContent = collapsed ? "Read more" : "Show less";
+});
+
+//Copy all
+document.addEventListener("click", e => {
+  const btn = e.target.closest(".copy-output-btn");
+  if (!btn) return;
+
+  const text =
+    "const GAME_DATA = " +
+    JSON.stringify(window.OAK_TRACKER_EDITOR_OUTPUT, null, 2) +
+    ";";
+
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = "Copied!";
+    setTimeout(() => {
+      btn.textContent = "Copy all";
+    }, 1200);
   });
 });
 
 
-let pendingInitialPreviewSection = null;
-let previewIframeReady = false;
+
+// #############################################
+SectionStore.subscribe((sectionId, mode) => {
+  if (mode === "hard") {
+    renderAllSectionsFromStore();
+  }
+
+  saveDraft();
+  window.OAK_TRACKER_EDITOR_OUTPUT = materializeOakTrackerData();
+  updateOakOutputPreview();
+  updatePreviewForSection(sectionId);
+});

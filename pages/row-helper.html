@@ -164,22 +164,6 @@
           <!-- ---------- Rows Table ---------- -->
           <section class="rows-editor">
             <h3>Generated Rows</h3>
-
-            <div class="table-wrap">
-              <table class="rows-table">
-                <thead>
-                  <tr>
-                    <th>Type</th>
-                    <th>Pokémon</th>
-                    <th>Image</th>
-                    <th>Method</th>
-                    <th>Requires / Choice</th>
-                  </tr>
-                </thead>
-
-                <tbody></tbody>
-              </table>
-            </div>
           </section>
 
           <!-- ---------- Section Preview ---------- -->
@@ -195,18 +179,27 @@
 
       <button id="add-section" type="button" class="btn btn-secondary">Add New Section</button>
 
-      <button id="export-js" type="button" class="btn btn-primary">Export All Sections</button>
-
-
       <!-- ---------- Export Output ---------- -->
-      <section class="export-output">
-        <h2>Exported JS</h2>
-        <textarea id="export-output" rows="20"></textarea>
+      <section class="output-preview">
+        <div class="output-header">
+          <h3>Oak Tracker Data (Live)</h3>
+
+          <div class="output-actions">
+            <button type="button" class="copy-output-btn">Copy all</button>
+          </div>
+        </div>
+
+        <pre class="output-js collapsed"></pre>
+
+        <button type="button" class="toggle-output-btn" hidden>
+          Read more
+        </button>
       </section>
+      <button id="export-draft-btn" class="btn btn-primary">Export Draft</button>
+      <button id="import-draft-btn" class="btn btn-primary">Import Draft</button>
+      <input id="draft-file" type="file" accept="application/json" hidden />
     </div>
-    <button id="export-draft" class="btn btn-primary">Export Draft</button>
-    <button id="import-draft" class="btn btn-primary">Import Draft</button>
-    <input id="draft-file" type="file" accept="application/json" hidden />
+
   </div>
 
   <div id="site-footer-host"></div>

@@ -1,16 +1,73 @@
-/* ===================== Metadata Layout ===================== */
+.game-meta .meta-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.section-editor {
+  padding: 16px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  background: transparent;
+}
+
+.section-editor>section {
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
+  background: transparent;
+  border: 1px solid transparent;
+  transition: background-color 120ms ease, border-color 120ms ease;
+}
+
+.section-editor>section+section {
+  margin-top: 12px;
+}
+
+.section-editor>section:hover,
+.section-editor>section:focus-within {
+  background: var(--hover);
+  border-color: var(--border);
+}
 
 .section-meta,
 .game-meta {
-  border-bottom: 1px solid var(--border-subtle);
-  margin-bottom: 32px;
-  padding-bottom: 24px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+}
+
+.section-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.section-meta-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.section-meta-header .header-title {
+  flex: 1;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.section-meta-header .remove-section {
+  white-space: nowrap;
+}
+
+.section-meta-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
 }
 
 .meta-stack {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
 }
 
 .meta-field {
@@ -21,75 +78,82 @@
 
 .field-label {
   font-weight: 600;
-  opacity: 0.8;
+  font-size: 0.85rem;
+  color: var(--muted);
 }
 
 .section-meta input,
 .section-meta textarea,
 .game-meta input,
-.game-meta textarea {
-  padding: 10px 12px;
-  font-size: 0.95rem;
-  line-height: 1.4;
+.game-meta textarea,
+.summary-authoring textarea {
+  padding: 8px 10px;
+  font-size: 0.9rem;
+  line-height: 1.45;
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
 }
 
 textarea {
   resize: vertical;
-  line-height: 1.5;
-  tab-size: 2;
   width: 100%;
 }
 
 input:focus,
-textarea:focus {
+textarea:focus,
+select:focus {
   outline: none;
-  border-color: var(--accent);
-  box-shadow: none;
+  border-color: var(--focus);
+  background: var(--surface);
 }
 
-/* ===================== Help Accordion ===================== */
+.section-editor h2 {
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.section-editor h3 {
+  margin-bottom: 6px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--muted);
+}
 
 .page-help {
-  margin-bottom: 32px;
+  margin-bottom: 24px;
 }
 
 .help-accordion summary {
   cursor: pointer;
   font-weight: 600;
+  color: var(--text);
 }
 
 .help-content {
-  margin-top: 12px;
+  margin-top: 10px;
 }
 
 .help-content h3 {
-  margin-top: 16px;
-}
-
-/* ===================== Buttons ===================== */
-
-.btn-primary:hover {
-  background-color: var(--choice-accent-selected);
-  border-color: var(--choice-accent-selected);
-  color: var(--accent-contrast);
+  margin-top: 14px;
+  font-size: 0.9rem;
+  color: var(--muted);
 }
 
 .footer-actions {
   display: flex;
-  gap: 12px;
+  gap: 10px;
   flex-wrap: wrap;
 }
 
-tr:has(.row-type[value="omit"]),
-tr:has(.row-type option:checked[value="omit"]) {
-  opacity: 0.45;
-}
-
-
 .oak-preview-frame {
   width: 100%;
-  height: 700px;
-  border: 1px solid #444;
+  min-height: 360px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface);
 }
 
 .reset-preview-btn {
@@ -110,34 +174,231 @@ tr:has(.row-type option:checked[value="omit"]) {
   background: var(--hover);
 }
 
-.rows-table td {
-  vertical-align: top;
-  padding: 6px;
+.rows-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 10px;
 }
 
-.row-pokemon-cell input {
+.row-card {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 12px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background: transparent;
+  cursor: grab;
+  transition: border-color 120ms ease, box-shadow 120ms ease, background-color 120ms ease;
+}
+
+.row-card:hover,
+.row-card:focus-within {
+  border-color: var(--accent);
+  background: var(--hover);
+}
+
+.row-card:has(.row-meta[value="generated"]) {
+  border-style: dashed;
+}
+
+.row-card.dragging {
+  opacity: 0.4;
+  border-style: dashed;
+  box-shadow: none;
+}
+
+.row-card.placeholder {
+  border: 2px dashed var(--accent);
+  background: transparent;
+}
+
+.row-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.row-header .pokemon-name {
+  min-width: 0;
+  flex: 1 1 auto;
   font-weight: 600;
-  font-size: 14px;
+  font-size: 0.95rem;
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--text);
 }
 
-.row-method-cell input {
-  font-size: 13px;
+.row-header .pokemon-name:focus {
+  background: var(--surface);
+  border-color: var(--focus);
 }
 
-.row-meta-cell input {
+.row-header .row-type {
+  max-width: 90px;
+  font-size: 0.8rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text);
+  flex: 0 0 auto;
+}
+
+.row-header .remove-row {
+  flex: 0 0 auto;
+  padding: 2px 6px;
+  background: transparent;
+  border: none;
+  color: var(--muted);
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+.row-card:hover .remove-row {
+  opacity: 1;
+  color: var(--text);
+}
+
+.row-body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.row-body .row-method {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  font-size: 0.85rem;
+  padding: 4px 6px;
+}
+
+.row-body .row-meta {
+  background: transparent;
+  border: 1px dashed var(--border);
+  color: var(--muted);
+  font-size: 0.8rem;
+  padding: 3px 6px;
+}
+
+.row-body .row-meta:focus {
+  background: var(--surface);
+  color: var(--text);
+}
+
+.rows-toolbar {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 8px;
+}
+
+.add-row-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.add-row-btn:hover {
+  background: var(--hover);
+}
+
+.add-row-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 2px dashed var(--border);
+  cursor: pointer;
+  color: var(--muted);
+  font-size: 24px;
+}
+
+.add-row-card:hover,
+.add-row-card:focus {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--hover);
+  outline: none;
+}
+
+.row-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 64px;
+}
+
+.pokemon-sprite {
+  max-width: 64px;
+  max-height: 64px;
+  image-rendering: pixelated;
+}
+
+.output-preview {
+  margin-top: 24px;
+}
+
+.output-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.output-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.copy-output-btn {
+  padding: 4px 10px;
   font-size: 12px;
-  opacity: 0.8;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--bg-alt);
+  color: var(--text);
+  cursor: pointer;
 }
 
-.row-type-cell select {
+.copy-output-btn:hover {
+  background: var(--hover);
+}
+
+.output-js {
+  margin-top: 8px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 10px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   font-size: 12px;
+  line-height: 1.4;
+  overflow-x: auto;
+  white-space: pre;
 }
 
-.row-editor:hover {
-  background: var(--hover, #f5f5f5);
+.output-js.collapsed {
+  max-height: calc(1.4em * 25);
+  overflow: hidden;
 }
 
-.row-editor .row-meta-cell input[value="generated"] {
-  opacity: 0.5;
-  font-style: italic;
+.toggle-output-btn {
+  margin-top: 6px;
+  background: transparent;
+  border: none;
+  color: var(--accent);
+  cursor: pointer;
+  font-size: 12px;
+  padding: 0;
+}
+
+.toggle-output-btn:hover {
+  text-decoration: underline;
 }
