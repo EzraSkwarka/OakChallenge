@@ -1765,6 +1765,7 @@ function materializeRow(row) {
   // CHOICE: meta is a single word
   if (meta && !meta.includes(":") && /^[^\s:]+$/.test(meta)) {
     return {
+      id: row.id,
       type: "choice",
       choiceKey: meta,
       choiceValue: row.pokemon.name.toLowerCase(),
@@ -1779,6 +1780,7 @@ function materializeRow(row) {
     const [key, value] = meta.split(":").map(s => s.trim());
     if (key && value) {
       return {
+        id: row.id,
         pokemon: row.pokemon,
         method: row.method,
         requires: {
@@ -1791,6 +1793,7 @@ function materializeRow(row) {
 
   // NORMAL
   return {
+    id: row.id,
     pokemon: row.pokemon,
     method: row.method,
     meta
@@ -2324,17 +2327,41 @@ document.addEventListener("load", e => {
   // commitSectionChange(sectionId);
 }, true);
 
+//wait on iframe
+const latestPreviewData = new Map();
+
+function stagePreviewData(sectionId) {
+  const section = SectionStore.get(sectionId);
+  if (!section) return;
+
+  latestPreviewData.set(
+    sectionId,
+    buildPreviewGameDataForSection(section)
+  );
+}
 
 window.addEventListener("message", e => {
   if (e.data?.type !== "oak-preview-ready") return;
 
-  previewIframeReady = true;
+  const iframe = [...document.querySelectorAll(".oak-preview-frame")]
+    .find(f => f.contentWindow === e.source);
+  if (!iframe) return;
 
-  if (pendingInitialPreviewSection) {
-    // updateOakPreviewForSection(pendingInitialPreviewSection);
-    // commitSectionChange(pendingInitialPreviewSection);
-    pendingInitialPreviewSection = null;
-  }
+  const sectionId =
+    iframe.closest("[data-section-id]")?.dataset.sectionId;
+  if (!sectionId) return;
+
+  const payload = latestPreviewData.get(sectionId);
+  if (!payload) return;
+
+  iframe.contentWindow.postMessage(
+    {
+      type: "oak-preview",
+      payload,
+      theme: getTheme()
+    },
+    "*"
+  );
 });
 
 function attemptInitialPreviewRender() {
@@ -2375,11 +2402,13 @@ let previewIframeReady = false;
 //Dragable cards
 let draggedRowId = null;
 let placeholderEl = null;
+let isDraggingRow = false;
 
 
 document.addEventListener("dragstart", e => {
   const card = e.target.closest(".row-card");
   if (!card) return;
+  isDraggingRow = true;
 
   draggedRowId = card.dataset.rowId;
   card.classList.add("dragging");
@@ -2396,6 +2425,7 @@ document.addEventListener("dragend", e => {
   }
 
   draggedRowId = null;
+  isDraggingRow = false;
 });
 
 
@@ -2444,6 +2474,7 @@ document.addEventListener("drop", e => {
 
   draggedRowId = null;
   markSectionHard(sectionId);
+  // updatePreviewForSection(sectionId);
 });
 
 // Show More/Less
@@ -2487,5 +2518,8 @@ SectionStore.subscribe((sectionId, mode) => {
   saveDraft();
   window.OAK_TRACKER_EDITOR_OUTPUT = materializeOakTrackerData();
   updateOakOutputPreview();
-  updatePreviewForSection(sectionId);
+
+  if (!isDraggingRow) {
+    stagePreviewData(sectionId);
+  }
 });
