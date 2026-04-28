@@ -1034,6 +1034,7 @@ const pokedex = {
   "Pecharunt": 1025
 };
 const STORAGE_KEY = "oak-row-generator-state";
+const previewReady = new Set();
 
 /* --------------------------------------------------------------------------
  Section Pipeline
@@ -2351,15 +2352,13 @@ window.addEventListener("message", e => {
     iframe.closest("[data-section-id]")?.dataset.sectionId;
   if (!sectionId) return;
 
+  previewReady.add(sectionId);
+
   const payload = latestPreviewData.get(sectionId);
   if (!payload) return;
 
   iframe.contentWindow.postMessage(
-    {
-      type: "oak-preview",
-      payload,
-      theme: getTheme()
-    },
+    { type: "oak-preview", payload, theme: getTheme() },
     "*"
   );
 });
@@ -2474,7 +2473,6 @@ document.addEventListener("drop", e => {
 
   draggedRowId = null;
   markSectionHard(sectionId);
-  // updatePreviewForSection(sectionId);
 });
 
 // Show More/Less
@@ -2519,7 +2517,12 @@ SectionStore.subscribe((sectionId, mode) => {
   window.OAK_TRACKER_EDITOR_OUTPUT = materializeOakTrackerData();
   updateOakOutputPreview();
 
+
   if (!isDraggingRow) {
     stagePreviewData(sectionId);
+
+    if (previewReady.has(sectionId)) {
+      updatePreviewForSection(sectionId);
+    }
   }
 });
