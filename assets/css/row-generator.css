@@ -402,3 +402,35 @@ select:focus {
 .toggle-output-btn:hover {
   text-decoration: underline;
 }
+
+
+.row-card .row-type {
+  display: none;
+}
+
+.row-card {
+  position: relative;
+}
+
+.row-card .remove-row {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+
+  padding: 4px 6px;
+  font-size: 14px;
+  line-height: 1;
+
+  opacity: 0.6;
+}
+
+
+.row-card .remove-row {
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+
+.row-card .remove-row:hover {
+  opacity: 1;
+}

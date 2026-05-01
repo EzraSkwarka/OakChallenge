@@ -1262,15 +1262,21 @@ function renderRowTypeSelect(selected = ROW_TYPES.NORMAL.value) {
 }
 
 function renderRow(sectionId, row) {
+  const dexNo = pokedex[row.pokemon.name];
+  const imgSrc = encodeURI(
+    dexNo && collectGameMeta().imgBasehref
+      ? collectGameMeta().imgBasehref + dexNo + ".png"
+      : "link");
+
   const el = document.createElement("div");
   el.className = "row-card";
   el.dataset.rowId = row.id;
   el.draggable = true;
 
   el.innerHTML = `
-    <!-- <div class="row-image">
-      <img class="pokemon-sprite" draggable="false">
-    </div> -->
+    <div class="row-image">
+      <img class="pokemon-sprite" draggable="false" src=${imgSrc}>
+    </div>
     <div class="row-header">
       <input
         type="text"
@@ -1666,6 +1672,16 @@ document.addEventListener("input", e => {
 
   if (e.target.classList.contains("pokemon-name")) {
     row.pokemon.name = e.target.value;
+    const rowEl = e.target.closest(".row-card");
+    const imgEl = rowEl?.querySelector(".row-img img");
+    if (imgEl) {
+      const dexNo = pokedex[row.pokemon.name];
+      imgEl.src =
+        dexNo && collectGameMeta().imgBasehref
+          ? collectGameMeta().imgBasehref + dexNo + ".png"
+          : "";
+    }
+
     markSectionSoft(sectionId);
     return;
   }
@@ -1762,45 +1778,52 @@ function materializeRow(row) {
   if (row.type === "omit") return null;
 
   const meta = row.meta?.trim() ?? "";
+  const gameMeta = collectGameMeta();
+  const dexNo = pokedex[row.pokemon.name];
 
-  // CHOICE: meta is a single word
-  if (meta && !meta.includes(":") && /^[^\s:]+$/.test(meta)) {
+  const pokemon = {
+    name: row.pokemon.name,
+    img:
+      dexNo && gameMeta.imgBasehref
+        ? gameMeta.imgBasehref + dexNo + ".png"
+        : ""
+  };
+
+  // Choice: single-word meta
+  if (meta && /^[^\s:]+$/.test(meta)) {
     return {
       id: row.id,
       type: "choice",
       choiceKey: meta,
       choiceValue: row.pokemon.name.toLowerCase(),
-      pokemon: row.pokemon,
+      pokemon,
       method: row.method,
       meta
     };
   }
 
-  // CONDITIONAL: meta = key:value
+  // Conditional: key:value
   if (meta.includes(":")) {
     const [key, value] = meta.split(":").map(s => s.trim());
     if (key && value) {
       return {
         id: row.id,
-        pokemon: row.pokemon,
+        pokemon,
         method: row.method,
-        requires: {
-          [key]: value
-        },
+        requires: { [key]: value },
         meta
       };
     }
   }
 
-  // NORMAL
+  // Normal
   return {
     id: row.id,
-    pokemon: row.pokemon,
+    pokemon,
     method: row.method,
     meta
   };
 }
-
 
 function materializeSummaryHtml(section) {
   const text = section.summary.text;
@@ -1809,36 +1832,6 @@ function materializeSummaryHtml(section) {
   return mode === "html"
     ? text
     : authorTextToHtml(text);
-}
-
-
-function materializeRow(row) {
-  if (row.type === "omit") return null;
-
-  const choice = inferChoiceFromMeta(row.meta);
-  if (choice) {
-    return {
-      type: "choice",
-      choiceKey: choice.choiceKey,
-      choiceValue: row.pokemon.name.toLowerCase(),
-      pokemon: row.pokemon,
-      method: row.method
-    };
-  }
-
-  const requires = inferRequiresFromMeta(row.meta);
-  if (requires) {
-    return {
-      pokemon: row.pokemon,
-      method: row.method,
-      requires
-    };
-  }
-
-  return {
-    pokemon: row.pokemon,
-    method: row.method
-  };
 }
 
 function inferRowTypeFromMeta(meta) {
@@ -1936,12 +1929,11 @@ function buildPreviewGameDataForSection(section) {
     badgeGroups: [
       {
         key: section.meta.sectionKey,
-        header: {
-          title: section.meta.headerTitle,
-          image: section.meta.headerImg,
-          imageAlt: section.meta.headerImgAlt,
-          summaryShort: section.meta.summaryShort
-        },
+        headerTitle: section.meta.headerTitle,
+        headerImage: section.meta.headerImg,
+        headerImageAlt: section.meta.headerImgAlt,
+        summaryShort: section.meta.summaryShort,
+
         summaryHtml: materializeSummaryHtml(section),
         rows: section.rows
           .map(materializeRow)
@@ -1952,30 +1944,115 @@ function buildPreviewGameDataForSection(section) {
 }
 
 function materializeOakTrackerData() {
+  const game = collectGameMeta();
+
   return {
-    game: collectGameMeta(),
-    sections: SectionStore.getAll().map(section => ({
-      key: section.meta.sectionKey,
-      header: {
-        title: section.meta.headerTitle,
-        image: section.meta.headerImg,
-        imageAlt: section.meta.headerImgAlt,
-        summaryShort: section.meta.summaryShort
-      },
-      summaryHtml: materializeSummaryHtml(section),
-      rows: section.rows
-        .map(materializeRow)
-        .filter(Boolean)
-    }))
+    gameId: game.gameId,
+    gameTitle: game.gameTitle,
+    logo: game.logo,
+    imgBasehref: game.imgBasehref,
+    badgeBasehref: game.badgeBasehref,
+    aboutHtml: game.aboutHtml,
+
+    progression: Object.fromEntries(
+      SectionStore.getAll().map(section => [
+        section.meta.sectionKey,
+        materializeRuntimeSection(section, game)
+      ])
+    )
   };
 }
-``
+
+function materializeRuntimeSection(section, game) {
+  return {
+    headerTitle: section.meta.headerTitle ?? "",
+    headerImg: section.meta.headerImg ?? "",
+    headerImgAlt: section.meta.headerImgAlt ?? "",
+    summaryShort: section.meta.summaryShort ?? "",
+    summaryHtml: materializeSummaryHtml(section),
+
+    rows: section.rows
+      .map(row => materializeRuntimeRow(row, game))
+      .filter(Boolean)
+  };
+}
+
+function materializeRuntimeRow(row, game) {
+  if (row.type === "omit") return null;
+
+  const pokemonName = row.pokemon?.name?.trim();
+  if (!pokemonName) return null;
+
+  const dexNo = pokedex[pokemonName];
+  const img =
+    dexNo && game.imgBasehref
+      ? game.imgBasehref + dexNo + ".png"
+      : "";
+
+  const base = {
+    pokemon: {
+      name: pokemonName,
+      img
+    },
+    method: row.method ?? ""
+  };
+
+  const meta = row.meta?.trim() ?? "";
+
+  // ----- Choice row -----
+  if (meta && !meta.includes(":")) {
+    return {
+      ...base,
+      type: "choice",
+      choiceKey: meta,
+      choiceValue: pokemonName.toLowerCase()
+    };
+  }
+
+  // ----- Conditional row -----
+  if (meta.includes(":")) {
+    const [key, value] = meta.split(":").map(s => s.trim());
+    if (key && value) {
+      return {
+        ...base,
+        requires: {
+          [key]: value
+        }
+      };
+    }
+  }
+
+  // ----- Normal row -----
+  return base;
+}
+
+
+
 
 window.OAK_TRACKER_EDITOR_OUTPUT = materializeOakTrackerData();
 
 /* --------------------------------------------------------------------------
  Live Preview Wiring
  -------------------------------------------------------------------------- */
+function onGameMetaChange() {
+  window.OAK_TRACKER_EDITOR_OUTPUT = materializeOakTrackerData();
+
+  saveDraft();
+
+  updateOakOutputPreview();
+
+  for (const sectionId of previewReady) {
+    stagePreviewData(sectionId);
+    updatePreviewForSection(sectionId);
+  }
+}
+
+document.addEventListener("input", e => {
+  if (!e.target.closest(".game-meta")) return;
+  onGameMetaChange();
+});
+
+
 const updatePreviewDebounced = debounce(section => {
   const meta = collectSectionMeta(section);
   const raw = qs(section, ".summary-input").value;
