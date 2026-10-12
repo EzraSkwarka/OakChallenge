@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <base href="/OakChallenge/" />
+    <link rel="icon" href="favicon.ico" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Rare Candy Planner — Oak Tracker</title>
+
+    <link rel="stylesheet" href="assets/css/base.css" />
+    <link rel="stylesheet" href="assets/css/chrome.css" />
+    <link rel="stylesheet" href="assets/css/tracker.css" />
+    <link rel="stylesheet" href="assets/css/sticky-header.css" />
+    <link rel="stylesheet" href="assets/css/icons.css" />
+
+    <script src="assets/js/site-chrome.js" defer></script>
+    <script src="assets/js/site-theme.js" defer></script>
+
+    <script src="data/pokemon.js" defer></script>
+    <script src="assets/js/rare-candy-planner.js" defer></script>
+</head>
+
+<body>
+
+    <div id="site-header-host"></div>
+
+    <div class="page-band">
+        <div class="container">
+
+            <div class="section-break">
+                <span class="section-break-label">
+                    Rare Candy Planner
+                </span>
+            </div>
+
+            <div class="planner-summary">
+
+                <div class="chip">
+                    Rare Candies:
+                    <input type="number" id="rareCandyCount" min="0" value="40" />
+                </div>
+
+                <div id="plannerXpSaved" class="chip">
+                    Estimated XP Saved: 0
+                </div>
+
+            </div>
+
+            <div class="section-break">
+                <span class="section-break-label">
+                    Pokémon To Train
+                </span>
+            </div>
+
+            <div class="footer-actions">
+                <button id="addPokemonBtn" type="button">
+                    Add Pokémon
+                </button>
+            </div>
+
+            <div class="table-wrap">
+
+                <table id="pokemonInputTable" aria-label="Pokemon Training List">
+
+                    <thead>
+                        <tr>
+                            <th>Pokémon</th>
+                            <th>Current Level</th>
+                            <th>Target Level</th>
+                            <th class="center">Action</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="pokemonList"></tbody>
+
+                </table>
+
+            </div>
+
+            <div class="section-break">
+                <span class="section-break-label">
+                    Recommended Allocation
+                </span>
+            </div>
+
+            <div class="table-wrap">
+
+                <table id="allocationTable" aria-label="Recommended Rare Candy Allocation">
+
+                    <thead>
+                        <tr>
+                            <th>Pokémon</th>
+                            <th>Candies</th>
+                            <th>Level Result</th>
+                            <th>XP Saved</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="recommendationOutput">
+                    </tbody>
+
+                </table>
+
+            </div>
+
+            <div class="section-break">
+                <span class="section-break-label">
+                    Evolution Requirements
+                </span>
+            </div>
+
+            <div class="table-wrap">
+
+                <table id="candidateTable" aria-label="Evolution Requirements">
+
+                    <thead>
+                        <tr>
+                            <th>Pokémon</th>
+                            <th>Current Level</th>
+                            <th>Target Level</th>
+                            <th>Candies Needed</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div id="site-footer-host"></div>
+
+    <datalist id="pokemonNames"></datalist>
+
+</body>
+
+</html>

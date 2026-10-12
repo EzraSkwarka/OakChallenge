@@ -1,0 +1,137 @@
+/* -----------------------------
+| Page Layout
+------------------------------ */
+
+.planner-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 12px 0 20px;
+}
+
+.planner-summary .chip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.planner-summary input {
+  width: 80px;
+  text-align: center;
+}
+
+/* -----------------------------
+| Input Table
+------------------------------ */
+
+#pokemonInputTable input {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#pokemonInputTable td,
+#candidateTable td,
+#allocationTable td {
+  vertical-align: middle;
+}
+
+#pokemonInputTable .remove-pokemon-btn {
+  width: 100%;
+}
+
+/* -----------------------------
+| Buttons
+------------------------------ */
+
+#addPokemonBtn {
+  min-width: 180px;
+}
+
+/* -----------------------------
+| Tables
+------------------------------ */
+
+#pokemonInputTable,
+#candidateTable,
+#allocationTable {
+  width: 100%;
+}
+
+#allocationTable tbody:empty::after {
+  content: "No recommendation available.";
+  display: block;
+  padding: 16px;
+  text-align: center;
+  opacity: 0.75;
+}
+
+/* -----------------------------
+| Pokemon Cells
+------------------------------ */
+
+.allocation-pokemon,
+.candidate-pokemon {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.allocation-pokemon img,
+.candidate-pokemon img {
+  width: 32px;
+  height: 32px;
+  image-rendering: pixelated;
+}
+
+/* -----------------------------
+| Summary Stats
+------------------------------ */
+
+#plannerXpSaved {
+  font-weight: 600;
+}
+
+#plannerXpSaved.good {
+  color: var(--success-color, #3aa655);
+}
+
+/* -----------------------------
+| Recommendation Table
+------------------------------ */
+
+#allocationTable tbody tr:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+#allocationTable td:nth-child(2),
+#allocationTable td:nth-child(3),
+#allocationTable td:nth-child(4) {
+  text-align: center;
+}
+
+/* -----------------------------
+| Evolution Table
+------------------------------ */
+
+#candidateTable td:last-child {
+  text-align: center;
+  font-weight: 600;
+}
+
+/* -----------------------------
+| Mobile
+------------------------------ */
+
+@media (max-width: 768px) {
+  .planner-summary {
+    flex-direction: column;
+  }
+
+  .planner-summary .chip {
+    width: 100%;
+  }
+
+  .table-wrap {
+    overflow-x: auto;
+  }
+}
