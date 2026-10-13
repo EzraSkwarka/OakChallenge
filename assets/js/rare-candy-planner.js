@@ -39,6 +39,12 @@ function savePlannerState() {
       name: card.querySelector(".pokemon-name").value,
 
       level: Number(card.querySelector(".current-level").value) || 1,
+
+      finalPokemon: card.querySelector(".final-pokemon-name")?.value ?? "",
+
+      evolutionLevel: Number(card.querySelector(".evolution-level").value) || null,
+
+      gameId: card.querySelector(".source-game")?.value ?? "",
     });
   });
 
@@ -56,8 +62,19 @@ function loadPlannerState() {
 
   const savedPokemon = JSON.parse(localStorage.getItem(LS_POKEMON) || "[]");
 
-  savedPokemon.forEach((pokemon) => {
-    createPokemonCard(pokemon.name, pokemon.level);
+  savedPokemon.forEach((saved) => {
+    const finalPokemon = findPokemon(saved.finalPokemon);
+
+    const trackerEvolution =
+      finalPokemon && saved.evolutionLevel != null
+        ? {
+            finalPokemon,
+            evolutionLevel: saved.evolutionLevel,
+            gameId: saved.gameId ?? "",
+          }
+        : null;
+
+    createPokemonCard(saved.name, saved.level, trackerEvolution);
   });
 }
 
@@ -127,9 +144,19 @@ function getExpForNextLevel(level, growthRate) {
 ------------------------------ */
 
 async function loadGameManifest() {
-  const response = await fetch("data/manifest.games.json");
+  try {
+    const response = await fetch("data/manifest.games.json");
 
-  gameManifest = await response.json();
+    if (!response.ok) {
+      throw new Error(`Manifest request failed: ${response.status}`);
+    }
+
+    gameManifest = await response.json();
+  } catch {
+    gameManifest = {
+      games: [],
+    };
+  }
 }
 
 function getGameInfo(gameId) {
@@ -140,72 +167,6 @@ function getGameInfo(gameId) {
   return gameManifest.games.find((game) => game.id === gameId);
 }
 
-function pokemonNeedsEvolution(pokemon) {
-  return pokemon && pokemon.evolutions && pokemon.evolutions.length > 0;
-}
-
-function getEvolutionDepth(pokemon) {
-  let depth = 0;
-  let current = pokemon;
-
-  while (current && current.evolutions && current.evolutions.length > 0) {
-    depth++;
-
-    current = findPokemon(current.evolutions[0].species);
-  }
-
-  return depth;
-}
-
-function importTrackerProgress(gameId) {
-  const caughtData = JSON.parse(localStorage.getItem(`poke-caught:${gameId}`) || "{}");
-
-  const families = {};
-
-  Object.keys(caughtData).forEach((pokemonName) => {
-    const pokemon = findPokemon(pokemonName);
-
-    if (!pokemon) {
-      return;
-    }
-
-    const familyKey = getFinalEvolution(pokemon.name)?.name ?? pokemon.name;
-
-    const current = families[familyKey];
-
-    if (!current) {
-      families[familyKey] = pokemon;
-
-      return;
-    }
-
-    const currentDepth = getEvolutionDepth(current);
-
-    const pokemonDepth = getEvolutionDepth(pokemon);
-
-    if (pokemonDepth < currentDepth) {
-      families[familyKey] = pokemon;
-    }
-  });
-
-  Object.values(families).forEach((pokemon) => {
-    const hasLevelEvolution = pokemon.evolutions.some((evo) => evo.level != null);
-
-    if (!hasLevelEvolution) {
-      return;
-    }
-
-    const alreadyExists = [...document.querySelectorAll(".pokemon-name")].some((input) => input.value === pokemon.name);
-
-    if (alreadyExists) {
-      return;
-    }
-
-    createPokemonCard(pokemon.name);
-  });
-
-  updatePlanner();
-}
 /* -----------------------------
 | Tracker Import
 ------------------------------ */
@@ -302,8 +263,6 @@ function renderTrackerImport() {
 
   container.querySelectorAll(".tracker-import-card").forEach((card) => {
     card.addEventListener("click", () => {
-      container.innerHTML = "";
-
       importTrackerProgress(card.dataset.game);
     });
   });
@@ -313,108 +272,121 @@ function renderTrackerImport() {
 | Pokemon Row Management
 ------------------------------ */
 
-function createPokemonCard(pokemonName, level = 1) {
+function createPokemonCard(pokemonName, level = 1, trackerEvolution = null) {
   const pokemon = findPokemon(pokemonName);
 
   if (!pokemon) {
     return;
   }
 
-  const finalPokemon = getFinalEvolution(pokemon.name);
+  const finalPokemon = trackerEvolution?.finalPokemon ?? getFinalEvolution(pokemon.name);
+
+  const evolutionLevel = trackerEvolution?.evolutionLevel ?? getFinalEvolutionLevel(pokemon.name);
+
+  if (!finalPokemon || evolutionLevel == null) {
+    return;
+  }
 
   const card = document.createElement("div");
 
   card.className = "pokemon-entry pokemon-card";
 
   card.innerHTML = `
-  <button
-    class="pokemon-card-remove"
-    type="button"
-  >
-    ✕
-  </button>
+    <button
+      class="pokemon-card-remove"
+      type="button"
+      aria-label="Remove ${pokemon.name}"
+    >
+      ✕
+    </button>
 
-  <input
-    type="hidden"
-    class="pokemon-name"
-    value="${pokemon.name}"
-  >
-
-  <input
-    type="hidden"
-    class="evolution-level"
-    value="${getFinalEvolutionLevel(pokemon.name) ?? ""}"
-  >
-
-  <div class="pokemon-card-title">
-    ${finalPokemon?.name ?? pokemon.name}
-  </div>
-
-  <div class="candy-path">
-
-    <img
-      class="candy-path-pokemon"
-      src="${getPokemonImage(pokemon.name)}"
-      alt="${pokemon.name}"
+    <input
+      type="hidden"
+      class="pokemon-name"
+      value="${pokemon.name}"
     >
 
-    <div class="candy-path-middle">
+    <input
+      type="hidden"
+      class="evolution-level"
+      value="${evolutionLevel}"
+    >
 
-      <img
-        class="rare-candy-icon"
-        src="assets/images/ui/rarecandy.png"
-        alt="Rare Candy"
-      >
+    <input
+      type="hidden"
+      class="final-pokemon-name"
+      value="${finalPokemon.name}"
+    >
 
+    <input
+      type="hidden"
+      class="source-game"
+      value="${trackerEvolution?.gameId ?? ""}"
+    >
+
+    <div class="pokemon-card-title">
+      ${finalPokemon.name}
     </div>
 
-    <img
-      class="candy-path-pokemon"
-      src="${getPokemonImage(finalPokemon?.name ?? pokemon.name)}"
-      alt="${finalPokemon?.name ?? pokemon.name}"
-    >
+    <div class="candy-path">
+      <img
+        class="candy-path-pokemon"
+        src="${getPokemonImage(pokemon.name)}"
+        alt="${pokemon.name}"
+      >
 
-  </div>
+      <div class="candy-path-middle">
+        <img
+          class="rare-candy-icon"
+          src="assets/images/ui/rarecandy.png"
+          alt="Rare Candy"
+        >
+      </div>
 
-<div class="candy-level-row">
+      <img
+        class="candy-path-pokemon"
+        src="${getPokemonImage(finalPokemon.name)}"
+        alt="${finalPokemon.name}"
+      >
+    </div>
 
-  <div class="current-level-wrap">
-    Lvl.
-    <input
-      type="number"
-      class="current-level"
-      min="1"
-      max="100"
-      value="${level}"
-    >
-  </div>
+        <div class="candy-level-row">
+      <div class="current-level-wrap">
+        Lvl.
 
-  <div class="allocation-summary">
-    Saves
-    <span class="allocation-exp">
-      0
-    </span>
-    EXP
-  </div>
+        <input
+          type="number"
+          class="current-level"
+          min="1"
+          max="100"
+          value="${level}"
+        >
+      </div>
 
-</div>
+      <div class="allocation-summary">
+        Saves
+        <span class="allocation-exp">
+          0
+        </span>
+        EXP
+      </div>
+    </div>
 
-  <div class="pokemon-allocation-summary">
-    Use
-    <strong class="allocation-summary-count">
-      0
-    </strong>
-    Rare Candies
-  </div>
+    <div class="pokemon-allocation-summary">
+      Use
+      <strong class="allocation-summary-count">
+        0
+      </strong>
+      Rare Candies
+    </div>
+  `;
 
-</div>
-`;
-  document.getElementById("pokemonCardContainer").querySelector(".tracker-import-wrapper")?.remove();
+  pokemonList.querySelector(".tracker-import-wrapper")?.remove();
+
   pokemonList.appendChild(card);
 
   card.querySelector(".pokemon-card-remove").addEventListener("click", () => {
     card.remove();
-
     updatePlanner();
 
     if (document.querySelectorAll(".pokemon-entry").length === 0) {
@@ -438,6 +410,68 @@ function getPokemonImage(name) {
 /* -----------------------------
 | Planner Data Collection
 ------------------------------ */
+function getLevelEvolutionResult(speciesName, allowedPokemon = null) {
+  const pokemon = findPokemon(speciesName);
+
+  if (!pokemon) {
+    return null;
+  }
+
+  if (allowedPokemon && !allowedPokemon.has(pokemon.name.toLowerCase())) {
+    return null;
+  }
+
+  function walk(currentPokemon, highestLevel = null, depth = 0) {
+    const candidates = currentPokemon.evolutions
+      .filter((evolution) => {
+        if (evolution.level == null) {
+          return false;
+        }
+
+        if (allowedPokemon && !allowedPokemon.has(evolution.species.toLowerCase())) {
+          return false;
+        }
+
+        return true;
+      })
+      .map((evolution) => {
+        const nextPokemon = findPokemon(evolution.species);
+
+        if (!nextPokemon) {
+          return null;
+        }
+
+        return walk(nextPokemon, Math.max(highestLevel ?? 0, evolution.level), depth + 1);
+      })
+      .filter(Boolean);
+
+    if (!candidates.length) {
+      return {
+        pokemon: currentPokemon,
+        level: highestLevel,
+        depth,
+      };
+    }
+
+    return candidates.sort((a, b) => {
+      if (b.depth !== a.depth) {
+        return b.depth - a.depth;
+      }
+
+      return a.pokemon.dexNumber - b.pokemon.dexNumber;
+    })[0];
+  }
+
+  return walk(pokemon);
+}
+
+function getFinalEvolution(speciesName, allowedPokemon = null) {
+  return getLevelEvolutionResult(speciesName, allowedPokemon)?.pokemon ?? null;
+}
+
+function getFinalEvolutionLevel(speciesName, allowedPokemon = null) {
+  return getLevelEvolutionResult(speciesName, allowedPokemon)?.level ?? null;
+}
 
 function getPlannerPokemon() {
   const pokemon = [];
@@ -470,57 +504,168 @@ function getPlannerPokemon() {
   return pokemon;
 }
 
-function getFinalEvolutionLevel(speciesName) {
-  const pokemon = findPokemon(speciesName);
+function isTrackerPokemonCaught(caughtData, pokemonName) {
+  const matchingKey = Object.keys(caughtData).find((name) => name.toLowerCase() === pokemonName.toLowerCase());
 
-  if (!pokemon) {
-    return null;
+  if (!matchingKey) {
+    return false;
   }
 
-  let highestLevel = null;
+  const value = caughtData[matchingKey];
 
-  function walk(currentPokemon) {
-    currentPokemon.evolutions.forEach((evo) => {
-      if (evo.level != null) {
-        highestLevel = highestLevel === null ? evo.level : Math.max(highestLevel, evo.level);
-      }
-
-      const nextPokemon = findPokemon(evo.species);
-
-      if (nextPokemon) {
-        walk(nextPokemon);
-      }
-    });
+  if (typeof value === "boolean") {
+    return value;
   }
 
-  walk(pokemon);
+  if (typeof value === "number") {
+    return value === 1;
+  }
 
-  return highestLevel;
+  if (typeof value === "string") {
+    return value === "true" || value === "1";
+  }
+
+  if (value && typeof value === "object") {
+    return value.caught === true || value.checked === true || value.complete === true;
+  }
+
+  return false;
 }
 
-function getFinalEvolution(speciesName) {
-  const pokemon = findPokemon(speciesName);
+const progressionCache = new Map();
 
-  if (!pokemon) {
-    return null;
+function loadGameProgression(gameId) {
+  if (progressionCache.has(gameId)) {
+    return Promise.resolve(progressionCache.get(gameId));
   }
 
-  let finalPokemon = pokemon;
+  return new Promise((resolve, reject) => {
+    const previousGameData = window.gameData;
 
-  function walk(currentPokemon) {
-    currentPokemon.evolutions.forEach((evo) => {
-      const nextPokemon = findPokemon(evo.species);
+    const script = document.createElement("script");
 
-      if (nextPokemon) {
-        finalPokemon = nextPokemon;
-        walk(nextPokemon);
+    script.src = `data/${gameId}/progression.js`;
+
+    script.onload = () => {
+      const loadedGameData = window.gameData;
+
+      if (!loadedGameData || loadedGameData.gameId !== gameId || !loadedGameData.progression) {
+        window.gameData = previousGameData;
+
+        script.remove();
+
+        reject(new Error(`Invalid progression data for ${gameId}`));
+
+        return;
+      }
+
+      progressionCache.set(gameId, loadedGameData);
+
+      window.gameData = previousGameData;
+
+      script.remove();
+
+      resolve(loadedGameData);
+    };
+
+    script.onerror = () => {
+      window.gameData = previousGameData;
+
+      script.remove();
+
+      reject(new Error(`Unable to load progression data for ${gameId}`));
+    };
+
+    document.head.appendChild(script);
+  });
+}
+
+function getProgressionPokemonNames(gameData) {
+  const names = new Set();
+
+  Object.values(gameData.progression ?? {}).forEach((section) => {
+    (section.rows ?? []).forEach((row) => {
+      const name = row.pokemon?.name?.trim();
+
+      if (name && findPokemon(name)) {
+        names.add(name.toLowerCase());
       }
     });
+  });
+
+  return names;
+}
+
+async function importTrackerProgress(gameId) {
+  const caughtData = JSON.parse(localStorage.getItem(`poke-caught:${gameId}`) || "{}");
+
+  let gameData;
+
+  try {
+    gameData = await loadGameProgression(gameId);
+  } catch (error) {
+    console.error(error);
+    return;
   }
 
-  walk(pokemon);
+  const allowedPokemon = getProgressionPokemonNames(gameData);
 
-  return finalPokemon;
+  const families = new Map();
+
+  Object.keys(caughtData).forEach((pokemonName) => {
+    const pokemon = findPokemon(pokemonName);
+
+    if (!pokemon || !isTrackerPokemonCaught(caughtData, pokemon.name) || !allowedPokemon.has(pokemon.name.toLowerCase())) {
+      return;
+    }
+
+    const evolutionResult = getLevelEvolutionResult(pokemon.name, allowedPokemon);
+
+    if (!evolutionResult || evolutionResult.depth === 0 || evolutionResult.level == null) {
+      return;
+    }
+
+    if (isTrackerPokemonCaught(caughtData, evolutionResult.pokemon.name)) {
+      return;
+    }
+
+    const familyKey = evolutionResult.pokemon.name;
+
+    const existing = families.get(familyKey);
+
+    if (!existing || evolutionResult.depth < existing.evolutionResult.depth) {
+      families.set(familyKey, {
+        pokemon,
+        evolutionResult,
+      });
+    }
+  });
+
+  let importedCount = 0;
+
+  families.forEach(({ pokemon, evolutionResult }) => {
+    const alreadyExists = [...document.querySelectorAll(".pokemon-name")].some((input) => input.value.toLowerCase() === pokemon.name.toLowerCase());
+
+    if (alreadyExists) {
+      return;
+    }
+
+    createPokemonCard(pokemon.name, 1, {
+      finalPokemon: evolutionResult.pokemon,
+
+      evolutionLevel: evolutionResult.level,
+
+      gameId,
+    });
+
+    importedCount++;
+  });
+
+  updatePlanner();
+
+  if (importedCount === 0) {
+    renderTrackerImport();
+  }
 }
 
 /* -----------------------------
@@ -574,17 +719,30 @@ function calculateAllocation(pokemon, rareCandies) {
 }
 
 function updatePokemonCards(allocationResult) {
+  document.querySelectorAll(".pokemon-entry").forEach((card) => {
+    card.classList.add("is-unallocated");
+
+    const candyCount = card.querySelector(".allocation-summary-count");
+
+    const expSaved = card.querySelector(".allocation-exp");
+
+    if (candyCount) {
+      candyCount.textContent = "0";
+    }
+
+    if (expSaved) {
+      expSaved.textContent = "0";
+    }
+  });
+
   allocationResult.pokemon.forEach((allocation) => {
     const card = [...document.querySelectorAll(".pokemon-entry")].find((entry) => entry.querySelector(".pokemon-name").value === allocation.name);
 
     if (!card) {
       return;
     }
-    if (allocation.candiesAllocated === 0) {
-      card.classList.add("is-unallocated");
-    } else {
-      card.classList.remove("is-unallocated");
-    }
+
+    card.classList.toggle("is-unallocated", allocation.candiesAllocated === 0);
 
     const levelBeingSkipped = allocation.evolve - allocation.candiesAllocated;
 
@@ -592,11 +750,15 @@ function updatePokemonCards(allocationResult) {
 
     const candyCount = card.querySelector(".allocation-summary-count");
 
+    const expElement = card.querySelector(".allocation-exp");
+
     if (candyCount) {
       candyCount.textContent = allocation.candiesAllocated;
     }
 
-    card.querySelector(".allocation-exp").textContent = expSaved.toLocaleString();
+    if (expElement) {
+      expElement.textContent = expSaved.toLocaleString();
+    }
   });
 
   const total = document.getElementById("plannerXpSaved");
@@ -611,7 +773,7 @@ function updatePokemonCards(allocationResult) {
 ------------------------------ */
 
 function updatePlanner() {
-  const rareCandies = Number(rareCandyInput.value) || 0;
+  const rareCandies = Math.max(0, Number(rareCandyInput.value) || 0);
 
   const pokemon = getPlannerPokemon();
 
@@ -619,15 +781,8 @@ function updatePlanner() {
 
   updatePokemonCards(allocationResult);
 
-  const xpDisplay = document.getElementById("plannerXpSaved");
-
-  if (xpDisplay) {
-    xpDisplay.textContent = `Estimated XP Saved: ${allocationResult.totalExpSaved.toLocaleString()}`;
-  }
-
   savePlannerState();
 }
-
 /* -----------------------------
 | Pokemon Search
 ------------------------------ */
