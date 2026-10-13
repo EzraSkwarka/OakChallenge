@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <base href="/OakChallenge/" />
+    <link rel="icon" href="favicon.ico" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Rare Candy Planner — Oak Tracker</title>
+
+    <link rel="stylesheet" href="assets/css/base.css" />
+    <link rel="stylesheet" href="assets/css/chrome.css" />
+    <link rel="stylesheet" href="assets/css/tracker.css" />
+    <link rel="stylesheet" href="assets/css/sticky-header.css" />
+    <link rel="stylesheet" href="assets/css/icons.css" />
+    <link rel="stylesheet" href="assets/css/rarecandy.css" />
+
+    <script src="assets/js/site-chrome.js" defer></script>
+    <script src="assets/js/site-theme.js" defer></script>
+
+    <script src="data/pokemon.js" defer></script>
+    <script src="assets/js/rare-candy-planner.js" defer></script>
+</head>
+
+<body>
+
+    <div id="site-header-host"></div>
+
+    <div class="page-band">
+        <div class="container">
+
+            <h1>Rare Candy Planner</h1>
+
+            <div class="planner-intro">
+
+                <p>
+                    The Rare Candy Planner helps determine the most efficient use of
+                    your available Rare Candies during a Professor Oak Challenge.
+                </p>
+
+                <p>
+                    Add Pokémon families that still need to be completed, then
+                    optionally enter their current levels. The planner works backwards
+                    from each family's final evolution level and allocates Rare Candies
+                    to the levels that would save the most experience.
+                </p>
+
+                <ul>
+                    <li>Add every Pokémon family you still need to evolve.</li>
+                    <li>Enter a current level if known, or leave the default value.</li>
+                    <li>Set the number of Rare Candies you currently own.</li>
+                    <li>Review the planner's recommendations on each card.</li>
+                </ul>
+
+            </div>
+            <h2>Pokémon To Train</h2>
+            <div class="planner-header">
+
+                <div class="pokemon-search-panel">
+
+                    <div class="pokemon-search-title">
+                        Add Pokémon
+                    </div>
+
+                    <div class="pokemon-search-subtitle">
+                        Search for a Pokémon family that still requires evolution.
+                    </div>
+
+                    <input type="text" id="pokemonSearch" list="pokemonNames"
+                        placeholder="Start typing a Pokémon name...">
+
+                </div>
+
+                <div class="rare-candy-counter">
+
+                    <img class="rare-candy-counter-image" src="assets/images/ui/rarecandy.png" alt="Rare Candy">
+
+                    <div class="rare-candy-counter-text">
+                        I have
+                        <input type="number" id="rareCandyCount" min="0" value="40">
+                        Rare Candies
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <div id="pokemonCardContainer"></div>
+
+            <div id="plannerXpSaved" class="planner-xp-saved">
+                Estimated XP Saved: 0
+            </div>
+
+        </div>
+    </div>
+
+    <div id="site-footer-host"></div>
+
+    <datalist id="pokemonNames"></datalist>
+
+</body>
+
+</html>
