@@ -189,7 +189,9 @@ function importTrackerProgress(gameId) {
   });
 
   Object.values(families).forEach((pokemon) => {
-    if (!pokemonNeedsEvolution(pokemon)) {
+    const hasLevelEvolution = pokemon.evolutions.some((evo) => evo.level != null);
+
+    if (!hasLevelEvolution) {
       return;
     }
 
