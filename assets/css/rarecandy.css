@@ -1,121 +1,347 @@
 /* -----------------------------
-| Page Layout
+| Intro
 ------------------------------ */
 
-.planner-summary {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin: 12px 0 20px;
+.planner-intro {
+  padding: 16px;
+
+  margin-bottom: 20px;
+
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+
+  background: var(--surface);
+
+  box-shadow: var(--shadow-sm);
+
+  color: var(--text);
 }
 
-.planner-summary .chip {
-  display: flex;
-  align-items: center;
-  gap: 8px;
+.planner-intro p:first-child {
+  margin-top: 0;
 }
 
-.planner-summary input {
-  width: 80px;
-  text-align: center;
+.planner-intro p:last-child,
+.planner-intro ul:last-child {
+  margin-bottom: 0;
+}
+
+.planner-intro ul {
+  margin-top: 12px;
+  padding-left: 20px;
+}
+
+.planner-intro li {
+  margin: 4px 0;
 }
 
 /* -----------------------------
-| Input Table
+| Planner Header
 ------------------------------ */
 
-#pokemonInputTable input {
+.planner-header {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 24px;
+
+  align-items: stretch;
+
+  margin-bottom: 12px;
+}
+
+.planner-xp-saved {
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+  text-align: center;
+
+  font-size: 1.1rem;
+  font-weight: 700;
+
+  color: var(--muted);
+}
+
+/* -----------------------------
+| Search Panel
+------------------------------ */
+
+.pokemon-search-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  padding: 16px;
+
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+
+  background: var(--surface);
+
+  box-shadow: var(--shadow-sm);
+}
+
+.pokemon-search-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+
+  color: var(--text);
+
+  margin-bottom: 4px;
+}
+
+.pokemon-search-subtitle {
+  font-size: 0.9rem;
+
+  color: var(--muted);
+
+  margin-bottom: 12px;
+}
+
+#pokemonSearch {
   width: 100%;
   box-sizing: border-box;
 }
 
-#pokemonInputTable td,
-#candidateTable td,
-#allocationTable td {
-  vertical-align: middle;
-}
-
-#pokemonInputTable .remove-pokemon-btn {
-  width: 100%;
-}
-
 /* -----------------------------
-| Buttons
+| Rare Candy Counter
 ------------------------------ */
 
-#addPokemonBtn {
-  min-width: 180px;
-}
+.rare-candy-counter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
-/* -----------------------------
-| Tables
------------------------------- */
+  min-width: 240px;
 
-#pokemonInputTable,
-#candidateTable,
-#allocationTable {
-  width: 100%;
-}
-
-#allocationTable tbody:empty::after {
-  content: "No recommendation available.";
-  display: block;
   padding: 16px;
-  text-align: center;
-  opacity: 0.75;
+
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+
+  background: var(--surface);
+
+  box-shadow: var(--shadow-sm);
 }
 
-/* -----------------------------
-| Pokemon Cells
------------------------------- */
+.rare-candy-counter-image {
+  width: 96px;
+  height: 96px;
 
-.allocation-pokemon,
-.candidate-pokemon {
+  object-fit: contain;
+}
+
+.rare-candy-counter-text {
   display: flex;
   align-items: center;
   gap: 8px;
-}
 
-.allocation-pokemon img,
-.candidate-pokemon img {
-  width: 32px;
-  height: 32px;
-  image-rendering: pixelated;
-}
+  margin-top: 8px;
 
-/* -----------------------------
-| Summary Stats
------------------------------- */
-
-#plannerXpSaved {
   font-weight: 600;
 }
 
-#plannerXpSaved.good {
-  color: var(--success-color, #3aa655);
-}
-
-/* -----------------------------
-| Recommendation Table
------------------------------- */
-
-#allocationTable tbody tr:hover {
-  background: rgba(255, 255, 255, 0.04);
-}
-
-#allocationTable td:nth-child(2),
-#allocationTable td:nth-child(3),
-#allocationTable td:nth-child(4) {
+.rare-candy-counter-text input {
+  width: 70px;
   text-align: center;
 }
 
 /* -----------------------------
-| Evolution Table
+| Pokemon Cards
 ------------------------------ */
 
-#candidateTable td:last-child {
+#pokemonCardContainer {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 16px;
+
+  margin-top: 16px;
+
+  align-items: flex-start;
+}
+
+.pokemon-card {
+  position: relative;
+
+  width: fit-content;
+
+  padding: 16px;
+
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+
+  background: var(--surface);
+
+  box-shadow: var(--shadow-sm);
+
+  box-sizing: border-box;
+
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.pokemon-card:hover {
+  background: var(--hover);
+  box-shadow: var(--shadow-md);
+}
+
+.pokemon-card-remove {
+  position: absolute;
+
+  top: 8px;
+  right: 8px;
+
+  border: none;
+  background: none;
+
+  color: #dc2626;
+
+  font-size: 20px;
+  line-height: 1;
+
+  cursor: pointer;
+}
+
+.pokemon-card-remove:hover {
+  color: #ef4444;
+}
+
+.pokemon-card-title {
   text-align: center;
+
+  font-size: 1.1rem;
+  font-weight: 700;
+
+  color: var(--text);
+
+  margin-bottom: 12px;
+}
+
+/* -----------------------------
+| Evolution Path
+------------------------------ */
+
+.candy-path {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 20px;
+}
+
+.candy-path-pokemon {
+  width: 96px;
+  height: 96px;
+
+  object-fit: contain;
+
+  flex-shrink: 0;
+}
+
+.candy-path-middle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 2px;
+
+  flex-shrink: 0;
+}
+
+.candy-path-middle span {
+  font-size: 1rem;
+  font-weight: 700;
+
+  line-height: 1;
+
+  color: var(--text);
+}
+
+.rare-candy-icon {
+  width: 48px;
+  height: 48px;
+
+  object-fit: contain;
+
+  flex-shrink: 0;
+}
+
+/* -----------------------------
+| Card Footer
+------------------------------ */
+
+.candy-level-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-top: 12px;
+}
+
+.current-level-wrap {
+  display: flex;
+  align-items: center;
+
+  gap: 6px;
+}
+
+.current-level-wrap input {
+  width: 60px;
+
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+
+  background: var(--surface);
+  color: var(--text);
+
+  text-align: center;
+}
+
+.final-level-wrap {
   font-weight: 600;
+  color: var(--muted);
+}
+
+.pokemon-allocation-summary {
+  margin-top: 12px;
+
+  text-align: center;
+
+  color: var(--muted);
+
+  font-size: 0.9rem;
+}
+
+.allocation-summary-count {
+  color: var(--text);
+}
+
+.allocation-summary {
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.allocation-exp {
+  color: var(--text);
+}
+
+/* -----------------------------
+| Remove Number Spinners
+------------------------------ */
+
+input[type="number"] {
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 /* -----------------------------
@@ -123,15 +349,25 @@
 ------------------------------ */
 
 @media (max-width: 768px) {
-  .planner-summary {
-    flex-direction: column;
+  .planner-header {
+    grid-template-columns: 1fr;
   }
 
-  .planner-summary .chip {
-    width: 100%;
+  .rare-candy-counter {
+    min-width: 0;
   }
 
-  .table-wrap {
-    overflow-x: auto;
+  .candy-path {
+    gap: 12px;
+  }
+
+  .candy-path-pokemon {
+    width: 72px;
+    height: 72px;
+  }
+
+  .rare-candy-icon {
+    width: 32px;
+    height: 32px;
   }
 }

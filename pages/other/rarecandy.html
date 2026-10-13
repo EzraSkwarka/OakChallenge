@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="assets/css/tracker.css" />
     <link rel="stylesheet" href="assets/css/sticky-header.css" />
     <link rel="stylesheet" href="assets/css/icons.css" />
+    <link rel="stylesheet" href="assets/css/rarecandy.css" />
 
     <script src="assets/js/site-chrome.js" defer></script>
     <script src="assets/js/site-theme.js" defer></script>
@@ -30,106 +31,68 @@
     <div class="page-band">
         <div class="container">
 
-            <div class="section-break">
-                <span class="section-break-label">
-                    Rare Candy Planner
-                </span>
+            <h1>Rare Candy Planner</h1>
+
+            <div class="planner-intro">
+
+                <p>
+                    The Rare Candy Planner helps determine the most efficient use of
+                    your available Rare Candies during a Professor Oak Challenge.
+                </p>
+
+                <p>
+                    Add Pokémon families that still need to be completed, then
+                    optionally enter their current levels. The planner works backwards
+                    from each family's final evolution level and allocates Rare Candies
+                    to the levels that would save the most experience.
+                </p>
+
+                <ul>
+                    <li>Add every Pokémon family you still need to evolve.</li>
+                    <li>Enter a current level if known, or leave the default value.</li>
+                    <li>Set the number of Rare Candies you currently own.</li>
+                    <li>Review the planner's recommendations on each card.</li>
+                </ul>
+
             </div>
+            <h2>Pokémon To Train</h2>
+            <div class="planner-header">
 
-            <div class="planner-summary">
+                <div class="pokemon-search-panel">
 
-                <div class="chip">
-                    Rare Candies:
-                    <input type="number" id="rareCandyCount" min="0" value="40" />
+                    <div class="pokemon-search-title">
+                        Add Pokémon
+                    </div>
+
+                    <div class="pokemon-search-subtitle">
+                        Search for a Pokémon family that still requires evolution.
+                    </div>
+
+                    <input type="text" id="pokemonSearch" list="pokemonNames"
+                        placeholder="Start typing a Pokémon name...">
+
                 </div>
 
-                <div id="plannerXpSaved" class="chip">
-                    Estimated XP Saved: 0
+                <div class="rare-candy-counter">
+
+                    <img class="rare-candy-counter-image" src="assets/images/ui/rarecandy.png" alt="Rare Candy">
+
+                    <div class="rare-candy-counter-text">
+                        I have
+                        <input type="number" id="rareCandyCount" min="0" value="40">
+                        Rare Candies
+                    </div>
+
                 </div>
 
             </div>
 
-            <div class="section-break">
-                <span class="section-break-label">
-                    Pokémon To Train
-                </span>
-            </div>
 
-            <div class="footer-actions">
-                <button id="addPokemonBtn" type="button">
-                    Add Pokémon
-                </button>
-            </div>
 
-            <div class="table-wrap">
+            <div id="pokemonCardContainer"></div>
 
-                <table id="pokemonInputTable" aria-label="Pokemon Training List">
-
-                    <thead>
-                        <tr>
-                            <th>Pokémon</th>
-                            <th>Current Level</th>
-                            <th>Target Level</th>
-                            <th class="center">Action</th>
-                        </tr>
-                    </thead>
-
-                    <tbody id="pokemonList"></tbody>
-
-                </table>
-
-            </div>
-
-            <div class="section-break">
-                <span class="section-break-label">
-                    Recommended Allocation
-                </span>
-            </div>
-
-            <div class="table-wrap">
-
-                <table id="allocationTable" aria-label="Recommended Rare Candy Allocation">
-
-                    <thead>
-                        <tr>
-                            <th>Pokémon</th>
-                            <th>Candies</th>
-                            <th>Level Result</th>
-                            <th>XP Saved</th>
-                        </tr>
-                    </thead>
-
-                    <tbody id="recommendationOutput">
-                    </tbody>
-
-                </table>
-
-            </div>
-
-            <div class="section-break">
-                <span class="section-break-label">
-                    Evolution Requirements
-                </span>
-            </div>
-
-            <div class="table-wrap">
-
-                <table id="candidateTable" aria-label="Evolution Requirements">
-
-                    <thead>
-                        <tr>
-                            <th>Pokémon</th>
-                            <th>Current Level</th>
-                            <th>Target Level</th>
-                            <th>Candies Needed</th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                    </tbody>
-
-                </table>
-
+            <div id="plannerXpSaved" class="planner-xp-saved">
+                Estimated XP Saved: 0
             </div>
 
         </div>
