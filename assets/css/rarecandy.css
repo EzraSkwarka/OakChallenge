@@ -235,6 +235,20 @@
   margin-bottom: 12px;
 }
 
+.pokemon-card.is-unallocated {
+  filter: grayscale(100%);
+}
+
+.pokemon-card.is-unallocated .candy-path-pokemon {
+  opacity: 0.6;
+}
+
+.pokemon-card.is-unallocated .pokemon-card-title,
+.pokemon-card.is-unallocated .allocation-summary,
+.pokemon-card.is-unallocated .pokemon-allocation-summary {
+  color: var(--muted);
+}
+
 /* -----------------------------
 | Evolution Path
 ------------------------------ */

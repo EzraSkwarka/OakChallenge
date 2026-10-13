@@ -580,6 +580,11 @@ function updatePokemonCards(allocationResult) {
     if (!card) {
       return;
     }
+    if (allocation.candiesAllocated === 0) {
+      card.classList.add("is-unallocated");
+    } else {
+      card.classList.remove("is-unallocated");
+    }
 
     const levelBeingSkipped = allocation.evolve - allocation.candiesAllocated;
 

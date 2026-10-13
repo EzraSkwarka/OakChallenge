@@ -24,7 +24,7 @@
   width: min(var(--band-width, 90vw), 100%);
   max-width: var(--band-max, 1400px);
   margin-inline: auto;
-  padding-inline: var(--container-gutter, 0.9rem);
+  padding-inline: var(--container-gutter);
   padding-block: 0.6rem;
 
   position: relative;

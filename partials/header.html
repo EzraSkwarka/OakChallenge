@@ -4,8 +4,71 @@
     <div class="site-header-bar">
       <h1 class="site-title">Professor Oak's Challenge</h1>
       <div class="header-actions">
-        <a href="index.html" class="home-btn btn" aria-label="Back to Game Selection">Game Selection</a>
-        <button type="button" class="theme-btn btn" aria-pressed="false">Theme</button>
+
+        <button type="button" class="menu-btn btn" aria-expanded="false">
+          ☰
+        </button>
+
+      </div>
+
+      <div class="menu-backdrop" hidden></div>
+
+      <nav id="site-menu" class="site-drawer" hidden>
+
+        <div class="site-drawer-header">
+
+          <span>Navigation</span>
+
+          <button type="button" class="drawer-close">
+            ✕
+          </button>
+
+        </div>
+
+        <a href="index.html" class="menu-link">
+          Game Selection
+        </a>
+
+        <a href="pages/tools/rarecandy.html" class="menu-link">
+          Rare Candy Planner
+        </a>
+
+        <button type="button" class="theme-btn menu-link">
+          Theme
+        </button>
+
+      </nav>
+
+      <nav id="site-menu" class="site-menu" hidden>
+
+        <a href="index.html" class="menu-link">
+          Game Selection
+        </a>
+
+        <a href="pages/tools/rarecandy.html" class="menu-link">
+          Rare Candy Planner
+        </a>
+
+        <button type="button" class="theme-btn menu-link">
+          Theme
+        </button>
+
+      </nav>
+
+      <div id="site-menu" class="site-menu" hidden>
+
+        <a href="index.html" class="menu-link">
+          Game Selection
+        </a>
+
+        <a href="pages/tools/rarecandy.html" class="menu-link">
+          Rare Candy Planner
+        </a>
+
+        <button type="button" class="theme-btn menu-link">
+          Theme
+        </button>
+
       </div>
     </div>
 
@@ -44,12 +107,8 @@
         </ul>
         <p class="muted">
           Source:
-          <a
-            href="https://www.reddit.com/r/ProfessorOak/comments/bj6yeh/professor_oak_challenge_guides/"
-            target="_blank"
-            rel="noopener"
-            >Professor Oak Challenge Guides (Reddit)</a
-          >
+          <a href="https://www.reddit.com/r/ProfessorOak/comments/bj6yeh/professor_oak_challenge_guides/"
+            target="_blank" rel="noopener">Professor Oak Challenge Guides (Reddit)</a>
         </p>
       </div>
     </details>
