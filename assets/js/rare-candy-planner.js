@@ -95,6 +95,89 @@ const pokemonList = document.getElementById("pokemonCardContainer");
 const rareCandyInput = document.getElementById("rareCandyCount");
 
 /* -----------------------------
+| Growth Rates
+------------------------------ */
+
+const GROWTH_RATES = {
+  fast(level) {
+    return Math.floor((4 * level ** 3) / 5);
+  },
+
+  "medium-fast"(level) {
+    return level ** 3;
+  },
+
+  "medium-slow"(level) {
+    return Math.max(0, Math.floor((6 * level ** 3) / 5 - 15 * level ** 2 + 100 * level - 140));
+  },
+
+  slow(level) {
+    return Math.floor((5 * level ** 3) / 4);
+  },
+
+  erratic(level) {
+    if (level <= 50) {
+      return Math.floor((level ** 3 * (100 - level)) / 50);
+    }
+
+    if (level <= 68) {
+      return Math.floor((level ** 3 * (150 - level)) / 100);
+    }
+
+    if (level <= 98) {
+      return Math.floor((level ** 3 * Math.floor((1911 - 10 * level) / 3)) / 500);
+    }
+
+    return Math.floor((level ** 3 * (160 - level)) / 100);
+  },
+
+  fluctuating(level) {
+    if (level <= 15) {
+      return Math.floor((level ** 3 * (Math.floor((level + 1) / 3) + 24)) / 50);
+    }
+
+    if (level <= 35) {
+      return Math.floor((level ** 3 * (level + 14)) / 50);
+    }
+
+    return Math.floor((level ** 3 * (Math.floor(level / 2) + 32)) / 50);
+  },
+};
+
+const GROWTH_RATE_ALIASES = {
+  medium: "medium-fast",
+  "med-fast": "medium-fast",
+  "med-slow": "medium-slow",
+  "slow-then-very-fast": "erratic",
+  "fast-then-very-slow": "fluctuating",
+};
+
+function normalizeGrowthRate(growthRate) {
+  const normalized = String(growthRate ?? "medium-fast")
+    .trim()
+    .toLowerCase()
+    .replaceAll("_", "-")
+    .replaceAll(" ", "-");
+
+  return GROWTH_RATE_ALIASES[normalized] ?? normalized;
+}
+
+function getTotalExpForLevel(level, growthRate) {
+  const normalizedRate = normalizeGrowthRate(growthRate);
+
+  const curve = GROWTH_RATES[normalizedRate];
+
+  if (!curve) {
+    throw new Error(`Unknown growth rate: ${growthRate}`);
+  }
+
+  return curve(level);
+}
+
+function getExpForNextLevel(level, growthRate) {
+  return getTotalExpForLevel(level + 1, growthRate) - getTotalExpForLevel(level, growthRate);
+}
+/* -----------------------------
 | Pokemon Name Datalist
 ------------------------------ */
 
@@ -120,23 +203,6 @@ function findPokemon(name) {
   }
 
   return window.POKEMON_BY_NAME[name.toLowerCase()];
-}
-
-/* -----------------------------
-| Growth Rates
-------------------------------- */
-function getTotalExpForLevel(level, growthRate) {
-  const curve = window.GROWTH_RATES[growthRate];
-
-  if (!curve) {
-    throw new Error(`Unknown growth rate: ${growthRate}`);
-  }
-
-  return curve(level);
-}
-
-function getExpForNextLevel(level, growthRate) {
-  return getTotalExpForLevel(level + 1, growthRate) - getTotalExpForLevel(level, growthRate);
 }
 
 /* -----------------------------
@@ -372,13 +438,16 @@ function createPokemonCard(pokemonName, level = 1, trackerEvolution = null) {
       </div>
     </div>
 
-    <div class="pokemon-allocation-summary">
-      Use
-      <strong class="allocation-summary-count">
-        0
-      </strong>
-      Rare Candies
-    </div>
+<div class="pokemon-allocation-summary">
+  Use
+  <strong class="allocation-summary-count">
+    0
+  </strong>
+  Rare Candies starting at Lvl.
+  <strong class="allocation-start-level">
+    —
+  </strong>
+</div>
   `;
 
   pokemonList.querySelector(".tracker-import-wrapper")?.remove();
@@ -474,34 +543,35 @@ function getFinalEvolutionLevel(speciesName, allowedPokemon = null) {
 }
 
 function getPlannerPokemon() {
-  const pokemon = [];
+  return [...document.querySelectorAll(".pokemon-entry")]
+    .map((entry) => {
+      const name = entry.querySelector(".pokemon-name")?.value.trim() ?? "";
 
-  document.querySelectorAll(".pokemon-entry").forEach((entry) => {
-    const name = entry.querySelector(".pokemon-name").value.trim();
+      const current = Number(entry.querySelector(".current-level")?.value);
 
-    const current = Number(entry.querySelector(".current-level").value);
+      const evolve = Number(entry.querySelector(".evolution-level")?.value);
 
-    const evolve = Number(entry.querySelector(".evolution-level").value);
+      const pokemonData = findPokemon(name);
 
-    // console.log(name, current, evolve);
+      if (!pokemonData || !Number.isFinite(current) || !Number.isFinite(evolve) || current < 1 || evolve < 1 || current >= evolve) {
+        return null;
+      }
 
-    if (!name || !current || !evolve || current >= evolve) {
-      return;
-    }
+      return {
+        name: pokemonData.name,
 
-    const pokemonData = findPokemon(name);
+        current,
 
-    pokemon.push({
-      name,
-      current,
-      evolve,
-      needed: evolve - current,
-      growthRate: pokemonData?.growthRate ?? "medium-fast",
-      candiesAllocated: 0,
-    });
-  });
+        evolve,
 
-  return pokemon;
+        needed: evolve - current,
+
+        growthRate: pokemonData.growthRate ?? "medium-fast",
+
+        candiesAllocated: 0,
+      };
+    })
+    .filter(Boolean);
 }
 
 function isTrackerPokemonCaught(caughtData, pokemonName) {
@@ -719,46 +789,42 @@ function calculateAllocation(pokemon, rareCandies) {
 }
 
 function updatePokemonCards(allocationResult) {
+  const allocations = new Map(allocationResult.pokemon.map((allocation) => [allocation.name.toLowerCase(), allocation]));
+
   document.querySelectorAll(".pokemon-entry").forEach((card) => {
-    card.classList.add("is-unallocated");
+    const name = card.querySelector(".pokemon-name")?.value.trim().toLowerCase();
+
+    const allocation = allocations.get(name);
+
+    const candiesAllocated = allocation?.candiesAllocated ?? 0;
+
+    const startLevel = allocation && candiesAllocated > 0 ? allocation.evolve - candiesAllocated : null;
+
+    let expSaved = 0;
+
+    if (allocation && candiesAllocated > 0) {
+      expSaved = getTotalExpForLevel(allocation.evolve, allocation.growthRate) - getTotalExpForLevel(startLevel, allocation.growthRate);
+    }
 
     const candyCount = card.querySelector(".allocation-summary-count");
 
-    const expSaved = card.querySelector(".allocation-exp");
-
-    if (candyCount) {
-      candyCount.textContent = "0";
-    }
-
-    if (expSaved) {
-      expSaved.textContent = "0";
-    }
-  });
-
-  allocationResult.pokemon.forEach((allocation) => {
-    const card = [...document.querySelectorAll(".pokemon-entry")].find((entry) => entry.querySelector(".pokemon-name").value === allocation.name);
-
-    if (!card) {
-      return;
-    }
-
-    card.classList.toggle("is-unallocated", allocation.candiesAllocated === 0);
-
-    const levelBeingSkipped = allocation.evolve - allocation.candiesAllocated;
-
-    const expSaved = getTotalExpForLevel(allocation.evolve, allocation.growthRate) - getTotalExpForLevel(levelBeingSkipped, allocation.growthRate);
-
-    const candyCount = card.querySelector(".allocation-summary-count");
+    const startLevelElement = card.querySelector(".allocation-start-level");
 
     const expElement = card.querySelector(".allocation-exp");
 
     if (candyCount) {
-      candyCount.textContent = allocation.candiesAllocated;
+      candyCount.textContent = candiesAllocated;
+    }
+
+    if (startLevelElement) {
+      startLevelElement.textContent = startLevel ?? "—";
     }
 
     if (expElement) {
       expElement.textContent = expSaved.toLocaleString();
     }
+
+    card.classList.toggle("is-unallocated", candiesAllocated === 0);
   });
 
   const total = document.getElementById("plannerXpSaved");
@@ -773,7 +839,7 @@ function updatePokemonCards(allocationResult) {
 ------------------------------ */
 
 function updatePlanner() {
-  const rareCandies = Math.max(0, Number(rareCandyInput.value) || 0);
+  const rareCandies = Math.max(0, Math.floor(Number(rareCandyInput.value) || 0));
 
   const pokemon = getPlannerPokemon();
 
