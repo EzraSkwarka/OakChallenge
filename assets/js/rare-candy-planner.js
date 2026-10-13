@@ -24,8 +24,54 @@
 ------------------------------ */
 
 /* -----------------------------
+| Persistence
+------------------------------ */
+
+const LS_RARE_CANDY = "oak-rare-candy-count";
+
+const LS_POKEMON = "oak-rare-candy-pokemon";
+
+function savePlannerState() {
+  const pokemon = [];
+
+  document.querySelectorAll(".pokemon-entry").forEach((card) => {
+    pokemon.push({
+      name: card.querySelector(".pokemon-name").value,
+
+      level: Number(card.querySelector(".current-level").value) || 1,
+    });
+  });
+
+  localStorage.setItem(LS_POKEMON, JSON.stringify(pokemon));
+
+  localStorage.setItem(LS_RARE_CANDY, rareCandyInput.value);
+}
+
+function loadPlannerState() {
+  const savedCandies = localStorage.getItem(LS_RARE_CANDY);
+
+  if (savedCandies !== null) {
+    rareCandyInput.value = savedCandies;
+  }
+
+  const savedPokemon = JSON.parse(localStorage.getItem(LS_POKEMON) || "[]");
+
+  savedPokemon.forEach((pokemon) => {
+    createPokemonCard(pokemon.name, pokemon.level);
+  });
+}
+
+function clearPlannerState() {
+  localStorage.removeItem(LS_POKEMON);
+
+  localStorage.removeItem(LS_RARE_CANDY);
+}
+
+/* -----------------------------
 | DOM References
 ------------------------------ */
+
+let gameManifest = null;
 
 const pokemonList = document.getElementById("pokemonCardContainer");
 
@@ -74,6 +120,193 @@ function getTotalExpForLevel(level, growthRate) {
 
 function getExpForNextLevel(level, growthRate) {
   return getTotalExpForLevel(level + 1, growthRate) - getTotalExpForLevel(level, growthRate);
+}
+
+/* -----------------------------
+| Import Game
+------------------------------ */
+
+async function loadGameManifest() {
+  const response = await fetch("data/manifest.games.json");
+
+  gameManifest = await response.json();
+}
+
+function getGameInfo(gameId) {
+  if (!gameManifest || !gameManifest.games) {
+    return null;
+  }
+
+  return gameManifest.games.find((game) => game.id === gameId);
+}
+
+function pokemonNeedsEvolution(pokemon) {
+  return pokemon && pokemon.evolutions && pokemon.evolutions.length > 0;
+}
+
+function getEvolutionDepth(pokemon) {
+  let depth = 0;
+  let current = pokemon;
+
+  while (current && current.evolutions && current.evolutions.length > 0) {
+    depth++;
+
+    current = findPokemon(current.evolutions[0].species);
+  }
+
+  return depth;
+}
+
+function importTrackerProgress(gameId) {
+  const caughtData = JSON.parse(localStorage.getItem(`poke-caught:${gameId}`) || "{}");
+
+  const families = {};
+
+  Object.keys(caughtData).forEach((pokemonName) => {
+    const pokemon = findPokemon(pokemonName);
+
+    if (!pokemon) {
+      return;
+    }
+
+    const familyKey = getFinalEvolution(pokemon.name)?.name ?? pokemon.name;
+
+    const current = families[familyKey];
+
+    if (!current) {
+      families[familyKey] = pokemon;
+
+      return;
+    }
+
+    const currentDepth = getEvolutionDepth(current);
+
+    const pokemonDepth = getEvolutionDepth(pokemon);
+
+    if (pokemonDepth < currentDepth) {
+      families[familyKey] = pokemon;
+    }
+  });
+
+  Object.values(families).forEach((pokemon) => {
+    const hasLevelEvolution = pokemon.evolutions.some((evo) => evo.level != null);
+
+    if (!hasLevelEvolution) {
+      return;
+    }
+
+    const alreadyExists = [...document.querySelectorAll(".pokemon-name")].some((input) => input.value === pokemon.name);
+
+    if (alreadyExists) {
+      return;
+    }
+
+    createPokemonCard(pokemon.name);
+  });
+
+  updatePlanner();
+}
+/* -----------------------------
+| Tracker Import
+------------------------------ */
+
+function getAvailableTrackers() {
+  const trackers = [];
+
+  for (let i = 0; i < localStorage.length; i++) {
+    const key = localStorage.key(i);
+
+    if (!key.startsWith("poke-caught:")) {
+      continue;
+    }
+
+    trackers.push(key.replace("poke-caught:", ""));
+  }
+
+  return trackers.sort();
+}
+
+function formatTrackerName(gameId) {
+  return gameId.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+}
+
+function renderTrackerImport() {
+  const container = document.getElementById("pokemonCardContainer");
+
+  if (!container) {
+    return;
+  }
+
+  const hasCards = container.querySelectorAll(".pokemon-entry").length > 0;
+
+  if (hasCards) {
+    return;
+  }
+
+  const trackers = getAvailableTrackers();
+
+  if (!trackers.length) {
+    container.innerHTML = `
+      <div class="tracker-import-empty">
+        No tracker saves were found.
+      </div>
+    `;
+
+    return;
+  }
+
+  container.innerHTML = `
+    <div class="tracker-import-wrapper">
+
+      <h3>Import Game</h3>
+
+      <div class="tracker-import-grid">
+
+        ${trackers
+          .map((tracker) => {
+            const game = getGameInfo(tracker);
+
+            return `
+      <button
+        type="button"
+        class="tracker-import-card"
+        data-game="${tracker}"
+      >
+
+        ${
+          game
+            ? `
+              <img
+                class="tracker-import-image"
+                src="${game.cover}"
+                alt="${game.name}"
+              >
+            `
+            : ""
+        }
+
+        <span>
+          ${game?.name ?? formatTrackerName(tracker)}
+        </span>
+
+      </button>
+    `;
+          })
+          .join("")}
+
+
+      </div>
+
+    </div>
+  `;
+
+  container.querySelectorAll(".tracker-import-card").forEach((card) => {
+    card.addEventListener("click", () => {
+      container.innerHTML = "";
+
+      importTrackerProgress(card.dataset.game);
+    });
+  });
 }
 
 /* -----------------------------
@@ -176,12 +409,17 @@ function createPokemonCard(pokemonName, level = 1) {
 
 </div>
 `;
-
+  document.getElementById("pokemonCardContainer").querySelector(".tracker-import-wrapper")?.remove();
   pokemonList.appendChild(card);
 
   card.querySelector(".pokemon-card-remove").addEventListener("click", () => {
     card.remove();
+
     updatePlanner();
+
+    if (document.querySelectorAll(".pokemon-entry").length === 0) {
+      renderTrackerImport();
+    }
   });
 
   card.querySelector(".current-level").addEventListener("input", updatePlanner);
@@ -342,6 +580,11 @@ function updatePokemonCards(allocationResult) {
     if (!card) {
       return;
     }
+    if (allocation.candiesAllocated === 0) {
+      card.classList.add("is-unallocated");
+    } else {
+      card.classList.remove("is-unallocated");
+    }
 
     const levelBeingSkipped = allocation.evolve - allocation.candiesAllocated;
 
@@ -381,6 +624,8 @@ function updatePlanner() {
   if (xpDisplay) {
     xpDisplay.textContent = `Estimated XP Saved: ${allocationResult.totalExpSaved.toLocaleString()}`;
   }
+
+  savePlannerState();
 }
 
 /* -----------------------------
@@ -428,36 +673,20 @@ rareCandyInput.addEventListener("input", updatePlanner);
 | Startup
 ------------------------------ */
 
-function boot() {
+async function boot() {
+  await loadGameManifest();
+
   populatePokemonNames();
 
-  // populateTestData();
-}
+  const savedPokemon = JSON.parse(localStorage.getItem(LS_POKEMON) || "[]");
 
-document.addEventListener("DOMContentLoaded", boot);
-
-/* -----------------------------
-| Testing
------------------------------- */
-function populateTestData() {
-  const defaults = [
-    {
-      name: "Bulbasaur",
-      current: 1,
-    },
-    {
-      name: "Weedle",
-      current: 1,
-    },
-    {
-      name: "Ekans",
-      current: 1,
-    },
-  ];
-
-  defaults.forEach((entry) => {
-    createPokemonCard(entry.name, entry.current);
-  });
+  if (savedPokemon.length > 0) {
+    loadPlannerState();
+  } else {
+    renderTrackerImport();
+  }
 
   updatePlanner();
 }
+
+document.addEventListener("DOMContentLoaded", boot);

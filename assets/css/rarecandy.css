@@ -1,18 +1,27 @@
 /* -----------------------------
-| Intro
+| Shared Surface Styling
 ------------------------------ */
 
-.planner-intro {
-  padding: 16px;
-
-  margin-bottom: 20px;
-
+.planner-intro,
+.pokemon-search-panel,
+.rare-candy-counter,
+.tracker-import-wrapper,
+.pokemon-card {
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
 
   background: var(--surface);
 
   box-shadow: var(--shadow-sm);
+}
+
+/* -----------------------------
+| Intro
+------------------------------ */
+
+.planner-intro {
+  padding: 16px;
+  margin-bottom: 20px;
 
   color: var(--text);
 }
@@ -50,8 +59,7 @@
 }
 
 .planner-xp-saved {
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin: 20px 0;
 
   text-align: center;
 
@@ -71,13 +79,6 @@
   justify-content: center;
 
   padding: 16px;
-
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md);
-
-  background: var(--surface);
-
-  box-shadow: var(--shadow-sm);
 }
 
 .pokemon-search-title {
@@ -97,11 +98,6 @@
   margin-bottom: 12px;
 }
 
-#pokemonSearch {
-  width: 100%;
-  box-sizing: border-box;
-}
-
 /* -----------------------------
 | Rare Candy Counter
 ------------------------------ */
@@ -115,13 +111,6 @@
   min-width: 240px;
 
   padding: 16px;
-
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md);
-
-  background: var(--surface);
-
-  box-shadow: var(--shadow-sm);
 }
 
 .rare-candy-counter-image {
@@ -147,33 +136,59 @@
 }
 
 /* -----------------------------
+| Form Controls
+------------------------------ */
+
+#pokemonSearch,
+#rareCandyCount,
+.current-level {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+
+  background: var(--bg-alt);
+  color: var(--text);
+
+  box-shadow: var(--shadow-sm);
+}
+
+#pokemonSearch {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#pokemonSearch::placeholder {
+  color: var(--muted);
+}
+
+#pokemonSearch:focus,
+#rareCandyCount:focus,
+.current-level:focus {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+/* -----------------------------
 | Pokemon Cards
 ------------------------------ */
 
 #pokemonCardContainer {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+
+  grid-template-columns: repeat(auto-fit, minmax(320px, 320px));
+
+  justify-content: center;
 
   gap: 16px;
 
   margin-top: 16px;
-
-  align-items: flex-start;
 }
 
 .pokemon-card {
   position: relative;
 
-  width: fit-content;
+  width: 320px;
 
   padding: 16px;
-
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md);
-
-  background: var(--surface);
-
-  box-shadow: var(--shadow-sm);
 
   box-sizing: border-box;
 
@@ -220,6 +235,20 @@
   margin-bottom: 12px;
 }
 
+.pokemon-card.is-unallocated {
+  filter: grayscale(100%);
+}
+
+.pokemon-card.is-unallocated .candy-path-pokemon {
+  opacity: 0.6;
+}
+
+.pokemon-card.is-unallocated .pokemon-card-title,
+.pokemon-card.is-unallocated .allocation-summary,
+.pokemon-card.is-unallocated .pokemon-allocation-summary {
+  color: var(--muted);
+}
+
 /* -----------------------------
 | Evolution Path
 ------------------------------ */
@@ -233,8 +262,8 @@
 }
 
 .candy-path-pokemon {
-  width: 96px;
-  height: 96px;
+  width: 88px;
+  height: 88px;
 
   object-fit: contain;
 
@@ -250,15 +279,6 @@
   gap: 2px;
 
   flex-shrink: 0;
-}
-
-.candy-path-middle span {
-  font-size: 1rem;
-  font-weight: 700;
-
-  line-height: 1;
-
-  color: var(--text);
 }
 
 .rare-candy-icon {
@@ -285,25 +305,23 @@
 .current-level-wrap {
   display: flex;
   align-items: center;
-
   gap: 6px;
 }
 
 .current-level-wrap input {
   width: 60px;
 
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-
-  background: var(--surface);
-  color: var(--text);
-
   text-align: center;
 }
 
-.final-level-wrap {
+.allocation-summary {
   font-weight: 600;
   color: var(--muted);
+}
+
+.allocation-exp,
+.allocation-summary-count {
+  color: var(--text);
 }
 
 .pokemon-allocation-summary {
@@ -316,17 +334,82 @@
   font-size: 0.9rem;
 }
 
-.allocation-summary-count {
-  color: var(--text);
+/* -----------------------------
+| Tracker Import
+------------------------------ */
+
+.tracker-import-wrapper {
+  width: 100%;
+
+  text-align: center;
+
+  padding: 24px;
 }
 
-.allocation-summary {
+.tracker-import-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+
+  margin-bottom: 12px;
+}
+
+.tracker-import-grid {
+  display: flex;
+  flex-wrap: wrap;
+
+  justify-content: center;
+
+  gap: 12px;
+
+  margin-top: 16px;
+}
+
+.tracker-import-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 8px;
+
+  min-width: 160px;
+
+  padding: 16px;
+
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+
+  background: var(--surface);
+
+  color: var(--text);
+
+  box-shadow: var(--shadow-sm);
+
+  cursor: pointer;
+
+  transition:
+    background 0.15s ease,
+    transform 0.15s ease;
+}
+
+.tracker-import-card:hover {
+  background: var(--hover);
+  transform: translateY(-1px);
+}
+
+.tracker-import-image {
+  width: 120px;
+  height: auto;
+
+  object-fit: contain;
+}
+
+.tracker-import-card span {
   font-weight: 600;
-  color: var(--muted);
 }
 
-.allocation-exp {
-  color: var(--text);
+.tracker-import-empty {
+  color: var(--muted);
+  text-align: center;
 }
 
 /* -----------------------------
@@ -357,8 +440,12 @@ input[type="number"]::-webkit-inner-spin-button {
     min-width: 0;
   }
 
-  .candy-path {
-    gap: 12px;
+  #pokemonCardContainer {
+    grid-template-columns: repeat(auto-fit, minmax(260px, 260px));
+  }
+
+  .pokemon-card {
+    width: 260px;
   }
 
   .candy-path-pokemon {
@@ -369,5 +456,25 @@ input[type="number"]::-webkit-inner-spin-button {
   .rare-candy-icon {
     width: 32px;
     height: 32px;
+  }
+}
+
+@media (max-width: 480px) {
+  #pokemonCardContainer {
+    grid-template-columns: 1fr;
+  }
+
+  .pokemon-card {
+    width: 100%;
+  }
+
+  .candy-path-pokemon {
+    width: 60px;
+    height: 60px;
+  }
+
+  .rare-candy-icon {
+    width: 28px;
+    height: 28px;
   }
 }

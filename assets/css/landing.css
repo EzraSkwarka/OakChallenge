@@ -6,7 +6,7 @@
   width: min(var(--band-width, 90vw), 100%);
   max-width: var(--band-max, 1400px);
   margin-inline: auto; /* centers the BAND, not the text */
-  padding-inline: var(--container-gutter, 0.9rem);
+  padding-inline: var(--container-gutter);
   box-sizing: border-box;
   text-align: left;
 }
