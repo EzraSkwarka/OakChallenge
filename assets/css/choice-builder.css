@@ -1,0 +1,68 @@
+.builder-card {
+  margin-bottom: 1rem;
+}
+
+.branch {
+  border: 1px solid var(--border-color, #333);
+  border-radius: 10px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.branch h3 {
+  margin-top: 0;
+}
+
+.branch label {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-weight: 600;
+}
+
+.branch textarea,
+.branch input[type="text"],
+#choiceKey,
+#output {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.branch textarea,
+#output {
+  min-height: 220px;
+  resize: vertical;
+  font-family: Consolas, Monaco, monospace;
+  font-size: 13px;
+}
+
+#output {
+  min-height: 500px;
+}
+
+.builder-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.remove-branch {
+  margin-top: 0.75rem;
+}
+
+.branch textarea,
+.branch input[type="text"],
+#choiceKey,
+#output {
+  background: var(--surface-color, #1f1f1f);
+  color: var(--text-color, #e0e0e0);
+  border: 1px solid var(--border-color, #444);
+}
+
+.branch textarea:focus,
+.branch input[type="text"]:focus,
+#choiceKey:focus,
+#output:focus {
+  outline: none;
+  border-color: var(--accent-color, #4c8dff);
+}
