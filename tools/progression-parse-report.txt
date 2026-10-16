@@ -1,0 +1,12 @@
+===== PARSE REPORT =====
+
+Warnings: 5
+
+Unknown Pokemon
+===============
+
+Mincinno
+Cincinno
+Route 1 - Farfetch’d
+(Jacques) Nidoran female
+(Ken) Nidoran male

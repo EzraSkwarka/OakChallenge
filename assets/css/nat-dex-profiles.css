@@ -1,0 +1,112 @@
+.nationaldex-profile-section {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nationaldex-profile-panel {
+  width: min(var(--band-width), 100%);
+  max-width: var(--band-max);
+  margin-inline: auto;
+  padding: 1rem var(--container-gutter);
+  color: var(--text);
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+}
+
+.nationaldex-profile-title {
+  margin: 0 0 0.35rem;
+  color: var(--text);
+  font-size: 1.15rem;
+  line-height: 1.3;
+}
+
+.nationaldex-profile-description {
+  margin: 0 0 1rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.nationaldex-profile-controls {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.nationaldex-profile-select,
+.nationaldex-profile-button {
+  min-height: 40px;
+  padding: 8px 12px;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  font: inherit;
+}
+
+.nationaldex-profile-select {
+  min-width: 220px;
+}
+
+.nationaldex-profile-button {
+  cursor: pointer;
+}
+
+.nationaldex-profile-button:hover,
+.nationaldex-profile-select:hover {
+  background: var(--hover);
+  border-color: var(--accent);
+}
+
+.nationaldex-profile-delete {
+  color: var(--danger-contrast);
+  background: var(--danger);
+  border-color: var(--danger);
+}
+
+.nationaldex-profile-delete:hover {
+  color: var(--danger-contrast);
+  background: var(--danger-hover);
+  border-color: var(--danger-hover);
+}
+
+.nationaldex-profile-delete:active {
+  color: var(--danger-contrast);
+  background: var(--danger-hover);
+}
+
+.nationaldex-profile-delete:disabled,
+.nationaldex-profile-delete[aria-disabled="true"] {
+  color: color-mix(in srgb, var(--danger-contrast) 80%, transparent);
+  background: var(--danger-disabled);
+  border-color: var(--danger-disabled);
+  cursor: not-allowed;
+}
+
+.nationaldex-profile-select:focus-visible,
+.nationaldex-profile-button:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+@media (max-width: 600px) {
+  .nationaldex-profile-controls {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .nationaldex-profile-select {
+    grid-column: 1 / -1;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .nationaldex-profile-button {
+    width: 100%;
+  }
+}

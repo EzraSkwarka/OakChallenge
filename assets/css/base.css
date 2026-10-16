@@ -11,6 +11,10 @@
   --hover: #f1f5f9;
   --focus: #3b82f6;
 
+  --danger: #b91c1c;
+  --danger-hover: #991b1b;
+  --danger-contrast: #ffffff;
+
   --accent: #2563eb;
   --accent-contrast: #ffffff;
 
@@ -48,6 +52,10 @@ body[data-theme="dark"] {
   --muted: #94a3b8;
   --border: #1f2937;
   --hover: #111827;
+
+  --danger: #dc2626;
+  --danger-hover: #b91c1c;
+  --danger-contrast: #ffffff;
 
   --accent: #60a5fa;
   --accent-contrast: #0b1220;
@@ -160,5 +168,12 @@ body {
   * {
     animation: none !important;
     transition: none !important;
+  }
+}
+
+@media (min-width: 1200px) {
+  :root {
+    --band-width: 96vw;
+    --band-max: 1800px;
   }
 }

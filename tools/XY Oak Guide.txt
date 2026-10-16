@@ -1,0 +1,2169 @@
+﻿Mewlax’s Professor Oak Challenge Guide
+Pokemon X & Y 
+
+
+ Pokémon X & Pokémon Y: Super Music Collection - Bulbapedia, the ... 
+
+Contents:
+1. – The Basics
+   1. – What is a Professor Oak Challenge?
+   2. – Tips on this version
+2. – The Guide
+   1. – Pre Badge #1 (Santalune Gym)
+   2. – Pre Badge #2 (Cyllage Gym)
+   3. – Pre Badge #3 (Shalour Gym)
+   4. – Pre Badge #4 (Coumarine Gym)
+   5. – Pre Badge #5 (Lumiose Gym)
+   6. – Pre Badge #6 (Laverre Gym)
+   7. – Pre Badge #7 (Anistar Gym)
+   8. – Pre Badge #8 (Snowbelle Gym)
+   9. – Pre Elite Four and Final Showdown
+   10. – Post Game
+   11. – Bonus Section: Friend Safari
+3. – The End/Thanks
+
+
+
+
+
+
+1. The Basics
+
+
+   1. What is a Professor Oak Challenge?
+
+
+Professor Oak has always had a dream to fill the pokedex, but he’s too old to do it! It’s up to you as a new trainer to complete that pokedex as much as you can independently by catching, evolving and breeding as many pokemon as possible. Professor Oak also isn’t getting any younger, so you need to complete that dex as a priority! Maybe you should put your gym challenge on hold for a while…
+
+
+In 2018, a Reddit user named Chamale posted updates of a unique challenge on Pokemon Crystal which at the time didn’t have a name but was referred to as ‘Oak Mode’ or a ‘Professor Oak Run/Challenge’. I was really intrigued by this style of gameplay and set out to play this on FireRed, writing a guide as I went along. After the success of the run I tried it on different versions and have now played the majority of the main series games and even a couple of spin offs. 
+
+
+The basic concept of the challenge follows these simple rules:
+* You have to catch and evolve (or breed) as many pokemon as is possible in the game until you can’t proceed any further until a gym badge is required e.g. needing a badge to be able to use a HM move or in most cases, to allow you to proceed with the plot or to get NPCs to move out of the way. For example, you will need to fully evolve your starter amongst others before defeating the Santalune Gym for your first badge. For parts where gyms can be done in any order, always get the badge that unlocks the most pokemon.
+* You cannot trade with other versions. This means that trade evolutions are off the table, including GTS trades. This means you’ll get no version exclusives from the other version and you’re stuck with the decisions you make such as your starter or fossil decisions. In-game trades are allowed as that NPC is in your version of the game.
+* No glitches are allowed
+
+
+   2. Tips on this version
+
+
+* Grinding – The first section of a Professor Oak Challenge is always very daunting as you need to get your starter fully evolved. The horrible exp mechanics from Generation 5 are no longer present (but return in Generation 7!) so the exp you gain is determined solely by the level and species of the pokemon you’ve defeated. There is no way to rematch trainers (in the conventional sense) in X and Y as there is no VS Seeker. There are several places with trainers that refresh periodically (covered later). 
+
+
+* Experience boosts – New to Generation 6, there’s a few extra ways to boost exp gain. The first is Pokemon Amie (accessed on the lower screen). Interacting with your pokemon here by feeding them pokepuffs and stroking/petting them with them will boost their affection levels (measured by pink hearts when you switch between pokemon). Getting a pokemon to two affection hearts will give it a 20% exp bonus so naturally you’ll be wanting to do this to every pokemon you’re planning on levelling up. If you stroke the pokemon until it stops giving out hearts, fill it with as many pokepuffs as you have or it can eat, then play a game. I prefer the tile puzzles as they’re over very quickly. Return to your pokemon and interact with it again for more hearts, feed it the pokepuffs you’ve received from the game and then repeat this process until you get the two affection hearts which you’ll be notified of when your pokemon does an appreciation dance with lots of hearts coming from it. The second method is preventing your pokemon from evolving through levelling up. If a pokemon has reached the level in which it evolves (e.g. Caterpie reaches level 7), if you keep it at that unevolved form, it will gain a 20% boost which stacks with the Pokemon Amie boost. This is obviously only useful for three stage pokemon (Starters, Pidgey, Caterpie, Fletchling etc) but is very useful as many of these 3 stage pokemon evolve into their final stage quite late. In cases like these, keep your pokemon unevolved until it reaches the level before its final evolution. For example, Fletchinder evolves into Talonflame at Level 35 so if you keep Fletchling unevolved until it’s Level 34, let it evolve, and then it’s only one level without the exp gain to get it to evolve into Talonflame. Finally there’s the exp O-Power that Mr Bonding will give you. This isn’t until quite late in the game but it’s very handy. The more you use it, the quicker it will level up to give even bigger boosts in exp gained. 
+
+
+* Super Training – There’s two reasons to use this. One is that you can use it to obtain evolution stones as early as prior to the first badge. In order to access these, you will need a pokemon with maximum EVs (indicated by the bar on the right). There is no guarantee that you will win these stones, you may have to repeat the course many times. As long as you complete it within the target time, you’ll have a chance of winning the item. Secondly, you can use super training to specifically focus on boosting a stat. For example, my Burmy wasn’t doing well in battle so I buffed its attack stat up through training.
+
+
+* Critical captures – From as early as having 30 pokemon registered as caught in your dex, you will start having a small chance of a critical capture which significantly increases your chance of capturing a pokemon. Given the nature of this challenge, you will find this very beneficial as you rack up the amount of captures.
+
+
+* Learning new moves shouldn’t be taken for granted, particularly with pokemon that evolve at higher levels. During a normal game you might be quick to replace a weak move with a stronger one but getting rid of non-attacking moves is a better strategy here. On the first part of the challenge before the Santalune Gym, you are battling low level pokemon and will run out of PP very quickly while that exp bar goes up very slowly. You need to maximize the amount of pokemon you can defeat, so having multiple attacking moves, regardless of how weak they are, will be beneficial. You have no need for moves like Growl or Sand Attack. Another advantage other than the exp boost above is that if you keep your three stage pokemon unevolved they will learn moves faster than their middle stage would.
+
+
+* This challenge is a fun alternative to a regular play through and you may really appreciate having to train pokemon up yourself that you never trained before. On the other hand you may end up despising certain pokemon due to their inability to attack when you first get them or their generally poor stats/levelling up moves. 
+
+
+* Please note that this is not a full guide to the game, I am only listing the pokemon you can catch at the earliest opportunities and any required items. Please consult other guides for a full walkthrough. This guide assumes you know how to get through the caves etc throughout the game.
+
+
+* And finally, remember that this is YOUR challenge. There are things you can do to make this run easier or harder and it’s entirely at your discretion how you want to handle this. A lot of people like to use pokemon with the Pickup ability (e.g. Zigzagoon) to farm Rare Candies to level up your pokemon. You could use exp share, you could put pokemon in the day-care and you could switch train pokemon (send it out and then replace with a better pokemon). I’m quite hard core/sadistic with these challenges and don’t like using any of the above methods, I only like gaining experience through battling to make this a real challenge! 
+
+
+________________
+
+
+2. The Guide
+
+
+Part 1 - Pre Badge #1 (Santalune Gym)
+
+
+Pokemon in this section:
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+Choices (pick one starter):
+  
+  
+  
+/      /      
+This first part will cover everything you can do from the get-go right up to the Santalune City Gym BEFORE you get that first badge from Viola. This WILL take a while so it will really test your patience…
+
+
+Vaniville and Aquacorde Town - 
+Get dressed and leave your house and your new neighbours will meet you. They’ll inform you that there is a meeting in Aquacorde Town where you can get your first pokemon. Travel straight there through Route 1 (why they made this an actual route I don’t know…) and you’ll bump into the group of friends who welcome you to join them. Now it’s time to pick your starter! There’s no real advantages over type or evolution level, it’s very much your preference. By the time it’s fully evolved, type advantages won’t matter against the first gym leader! Once you’ve picked, head home to see your mother and you’ll get challenged by Shauna who has the starter that’s weak to yours, making this an easy battle. Once you’ve told your mother that you’re leaving, head back to Aquacorde Town. There’s a free healing spot in one of the shops and you can also spend all your money on pokeballs as you’ll be needing them! 
+
+
+* Chespin--(Lv. 16)-->Quilladin--(Lv. 36)-->Chesnaught
+OR
+* Fennekin--(Lv. 16)-->Braixen--(Lv. 36)-->Delphox
+OR
+* Froakie--(Lv. 16)-->Frogadier--(Lv. 36)-->Greninja
+
+
+Route 2 (Avance Trail) – 
+Go north from Aquacorde and you’ll see a patch of grass straight away. Oddly enough the capture tutorial is by the second patch of grass so you can show your rival who’s boss by catching everything before they give you the tutorial. Bear in mind that there’s no pokemon centre until you pass through Santalune Forest so you’ll be limited to the six pokemon in your party. Your first encounter will always be a Pidgey. Other than that, you can run around to flush out Bunnelby, Fletchling, Scatterbug, and Zigzagoon. You’ll also find Weedle in X and Caterpie in Y but you’ll be able to catch the other in the forest. 
+
+
+* Pidgey--(Lv. 18)-->Pidgeotto--(Lv. 36)-->Pidgeot
+* Bunnelby--(Lv. 20)-->Diggersby
+* Fletchling--(Lv. 17)-->Fletchinder--(Lv. 35)-->Talonflame
+* Scatterbug--(Lv. 9)-->Spewpa--(Lv. 12)-->Vivillon
+* Zigzagoon--(Lv. 20)-->Linoone
+* (X) Weedle--(Lv. 7)-->Kakuna--(Lv. 10)-->Beedrill
+* (Y) Caterpie--(Lv. 7)-->Metapod--(Lv. 10)-->Butterfree
+
+
+Both Bunnelby and Zigzagoon can have the ability Pickup so take advantage of this if you want a Pickup squad. They also keep this ability once evolved. 
+
+
+Santalune Forest – 
+Notice anything familiar? This is almost identical to Viridian Forest from Kanto. In here you’ll team up with Shauna who you can talk to and she’ll heal your team up. This is very helpful so consider sticking around for training. You’ll be able to pick up the other bug you didn’t find on Route 2 (Caterpie/Weedle), a Pikachu (catch a female for breeding later on) and the three elemental monkeys – Pansage, Pansear and Panpour. 
+
+
+* (X) Caterpie--(Lv. 7)-->Metapod--(Lv. 10)-->Butterfree
+* (Y) Weedle--(Lv. 7)-->Kakuna--(Lv. 10)-->Beedrill
+* Pikachu
+* Pansage
+* Pansear
+* Panpour
+
+
+Route 3 (Ouvert Way) – 
+This next route isn’t a long one but there’s several young trainers here and of course some new pokemon. Consider skipping ahead to Santalune City (home of the first gym) to access the pokemon centre and change your party should you want to. On Route 3 you’ll be able to catch a Bidoof, Azurill, Burmy and Dunsparce. Dunsparce is also available on the next route. You will need to catch two Burmy, one male and one female, due to the different evolutions. Once you’ve caught Azurill, keep it in your team so that the extra steps from running around raise its happiness. You should also battle with it a few times early on to get the happiness boosts from levelling up. Since Marill evolves into Azumarill at Level 18, you want to try and get Azurill to evolve at Level 17 at the very latest. Save your game before levelling up and if it still hasn’t evolved, keep it in your party and evolve it later on once its happiness has increased. Another way you could raise its friendship is if you are really lucky and obtain a Soothing Bag as part of the Super Training punching bags. 
+
+
+* Bidoof--(Lv. 15)-->Bibarel
+* Burmy(female) --(Lv. 20)-->Wormadam
+* Burmy(male) --(Lv. 20)-->Mothim
+* Azurill--(Happiness)-->Marill--(Lv. 18)-->Azumarill
+* Dunsparce
+
+
+Route 22 (Detourner Way) – 
+Go east out of Santalune City to access this route that eventually leads to a blocked off gate. We won’t pass through this until the end of the game. On this route however we can battle some more trainers and catch some more pokemon. You can catch Farfetch’d, Litleo, Riolu and Psyduck. Farfetch’d is actually available to trade for in Santalune City for a Bunnelby but since it’s here you may as well just catch it yourself. Try to avoid catching a Litleo with Rivalry as the stat drop against the opposite gender isn’t helpful. Catch one with Unnerve (it activates when entering battle). Riolu is another happiness evolution pokemon so again, keep it in your party and level it up a few times early on. Note that it only evolves during the day. 
+
+
+* Farfetch’d
+* Litleo--(Lv. 35)-->Pyroar
+* Riolu--(Happiness daytime)-->Lucario
+* Psyduck--(Lv. 33)-->Golduck
+
+
+And with that we’ve hit the wall already! We need to fully evolve everything before we tackle the gym leader. 
+
+
+Secret Super Training for Stones – 
+Complete the Super Training courses with a pokemon of your choice, preferably a late evolver such as your starter. This also helps to max out your EVs (the bar on the right of the Super Training screen). Once your EVs are maxed out, you’ll have access to some additional courses that reward evolution stones. You will need to clear the course in the targeted time but there’s no guarantee that you’ll win the stone. For this section you’ll need a Leaf, Fire, Water and Thunder Stone meaning that you’ll need to win the prizes from the courses “The Leaf Stone Cup Begins! (Venusaur)”, “The Fire Stone Cup Begins! (Charizard)”, “The Water Stone Cup Begins! (Blastoise)” and “Follow Those Fleeing Goals! (Stunfisk)” respectively. Alternatively you can try the final course “The Battle For The Best!” where either of the four stones is given out as a prize.
+
+
+* Pansage--(Leaf Stone)-->Simisage
+* Pansear--(Fire Stone)-->Simisear
+* Panpour--(Water Stone)-->Simipour
+* Pikachu--(Thunder Stone)-->Raichu
+
+
+Levelling up tips – 
+Definitely take advantage of the experience boost from Pokemon Amie and keep your three stage pokemon unevolved as long as possible (one level before the middle stage would evolve into the final stage). Route 22 is absolutely the best place to train at this point. With a combined total of a 15% encounter rate, Dunsparce and Farfetch’d give very nice boosts. Other than that, it’s just a very simple grind to get your pokemon to evolve. 
+
+
+End of part 1:
+Central Dex - Caught 46, Remaining 107
+Kalos Dex – Caught 46, Remaining 409
+
+
+________________
+
+
+
+
+Part 2 - Pre Badge #2 (Cyllage Gym)
+
+
+Pokemon in this section:
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+X Exclusive:
+  
+  
+  
+
+Y Exclusive:
+  
+  
+  
+
+Choices (pick one starter):
+  
+  
+  
+/      /      
+Choices (pick one fossil):
+  
+  
+/    
+Hoo boy, this is a big section. It’s quite a trek to get to the next gym so naturally we open up many new areas and can even advance a fair but further than the gym itself. One thing I love about X and Y is that very few routes repeat the same pokemon or just have evolutions of earlier pokemon. Every route has lots of new pokemon to catch. Leave Santalune City to the north and speak to Alexa who will give you the Exp Share. It’s up to you whether you permit this item in your challenge. All pokemon in your party get exp regardless of whether they participated or not. If you choose not to use this (like me), you will have to go to your key items to switch it off as it is switched on by default. 
+
+
+Route 4 (Parterre Way) – 
+There are a nice collection of trainers here to practice against but obviously you’ll want to catch some new pokemon first. On this route you’ll be able to find Budew, Flabébé, Ledyba, Skitty, Combee and Ralts. Budew is a happiness evolution (during the day). Feel free to catch it now and keep it in your party to raise its happiness or come back after Lumiose City where you’ll be given some Luxury Balls which will give Budew a higher base happiness making it easier to evolve. Roselia is also found later on in this section on Route 7 if you want to skip the evolution. You’ll also need a female Combee to get it to evolve into Vespiquen. Combee is more common in the yellow flowers than the red ones. Finally you’ll also need to catch TWO Ralts, one specifically being a male to get Gallade. You can get the Moon, Shiny and Dawn Stones from Secret Super Training regimens: “Drag Down Hydreigon!”, “An Opening of Lightning Quick Attacks! (Roserade)” and “Those Long Shots Are No Long Shot! (Gallade)” respectively. 
+
+
+* Budew--(Happiness daytime)-->Roselia--(Shiny Stone)-->Roserade
+* Flabébé--(Lv. 19)-->Floette--(Shiny Stone)-->Florges
+* Ledyba--(Lv. 18)-->Ledian
+* Skitty--(Moon Stone)-->Delcatty
+* Combee female--(Lv. 21)-->Vespiquen
+* Ralts--(Lv. 20)-->Kirlia--(Lv. 30)-->Gardevoir
+* Ralts male--(Lv. 20)-->Kirlia male--(Dawn Stone)-->Gallade
+
+
+Lumiose City – 
+Once you’re finished up on Route 4, head north to meet Dexio and Sina who will urge you to visit Professor Sycamore. You’ll only be able to access some of Lumiose due to a black out, meaning that many roads are currently blocked off. Head straight to Sycamore’s lab to get the ball rolling. Talk to one of his assistants on the second floor for the aforementioned Luxury Balls. Visit Sycamore on the third floor where he’ll battle you with the three Kanto starters and will then ask you to pick one to take with you. For those looking for the quickest pokemon to evolve, Bulbasaur evolves into its final stage earlier than the others. If you don’t mind about that, pick your favourite. You’ll then be given the relevant mega stone for its final evolution which we can’t use yet anyway. 
+
+
+* Bulbasaur--(Lv. 16)-->Ivysaur--(Lv. 32)-->Venusaur
+OR
+* Charmander--(Lv. 16)-->Charmeleon--(Lv. 36)-->Charizard
+OR
+* Squirtle--(Lv. 16)-->Wartortle--(Lv. 36)-->Blastoise
+
+
+Take the time to visit the areas within Lumiose. You can get the Lens Case from the PR studio and get your haircut so that you can customise your trainer a little better. There’s also Café Le Nah where you can battle for some extra exp as well as earn some expensive items to sell at the Pokemart. You’ll also be able to pick up some Timer and Quick Balls and the Stone Emporium can also be visited which sells Leaf, Fire and Water Stone if you get frustrated trying to win them in Super Training. Visit your rival at the café near the exit to Route 5 and then carry on with your journey.
+
+
+Route 5 (Versant Road) – 
+Tierno and Trevor will be waiting up ahead but feel free to go at your own pace. This is the first route in which you can engage in a horde battle – five pokemon (lower levelled) will appear at once. This is the only way to encounter Scraggy and depending on your version, you’ll be able to find Plusle/Minun through standard encounters with the other being potentially available in a rare horde battle. For example, Plusle can be found in X, but Minun can only be found if there’s a horde battle with four Plusle and one Minun. Horde battles can activate randomly whilst running around in the grass but you can also trigger them by using Honey in the item bag or using the move Sweet Scent in the field (Combee is a good candidate). Aside from these three horde pokemon, you can expect to encounter Gulpin, Abra, Pancham, Doduo, Skiddo and Furfrou. Kadabra is the first trade evolution pokemon of the challenge so we are unfortunately not able to obtain it as we can’t trade pokemon.
+
+
+* Scraggy--(Lv. 39)-->Scrafty
+* Plusle
+* Minun
+* Gulpin--(Lv. 26)-->Swalot
+* Abra--(Lv. 16)-->Kadabra
+* Pancham--(Lv. 32 with a Dark type in the party)-->Pangoro
+* Doduo--(Lv. 31)-->Dodrio
+* Skiddo--(Lv. 32)-->Gogoat
+* Furfrou
+
+
+Camphrier Town and the Road Block – 
+Visit Camphrier Town and rest up. There’s not a whole lot to do at present. Head out west and you can visit the berry fields to the south. Take advantage of these fields if you want more berries. Occasionally while the berry tree is growing, a wild pokemon may appear when you investigate a shaking tree. This is a nice way to catch Volbeat and Illumise but we can catch them more consistently later on so I won’t list them here. We’ll soon come across a Snorlax who stops us from accessing Route 7 proper so we will need to take a detour past Route 6 (Palais Lane) to get to Parfum Palace for a pokeflute. Running up the path on Route 6, the larger bushes may shake and a wild pokemon will jump up. Most of the time this will be a Venipede but if you’re lucky an Audino will appear. If you’re familiar with generation 5 games, you’ll know that Audino gives a boat load of experience. Reach the end of the path and you can make a U-turn to the left or right to run around in the tall grass. Wild pokemon here include Espurr, Kecleon, Honedge, Oddish, Sentret and Nincada. You’ll need to catch two Oddish here for both of Gloom’s evolutions. To get a Sun Stone you can also receive this from the Secret Super Training Course “Drag Down Hydreigon!” while the Dusk Stone which is the last stone of the set can be obtained from the course “Watch Out! That’s One Tricky Second Half! (Aegislash)”. As always with Shedinja, make sure that when your Nincada evolves that you have a spare slot on your team otherwise Shedinja will disappear. Grab the Cut HM from the gardens of Parfum Palace and then corner Furfrou and you’ll get the pokeflute. Also pick up the Amulet Coin indoors for some serious money making coming up.
+
+
+* Venipede--(Lv. 22)-->Whirlipede--(Lv. 30)-->Scolipede
+* Audino
+* Espurr--(Lv. 25)-->Meowstic
+* Kecleon
+* Honedge--(Lv. 35)-->Doublade--(Dusk Stone)-->Aegislash
+* Oddish--(Lv. 21)-->Gloom--(Leaf Stone)-->Vileplume
+* Oddish--(Lv. 21)-->Gloom--(Sun Stone)-->Bellossom
+* Sentret--(Lv. 15)-->Furret
+* Nincada--(Lv. 20)-->Ninjask
+* Nincada--(Lv. 20 with spare slot in party)-->Shedinja
+
+
+Route 7 (Riviere Walk) – 
+Head back to Snorlax and SAVE THE GAME before talking to the people on the bridge. You also want to make sure that the Snorlax is a female. Though we can’t get the Incense to breed for a Munchlax yet, this will occur later on before we can even catch a Ditto and I’ve seen many players stumble on this. With Snorlax gone we can proceed down Route 7. The day-care centre is our next stop where you can start doing some breeding if you fancy it. There’s only one pokemon to breed for our dex at this point. Put a female Pikachu/Raichu in with an appropriate partner (e.g. Linoone) to get a Pichu. In the grass of the route we can catch Smeargle, Volbeat, Illumise, Croagunk and Ducklett. Our first version exclusives are on this route – Swirlix in X and Spritzee in Y. Both evolutions are trade evolutions, therefore we can’t get them. You will also need to do a horde battle to find Hoppip. If you haven’t evolved Budew yet, Roselia can be caught here. 
+
+
+* Snorlax (female)
+* Pikachu/Raichu--(Breed)-->Pichu
+* Smeargle
+* Volbeat
+* Illumise
+* Croagunk--(Lv. 37)-->Toxicroak
+* Ducklett--(Lv. 35)-->Swanna
+* (X) Swirlix
+* (Y) Spritzee
+* Hoppip--(Lv. 18)-->Skiploom--(Lv. 27)-->Jumpluff
+
+
+The Battle Chateau – 
+Now this is a great area to train in. When you first enter you’ll be given the title of Baron/Baroness. As you defeat more and more trainers here, your rank may increase to Viscount/Viscountess, Earl/Countess, Marquis/Marchioness, Duke/Duchess and finally Grand Duke/Grand Duchess. With each rank increase, stronger trainers will appear. It’s possible to push your rank all the way up to Grand Duke/Grand Duchess at this point in the game. Bulbapedia seems to be slightly incorrect in that it says you cannot advance to the Grand titles without beating all trainers INCLUDING gym leaders and Elite Four. However I did this with only Viola making an appearance, so perhaps it means defeating any gym leaders that CAN appear there at your current point in the game. With this level increase in mind, always make sure you have higher levelled pokemon such as late evolvers in case your weaker pokemon can’t handle the level difference since pokemon can range up to Lv50. Trainers replenish every six minutes or even faster if you pay for the various writs which last until the end of the day. The most useful one is the Silver Writ of Challenge which brings in a new trainer every minute! With the Amulet Coin equipped you can rake in some serious money as well as exp. Your opponents may occasionally give you an item to sell for lots of money e.g. Nuggets. As your rank increases you can even activate writs that increase the level of your opponents making this the ideal place to train. Once you reach Marquis/Marchioness, trainers with Audino start to appear (easily identified, they are wearing Kimono style clothing) which makes for even more exp! Suffice to say, you’ll be here a LOT, especially once you’ve caught everything in this section. If you’re enabling Exp Share then you can seriously fill up your dex quickly in here by battling with the same pokemon and letting everyone else in your team get half the exp with a high chance of reaching Lv100 before the end of this section. You can even activate certain writs that increase the level of the opponents!
+
+
+Connecting Cave – 
+There’s two cave entrances on Route 7, the northern one is a dead end until you have Strength, the southern one is the way forwards. The southern cave also has someone who will heal your pokemon. In the cave, catch a Zubat, Meditite, Whismur and Axew before leaving out the other side. Consider catching Zubat in a Luxury Ball so that it will likely evolve into Crobat as soon as it’s evolved into Golbat. 
+
+
+* Zubat--(Lv. 22)-->Golbat--(Happiness)-->Crobat
+* Meditite--(Lv. 37)-->Medicham
+* Whismur--(Lv. 20)-->Loudred--(Lv. 40)-->Exploud
+* Axew--(Lv. 38)-->Fraxure--(Lv. 48)-->Haxorus
+
+
+Route 8 (Muraille Coast) – 
+Upon entering the route, Dexio and Sina will stop you and upgrade your pokedex to include the Coastal Dex. Pretty much all the pokemon we catch from here will be registered in that section. One thing to be careful about in this area is the possibility of a sky battle. If you have a pokemon that flies (e.g. its animation is always airborne) then you may be drawn into a battle with a sky trainer using ONLY those pokemon that fly. This can be bad news if you’re training a weak pokemon and you’re stuck using it in one of these battles. Thankfully these are all optional and you get the choice of participating, so if you don’t have a decent pokemon for this, decline the battle! Grab the free Leaf Stone here.
+
+
+Standard encounters here will let you find Spoink, Absol, Drifloon, Bagon, Mienfoo, Inkay and either Zangoose (X) or Seviper (Y). In the horde battles you’ll be able to find Wingull, Taillow and the other exclusive (Seviper/Zangoose). This horde causes trouble for a lot of people because, true to their rivalry, Zangoose and Seviper will attack each other, meaning that the pokemon you’re looking for will have four pokemon ganging up on it. Since you can only throw pokeballs at the last remaining pokemon, it’s a bit of a race to single out the lonely pokemon. Multi target moves work great here. If you’re playing X, moves like Razor Leaf work well since Seviper resists it, whereas Bulldoze works well in Y as it’s super effective against Seviper. Skiddo is a fantastic candidate as it learns both of these moves. Another alternative is to use a pokemon with Intimidate so that the four pokemon don’t have enough power to knock out the pokemon you want fast enough. You could catch it normally depending on which moves the four pokemon use and, in very rare instances, they may attack you instead of their rival. 
+
+
+* Spoink--(Lv. 32)-->Grumpig
+* Absol
+* Drifloon--(Lv. 28)-->Drifblim
+* Bagon--(Lv. 30)-->Shelgon--(Lv. 50)-->Salamence
+* Mienfoo--(Lv. 50)-->Mienshao
+* Inkay--(Lv. 30 DS held upside down)-->Malamar
+* Zangoose
+* Seviper
+* Wingull--(Lv. 25)-->Pelipper
+* Taillow--(Lv. 22)-->Swellow
+
+
+Ambrette Town and Route 9 (Spikes Passage) – 
+Talk to the lady outside the aquarium to get the Rock Smash TM. We need this for an item and some extra pokemon. Make sure you have a pokemon with you that knows Rock Smash for the next section. Visit the fossil lab and you’ll be asked to visit Glittering Cave to find the assistant that can revive fossils. You can access this through the eastern exit of town. Also grab the Rocky Helmet from the girl in the gatehouse if you want, I love using this item when training pokemon for some additional damage. You’ll need to ride on a Rhyhorn to get across the rocks. While travelling over them, a wild encounter may occur. There’s three pokemon to catch this way: Helioptile, Hippopotas and Sandile. If you explore all the ledges on the way you’ll be able to get a Fire Stone. If you need healing, speak to the female ranger outside the entrance to the cave.
+
+
+* Helioptile--(Sun Stone)-->Heliolisk
+* Hippopotas--(Lv. 34)-->Hippowdon
+* Sandile--(Lv. 29)-->Krokorok--(Lv. 40)-->Krookodile
+
+
+Glittering Cave – 
+This place is very interesting in terms of wild encounters. In the first room you’ll be in a 3D maze. As long as you don’t turn off unless you get to a bend, it’s a straightforward trip to the next area. You’ll also notice that there’s no random encounters in the traditional sense. You’ll need to approach the weird black blobs that appear throughout the tunnel. These will trigger an encounter with a pokemon. Here you’ll be able to find a large number of pokemon: Kangaskhan, Machop, Onix, Solrock, Lunatone, Rhyhorn, Cubone and Mawile. Once you’re inside the next room, you’ll have a few battles with Team Flare before rescuing the assistant who will let you pick between the Jaw Fossil (Tyrunt) or the Sail Fossil (Amaura). Once you’re done, focus on the encounters in the room. This will require you to walk under a shadowy spot on the floor which means that a pokemon will drop down and attack. You can simply leave and re-enter the room to get them to respawn. You’ll find a Woobat and a Ferroseed this way. Finally, use Rock Smash on the rocks in this room to potentially get a piece of Old Amber and possibly a Dwebble encounter. Once you’re done, make your way back to the fossil lab and get your fossil and Old Amber revived. 
+
+
+* Kangaskhan
+* Machop--(Lv. 28)-->Machoke
+* Onix
+* Solrock
+* Lunatone
+* Rhyhorn--(Lv. 42)-->Rhydon
+* Cubone--(Lv. 28)-->Marowak
+* Mawile
+* Woobat--(Happiness)-->Swoobat
+* Ferroseed--(Lv. 40)-->Ferrothorn
+* Dwebble--(Lv. 34)-->Crustle
+* Aerodactyl
+
+
+* Tyrunt--(Lv. 39 day time)-->Tyrantrum
+OR
+* Amaura--(Lv. 39 night time)-->Aurorus
+
+
+To Cyllage City – 
+Go through the aquarium to reach the coast. On the lower floor of the aquarium a fisherman will give you an Old Rod. Backtrack to Central Kalos and fish at any pool of water to get a Magikarp (Parfum Palace courtyard is the closest). Returning to the coast, fish in the sea to catch a Luvdisc. Get a second one for a trade. Also use Rock Smash to try and find a Binacle on the beach. When you reach Cyllage City, home of the second gym, get yourself a free bike. You can also visit the house next to the pokemon centre that gives massages, excellent for raising the happiness of your pokemon. Finally, trade that spare Luvdisc for a Steelix! That’s one trade evolution pokemon that we CAN obtain. Feel free to cycle up the hill to visit Grant and get the HM Strength but it’s entirely optional as we’ll be coming back here at the end of the section. 
+
+
+* Magikarp--(Lv. 20)-->Gyarados
+* Luvdisc
+* Binacle--(Lv. 39)-->Barbaracle
+* Steelix
+
+
+Route 10 (Menhir Trail) - 
+North of Cyllage City we reach the rocky area of Route 10. Lots more pokemon to catch: Eevee, Snubbull, Emolga, Sigilyph, Golett, Hawlucha and a version exclusive – Houndour in X, Electrike in Y. In horde battles you can also catch a Nosepass and a Yanma and be sure to grab the Thunder Stone here. If you want multiple Eevee, it is more common in the yellow flowers. We can get all Eeveelutions except for Leafeon and Glaceon as we haven’t reached the required areas yet. You can catch Eevee in a Luxury Ball for the two happiness evolutions or simply breed a female for a higher initial base happiness (or both). Be cautious when using Pokemon Amie to increase exp gain, if you satisfy the requirements for Sylveon to evolve (2 Pokemon Amie affection hearts and Eevee knows a Fairy type move) it will override the Espeon/Umbreon evolution, so make sure it doesn’t know Baby Doll Eyes or any other fairy moves. 
+
+
+* Eevee--(Water Stone)-->Vaporeon
+* Eevee--(Thunder Stone)-->Jolteon
+* Eevee--(Fire Stone)-->Flareon
+* Eevee--(Happiness day time)-->Espeon
+* Eevee--(Happiness night time)-->Umbreon
+* Eevee--(2 affection hearts, Eevee knows a Fairy type move)-->Sylveon
+* Snubbull--(Lv. 23)-->Granbull
+* Emolga
+* Sigilyph
+* Golett--(Lv. 43)-->Golurk
+* Hawlucha
+* (X) Houndour--(Lv. 24)-->Houndoom
+* (Y) Electrike--(Lv. 26)-->Manectric
+* Nosepass
+* Yanma--(Level up knowing Ancient Power)-->Yanmega
+
+
+We can access Geosenge Town but there’s nothing to do here so with that we’ve reached our next road block as a bunch of tourists are in the way of the eastern exit from town. 
+
+
+Levelling up tips – 
+You have A LOT of pokemon to train and you have multiple options available to you. If you are using the exp share, just train in the Battle Chateau with a strong pokemon (which may even reach Lv100) with a writ that speeds up trainer regeneration. Your party will get crazy exp, especially against the Audino trainers, so simply switch out party members once they’ve evolved. If you’re not using exp share, I used Hoppip horde battles (who have no attacking moves) to raise weak pokemon up to level 15, Seviper/Zangoose hordes from levels 15-25/30 and the Battle Chateau for pokemon over those levels. The few ghost types you get are entirely immune to Audino’s moves so feel free to sponge up that huge exp. A really cheap tactic I used against the Audino trainers was buying lots of Super Potions with my excess money, giving a pokemon the Rocky Helmet to hold and then I simply healed after every hit until Audino KO’d itself from recoil and Rocky Helmet damage.
+
+
+End of part 2:
+Central Dex - Caught 125, Remaining 28
+Coastal Dex – Caught 68, Remaining 85
+Kalos Dex – Caught 193, Remaining 264
+
+
+________________
+
+
+
+
+Part 3 - Pre Badge #3 (Shalour Gym)
+
+
+Pokemon in this section:
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+X Exclusive:
+  
+  
+
+Y Exclusive:
+  
+  
+
+Having the Cliff Badge from Grant allows you to use Strength. There are a few boulders that you can push at this moment in time but other than items, TMs and shortcuts (Cyllage City to Route 7), none of them grant access to any new pokemon. With this gym badge in hand you are now able to leave Geosenge Town out of the eastern exit. 
+
+
+Route 11 (Miroir Way) – 
+Another route and another batch of pokemon to catch. This is a small route that leads up to the entrance to Reflection Cave however you can catch Stunky, Chingling, Staravia, Hariyama (catch a female), Nidorina, Nidorino, Dedenne and another exclusive (Sawk for X, Throh for Y). If you don’t want to breed a Nidorino to get both forms of Nidoran or a Staravia to get Starly, you can also find these base forms in horde battles. There’s a free Thunder Stone on this route with the dowsing machine. Chingling is another happiness evolution to consider using a Luxury Ball.
+
+
+* Stunky--(Lv. 34)-->Skuntank
+* Chingling--(Happiness night time)-->Chimecho
+* Starly--(Lv. 14)-->Staravia--(Lv. 34)-->Staraptor
+* Hariyama
+* Nidoran ♀--(Lv. 16)-->Nidorina--(Moon Stone)-->Nidoqueen
+* Nidoran ♂--(Lv. 16)-->Nidorino--(Moon Stone)-->Nidoking
+* Dedenne
+* (X) Sawk
+* (Y) Throh
+
+
+Should you want to breed Nidorino or Staravia, feel free to do so though the only mandatory breeding is with Hariyama:
+
+
+* Hariyama--(Breed)-->Makuhita
+
+
+Reflection Cave – 
+One word of warning while travelling through this cave…make sure you can take down a Wobbuffet or two! You will not be able to flee due to the Shadow Tag ability and obviously it can cause severe damage by using countering moves. Work your way through this maze and remember that the strength boulders provide a nice shortcut between the entrance and exit so make use of them for when you need to get back to the Battle Chateau at the end of the section. In the cave you’ll find Mr Mime (with Mime Jr in horde battles), Wobbuffet, Roggenrola, Carbink, Solosis and Sableye. Make sure to explore the cave for items, especially with a free Moon Stone to avoid repeating the Super Training to get one. Catch a female Wobbuffet for breeding later on.
+
+
+* Mime Jr--(Level up while knowing Mimic)-->Mr Mime
+* Wobbuffet
+* Roggenrola--(Lv. 25)-->Boldore
+* Carbink
+* Solosis--(Lv. 32)-->Duosion--(Lv. 41)-->Reuniclus
+* Sableye
+
+
+Route 12 (Fourrage Road) – 
+Once you’ve been forced into visiting the gym, leave town and go east onto Route 12. There isn’t much we can access without the next badge but you can dive into the grass here for a few more pokemon. Chatot, Miltank, Tauros, Exeggcute, Pachirisu, Slowpoke and another exclusive (X for Pinsir, Y for Heracross) are in the standard grass encounters with Mareep only available via horde battles. 
+
+
+* Chatot
+* Miltank
+* Tauros
+* Exeggcute--(Leaf Stone)-->Exeggutor
+* Pachirisu
+* Slowpoke--(Lv. 37)-->Slowbro
+* (X) Pinsir
+* (Y) Heracross
+* Mareep--(Lv. 15)-->Flaaffy--(Lv. 30)-->Ampharos
+
+
+That’s unfortunately as far as we can go so it’s not as long a section as the previous one. 
+
+
+Levelling up tips – 
+Aside from grinding against wild pokemon and the gym trainers, the Battle Chateau really is the place to go (and will be for the majority of the game). Assuming you used it in the previous section you should be at the highest rank (or close to it) for the full range of trainers available. 
+
+
+End of part 3:
+Central Dex - Caught 125, Remaining 28
+Coastal Dex – Caught 107, Remaining 46
+Kalos Dex – Caught 232, Remaining 225
+
+
+________________
+
+
+
+
+Part 4 - Pre Badge #4 (Coumarine Gym)
+
+
+Pokemon in this section:
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+X Exclusive:
+  
+  
+  
+  
+
+Y Exclusive:
+  
+  
+  
+  
+
+Once Korrina has been defeated you can learn some more about mega evolution and battle her again at the Tower of Mastery with a gift Lucario that can mega evolve. With this battle out of the way, head towards Route 12 and you’ll receive the HM for Surf which you can now use with your latest gym badge. Enter Route 12 and speak to the breeder who previously blocked you for a free Lapras. This is a great candidate for teaching Surf to, although pretty much any water type can learn it. 
+
+
+* Lapras
+
+
+Carry on through Route 12 over the water and continue on towards Coumarine City. There’s plenty of decent items including a Water and Shiny Stone and the invaluable Leftovers hold item. You can also visit Azure Bay to the north before you reach Coumarine City for some exp and items, though there’s no new pokemon to catch at the moment. Enter Coumarine City. Here you can obtain a Good Rod by speaking to one of the fishermen and an outdoor stall sells incense for breeding. Two of which are important for the challenge at this moment – the Full Incense and the Lax Incense for Munchlax and Wynaut respectively. We won’t backtrack yet though. Coumarine also houses the next gym already but you’ll need to take the monorail over there. Speak to the residents of the hotel to get the Lucky Egg which boosts exp for any pokemon holding it – a great item for this challenge.
+
+
+Route 13 (Lumiose Badlands) – 
+This is our final stop before backtracking. You can catch pokemon here in the Mountain Dex section although we have not yet met Sina and Dexio for the upgrade. The encounters here are based on the burrowing pokemon that may ambush you as you run around. Here you can catch Dugtrio (catch a female), Trapinch and Gible. There’s very few rocks to smash on this route but they give two new pokemon – Slugma and Graveler. Geodude is not available so you’ll need to catch a female Graveler for breeding. 
+
+
+* Dugtrio
+* Trapinch--(Lv. 35)-->Vibrava--(Lv. 45)-->Flygon
+* Gible--(Lv. 24)-->Gabite--(Lv. 48)-->Garchomp
+* Slugma--(Lv. 38)-->Magcargo
+* Graveler
+
+
+Bring your Nosepass from earlier and level it up once to evolve it on this route:
+
+
+* Nosepass--(Level up on Route 13)-->Probopass
+
+
+Good Fishing Tour/Surf’s Up – 
+With Surf and the Good Rod now available, we can backtrack to previous areas and catch pokemon only found by surfing. There’s also some nice items you can reach including a Dawn Stone from Route 3
+
+
+* (Surf Route 3) Masquerain (catch a female)
+* (Fish Route 3) Corphish--(Lv. 30)-->Crawdaunt
+* (Fish Route 3) Goldeen--(Lv. 33)-->Seaking
+* (Fish Route 22) Carvanha--(Lv. 30)-->Sharpedo
+* (Surf Route 8) Tentacool--(Lv. 30)-->Tentacruel
+* (Surf Route 8) Wailmer--(Lv. 40)-->Wailord
+* (Fish Route 8 – X) Clauncher--(Lv. 37)-->Clawitzer
+* (Fish Route 8 – Y) Skrelp--(Lv. 48)-->Dragalge
+* (Fish Route 8 – X) Staryu--(Water Stone)-->Starmie
+* (Fish Route 8 – Y) Shellder--(Water Stone)-->Cloyster
+* (Fish Cyllage City) Horsea--(Lv. 32)-->Seadra
+* (Surf Shalour City) Mantyke--(Level up with Remoraid in party)-->Mantine
+* (Fish Shalour City) Remoraid--(Lv. 25)-->Octillery
+* (Fish Shalour City) Chinchou--(Lv. 27)-->Lanturn
+* (Fish Route 12) Clamperl
+
+
+Breeding Detour – 
+With access to the incenses and a few pokemon whose pre-evolutions aren’t available, we will need to breed a few pokemon to get their dex entries:
+
+
+* Snorlax--(Breed holding Full Incense)-->Munchlax
+* Wobbuffet--(Breed holding Lax Incense)-->Wynaut
+* Masquerain--(Breed)-->Surskit
+* Graveler--(Breed)-->Geodude
+* Dugtrio--(Breed)-->Diglett
+
+
+Levelling up tips – 
+No change from last time – gym trainers, grinding whilst looking for pokemon, revisit the Battle Chateau. You have some late evolvers here such as Garchomp so the Audino battles will be very helpful.
+
+
+End of part 4:
+Central Dex - Caught 134, Remaining 19
+Coastal Dex – Caught 127, Remaining 26
+Mountain Dex – Caught 12, Remaining 139
+Kalos Dex – Caught 273, Remaining 184
+
+
+________________
+
+
+
+
+Part 5 - Pre Badge #5 (Lumiose Gym)
+
+
+This is the shortest section of the game! Head back to Route 13 and go to the left side to find a Team Flare member and get his access card to the Power Plant. If he continues to block the bridge, leave the route and come back. Enter the Power Plant and kick Team Flare out which isn’t a big task considering how many high level pokemon you now have. Once you’re done, power will be partially restored to Lumiose City and you can enter at the southern end of Route 13. Dexio and Sina will upgrade your pokedex to include the Mountain Dex which of course you’ve already obtained 12 entries for…
+
+
+Lumiose City Revisited – 
+Shauna will stop you pretty quickly and usher you to the central plaza to watch Lumiose Tower get restored to its former glory. After this, you’re free to venture round virtually all of Lumiose City which is a big place. However, despite the range of goods available, there’s nothing that allows you to catch anything new or evolve/breed any existing pokemon meaning that there are no new pokemon in this section. Time to get badge number 5!
+
+
+End of part 5:
+Central Dex - Caught 134, Remaining 19
+Coastal Dex – Caught 127, Remaining 26
+Mountain Dex – Caught 12, Remaining 139
+Kalos Dex – Caught 273, Remaining 184
+
+
+________________
+
+
+
+
+Part 6 - Pre Badge #6 (Laverre Gym)
+
+
+Pokemon in this section:
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+Another pretty short section but not as short as the previous one as there’s actually pokemon to catch this time. Head out of the northern exit from Lumiose City into Route 14. 
+
+
+Route 14 (Laverre Nature Trail) – 
+This place is very reminiscent of the Great Marsh from Sinnoh. The route is composed of standard grass, boggy water that you can run through and really deep boggy water that you can Surf and fish in. Take care of the rival battle here and press on. If you don’t want to breed Weepinbell, you’ll find Bellsprout as one of the hordes. Ekans is the only truly exclusive horde pokemon on this route. However, this route likes to be rainy, which means that Sweet Scent won’t work which means you’ll have to come back another time or run around in the grass and hope for a horde battle that is made up of Ekans. If you don’t have a Leaf Stone for Weepinbell, don’t get one from Super Training, you’re about to get one for free! Fish in the water with the Good Rod for Barboach and Poliwhirl and you can catch Poliwag with the Old Rod. 
+
+
+Note about the rain! Some players really struggle to find a place that’s raining to evolve Sliggoo into Goodra. There is a rain schedule in this game. Aside from checking the routes that could potentially rain (see link below), it consistently rains on Route 14 on Monday before 1pm. Failing that, an alternative that will halt your progress for the rest of the section is to fully evolve Goomy before completing the mandatory events on Route 14 since the game is scripted to always rain until you’ve progressed far enough. 
+https://bulbapedia.bulbagarden.net/wiki/Rain
+
+
+
+
+Fish:
+* Poliwag--(Lv. 25)-->Poliwhirl--(Water Stone)-->Poliwrath
+* Barboach--(Lv. 30)-->Whiscash
+Grass/Swamp: 
+* Goomy--(Lv. 40)-->Sliggoo--(Lv. 50+ while raining outside)-->Goodra
+* Haunter
+* Quagsire
+* Karrablast
+* Shelmet
+* Carnivine
+Swamp Only:
+* Stunfisk
+Grass Only:
+* Bellsprout--(Lv. 21)-->Weepinbell--(Leaf Stone)-->Victreebel
+* Skorupi--(Lv. 40)-->Drapion
+Horde: 
+* Ekans--(Lv. 22)-->Arbok
+
+
+Out of these pokemon, only Haunter and Quagsire require us to breed, so make sure to catch females.
+
+
+* Quagsire--(Breed)-->Wooper
+* Haunter--(Breed)-->Gastly
+
+
+Laverre City – 
+A short visit. Here you can get the Leaf Stone for Weepinbell in the north eastern part of the city. Fish in the pond here for a Basculin with the Good Rod. We can’t progress onto the next route or enter the pokeball factory until we have the next badge so it’s wall time again!
+
+
+* Basculin
+
+
+Levelling up tips – 
+Of course your friend here is the Battle Chateau again. Thankfully there’s really only three pokemon you’ll need to work on levelling up – Skorupi, Barboach, Ekans and Goomy. Once Goomy evolves into Sliggoo it’ll be much more competent for those last ten levels. In order to get Sliggoo to evolve it’ll need to hit Lv50 in a place where it’s raining in the overworld. This can be annoying if the game refuses to rain! The best places you’ll want to check out are Route 14 where you caught Goomy or Route 8 which is north of Ambrette Town. 
+
+
+End of part 6:
+Central Dex - Caught 134, Remaining 19
+Coastal Dex – Caught 127, Remaining 26
+Mountain Dex – Caught 36, Remaining 115
+Kalos Dex – Caught 297, Remaining 160
+
+
+________________
+
+
+
+
+Part 7 - Pre Badge #7 (Anistar Gym)
+
+
+Pokemon in this section:
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+X Exclusive:
+  
+  
+  
+
+Y Exclusive:
+  
+  
+  
+
+Once you’ve got badge number six, head to the Pokeball Factory at the north end of town and kick some Team Flare butt. Doing so will not only get you the coveted Master Ball, but will remove the road block stopping you from reaching Route 15 which we’ll be spending a fair bit of time on. Head out the eastern side of town to get there. 
+
+
+Route 15 (Brun Way) – 
+If you’re arriving here on a Tuesday, consider skipping ahead to the Lost Hotel below for a time sensitive capture. Route 15 is quite a large, autumnal route and is easy to get lost in. Starting with the grass encounters you’ll be able to catch either a Mightyena in X or a Liepard in Y as well as a Watchog in both versions. None of these pokemon’s pre-evolutions are available so make sure to catch a female for breeding. The remaining pokemon are Foongus, Klefki and Pawniard. Murkrow is also here but only available as a horde pokemon. If you find Pawniard too rare, consider catching it in Lost Hotel for better encounter rates. Once you reach the water, there’s nothing new to fish but you can Surf to find a Floatzel and Lombre. Again, these need to be female to get their pre-evolutions. 
+
+
+* (X) Mightyena
+* (Y) Liepard
+* Watchog
+* Foongus--(Lv. 39)-->Amoonguss
+* Klefki
+* Pawniard--(Lv. 52)-->Bisharp
+* Murkrow--(Dusk Stone)-->Honchkrow
+* Lombre--(Water Stone)-->Ludicolo
+* Floatzel
+
+
+Route 16 (Melancolie Path) – 
+Although the next town to go to is Dendemille Town to the east, instead head south to Route 16 (or go to Dendemille for access via Fly). There’s two new pokemon on this route, both of which can be found by entering the really tall grass. You’ll catch two new ghost pokemon – Phantump and Pumpkaboo. You’ll also be able to pick up the Super Rod on this route, completing our collection. 
+
+
+* Phantump
+* Pumpkaboo
+
+
+Lost Hotel – 
+This creepy place is the last area before heading off to Dendemille Town. There’s two entry points into this building, one on Route 15 and the other on Route 16 so make sure you’ve got your HM slaves to get into the southern entrance. There’s two types of encounters – random encounters from walking through the hotel and trash bin encounters. The trash bin encounters are the most troublesome part of this place. If you approach a shaking bin, a pokemon may jump out. Once you’ve encountered it, it won’t respawn a pokemon for the rest of the day. To make matters even more complicated, Rotom exclusively appears in trash cans on Tuesday. 
+
+
+In the halls you’ll encounter three new pokemon - Magneton, Electrode and Litwick. The former two are genderless and their pre-evolutions aren’t available here so we cannot breed them until we finally capture Ditto. In the trash cans you’ll potentially find Trubbish or even Garbodor and the aforementioned Rotom on Tuesdays. I strongly recommend saving before approaching a trash can to allow you to soft reset until you get lucky. I tried this on a bin which gave me an item and I kept soft resetting until I got a pokemon instead.
+
+
+* Magneton--(Level up on Route 13)-->Magnezone
+* Electrode
+* Litwick--(Lv. 41)-->Lampent--(Dusk Stone)-->Chandelure
+* Trubbish--(Lv. 36)-->Garbodor
+* Rotom
+
+
+Frost Cavern – 
+Head back to Route 15 and march onwards to Dendemille Town. The only point of interest for this challenge is that this is where the move relearner lives which you’ll need for evolving Piloswine into Mamoswine. And of course it’s another place you can Fly to. Head north from Dendemille to reach Frost Cavern. There’s a plethora of ice types here and if you venture down into the room with the Icy Rock you can get your penultimate Eeveelution by levelling up Eevee in the room. 
+
+
+* Eevee--(Level up in room with Icy Rock)-->Glaceon
+
+
+On the first floor alone you can catch everything in the cave. You can catch a Jynx, Beartic, Cryogonal, Bergmite and Piloswine. Feel free to catch a female Beartic for breeding although you can catch Cubchoo in a horde as well as Smoochum. Piloswine is the only mandatory pokemon to breed. Vanillite is also available here in hordes. 
+
+
+* Smoochum--(Lv. 30)-->Jynx
+* Cubchoo--(Lv. 37)-->Beartic
+* Piloswine--(Level up while knowing the move Ancient Power)-->Mamoswine
+* Vanillite--(Lv. 35)-->Vanillish--(Lv. 47)-->Vanilluxe
+* Cryogonal
+* Bergmite--(Lv. 37)-->Avalugg
+
+
+Route 17 – 
+Now it’s on towards the home of the 7th gym. You’ll need to cross over a snowy route which will require a ride on a Mamoswine. Walking through the snow you’ll encounter wild pokemon similar to near Glittering Cave. You’ll find Sneasel, Snover and Delibird here. If you’re extremely patient you’ll also find a 1% Abomasnow but given that Snover is close to Lv40 it may not be worth the extra time. Sadly we cannot get the item to evolve Sneasel until post-game. 
+
+
+* Snover--(Lv. 40)-->Abomasnow
+* Delibird
+* Sneasel
+
+
+Anistar City – 
+Your rival will ask you to battle him/her outside the gym. Feel free to do this for some exp as well as battling the gym trainers. Don’t forget to speak to Mr Bonding in the pokemon centre for the Exp O-Power which is incredibly useful if you can keep it activated.
+
+
+Super Fishing Tour – 
+Now that we have the ability to fly back to Anistar, let’s take care of a few things. First we can use our new Super Rod to fish up a few new pokemon:
+
+
+* (Route 8) Qwilfish
+* (Ambrette Town/Cyllage City) Relicanth
+* (Shalour City/Azure Bay) Alomomola
+* (Route 12) Corsola
+* (X - Route 12) Huntail
+* (Y – Route 12) Gorebyss
+
+
+Trip to the Daycare – 
+With all the pokemon caught in this section, there’s a few you’ll need to breed to get their first stages:
+
+
+* (X) Mightyena--(Breed)-->Poochyena
+* (Y) Liepard--(Breed)-->Purrloin
+* Watchog--(Breed)-->Patrat
+* Lombre/Ludicolo--(Breed)-->Lotad
+* Floatzel--(Breed)-->Buizel
+* Piloswine--(Breed)-->Swinub
+
+
+Levelling up tips – 
+As always, the Battle Chateau works best, especially now there’s a lot more gym leaders that show up. Having Exp O-Power activated (and even levelled up) makes the Audino battles even more rewarding. The wild pokemon levels are creeping up now so battling pokemon that are close to Lv40 also has its merits and a lot of pokemon you catch will be close to evolving already so there aren’t many troublesome evolutions, just ones that require high levels such as Vanilluxe. And as always, don’t forget about the gym trainers.
+
+
+End of part 7:
+Central Dex - Caught 134, Remaining 19
+Coastal Dex – Caught 133, Remaining 20
+Mountain Dex – Caught 80, Remaining 71
+Kalos Dex – Caught 347, Remaining 110
+
+
+________________
+
+
+
+
+Part 8 - Pre Badge #8 (Snowbelle Gym)
+
+
+Pokemon in this section:
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+X Exclusive:
+  
+  
+  
+  
+
+Y Exclusive:
+  
+  
+  
+  
+
+
+
+After getting badge number 7, it’s of course the mandatory “kick the evil team’s butts” section. Since you can’t move on until this is done, use this as an opportunity to beef up the pokemon you plan on using against the Elite Four. Fly to central Lumiose City and look for the road that leads to the pokemon centre (red walls). Heal up if you need to and head across the way to the café where you met Lysandre earlier. Once you’ve defeated everyone, it’s time to go to Geosenge Town and visit the secret hideout at the far north western corner of town. Kick some more Flare butt and you’ll soon be met face to face with the box legendary of the game…X for Xerneas or Y for Yveltal. The capture rates are lower than standard box legendary pokemon given that you literally cannot proceed without catching it. Still, bring the best balls you can and your strongest pokemon to withstand their attacks (they are Lv50). You could use your Master Ball but given then easier catch rates, this would be a waste. Once you’ve caught it, face off with Lysandre again and it’s then time to move on with our adventure!
+
+
+* (X) Xerneas
+* (Y) Yveltal
+
+
+Route 18 (Vallee Etroite Way) – 
+Fly back to Anistar City and head south to access Route 18. The wild pokemon here are the same in the grass as they are in the flowers but with slightly different encounter rates (Lairon/Pupitar and Sandslash are more common in the flowers, Gurdurr and Torkoal are more populous in the grass). Lairon is exclusive to X with Pupitar exclusive to Y. There are no pre-evolved forms available (although Aron and Larvitar are available in Terminus Cave) BUT you can catch Ditto in this section at last so there’s no need to hunt down any females. The final pokemon in the grass/flowers are Durant and Heatmor, can be found at 10% and 5% encounter rates respectively. Alternatively you can go near some rustling bushes to have one jump out at you with Heatmor being the rarer of the two. Both can also be found via horde battles but watch out for mixed hordes who will attack each other like with the Zangoose and Seviper hordes. Durant is also much more common in Terminus Cave. Finally, smash some rocks to find a Shuckle which has a shocking 5% chance so you may need to exit and re-enter the route to respawn the rocks. 
+
+
+* (X) Lairon--(Lv. 42)-->Aggron
+* (Y) Pupitar--(Lv. 55)-->Tyranitar
+* Gurdurr
+* Torkoal
+* Sandslash
+* Durant
+* Heatmor
+* Shuckle
+
+
+Feel free to take on Psychic Inver in his hut for an inverse battle that may yield an evolution stone on a good score. Given that you’ve unlocked all Super Training courses and the fact that Inver can only be challenged once per day, it’s probably easier to get the stone via Super Training. 
+
+
+Terminus Cave – 
+Stop off in this cave to catch a few more pokemon. If you didn’t want to breed Lairon/Pupitar, their pre-evolutions are here. Look for shadows being cast on the floor and walk underneath them to find an Ariados and a Noibat. There’s a legendary pokemon in here too but we can’t get that until we become the champion.
+
+
+* (X) Aron
+* (Y) Larvitar
+* Ariados
+* Noibat--(Lv. 48)-->Noivern
+
+
+Couriway Town and Route 19 (Grande Vallee Way) – 
+There’s nothing new to catch but we can challenge Professor Sycamore to a pokemon battle with his fully evolved Kanto starters (so make sure you have something strong still in your party!). Once done we can head south to Route 19. This is a kick in the teeth…as diverse as the wild pokemon distribution has been, everything you find as a standard grass encounter WE ALREADY HAVE. Do try to use Sweet Scent/Honey to activate a horde battle if it’s not raining to find a Gligar. It’s evolution item is also not available like with Sneasel so we’ll have to wait ‘til later. Fishing with the Super Rod on this route could land you a 5% encounter with Politoed. You may want to specifically enter battle with a pokemon that knows Taunt as Politoed knows Perish Song which will knock itself out if you can’t capture it quickly enough. 
+
+
+* Gligar
+* Politoed
+
+
+Snowbelle City and Route 20 (Winding Woods) – 
+The gym leader is not available (not that we want to battle him yet). We do have the freedom to venture into a couple more routes. South of Snowbelle is the Winding Woods. Bring an Eevee here to finally get the last of our Eeveelutions, Leafeon. In the grass of this route you’ll find Jigglypuff, Noctowl, Gothorita, Zoroark and Trevenant. If you trigger a horde battle you might find some Trevenant with a Sudowoodo trying to blend in. Thankfully they don’t attack each other so take your time. 
+
+
+* Eevee--(Level up in Winding Woods near mossy rock)-->Leafeon
+* Jigglypuff--(Moon Stone)-->Wigglytuff
+* Noctowl
+* Gothorita--(Lv. 41)-->Gothitelle
+* Zoroark
+* Trevenant
+* Sudowoodo
+
+
+Pokemon Village – 
+You’ll find the gym leader, Wulfric, here in the village. Talk to him and he’ll head back. The trash cans here act just like the ones in Lost Hotel. If you save before examining a shaking trash can you can soft reset until you get a Banette. Run around in the flowers here to finally catch a Ditto!
+
+
+* Banette
+* Ditto
+
+
+Route 21 (Derniere Way) – 
+Head west out of Snowbelle and you can access this last route before the final gym. This is a very straightforward route in terms of captures. In the flowers (stick to the red flowers) you’ll catch Ursaring, Scyther, Altaria and Spinda. If you fish with the Good Rod there’s a 5% chance of capturing a Dratini whereas there’s also a 5% chance to catch Dragonair with the Super Rod at Lv50 which will save a lot of time getting to Dragonite. Swablu is available as a horde pokemon or simply breed Altaria with Ditto.
+
+
+* Swablu--(Lv. 35)-->Altaria
+* Spinda
+* Scyther
+* Ursaring
+* Dratini--(Lv. 30)-->Dragonair--(Lv. 55)-->Dragonite
+
+
+We cannot proceed into Victory Road without that final badge so that’s the end of the section. 
+
+
+Even MORE breeding – 
+Although X and Y do a great job at not giving you the lowest base forms of pokemon as you advance through the game, it does require many stop offs at the daycare. Throw a pokemon in with a relevant partner or Ditto to get the following pokemon:
+
+
+* Sandslash--(Breed)-->Sandshrew
+* Gurdurr--(Breed)-->Timburr
+* Ariados--(Breed)-->Spinarak
+* Electrode--(Breed)-->Voltorb
+* Magneton/Magnezone--(Breed)-->Magnemite
+* Jigglypuff/Wigglytuff--(Breed)-->Igglybuff
+* Noctowl--(Breed)-->Hoothoot
+* Zoroark--(Breed)-->Zorua
+* Gothorita/Gothitelle--(Breed)-->Gothita
+* Sudowoodo--(Breed while holding Rock Incense)-->Bonsly
+* Banette--(Breed)-->Shuppet
+* Ursaring--(Breed)-->Teddiursa
+
+
+Levelling up tips – 
+Keep that Exp O-Power activated! With wild pokemon levels passing Lv50, it’s almost more fruitful to stick to training in places with fully evolved pokemon such as Route 21. Wiping out hordes of Scyther gives plenty of exp! You can of course stick to the Battle Chateau but unless you’re specifically battling the Audino trainers, it’s run its course at this point of the game. 
+
+
+End of part 8:
+Central Dex - Caught 134, Remaining 19
+Coastal Dex – Caught 134, Remaining 19
+Mountain Dex – Caught 125, Remaining 26
+Kalos Dex – Caught 393, Remaining 64
+
+
+________________
+
+
+
+
+Part 9 - Pre Elite Four and Final Showdown
+
+
+Pokemon in this section:
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+Victory Road – 
+It’s off to see the Elite Four! Head to the gate at the western end of Route 21 and you’ll be able to advance north. Straight inside the cave at Victory Road you’ll be able to track down a Druddigon, Lickitung and Zweilous (5%). Lickitung unfortunately does not know Rollout as it’s too high levelled and the ones you find in hordes are too low levelled so you can either catch a horde Lickitung and level it up a bit or use the move reminder in Dendemille Town to re-learn it if you caught it at Lv58-59. 
+
+
+* Druddigon
+* Lickitung--(Level up while knowing Rollout)-->Lickilicky
+* Zweilous--(Lv. 64)-->Hydreigon
+
+
+Once you’re outside you may find a flying pokemon’s shadow being cast on the ground and they may swoop down on you. These pokemon can be Skarmory, Fearow or, if you’re lucky, Hydreigon. That means you won’t have to grind it all the way up to Lv64!
+
+
+* Fearow
+* Skarmory
+
+
+*Yawn* More Breeding… - 
+The last set of breeding before becoming the champion. Thankfully on a couple this time. Throw the following pokemon in the daycare to get their base forms:
+
+
+* Zweilous/Hydreigon--(Breed)-->Deino
+* Fearow--(Breed)-->Spearow
+
+
+And once you’ve exited Victory Road it’s Elite Four time already. 
+
+
+Levelling up tips – 
+Technically speaking the only forced level up in this section is Lickitung with which you can simply re-learn Rollout and level it up once. If you’re lucky enough to catch a wild Hydreigon then there’s no pain for you. Otherwise, that Zweilous will need a fair bit of training. Stick to using your exp O-Power and return to the Battle Chateau for Audino or train against wild pokemon on Victory Road. Of course you should use the trainers on Victory Road for the best exp in this section if your Zweilous is up to the challenge…
+
+
+End of part 9:
+Central Dex - Caught 134, Remaining 19
+Coastal Dex – Caught 134, Remaining 19
+Mountain Dex – Caught 134, Remaining 17
+Kalos Dex – Caught 402, Remaining 55
+
+
+________________
+
+
+
+
+Part 10 - Post Game
+
+
+Pokemon in this section:
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+X Exclusive:
+  
+  
+  
+  
+
+Y Exclusive:
+  
+  
+  
+  
+
+Choices (one legendary based on your starter):
+  
+/  /  
+Choices (trade for one extra starter):
+  
+  
+  
+/      /      
+Welcome to the Post Game, Champion of the Kalos region! As soon as you leave your room you’ll be asked to meet Professor Sycamore at the train station in Lumiose City. Leave your house and Shauna will offer to trade a starter pokemon to you which is the one which she chose at the start of the game (the one weak to yours). She’ll trade ANY pokemon so feel free to go get a useless pokemon from your PC and come back to do the trade. 
+
+
+* Chespin--(Lv. 16)-->Quilladin--(Lv. 36)-->Chesnaught
+OR
+* Fennekin--(Lv. 16)-->Braixen--(Lv. 36)-->Delphox
+OR
+* Froakie--(Lv. 16)-->Frogadier--(Lv. 36)-->Greninja
+
+
+Kiloude City - 
+Head to Lumiose Station and you’ll get the National Pokedex upgrade from Dexio and Sina as well as getting the train pass which now lets you board the train to Kiloude City. This is the home of the Battle Maison, the battle facility we’re so used to seeing in each game. You’ll need to win some points here in order to purchase two vital prizes – the Razor Claw and the Razor Fang which will evolve Sneasel and Gligar respectively. These are expensive at 48BP each so you may need to get a big winning streak or just battle over and over. 
+
+
+* Gligar--(Level up at night holding the Razor Fang)-->Gliscor
+* Sneasel--(Level up at night holding the Razor Claw)-->Weavile
+
+
+Post-Game Legendaries – 
+There’s only 3 pokemon left in our Kalos Dex left to catch and they’re all legendaries. First off you can get Mewtwo at the Unknown Dungeon which is located in Pokemon Village south of Snowbelle City. It’s at Lv70 as per usual and knows Recover which may drag the battle out. Second is Zygarde who can be found in Terminus Cave off of Route 18 at the deepest part of the dungeon. Zygarde is also at Lv70. Finally you can catch one of the Kanto legendary birds. This depends on your starter. If you chose Chespin, you’ll find Articuno. Fennekin gets you a Zapdos and Froakie lets you catch a Moltres. These are roaming pokemon and you’ll need to find them 10 times in the wild (they will flee before you can catch or attack them). Encounter it one more time and it will flee to Sea Spirit’s Den in Azure Bay where you can encounter it as a static encounter. They are also at Lv70 so consider using repels to flush them out of the grass. Once you’ve encountered it once, you’ll be able to see its location in the pokedex. Like with all legendaries, save before you approach it, bring Dusk Balls and Timer Balls for better results and consider using your Master Ball which I’d recommend for Mewtwo due to its healing capabilities. 
+
+
+* Mewtwo
+* Zygarde
+* Articuno OR Zapdos OR Moltres
+
+
+And that’s as far as we can progress with the Kalos Dex ending up with a final dex count of:
+
+
+End of the Kalos Dex:
+Central Dex - Caught 137, Remaining 16
+Coastal Dex – Caught 135, Remaining 18
+Mountain Dex – Caught 138, Remaining 13
+Kalos Dex – Caught 410, Remaining 47
+
+
+That may be the end of the Kalos Dex but there’s still some more pokemon to be caught for the National Dex!
+
+
+Rock-Smash-ic Park – 
+Terrible Jurassic Park pun...Head over to Glittering Cave to the back room where you can use Rock Smash to get a load of fossils. You can get the gen 4 and 5 fossils here (Skull, Armor, Plume and Cover fossils) in both versions with the fossils from gen 1 being exclusive to Y (Helix and Dome) and the gen 3 fossils only available in X (Claw and Root). Take these back to the research lab in Ambrette Town to revive them and then evolve them. 
+
+
+* Cranidos--(Lv. 30)-->Rampardos
+* Shieldon--(Lv. 30)-->Bastiodon
+* Tirtouga--(Lv. 37)-->Carracosta
+* Archen--(Lv. 37)-->Archeops
+* (X) Anorith--(Lv. 40)-->Armaldo
+* (X) Lileep--(Lv. 40)-->Cradily
+* (Y) Omanyte--(Lv. 40)-->Omastar
+* (Y) Kabuto--(Lv. 40)-->Kabutops
+
+
+Sadly the post-game is a bit lacking in the capture department so this is actually the end! 
+
+
+Levelling up tips – 
+A simple section but the fossils evolve kinda late. Keep training at the Battle Chateau if you like since the rock types resist Audino’s attacks or just pick fights with any wild pokemon you fancy defeating. You have all of Kalos now accessible. 
+
+
+End of the National Dex:
+National Dex – Caught 422, Remaining 299
+So who’s missing (Kalos Dex)?
+
+
+Choices (13): 
+The final Kalos starter line and the other two Kanto starter lines, the other fossil line that you didn’t pick and the other two legendary birds.
+  
+  
+  
+/      /      
+  
+  
+  
+/      /      
+  
+  
+/    
+  
+/  /  
+Version Exclusives (16):
+As usual you can’t catch ‘em all without trading with the other version. These pokemon are all exclusively found on the other version. 
+X Players will be missing:
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+Y Players will be missing:
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+Trade Evolutions (15):
+Although we were able to catch a few wild ones like Politoed and Huntail/Gorebyss, we’re missing the majority which require trading with another game which breaks one of the POC rules. 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+
+
+Mythicals (3): 
+The pokemon that are event ones that you can’t get in game: Diancie, Hoopa and Volcanion
+  
+  
+  
+
+
+
+So who’s missing (National Dex)?
+
+
+Version Exclusives (4):
+We’ve barely caught anything in the National Dex, this is literally just the version exclusive fossils!
+X Players will be missing:
+  
+  
+  
+  
+
+Y Players will be missing:
+  
+  
+  
+  
+
+Friend Safari Exclusive Pokemon (120):
+These pokemon are found in the game but require use of the Friend Safari which is optional and included in the bonus chapter below.
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+Starters (36):
+Starter pokemon from other regions which can’t be caught without trading or migrating from an older game.
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+Legendaries/Mythicals (44):
+Rare pokemon that are either traded from other games, migrated from older games or obtained via events/Mystery Gift.
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+Miscellaneous Pokemon not in game (48):
+These are the remaining pokemon families that are completely unattainable with migrating or trading. Also included are trade evolutions of Friend Safari pokemon since they would also not be able to evolve.
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+________________
+
+
+
+
+Bonus Section: Friend Safari
+
+
+Pokemon in this section:
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+X Exclusive:
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+Y Exclusive:
+  
+  
+  
+  
+  
+
+Choices (the remaining starter):
+  
+  
+  
+/      /      
+Choices (the two remaining Kanto starters):
+  
+  
+  
+/      /      
+I always like to put these extra sections in my guides where the rules of a POC start to go out the window but there’s still pokemon you can catch in your game. Since there’s no trading involved it’s iffy, but you need to connect to another game/player. X and Y’s unique feature is the Friend Safari. It will take some dedication and hunting for players with specific pokemon to complete this. 
+
+
+For every game, you will have already been randomly assigned a pokemon type for your own Friend Safari. When you add someone as a friend on your 3DS it will add them to the Friend Safari where you can find wild pokemon in a patch of grass. Each person will have three pokemon assigned to their safari and each of those pokemon is chosen from a predefined pool of pokemon. For example, if you had a fire type safari, your first pokemon would be chosen from either Growlithe, Ponyta, Pansear or Magmar. The second would be chosen from Charmeleon, Slugma, Larvesta or Pyroar and the third would be chosen from Ninetales, Braixen or Fletchinder. Each ‘slot’ is assigned a pokemon from each pool so you couldn’t have three pokemon from the same slot (e.g. Ponyta, Magmar AND Growlithe). This obviously leads to a large number of combinations of pokemon meaning that you’ll need to befriend a lot of people to get the right ones. Additionally, the friend needs to have completed the game (become the Champion) AND connected online at the same time as you to unlock the third slot. 
+
+
+I would recommend going on a forum or message board (Gamefaqs usually has friend requests) to get as many of these as you can. There may be a time in the future where this system does not work due to the online services being shut down so this option may not be available in the future. The additional pokemon you can get from the friend safari are:
+
+
+Normal Type Safari:
+* (Slot 1) Aipom--(Level up while knowing Double Hit)-->Ambipom
+* (Slot 1) Lillipup--(Lv. 16)-->Herdier--(Lv. 32)-->Stoutland
+* (Slot 2) Minccino--(Shiny Stone)-->Cinccino
+* (Slot 3) Chansey--(Happiness)-->Blissey
+
+
+Bug Type Safari:
+* (Slot 1) Paras--(Lv. 24)-->Parasect
+* (Slot 2) Beautifly
+* (Slot 3) Venomoth
+* (Slot 3 – X) Heracross
+* (Slot 3 – Y) Pinsir
+
+
+Dark Type Safari:
+* (Slot 1 – Y) Mightyena
+* (Slot 1) Nuzleaf--(Leaf Stone)-->Shiftry
+* (Slot 1) Vullaby--(Lv. 54)-->Mandibuzz
+* (Slot 2) Cacturne
+* (Slot 3 – X) Liepard
+
+
+Electric Type Safari:
+* (Slot 2) Electabuzz
+* (Slot 3 – X) Manectric
+* (Slot 3) Luxio--(Lv. 30)-->Luxray
+* (Slot 3) Zebstrika
+* (Slot 3) Galvantula
+
+
+Fairy Type Safari:
+* (Slot 1) Togepi--(Happiness)-->Togetic--(Shiny Stone)-->Togekiss
+* (Slot 2 – X) Spritzee
+* (Slot 2 – Y) Swirlix
+* (Slot 3) Clefairy--(Moon Stone)-->Clefable
+
+
+Fighting Type Safari:
+* (Slot 1) Mankey--(Lv. 28)-->Primeape
+* (Slot 2 – Y) Throh
+* (Slot 2 – X) Sawk
+* (Slot 3) Tyrogue--(Lv. 20 Atk higher than Def)-->Hitmonlee
+* (Slot 3) Tyrogue--(Lv. 20 Def higher than Atk )-->Hitmonchan
+* (Slot 3) Tyrogue--(Lv. 20 Atk and Def equal)-->Hitmontop
+* (Slot 3) Breloom
+
+
+Fire Type Safari:
+* (Slot 1) Growlithe--(Fire Stone)-->Arcanine
+* (Slot 1) Ponyta--(Lv. 40)-->Rapidash
+* (Slot 1) Magmar
+* (Slot 2) Charmeleon--(Lv.36)-->Charizard
+* (Slot 2) Larvesta--(Lv. 59)-->Volcarona
+* (Slot 3) Ninetales
+* (Slot 3) Braixen--(Lv. 36)-->Delphox
+
+
+Flying Type Safari:
+* (Slot 2) Tranquill--(Lv. 32)-->Unfezant
+* (Slot 3) Tropius
+* (Slot 3) Rufflet--(Lv. 54)-->Braviary
+
+
+Ghost Type Safari:
+* (Slot 3) Dusclops
+* (Slot 3) Spiritomb
+
+
+Grass Type Safari:
+* (Slot 1) Tangela--(Level up while knowing Ancient Power)-->Tangrowth
+* (Slot 1) Sunkern--(Sun Stone)-->Sunflora
+* (Slot 2) Ivysaur--(Lv.32)-->Venusaur
+* (Slot 2) Swadloon--(Happiness)-->Leavanny
+* (Slot 2) Petilil--(Sun Stone)-->Lilligant
+* (Slot 2) Sawsbuck
+* (Slot 3) Maractus
+* (Slot 3) Quilladin--(Lv. 36)-->Chesnaught
+
+
+Ground Type Safari:
+* (Slot 1) Phanpy--(Lv. 25)-->Donphan
+* (Slot 2) Camerupt
+* (Slot 3) Gastrodon
+* (Slot 3) Palpitoad--(Lv. 36)-->Seismitoad
+
+
+Ice Type Safari:
+* (Slot 1) Snorunt--(Lv. 42)-->Glalie
+* (Slot 1) Snorunt female --(Dawn Stone)-->Froslass
+* (Slot 1) Spheal--(Lv. 32)-->Sealeo--(Lv. 44)-->Walrein
+* (Slot 3) Dewgong
+* (Slot 3 – X) Cloyster
+
+
+Poison Type Safari:
+* (Slot 1) Cascoon--(Lv. 10)-->Dustox
+* (Slot 2) Venomoth
+* (Slot 3) Muk
+
+
+Psychic Type Safari:
+* (Slot 1) Drowzee--(Lv. 26)-->Hypno
+* (Slot 1) Munna--(Moon Stone)-->Musharna
+* (Slot 3) Xatu
+* (Slot 3) Girafarig
+
+
+Rock Type Safari:
+* (Slot 2 – X) Pupitar--(Lv. 55)-->Tyranitar
+
+
+Steel Type Safari:
+* (Slot 2) Forretress
+* (Slot 2) Metang--(Lv. 45)-->Metagross
+* (Slot 2) Klang--(Lv. 49)-->Klinklang
+* (Slot 3) Bronzong
+* (Slot 3) Excadrill
+
+
+Water Type Safari:
+* (Slot 1) Krabby--(Lv. 28)-->Kingler
+* (Slot 2) Wartortle--(Lv. 36)-->Blastoise
+* (Slot 2) Frogadier--(Lv. 36)-->Greninja
+
+
+And the last batch of breeding in the challenge. Note that with Cascoon or Beautifly you can breed them to get the other line. 
+
+
+* Chansey/Blissey--(Breed holding Luck Incense)-->Happiny
+* Cascoon/Dustox/Beautifly--(Breed)-->Wurmple--(Lv. 7)-->Silcoon/Cascoon--(Lv. 10)-->Beautifly/Dustox
+* Venomoth--(Breed)-->Venonat
+* (Y) Mightyena--(Breed)-->Poochyena
+* Nuzleaf/Shiftry--(Breed)-->Seedot
+* Cacturne--(Breed)-->Cacnea
+* (X) Liepard--(Breed)-->Purrloin
+* Electabuzz--(Breed)-->Elekid
+* (X) Manectric--(Breed)-->Electrike
+* Luxio/Luxray--(Breed)-->Shinx
+* Zebstrika--(Breed)-->Blitzle
+* Galvantula--(Breed)-->Joltik
+* Clefairy/Clefable--(Breed)-->Cleffa
+* Breloom--(Breed)-->Shroomish
+* Magmar--(Breed)-->Magby
+* Charmeleon/Charizard--(Breed)-->Charmander
+* Ninetales--(Breed)-->Vulpix
+* Braixen/Delphox--(Breed)-->Fennekin
+* Tranquill/Unfezant--(Breed)-->Pidove
+* Dusclops--(Breed)-->Duskull
+* Ivysaur/Venusaur--(Breed)-->Bulbasaur
+* Swadloon/Leavanny--(Breed)-->Sewaddle
+* Sawsbuck--(Breed)-->Deerling
+* Quilladin/Chesnaught--(Breed)-->Chespin
+* Camerupt--(Breed)-->Numel
+* Gastrodon--(Breed)-->Shellos
+* Palpitoad/Seismitoad--(Breed)-->Tympole
+* Dewgong--(Breed)-->Seel
+* (X) Cloyster--(Breed)-->Shellder
+* Muk--(Breed)-->Grimer
+* Xatu--(Breed)-->Natu
+* (X) Pupitar/Tyranitar--(Breed)-->Larvitar
+* Forretress--(Breed)-->Pineco
+* Metang/Metagross--(Breed)-->Beldum
+* Klang/Klinklang--(Breed)-->Klink
+* Bronzong--(Breed)-->Bronzor
+* Excadrill--(Breed)-->Drilbur
+* Wartortle/Blastoise--(Breed)-->Squirtle
+* Frogadier/Greninja--(Breed)-->Froakie
+
+
+End of the Bonus Section:
+(X) National Dex – Caught 563, Remaining 158
+(Y) National Dex – Caught 556, Remaining 165
+
+
+Not bad considering we bagged nearly 150 more Pokémon! X benefits from the Friend Safari more by allowing 7 more version exclusives to be caught than Y.
+
+
+________________
+
+
+
+
+3. The End/Thanks
+
+
+A huge thank you to Reddit user Chamale for first inspiring me to play this challenge way back in 2018. I usually play a pokemon game by catching every pokemon on a route but never evolve them all (unless they’re on my team) until post-game. Since doing several POCs over the years I've truly appreciated the journey and the community that has grown as the challenge has had its voice heard. And a special thanks to Johnstone and Chaotic Meatball for making our Reddit so much more popular!
+
+
+If you would like to add any comments/thoughts/advice on improving this guide such as levelling tips, please drop me a message on Reddit u/mewlax84.
+
+
+Until next time!
+
+
+Social Media Plug:
+Instagram: Poké Mewlax (@pokemewlax) • Instagram photos and videos 
+Twitter: Mewlax (@Mewlax1) / Twitter
+Reddit profile: mewlax84 (u/mewlax84) - Reddit

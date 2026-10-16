@@ -1,0 +1,1864 @@
+﻿Mewlax’s Professor Oak Challenge Guide
+Pokemon Black 2 and White 2
+
+
+  
+
+Contents:
+1. – The Basics
+   1. – What is a Professor Oak Challenge?
+   2. – Tips on this version
+2. – The Guide
+   1. – Pre Badge #1 (Aspertia Gym)
+   2. – Pre Badge #2 (Virbank Gym)
+   3. – Pre Badge #3 (Castelia Gym)
+   4. – Pre Badge #4 (Nimbasa Gym)
+   5. – Pre Badge #5 (Driftveil Gym)
+   6. – Pre Badge #6 (Mistralton Gym)
+   7. – Pre Badge #7 (Opelucid Gym)
+   8. – Pre Badge #8 (Humilau Gym)
+   9. – Pre Elite Four
+   10. – Post Game
+3. – The End/Thanks
+
+
+
+
+
+
+1. The Basics
+
+
+   1. What is a Professor Oak Challenge?
+
+
+Professor Oak has always had a dream to fill the pokedex, but he’s too old to do it! It’s up to you as a new trainer to complete that pokedex as much as you can independently by catching, evolving and breeding as many pokemon as is possible. Professor Oak also isn’t getting any younger, so you need to complete that dex as a priority! Maybe you should put your gym challenge on hold for a while…
+
+
+In 2018, a Reddit user named Chamale posted updates of a unique challenge on Pokemon Crystal which at the time didn’t have a name but was referred to as ‘Oak Mode’ or a ‘Professor Oak Run/Challenge’. I was really intrigued by this style of gameplay and set out to play this on FireRed, writing a guide as I went along. After the success of the run I tried it on different versions and have now played the majority of the main series games and even a couple of spin offs. 
+
+
+The basic concept of the challenge follows these simple rules:
+* You have to catch and evolve (or breed) as many pokemon as is possible in the game until you can’t proceed any further until a gym badge is required e.g. needing a badge to be able to use a HM move or in most cases, to allow you to proceed with the plot or to get NPCs to move out of the way. For example, you will need to fully evolve your starter amongst others before defeating the Aspertia Gym for your first badge. For parts where gyms can be done in any order, always get the badge that unlocks the most pokemon.
+* You cannot trade with other versions. This means that trade evolutions are off the table, you’ll get no version exclusives from the other version and you’re stuck with the decisions you make such as your starter. In-game trades are allowed as that NPC is in your version of the game.
+* (Optional) – Call yourself ‘Oak’ or ‘Prof. Oak’ for fun.
+
+
+   2. Tips on this version
+
+
+* Grinding – The first section of a Professor Oak Challenge is always very daunting as you need to get your starter fully evolved. In Generation 5, experience gains have changed a lot. The amount of exp isn’t determined solely by the level and species of the pokemon you’ve defeated. It now takes your level into consideration. The higher your level is compared to the opponent means that exp is reduced. This gets really awkward when you get past level 20 in the first section of the run and your exp per battle starts dwindling. By the time your starter is about to evolve you will literally be earning 11-12 exp per battle against the highest levelled (Lv. 7) wild pokemon! There is also no way to rematch trainers in Black 2 and White 2 as there is no Vs Seeker. Audino is your best friend in this challenge. Once you have your first badge you can start finding them in the rustling grass and they give HUGE exp. 
+
+
+* Learning new moves shouldn’t be taken for granted, particularly with pokemon that evolve at higher levels. During a normal game you might be quick to replace a weak move with a stronger one but getting rid of non-attacking moves is a better strategy here. On the first part of the challenge before the Aspertia Gym, you are battling low level pokemon and will run out of PP very quickly while that exp bar goes up very slowly. You need to maximise the amount of pokemon you can defeat, so having multiple attacking moves, regardless of how weak they are, will be beneficial. You have no need for moves like Growl or Sand Attack. Also consider keeping three stage pokemon unevolved so that they learn moves faster than their middle stage would.
+
+
+* This challenge is a fun alternative to a regular play through and you may really appreciate having to train pokemon up yourself that you never trained before. On the other hand you may end up despising certain pokemon due to their inability to attack when you first get them or their generally poor stats/levelling up moves. 
+
+
+* Please note that this is not a full guide to the game, I am only listing the pokemon you can catch at the earliest opportunities and any required items. Please consult other guides for a full walkthrough. This guide assumes you know how to get through the caves etc throughout the game.
+
+
+* And finally, remember that this is YOUR challenge. There are things you can do to make this run easier or harder and it’s entirely at your discretion how you want to handle this. A lot of people like to use pokemon with the Pickup ability (e.g. Lillipup) to farm Rare Candies to level up your pokemon. You could use exp share, you could put pokemon in the day-care and you could switch train pokemon (send it out and then replace it with a better pokemon). With rustling grass/dust clouds, aside from Audino there is usually a pokemon on each route that can be encountered at a lower rate, often this is a fully evolved pokemon. It’s up to you if you just catch them fully evolved or train them up and evolve their earlier stage.
+
+
+________________
+
+
+
+
+2. The Guide
+
+
+  
+
+Part 1 - Pre Badge #1 (Aspertia Gym)
+
+
+Pokemon in this section:
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+Choices (pick one starter):
+  
+  
+  
+/      /      
+This first part will cover everything you can do from the get-go right up to the Aspertia City Gym BEFORE you get that first badge from Cheren. This WILL take a while so it will really test your patience…
+
+
+Aspertia City - 
+In a rare occurrence, not only do you start off in a city rather than a town but you’re also in the location of the first gym! Not that you can access it yet, especially seeing how there’s lots of Pokémon to catch. As soon as the game begins you’ll need to see Bianca who is up the steps at the northern end of town. There’s no real advantage to any of the starters as they all evolve at level 36. There’s also no real type advantage against the wild pokemon, eventually you’ll one shot everything.
+
+
+* Snivy --(Lv. 17)-->Servine--(Lv. 36)-->Serperior
+OR
+* Tepig--(Lv. 17)-->Pignite--(Lv. 36)-->Emboar
+OR
+* Oshawott--(Lv. 17)-->Dewott--(Lv. 36)-->Samurott
+
+
+Route 19– 
+Leave your home town via the northern exit and you’ll get the usual capture tutorial. There’s only two pokemon to catch here - Patrat and Purrloin. Head east towards Floccesy Town and you’ll meet the former Unova Champion, Alder.
+
+
+* Patrat--(Lv. 20)-->Watchog
+* Purrloin--(Lv. 20)-->Liepard
+
+
+Route 20 – 
+Follow Alder’s instructions and leave out of the east side of town to reach Route 20. Sewaddle, Pidove and Sunkern live here, with the latter two swapping encounter rates depending on the season. Pidove is usually common and Sunkern is rare, except for Summer when Sunkern is more abundant. To get that Sun Stone for Sunkern you’ll need a Lv31 or above Pickup Pokémon (Lillipup) in order to get a chance to hold one. 
+
+
+Once Sewaddle evolves into Swadloon it will need a sufficient level of happiness/friendship to evolve. Try not to let it faint as this will lower friendship. Levelling up also boosts friendship but with the exp curve you don’t want to level up anything further than you need to. Keeping it in your party while you run around grinding other pokemon is always the best option. Get its exp bar as close as you can to levelling up and then periodically save your game and see if it gets the evolution once you do hit that level up. If you don’t, soft reset and try again later. 
+
+
+* Sunkern--(Sun Stone)-->Sunflora
+* Pidove--(Lv. 21)-->Tranquill--(Lv. 32)-->Unfezant
+* Sewaddle--(Lv. 20)-->Swadloon--(Happiness)-->Leavanny
+
+
+Floccesy Ranch – 
+Your rival, Hugh, will be here trying to find a lost Herdier. The ranch owners will be glad that you’re also here to help and will heal your pokemon whenever you talk to them. With this route having the highest levelled Pokémon of the section, this makes for a great training ground. Here you’ll find Lillipup, Mareep, Psyduck, Riolu and Azurill. Those last two are also happiness based evolutions so try to keep them in your party too. Marill evolves at Lv18 so definitely make sure Azurill evolves at Lv17 at the latest. Riolu also needs to specifically be levelled up during the day so keep that in mind. Once you’ve rescued Herdier you can return to Alder, battle a couple of trainers and can then access the Aspertia Gym.
+
+
+Lillipup has two abilities which can come in handy. Vital Spirit means that, if it’s in the lead spot (even if KO’d), higher level pokemon are more likely to appear. The other ability is Pickup, which you will need for an evolution stone in this section or you can use it (along with other Lillipup) in this section to get Rare Candies if it’s Lv21+. It loses both of these abilities when it evolves, so consider carefully when to do that (if at all). Given that you’ll need a Lv31 Pickup Pokémon in this section, make that the one that you evolve up to Stoutland once you have all the Pickup items you need. 
+
+
+* Lillipup--(Lv. 16)-->Herdier--(Lv. 32)-->Stoutland
+* Azurill--(Happiness)-->Marill--(Lv. 18)-->Azumarill
+* Psyduck--(Lv. 33)-->Golduck
+* Riolu--(Happiness during the day)-->Lucario
+* Mareep--(Lv. 15)-->Flaaffy--(Lv. 30)-->Ampharos
+
+
+And with that we’ve hit the wall already! We need to fully evolve everything before we tackle the gym leader. 
+
+
+Levelling up tips – 
+As mentioned already, the exp gain is horrible to you in this game. In comparison to the original Black and White games, they only had four Pokémon to evolve in the first section which makes this game by far one of the longest first sections of a POC. Training a pokemon up to Level 36 is a mammoth task. If your rules allow it, train a Pickup squad (5 Lillipup with Pickup) but the downside to this is that they need to be at least Lv21 to get Rare Candies, which means you’ll have to put in a lot of effort just to assemble the squad in the first place. There are also very limited areas you can train in. Literally, Floccesy Ranch is your best spot. I kept my pokemon unevolved as long as possible so they’d get more attacking moves ASAP to be able to defeat more pokemon without healing. Whilst you’re grinding, consider putting a KO’d Vital Spirit Lillipup in the lead slot so that you’re more likely to get those level 7 pokemon. As great as Floccesy Ranch is for the free healing, that means you’ll either need to faint your Vital Spirit Lillipup every time or you’ll need to run back to the Pokémon Center and deposit/withdraw the rest of your team to heal them. Try to delay battling the gym trainers until your Pokémon are at high levels so you can take advantage of the additional exp when it’s most needed.
+
+
+End of part 1:
+Caught 28, Remaining 273
+
+
+________________
+
+
+
+
+  Part 2 - Pre Badge #2 (Virbank Gym)
+
+
+Pokemon in this section:
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+Black 2 Exclusive:
+  
+  
+
+White 2 Exclusive:
+  
+  
+
+
+
+New Encounter Methods - 
+Going back towards Route 20 with your first badge in hand you’ll be caught up to by Bianca who will give you the new Habitat Mode for your pokedex as well as advising you of rustling spots that can be found all over the region. These are key to earning exp really quickly as well as finding some rare and often fully evolved pokemon. Back at either Floccesy Ranch or Route 20 you’ll be able to encounter Dunsparce if you’re lucky as well as the magnificent Audino. This thing is literally a walking sack of experience points and is your new best friend for the remainder of the challenge. Running up and down to get the grass to shake is pretty much all you’ll ever need. 
+
+
+* Audino
+* Dunsparce
+
+
+You’re now able to pass the Hiker on Route 20 and as you progress slightly farther into the route you’ll also meet up with Cheren who explains the dark grass on the route which typically contain higher levelled pokemon and the occasional double battle will trigger as you run around in this grass. This is exactly what you should do to get Venipede.  
+
+
+* Venipede--(Lv. 22)-->Whirlipede--(Lv. 30)-->Scolipede
+
+
+Virbank City - 
+As you enter you’ll see the gym leader Roxie who returns to her gym after an argument with her father. There’s not much to do in town at this point but you can enter the Virbank Complex at the south western part of town. It is split into two areas. The entrance area with the blue/purple-roofed buildings and the main area further south which has many pipes, boilers, furnaces etc. There’s a few trainers around but obviously you’re here for new pokemon. All of the pokemon you need can be found in the main area which includes Magnemite, Koffing, Growlithe and our first version exclusives - Magby in Black 2 or Elekid in White 2. Aside from Koffing, none of these pokemon can fully evolve yet due to the no trading rule, no way to get Fire Stones yet and no access to the location required to evolve Magneton. And with that we’ve reached the next wall…quite a short section in comparison to the last one. 
+
+
+* Magnemite--(Lv. 30)-->Magneton
+* Koffing--(Lv. 35)-->Weezing
+* Growlithe
+* (B2) Magby--(Lv. 30)-->Magmar
+* (W2) Elekid--(Lv. 30)-->Electabuzz
+
+
+Levelling up tips – 
+Audino. And that’s pretty much the answer to every section after this too. There’s no level difference between the Audino in the two Virbank Complex areas. They’ll level between 10-13 and have a 100% encounter rate in the rustling grass. I chose to stick to the entrance area because there’s too much machinery and pipes in the way in the main area and it was much easier to get to rustling spots without triggering a random encounter on the way to the spot. You’ll level up insanely fast at first but once the level gap starts widening you’ll slow down around Lv25+ so there will be either a lot of running around for grass to shake or reliance on your Pickup squad.
+
+
+End of part 2:
+Caught 40, Remaining 261
+
+
+
+
+________________
+
+
+
+
+  
+
+Part 3 - Pre Badge #3 (Castelia Gym)
+
+
+Pokemon in this section:
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+Black 2 Exclusive:
+  
+  
+  
+  
+  
+  
+
+White 2 Exclusive:
+  
+  
+  
+  
+  
+
+
+
+Sailing to Castelia - 
+As soon as you have your second badge you’ll trigger a trip to PokeStar Studios where you’ll have to do a mandatory tutorial. Roxie’s father, the Captain, heads back to sailing the boat which is great news for us. After you’ve shot a movie you’re free to leave. In the south eastern part of Virbank City you’ll fight a Team Plasma Grunt and will need to head back to Route 20 where you’ll battle another one. Then go back to where you fought the first one and enter the building to speak to the Captain for an instant trip to the enormous Castelia City. 
+
+
+There are some things around the city that are useful to the challenge including the bike that you’ll be given immediately. The Exp Share can be found by entering the Battle Company. If a pokemon holds this they will receive 50% of the exp even if they didn’t participate. On the very northern street which goes up to Route 4 you can enter a building on the right and be given an Eviolite. This boosts defenses of pokemon that can evolve which is helpful when battling Audino to tank hits better. On the far western street, a lady in one of the buildings will massage pokemon for you once per day which helps with happiness/friendship evolutions. 
+
+
+Although we don’t want to battle the gym leader yet, speak to the man outside the gym on the western street to trigger a conversation with Iris who heads to the pokemon centre. Follow her and you’ll unlock the Castelia Sewers. 
+
+
+Castelia Sewers - 
+In this cave-like area you’ll team up with your rival and all wild battles will be double battles. Your team will also be healed after every battle so really take advantage of the grinding opportunity. The sewers are home to multiple new pokemon including Zubat, Grimer and Rattata. The collaboration with your rival will end when you confront the two Plasma Grunts which are actually very close to the entrance so you may want to explore the southern part of the sewers for some trainer battles and items. 
+
+
+* Zubat--(Lv. 22)-->Golbat--(Happiness)-->Crobat
+* Grimer--(Lv. 38)-->Muk
+* Rattata--(Lv. 20)-->Raticate
+
+
+Once you’ve defeated the grunts, Burgh will return to the gym and you’re free to enter the back room which is Relic Passage. There are five new pokemon in this room. Timburr, Woobat, Onix and Roggenrola are standard encounters but Drilbur can only be found in a dust cloud. In order to be able to run around enough for this to appear you may need to use a Repel to avoid random encounters. Unlike every cave in the original Black/White games, this cave does NOT spawn evolution stones from dust clouds. 
+
+
+* Timburr--(Lv. 25)-->Gurdurr
+* Woobat--(Happiness)-->Swoobat
+* Onix
+* Roggenrola--(Lv. 25)-->Boldore
+* Drilbur--(Lv. 31)-->Excadrill
+
+
+Interestingly there’s also another exit out of the sewers which is up a staircase just south of Relic Passage’s entrance. This leads up to a secret park within Castelia City where you’ll be able to run around in the grass to catch Eevee and a couple of version exclusives. Black 2 players will find Buneary and Cottonee while White 2 players will instead find Skitty and Petilil. The shaking grass has a 5% chance of finding the evolved forms of these two version exclusives. If you’re evolving Skitty in White 2 you’ll need a Lv41+ Pickup pokemon in order to find a Moon Stone. You’ll need to catch two Eevee to evolve them into Espeon and Umbreon. The remaining Eeveelutions are not able to be evolved into yet. Catch a second Petilil/Lilligant for a trade coming up. 
+
+
+* Eevee--(Happiness during the day)-->Espeon
+* Eevee--(Happiness during the night)-->Umbreon
+* (B2) Buneary--(Happiness)-->Lopunny
+* (B2) Cottonee--(Sun Stone)-->Whimsicott
+* (W2) Skitty--(Moon Stone)-->Delcatty
+* (W2) Petilil--(Sun Stone)-->Lilligant
+
+
+Route 4 - 
+Although we don’t have the badge yet, we can venture a little ways out onto Route 4 which is enough for us to dive into the dark sand to encounter our last few captures - Sandile, Darumaka, Scraggy and either Trubbish in Black 2 or Minccino in White 2. Since we can’t get stones to evolve Minccino, Black 2 edges slightly ahead as Trubbish only needs to evolve by level up. 
+
+
+* Sandile--(Lv. 29)-->Krokorok--(Lv. 40)-->Krookodile
+* Darumaka--(Lv. 35)-->Darmanitan
+* Scraggy--(Lv. 39)-->Scrafty
+* (B2) Trubbish--(Lv. 36)-->Garbodor
+* (W2) Minccino
+Levelling up tips – 
+Yep, Audino again. You have a few pokemon around Lv40 for evolutions so even against the highest Lv18 Audino it’s still a bit of a grind so consider using your Pickup squad for Rare Candy to finish off the last few levels. If you’re playing White 2, definitely go for the Delcatty rustling grass encounter to avoid excessive levelling up for Lillipup in order to find a Moon Stone via Pickup. For the happiness/friendship evolutions, just keep them in your party while you grind other Pokémon. The amount of biking you’ll do to find Audino will increase your team’s happiness very quickly. 
+
+
+End of part 3:
+Black 2 - Caught 72, Remaining 229
+White 2 - Caught 71, Remaining 230
+
+
+________________
+
+
+
+
+
+
+  Part 4 - Pre Badge #4 (Nimbasa Gym)
+
+
+Pokemon in this section:
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+Black 2 Exclusive:
+  
+  
+  
+  
+  
+  
+  
+
+White 2 Exclusive:
+  
+  
+  
+  
+  
+  
+  
+  
+
+
+
+Quite a lengthy section in terms of pokemon caught and ground covered. You’ll be able to venture further into Route 4 now you’ve got the third badge of the region. There is a static encounter that appears on certain days of the week. In Black 2 you’ll find Mandibuzz in this new area with the ruined buildings on Thursdays whereas if you’re playing White 2 then you’ll find Braviary instead on a Monday. Also bring your spare Petilil or Cottonee to find an NPC who will trade the other pokemon for it. Using a Sun Stone from Pickup you can evolve it or you’ll get a free stone coming up. 
+
+
+* (B2) Mandibuzz
+* (W2) Braviary
+* (B2) Petilil--(Sun Stone)-->Lilligant
+* (W2) Cottonee--(Sun Stone)-->Whimsicott
+
+
+The Desert Resort - 
+On the north western side of Route 4 you’ll find the entrance to the Desert Resort. Pass through the gate into the area proper and battle the nurse for free healing afterwards while you track down all the pokemon in this area. Running in the darker sand you’ll encounter Sandshrew, Dwebble, Trapinch, Sigilyph and Maractus. While you’re in the area, check the very south western part of the route with the dowsing machine that Bianca gave you earlier to find a hidden Fire Stone. Entering the Relic Castle at the north of the route you’ll find Yamask but there’s not much else to do here just yet. 
+
+
+* Sandshrew--(Lv. 22)-->Sandslash
+* Trapinch--(Lv. 35)-->Vibrava--(Lv. 45)-->Flygon
+* Dwebble--(Lv. 34)-->Crustle
+* Sigilyph
+* Maractus
+* Yamask--(Lv. 34)-->Cofagrigus
+
+
+Once you’re done, go back to Route 4 and leave through the north eastern gate to enter Join Avenue. Although it’s technically possible to level this place up to get evolution stones there’s a more straightforward place to get them shortly so carry on through to Nimbasa City. If you are interested in investing some time in Join Avenue you can establish barbers and cafes which give multiple friendship boosts per day if you pay for them which can really speed up happiness/friendship evolutions.  
+
+
+Nimbasa City - 
+Home of the next gym but there’s a lot to do before considering that. Behind the sign to the left of the Pokemon Center is another hidden evolution stone, this time being a Thunder Stone. You’ll need it for this section. In the building to the north west of the Pokemon Center you can speak to an NPC for a free Soothe Bell. For your happiness evolutions, give it this item to hold and actions that would boost a pokemon’s happiness/friendship such as levelling up will have a boosted effect. North of the pokemon center in a building you’ll get a free Sun Stone which you can use for your traded grass type from Route 4 if you didn’t have a spare stone. At the amusement park you may want to pick up the Dropped Item which is vital for some extra pokemon in the post game and you can make a start on this side mission throughout your main game if you want to (see here for more details). 
+
+
+Lostlorn Forest - 
+Making a detour first, head out of the north eastern gate. This will take you to Route 16 which eventually leads to a dead end until post game but you can find the entrance to Lostlorn Forest here. The pokemon on Route 16 are the same as on Route 5 so we’ll skip these for now since there’s other things to do on Route 5. On the western side of the forest you can use the dowsing machine to find a Leaf Stone. In the normal grass encounters you’ll be able to catch Combee, Roselia and either Heracross in Black 2 or Pinsir in White 2. In the rustling grass you’ve got the option of catching Vespiquen to avoid finding a female Combee but you’ll also find Pansage, Pansear, Panpour, Emolga and Roserade. Shiny Stones are not easily obtainable in this section so catching wild Roserade helps out a lot.
+
+
+Next we come on to the most frustrating part of probably the entire run - Hidden Grottoes. in the north eastern part of the forest you’ll see a dark patch between two trees. Examine this and you’ll be able to enter where you can find either a wild pokemon, an item (which includes evolution stones), an invisible item (use the dowsing machine or check the central patch in the grotto) or nothing at all. Every 256 steps has a small chance of resetting the grotto so you will be biking back and forth a lot for the grotto to refresh and will then need to check to see if there’s anything in it. This is the only way for you to find the other beetle pokemon - Pinsir in Black 2 or Heracross in White 2. If the grotto spawns a pokemon which only happens 20% of the time, the bug pokemon you’ll be looking for only has a 3.75% chance out of the pokemon in the encounter pool. This can easily be the last thing you’ll need to do this section but keep checking back, especially while grinding for Audino in the forest. It’s not the most ideal place to grind because there’s so many pokemon other than Audino in the rustling grass but you’ll be close by to keep checking that grotto. 
+
+
+* Combee
+* Vespiquen
+* Roselia
+* Roserade
+* Pansage
+* Pansear
+* Panpour
+* Emolga
+* Pinsir
+* Heracross
+
+
+Route 5 - 
+This time going out of the north western exit from Nimbasa City you’ll reach Route 5 which shares its grass encounters with Route 16. You’ll find your version exclusive Psychic type - Gothita for Black 2 or Solosis for White 2. Black 2 players will also now be able to catch a Minccino as well as its evolution Cinccino in rustling grass, something that White 2 players will also want to catch due to the lack of Shiny Stones in the previous section. White 2 players get to catch and evolve Trubbish. There’s another hidden grotto here and Bianca will give you a quick overview. In this grotto you can catch a Foongus which, true to form, will disguise itself as an item so be sure to check it. Thankfully it’s a 75% chance if the grotto refresh contains a pokemon so it’s a lot more bearable. 
+
+
+* (B2) Gothita--(Lv. 32)-->Gothorita--(Lv. 41)-->Gothitelle
+* (W2) Solosis--(Lv. 32)-->Duosion--(Lv. 41)-->Reuniclus
+* (B2) Minccino
+* Cinccino
+* (W2) Trubbish--(Lv. 36)-->Garbodor
+* Foongus--(Lv. 39)-->Amoonguss
+
+
+Evolution Stones - 
+So there’s a number of pokemon to evolve through stones here and the reason I've left this until last is because you may have picked up some evolution stones whilst checking the hidden grottoes. We have Growlithe to evolve, three Eeveelutions to get and the three elemental monkeys from Lostlorn Forest. We got a free Leaf Stone, Thunder Stone and Fire Stone in this section already so that leaves at a minimum two more Fire Stones and two more Water Stones. The best way to get these is in the Battle Subway. I chose to enter the singles category since you don’t have a lot of tools to make a competitive team so i used three pokemon (my choices were Darmanitan, Flygon and Reuniclus) and you’ll be required to win 7 consecutive battles which will give you 3BP - just enough to buy one stone. You can continue your streak but the second group of 7 trainers only gives you 3BP, you’d have to win 21 battles to get anything substantial but because the battles get harder you may find it worthwhile to simply end your streak and start over. With all the stones it’s possible to evolve the following pokemon:
+
+
+* Growlithe--(Fire Stone)-->Arcanine
+* Eevee--(Water Stone)-->Vaporeon
+* Eevee--(Thunder Stone)-->Jolteon
+* Eevee--(Fire Stone)-->Flareon
+* Pansage--(Leaf Stone)-->Simisage
+* Pansear--(Fire Stone)-->Simisear
+* Panpour--(Water Stone)-->Simipour
+
+
+Levelling up tips – 
+Audino of course but the location depends on what you’re working on at the time. Lostlorn Forest is where you’ll want to focus on staying until you’ve found the hidden grotto pokemon but Audino’s appearance is a lot lower whereas Route 5 is the better place to train. Biking next to the grotto on that route is a good spot since the rest of the grass is obscured by trees. With Audino capping at Lv24 it’s actually a fairly rough grind with several late 30 to mid 40 evolutions so the Pickup squad may want to make a comeback to take the edge off. 
+
+
+End of part 4:
+Caught 110, Remaining 191
+
+
+
+
+________________
+
+
+
+
+  
+
+Part 5 - Pre Badge #5 (Driftveil Gym)
+
+
+Pokemon in this section:
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+
+
+Driftveil Drawbridge - 
+After getting the badge, take out a couple of Plasma Grunts and Charles the Heartbreaker and you’ll gain access to the bridge where you can run under the shadows that randomly appear to encounter a Ducklett. 
+
+
+* Ducklett--(Lv. 35)-->Swanna
+
+
+Driftveil City - 
+There’s no Cold Storage area in these games, it’s been replaced by the Pokemon World Tournament (PWT) which you also can’t access just yet. This means your visit to town will be fairly limited. In the north end of town near the gym there’s a house full of ex-Team Plasma members. Sage Rood will give you a Zorua after battling him. On the upper floor of the Pokemon Center you’ll be given some Luxury Balls by speaking to the girl up there. These will come in handy for a friendship evolution in this section. Take note of the market in town as you can buy Incense here which you will need for breeding baby pokemon later on. 
+
+
+* Zorua--(Lv. 30)-->Zoroark
+
+
+Route 6 - 
+On the main route itself, you’ll find Deerling, Karrablast and Shelmet as standard grass encounters. Feel free to catch a wild Deerling but when you reach the Research Lab on this route you’ll be given a free one at a higher level with its hidden ability. In the rustling grass you’ll be able to find a Castform. There’s a couple of free evolution stones on this route. A Moon Stone is just next to the Research Lab and you’ll be given a Shiny Stone from the rest house at the north western end of the route. Speaking of which, the rest house is a great place to get healed up as you gain a few levels and catch the new pokemon here. 
+
+
+* Deerling--(Lv. 34)-->Sawsbuck
+* Shelmet
+* Karrablast
+* Castform
+
+
+Chargestone Cave - 
+Unlike the original Black/White games we can enter here without defeating Clay. This means that all the pokemon are available to encounter. This includes Klink, Ferroseed, Joltik, Nosepass and Tynamo, the latter of which only has a 2% encounter so having a lead pokemon with the Static ability will boost this immensely. Level up your Nosepass inside the cave to evolve it into Probopass. The same can also be done with Magneton to get a Magnezone. For evolution stones, this is actually the first cave in the game where dust clouds can yield evolution stones. Every single evolution stone can be found this way so it’s an alternative to crack out some Repels if you’d rather not grind for BP in the Battle Subway. Unfortunately it’s roadblock time so we’ll need the next badge to advance further. 
+
+
+* Klink--(Lv. 38)-->Klang--(Lv. 49)-->Klinklang
+* Ferroseed--(Lv. 40)-->Ferrothorn
+* Joltik--(Lv. 36)-->Galvantula
+* Nosepass--(Level up in Chargestone Cave)-->Probopass
+* Tynamo--(Lv. 39)-->Eelektrik--(Thunder Stone)-->Eelektross
+* Magneton--(Level up in Chargestone Cave)-->Magnezone
+
+
+Levelling up tips – 
+Audino found on Route 6 are a great option, particularly as there’s a healing spot in the cabin by Chargestone Cave. The downside is the same as Lostlorn Forest from the previous section. There’s other pokemon that push Audino’s encounter rate down to only 50%. Outside of catching the exclusive pokemon in the rustling grass I'd recommend sticking to Route 5 once again for more consistent Audino encounters.  
+
+
+End of part 5:
+Caught 132, Remaining 169
+
+
+________________
+
+
+
+
+  
+
+Part 6 - Pre Badge #6 (Mistralton Gym)
+
+
+Pokemon in this section:
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+
+
+Relic Castle - 
+As soon as you exit the gym, Clay and your rival will usher you towards the PWT to enter the Driftveil Tournament. Before you enter, check out the cave entrance in the south west corner which leads to a different floor of Relic Passage which you previously accessed in Castelia Sewers. Using Strength to move some boulders you’ll be able to enter Relic Castle which is buried under the sand of the Desert Resort. Follow the passage through and you’ll find a room with Volcarona as a static encounter so be sure to save before you battle it. Running around in this specific room will also let you bump into Baltoy. 
+
+
+* Volcarona
+* Baltoy--(Lv. 36)-->Claydol
+
+
+Now enter the Driftveil Tournament at the PWT, defeat Team Plasma on the frigate and head up to Route 6 where you’ll be given the Surf HM. 
+
+
+Surfing Detour - 
+There actually isn’t a whole lot of content unlocked at this point despite games normally opening up a lot once you get the Surf HM. Basculin can be found in pretty much any body of water. The only two detours for pokemon are either Virbank City or Route 4 which both yield Frillish through normal surfing or Alomomola from rippling spots (and Jellicent if you have the patience) and Lostlorn Forest where you’ll find Buizel (and Floatzel through rippling spots although there’s VERY few water tiles). If you want a guaranteed Water Stone, surf on Route 19 to find one. 
+
+
+* Basculin
+* Frillish--(Lv. 40)-->Jellicent
+* Alomomola
+* Buizel--(Lv. 26)-->Floatzel
+
+
+Mistralton Cave - 
+On Route 6 you can surf across the water behind the research center to enter this cave. Use the Flash TM if you want an easier job of navigating although you don’t technically need to move any further than the entry floor. Cobalion may no longer be here but you’ll find Aron and Axew whilst running around. Axew has either the Rivalry or Mold Breaker ability and you’ll definitely want the latter to avoid drops in your attack stats while grinding. 
+
+
+* Axew--(Lv. 38)-->Fraxure--(Lv. 48)-->Haxorus
+* Aron--(Lv. 32)-->Lairon--(Lv. 42)-->Aggron
+
+
+Make your way through Chargestone Cave. If you feel like exploring there’s also a Thunder Stone deep within the cave. Enter Mistralton City for a free Master Ball from Professor Juniper. 
+
+
+Route 7 - 
+North of Mistralton, you’ll want to bring an Emolga with you. Stopping off at the first cabin on the route you can trade it for a Gigalith. There’s a hidden grotto right next to it where you may encounter a Cubchoo, otherwise you’ll need it to be Winter in order to find one in the grass of Route 7. Other encounters in the long grass of this route include Zebstrika and two rare 5% encounters - Zangoose and Seviper.  
+
+
+* Gigalith
+* Zebstrika
+* Zangoose
+* Seviper
+* Cubchoo--(Lv. 37)-->Beartic
+
+
+Celestial Tower - 
+There’s a Leaf Stone near the tower if you want to grab it. Enter the tower and speak to Juniper again who gives you yet another invaluable item - the Lucky Egg. Give this to a pokemon to hold and it will gain 50% more exp in battle. Give this to every pokemon you are currently grinding from now on. Using this against Audino gives some very hefty exp and makes the run a little easier. Make your way up the tower and you’ll encounter Litwick and Elgyem. The higher levelled Litwick have Memento which will cause it to faint so be sure to act fast before it does so or use Taunt to prevent this from happening. 
+
+
+* Elgyem--(Lv. 42)-->Beheeyem
+* Litwick--(Lv. 41)-->Lampent--(Dusk Stone)-->Chandelure
+
+
+There’s another hut to the east of the tower where you can be healed but otherwise it’s a dead end as we can’t access Twist Mountain so it’s grinding time. 
+
+
+Levelling up tips - 
+Of course Audino on Route 7 is the best place to be. Unfortunately there are a few trainers running around in the grass. Should they happen to run into a shaking grass tile, it will cancel it out so there is SOME frustration with this approach. I found the area immediately to the right of the healing cabin to be a good spot. There’s an NPC on the wooden walkways who thankfully can’t disturb the grass and you can simply drop down onto or near the shaking grass spots. And of course you have healing options immediately next to you. It’s also worth pointing out that Ghost type pokemon (Frillish/Litwick) are completely immune to all of Audino’s offensive attacks, 
+
+
+End of part 6:
+Caught 158, Remaining 143
+
+
+________________
+
+
+
+
+
+
+  
+
+Part 7 - Pre Badge #7 (Opelucid Gym)
+
+
+Pokemon in this section:
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+Black 2 Exclusive:
+  
+  
+
+White 2 Exclusive:
+  
+  
+
+
+
+With badge number 6 in your badge case it’s time to take the plane to Lentimas Town. Here you’ll get a free Fire Stone. 
+
+
+Reversal Mountain and the Strange House - 
+This large area covers the outside too. In the grass you’ll find Skorupi, Drifblim and a rare 5% Skarmory. Depending on your version you’ll find Spoink and Grumpig in Black 2 or Numel and Camerupt in White 2 with the evolutions found more commonly on the dark grass. Speaking of the dark grass, run through it to reach a building known as the Strange House. Overrun with poltergeists, make your way through the rooms in the correct order to reach a back room with the Lunar Wing in it. This will come in handy later. While you’re in here you will also be able to encounter a Banette and there’s a free Dusk Stone should you want to grab it. Back to Reversal Mountain, there’s nothing new to catch inside although teaming up with Bianca gives you a good training opportunity for Skorupi. 
+
+
+* Skorupi--(Lv. 40)-->Drapion
+* Drifblim
+* Skarmory
+* (B2) Spoink--(Lv. 32)-->Grumpig
+* (W2) Numel--(Lv. 33)-->Camerupt
+* Banette
+
+
+Undella Town and Undella Bay - 
+As you emerge from Reversal Mountain you’ll be in a post game area from Black and White - Undella Town and its adjacent area, Undella Bay. Within the town itself there’s an invisible Shiny Stone. For encounters you can Surf for Staryu which is also found in rippling spots as well as its evolution, Starmie, which is exclusive to these spots. The bay to the east has a lot more going on for captures. You’ll find Remoraid through surfing at all times of the year, though it’s rare at a 5% encounter rate. In the Winter you’ll find Spheal as well as both of its evolutions exclusively in rippling spots. In all other months it will be replaced with Mantyke through standard surfing and Mantine in rippling spots. Rippling spots also yield Wailmer and, if you’re patient, Wailord. There’s also a cave to the north of the bay - Seaside Cave. It’s blocked off but you can at least set foot inside to encounter a Seel. 
+
+
+* Staryu--(Water Stone)-->Starmie
+* Remoraid--(Lv. 25)-->Octillery
+* Spheal--(Lv. 32)-->Sealeo--(Lv. 44)-->Walrein
+* Mantyke--(Level up with Remoraid in the party)-->Mantine
+* Wailmer--(Lv. 40)-->Wailord
+* Seel--(Lv. 34)-->Dewgong
+
+
+Route 14 - 
+Go south of Undella Town first. It leads to a dead end but there’s still things to do on this route. Swablu, Altaria, Mienfoo and Absol can all be found here through standard encounters with Altaria being more common in the dark grass. 
+
+
+* Swablu--(Lv. 35)-->Altaria
+* Mienfoo--(Lv. 50)-->Mienshao
+* Absol
+
+
+Route 13 - 
+Head back to Undella Town and go north this time to advance onwards to the next gym. This is quite a large route with many paths to venture down. For encounters, Tangela, Pelipper, Lunatone and Solrock can be found in the grass with Tangrowth also available through rustling grass with the usual rarity of 5%. If you’re playing in a non-Winter season, check out the hidden grotto and you may find a Spheal if you want to avoid changing the clock. As you wind your way north up the route you’ll also find Cobalion, a legendary pokemon, just standing out in the open. Make sure you save before you approach it as you only have one chance to catch it prior to the Elite Four. As with all legendaries in the game, get its HP as low as possible and inflict a status effect such as paralysis or sleep. Ultra Balls work well, but if the battle drags on, consider swapping to Timer Balls if you have any. 
+
+
+* Tangela--(Level up whilst knowing Ancient Power)-->Tangrowth
+* Pelipper
+* Lunatone
+* Solrock
+* Cobalion
+
+
+Village Bridge - 
+Skip through Lacunosa Town and Route 12 as there’s nothing of interest to the run. Arriving at Village Bridge, the most important thing to do is to speak to the musicians to enhance your experience…Of course this is optional :) 
+
+
+There’s only one encounter here and it’s a doozy. Lapras can be found in rippling spots via surfing so run along the east side of the river until one appears. It only has a 5% encounter but what makes this worse is that not only is it hard to find, it has the move Perish Song so it may knock itself out if you can’t catch it quick enough. Using moves like Taunt can help here if you’re struggling or want to be prepared. 
+
+
+* Lapras
+
+
+Route 11 - 
+Run in the grass to find a Gligar and then run around to trigger the rustling grass to find a 5% Gliscor. The game taunts you by placing a Razor Fang to evolve Gligar on this route…but locks it behind a HM which we can’t get yet…So rustling grass is the only way to catch a Gliscor (unless you want to grind for 8BP to buy a Razor Fang at the PWT). Stick to the right side of the route to keep away from the water otherwise you’ll get rippling spots instead, just watch out for the breeder trainer that will challenge you every time you return to the route. The second of the legendary Muskedeers makes an appearance on this route so save your game and prepare to catch Virizion. 
+
+
+* Gligar
+* Gliscor
+* Virizion
+
+
+Opelucid City and Route 9 - 
+Opelucid City is the home of your seventh badge but carry on through for now and enter Route 9. Only one encounter here which is Pawniard and then we can finally…oh wait…another hidden grotto…Yep, it’s time for more torture at the final hurdle for this section by getting a hidden grotto pokemon. Bouffalant is found in the grotto on the north west of the route. If a pokemon spawns you’ll have only a 5% chance of it being Bouffalant so be prepared for a lot more biking…
+
+
+* Pawniard--(Lv. 52)-->Bisharp
+* Bouffalant
+
+
+Levelling up tips - 
+Audino again. Stick to Route 9 for the highest levels up to Level 40 but bear in mind it has an 80% encounter rate. This would also be a good spot thanks to being able to check up on the hidden grotto at the same time. 
+
+
+End of part 7:
+Caught 196, Remaining 105
+
+
+
+
+________________
+
+
+
+
+  
+
+Part 8 - Pre Badge #8 (Humilau Gym)
+
+
+Pokemon in this section:
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+Humilau and Seaside Cave Revisited - 
+After gaining badge number 7 it’s the obligatory evil team invasion section. This game actually takes it quite lightly at this stage. After Team Plasma’s invasion, skid around town on the ice and face Zinzolin outside the gym. Heading east out of town you’ll start chasing down the shadow triad who stole the DNA Splicers. Go back to Undella Town and take the Marine Tube to get to Humilau City where the last gym is. Run around on the beach to get a rippling spot where you may be able to catch a Corsola. 
+
+
+* Corsola
+
+
+Surfing south of the city you’ll be able to enter Seaside Cave again. From this side you can go into the basement where a 5% Shuckle is available by running around. 
+
+
+* Shuckle
+
+
+Giant Chasm - 
+West of Humilau is Route 22 where Delibird can be encountered in the grass which is another 5% encounter. You can enter the cave part of Giant Chasm at the end of the route. Inside the cave you can find Delibird with the same encounter rate if you’d rather catch it there. Other encounters in the cave include Clefairy, Piloswine, Vanillish and Sneasel. The dust clouds don’t bring their evolutions into play so unfortunately you’ll have to evolve everything. Visit the Move Reminder outside the PWT in Driftveil to get Piloswine to learn Ancient Power for its evolution. Here at the PWT or at the Battle Subway you’ll need to farm for 8BP in order to exchange the points for a Razor Claw for Sneasel. And that’s all there is to this section!
+
+
+* Delibird
+* Clefairy--(Moon Stone)-->Clefable
+* Piloswine--(Level up whilst knowing Ancient Power)-->Mamoswine
+* Vanillish--(Lv. 47)-->Vanilluxe
+* Sneasel--(Level up at night whilst holding a Razor Claw)-->Weavile
+
+
+Levelling up tips - 
+Of course it’s Audino. You’ll need to do very little grinding as Sneasel and Mamoswine will evolve after one level each so it’s just Vanilluxe to grind but that won’t take long either. Stick to Route 22 for some higher levels. 
+
+
+End of part 8:
+Caught 207, Remaining 94
+
+
+________________
+
+
+
+
+  
+
+Part 9 - Pre Elite Four
+
+
+Pokemon in this section:
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+Black 2 Exclusive:
+  
+
+White 2 Exclusive:
+  
+
+Team Plasma Continued - 
+With a full badge case, go back to Route 22. Terrakion will now be standing in the middle of the route. As you approach it, Colress will appear and give you the Colress Machine. Save your game and catch the last of the Muskedeers. 
+
+
+* Terrakion
+
+
+Go back to Seaside Cave and you’ll be able to move the Crustle blocking one of the exits in the basement. This will lead outside to where the Plasma Frigate now resides. Board the ship and defeat Zinzolin. The frigate will now take off. 
+
+
+Giant Chasm - 
+Entering the cave off of Route 22, you can go out of the south exit. There’s a free Moon Stone found with the dowsing machine, a boulder that can be pushed for a shortcut to Lacunosa Town but, more importantly, there’s a hidden grotto where Drifloon appears 20% of the time a pokemon is present. 
+
+
+* Drifloon
+
+
+Return to the cave and enter the lower central exit which takes you into the chasm proper. The Plasma event continues and you are free to delve into the grass. Ditto and Metang appear here. Metang has an absurdly difficult capture rate that’s on par with legendaries so expect a long, drawn out battle with Timer Balls. Metagross is also found in the shaking grass but it has the same catch rate as Metang who is already at its evolution level so it’s not worth the effort. Finish off the Plasma event by defeating the fused Kyurem and Ghetsis. 
+
+
+* Ditto
+* Metang--(Lv. 45)-->Metagross
+
+
+Route 23 - 
+Back into the cave of Giant Chasm, this time leave out of the western exit to the final route of the main game. In the grass you’ll find your version exclusive bird that’s the pre-evolution of the one you caught waaay back on Route 4 - Vullaby in Black 2 and Rufflet in White 2. You’ll also find Sawk in the grass and Throh in the rustling grass in Black 2 with the encounters switched in White 2. 
+
+
+* (B2) Vullaby
+* (W2) Rufflet
+* Throh
+* Sawk
+
+
+Continue up to the badge gates where N will greet you and give you the Waterfall HM. Proceed through the gates to reach the entrance to Victory Road and a pokemon centre which you can Fly to. 
+
+
+Abundant Shrine - 
+You can now take a quick detour to Route 14 where you can go up the Waterfalls to enter Abundant Shrine. Bronzor and Vulpix appear in the grass with Bronzong also found in the dark grass and Ninetales in the rustling grass if you don’t have a spare Fire Stone. 
+
+
+* Bronzor--(Lv. 33)-->Bronzong
+* Vulpix--(Fire Stone)-->Ninetales
+
+
+Victory Road - 
+The final hurdle before the Elite Four! As you enter the new version of Victory Road you’ll start in a cavern of bridges. Golurk can be found here. Work your way through the cavern, a forest, a mountainous area and then into a cave. You can push the boulder in this cave to enter a dark room which requires Flash. Make your way out the other side and you’ll be back on the mountain outside. Immediately to the right is another cave next to the dark grass. Inside this cave are two more new encounters - Druddigon and Zweilous. You can now make a beeline through the rest of Victory Road and reach the final pokemon centre before you take on the Elite Four. 
+
+
+* Golurk
+* Druddigon
+* Zweilous--(Lv. 64)-->Hydreigon
+
+
+Levelling up tips - 
+If you’ve caught the evolutions of everything new then it’s only Zweilous to evolve at a whopping Level 64. I’d recommend Route 23 for Audino whilst you look for Throh/Sawk in the rustling grass and get your steps in to reset the hidden grotto for Drifloon. Audino likes to use SImple Beam which helps remove the annoying Hustle ability’s accuracy drop for physical moves at the cost of an attack drop (or just use Dragon Pulse). 
+
+
+End of part 9:
+Caught 223, Remaining 78
+________________
+
+
+
+
+  
+
+Part 10 - Post Game
+
+
+Pokemon in this section:
+Unova Dex
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+National Dex
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+Black 2 Exclusive:
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+White 2 Exclusive: 
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+Male Character Trades: 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+Female Character Trades: 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+***See further down for daily events (Daily Swarms/Trades) you may want to work on whilst tackling the new areas***
+
+
+Truths and Ideals - 
+As soon as you boot up the game after becoming Champion you’ll instantly get a visit at home from Professor Cedric Juniper who will give you the National Pokedex and it’s time to start your post game conquest! Your rival will also stop by for a visit and tell you of the Zoroark on Victory Road. This pokemon was previously blocking off a cave entrance which you will now want to visit. This is incredibly easily accessed from the Pokemon League side of Victory Road. Simply pass through the cave and head directly downwards to see Zoroark in the grass. Keep following and you’ll enter the old ruins from the conclusion of Black/White’s story. N will follow you through the castle until he challenges you with his Level 70 box legendary - Zekrom in Black 2 or Reshiram in White 2. Following its defeat he will give you the corresponding stone which you can take to the top of Dragonspiral Tower which we’ll do shortly. 
+
+
+Twist Mountain - 
+Fly back to Mistralton City and go through Route 7 to the entrance of Twist Mountain where Marshal will greet you. Within the caves of the mountain you’ll be able to find Durant, Heatmor and Cryogonal. Also keep an eye out for dust clouds while exploring as there’s a 5% chance of finding Steelix. One of the most important areas of the mountain is in the basement floor which is more easily accessed from the Icirrus end of the mountain (and is even easier during Winter!). In the basement you’ll find a worker who will give you a fossil every day. If you save before talking to him you can soft reset to get a fossil you still need. Overall you’ll get an Old Amber and a Helix, Dome, Claw, Root, Skull and Armor Fossil which we’ll revive later. Also bring an Eevee where another room in the basement houses the icy rock. Level up Eevee in this room to get a Glaceon. 
+
+
+* Heatmor
+* Durant
+* Cryogonal
+* Steelix
+* Eevee--(Level up at Icy Rock)-->Glaceon
+
+
+Icirrus City and Dragonspiral Tower - 
+Once you’re out the other end of Twist Mountain you’ll see the wetlands of Icirrus City in front of you…as long as it’s not Winter…In those three months you’ll be able to encounter Stunfisk, Croagunk and Palpitoad by running around the shallow water. Seismitoad can be found in rippling water spots via surfing but Palpitoad is already well past its evolution level. Within the city at the Pokemon Fan Club you’ll be able to get a second Exp Share item which is great to give an unevolved pokemon in your party to passively level it up. Go north to Dragonspiral Tower. Make your way up the tower, resurrect your dragon and then save the game in preparation to face it in battle and catch it. N will show up once again and advise you that Kyurem has reappeared. Simply go to the cave where you fought Ghetsis at Giant Chasm and save before interacting with the legendary. 
+
+
+* Stunfisk
+* Croagunk--(Lv. 37)-->Toxicroak
+* Palpitoad--(Lv. 36)-->Seismitoad
+* (B2) Zekrom
+* (W2) Reshiram
+* Kyurem
+
+
+Pinwheel Forest - 
+There’s not much else in terms of story but there’s more areas to explore that were previously inaccessible. Fly to Castelia City and go east to access Skyarrow Bridge. At the other end of the bridge you’ll enter Pinwheel Forest. Along the left, Cheren greets you and teams up to investigate a Team Plasma appearance. Take advantage of the free healing and check out the grass encounters which include a Vigoroth. Slaking is also available in shaking grass but as with most pokemon in these areas, they’re all only a single level from evolving due to being way past their required levels. Finish up with Cheren and you’ll then be able to access the eastern side of the forest. Wind your way through and surf under the bridge to reach a hidden grotto. This part of the game goes into overdrive with grottoes so be prepared to revisit this place over and over. Within this grotto you can get a Murkrow, Breloom and either a Beedrill in Black 2 or Butterfree in White 2. Level up an Eevee anywhere in the forest to evolve it into a Leafeon thanks to the Mossy Rock that’s present here. 
+
+
+* Vigoroth--(Lv. 36)-->Slaking
+* Murkrow--(Dusk Stone)-->Honchkrow
+* Breloom
+* (B2) Beedrill
+* (W2) Butterfree
+* Eevee--(Level up in Pinwheel Forest)-->Leafeon
+
+
+Outside of the eastern exit of the forest you’ll still be in an area classed as Pinwheel Forest. Go south and check the grass for a Yanma and Toxicroak if you haven’t evolved Croagunk yet. Shaking grass also yields Yanmega if you don’t want to re-teach Yanma Ancient Power. Another hidden grotto, this time by the small rocks up the hill which could reveal a Hariyama, Medicham or Bagon. Poliwhirl is also here but it’s much easier to catch shortly so i’ll skip it here for now. 
+.
+* Yanma--(Level up knowing Ancient Power)-->Yanmega
+* Hariyama
+* Medicham
+* Bagon--(Lv. 30)-->Shelgon--(Lv. 50)-->Salamence
+
+
+Nacrene City - 
+The gym here is no longer functional but you can visit the building to use the museum’s fossil restoration facility at the front desk. If you collect all the daily fossils from Twist Mountain then you’ll be able to add the following to your dex:
+
+
+* (Helix Fossil) Omanyte--(Lv. 40)-->Omastar
+* (Dome Fossil) Kabuto--(Lv. 40)-->Kabutops
+* (Old Amber) Aerodactyl
+* (Root Fossil) Lileep--(Lv. 40)-->Cradily
+* (Claw Fossil) Anorith--(Lv. 40)-->Armaldo
+* (Skull Fossil) Cranidos--(Lv. 30)-->Rampardos
+* (Armor Fossil) Shieldon--(Lv. 30)-->Bastiodon
+
+
+Lenora will also ask which fossil you’d like - the Plume or Cover Fossil. If you want to grab one now you can but be careful of which one you pick. If you’re playing Black 2, get the Plume Fossil and for White 2 grab the Cover Fossil. This is because you’ll get the other from a version exclusive method so you need to make sure you don’t get two of the same fossil by mistake, but I’ll list both Unova fossils later to avoid any concerns. At the gate on the way out the eastern side of town, speak to an NPC to get an egg. This will hatch into a Happiny. 
+
+
+* Happiny--(Level up holding an Oval Stone)-->Chansey--(Happiness)-->Blissey
+
+
+Route 3 - 
+Out on Route 3 you can Surf to encounter Corphish as well as its evolution in rippling water. There’s TWO hidden grottoes on this route. One is found by surfing north from the bridge, the other is at the top of the dark grass. In the former you’ll possibly find Venonat, Lombre and Bibarel, with the latter having Manectric and Pachirisu. 
+
+
+* Corphish--(Lv. 30)-->Crawdaunt
+* Venonat--(Lv. 31)-->Venomoth
+* Lombre--(Water Stone)-->Ludicolo
+* Bibarel
+* Manectric
+* Pachirisu
+
+
+Wellspring Cave to the west doesn’t have anything new but to the east you’ll find the daycare and can FINALLY do some breeding. If we take all the pokemon we’ve caught in the main game and those in the post game so far that are missing their earlier stages we can breed to get the following pokemon. I’d highly recommend keeping an eye on the hidden grottos (and a few more ahead) whilst hatching eggs given the number of steps you’ll be taking. Remember that any Incense required for breeding can be bought in Driftveil City. 
+
+
+* Clefairy/Clefable--(Breed)-->Cleffa
+* Roselia/Roserade--(Breed whilst holding Rose Incense)-->Budew
+* Zebstrika--(Breed)-->Blitzle
+* Volcarona--(Breed)-->Larvesta
+* Banette--(Breed)-->Shuppet
+* Pelipper--(Breed)-->Wingull
+* Palpitoad/Seismitoad--(Breed)-->Tympole
+* Vanillish/Vanilluxe--(Breed)-->Vanillite
+* Piloswine/Mamoswine--(Breed)-->Swinub
+* Metang/Metagross--(Breed)-->Beldum
+* Golurk--(Breed)-->Golett
+* Zweilous/Hydreigon--(Breed)-->Deino
+* Vigoroth/Slaking--(Breed)-->Slakoth
+* (B2) Beedrill--(Breed)-->Weedle--(Lv. 7)-->Kakuna
+* (W2) Butterfree--(Breed)-->Caterpie--(Lv. 7)-->Metapod
+* Lombre/Ludicolo--(Breed)-->Lotad
+* Manectric--(Breed)-->Electrike
+* Bibarel--(Breed)-->Bidoof
+* Breloom--(Breed)-->Shroomish
+* Hariyama--(Breed)-->Makuhita
+* Medicham--(Breed)-->Meditite
+The Dreamyard - 
+Striaton Gym is also not operating anymore as a gym so there’s not much to do in town. Head east to the Dreamyard. Latios in Black 2 or Latias in White 2 will make an appearance. If you chase it around the dreamyard it will eventually go to the upper platforms. Save the game after you see it fly around once you’ve gone to the upper platforms as you’ll be thrust into battle with it next time it appears without a chance to back out. In the grass you’ll encounter Munna and Jigglypuff with both evolutions available in shaking grass if you’re short on Moon Stones. 
+
+
+* (B2) Latios
+* (W2) Latias
+* Munna--(Moon Stone)-->Musharna
+* Jigglypuff--(Moon Stone)-->Wigglytuff--(Breed)-->Igglybuff
+
+
+Routes 2 and 1 - 
+South from Striaton and you’re on Route 2. In the grass you can encounter Lickitung with Lickilicky being a rare rustling grass encounter (but again it’s easier to evolve Lickitung by using the move reminder). Another hidden grotto which could have Granbull or either of the two Nidoran (both of which can be bred to get the other). 
+
+
+* Lickitung--(Level up knowing Rollout)-->Lickilicky
+* Nidoran M--(Lv. 16)-->Nidorino--(Moon Stone)-->Nidoking
+* Nidoran F--(Lv. 16)-->Nidorina--(Moon Stone)-->Nidoqueen
+* Granbull--(Breed)-->Snubbull
+
+
+Accumula Town is a short stop with only a single important NPC to the run. In the lower part of town someone wants an Excadrill and they will trade you an Ambipom in exchange. You can trade with the same person AGAIN after you battle them, this time giving them a Hippowdon for an Alakazam. Hippowdon is one of the daily swarm pokemon (see further below). 
+
+
+* Ambipom--(Breed)-->Aipom
+* Alakazam--(Breed)-->Abra--(Lv. 16)-->Kadabra
+
+
+Route 1 has nothing of interest at the moment so continue down the path to reach Nuvema Town and stop by Professor Juniper’s lab. Speaking to Cedric Juniper again will get you the incredibly useful Super Rod which will net plenty of non native pokemon throughout the region. 
+
+
+Routes 17 and 18 - 
+Before we go on a Unovan fishing tour, let’s pay a visit to one of the last new areas of the post game. Head back to Route 1 but do take the time to fish here. You can hook Feebas at a 5% encounter rate or it’s much more common in rippling spots which is also the only way to encounter Milotic which also has a 5% encounter rate. Go west across the water to Route 17, a place I'm sure IGN would love as it’s almost entirely water. Fishing here you can find Horsea and Finneon, with rippling spots including their evolutions (including Kingdra). 
+
+
+* Feebas
+* Milotic
+* Horsea--(Lv. 32)-->Seadra
+* Kingdra
+* Finneon--(Lv. 31)-->Lumineon
+
+
+Continuing west you’ll hit Route 18 where Carnivine and Tropius lurk in the grass on the island. There’s a hidden grotto here which has a single pokemon that is absolutely necessary - Chatot. Other encounters are available (Kingler and Dragonite) but we’ll be fishing for them very shortly. Make sure to grab the Magma Stone located on this route. Leave the north eastern side of the route to circle back to Route 17 where you’ll be able to reach the P2 Laboratory. Fishing in the rippling water could net you a Qwilfish. 
+
+
+* Carnivine
+* Tropius
+* Chatot
+* Qwilfish
+
+
+Unovan Fishing Tour - 
+With the Super Rod now in our possession it’s time to retread some familiar ground and hook some pokemon we didn’t know were there. See the below list of the fishing locations and what you can find there (note that some pokemon are found on multiple routes but i’ve picked routes that are easier to get rippling spots). Almost all of the evolutions not listed as individual entries are found exclusively in rippling spots with the exception of Poliwrath who can be caught in e.g Route 23 if you want to make the detour. Watch out for Politoed, it knows Perish Song much like our friend Lapras from earlier on!
+
+
+* (Route 14) Goldeen--(Lv. 33)-->Seaking
+* (Route 20) Poliwag--(Lv. 25)-->Poliwhirl--(Water Stone)-->Poliwrath
+* (Route 20 Rippling) Politoed
+* (Virbank City) Krabby--(Lv. 28)-->Kingler
+* (Route 4) Clamperl
+* (B2 Route 4 Rippling) Huntail
+* (W2 Route 4 Rippling) Gorebyss
+* (Route 4 Rippling) Relicanth
+* (Undella Town) Shellder--(Water Stone)-->Cloyster
+* (Undella Town) Luvdisc
+* (Undella Bay) Chinchou--(Lv. 27)-->Lanturn
+* (Village Bridge) Carvanha--(Lv. 30)-->Sharpedo
+* (Route 8) Barboach--(Lv. 30)-->Whiscash
+* (Dragonspiral Tower) Dratini--(Lv. 30)-->Dragonair--(Lv. 55)-->Dragonite
+
+
+Route 15 and Black City/White Forest - 
+A very quick detour first for Black 2 players (optional for White 2), go to Floccesy Town and you can challenge Alder. After that, from Nimbasa City, head northeast and you’ll eventually be able to reach Marvelous Bridge. Bringing the Lunar Wing we got from Strange House will let us encounter Cresselia. Save your game early to avoid messing up the encounter. Also make use of the Magikarp salesman as you’ll be able to buy Magikarp which is completely unavailable in Unova otherwise. Onto Route 15 you can find Pupitar in the grass (as well as Tyranitar in shaking grass) and there’s an in-game trade where you can give a Ditto for a Rotom. 
+
+
+* Cresselia
+* Magikarp--(Lv. 20)-->Gyarados
+* Pupitar--(Lv. 55)-->Tyranitar--(Breed)-->Larvitar
+* Rotom
+
+
+On the other side of the route you’ll reach Black City or White Forest depending on the version you’re playing. By challenging the battle facility here (only available after defeating Alder) you can challenge and defeat Benga if you advance far enough. Black 2 players will receive a gift from Alder back in Floccesy Town for doing so - a shiny Gible. Not only is it great to get a shiny but you’ll also get three additional dex entries for evolving it and a THIRD Exp Share! White 2 players get a shiny Dratini. Unfortunately Dratini is available through other methods so White 2 will fall short in the final dex count. 
+
+
+* (B2) Gible--(Lv. 24)-->Gabite--(Lv. 48)-->Garchomp
+
+
+Legendary Mop-up - 
+Taking the Magma Stone from Route 18, go back to Reversal Mountain and you’ll be able to encounter Heatran. As always, save before the encounter just in case. Then go to the Cave of Being which you can Surf to from Route 20. The three lake spirits of Sinnoh will be disturbed and will flee to separate static encounters. Go to the top of Celestial Tower for Mesprit, Route 23 for Azelf and Nacrene City for Uxie. Next go to Clay Tunnel accessed from the north of Driftveil City. You will be able to reach the Underground Ruins where Regirock lurks. Save your game and encounter the titan. Your gift will be a key - the Iron Key for Black 2 players or the Iceberg Key in White 2. If you save the game and soft reset to the start menu you can access Unova Link and use the key to put the corresponding titan in Regirock’s place at the ruins. This means that Black 2 players can catch Registeel and White 2 players can catch Regice. 
+
+
+* Heatran
+* Mesprit
+* Azelf
+* Uxie
+* Regirock
+* (B2) Registeel
+* (W2) Regice
+
+
+Funfest Missions - 
+Something that I haven’t touched on at all until now, where it is actually mandatory in order to catch some pokemon. If you’ve never been to the Entree Forest/Entralink then switch on your C-Gear on the bottom screen, select Wireless and then Entralink, This will take you to the Entree Forest where an old man will put you through a basic tutorial. After completing it you can return and select any mission you want. If you’re playing Black 2 then you’ll want to select Forgotten Lost Items or in White 2 select Not-Found Lost Items. Both of these will have been unlocked after becoming Champion. Run around various locations investigating the sparkly clouds that appear until you pick up a Plume (White 2)  or Cover Fossil (Black 2). Then simply end the mission, go back to Nacrene City and ask Lenora to give you the other of the two fossils. Reviving these will get you both Unovan fossil pokemon - Archen and Tirtouga. 
+
+
+Next you’ll want to select the mission Search Hidden Grottoes (also unlocked by becoming Champion) which will require you to find at least one hidden grotto with a pokemon in it. Any grotto is fine so if you’re still hunting for the ones in the post game then give those a look first. By successfully completing this mission you will unlock either Noisy Hidden Grottoes in Black 2 or Quiet Hidden Grottoes in White 2. By activating this mission, some of the hidden grottoes in Unova will have either a Stunky in Black 2 or Glameow in White 2 replaced as its contents which is the only way to catch these pokemon. 
+
+
+* Archen--(Lv. 37)-->Archeops
+* Tirtouga--(Lv. 37)-->Carracosta
+* (B2) Stunky--(Lv. 34)-->Skuntank
+* (W2) Glameow--(Lv. 38)-->Purugly
+Daily Swarms/Outbreaks - 
+Something you’ll want to start pinning down as early as possible. Venture into any gate and check the electronic bulletin board. It will tell you of a pokemon outbreak in a certain area of Unova. Head over there to find a decent chance of encountering a pokemon that’s not native to Unova. The game is extremely generous by making the outbreak selections random. If you save the game near a gate, when you switch the game back on the next day you can enter the gate to check the outbreak. If it’s a repeat, then simply soft reset and enter the gate until you’ve caught everything. If you’re not against changing the clock, you can change the time to 23:59 and wait for the clock to roll over to trigger the next daily swarm. The following pokemon can be obtained
+
+
+* (Route 1) Farfetch’d
+* (B2 Route 3) Volbeat--(Breed)-->Illumise
+* (W2 Route 3) Illumise--(Breed)-->Volbeat
+* (Route 5) Natu--(Lv. 25)-->Xatu
+* (B2 Route 6) Plusle
+* (W2 Route 6) Minun
+* (Route 7) Furret--(Breed)-->Sentret
+* (Route 8) Quagsire--(Breed)-->Wooper
+* (Route 9) Swalot--(Breed)-->Gulpin
+* (Route 11) Masquerain--(Breed)-->Surskit
+* (Route 12) Doduo--(Lv. 31)-->Dodrio
+* (Route 13) Swellow--(Breed)-->Taillow
+* (Route 15) Fearow--(Breed)-->Spearow
+* (Route 16) Pineco--(Lv. 31)-->Forretress
+* (Route 18) Hoppip--(Lv. 18)-->Skiploom--(Lv. 27)-->Jumpluff
+* (B2 Route 20) Sudowoodo--(Breed whilst holding Rock Incense)-->Bonsly
+* (W2 Route 20) Mr Mime--(Breed whilst holding Odd Incense)-->Mime Jr
+* (B2 Route 22) Ariados--(Breed)-->Spinarak
+* (W2 Route 22) Ledian--(Breed)-->Ledyba
+* (Dreamyard) Hypno--(Breed)-->Drowzee
+* (Desert Resort) Hippowdon--(Breed)-->Hippopotas
+* (Abundant Shrine) Slowpoke--(Lv. 37)-->Slowbro
+* (Reversal Mountain) Cacturne--(Breed)-->Cacnea
+
+
+Yancy/Curtis Trades - 
+Another thing you’ll want to start working on ASAP to minimise the time to finish the run is to complete the Yancy/Curtis sidequest if you haven’t already done so (see here for more details). After this you’ll be able to call them up daily and ride the ferris wheel with them and then trade pokemon with them. The trades are on a fixed rotation and they will trade ANY pokemon in exchange so simply hatch or catch pokemon you don’t mind parting with. There’s also a Sinnoh fossil after Ralts but as it’s available already I've excluded it from the list although it’s past its evolution level making it easier to evolve. 
+
+
+If you’re a male character you’ll be trading with Yancy for these pokemon:
+
+
+* Meowth--(Lv. 28)-->Persian
+* Wobbuffet--(Breed whilst holding Lax Incense)-->Wynaut
+* Ralts--(Lv. 20)-->Kirlia--(Lv. 30)-->Gardevoir
+* Male Ralts--(Lv. 20)-->Male Kirlia--(Dawn Stone)-->Gallade
+* Rhyhorn--(Lv. 42)-->Rhydon
+* Shellos--(Lv. 30)-->Gastrodon
+* Mawile
+* Spiritomb
+* Snorlax--(Breed whilst holding Full Incense)-->Munchlax
+* Teddiursa--(Lv. 30)-->Ursaring
+* Spinda
+* Togepi--(Happiness)-->Togetic--(Lv. Shiny Stone)-->Togekiss
+
+
+And if you’re a female character you’ll trade with Curtis who offers these pokemon:
+
+
+* Mankey--(Lv. 28)-->Primeape
+* Wobbuffet--(Breed whilst holding Lax Incense)-->Wynaut
+* Ralts--(Lv. 20)-->Kirlia--(Lv. 30)-->Gardevoir
+* Male Ralts--(Lv. 20)-->Male Kirlia--(Dawn Stone)-->Gallade
+* Rhyhorn--(Lv. 42)-->Rhydon
+* Shellos--(Lv. 30)-->Gastrodon
+* Sableye
+* Spiritomb
+* Snorlax--(Breed whilst holding Full Incense)-->Munchlax
+* Phanpy--(Lv. 25)-->Donphan
+* Spinda
+* Togepi--(Happiness)-->Togetic--(Lv. Shiny Stone)-->Togekiss
+
+
+Levelling Up Tips - 
+I would honestly say to just stick to Audino in the post game areas which you can give your pokemon Exp Share for, switch train with Lucky Egg attached etc. Alternatively you can face the Elite Four over and over with the Exp Share but you actually won’t need to do nearly as much grinding as you’d think looking at the list of available pokemon. Most pokemon are already above their evolutionary levels, the fossils will be the only awkward evolutions to complete although they’re all Rock type and can resist Audino’s attacks. 
+
+
+End of the challenge:
+
+
+Black 2 Version:
+Unova Dex - Caught 271, Remaining 30
+National Dex - Caught 431, Remaining 218
+
+
+White 2 Version:
+Unova Dex - Caught 271, Remaining 30
+National Dex - Caught 428, Remaining 221
+
+
+________________
+
+
+
+
+
+
+So who’s missing (Unova Dex)?
+
+
+You will finish with only 30 pokemon left from the BW2 Unovan pokedex of 301…
+
+
+Choices (6):
+With the choice of only being able to keep one starter, the missing pokemon will be the other two starters and their evolutionary lines.
+  
+  
+  
+/      /      
+Version Exclusives (12):
+As always you can’t catch ‘em all without the other version. These are the pokemon found exclusively on the other game.
+Black 2 players will be missing:
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+White 2 players will be missing:
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+Trade Evolutions (5):
+We have their pre-evolutions but since trading is a standard POC rule, we cannot get these evolutions without connecting with a friend. Electivire and Magmortar are also evolutions of version exclusives but since neither are obtainable I'm throwing them in this bucket.
+  
+  
+  
+  
+  
+
+Legendaries/Mythicals (7):
+Rare pokemon that are unavailable without an event/Mystery Gift with the exception of the three Forces of Nature pokemon, neither of which are available (maybe due to being caught in the previous games).
+  
+  
+  
+  
+  
+  
+  
+
+
+
+So who’s missing (National Dex)?
+With 348 more pokemon left outside of the BW2 Unova Dex we are missing quite a lot:
+
+
+More Trade Evolutions (2):
+Yet more pokemon that need a trading partner from pokemon we’ve caught in the post game.
+  
+  
+
+More Version Exclusives:
+These are the version exclusives found in the post game. Black 2 pips ahead thanks to the shiny Gible giving an extra line of pokemon available.
+Black 2 Players will be missing (13):
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+White 2 Players will be missing (16):
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+Gender Specific Trades (5):
+So on top of version exclusives you also have your gender come into play locking you out of certain pokemon. The gender of your player character determines who you will get to trade pokemon with in the post game - Yancy if you’re male and Curtis if you’re female. Some of the traded pokemon differ. 
+Male players will be missing:
+  
+  
+  
+  
+  
+
+Female players will be missing:
+  
+  
+  
+  
+  
+
+In game but not accessible (7):
+These last few pokemon that are technically available can’t be accessed as the Nature Preserve can’t be reached without completing the Unova Dex which can’t be done solo.
+  
+  
+  
+  
+  
+  
+  
+
+Starters not in game (36):
+All the starters from other regions which are not found in the game without migrating.
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+Legendaries/Mythicals not in game (25):
+More legendaries all from other regions and not found in the game without migrating.
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+Miscellaneous pokemon not available in the game (100):
+Everything else that’s left. These are the remaining families of pokemon that are not found anywhere in the games and require migration from previous gens to obtain.
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+________________
+
+
+
+
+3. The End/Thanks
+
+
+A huge thank you to Reddit user Chamale for first inspiring me to play this challenge way back in 2018. I usually play a pokemon game by catching every pokemon on a route but never evolve them all (unless they’re on my team) until post-game. Since doing several POCs over the years I've truly appreciated the journey and the community that has grown as the challenge has had its voice heard. And a special thanks to Johnstone and Chaotic Meatball for making our Reddit so much more popular!
+
+
+If you would like to add any comments/thoughts/advice on improving this guide such as levelling tips, please drop me a message on Reddit u/mewlax84.
+
+
+Until next time!
+
+
+Social Media Plug:
+Instagram: Poké Mewlax (@pokemewlax) • Instagram photos and videos 
+Twitter: Mewlax (@Mewlax1) / Twitter
+Reddit profile: mewlax84 (u/mewlax84) - Reddit
