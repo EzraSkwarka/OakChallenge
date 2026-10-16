@@ -855,21 +855,99 @@ function updatePlanner() {
 
 const pokemonSearch = document.getElementById("pokemonSearch");
 
+function getManualLevelEvolutionSteps(pokemonName) {
+  const steps = [];
+
+  let currentPokemon = findPokemon(pokemonName);
+  let currentLevel = 1;
+
+  const visited = new Set();
+
+  while (currentPokemon) {
+    const currentKey = currentPokemon.name.toLowerCase();
+
+    if (visited.has(currentKey)) {
+      break;
+    }
+
+    visited.add(currentKey);
+
+    const evolution = (currentPokemon.evolutions || [])
+      .filter((entry) => {
+        return entry.method === "level-up" && Number.isFinite(Number(entry.level));
+      })
+      .sort((a, b) => {
+        const levelDifference = Number(a.level) - Number(b.level);
+
+        if (levelDifference !== 0) {
+          return levelDifference;
+        }
+
+        const aPokemon = findPokemon(a.species);
+        const bPokemon = findPokemon(b.species);
+
+        return (aPokemon?.dexNumber ?? Number.MAX_SAFE_INTEGER) - (bPokemon?.dexNumber ?? Number.MAX_SAFE_INTEGER);
+      })[0];
+
+    if (!evolution) {
+      break;
+    }
+
+    const nextPokemon = findPokemon(evolution.species);
+    const evolutionLevel = Number(evolution.level);
+
+    if (!nextPokemon || !Number.isFinite(evolutionLevel) || evolutionLevel <= currentLevel) {
+      break;
+    }
+
+    steps.push({
+      pokemon: currentPokemon,
+      startingLevel: currentLevel,
+      finalPokemon: nextPokemon,
+      evolutionLevel,
+    });
+
+    currentPokemon = nextPokemon;
+    currentLevel = evolutionLevel;
+  }
+
+  return steps;
+}
+
 function addPokemonFromSearch() {
   const pokemonName = pokemonSearch.value.trim();
+  const pokemon = findPokemon(pokemonName);
 
-  if (!pokemonName || !findPokemon(pokemonName)) {
+  if (!pokemon) {
     return;
   }
 
-  const alreadyExists = [...document.querySelectorAll(".pokemon-name")].some((input) => input.value === pokemonName);
+  const steps = getManualLevelEvolutionSteps(pokemon.name);
 
-  if (alreadyExists) {
+  if (!steps.length) {
     pokemonSearch.value = "";
     return;
   }
 
-  createPokemonCard(pokemonName);
+  steps.forEach((step) => {
+    const alreadyExists = [...document.querySelectorAll(".pokemon-entry")].some((card) => {
+      const existingPokemon = card.querySelector(".pokemon-name")?.value.trim().toLowerCase();
+
+      const existingFinal = card.querySelector(".final-pokemon-name")?.value.trim().toLowerCase();
+
+      return existingPokemon === step.pokemon.name.toLowerCase() && existingFinal === step.finalPokemon.name.toLowerCase();
+    });
+
+    if (alreadyExists) {
+      return;
+    }
+
+    createPokemonCard(step.pokemon.name, step.startingLevel, {
+      finalPokemon: step.finalPokemon,
+      evolutionLevel: step.evolutionLevel,
+      gameId: "",
+    });
+  });
 
   pokemonSearch.value = "";
 

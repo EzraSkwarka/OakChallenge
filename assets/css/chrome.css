@@ -10,52 +10,44 @@
 .site-header .container {
   width: var(--band-width, 90vw);
   max-width: var(--band-max, 1400px);
-
   margin: 0 auto;
-
   padding: 0.4rem 0 0.8rem;
-
   display: flex;
   flex-direction: column;
   align-items: stretch;
 }
 
 .site-header-bar {
+  position: relative;
   width: 100%;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   gap: 8px;
-
   margin-bottom: 0.15rem;
 }
 
 .site-title {
   margin: 0;
-
+  padding-right: 4.75rem;
   font-size: 1.9rem;
   line-height: 1.2;
 }
 
 .tagline {
-  margin: 0.2rem 0 0.6rem;
-
-  color: var(--muted);
-
   max-width: 68ch;
+  margin: 0.2rem 0 0.6rem;
+  color: var(--muted);
 }
 
+/* -----------------------------
+   Header Host
+------------------------------ */
+
 #site-header-host {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  width: var(--band-width, 90vw);
-  max-width: var(--band-max, 1400px);
-
-  margin: 0 auto;
+  width: 100%;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 #site-header-host > * {
@@ -66,14 +58,11 @@
 #site-header-host .site-controls,
 #site-header-host .header-right {
   margin-left: auto;
-
   display: inline-flex;
   align-items: center;
   justify-content: flex-end;
-
   gap: 8px;
   padding: 4px 0;
-
   flex-wrap: wrap;
 }
 
@@ -86,42 +75,71 @@
   flex: 0 0 auto;
 }
 
-html body #site-header-host {
-  box-sizing: border-box;
-}
-
 /* -----------------------------
-   Navigation Drawer
+   Floating Menu Button
 ------------------------------ */
 
 .menu-btn {
+  position: fixed;
+  top: max(0.75rem, env(safe-area-inset-top));
+  right: max(0.75rem, env(safe-area-inset-right));
+  z-index: 1003;
   width: 64px;
   height: 64px;
-
+  margin: 0;
+  padding: 0;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-
-  padding: 0;
-
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
   font-size: 2rem;
   line-height: 1;
-
-  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition:
+    opacity 0.12s ease,
+    visibility 0.12s ease,
+    background 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease,
+    transform 0.15s ease;
 }
+
+.menu-btn:hover {
+  background: var(--hover);
+  border-color: var(--accent);
+}
+
+.menu-btn:active {
+  transform: translateY(1px);
+}
+
+.menu-btn[aria-expanded="true"] {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.menu-btn:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+/* -----------------------------
+   Menu Backdrop
+------------------------------ */
 
 .menu-backdrop {
   position: fixed;
   inset: 0;
-
+  z-index: 1001;
   background: rgba(0, 0, 0, 0.4);
-
   opacity: 0;
   pointer-events: none;
-
-  transition: opacity 0.2s ease;
-
-  z-index: 900;
+  transition: opacity 0.18s ease;
 }
 
 .menu-backdrop.is-open {
@@ -129,91 +147,173 @@ html body #site-header-host {
   pointer-events: auto;
 }
 
-.site-drawer {
-  position: fixed;
-
-  top: 0;
-  right: 0;
-
-  width: 280px;
-  max-width: 85vw;
-  height: 100vh;
-
-  padding: 16px;
-
-  background: var(--surface);
-
-  border-left: 1px solid var(--border);
-
-  box-shadow: var(--shadow-md);
-
-  display: flex;
-  flex-direction: column;
-
-  z-index: 1000;
-
-  transform: translateX(100%);
-
-  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.site-drawer.is-open {
-  transform: translateX(0);
-}
-
-.site-drawer[hidden],
 .menu-backdrop[hidden] {
   display: none;
 }
 
+/* -----------------------------
+   Navigation Drawer
+------------------------------ */
+
+.site-drawer {
+  position: fixed;
+  top: var(--drawer-anchor-top, 0.75rem);
+  right: var(--drawer-anchor-right, 0.75rem);
+  z-index: 1004;
+  width: min(320px, calc(100vw - 1.5rem));
+  max-height: calc(100vh - var(--drawer-anchor-top, 0.75rem) - 0.75rem);
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden auto;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-0.4rem) scaleY(0.72);
+  transform-origin: top right;
+  transition:
+    opacity 0.18s ease,
+    transform 0.18s cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0.18s ease;
+}
+
+.site-drawer.is-open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scaleY(1);
+}
+
+.site-drawer[hidden] {
+  display: none;
+}
+
+/* -----------------------------
+   Drawer Header
+------------------------------ */
+
 .site-drawer-header {
+  min-height: 62px;
+  padding: 0 0.6rem 0 1rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-
-  margin-bottom: 16px;
-
+  gap: 1rem;
+  flex: 0 0 auto;
+  color: var(--text);
+  border-bottom: 1px solid var(--border);
   font-weight: 700;
 }
 
 .drawer-close {
-  border: none;
-  background: none;
-
+  width: 44px;
+  height: 44px;
+  margin: 0;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   color: var(--text);
-
-  cursor: pointer;
-
+  background: transparent;
+  border: 0;
+  border-radius: var(--radius-sm);
+  box-shadow: none;
   font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
 }
 
+.drawer-close:hover {
+  color: var(--danger);
+  background: var(--hover);
+}
+
+.drawer-close:active {
+  transform: translateY(1px);
+}
+
+.drawer-close:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+/* -----------------------------
+   Drawer Links
+------------------------------ */
+
 .site-drawer .menu-link {
-  display: block;
-
-  padding: 12px;
-
-  margin-bottom: 8px;
-
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-
-  background: var(--surface);
-
+  width: auto;
+  margin: 0.25rem 0.5rem 0;
+  padding: 0.75rem 0.8rem;
+  display: flex;
+  align-items: center;
+  flex: 0 0 auto;
   color: var(--text);
-
-  text-decoration: none;
-
+  background: transparent;
+  border: 0;
+  border-radius: var(--radius-sm);
+  box-shadow: none;
   text-align: left;
-
+  text-decoration: none;
   cursor: pointer;
+}
+
+.site-drawer .menu-link:first-of-type {
+  margin-top: 0.5rem;
+}
+
+.site-drawer .menu-link:last-child {
+  margin-bottom: 0.5rem;
 }
 
 .site-drawer .menu-link:hover {
   background: var(--hover);
 }
 
+.site-drawer .menu-link:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 1px;
+}
+
 .site-drawer .theme-btn.menu-link {
-  width: 100%;
+  width: calc(100% - 1rem);
+}
+
+#local-dev-links-drawer {
+  display: contents;
+}
+
+/* -----------------------------
+   Recent Game Link
+------------------------------ */
+
+#recent-game-link-drawer,
+#recent-game-link-menu {
+  display: contents;
+}
+
+.recent-game-link {
+  color: var(--accent);
+}
+
+.recent-game-link::before {
+  content: "↩";
+  margin-right: 0.5rem;
+}
+
+.site-drawer .recent-game-link:hover {
+  color: var(--text);
+}
+
+/* -----------------------------
+   Legacy Desktop Menu
+------------------------------ */
+
+.site-menu {
+  display: none;
 }
 
 /* -----------------------------
@@ -221,20 +321,16 @@ html body #site-header-host {
 ------------------------------ */
 
 .rules summary {
-  cursor: pointer;
-
-  font-weight: 600;
   color: var(--text);
+  font-weight: 600;
+  cursor: pointer;
 }
 
 .rules-body {
+  padding: 0.75rem 0.9rem;
   background: var(--surface);
-
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
-
-  padding: 0.75rem 0.9rem;
-
   box-shadow: var(--shadow-sm);
 }
 
@@ -252,9 +348,7 @@ html body #site-header-host {
 
 .site-footer {
   margin-top: 1rem;
-
   background: var(--bg);
-
   border-top: 1px solid var(--border);
 }
 
@@ -266,39 +360,80 @@ html body #site-header-host {
 .site-footer .container {
   width: var(--band-width);
   max-width: var(--band-max);
-
   margin: 0 auto;
-
   padding: 1.1rem 0 0.8rem;
-
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
 
 /* -----------------------------
-   Mobile
+   Desktop
+------------------------------ */
+
+@media (min-width: 901px) {
+  .menu-backdrop {
+    display: none;
+  }
+}
+
+/* -----------------------------
+   Tablet and Mobile
+------------------------------ */
+
+@media (max-width: 900px) {
+  .site-drawer {
+    width: min(360px, calc(100vw - 1.5rem));
+  }
+}
+
+/* -----------------------------
+   Small Mobile
 ------------------------------ */
 
 @media (max-width: 520px) {
-  #site-header-host {
-    flex-wrap: wrap;
+  .site-header .container {
+    width: 100%;
     padding: 0.75rem 0.9rem;
+  }
+
+  .site-header-bar {
+    padding-right: 4.25rem;
+  }
+
+  .site-title {
+    padding-right: 0;
+    font-size: 1.5rem;
   }
 
   #site-header-host .header-actions,
   #site-header-host .site-controls,
   #site-header-host .header-right {
-    width: 100%;
-
-    justify-content: flex-end;
-
-    row-gap: 8px;
-
-    padding-top: 0.5rem;
+    width: auto;
+    padding: 0;
   }
 
-  .site-title {
-    font-size: 1.5rem;
+  .menu-btn {
+    top: max(0.5rem, env(safe-area-inset-top));
+    right: max(0.5rem, env(safe-area-inset-right));
+    width: 56px;
+    height: 56px;
+    font-size: 1.75rem;
+  }
+
+  .site-drawer {
+    top: var(--drawer-anchor-top, 0.5rem);
+    right: var(--drawer-anchor-right, 0.5rem);
+    width: min(360px, calc(100vw - 1rem));
+    max-height: calc(100vh - var(--drawer-anchor-top, 0.5rem) - 0.5rem);
+  }
+
+  .site-drawer-header {
+    min-height: 54px;
+  }
+
+  .drawer-close {
+    width: 40px;
+    height: 40px;
   }
 }

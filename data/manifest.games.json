@@ -174,7 +174,7 @@
         "notes": "Under Construction",
         "cover": "assets/images/covers/black.png",
         "href": "pages/tracker/black.html",
-        "available": true
+        "available": false
       },
       {
         "id": "white",

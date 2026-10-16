@@ -3,71 +3,405 @@
 
 <head>
     <meta charset="utf-8">
-    <base href="/OakChallenge/" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Choice Block Builder</title>
+    <title>Progression Row Builder</title>
 
-    <link rel="stylesheet" href="assets/css/base.css">
-    <link rel="stylesheet" href="assets/css/chrome.css">
-    <link rel="stylesheet" href="assets/css/tracker.css">
-    <link rel="stylesheet" href="assets/css/sticky-header.css">
-    <link rel="stylesheet" href="assets/css/choice-builder.css">
+    <link rel="stylesheet" href="/assets/css/base.css">
+    <link rel="stylesheet" href="/assets/css/chrome.css">
+    <link rel="stylesheet" href="/assets/css/tracker.css">
+    <link rel="stylesheet" href="/assets/css/sticky-header.css">
+    <link rel="stylesheet" href="/assets/css/icons.css">
+    <link rel="stylesheet" href="/assets/css/choice-builder.css">
 
-    <script src="assets/js/choice-builder.js" defer></script>
-    <script src="assets/js/site-theme.js" defer></script>
-    <script src="assets/js/site-chrome.js" defer></script>
+    <script src="/assets/js/site-chrome.js" defer></script>
+    <script src="/assets/js/site-theme.js" defer></script>
+
+    <script src="/data/pokemon.js" defer></script>
+    <script src="/assets/js/choice-builder.js" defer></script>
+</head>
 
 <body>
 
-    <div id="site-header-host">
-    </div>
+    <div id="site-header-host"></div>
 
     <div class="page-band">
         <div class="container">
 
-            <h1>Choice Block Builder</h1>
+            <section class="builder-card">
 
-            <div class="builder-card">
+                <h1>Progression Builder</h1>
 
-                <label for="choiceKey">
-                    Choice Key
+                <p>
+                    Create progression data sections, generate row objects, and build formatted summary content from a
+                    single editor.
+                </p>
+
+            </section>
+
+            <section class="builder-card">
+
+                <h2>Profiles</h2>
+
+                <label>
+                    Active Profile
                 </label>
 
-                <input id="choiceKey" type="text" value="starter">
+                <select id="profileSelect"></select>
 
-            </div>
+                <div class="builder-actions">
 
-            <div id="branches"></div>
+                    <button id="newProfile" type="button">
+                        New Profile
+                    </button>
 
-            <div class="footer-actions">
+                    <button id="renameProfile" type="button">
+                        Rename Profile
+                    </button>
 
-                <button id="addBranch">
-                    Add Branch
-                </button>
+                    <button id="deleteProfile" type="button">
+                        Delete Profile
+                    </button>
 
-                <button id="generate">
-                    Generate
-                </button>
+                </div>
 
-                <button id="copyOutput">
-                    Copy Output
-                </button>
+            </section>
 
-            </div>
+            <section class="builder-card">
 
-            <div class="builder-card">
+                <h2>Game Metadata</h2>
+
+                <label>
+                    Game ID
+                </label>
+
+                <input id="gameId" type="text" placeholder="black">
+
+                <label>
+                    Game Title
+                </label>
+
+                <input id="gameTitle" type="text" placeholder="Pokemon Black">
+
+                <label>
+                    Logo Path
+                </label>
+
+                <input id="gameLogo" type="text" placeholder="assets/images/logos/black.png">
+
+                <label>
+                    Guide Source HTML
+                </label>
+
+                <textarea id="guideSource" spellcheck="false" placeholder="Paste guide intro HTML here..."></textarea>
+
+            </section>
+
+            <section class="builder-card">
+
+                <h2>Progression Sections</h2>
+
+                <div id="sections"></div>
+
+                <div class="builder-actions">
+
+                    <button id="addSection" type="button">
+                        + Add Section
+                    </button>
+
+                </div>
+
+            </section>
+
+            <section class="builder-card">
+
+                <div class="footer-actions">
+
+                    <button id="generate" type="button">
+                        Generate Output
+                    </button>
+
+                    <button id="copyOutput" type="button">
+                        Copy Output
+                    </button>
+
+                </div>
 
                 <h2>Output</h2>
 
                 <textarea id="output" spellcheck="false"></textarea>
 
-            </div>
+            </section>
 
         </div>
     </div>
 
     <div id="site-footer-host"></div>
+
+    <datalist id="pokemon-list"></datalist>
+
+    <!-- ====================================================== -->
+    <!-- SECTION TEMPLATE -->
+    <!-- ====================================================== -->
+
+    <template id="section-template">
+
+        <div class="builder-section">
+
+            <h2>Progression Section</h2>
+
+            <label>
+                Section Key
+            </label>
+
+            <input class="section-key" type="text" placeholder="before-badge-1">
+
+            <label>
+                Header Title
+            </label>
+
+            <input class="section-title" type="text" placeholder="Before Badge 1">
+
+            <label>
+                Header Image
+            </label>
+
+            <input class="section-image" type="text">
+
+            <label>
+                Header Image Alt Text
+            </label>
+
+            <input class="section-image-alt" type="text">
+
+            <label>
+                Summary
+            </label>
+
+            <textarea class="section-summary" spellcheck="false" placeholder="# Route 1
+
+Patrat and Lillipup are available here.
+
+     Patrat
+     → Watchog
+
+# Route 2
+
+Purrloin is available here."></textarea>
+
+            <hr>
+
+            <h3>Standard Row Groups</h3>
+
+            <div class="section-standard-sections"></div>
+
+            <div class="builder-actions">
+
+                <button type="button" class="add-section-standard">
+                    + Add Standard Section
+                </button>
+
+            </div>
+
+            <hr>
+
+            <h3>Choice Groups</h3>
+
+            <div class="section-choice-blocks"></div>
+
+            <div class="builder-actions">
+
+                <button type="button" class="add-choice-block">
+                    + Add Choice Group
+                </button>
+
+            </div>
+
+            <hr>
+
+            <div class="builder-actions">
+
+                <button type="button" class="remove-builder-section">
+                    Remove Section
+                </button>
+
+            </div>
+
+        </div>
+
+    </template>
+
+    <!-- ====================================================== -->
+    <!-- STANDARD SECTION TEMPLATE -->
+    <!-- ====================================================== -->
+
+    <template id="standard-section-template">
+
+        <div class="standard-section">
+
+            <h3>Standard Section</h3>
+
+            <label>
+                Section Header
+            </label>
+
+            <input class="section-header" type="text" placeholder="Route 1">
+
+            <label>
+                Default Method
+            </label>
+
+            <input class="default-method" type="text" placeholder="Route 1">
+
+            <table class="pokemon-table">
+
+                <thead>
+                    <tr>
+                        <th>Pokémon</th>
+                        <th>Method</th>
+                        <th>Level-Up</th>
+                        <th></th>
+                    </tr>
+                </thead>
+
+                <tbody class="standard-pokemon-rows"></tbody>
+
+            </table>
+
+            <div class="builder-actions">
+
+                <button type="button" class="add-standard-pokemon">
+                    + Add Pokémon
+                </button>
+
+                <button type="button" class="remove-standard-section">
+                    Remove Section
+                </button>
+
+            </div>
+
+        </div>
+
+    </template>
+
+    <!-- ====================================================== -->
+    <!-- CHOICE BLOCK TEMPLATE -->
+    <!-- ====================================================== -->
+
+    <template id="choice-block-template">
+
+        <div class="choice-block">
+
+            <h4>Choice Group</h4>
+
+            <label>
+                Choice Key
+            </label>
+
+            <input class="choice-key" type="text" placeholder="starter">
+
+            <div class="choice-block-branches"></div>
+
+            <div class="builder-actions">
+
+                <button type="button" class="add-choice-branch">
+                    + Add Branch
+                </button>
+
+                <button type="button" class="remove-choice-block">
+                    Remove Choice Group
+                </button>
+
+            </div>
+
+        </div>
+
+    </template>
+
+    <!-- ====================================================== -->
+    <!-- CHOICE BRANCH TEMPLATE -->
+    <!-- ====================================================== -->
+
+    <template id="branch-template">
+
+        <div class="branch">
+
+            <h4>Choice Branch</h4>
+
+            <label>
+                Choice Value
+            </label>
+
+            <input class="choice-value" type="text" placeholder="snivy">
+
+            <table class="pokemon-table">
+
+                <thead>
+                    <tr>
+                        <th>Pokémon</th>
+                        <th>Method</th>
+                        <th>Level-Up</th>
+                        <th></th>
+                    </tr>
+                </thead>
+
+                <tbody class="pokemon-rows"></tbody>
+
+            </table>
+
+            <div class="builder-actions">
+
+                <button type="button" class="add-pokemon">
+                    + Add Pokémon
+                </button>
+
+                <button type="button" class="remove-branch">
+                    Remove Branch
+                </button>
+
+            </div>
+
+        </div>
+
+    </template>
+
+    <!-- ====================================================== -->
+    <!-- POKEMON ROW TEMPLATE -->
+    <!-- ====================================================== -->
+
+    <template id="pokemon-row-template">
+
+        <tr>
+
+            <td>
+
+                <input class="pokemon-name" type="text" list="pokemon-list" placeholder="Snivy">
+
+            </td>
+
+            <td>
+
+                <input class="pokemon-method" type="text" placeholder="Method">
+
+            </td>
+
+            <td class="checkbox-cell">
+
+                <input class="pokemon-levelup" type="checkbox">
+
+            </td>
+
+            <td class="remove-cell">
+
+                <button type="button" class="remove-pokemon">
+                    ×
+                </button>
+
+            </td>
+
+        </tr>
+
+    </template>
 
 </body>
 

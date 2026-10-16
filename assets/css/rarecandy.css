@@ -205,23 +205,18 @@
 
 .pokemon-card-remove {
   position: absolute;
-
   top: 8px;
   right: 8px;
-
   border: none;
   background: none;
-
-  color: #dc2626;
-
+  color: var(--danger);
   font-size: 20px;
   line-height: 1;
-
   cursor: pointer;
 }
 
 .pokemon-card-remove:hover {
-  color: #ef4444;
+  color: var(--danger-hover);
 }
 
 .pokemon-card-title {
